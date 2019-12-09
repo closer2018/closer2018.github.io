@@ -322,7 +322,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://closer_laps.gitee.io/2019/12/09/hexo/%E5%A4%9A%E5%8D%9A%E5%AE%A2test/">
+    <link itemprop="mainEntityOfPage" href="https://closer_laps.gitee.io/2019/12/09/hexo/hexo%20%E5%A4%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8A%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="closer">
@@ -341,7 +341,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/12/09/hexo/%E5%A4%9A%E5%8D%9A%E5%AE%A2test/" itemprop="url">多博客test</a></h1>
+                <a class="post-title-link" href="/2019/12/09/hexo/hexo%20%E5%A4%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8A%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/" itemprop="url">hexo 多客户端上更新博客</a></h1>
         
 
         <div class="post-meta">
@@ -364,6 +364,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -372,9 +394,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/12/09/hexo/%E5%A4%9A%E5%8D%9A%E5%AE%A2test/#comments" itemprop="discussionUrl">
+                <a href="/2019/12/09/hexo/hexo%20%E5%A4%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8A%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/12/09/hexo/多博客test/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2019/12/09/hexo/hexo 多客户端上更新博客/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -382,7 +404,7 @@
 
           
           
-             <span id="/2019/12/09/hexo/%E5%A4%9A%E5%8D%9A%E5%AE%A2test/" class="leancloud_visitors" data-flag-title="多博客test">
+             <span id="/2019/12/09/hexo/hexo%20%E5%A4%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8A%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/" class="leancloud_visitors" data-flag-title="hexo 多客户端上更新博客">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -407,7 +429,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  71
+                  771
                 </span>
               
 
@@ -423,7 +445,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -446,9 +468,66 @@
       
         
           
-            <p>git init<br>git checkout -b  hexo //新建hexo分支并切换到hexo</p>
-<p>复制6个文件<br>git add scaffolds/<br>git add source/<br>git add themes // 注意这里是不能添加你通过 git 下载的主题的<br>git add .npmignore<br>git add _config.yml<br>git add package.json<br>git commit -m “init”</p>
-<p>git remote add origin <a href="mailto:git@github.com">git@github.com</a>:closer2018/closer2018.github.io.git</p>
+            <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>静态网页文件存放在<code>master主分支</code>，个人更新文件存放在<code>hexo分支</code>。  </p>
+<h2 id="一-本地电脑设置"><a href="#一-本地电脑设置" class="headerlink" title="一.本地电脑设置"></a>一.本地电脑设置</h2><p>先新建一个hexo文件夹，在git bash下cd进入hexo文件夹。</p>
+<ol>
+<li><code>git init</code></li>
+<li><code>git checkout -b hexo</code> //新建hexo分支并切换到hexo</li>
+<li>将原来博客文件夹里面的<code>_config.yml</code>，<code>theme/</code>，<code>source/</code>，<code>scaffolds/</code>，<code>package.json</code>，<code>.gitignore</code>，共6个文件/文件夹 拷贝到hexo文件夹下面。<br>需要拷贝的文件如下:  </li>
+</ol>
+<ul>
+<li>_config.yml（站点配置）；</li>
+<li>theme文件夹里面的主题；</li>
+<li>source文件夹；</li>
+<li>scaffolds文件夹（文章的模板）；</li>
+<li>package.json（说明使用哪些包）；</li>
+<li>.gitignore（限定在提交的时候哪些文件可以忽略）；  </li>
+<li><strong>注意：不要<code>hexo init</code>去整体初始化，因为需要的文件我们已经拷贝过来了。</strong>  </li>
+</ul>
+<ol start="4">
+<li>将theme文件夹里面的你的主题文件夹下的.git文件夹删除。</li>
+<li><code>git add scaffolds/</code><br><code>git add source/</code><br><code>git add themes</code> // 注意这里是不能添加你通过 git 下载的主题的<br><code>git add .npmignore</code><br><code>git add _config.yml</code><br><code>git add package.json</code><br><code>git commit -m &quot;init&quot;</code>  </li>
+<li><code>git remote add origin git@github.com:你的ID/你的仓库名字</code>  //添加本地hexo和远程仓库的关联  </li>
+<li>登录github，将分支仓库-&gt;Settings-&gt;Branches-&gt;Default branch中将默认分支设为hexo，Update保存。 </li>
+<li><code>git push origin hexo</code>  //上传更新</li>
+</ol>
+<h2 id="二-另外一台电脑上配置"><a href="#二-另外一台电脑上配置" class="headerlink" title="二.另外一台电脑上配置"></a>二.另外一台电脑上配置</h2><ol>
+<li>官网下载安装：  </li>
+</ol>
+<ul>
+<li><a href="https://nodejs.org/en/" target="_blank" rel="noopener">安装 Node.js；</a></li>
+<li><a href="https://git-scm.com/" target="_blank" rel="noopener">安装 Git。</a></li>
+</ul>
+<ol start="2">
+<li>新建hexo目录，cd进入。</li>
+<li><code>git clone https://github.com/你的ID/你的ID.github.io.git</code>  //克隆到本地</li>
+<li>将新电脑生成的ssh key添加到gitHub账户上。<br>需要配置 git。</li>
+</ol>
+<ul>
+<li><code>git config --global user.email &quot;xxx@qq.com&quot;</code> 引号内的<a href="mailto:xxx@qq.com">xxx@qq.com</a>改为你github注册并且验证的邮箱；</li>
+<li><code>git config --global user.name &quot;xxxx&quot;</code>   引号内的xxxx改为你的 github 用户名；</li>
+<li><code>ssh-keygen</code> 会出现下面的内容，一直按Enter键就行；</li>
+<li>打开用户目录下的 <code>.ssh</code>目录下面生成 <code>id_rsa(私钥)id_rsa.pub(公钥)</code>两个文件，打开<code>id_rsa.pub</code>，复制里面的内容,到 github: <code>Settings -&gt; SSH and GPG keys -&gt; SSH keys -&gt; New SSH key -&gt; (填写)Title -&gt; (粘贴)Key -&gt; Add SSH Key</code>；</li>
+<li>测试 <code>ssh -T git@github.com</code>，输出 <strong>You’ve successfully authenticated</strong> 表示添加key 成功。</li>
+</ul>
+<ol start="5">
+<li><code>npm install hexo-cli -g</code> //安装hexo</li>
+<li><code>npm install</code> //安装依赖包  </li>
+</ol>
+<ul>
+<li>如果出现报错<code>ERROR Try runing: &#39;npm install hexo --save</code>则执行命令<code>npm install hexo --save</code>，如果没有，则忽略。</li>
+</ul>
+<h2 id="三-发布博客"><a href="#三-发布博客" class="headerlink" title="三.发布博客"></a>三.发布博客</h2><ol>
+<li>cd进入博客目录</li>
+<li><code>git pull origin hexo</code> //保证和分支同步</li>
+<li><code>hexo n &quot;新建博客&quot;</code></li>
+<li><code>git add source/</code>      //因为博客文件是在source文件夹下面的</li>
+<li><code>git commit -m &quot;博客更新&quot;</code></li>
+<li><code>git push origin hexo</code>//长传更新</li>
+<li><code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code>//部署博客</li>
+</ol>
+<p>至此，多终端发布博客已经配置完成。</p>
+<h2 id="快速上传部署命令"><a href="#快速上传部署命令" class="headerlink" title="快速上传部署命令"></a>快速上传部署命令</h2><p>从上述第 4 步后可以这样子发布：<br><code>git add source/ &amp;&amp; git commit -m &quot;博客更新&quot; &amp;&amp; git push origin hexo &amp;&amp; hexo clean &amp;&amp; hexo g &amp;&amp; hexo d &amp;&amp; exit</code><br>把命令用<code>&amp;&amp;</code>串起来，有一个失败就会停止；成功，最后一条命令就会退出终端。</p>
 
           
         
@@ -808,7 +887,7 @@ npm install hexo-generator-sitemap --save  #博客添加网站地图sitemap</cod
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://closer_laps.gitee.io/2019/12/08/hexo/hexo%20%E5%A4%9A%E7%BB%88%E7%AB%AF%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/">
+    <link itemprop="mainEntityOfPage" href="https://closer_laps.gitee.io/2019/12/08/hexo/hexo%20%E5%A4%9A%E7%BB%88%E7%AB%AF%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2(%E4%B8%8D%E5%AE%8C%E7%BE%8E)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="closer">
@@ -827,7 +906,7 @@ npm install hexo-generator-sitemap --save  #博客添加网站地图sitemap</cod
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/12/08/hexo/hexo%20%E5%A4%9A%E7%BB%88%E7%AB%AF%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/" itemprop="url">多终端更新博客</a></h1>
+                <a class="post-title-link" href="/2019/12/08/hexo/hexo%20%E5%A4%9A%E7%BB%88%E7%AB%AF%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2(%E4%B8%8D%E5%AE%8C%E7%BE%8E)/" itemprop="url">多终端更新博客</a></h1>
         
 
         <div class="post-meta">
@@ -880,9 +959,9 @@ npm install hexo-generator-sitemap --save  #博客添加网站地图sitemap</cod
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/12/08/hexo/hexo%20%E5%A4%9A%E7%BB%88%E7%AB%AF%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/#comments" itemprop="discussionUrl">
+                <a href="/2019/12/08/hexo/hexo%20%E5%A4%9A%E7%BB%88%E7%AB%AF%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2(%E4%B8%8D%E5%AE%8C%E7%BE%8E)/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/12/08/hexo/hexo 多终端更新博客/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2019/12/08/hexo/hexo 多终端更新博客(不完美)/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -890,7 +969,7 @@ npm install hexo-generator-sitemap --save  #博客添加网站地图sitemap</cod
 
           
           
-             <span id="/2019/12/08/hexo/hexo%20%E5%A4%9A%E7%BB%88%E7%AB%AF%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/" class="leancloud_visitors" data-flag-title="多终端更新博客">
+             <span id="/2019/12/08/hexo/hexo%20%E5%A4%9A%E7%BB%88%E7%AB%AF%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2(%E4%B8%8D%E5%AE%8C%E7%BE%8E)/" class="leancloud_visitors" data-flag-title="多终端更新博客">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1208,6 +1287,200 @@ hexo  d   #上传到服务器</code></pre>
 <h4 id="本地检测时运行"><a href="#本地检测时运行" class="headerlink" title="本地检测时运行"></a>本地检测时运行</h4><pre><code class="bash">hexo s</code></pre>
 <p>然后打开浏览器，输入localhost:4000，就能看到博客了。<br>这样说明本地环境搭建完成。</p>
 <h3 id="特别感谢B站up主CodeSheep的帮助和细心指导"><a href="#特别感谢B站up主CodeSheep的帮助和细心指导" class="headerlink" title="特别感谢B站up主CodeSheep的帮助和细心指导"></a>特别感谢<a href="https://space.bilibili.com/384068749/" target="_blank" rel="noopener">B站up主CodeSheep</a>的帮助和细心指导</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://closer_laps.gitee.io/2019/11/28/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/%E7%AC%AC4%E7%AB%A0%20%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="closer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="closer的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/28/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/%E7%AC%AC4%E7%AB%A0%20%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/" itemprop="url">大话数据结构第四章</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-28T00:00:00+08:00">
+                2019-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/11/28/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/%E7%AC%AC4%E7%AB%A0%20%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/11/28/读书笔记/大话数据结构笔记/第4章 栈与队列/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/11/28/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/%E7%AC%AC4%E7%AB%A0%20%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/" class="leancloud_visitors" data-flag-title="大话数据结构第四章">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  0
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
           
         
       
@@ -1833,200 +2106,6 @@ free（p）；/*释放结点*/</code></pre>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://closer_laps.gitee.io/2019/11/28/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/%E7%AC%AC4%E7%AB%A0%20%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="closer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="closer的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/28/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/%E7%AC%AC4%E7%AB%A0%20%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/" itemprop="url">大话数据结构第四章</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-28T00:00:00+08:00">
-                2019-11-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/11/28/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/%E7%AC%AC4%E7%AB%A0%20%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/11/28/读书笔记/大话数据结构笔记/第4章 栈与队列/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/11/28/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/%E7%AC%AC4%E7%AB%A0%20%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/" class="leancloud_visitors" data-flag-title="大话数据结构第四章">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  0
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2095,7 +2174,7 @@ free（p）；/*释放结点*/</code></pre>
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -2153,7 +2232,7 @@ free（p）；/*释放结点*/</code></pre>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">9k</span>
+    <span title="Site words total count">9.7k</span>
   
 </div>
 
