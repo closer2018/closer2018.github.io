@@ -21,7 +21,7 @@
 </ul>
 <ol start="4">
 <li>将theme文件夹里面的你的主题文件夹下的.git文件夹删除。</li>
-<li><code>git add scaffolds/</code><br><code>git add source/</code><br><code>git add themes</code> // 注意这里是不能添加你通过 git 下载的主题的<br><code>git add .gitignore</code><br><code>git add _config.yml</code><br><code>git add package.json</code><br><code>git commit -m &quot;init&quot;</code>  </li>
+<li><code>git add scaffolds/ source/ themes .gitignore _config.yml package.json</code><br><code>git commit -m &quot;init&quot;</code>  </li>
 <li><code>git remote add origin git@github.com:你的ID/你的仓库名字</code>  //添加本地hexo和远程仓库的关联  </li>
 <li>登录github，将分支仓库-&gt;Settings-&gt;Branches-&gt;Default branch中将默认分支设为hexo，Update保存。 </li>
 <li><code>git push origin hexo</code>  //上传更新</li>

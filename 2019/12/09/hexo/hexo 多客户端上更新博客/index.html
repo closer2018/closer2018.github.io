@@ -114,7 +114,7 @@
 <meta property="og:site_name" content="closer的自留地">
 <meta property="og:description" content="原理静态网页文件存放在master主分支，个人更新文件存放在hexo分支。   一.本地电脑设置先新建一个hexo文件夹，在git bash下cd进入hexo文件夹。  git init git checkout -b hexo &#x2F;&#x2F;新建hexo分支并切换到hexo 将原来博客文件夹里面的_config.yml，theme&#x2F;，source&#x2F;，scaffolds&#x2F;，package.json，.git">
 <meta property="article:published_time" content="2019-12-09T10:08:25.000Z">
-<meta property="article:modified_time" content="2019-12-09T13:06:59.721Z">
+<meta property="article:modified_time" content="2019-12-09T13:30:20.806Z">
 <meta property="article:author" content="closer">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="多客户端">
@@ -440,7 +440,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  771
+                  744
                 </span>
               
 
@@ -495,7 +495,7 @@
 </ul>
 <ol start="4">
 <li>将theme文件夹里面的你的主题文件夹下的.git文件夹删除。</li>
-<li><code>git add scaffolds/</code><br><code>git add source/</code><br><code>git add themes</code> // 注意这里是不能添加你通过 git 下载的主题的<br><code>git add .gitignore</code><br><code>git add _config.yml</code><br><code>git add package.json</code><br><code>git commit -m &quot;init&quot;</code>  </li>
+<li><code>git add scaffolds/ source/ themes .gitignore _config.yml package.json</code><br><code>git commit -m &quot;init&quot;</code>  </li>
 <li><code>git remote add origin git@github.com:你的ID/你的仓库名字</code>  //添加本地hexo和远程仓库的关联  </li>
 <li>登录github，将分支仓库-&gt;Settings-&gt;Branches-&gt;Default branch中将默认分支设为hexo，Update保存。 </li>
 <li><code>git push origin hexo</code>  //上传更新</li>
@@ -709,10 +709,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
-                
+                </a>
               </div>
             
 
@@ -720,10 +720,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
-                
+                </a>
               </div>
             
 
@@ -795,7 +795,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">8.9k</span>
+    <span title="Site words total count">8.8k</span>
   
 </div>
 
