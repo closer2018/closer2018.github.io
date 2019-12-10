@@ -132,7 +132,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;closer2018&#x2F;picture&#x2F;blob&#x2F;master&#x2F;%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E7%AC%AC%E4%B8%89%E7%AB%A0&#x2F;3.14.6.GIF?raw&#x3D;true">
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;closer2018&#x2F;picture&#x2F;blob&#x2F;master&#x2F;%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E7%AC%AC%E4%B8%89%E7%AB%A0&#x2F;3.15.1.GIF?raw&#x3D;true">
 <meta property="article:published_time" content="2019-11-27T16:00:00.000Z">
-<meta property="article:modified_time" content="2019-12-08T16:32:13.384Z">
+<meta property="article:modified_time" content="2019-12-10T02:19:25.588Z">
 <meta property="article:author" content="closer">
 <meta property="article:tag" content="读书笔记">
 <meta property="article:tag" content="数据结构">
@@ -240,7 +240,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -250,7 +250,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/%20" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -260,7 +260,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/%20" rel="section">
+          <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -270,7 +270,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/%20" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -280,7 +280,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/%20" rel="section">
+          <a href="/about/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -360,7 +360,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="closer">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -448,6 +448,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
 
           
             <div class="post-wordcount">
@@ -501,6 +506,7 @@
 <h2 id="3-1-3-2线性表的定义"><a href="#3-1-3-2线性表的定义" class="headerlink" title="3.1-3.2线性表的定义"></a>3.1-3.2线性表的定义</h2><p>线性表（List）：零个或多个数据元素的有限序列。</p>
 <p>若将线性表记为（a_1，…，a_(i−1)，a_i，a_(i+1)，…，a_n），则表中a_(i−1) 领先于a_i，a_i 领先于a_(i+1)，称a_(i−1) 是a_i 的直接前驱元素，a_(i+1) 是a_i 的直接后继元素。当i=1，2，…，n-1时，a_i 有且仅有一个直接后继，当i=2，3，…，n时，a_i 有且仅有一个直接前驱。<br>如图3-2-1所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.2.1.GIF?raw=true" alt="3-2-1"></p>
 <p>所以线性表元素的个数n（n&gt;0）定义为线性表的长度，当n=0时，称为空表。<br>在较复杂的线性表中，一个数据元素可以由若干个数据项组成。</p>
+<a id="more"></a>
 <h2 id="3-3线性表的抽象数据类型"><a href="#3-3线性表的抽象数据类型" class="headerlink" title="3.3线性表的抽象数据类型"></a>3.3线性表的抽象数据类型</h2><p>线性表的抽象数据类型定义如下：</p>
 <pre><code class="c">ADT线性表（List）
 Data
@@ -1051,6 +1057,10 @@ free（p）；/*释放结点*/</code></pre>
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="closer" />
+            
               <p class="site-author-name" itemprop="name">closer</p>
               <p class="site-description motion-element" itemprop="description">非专业初学者码农一枚</p>
           </div>
@@ -1060,9 +1070,9 @@ free（p）；/*释放结点*/</code></pre>
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/%20%7C%7C%20archive">
+                <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1106,7 +1116,8 @@ free（p）；/*释放结点*/</code></pre>
                 
                   <span class="links-of-author-item">
                     <a href="https://github.com/closer2018" target="_blank" title="GitHub">
-                      GitHub</a>
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
                 
             </div>
@@ -1167,7 +1178,7 @@ free（p）；/*释放结点*/</code></pre>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">8.9k</span>
+    <span title="Site words total count">9k</span>
   
 </div>
 
@@ -1186,6 +1197,26 @@ free（p）；/*释放结点*/</code></pre>
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
 
 
 

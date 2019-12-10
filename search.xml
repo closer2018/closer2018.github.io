@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>hexo next主题导航栏图标显示问号解决方案</title>
+    <url>/2019/12/10/hexo/hexo-next%E4%B8%BB%E9%A2%98%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%9B%BE%E6%A0%87%E6%98%BE%E7%A4%BA%E9%97%AE%E5%8F%B7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>导航栏图标显示问号，当修改<code>hexo\themes\next\_config.yml</code>主题配置文件后，图标显示正常，但是点击链接不能打开相应主页、标签页、归档页…<br>经研究，应该把menu下面的不同页面的/后面的空格删掉，即可。<br>具体配置如下：  </p>
+<a id="more"></a>
+<pre><code class="yml">menu:
+  home: /|| home                  #主页
+  archives: /archives/|| archive  #归档
+  categories: /categories/|| th   #分类
+  tags: /tags/|| tags             #标签
+  about: /about/|| user           #关于我
+  #search: /search
+  #schedule: /schedule/ || calendar
+  #sitemap: /sitemap.xml || sitemap
+  #commonweal: /404.html
+
+# Enable/Disable menu icons.
+menu_icons:
+  enable: true
+  # Icon Mapping.
+  home: home
+  archives: archive
+  categories: th
+  tags: tags
+  about: user
+  #commonweal: heartbeat
+  #search: search
+</code></pre>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo 多客户端上更新博客</title>
     <url>/2019/12/09/hexo/hexo%20%E5%A4%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8A%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>静态网页文件存放在<code>master主分支</code>，个人文件存放在<code>hexo分支</code>。  </p>
@@ -8,7 +44,7 @@
 <ol>
 <li><code>git init</code></li>
 <li><code>git checkout -b hexo</code> //新建hexo分支并切换到hexo</li>
-<li>将原来博客文件夹里面的<code>_config.yml</code>，<code>theme/</code>，<code>source/</code>，<code>scaffolds/</code>，<code>package.json</code>，<code>.gitignore</code>，共6个文件/文件夹 拷贝到hexo文件夹下面。<br>需要拷贝的文件如下:  </li>
+<li>将原来博客文件夹里面的<code>_config.yml</code>，<code>theme/</code>，<code>source/</code>，<code>scaffolds/</code>，<code>package.json</code>，<code>.gitignore</code>，共6个文件/文件夹 拷贝到hexo文件夹下面。<br>需要拷贝的文件如下:  <a id="more"></a></li>
 </ol>
 <ul>
 <li>_config.yml（站点配置）；</li>
@@ -77,6 +113,7 @@
     <title>hexo配置文件设置</title>
     <url>/2019/12/09/hexo/hexo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AE%BE%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="hexo配置文件设置"><a href="#hexo配置文件设置" class="headerlink" title="hexo配置文件设置"></a>hexo配置文件设置</h2><p>hexo配置文件<code>_config.yml</code>基本配置</p>
+<a id="more"></a>
 <pre><code class="yml"># Hexo Configuration
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
@@ -205,6 +242,7 @@ npm install hexo-generator-sitemap --save  #博客添加网站地图sitemap</cod
     <title>hexo上传部署命令</title>
     <url>/2019/12/01/hexo/hexo%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h2 id="hexo上传部署三连杀命令-先cd进入git目录"><a href="#hexo上传部署三连杀命令-先cd进入git目录" class="headerlink" title="hexo上传部署三连杀命令(先cd进入git目录)"></a>hexo上传部署三连杀命令(先<code>cd</code>进入git目录)</h2><pre><code class="bash">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></pre>
+<a id="more"></a>
 <h3 id="我们运行测试时，经常用到的有三个命令"><a href="#我们运行测试时，经常用到的有三个命令" class="headerlink" title="我们运行测试时，经常用到的有三个命令"></a>我们运行测试时，经常用到的有三个命令</h3><pre><code class="bash">hexo clean #用来清理缓存文件
 hexo g      #生成文件
 hexo  d   #上传到服务器</code></pre>
@@ -225,6 +263,7 @@ hexo  d   #上传到服务器</code></pre>
 <h2 id="3-1-3-2线性表的定义"><a href="#3-1-3-2线性表的定义" class="headerlink" title="3.1-3.2线性表的定义"></a>3.1-3.2线性表的定义</h2><p>线性表（List）：零个或多个数据元素的有限序列。</p>
 <p>若将线性表记为（a_1，…，a_(i−1)，a_i，a_(i+1)，…，a_n），则表中a_(i−1) 领先于a_i，a_i 领先于a_(i+1)，称a_(i−1) 是a_i 的直接前驱元素，a_(i+1) 是a_i 的直接后继元素。当i=1，2，…，n-1时，a_i 有且仅有一个直接后继，当i=2，3，…，n时，a_i 有且仅有一个直接前驱。<br>如图3-2-1所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.2.1.GIF?raw=true" alt="3-2-1"></p>
 <p>所以线性表元素的个数n（n&gt;0）定义为线性表的长度，当n=0时，称为空表。<br>在较复杂的线性表中，一个数据元素可以由若干个数据项组成。</p>
+<a id="more"></a>
 <h2 id="3-3线性表的抽象数据类型"><a href="#3-3线性表的抽象数据类型" class="headerlink" title="3.3线性表的抽象数据类型"></a>3.3线性表的抽象数据类型</h2><p>线性表的抽象数据类型定义如下：</p>
 <pre><code class="c">ADT线性表（List）
 Data
