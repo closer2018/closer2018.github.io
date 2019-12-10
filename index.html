@@ -217,9 +217,9 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -227,9 +227,9 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -237,9 +237,9 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+          <a href="/categories/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -247,9 +247,9 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/tags/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -257,9 +257,9 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+          <a href="/about/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -439,7 +439,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  744
+                  799
                 </span>
               
 
@@ -478,8 +478,8 @@
       
         
           
-            <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>静态网页文件存放在<code>master主分支</code>，个人更新文件存放在<code>hexo分支</code>。  </p>
-<h2 id="一-本地电脑设置"><a href="#一-本地电脑设置" class="headerlink" title="一.本地电脑设置"></a>一.本地电脑设置</h2><p>先新建一个hexo文件夹，在git bash下cd进入hexo文件夹。</p>
+            <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>静态网页文件存放在<code>master主分支</code>，个人文件存放在<code>hexo分支</code>。  </p>
+<h2 id="一、本地电脑设置"><a href="#一、本地电脑设置" class="headerlink" title="一、本地电脑设置"></a>一、本地电脑设置</h2><p>先新建一个hexo文件夹，在git bash下cd进入hexo文件夹。</p>
 <ol>
 <li><code>git init</code></li>
 <li><code>git checkout -b hexo</code> //新建hexo分支并切换到hexo</li>
@@ -501,7 +501,7 @@
 <li>登录github，将分支仓库-&gt;Settings-&gt;Branches-&gt;Default branch中将默认分支设为hexo，Update保存。 </li>
 <li><code>git push origin hexo</code>  //上传更新</li>
 </ol>
-<h2 id="二-另外一台电脑上配置"><a href="#二-另外一台电脑上配置" class="headerlink" title="二.另外一台电脑上配置"></a>二.另外一台电脑上配置</h2><ol>
+<h2 id="二、另外一台电脑上配置"><a href="#二、另外一台电脑上配置" class="headerlink" title="二、另外一台电脑上配置"></a>二、另外一台电脑上配置</h2><ol>
 <li>官网下载安装：  </li>
 </ol>
 <ul>
@@ -527,7 +527,7 @@
 <ul>
 <li>如果出现报错<code>ERROR Try runing: &#39;npm install hexo --save</code>则执行命令<code>npm install hexo --save</code>，如果没有，则忽略。</li>
 </ul>
-<h2 id="三-发布博客"><a href="#三-发布博客" class="headerlink" title="三.发布博客"></a>三.发布博客</h2><ol>
+<h2 id="三、发布博客"><a href="#三、发布博客" class="headerlink" title="三、发布博客"></a>三、发布博客</h2><ol>
 <li>cd进入博客目录</li>
 <li><code>git pull origin hexo</code> //保证和分支同步</li>
 <li><code>hexo n &quot;新建博客&quot;</code></li>
@@ -537,7 +537,8 @@
 <li><code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code>//部署博客</li>
 </ol>
 <p>至此，多终端发布博客已经配置完成。</p>
-<h2 id="快速上传部署命令"><a href="#快速上传部署命令" class="headerlink" title="快速上传部署命令"></a>快速上传部署命令</h2><p>从上述第 4 步后可以这样子发布：<br><code>git add source/ &amp;&amp; git commit -m &quot;博客更新&quot; &amp;&amp; git push origin hexo &amp;&amp; hexo clean &amp;&amp; hexo g &amp;&amp; hexo d &amp;&amp; exit</code><br>把命令用<code>&amp;&amp;</code>串起来，有一个失败就会停止；成功，最后一条命令就会退出终端。</p>
+<h2 id="四、更新主题"><a href="#四、更新主题" class="headerlink" title="四、更新主题"></a>四、更新主题</h2><p>配置好主题文件后，执行：<br><code>git add scaffolds/ source/ themes .gitignore _config.yml package.json</code><br><code>git commit -m &quot;更新主题&quot;</code><br><code>git push origin hexo</code>  //上传更新</p>
+<h2 id="五、快速上传部署命令"><a href="#五、快速上传部署命令" class="headerlink" title="五、快速上传部署命令"></a>五、快速上传部署命令</h2><p>只更新博客内容，可以从上述第 三 大步第 4 步后可以这样子发布：<br><code>git add source/ &amp;&amp; git commit -m &quot;博客更新&quot; &amp;&amp; git push origin hexo &amp;&amp; hexo clean &amp;&amp; hexo g &amp;&amp; hexo d &amp;&amp; exit</code><br>把所有命令用<code>&amp;&amp;</code>串起来，有一个失败就会停止；成功，最后一条命令就会退出终端。</p>
 
           
         
@@ -1913,7 +1914,7 @@ free（p）；/*释放结点*/</code></pre>
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives">
+                <a href="/archives/%20%7C%7C%20archive">
               
                   <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
@@ -1955,6 +1956,15 @@ free（p）；/*释放结点*/</code></pre>
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/closer2018" target="_blank" title="GitHub">
+                      GitHub</a>
+                  </span>
+                
+            </div>
+          
 
           
           
@@ -1995,7 +2005,7 @@ free（p）；/*释放结点*/</code></pre>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">8.8k</span>
+    <span title="Site words total count">8.9k</span>
   
 </div>
 
