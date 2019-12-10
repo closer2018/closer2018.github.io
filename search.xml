@@ -229,7 +229,8 @@ search:
 <pre><code class="yml">npm install hexo-generator-searchdb --save  #搜索插件
 npm install --save hexo-generator-feed   #RSS插件
 npm install hexo-wordcount --save   #字符统计及阅读时长估计
-npm install hexo-generator-sitemap --save  #博客添加网站地图sitemap</code></pre>
+npm install hexo-generator-sitemap --save  #博客添加网站地图sitemap
+npm install hexo-generator-index-pin-top --save   #置顶插件</code></pre>
 ]]></content>
       <categories>
         <category>hexo</category>
