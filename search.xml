@@ -258,6 +258,147 @@ hexo  d   #上传到服务器</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>大话数据结构第四章 栈与队列</title>
+    <url>/2019/11/28/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/%E7%AC%AC4%E7%AB%A0%20%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/</url>
+    <content><![CDATA[<h2 id="4-1-4-2-栈的定义"><a href="#4-1-4-2-栈的定义" class="headerlink" title="4.1-4.2 栈的定义"></a>4.1-4.2 栈的定义</h2><h3 id="4-2-1-栈的定义"><a href="#4-2-1-栈的定义" class="headerlink" title="4.2.1 栈的定义"></a>4.2.1 栈的定义</h3><p><strong>栈是限定仅在表尾进行插入和删除操作的线性表。</strong><br>我们把允许插入和删除的一端称为栈顶(top)，另一端称为栈底(bottom)，不含任何数据元素的栈称为空栈。栈又称为后进先出(Last In First Out)的线性表，简尔LIFO结构。<br>它的特殊之处就在于限制了这个线性表的插入和删除位置，它始终只在栈顶进行。这也就使得：栈底是固定的，最先进栈的只能在栈底。<br>栈的插入操作，叫作进栈，也称压栈、入栈(push)。<br>栈的删除操作，叫作出栈，也有的叫作弹栈(pop)。  </p>
+<h2 id="4-3-栈的抽象数据类型"><a href="#4-3-栈的抽象数据类型" class="headerlink" title="4.3 栈的抽象数据类型"></a>4.3 栈的抽象数据类型</h2><a id="more"></a>
+<pre><code class="c">ADT 栈(stack)
+Data
+    同线性表。元素具有相同的类型，相邻元素具有前驱和后继关系。
+Operation
+    InitStack(*s)：初始化操作，建立一个空栈s。
+    Destroystack(*s)：若楼存在，则销毁它。
+    Clearstack(*s)：将栽清空。
+    StackEmpty(S)：若为空，返回true，否则返回false。
+    GetTop(s，*e)：若栽存在且非空，用e返回s的栽顶元素。
+    Push(*s，e)：若栈S存在，插入新元素e到栈S中并成为栈顶元素。
+    Pop(*S，*e)：删除栈S中栈顶元素，并用e返回其值。
+    StackLength(s)：返回栈s的元素个数。
+endADT</code></pre>
+<h2 id="4-4-栈的顺序存储结构及实现"><a href="#4-4-栈的顺序存储结构及实现" class="headerlink" title="4.4 栈的顺序存储结构及实现"></a>4.4 栈的顺序存储结构及实现</h2><h3 id="4-4-1-栈的顺序存储结构"><a href="#4-4-1-栈的顺序存储结构" class="headerlink" title="4.4.1 栈的顺序存储结构"></a>4.4.1 栈的顺序存储结构</h3><p>栈是线性表的特例，那么栈的顺序存储其实也是线性表顺序存储的简化，我们简称为顺序栈。线性表是用数组来实现的。<br>我们定义一个top变量来指示栈顶元素在数组中的位置，它可以来回移动，意味着栈顶的top可以变大变小，但无论如何游标不能超出栈的长度。同理，若存储栈的长度为StackSize，则栈顶位置top必须小于Stacksize。当栈存在一个元素时，top等于0，因此通常把空栈的判定条件定为top等于-1。</p>
+<p>栈的结构定义：  </p>
+<pre><code class="c">typedef int SElemType; /* SElemType类型根据实际情况而定，这里假设为int */
+/* 顺序栈结构 */
+typedef struct
+{
+        SElemType data[MAXSIZE];
+        int top; /* 用于栈顶指针 */
+}SqStack;</code></pre>
+<p>若现在有一个栈，Stacksize是5，则栈普通情况、空栈和栈满的情况示意图如图4-4-2所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-4-2.JPG?raw=true" alt="4-4-2">  </p>
+<h3 id="4-4-2-栈的顺序存储结构——进栈操作"><a href="#4-4-2-栈的顺序存储结构——进栈操作" class="headerlink" title="4.4.2 栈的顺序存储结构——进栈操作"></a>4.4.2 栈的顺序存储结构——进栈操作</h3><p>对于栈的插入，即进栈操作，其实就是在栈顶插入一个元素。<br>进栈操作push，其代码如下：  </p>
+<pre><code class="c">/* 插入元素e为新的栈顶元素 */
+Status Push(SqStack *S,SElemType e)
+{
+        if(S-&gt;top == MAXSIZE -1) /* 栈满 */
+        {
+            return ERROR;
+        }
+        S-&gt;top++;   /* 栈顶指针增加一 */
+        S-&gt;data[S-&gt;top]=e;  /* 将新插入元素赋值给栈顶空间 */
+        return OK;
+}</code></pre>
+<h3 id="4-4-3-栈的顺序存储结构——出栈操作"><a href="#4-4-3-栈的顺序存储结构——出栈操作" class="headerlink" title="4.4.3 栈的顺序存储结构——出栈操作"></a>4.4.3 栈的顺序存储结构——出栈操作</h3><p>出栈操作pop，代码如下：  </p>
+<pre><code class="c">/* 若栈不空，则删除S的栈顶元素，用e返回其值，并返回OK；否则返回ERROR */
+Status Pop(SqStack *S,SElemType *e)
+{
+        if(S-&gt;top==-1)
+                return ERROR;
+        *e=S-&gt;data[S-&gt;top]; /* 将要删除的栈顶元素赋值给e */
+        S-&gt;top--;   /* 栈顶指针减一 */
+        return OK;
+}</code></pre>
+<p>两者没有涉及到任何循环语句，因此时间复杂度均是O(1)。  </p>
+<h2 id="4-5-两栈共享空间"><a href="#4-5-两栈共享空间" class="headerlink" title="4.5 两栈共享空间"></a>4.5 两栈共享空间</h2><p>如果我们有两个相同类型的栈，我们为它们各自开辟了数组空间，极有可能是第一个栈已经满了，再进栈就溢出了，而另一个栈还有很多存储空间空闲。这又何必呢？我们完全可以用一个数组来存储两个栈，只不过需要点小技巧。<br>数组有两个端点，两个栈有两个栈底，让一个栈的栈底为数组的始端，即下标为0处，另一个栈为栈的末端，即下标为数组长度n-1处。这样，两个栈如果增加元素，就是两端点向中间延伸。<br>其实关键思路是：它们是在数组的两端，向中间靠拢。top1和top2是栈1和栈2的栈顶指针，可以想象，只要它们俩不见面，两个栈就可以一直使用。<br>从这里也就可以分析出来，栈1为空时，就是top1等于-1时；而当top2等于n时，即是栈2为空时，那什么时候栈满呢？<br>想想极端的情况，若栈2是空栈，栈1的top1等于n-1时，就是栈1满了。反之，当栈1为空栈时，top2等于0时，为栈2满。但更多的情况，其实就是我刚才说的，两个栈见面之时，也就是两个指针之间相差1时，即top1+1==top2为栈满。<br>两栈共享空间的结构的代码如下：</p>
+<pre><code class="c">/* 两栈共享空间结构 */
+typedef struct
+{
+    SElemType data[MAXSIZE];
+    int top1;    /* 栈1栈顶指针 */
+    int top2;    /* 栈2栈顶指针 */
+}SqDoubleStack;</code></pre>
+<p>对于两栈共享空间的push方法，我们除了要插入元素值参数外，还需要有一个判断是栈1还是栈2的栈号参数stackNumber。插入元素的代码如下：</p>
+<pre><code class="c">/* 插入元素e为新的栈顶元素 */
+Status Push(SqDoubleStack *S, SElemType e, int stackNumber)
+{
+    if (S-&gt;top1 + 1 == S-&gt;top2)    /* 栈已满，不能再push新元素了 */
+        return ERROR;
+    if (stackNumber == 1)            /* 栈1有元素进栈 */
+        S-&gt;data[++S-&gt;top1] = e; /* 若是栈1则先top1+1后给数组元素赋值。 */
+    else if (stackNumber == 2)    /* 栈2有元素进栈 */
+        S-&gt;data[--S-&gt;top2] = e; /* 若是栈2则先top2-1后给数组元素赋值。 */
+    return OK;
+}</code></pre>
+<p>因为在开始已经判断了是否有栈满的情况，所以后面的top1+1或top2-1是不担心溢出问题的。<br>对于两栈共享空间的pop方法，参数就只是判断栈1栈2的参数stackNumber，代码如下：</p>
+<pre><code class="c">/* 若栈不空，则删除S的栈顶元素，用e返回其值，并返回OK；否则返回ERROR */
+Status Pop(SqDoubleStack *S, SElemType *e, int stackNumber)
+{
+    if (stackNumber == 1)
+    {
+        if (S-&gt;top1 == -1)
+            return ERROR; /* 说明栈1已经是空栈，溢出 */
+        *e = S-&gt;data[S-&gt;top1--]; /* 将栈1的栈顶元素出栈 */
+    }
+    else if (stackNumber == 2)
+    {
+        if (S-&gt;top2 == MAXSIZE)
+            return ERROR; /* 说明栈2已经是空栈，溢出 */
+        *e = S-&gt;data[S-&gt;top2++]; /* 将栈2的栈顶元素出栈 */
+    }
+    return OK;
+}</code></pre>
+<p>事实上，使用这样的数据结构，通常都是当两个栈的空间需求有相反关系时，也就是一个栈增长时另一个栈在缩短的情况。就像买卖股票一样，你买入时，一定是有一个你不知道的人在做卖出操作。有人赚钱，就一定是有人赔钱。这样使用两栈共享空间存储方法才有比较大的意义。否则两个栈都在不停地增长，那很快就会因栈满而溢出了。  </p>
+<h2 id="4-6-栈的链式存储结构及实现"><a href="#4-6-栈的链式存储结构及实现" class="headerlink" title="4.6 栈的链式存储结构及实现"></a>4.6 栈的链式存储结构及实现</h2><h3 id="4-6-1-栈的链式存储结构"><a href="#4-6-1-栈的链式存储结构" class="headerlink" title="4.6.1 栈的链式存储结构"></a>4.6.1 栈的链式存储结构</h3><p>栈的链式存储结构，简称为链栈。<br>链栈的结构代码如下：  </p>
+<pre><code class="c">/* 链栈结构 */
+typedef struct StackNode
+{
+    SElemType data;
+    struct StackNode *next;
+}StackNode,*LinkStackPtr;
+
+typedef struct LinkStack
+{
+    LinkStackPtr top;
+    int count;
+}LinkStack;</code></pre>
+<h3 id="4-6-2-栈的链式存储结构-进栈操作"><a href="#4-6-2-栈的链式存储结构-进栈操作" class="headerlink" title="4.6.2 栈的链式存储结构-进栈操作"></a>4.6.2 栈的链式存储结构-进栈操作</h3><p>对于链栈的进栈push操作，假设元素值为e的新结点是s，top为栈顶指针，示意图如图4-6-2所示代码如下。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-6-2.JPG?raw=true" alt="4-6-2">  </p>
+<pre><code class="c">/* 插入元素e为新的栈顶元素 */
+Status Push(LinkStack *S,SElemType e)
+{
+    LinkStackPtr s=(LinkStackPtr)malloc(sizeof(StackNode)); 
+    s-&gt;data=e;
+    s-&gt;next=S-&gt;top;/* 把当前的栈顶元素赋值给新结点的直接后继，见图中① */
+    S-&gt;top=s;         /* 将新的结点s赋值给栈顶指针，见图中② */
+    S-&gt;count++;
+    return OK;
+}</code></pre>
+<h3 id="4-6-3-栈的链式存储结构——出栈操作"><a href="#4-6-3-栈的链式存储结构——出栈操作" class="headerlink" title="4.6.3 栈的链式存储结构——出栈操作"></a>4.6.3 栈的链式存储结构——出栈操作</h3><p>至于链栈的出栈pop操作，也是很简单的三句操作。假设变量p用来存储要删除的栈顶结点，将栈顶指针下移一位，最后释放p即可，如图4-6-3所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-6-3.JPG?raw=true" alt="4-6-3">  </p>
+<pre><code class="c">/* 若栈不空，则删除S的栈顶元素，用e返回其值，并返回OK；否则返回ERROR */
+Status Pop(LinkStack *S,SElemType *e)
+{
+        LinkStackPtr p;
+        if(StackEmpty(*S))
+                return ERROR;
+        *e=S-&gt;top-&gt;data;
+        p=S-&gt;top;               /* 将栈顶结点赋值给p，见图中③ */
+        S-&gt;top=S-&gt;top-&gt;next;    /* 使得栈顶指针下移一位，指向后一结点，见图中④ */
+        free(p);                    /* 释放结点p */
+        S-&gt;count--;
+        return OK;
+}</code></pre>
+<p>链栈的进栈push和出栈pop操作都很简单，时间复杂度均是O(1)。<br>对比一下顺序栈与链栈，它们在时间复杂度上是一样的，均为O(1)。对于空间性能，顺序栈需要事先确定一个固定的长度，可能会存在内存空间浪费的问题，但它的优势是存取时定位很方便，而链栈则要求每个元素都有指针域，这同时也增加了一些内存开销，但对于栈的长度无限制。所以它们的区别是如果栈的使用过程中元素变化不可预料，有时很小，有时非常大，那么最好是用链栈，反之，如果它的变化在可控范围内，建议使用顺序栈会更好一些。  </p>
+<h2 id="4-7-栈的作用"><a href="#4-7-栈的作用" class="headerlink" title="4.7 栈的作用"></a>4.7 栈的作用</h2><p>栈的引入简化了程序设计的问题，划分了不同关注层次，使得思考范围缩小，更加聚焦于我们要解决的问题核心。反之，像数组等，因为要分散精力去考虑数组的下标增减等细节问题，反而掩盖了问题的本质。  </p>
+<h2 id="4-8-栈的应用——递归"><a href="#4-8-栈的应用——递归" class="headerlink" title="4.8 栈的应用——递归"></a>4.8 栈的应用——递归</h2><h3 id="4-8-1-4-8-2递归定义"><a href="#4-8-1-4-8-2递归定义" class="headerlink" title="4.8.1-4.8.2递归定义"></a>4.8.1-4.8.2递归定义</h3><p>我们<strong>把一个直接调用自己或通过一系列的调用语句间接地调用自己的函数，称做递归函数</strong>。<br>当然，写递归程序最怕的就是陷入永不结束的无穷递归中，所以，<strong>每个递归定义必须至少有一个条件，满足时递归不再进行，即不再引用自身而是返回值退出</strong>。  </p>
+<h2 id="4-9-栈的应用——四则运算表达式求值"><a href="#4-9-栈的应用——四则运算表达式求值" class="headerlink" title="4.9 栈的应用——四则运算表达式求值"></a>4.9 栈的应用——四则运算表达式求值</h2><h3 id="4-9-1-后缀（逆波兰）表示法定义"><a href="#4-9-1-后缀（逆波兰）表示法定义" class="headerlink" title="4.9.1 后缀（逆波兰）表示法定义"></a>4.9.1 后缀（逆波兰）表示法定义</h3>]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>读书笔记</tag>
+        <tag>数据结构</tag>
+        <tag>栈和队列</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>大话数据结构第三章</title>
     <url>/2019/11/28/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/%E7%AC%AC3%E7%AB%A0%20%E7%BA%BF%E6%80%A7%E8%A1%A8/</url>
     <content><![CDATA[<h1 id="第3章-线性表"><a href="#第3章-线性表" class="headerlink" title="第3章 线性表"></a>第3章 线性表</h1><p>线性表：零个或多个数据元素的有限序列。</p>
@@ -666,107 +807,6 @@ free（p）；/*释放结点*/</code></pre>
         <tag>读书笔记</tag>
         <tag>数据结构</tag>
         <tag>线性表</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>大话数据结构第四章 栈与队列</title>
-    <url>/2019/11/28/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/%E7%AC%AC4%E7%AB%A0%20%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/</url>
-    <content><![CDATA[<h2 id="4-1-4-2-栈的定义"><a href="#4-1-4-2-栈的定义" class="headerlink" title="4.1-4.2 栈的定义"></a>4.1-4.2 栈的定义</h2><h3 id="4-2-1-栈的定义"><a href="#4-2-1-栈的定义" class="headerlink" title="4.2.1 栈的定义"></a>4.2.1 栈的定义</h3><p><strong>栈是限定仅在表尾进行插入和删除操作的线性表。</strong><br>我们把允许插入和删除的一端称为栈顶(top)，另一端称为栈底(bottom)，不含任何数据元素的栈称为空栈。栈又称为后进先出(Last In First Out)的线性表，简尔LIFO结构。<br>它的特殊之处就在于限制了这个线性表的插入和删除位置，它始终只在栈顶进行。这也就使得：栈底是固定的，最先进栈的只能在栈底。<br>栈的插入操作，叫作进栈，也称压栈、入栈(push)。<br>栈的删除操作，叫作出栈，也有的叫作弹栈(pop)。  </p>
-<h2 id="4-3-栈的抽象数据类型"><a href="#4-3-栈的抽象数据类型" class="headerlink" title="4.3 栈的抽象数据类型"></a>4.3 栈的抽象数据类型</h2><a id="more"></a>
-<pre><code class="c">ADT 栈(stack)
-Data
-    同线性表。元素具有相同的类型，相邻元素具有前驱和后继关系。
-Operation
-    InitStack(*s)：初始化操作，建立一个空栈s。
-    Destroystack(*s)：若楼存在，则销毁它。
-    Clearstack(*s)：将栽清空。
-    StackEmpty(S)：若为空，返回true，否则返回false。
-    GetTop(s，*e)：若栽存在且非空，用e返回s的栽顶元素。
-    Push(*s，e)：若栈S存在，插入新元素e到栈S中并成为栈顶元素。
-    Pop(*S，*e)：删除栈S中栈顶元素，并用e返回其值。
-    StackLength(s)：返回栈s的元素个数。
-endADT</code></pre>
-<h2 id="4-4-栈的顺序存储结构及实现"><a href="#4-4-栈的顺序存储结构及实现" class="headerlink" title="4.4 栈的顺序存储结构及实现"></a>4.4 栈的顺序存储结构及实现</h2><h3 id="4-4-1-栈的顺序存储结构"><a href="#4-4-1-栈的顺序存储结构" class="headerlink" title="4.4.1 栈的顺序存储结构"></a>4.4.1 栈的顺序存储结构</h3><p>栈是线性表的特例，那么栈的顺序存储其实也是线性表顺序存储的简化，我们简称为顺序栈。线性表是用数组来实现的。<br>我们定义一个top变量来指示栈顶元素在数组中的位置，它可以来回移动，意味着栈顶的top可以变大变小，但无论如何游标不能超出栈的长度。同理，若存储栈的长度为StackSize，则栈顶位置top必须小于Stacksize。当栈存在一个元素时，top等于0，因此通常把空栈的判定条件定为top等于-1。</p>
-<p>栈的结构定义：  </p>
-<pre><code class="c">typedef int SElemType; /* SElemType类型根据实际情况而定，这里假设为int */
-/* 顺序栈结构 */
-typedef struct
-{
-        SElemType data[MAXSIZE];
-        int top; /* 用于栈顶指针 */
-}SqStack;</code></pre>
-<p>若现在有一个栈，Stacksize是5，则栈普通情况、空栈和栈满的情况示意图如图4-4-2所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-4-2.JPG?raw=true" alt="4-4-2">  </p>
-<h3 id="4-4-2-栈的顺序存储结构——进栈操作"><a href="#4-4-2-栈的顺序存储结构——进栈操作" class="headerlink" title="4.4.2 栈的顺序存储结构——进栈操作"></a>4.4.2 栈的顺序存储结构——进栈操作</h3><p>对于栈的插入，即进栈操作，其实就是在栈顶插入一个元素。<br>进栈操作push，其代码如下：  </p>
-<pre><code class="c">/* 插入元素e为新的栈顶元素 */
-Status Push(SqStack *S,SElemType e)
-{
-        if(S-&gt;top == MAXSIZE -1) /* 栈满 */
-        {
-            return ERROR;
-        }
-        S-&gt;top++;   /* 栈顶指针增加一 */
-        S-&gt;data[S-&gt;top]=e;  /* 将新插入元素赋值给栈顶空间 */
-        return OK;
-}</code></pre>
-<h3 id="4-4-3-栈的顺序存储结构——出栈操作"><a href="#4-4-3-栈的顺序存储结构——出栈操作" class="headerlink" title="4.4.3 栈的顺序存储结构——出栈操作"></a>4.4.3 栈的顺序存储结构——出栈操作</h3><p>出栈操作pop，代码如下：  </p>
-<pre><code class="c">/* 若栈不空，则删除S的栈顶元素，用e返回其值，并返回OK；否则返回ERROR */
-Status Pop(SqStack *S,SElemType *e)
-{
-        if(S-&gt;top==-1)
-                return ERROR;
-        *e=S-&gt;data[S-&gt;top]; /* 将要删除的栈顶元素赋值给e */
-        S-&gt;top--;   /* 栈顶指针减一 */
-        return OK;
-}</code></pre>
-<p>两者没有涉及到任何循环语句，因此时间复杂度均是O(1)。  </p>
-<h2 id="4-5-两栈共享空间"><a href="#4-5-两栈共享空间" class="headerlink" title="4.5 两栈共享空间"></a>4.5 两栈共享空间</h2><p>如果我们有两个相同类型的栈，我们为它们各自开辟了数组空间，极有可能是第一个栈已经满了，再进栈就溢出了，而另一个栈还有很多存储空间空闲。这又何必呢？我们完全可以用一个数组来存储两个栈，只不过需要点小技巧。<br>数组有两个端点，两个栈有两个栈底，让一个栈的栈底为数组的始端，即下标为0处，另一个栈为栈的末端，即下标为数组长度n-1处。这样，两个栈如果增加元素，就是两端点向中间延伸。<br>其实关键思路是：它们是在数组的两端，向中间靠拢。top1和top2是栈1和栈2的栈顶指针，可以想象，只要它们俩不见面，两个栈就可以一直使用。<br>从这里也就可以分析出来，栈1为空时，就是top1等于-1时；而当top2等于n时，即是栈2为空时，那什么时候栈满呢？<br>想想极端的情况，若栈2是空栈，栈1的top1等于n-1时，就是栈1满了。反之，当栈1为空栈时，top2等于0时，为栈2满。但更多的情况，其实就是我刚才说的，两个栈见面之时，也就是两个指针之间相差1时，即top1+1==top2为栈满。<br>两栈共享空间的结构的代码如下：</p>
-<pre><code class="c">/* 两栈共享空间结构 */
-typedef struct
-{
-    SElemType data[MAXSIZE];
-    int top1;    /* 栈1栈顶指针 */
-    int top2;    /* 栈2栈顶指针 */
-}SqDoubleStack;</code></pre>
-<p>对于两栈共享空间的push方法，我们除了要插入元素值参数外，还需要有一个判断是栈1还是栈2的栈号参数stackNumber。插入元素的代码如下：</p>
-<pre><code class="c">/* 插入元素e为新的栈顶元素 */
-Status Push(SqDoubleStack *S, SElemType e, int stackNumber)
-{
-    if (S-&gt;top1 + 1 == S-&gt;top2)    /* 栈已满，不能再push新元素了 */
-        return ERROR;
-    if (stackNumber == 1)            /* 栈1有元素进栈 */
-        S-&gt;data[++S-&gt;top1] = e; /* 若是栈1则先top1+1后给数组元素赋值。 */
-    else if (stackNumber == 2)    /* 栈2有元素进栈 */
-        S-&gt;data[--S-&gt;top2] = e; /* 若是栈2则先top2-1后给数组元素赋值。 */
-    return OK;
-}</code></pre>
-<p>因为在开始已经判断了是否有栈满的情况，所以后面的top1+1或top2-1是不担心溢出问题的。<br>对于两栈共享空间的pop方法，参数就只是判断栈1栈2的参数stackNumber，代码如下：</p>
-<pre><code class="c">/* 若栈不空，则删除S的栈顶元素，用e返回其值，并返回OK；否则返回ERROR */
-Status Pop(SqDoubleStack *S, SElemType *e, int stackNumber)
-{
-    if (stackNumber == 1)
-    {
-        if (S-&gt;top1 == -1)
-            return ERROR; /* 说明栈1已经是空栈，溢出 */
-        *e = S-&gt;data[S-&gt;top1--]; /* 将栈1的栈顶元素出栈 */
-    }
-    else if (stackNumber == 2)
-    {
-        if (S-&gt;top2 == MAXSIZE)
-            return ERROR; /* 说明栈2已经是空栈，溢出 */
-        *e = S-&gt;data[S-&gt;top2++]; /* 将栈2的栈顶元素出栈 */
-    }
-    return OK;
-}</code></pre>
-<p>事实上，使用这样的数据结构，通常都是当两个栈的空间需求有相反关系时，也就是一个栈增长时另一个栈在缩短的情况。就像买卖股票一样，你买入时，一定是有一个你不知道的人在做卖出操作。有人赚钱，就一定是有人赔钱。这样使用两栈共享空间存储方法才有比较大的意义。否则两个栈都在不停地增长，那很快就会因栈满而溢出了。  </p>
-<h2 id="4-6-栈的链式存储结构及实现"><a href="#4-6-栈的链式存储结构及实现" class="headerlink" title="4.6 栈的链式存储结构及实现"></a>4.6 栈的链式存储结构及实现</h2><h3 id="4-6-1-栈的链式存储结构"><a href="#4-6-1-栈的链式存储结构" class="headerlink" title="4.6.1 栈的链式存储结构"></a>4.6.1 栈的链式存储结构</h3><p>我们现在来看看栈的链式存储结构，简称为链栈。  </p>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>读书笔记</tag>
-        <tag>数据结构</tag>
-        <tag>栈和队列</tag>
       </tags>
   </entry>
 </search>
