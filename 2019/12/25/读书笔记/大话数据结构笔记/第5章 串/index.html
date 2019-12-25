@@ -107,18 +107,20 @@
 
 
 
-<meta name="description" content="5.1-5.2 串的定义串（string）是由零个或多个字符组成的有限序列，又名叫字符串。一般记为s&#x3D;“a1a2……an”（n&gt;0），其中，s是串的名称，用双引号（有些书中也用单引号）括起来的字符序列是串的值，注意单引号不属于串的内容。ai（1≤i≤n）可以是字母、数字或其他字符，i就是该字符在串中的位置。串中的字符数目n称为串的长度，定义中谈到“有限”是指长度n是一个有限的数值。零个字符的">
+<meta name="description" content="5.1-5.2 串的定义串(string)是由零个或多个字符组成的有限序列，又名叫字符串。一般记为s&#x3D;“a1a2……an”(n&gt;0)，其中，s是串的名称，用双引号(有些书中也用单引号)括起来的字符序列是串的值，注意单引号不属于串的内容。ai(1≤i≤n)可以是字母、数字或其他字符，i就是该字符在串中的位置。串中的字符数目n称为串的长度，定义中谈到“有限”是指长度n是一个有限的数值。零个字符的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="大话数据结构第五章 串">
 <meta property="og:url" content="https:&#x2F;&#x2F;closer_laps.gitee.io&#x2F;2019&#x2F;12&#x2F;25&#x2F;%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0&#x2F;%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0&#x2F;%E7%AC%AC5%E7%AB%A0%20%E4%B8%B2&#x2F;index.html">
 <meta property="og:site_name" content="closer的自留地">
-<meta property="og:description" content="5.1-5.2 串的定义串（string）是由零个或多个字符组成的有限序列，又名叫字符串。一般记为s&#x3D;“a1a2……an”（n&gt;0），其中，s是串的名称，用双引号（有些书中也用单引号）括起来的字符序列是串的值，注意单引号不属于串的内容。ai（1≤i≤n）可以是字母、数字或其他字符，i就是该字符在串中的位置。串中的字符数目n称为串的长度，定义中谈到“有限”是指长度n是一个有限的数值。零个字符的">
+<meta property="og:description" content="5.1-5.2 串的定义串(string)是由零个或多个字符组成的有限序列，又名叫字符串。一般记为s&#x3D;“a1a2……an”(n&gt;0)，其中，s是串的名称，用双引号(有些书中也用单引号)括起来的字符序列是串的值，注意单引号不属于串的内容。ai(1≤i≤n)可以是字母、数字或其他字符，i就是该字符在串中的位置。串中的字符数目n称为串的长度，定义中谈到“有限”是指长度n是一个有限的数值。零个字符的">
+<meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;closer2018&#x2F;picture&#x2F;blob&#x2F;master&#x2F;%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E7%AC%AC%E5%9B%9B%E7%AB%A0&#x2F;5-5-3.JPG?raw&#x3D;true">
 <meta property="article:published_time" content="2019-12-25T11:26:12.000Z">
-<meta property="article:modified_time" content="2019-12-25T11:28:41.608Z">
+<meta property="article:modified_time" content="2019-12-25T15:11:43.918Z">
 <meta property="article:author" content="closer">
 <meta property="article:tag" content="读书笔记">
 <meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;github.com&#x2F;closer2018&#x2F;picture&#x2F;blob&#x2F;master&#x2F;%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E7%AC%AC%E5%9B%9B%E7%AB%A0&#x2F;5-5-3.JPG?raw&#x3D;true">
 
 
 
@@ -445,7 +447,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  370
+                  1.4k
                 </span>
               
 
@@ -461,7 +463,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -482,7 +484,7 @@
       
 
       
-        <h2 id="5-1-5-2-串的定义"><a href="#5-1-5-2-串的定义" class="headerlink" title="5.1-5.2 串的定义"></a>5.1-5.2 串的定义</h2><p>串（string）是由零个或多个字符组成的有限序列，又名叫字符串。<br>一般记为s=“a1a2……an”（n&gt;0），其中，s是串的名称，用双引号（有些书中也用单引号）括起来的字符序列是串的值，注意单引号不属于串的内容。ai（1≤i≤n）可以是字母、数字或其他字符，i就是该字符在串中的位置。串中的字符数目n称为串的长度，定义中谈到“有限”是指长度n是一个有限的数值。零个字符的串称为空串（null string），它的长度为零，可以直接用两双引号“”””表示，也可以用希腊字母“Φ”来表示。所谓的序列，说明串的相邻字符之间具有前驱和后继的关系。<br>还有一些概念需要解释：  </p>
+        <h2 id="5-1-5-2-串的定义"><a href="#5-1-5-2-串的定义" class="headerlink" title="5.1-5.2 串的定义"></a>5.1-5.2 串的定义</h2><p>串(string)是由零个或多个字符组成的有限序列，又名叫字符串。<br>一般记为s=“a1a2……an”(n&gt;0)，其中，s是串的名称，用双引号(有些书中也用单引号)括起来的字符序列是串的值，注意单引号不属于串的内容。ai(1≤i≤n)可以是字母、数字或其他字符，i就是该字符在串中的位置。串中的字符数目n称为串的长度，定义中谈到“有限”是指长度n是一个有限的数值。零个字符的串称为空串(null string)，它的长度为零，可以直接用两双引号“”””表示，也可以用希腊字母“Φ”来表示。所谓的序列，说明串的相邻字符之间具有前驱和后继的关系。<br>还有一些概念需要解释：  </p>
 <a id="more"></a>
 <ul>
 <li>空格串，是只包含空格的串。注意它与空串的区别，空格串是有内容有长度的，而且可以不止一个空格。</li>
@@ -490,7 +492,32 @@
 <li>子串在主串中的位置就是子串的第一个字符在主串中的序号。</li>
 </ul>
 <p>开头我所提到的“over”、“end”、“lie”其实可以认为是“over”、“friend”、“believe”这些单词字符串的子串。  </p>
-<h2 id="5-3-串的比较"><a href="#5-3-串的比较" class="headerlink" title="5.3 串的比较"></a>5.3 串的比较</h2>
+<h2 id="5-3-串的比较"><a href="#5-3-串的比较" class="headerlink" title="5.3 串的比较"></a>5.3 串的比较</h2><p>两个字符串的长度以及它们每个位置各个对应位置的字符都相等时，才算是相等。<br>那么对于两个串不相等时，如何判定它们的大小呢。我们这样定义：<br>给定两个串：s=“a1a2……an”，t=“b1b2……bm”，当满足以下条件之一时，<code>s&lt;t</code>。</p>
+<ol>
+<li><code>n&lt;m</code>，且ai=bi(i=1，2，…，n)。<br>例如当s=“hap”，t=“happy”，就有sst。因为t比s多出了两个字母。</li>
+<li>存在某个<code>k&lt;min(m，n)</code>，使得ai=bi；(i=1，2，……，k-1)，<code>ak&lt;bk</code>。<br>例如当s=“happen”，t=“happy”，因为两串的前4个子母均相同，间内串第5个字母(k值)，字母e的ASCII码是101，而字母y的ASCII码是121，显然<code>e&lt;y</code>，所以<code>s&lt;t</code>。</li>
+</ol>
+<h2 id="5-4-串的抽象数据类型"><a href="#5-4-串的抽象数据类型" class="headerlink" title="5.4 串的抽象数据类型"></a>5.4 串的抽象数据类型</h2><pre><code class="c">ADT 串(string)
+Data
+  串中元素仅由一个字符组成，相邻元素具有前驱和后继关系。
+Operation
+  strAssign(T，*chars)：生成一个其值等于字符串常量chars的串T。
+  Strcopy(T，S)：串S存在，由串S复制得串T。
+  ClearString(S)：串S存在，将串清空。
+  StringEmpty(S)；若串S为空，返回true，否则返回false。
+  Strlength(S)：返回串S的元素个数，即串的长度。
+  StrCompare(S，T)：若S&gt;T，返回值&gt;0，若S=T，返回0，若S&lt;T，返回值&lt;0。
+  Concat(T，S1，S2)：用T返回由S1和S2联接而成的新串。
+  SubString(Sub，S，pos，len)：串S存在，1≤pos≤StrLength(S)，且0≤len≤StrLength(S)-pos+1，用Sub返回串S的第pos个字符起长度为len的子串。
+  Index(S，T，pos)：串S和T存在，T是非空串，1≤pos≤StrLength(S)。若主串S中存在和串T值相同的子串，则返回它在主串S中第pos个字符之后第一次出现的位置，否则返回0。
+  Replace(S，T，V)：串S、T和v存在，T是非空串。用V替换主串S中出现的所有与T相等的不重叠的子串。
+  StrInsert(S，pos，T)：串s和T存在，1≤pos≤StrLength(S)+1。在串S的第pos个字符之前插入串T。
+  StrDelete(S，pos，len)：串S存在，1≤pos≤Strlength(S)-len+1。从串S中删除第pos个字符起长度为len的子串。
+endADT</code></pre>
+<h2 id="5-5-串的存储结构"><a href="#5-5-串的存储结构" class="headerlink" title="5.5 串的存储结构"></a>5.5 串的存储结构</h2><p>串的存储结构与线性表相同，分为两种。  </p>
+<h3 id="5-5-1-串的顺序存储结构"><a href="#5-5-1-串的顺序存储结构" class="headerlink" title="5.5.1 串的顺序存储结构"></a>5.5.1 串的顺序存储结构</h3><p>串的顺序存储结构是用一组地址连续的存储单元来存储串中的字符序列的。按照预定义的大小，为每个定义的串变量分配一个固定长度的存储区。一般是用定长数组来定义。<br>既然是定长数组，就存在一个预定义的最大串长度，一般可以将实际的串长度值保存在数组的0下标位置，有的书中也会定义存储在数组的最后一个下标位置。但也有些编程语言不想这么干，觉得存个数字占个空间麻烦。它规定在串值后面加一个不计入串长度的结束标记字符，比如“\0”来表示串值的终结，这个时候，你要想知道此时的串长度，就需要遍历计算一下才知道了，其实这还是需要占用一个空间，何必呢。</p>
+<h3 id="5-5-2-串的链式存储结构"><a href="#5-5-2-串的链式存储结构" class="headerlink" title="5.5.2 串的链式存储结构"></a>5.5.2 串的链式存储结构</h3><p>对于串的链式存储结构，与线性表是相似的，但由于串结构的特殊性，结构中的每个元素数据是一个字符，如果也简单的应用链表存储串值，一个结点对应一个字符，就会存在很大的空间浪费。因此，一个结点可以存放一个字符，也可以考虑存放多个字符，最后一个结点若是未被占满时，可以用“#”或其他非串值字符补全，如图5-5-3所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/5-5-3.JPG?raw=true" alt="5-5-3"><br>当然，这里一个结点存多少个字符才合适就变得很重要，这会直接影响着串处理的效率，需要根据实际情况做出选择。<br>但串的链式存储结构除了在连接串与串操作时有一定方便之外，总的来说不如顺序存储灵活，性能也不如顺序存储结构好。  </p>
+<h2 id="5-6-朴素的模式匹配算法"><a href="#5-6-朴素的模式匹配算法" class="headerlink" title="5.6 朴素的模式匹配算法"></a>5.6 朴素的模式匹配算法</h2>
       
     </div>
     
@@ -728,7 +755,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-5-2-串的定义"><span class="nav-number">1.</span> <span class="nav-text">5.1-5.2 串的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-串的比较"><span class="nav-number">2.</span> <span class="nav-text">5.3 串的比较</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-5-2-串的定义"><span class="nav-number">1.</span> <span class="nav-text">5.1-5.2 串的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-串的比较"><span class="nav-number">2.</span> <span class="nav-text">5.3 串的比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-串的抽象数据类型"><span class="nav-number">3.</span> <span class="nav-text">5.4 串的抽象数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-5-串的存储结构"><span class="nav-number">4.</span> <span class="nav-text">5.5 串的存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-1-串的顺序存储结构"><span class="nav-number">4.1.</span> <span class="nav-text">5.5.1 串的顺序存储结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-2-串的链式存储结构"><span class="nav-number">4.2.</span> <span class="nav-text">5.5.2 串的链式存储结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-6-朴素的模式匹配算法"><span class="nav-number">5.</span> <span class="nav-text">5.6 朴素的模式匹配算法</span></a></li></ol></div>
             
 
           </div>
@@ -762,7 +789,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">14.7k</span>
+    <span title="Site words total count">15.8k</span>
   
 </div>
 
