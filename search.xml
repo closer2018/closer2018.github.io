@@ -13,6 +13,7 @@
 <li>子串在主串中的位置就是子串的第一个字符在主串中的序号。</li>
 </ul>
 <p>开头我所提到的“over”、“end”、“lie”其实可以认为是“over”、“friend”、“believe”这些单词字符串的子串。  </p>
+<a id="more"></a>
 <h2 id="5-3-串的比较"><a href="#5-3-串的比较" class="headerlink" title="5.3 串的比较"></a>5.3 串的比较</h2>]]></content>
   </entry>
   <entry>
