@@ -59,7 +59,8 @@ menu_icons:
   <entry>
     <title>hexo 多客户端上更新博客</title>
     <url>/2019/12/09/hexo/hexo%20%E5%A4%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8A%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>静态网页文件存放在<code>master主分支</code>，个人文件存放在<code>hexo分支</code>。  </p>
+    <content><![CDATA[<p><code>git add source/ &amp;&amp; git commit -m &quot;博客更新&quot; &amp;&amp; git push origin hexo &amp;&amp; hexo clean &amp;&amp; hexo g &amp;&amp; hexo d &amp;&amp; exit</code></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>静态网页文件存放在<code>master主分支</code>，个人文件存放在<code>hexo分支</code>。  </p>
 <h2 id="一、本地电脑设置"><a href="#一、本地电脑设置" class="headerlink" title="一、本地电脑设置"></a>一、本地电脑设置</h2><p>先新建一个hexo文件夹，在git bash下cd进入hexo文件夹。</p>
 <ol>
 <li><code>git init</code></li>
