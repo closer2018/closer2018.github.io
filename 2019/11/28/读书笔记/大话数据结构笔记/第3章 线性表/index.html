@@ -132,7 +132,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;closer2018&#x2F;picture&#x2F;blob&#x2F;master&#x2F;%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E7%AC%AC%E4%B8%89%E7%AB%A0&#x2F;3.14.6.GIF?raw&#x3D;true">
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;closer2018&#x2F;picture&#x2F;blob&#x2F;master&#x2F;%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E7%AC%AC%E4%B8%89%E7%AB%A0&#x2F;3.15.1.GIF?raw&#x3D;true">
 <meta property="article:published_time" content="2019-11-27T16:00:00.000Z">
-<meta property="article:modified_time" content="2019-12-25T10:45:37.919Z">
+<meta property="article:modified_time" content="2019-12-29T03:44:56.158Z">
 <meta property="article:author" content="closer">
 <meta property="article:tag" content="读书笔记">
 <meta property="article:tag" content="数据结构">
@@ -539,7 +539,7 @@ endADT</code></pre>
 <h2 id="3-4线性表的顺序存储结构"><a href="#3-4线性表的顺序存储结构" class="headerlink" title="3.4线性表的顺序存储结构"></a>3.4线性表的顺序存储结构</h2><h3 id="3-4-1顺序存储定义"><a href="#3-4-1顺序存储定义" class="headerlink" title="3.4.1顺序存储定义"></a>3.4.1顺序存储定义</h3><p>线性表的两种物理结构的第一种——顺序存储结构。<br>线性表的顺序存储结构，指的是用一段地址连续的存储单元依次存储线性表的数据元素。</p>
 <h3 id="3-4-2顺序存储方式"><a href="#3-4-2顺序存储方式" class="headerlink" title="3.4.2顺序存储方式"></a>3.4.2顺序存储方式</h3><p>可以用C语言（其他语言也相同）的一维数组来实现顺序存储结构。<br>线性表的顺序存储的结构代码如下</p>
 <pre><code class="c">    #define MAXSIZE 20/*存储空间初始分配量*/
-    typedef int Elemrype;  /*Elemrype 类型根据实际情况而定，这里假设为int*/
+    typedef int ElemType;  /*ElemType 类型根据实际情况而定，这里假设为int*/
     typedef struct
     {
         ElemType data[MAXSIZE];/*数组存储数据元素，最大值为MAXSIZE*/
@@ -816,11 +816,11 @@ int Malloc_SSL(StaticLinkList space)
                                             /* 就是要返回的第一个备用空闲的下标 */
     if (space[0]. cur)
         space[0]. cur = space[i].cur;       /* 由于要拿出一个分量来使用了， */
-                                            /* 所以我们就得把它的下一个 */
+                               ll             /* 所以我们就得把它的下一个 */
                                             /* 分量用来做备用 */
     return i;
 }</code></pre>
-<p>这段代码有意思，它的作用就是返回一个下标值，这个值就是数组头元素的cur存的第一个空闲的下标,同时把这个空闲的下标给<code>spcae[0].cur</code>，之后就可以继续分配新的空闲分量，实现类似mallbc（）函数的作用。<br>插入操作的实现代码如下：  </p>
+<p>这段代码有意思，它的作用就是返回一个下标值，这个值就是数组头元素的cur存的第一个空闲的下标,同时把这个空闲的下标给<code>space[0].cur</code>，之后就可以继续分配新的空闲分量，实现类似mallbc（）函数的作用。<br>插入操作的实现代码如下：  </p>
 <pre><code class="c">/*  在L中第i个元素之前插入新的数据元素e   */
 Status ListInsert(StaticLinkList L, int i, ElemType e)
 {  
@@ -1178,7 +1178,7 @@ free（p）；/*释放结点*/</code></pre>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">17.8k</span>
+    <span title="Site words total count">18.7k</span>
   
 </div>
 

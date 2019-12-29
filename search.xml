@@ -3,7 +3,34 @@
   <entry>
     <title>大话数据结构第六章 树</title>
     <url>/2019/12/28/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/%E7%AC%AC6%E7%AB%A0%20%E6%A0%91/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h2 id="6-1-6-2-树的定义"><a href="#6-1-6-2-树的定义" class="headerlink" title="6.1-6.2 树的定义"></a>6.1-6.2 树的定义</h2><p><strong>树(Tree)是n(n≥0)个结点的有限集。n=0时称为空树。在任意一棵非空树中：1)有且仅有一个特定的称为根(Root)的结点；2)当n&gt;1时，其余结点可分为m(m&gt;0)个互不相交的有限集T1、T2、……、Tm，其中每一个集合本身又是一棵树，并且称为根的子树(SubTree)。</strong><br>对于树的定义还需要强调两点：  </p>
+<ol>
+<li>n&gt;0时根结点是唯一的，不可能存在多个根结点，数据结构中的树是只能有一个根结点。</li>
+<li>m&gt;0时，子树的个数没有限制，但它们一定是互不相交的。  </li>
+</ol>
+<h3 id="6-2-1-结点分类"><a href="#6-2-1-结点分类" class="headerlink" title="6.2.1 结点分类"></a>6.2.1 结点分类</h3><p>树的结点包含一个数据元素及若干指向其子树的分支。结点拥有的子树数称为结点的度（Degree）。度为0的结点称为叶结点（Leaf）或终端结点；度不为0的结点称为非终端结点或分支结点。除根结点之外，分支结点也称为内部结点。树的度是树内各结点的度的最大值。如图6-2-4所示，因为这棵树结点的度的最大值是结点D的度为3，所以树的度也为3。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0/6-2-4.JPG?raw=true" alt="6-2-4">  </p>
+<h3 id="6-2-2-结点间关系"><a href="#6-2-2-结点间关系" class="headerlink" title="6.2.2 结点间关系"></a>6.2.2 结点间关系</h3><p>结点的子树的根称为该结点的孩子（Child），相应地，该结点称为孩子的双亲（Parent）。同一个双亲的孩子之间互称兄弟（Sibling）。结点的祖先是从根到该结点所经分支上的所有结点。反之，以某结点为根的子树中的任一结点都称为该结点的子孙。  </p>
+<h3 id="6-2-3-树的其他相关概念"><a href="#6-2-3-树的其他相关概念" class="headerlink" title="6.2.3 树的其他相关概念"></a>6.2.3 树的其他相关概念</h3><p>结点的层次（Level）从根开始定义起，根为第一层，根的孩子为第二层。其双亲在同一层的结点互为堂兄弟。树中结点的最大层次称为树的深度（Depth）或高度。<br>如果将树中结点的各子树看成从左至右是有次序的，不能互换的，则称该树为有序树，否则称为无序树。<br>森林（Forest）是m（m&gt;0）棵互不相交的树的集合。<br>对比线性表与树的结构，它们有很大的不同，如图6-2-7所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0/6-2-7.JPG?raw=true" alt="6-2-7"></p>
+<h2 id="6-3-树的抽象数据类型"><a href="#6-3-树的抽象数据类型" class="headerlink" title="6.3 树的抽象数据类型"></a>6.3 树的抽象数据类型</h2><pre><code class="c">ADT 树（tree）
+Data
+  树是由一个根结点和若干棵子树构成。树中结点具有相同数据类型及层次关系。
+Operation
+  InitTree（*T）：构造空树T。
+  DestroyTree（*T）：销毁树T。
+  CreateTree（*T，definition）：按definition中给出树的定义来构造树。
+  ClearTree（*T）：若树T存在，则将树T清为空树。
+  TreeEmpty（T）：若T为空树，返回true，否则返回false。
+  TreeDepth（T）：返回T的深度。
+  Root（T）：返回T的根结点。
+  Value（T，cur_e）：cur_e是树T中一个结点，返回此结点的值。
+  Assign（T，cur_e，value）：给树T的结点cur_e赋值为value。
+  Parent（T，cur_e）：若cur_e是树T的非根结点，则返回它的双亲，否则返回空。
+  LeftChild（T，cure）：若cur_e是树T的非叶结点，则返回它的最左孩子，否则返回空。
+  RightSibling（T，cur_e）：若cur_e有右兄弟，则返回它的右兄弟，否则返回空。
+  InsertChild（*T，*p，i，c）：其中p指向树T的某个结点，i为所指结点p的度加上1，非空树c与T不相交，操作结果为插入c为树T中p指结点的第i棵子树。
+  DeleteChild（*T，*p，i）：其中p指向树T的某个结点，i为所指结点p的度，操作结果为删除T中p所指结点的第i棵子树。
+endADT</code></pre>
+<h2 id="6-4-树的存储结构"><a href="#6-4-树的存储结构" class="headerlink" title="6.4 树的存储结构"></a>6.4 树的存储结构</h2>]]></content>
       <categories>
         <category>读书笔记</category>
       </categories>
@@ -33,17 +60,17 @@ Data
   串中元素仅由一个字符组成，相邻元素具有前驱和后继关系。
 Operation
   strAssign(T，*chars)：生成一个其值等于字符串常量chars的串T。
-  Strcopy(T，S)：串S存在，由串S复制得串T。
+  StrCopy(T，S)：串S存在，由串S复制得串T。
   ClearString(S)：串S存在，将串清空。
   StringEmpty(S)；若串S为空，返回true，否则返回false。
-  Strlength(S)：返回串S的元素个数，即串的长度。
+  StrLength(S)：返回串S的元素个数，即串的长度。
   StrCompare(S，T)：若S&gt;T，返回值&gt;0，若S=T，返回0，若S&lt;T，返回值&lt;0。
   Concat(T，S1，S2)：用T返回由S1和S2联接而成的新串。
   SubString(Sub，S，pos，len)：串S存在，1≤pos≤StrLength(S)，且0≤len≤StrLength(S)-pos+1，用Sub返回串S的第pos个字符起长度为len的子串。
   Index(S，T，pos)：串S和T存在，T是非空串，1≤pos≤StrLength(S)。若主串S中存在和串T值相同的子串，则返回它在主串S中第pos个字符之后第一次出现的位置，否则返回0。
   Replace(S，T，V)：串S、T和v存在，T是非空串。用V替换主串S中出现的所有与T相等的不重叠的子串。
   StrInsert(S，pos，T)：串s和T存在，1≤pos≤StrLength(S)+1。在串S的第pos个字符之前插入串T。
-  StrDelete(S，pos，len)：串S存在，1≤pos≤Strlength(S)-len+1。从串S中删除第pos个字符起长度为len的子串。
+  StrDelete(S，pos，len)：串S存在，1≤pos≤StrLength(S)-len+1。从串S中删除第pos个字符起长度为len的子串。
 endADT</code></pre>
 <h2 id="5-5-串的存储结构"><a href="#5-5-串的存储结构" class="headerlink" title="5.5 串的存储结构"></a>5.5 串的存储结构</h2><p>串的存储结构与线性表相同，分为两种。  </p>
 <h3 id="5-5-1-串的顺序存储结构"><a href="#5-5-1-串的顺序存储结构" class="headerlink" title="5.5.1 串的顺序存储结构"></a>5.5.1 串的顺序存储结构</h3><p>串的顺序存储结构是用一组地址连续的存储单元来存储串中的字符序列的。按照预定义的大小，为每个定义的串变量分配一个固定长度的存储区。一般是用定长数组来定义。<br>既然是定长数组，就存在一个预定义的最大串长度，一般可以将实际的串长度值保存在数组的0下标位置，有的书中也会定义存储在数组的最后一个下标位置。但也有些编程语言不想这么干，觉得存个数字占个空间麻烦。它规定在串值后面加一个不计入串长度的结束标记字符，比如“\0”来表示串值的终结，这个时候，你要想知道此时的串长度，就需要遍历计算一下才知道了，其实这还是需要占用一个空间，何必呢。</p>
@@ -464,7 +491,7 @@ endADT</code></pre>
 <h2 id="3-4线性表的顺序存储结构"><a href="#3-4线性表的顺序存储结构" class="headerlink" title="3.4线性表的顺序存储结构"></a>3.4线性表的顺序存储结构</h2><h3 id="3-4-1顺序存储定义"><a href="#3-4-1顺序存储定义" class="headerlink" title="3.4.1顺序存储定义"></a>3.4.1顺序存储定义</h3><p>线性表的两种物理结构的第一种——顺序存储结构。<br>线性表的顺序存储结构，指的是用一段地址连续的存储单元依次存储线性表的数据元素。</p>
 <h3 id="3-4-2顺序存储方式"><a href="#3-4-2顺序存储方式" class="headerlink" title="3.4.2顺序存储方式"></a>3.4.2顺序存储方式</h3><p>可以用C语言（其他语言也相同）的一维数组来实现顺序存储结构。<br>线性表的顺序存储的结构代码如下</p>
 <pre><code class="c">    #define MAXSIZE 20/*存储空间初始分配量*/
-    typedef int Elemrype;  /*Elemrype 类型根据实际情况而定，这里假设为int*/
+    typedef int ElemType;  /*ElemType 类型根据实际情况而定，这里假设为int*/
     typedef struct
     {
         ElemType data[MAXSIZE];/*数组存储数据元素，最大值为MAXSIZE*/
@@ -741,11 +768,11 @@ int Malloc_SSL(StaticLinkList space)
                                             /* 就是要返回的第一个备用空闲的下标 */
     if (space[0]. cur)
         space[0]. cur = space[i].cur;       /* 由于要拿出一个分量来使用了， */
-                                            /* 所以我们就得把它的下一个 */
+                               ll             /* 所以我们就得把它的下一个 */
                                             /* 分量用来做备用 */
     return i;
 }</code></pre>
-<p>这段代码有意思，它的作用就是返回一个下标值，这个值就是数组头元素的cur存的第一个空闲的下标,同时把这个空闲的下标给<code>spcae[0].cur</code>，之后就可以继续分配新的空闲分量，实现类似mallbc（）函数的作用。<br>插入操作的实现代码如下：  </p>
+<p>这段代码有意思，它的作用就是返回一个下标值，这个值就是数组头元素的cur存的第一个空闲的下标,同时把这个空闲的下标给<code>space[0].cur</code>，之后就可以继续分配新的空闲分量，实现类似mallbc（）函数的作用。<br>插入操作的实现代码如下：  </p>
 <pre><code class="c">/*  在L中第i个元素之前插入新的数据元素e   */
 Status ListInsert(StaticLinkList L, int i, ElemType e)
 {  
@@ -845,15 +872,15 @@ Data
     同线性表。元素具有相同的类型，相邻元素具有前驱和后继关系。
 Operation
     InitStack(*s)：初始化操作，建立一个空栈s。
-    Destroystack(*s)：若楼存在，则销毁它。
-    Clearstack(*s)：将栽清空。
+    DestroyStack(*s)：若楼存在，则销毁它。
+    ClearStack(*s)：将栽清空。
     StackEmpty(S)：若为空，返回true，否则返回false。
     GetTop(s，*e)：若栽存在且非空，用e返回s的栽顶元素。
     Push(*s，e)：若栈S存在，插入新元素e到栈S中并成为栈顶元素。
     Pop(*S，*e)：删除栈S中栈顶元素，并用e返回其值。
     StackLength(s)：返回栈s的元素个数。
 endADT</code></pre>
-<h2 id="4-4-栈的顺序存储结构及实现"><a href="#4-4-栈的顺序存储结构及实现" class="headerlink" title="4.4 栈的顺序存储结构及实现"></a>4.4 栈的顺序存储结构及实现</h2><h3 id="4-4-1-栈的顺序存储结构"><a href="#4-4-1-栈的顺序存储结构" class="headerlink" title="4.4.1 栈的顺序存储结构"></a>4.4.1 栈的顺序存储结构</h3><p>栈是线性表的特例，那么栈的顺序存储其实也是线性表顺序存储的简化，我们简称为顺序栈。线性表是用数组来实现的。<br>我们定义一个top变量来指示栈顶元素在数组中的位置，它可以来回移动，意味着栈顶的top可以变大变小，但无论如何游标不能超出栈的长度。同理，若存储栈的长度为StackSize，则栈顶位置top必须小于Stacksize。当栈存在一个元素时，top等于0，因此通常把空栈的判定条件定为top等于-1。</p>
+<h2 id="4-4-栈的顺序存储结构及实现"><a href="#4-4-栈的顺序存储结构及实现" class="headerlink" title="4.4 栈的顺序存储结构及实现"></a>4.4 栈的顺序存储结构及实现</h2><h3 id="4-4-1-栈的顺序存储结构"><a href="#4-4-1-栈的顺序存储结构" class="headerlink" title="4.4.1 栈的顺序存储结构"></a>4.4.1 栈的顺序存储结构</h3><p>栈是线性表的特例，那么栈的顺序存储其实也是线性表顺序存储的简化，我们简称为顺序栈。线性表是用数组来实现的。<br>我们定义一个top变量来指示栈顶元素在数组中的位置，它可以来回移动，意味着栈顶的top可以变大变小，但无论如何游标不能超出栈的长度。同理，若存储栈的长度为StackSize，则栈顶位置top必须小于StackSize。当栈存在一个元素时，top等于0，因此通常把空栈的判定条件定为top等于-1。</p>
 <p>栈的结构定义：  </p>
 <pre><code class="c">typedef int SElemType; /* SElemType类型根据实际情况而定，这里假设为int */
 /* 顺序栈结构 */
@@ -862,7 +889,7 @@ typedef struct
         SElemType data[MAXSIZE];
         int top; /* 用于栈顶指针 */
 }SqStack;</code></pre>
-<p>若现在有一个栈，Stacksize是5，则栈普通情况、空栈和栈满的情况示意图如图4-4-2所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-4-2.JPG?raw=true" alt="4-4-2">  </p>
+<p>若现在有一个栈，StackSize是5，则栈普通情况、空栈和栈满的情况示意图如图4-4-2所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-4-2.JPG?raw=true" alt="4-4-2">  </p>
 <h3 id="4-4-2-栈的顺序存储结构——进栈操作"><a href="#4-4-2-栈的顺序存储结构——进栈操作" class="headerlink" title="4.4.2 栈的顺序存储结构——进栈操作"></a>4.4.2 栈的顺序存储结构——进栈操作</h3><p>对于栈的插入，即进栈操作，其实就是在栈顶插入一个元素。<br>进栈操作push，其代码如下：  </p>
 <pre><code class="c">/* 插入元素e为新的栈顶元素 */
 Status Push(SqStack *S,SElemType e)
@@ -942,7 +969,7 @@ typedef struct LinkStack
 <pre><code class="c">/* 插入元素e为新的栈顶元素 */
 Status Push(LinkStack *S,SElemType e)
 {
-    LinkStackPtr s=(LinkStackPtr)malloc(sizeof(StackNode)); 
+    LinkStackPtr s=(LinkStackPtr)malloc(sizeof(StackNode));
     s-&gt;data=e;
     s-&gt;next=S-&gt;top;/* 把当前的栈顶元素赋值给新结点的直接后继，见图中① */
     S-&gt;top=s;         /* 将新的结点s赋值给栈顶指针，见图中② */

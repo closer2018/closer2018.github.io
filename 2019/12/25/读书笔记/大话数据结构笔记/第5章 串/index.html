@@ -116,7 +116,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;closer2018&#x2F;picture&#x2F;blob&#x2F;master&#x2F;%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E7%AC%AC%E5%9B%9B%E7%AB%A0&#x2F;5-5-3.JPG?raw&#x3D;true">
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;closer2018&#x2F;picture&#x2F;blob&#x2F;master&#x2F;%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E7%AC%AC%E5%9B%9B%E7%AB%A0&#x2F;5-7-6.JPG?raw&#x3D;true">
 <meta property="article:published_time" content="2019-12-25T11:26:12.000Z">
-<meta property="article:modified_time" content="2019-12-28T14:33:46.874Z">
+<meta property="article:modified_time" content="2019-12-29T03:38:57.779Z">
 <meta property="article:author" content="closer">
 <meta property="article:tag" content="读书笔记">
 <meta property="article:tag" content="数据结构">
@@ -503,17 +503,17 @@ Data
   串中元素仅由一个字符组成，相邻元素具有前驱和后继关系。
 Operation
   strAssign(T，*chars)：生成一个其值等于字符串常量chars的串T。
-  Strcopy(T，S)：串S存在，由串S复制得串T。
+  StrCopy(T，S)：串S存在，由串S复制得串T。
   ClearString(S)：串S存在，将串清空。
   StringEmpty(S)；若串S为空，返回true，否则返回false。
-  Strlength(S)：返回串S的元素个数，即串的长度。
+  StrLength(S)：返回串S的元素个数，即串的长度。
   StrCompare(S，T)：若S&gt;T，返回值&gt;0，若S=T，返回0，若S&lt;T，返回值&lt;0。
   Concat(T，S1，S2)：用T返回由S1和S2联接而成的新串。
   SubString(Sub，S，pos，len)：串S存在，1≤pos≤StrLength(S)，且0≤len≤StrLength(S)-pos+1，用Sub返回串S的第pos个字符起长度为len的子串。
   Index(S，T，pos)：串S和T存在，T是非空串，1≤pos≤StrLength(S)。若主串S中存在和串T值相同的子串，则返回它在主串S中第pos个字符之后第一次出现的位置，否则返回0。
   Replace(S，T，V)：串S、T和v存在，T是非空串。用V替换主串S中出现的所有与T相等的不重叠的子串。
   StrInsert(S，pos，T)：串s和T存在，1≤pos≤StrLength(S)+1。在串S的第pos个字符之前插入串T。
-  StrDelete(S，pos，len)：串S存在，1≤pos≤Strlength(S)-len+1。从串S中删除第pos个字符起长度为len的子串。
+  StrDelete(S，pos，len)：串S存在，1≤pos≤StrLength(S)-len+1。从串S中删除第pos个字符起长度为len的子串。
 endADT</code></pre>
 <h2 id="5-5-串的存储结构"><a href="#5-5-串的存储结构" class="headerlink" title="5.5 串的存储结构"></a>5.5 串的存储结构</h2><p>串的存储结构与线性表相同，分为两种。  </p>
 <h3 id="5-5-1-串的顺序存储结构"><a href="#5-5-1-串的顺序存储结构" class="headerlink" title="5.5.1 串的顺序存储结构"></a>5.5.1 串的顺序存储结构</h3><p>串的顺序存储结构是用一组地址连续的存储单元来存储串中的字符序列的。按照预定义的大小，为每个定义的串变量分配一个固定长度的存储区。一般是用定长数组来定义。<br>既然是定长数组，就存在一个预定义的最大串长度，一般可以将实际的串长度值保存在数组的0下标位置，有的书中也会定义存储在数组的最后一个下标位置。但也有些编程语言不想这么干，觉得存个数字占个空间麻烦。它规定在串值后面加一个不计入串长度的结束标记字符，比如“\0”来表示串值的终结，这个时候，你要想知道此时的串长度，就需要遍历计算一下才知道了，其实这还是需要占用一个空间，何必呢。</p>
@@ -903,7 +903,7 @@ void get_nextval(String T, int *nextval)
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">17.8k</span>
+    <span title="Site words total count">18.7k</span>
   
 </div>
 
