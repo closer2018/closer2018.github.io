@@ -439,7 +439,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.2k
+                  5.5k
                 </span>
               
 
@@ -455,7 +455,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  11
+                  20
                 </span>
               
             </div>
@@ -568,7 +568,91 @@ typedef struct CSNode
 <li>根结点只有右子树。</li>
 <li>根结点既有左子树又有右子树。</li>
 </ol>
-<h3 id="6-5-2-特殊二叉树"><a href="#6-5-2-特殊二叉树" class="headerlink" title="6.5.2 特殊二叉树"></a>6.5.2 特殊二叉树</h3>
+<h3 id="6-5-2-特殊二叉树"><a href="#6-5-2-特殊二叉树" class="headerlink" title="6.5.2 特殊二叉树"></a>6.5.2 特殊二叉树</h3><p>一、斜树:所有的结点都只有左子树的二叉树叫左斜树。所有结点都是只有右子树的二叉树叫右斜树。这两者统称为斜树。</p>
+<p>二、满二叉树：在一棵二叉树中，如果所有分支结点都存在左子树和右子树，并且所有叶子都在同一层上，这样的二叉树称为满二叉树。<br>满二叉树的特点有：</p>
+<ul>
+<li>叶子只能出现在最下一层。出现在其他层就不可能达成平衡。</li>
+<li>非叶子结点的度一定是2。否则就是“缺胳膊少腿”了。</li>
+<li>在同样深度的二叉树中，满二叉树的结点个数最多，叶子数最多。</li>
+</ul>
+<p>三、完全二叉树：对一棵具有n个结点的二叉树按层序编号，如果编号为i（1≤i≤n）的结点与同样深度的满二叉树中编号为i的结点在二叉树中位置完全相同，则这棵二叉树称为完全二叉树。<br>完全二叉树的特点：</p>
+<ol>
+<li>叶子结点只能出现在最下两层。</li>
+<li>最下层的叶子一定集中在左部连续位置。</li>
+<li>倒数二层，若有叶子结点，一定都在右部连续位置。</li>
+<li>如果结点度为1，则该结点只有左孩子，即不存在只有右子树的情况。</li>
+<li>同样结点数的二叉树，完全二叉树的深度最小。</li>
+</ol>
+<h2 id="6-6-二叉树的性质"><a href="#6-6-二叉树的性质" class="headerlink" title="6.6 二叉树的性质"></a>6.6 二叉树的性质</h2><p>二叉树有一些需要理解并记住的特性，以便于我们更好地使用它。</p>
+<h3 id="6-6-1-二叉树性质1"><a href="#6-6-1-二叉树性质1" class="headerlink" title="6.6.1 二叉树性质1"></a>6.6.1 二叉树性质1</h3><p>性质1：在二叉树的第i层上至多有2<sup>i-1</sup>个结点（i≥1）。</p>
+<h3 id="6-6-2-二叉树性质2"><a href="#6-6-2-二叉树性质2" class="headerlink" title="6.6.2 二叉树性质2"></a>6.6.2 二叉树性质2</h3><p>性质2：深度为k的二叉树至多有$2^k-1$个结点（k≥1）。</p>
+<h3 id="6-6-3-二叉树性质3"><a href="#6-6-3-二叉树性质3" class="headerlink" title="6.6.3 二叉树性质3"></a>6.6.3 二叉树性质3</h3><p>性质3：对任何一棵二叉树T，如果其叶子结点数为n<sub>0</sub>，度为2的结点数为n<sub>2</sub>，则n<sub>0</sub>=n<sub>2</sub>+1。  </p>
+<h3 id="6-6-4-二叉树性质4"><a href="#6-6-4-二叉树性质4" class="headerlink" title="6.6.4 二叉树性质4"></a>6.6.4 二叉树性质4</h3><p>性质4：具有n个结点的完全二叉树的深度为[log<sub>2</sub>n]+1（[x]表示不大于x的最大整数）。</p>
+<h3 id="6-6-5-二叉树性质5"><a href="#6-6-5-二叉树性质5" class="headerlink" title="6.6.5 二叉树性质5"></a>6.6.5 二叉树性质5</h3><p>性质5：如果对一棵有n个结点的完全二叉树（其深度为[log<sub>2</sub>n]+1）的结点按层序编号（从第1层到第[log<sub>2</sub>n]+1层，每层从左到右），对任一结点i（1≤i≤n）有：</p>
+<ol>
+<li>如果i=1，则结点i是二叉树的根，无双亲；如果i&gt;1，则其双亲是结点[i/2]。</li>
+<li>如果2i&gt;n，则结点i无左孩子（结点i为叶子结点）；否则其左孩子是结点2i。</li>
+<li>如果2i+1&gt;n，则结点i无右孩子；否则其右孩子是结点2i+1。</li>
+</ol>
+<h2 id="6-7-二叉树的存储结构"><a href="#6-7-二叉树的存储结构" class="headerlink" title="6.7 二叉树的存储结构"></a>6.7 二叉树的存储结构</h2><h3 id="6-7-1-二叉树顺序存储结构"><a href="#6-7-1-二叉树顺序存储结构" class="headerlink" title="6.7.1 二叉树顺序存储结构"></a>6.7.1 二叉树顺序存储结构</h3><p>二叉树的顺序存储结构就是用一维数组存储二叉树中的结点，并且结点的存储位置，也就是数组的下标要能体现结点之间的逻辑关系。<br>所以用来表示完全二叉树比较好。由于它定义的严格，所以用顺序结构也可以表现出二叉树的结构来。<br>当然对于一般的二叉树，尽管层序编号不能反映逻辑关系，但是可以将其按完全二叉树编号，只不过，把不存在的结点设置为“^”而已。如图6-7-3所示，浅色结点表示不存在。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0/6-7-3.JPG?raw=true" alt="6-7-3"><br>但是对于一般二叉树，一棵深度为k的右斜树，它只有k个结点，却需要分配$2^k$-1个存储单元空间，这显然是对存储空间的浪费。<br>所以，顺序存储结构一般只用于完全二叉树。  </p>
+<h3 id="6-7-2-二叉链表"><a href="#6-7-2-二叉链表" class="headerlink" title="6.7.2 二叉链表"></a>6.7.2 二叉链表</h3><p>链式存储结构中。二叉树每个结点最多有两个孩子，所以为它设计一个数据域和两个指针域是比较自然的想法，我们称这样的链表叫做二叉链表。结点结构图如表格6-7-1所示。<br>lChild|data|rChild|<br>–|–|–<br>其中data是数据域，lChild和rChild都是指针域，分别存放指向左孩子和右孩子的指针。<br>以下是我们的二叉链表的结点结构定义代码。</p>
+<pre><code class="c">typedef struct BiTNode  /* 结点结构 */
+{
+   TElemType data;    /* 结点数据 */
+   struct BiTNode *lchild,*rchild; /* 左右孩子指针 */
+}BiTNode,*BiTree;</code></pre>
+<p>就如同树的存储结构中讨论的一样，如果有需要，还可以再增加一个指向其双亲的指针域，那样就称之为三叉链表。  </p>
+<h2 id="6-8遍历二叉树"><a href="#6-8遍历二叉树" class="headerlink" title="6.8遍历二叉树"></a>6.8遍历二叉树</h2><h3 id="6-8-1二叉树遍历原理"><a href="#6-8-1二叉树遍历原理" class="headerlink" title="6.8.1二叉树遍历原理"></a>6.8.1二叉树遍历原理</h3><p>二叉树的遍历（traversing binary tree）是指从根结点出发，按照某种次序依次访问二叉树中所有结点，使得每个结点被访问一次且仅被访问一次。  </p>
+<h3 id="6-8-2二叉树遍历方法"><a href="#6-8-2二叉树遍历方法" class="headerlink" title="6.8.2二叉树遍历方法"></a>6.8.2二叉树遍历方法</h3><p>二叉树的遍历方式可以很多，如果我们限制了从左到右的习惯方式，那么主要就分为四种：  </p>
+<ol>
+<li><p>前序遍历-根左右<br>规则是若二叉树为空，则空操作返回，否则先访问根结点，然后前序遍历左子树，再前序遍历右子树。</p>
+</li>
+<li><p>中序遍历-左根右<br>规则是若树为空，则空操作返回，否则从根结点开始（注意并不是先访问根结点），中序遍历根结点的左子树，然后是访问根结点，最后中序遍历右子树。</p>
+</li>
+<li><p>后序遍历-左右根<br>规则是若树为空，则空操作返回，否则从左到右先叶子后结点的方式遍历访问左右子树，最后是访问根结点。</p>
+</li>
+<li><p>层序遍历<br>规则是若树为空，则空操作返回，否则从树的第一层，也就是根结点开始访问，从上而下逐层遍历，在同一层中，按从左到右的顺序对结点逐个访问。</p>
+</li>
+</ol>
+<p>技巧：每个结点单独看。比如后序遍历，每个右结点的左边是该结点的左节点，右边必然是对应的根结点。</p>
+<h3 id="6-8-3-前序遍历算法"><a href="#6-8-3-前序遍历算法" class="headerlink" title="6.8.3 前序遍历算法"></a>6.8.3 前序遍历算法</h3><p>二叉树的定义是用递归的方式，所以，实现遍历算法也可以采用递归，而且极其简洁明了。先来看看二叉树的前序遍历算法。代码如下：  </p>
+<pre><code class="c">/* 二叉树的前序遍历递归算法 */
+void PreOrderTraverse(BiTree T)
+{
+    if (T == NULL)
+        return;
+    printf(&quot;%c&quot;, T-&gt;data); /* 显示结点数据，可以更改为其它对结点操作 */
+    PreOrderTraverse(T-&gt;lchild); /* 再先序遍历左子树 */
+    PreOrderTraverse(T-&gt;rchild); /* 最后先序遍历右子树 */
+}</code></pre>
+<h3 id="6-8-4-中序遍历算法"><a href="#6-8-4-中序遍历算法" class="headerlink" title="6.8.4 中序遍历算法"></a>6.8.4 中序遍历算法</h3><p>二叉树的中序遍历算法和前序遍历算法仅仅只是代码的顺序上的差异。</p>
+<pre><code class="c">/* 二叉树的中序遍历递归算法 */
+void InOrderTraverse(BiTree T)
+{
+    if (T == NULL)
+        return;
+    InOrderTraverse(T-&gt;lchild); /* 中序遍历左子树 */
+    printf(&quot;%c&quot;, T-&gt;data);/* 显示结点数据，可以更改为其它对结点操作 */
+    InOrderTraverse(T-&gt;rchild); /* 最后中序遍历右子树 */
+}</code></pre>
+<h3 id="6-8-5后序遍历算法"><a href="#6-8-5后序遍历算法" class="headerlink" title="6.8.5后序遍历算法"></a>6.8.5后序遍历算法</h3><p>那么同样的，后序遍历也就很容易想到应该如何写代码了。</p>
+<pre><code class="c">/* 二叉树的后序遍历递归算法 */
+void PostOrderTraverse(BiTree T)
+{
+    if (T == NULL)
+        return;
+    PostOrderTraverse(T-&gt;lchild); /* 先后序遍历左子树  */
+    PostOrderTraverse(T-&gt;rchild); /* 再后序遍历右子树  */
+    printf(&quot;%c&quot;, T-&gt;data);/* 显示结点数据，可以更改为其它对结点操作 */
+}</code></pre>
+<h3 id="6-8-6-推导遍历结果"><a href="#6-8-6-推导遍历结果" class="headerlink" title="6.8.6 推导遍历结果"></a>6.8.6 推导遍历结果</h3><p>题目是这样：二叉树的中序序列是ABCDEFG，后序序列是BDCAFGE，求前序序列。<br>这次简单点，由后序的BDCAFG E，得到E是根结点，因此前序首字母是E。<br>于是根据中序序列分为两棵树ABCD和FG，由后序序列的BDCA FGE，知道A是E的左孩子，前序序列目前分析为EA。<br>再由中序序列的A BCDEFG，知道BCD是A结点的右子孙，再由后序序列的BDC AFGE知道C结点是A结点的右孩子，前序序列目前分析得到EAC。<br>中序序列AB C DEFG，得到B是C的左孩子，D是C的右孩子，所以前序序列目前分析结果为EACBD。<br>由后序序列BDCAF G E，得到G是E的右孩子，于是F就是G的孩子。如果你是在考试时做这道题目，时间就是分数、名次、学历，那么你根本不需关心F是G的左还是右孩子，前序遍历序列的最终结果就是EACBDGF。</p>
+<p>两个二叉树遍历的性质。</p>
+<ul>
+<li>已知前序遍历序列和中序遍历序列，可以唯一确定一棵二叉树。</li>
+<li>已知后序遍历序列和中序遍历序列，可以唯一确定一棵二叉树。</li>
+</ul>
+<p>但要注意了，已知前序和后序遍历，是不能确定一棵二又树的，原因也很简单，比如前序序列是ABC，后序序列是CBA。我们可以确定A一定是根结点，但接下来，我们无法知道，哪个结点是左子树，哪个是右子树。这棵树可能有如图6-8-24所示的四种可能。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0/6-8-24.JPG?raw=true" alt="6-8-24">  </p>
+<h2 id="6-9-二叉树的建立"><a href="#6-9-二叉树的建立" class="headerlink" title="6.9 二叉树的建立"></a>6.9 二叉树的建立</h2>
           
         
       
@@ -2132,7 +2216,7 @@ typedef struct CSNode
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -2146,7 +2230,7 @@ typedef struct CSNode
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">21k</span>
+    <span title="Site words total count">23.3k</span>
   
 </div>
 
