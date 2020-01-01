@@ -127,7 +127,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;closer2018&#x2F;picture&#x2F;blob&#x2F;master&#x2F;%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E7%AC%AC%E5%85%AD%E7%AB%A0&#x2F;6-7-3.JPG?raw&#x3D;true">
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;closer2018&#x2F;picture&#x2F;blob&#x2F;master&#x2F;%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E7%AC%AC%E5%85%AD%E7%AB%A0&#x2F;6-8-24.JPG?raw&#x3D;true">
 <meta property="article:published_time" content="2019-12-28T14:34:58.000Z">
-<meta property="article:modified_time" content="2020-01-01T11:24:24.614Z">
+<meta property="article:modified_time" content="2020-01-01T11:27:14.725Z">
 <meta property="article:author" content="closer">
 <meta property="article:tag" content="读书笔记">
 <meta property="article:tag" content="数据结构">
@@ -475,7 +475,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  20
+                  19
                 </span>
               
             </div>
@@ -663,7 +663,7 @@ void PostOrderTraverse(BiTree T)
     PostOrderTraverse(T-&gt;rchild); /* 再后序遍历右子树  */
     printf(&quot;%c&quot;, T-&gt;data);/* 显示结点数据，可以更改为其它对结点操作 */
 }</code></pre>
-<h3 id="6-8-6-推导遍历结果"><a href="#6-8-6-推导遍历结果" class="headerlink" title="6.8.6 推导遍历结果"></a>6.8.6 推导遍历结果</h3><p>题目是这样：二叉树的中序序列是ABCDEFG，后序序列是BDCAFGE，求前序序列。<br>这次简单点，由后序的BDCAFG E，得到E是根结点，因此前序首字母是E。<br>于是根据中序序列分为两棵树ABCD和FG，由后序序列的BDCA FGE，知道A是E的左孩子，前序序列目前分析为EA。<br>再由中序序列的A BCDEFG，知道BCD是A结点的右子孙，再由后序序列的BDC AFGE知道C结点是A结点的右孩子，前序序列目前分析得到EAC。<br>中序序列AB C DEFG，得到B是C的左孩子，D是C的右孩子，所以前序序列目前分析结果为EACBD。<br>由后序序列BDCAF G E，得到G是E的右孩子，于是F就是G的孩子。如果你是在考试时做这道题目，时间就是分数、名次、学历，那么你根本不需关心F是G的左还是右孩子，前序遍历序列的最终结果就是EACBDGF。</p>
+<h3 id="6-8-6-推导遍历结果"><a href="#6-8-6-推导遍历结果" class="headerlink" title="6.8.6 推导遍历结果"></a>6.8.6 推导遍历结果</h3><p>题目是这样：二叉树的中序序列是ABCDEFG，后序序列是BDCAFGE，求前序序列。<br>这次简单点，由后序的BDCAFG E，得到E是根结点，因此前序首字母是E。<br>于是根据中序序列分为两棵树ABCD和FG，由后序序列的BDCA FGE，知道A是E的左孩子，前序序列目前分析为EA。<br>再由中序序列的A BCDEFG，知道BCD是A结点的右子孙，再由后序序列的BDC AFGE知道C结点是A结点的右孩子，前序序列目前分析得到EAC。<br>中序序列AB C DEFG，得到B是C的左孩子，D是C的右孩子，所以前序序列目前分析结果为EACBD。<br>由后序序列BDCAF G E，得到G是E的右孩子，于是F就是G的孩子。前序遍历序列的最终结果就是EACBDGF。  </p>
 <p>两个二叉树遍历的性质。</p>
 <ul>
 <li>已知前序遍历序列和中序遍历序列，可以唯一确定一棵二叉树。</li>
