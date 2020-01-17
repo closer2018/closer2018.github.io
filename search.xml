@@ -143,7 +143,128 @@ void  CreateALGraph(GraphAdjList *G)
 <h3 id="7-4-3-十字链表"><a href="#7-4-3-十字链表" class="headerlink" title="7.4.3 十字链表"></a>7.4.3 十字链表</h3><p>有向图的一种存储方法：十字链表是邻接表与逆邻接表的结合。<br>我们重新定义顶点表结点结构如表7-4-1所示。<br>表7-4-1<br>data|firstin|firstout<br>-|-|-<br>其中firstin表示入边表头指针，指向该顶点的入边表中第一个结点，firstout表示出边表头指针，指向该顶点的出边表中的第一个结点。<br>重新定义的边表结点结构如表7-4-2所示。<br>表7-4-2<br>tailvex|headvex|headlink|taillink<br>-|-|-|-<br>其中tailvex是指弧起点在顶点表的下标，headvex是指弧终点在顶点表中的下标，headlink是指入边表指针域，指向终点相同的下一条边，taillink是指边表指针域，指向起点相同的下一条边。如果是网，还可以再增加一个weight域来存储权值。<br>比如图7-4-10，顶点依然是存入一个一维数组{v0，v1，v2，v3}，实线箭头指针的图示完全与图7-4-7的邻接表相同。就以顶点v0来说，firstout 指向的是出边表中的第一个结点v3。所以v0边表结点的headvex=3，而tailvex其实就是当前顶点v0的下标0，由于v0只有一个出边顶点，所以headlink和taillink都是空。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-4-10.JPG?raw=true" alt="7-4-10"><br>我们重点需要来解释虚线箭头的含义，它其实就是此图的逆邻接表的表示。对于v0来说，它有两个顶点v1和v2的入边。因此v0的firstin指向顶点v1的边表结点中headvex为0的结点，如图7-4-10右图中的①。接着由入边结点的headlink指向下一个入边顶点v2，如图中的②。对于顶点v1，它有一个入边顶点v2，所以它的firstin指向顶点v2的边表结点中headvex为1的结点，如图中的③。顶点v2和v3也是同样有一个入边顶点，如图中④和⑤。<br>十字链表的好处就是因为把邻接表和逆邻接表整合在了一起，这样既容易找到以vi为尾的弧，也容易找到以vi为头的弧，因而容易求得顶点的出度和入度。而且它除了结构复杂一点外，其实创建图算法的时间复杂度是和邻接表相同的，因此，在有向图的应用中，十字链表是非常好的数据结构模型。  </p>
 <h3 id="7-4-4-邻接多重表"><a href="#7-4-4-邻接多重表" class="headerlink" title="7.4.4 邻接多重表"></a>7.4.4 邻接多重表</h3><p>仿照十字链表的方式，对边表结点的结构进行一些改造，可以优化无向图的邻接表的便操作。<br>重新定义的边表结点结构如表7-4-3所示。<br>ivex|ilink|jvex|jlink<br>-|-|-|-<br>其中<strong>ivex和jvex是与某条边依附的两个顶点在顶点表中下标。ilink 指向依附顶点ivex的下一条边，jlink 指向依附顶点jvex的下一条边。这就是邻接多重表结构</strong>。<br>我们来看结构示意图的绘制过程，理解了它是如何连线的，也就理解邻接多重表构造原理了。如图7-4-12所示，左图告诉我们它有4个顶点和5条边，显然，我们就应该先将4个顶点和5条边的边表结点画出来。由于是无向图，所以ivex是0、jvex是1还是反过来都是无所谓的，不过为了绘图方便，都将ivex值设置得与一旁的顶点下标相同。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-4-12.JPG?raw=true" alt="7-4-12"><br>我们开始连线，如图7-4-13。首先连线的①②③④就是将顶点的firstedge指向一条边，顶点下标要与ivex的值相同，这很好理解。接着，由于顶点v0的（v0，v1）边的邻边有（v0，v3）和（v0，v2）。因此⑤⑥的连线就是满足指向下一条依附于顶点v0的边的目标，注意ilink指向的结点的jvex一定要和它本身的ivex的值相同。同样的道理，连线⑦就是指（v1,v0）这条边，它是相当于顶点v1指向（v1，v2）边后的下一条。v2有三条边依附，所以在③之后就有了⑧⑨。连线⑩的就是顶点v3在连线④之后的下一条边。左图一共有5条边，所以右图有10条连线，完全符合预期。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-4-13.JPG?raw=true" alt="7-4-13"><br>到这里，大家应该可以明白，邻接多重表与邻接表的差别，仅仅是在于同一条边在邻接表中用两个结点表示，而在邻接多重表中只有一个结点。这样对边的操作就方便多了，若要删除左图的（v0，v2）这条边，只需要将右图的⑥⑨的链接指向改为^即可。由于各种基本操作的实现也和邻接表是相似的，这里我们就不讲解代码了。</p>
 <h3 id="7-4-5-边集数组"><a href="#7-4-5-边集数组" class="headerlink" title="7.4.5 边集数组"></a>7.4.5 边集数组</h3><p>边集数组是由两个一维数组构成。一个是存储顶点的信息；另一个是存储边的信息，这个边数组每个数据元素由一条边的起点下标（begin）、终点下标（end）和权（weight）组成。</p>
-<h2 id="7-5-图的遍历"><a href="#7-5-图的遍历" class="headerlink" title="7.5 图的遍历"></a>7.5 图的遍历</h2>]]></content>
+<h2 id="7-5-图的遍历"><a href="#7-5-图的遍历" class="headerlink" title="7.5 图的遍历"></a>7.5 图的遍历</h2><p>从图中某一顶点出发访遍图中其余顶点，且使每一个顶点仅被访问一次，这一过程就叫做图的遍历（Traversing Graph）。<br>对于图的遍历来说，如何避免因回路陷入死循环，就需要科学地设计遍历方案，通常有两种遍历次序方案：它们是深度优先遍历和广度优先遍历。  </p>
+<h3 id="7-5-1-深度优先遍历"><a href="#7-5-1-深度优先遍历" class="headerlink" title="7.5.1 深度优先遍历"></a>7.5.1 深度优先遍历</h3><p>深度优先遍历（Depth_FirstSearch），也有称为深度优先搜索，简称为DFS。<br>深度优先遍历其实就是一个递归的过程，就像是一棵树的前序遍历，从图中某个顶点v出发，访问此顶点，然后从v的未被访问的邻接点出发深度优先遍历图，直至图中所有和v有路径相通的顶点都被访问到。<br>若图中尚有顶点未被访问，则另选图中一个未曾被访问的顶点作起始点，重复上述过程，直至图中所有顶点都被访问到为止。<br>如果我们用的是邻接矩阵的方式，则代码如下：</p>
+<pre><code class="c">typedef int Boolean; /* Boolean是布尔类型,其值是TRUE或FALSE */
+Boolean visited[MAXVEX]; /* 访问标志的数组 */
+/* 邻接矩阵的深度优先递归算法 */
+void DFS(MGraph G, int i)
+{
+    int j;
+    visited[i] = TRUE;
+    printf(&quot;%c &quot;, G.vexs[i]);/* 打印顶点，也可以其它操作 */
+    for(j = 0; j &lt; G.numVertexes; j++)
+        if(G.arc[i][j] == 1 &amp;&amp; !visited[j])
+            DFS(G, j);/* 对为访问的邻接顶点递归调用 */
+}
+
+/* 邻接矩阵的深度遍历操作 */
+void DFSTraverse(MGraph G)
+{
+    int i;
+    for(i = 0; i &lt; G.numVertexes; i++)
+        visited[i] = FALSE; /* 初始所有顶点状态都是未访问过状态 */
+    for(i = 0; i &lt; G.numVertexes; i++)
+        if(!visited[i]) /* 对未访问过的顶点调用DFS，若是连通图，只会执行一次 */
+            DFS(G, i);
+}</code></pre>
+<p>代码的执行过程，其实就是我们刚才迷宫找寻所有顶点的过程。<br>如果图结构是邻接表结构，其DFSTraverse函数的代码是几乎相同的，只是在递归函数中因为将数组换成了链表而有不同，代码如下。  </p>
+<pre><code class="c">/* 邻接表的深度优先递归算法 */
+void DFS(GraphAdjList GL, int i)
+{
+    EdgeNode *p;
+    visited[i] = TRUE;
+    printf(&quot;%c &quot;,GL-&gt;adjList[i].data);/* 打印顶点,也可以其它操作 */
+    p = GL-&gt;adjList[i].firstedge;
+    while(p)
+    {
+        if(!visited[p-&gt;adjvex])
+            DFS(GL, p-&gt;adjvex);/* 对为访问的邻接顶点递归调用 */
+        p = p-&gt;next;
+    }
+}
+
+/* 邻接表的深度遍历操作 */
+void DFSTraverse(GraphAdjList GL)
+{
+    int i;
+    for(i = 0; i &lt; GL-&gt;numVertexes; i++)
+        visited[i] = FALSE; /* 初始所有顶点状态都是未访问过状态 */
+    for(i = 0; i &lt; GL-&gt;numVertexes; i++)
+        if(!visited[i]) /* 对未访问过的顶点调用DFS,若是连通图,只会执行一次 */ 
+            DFS(GL, i);
+}</code></pre>
+<p>对比两个不同存储结构的深度优先遍历算法，对于n个顶点e条边的图来说，邻接矩阵由于是二维数组，要查找每个顶点的邻接点需要访问矩阵中的所有元素，因此都需要O(n<sup>2</sup>)的时间。而邻接表做存储结构时，找邻接点所需的时间取决于顶点和边的数量，所以是O（n+e）。显然对于点多边少的稀疏图来说，邻接表结构使得算法在时间效率上大大提高。  </p>
+<h3 id="7-5-2-广度优先遍历"><a href="#7-5-2-广度优先遍历" class="headerlink" title="7.5.2 广度优先遍历"></a>7.5.2 广度优先遍历</h3><p>广度优先遍历（Breadth_First_Search），又称为广度优先搜索，简称BFS。<br>如果说图的深度优先遍历类似树的前序遍历，那么图的广度优先遍历就类似于树的层序遍历了。我们将图7-5-3的第一幅图稍微变形，变形原则是顶点A放置在最上第一层，让与它有边的顶点B、F为第二层，再让与B和F有边的顶点C、I、G、E为第三层，再将这四个顶点有边的D、H放在第四层，如图7-5-3的第二幅图所示。<br>此时在视觉上感觉图的形状发生了变化，其实顶点和边的关系还是完全相同的。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-5-3.JPG?raw=true" alt="7-5-3"><br>有了这个讲解，我们来看代码就非常容易了。以下是邻接矩阵结构的广度优先遍历算法。  </p>
+<pre><code class="c">/* 邻接矩阵的广度遍历算法 */
+void BFSTraverse(MGraph G)
+{
+    int i, j;
+    Queue Q;
+    for(i = 0; i &lt; G.numVertexes; i++)
+        visited[i] = FALSE;
+    InitQueue(&amp;Q);        /* 初始化一辅助用的队列 */
+    for(i = 0; i &lt; G.numVertexes; i++)  /* 对每一个顶点做循环 */
+    {
+        if (!visited[i])    /* 若是未访问过就处理 */
+        {
+            visited[i]=TRUE;        /* 设置当前顶点访问过 */
+            printf(&quot;%c &quot;, G.vexs[i]);/* 打印顶点，也可以其它操作 */
+            EnQueue(&amp;Q,i);        /* 将此顶点入队列 */
+            while(!QueueEmpty(Q))    /* 若当前队列不为空 */
+            {
+                DeQueue(&amp;Q,&amp;i);/* 将队对元素出队列，赋值给i */
+                for(j=0;j&lt;G.numVertexes;j++) 
+                {
+                    /* 判断其它顶点若与当前顶点存在边且未访问过  */
+                    if(G.arc[i][j] == 1 &amp;&amp; !visited[j])
+                    {
+                        visited[j]=TRUE;            /* 将找到的此顶点标记为已访问 */
+                        printf(&quot;%c &quot;, G.vexs[j]);    /* 打印顶点 */
+                        EnQueue(&amp;Q,j);                /* 将找到的此顶点入队列  */
+                    }
+                }
+            }
+        }
+    }
+}</code></pre>
+<p>对于邻接表的广度优先遍历，代码与邻接矩阵差异不大，代码如下。</p>
+<pre><code class="c">/* 邻接表的广度遍历算法 */
+void BFSTraverse(GraphAdjList GL)
+{
+    int i;
+    EdgeNode *p;
+    Queue Q;
+    for(i = 0; i &lt; GL-&gt;numVertexes; i++)
+        visited[i] = FALSE;
+    InitQueue(&amp;Q);
+    for(i = 0; i &lt; GL-&gt;numVertexes; i++)
+    {
+        if (!visited[i])
+        {
+            visited[i]=TRUE;
+            printf(&quot;%c &quot;,GL-&gt;adjList[i].data);/* 打印顶点,也可以其它操作 */
+            EnQueue(&amp;Q,i);
+            while(!QueueEmpty(Q))
+            {
+                DeQueue(&amp;Q,&amp;i);
+                p = GL-&gt;adjList[i].firstedge;    /* 找到当前顶点的边表链表头指针 */
+                while(p)
+                {
+                    if(!visited[p-&gt;adjvex])    /* 若此顶点未被访问 */
+                     {
+                        visited[p-&gt;adjvex]=TRUE;
+                        printf(&quot;%c &quot;,GL-&gt;adjList[p-&gt;adjvex].data);
+                        EnQueue(&amp;Q,p-&gt;adjvex);    /* 将此顶点入队列 */
+                    }
+                    p = p-&gt;next;    /* 指针指向下一个邻接点 */
+                }
+            }
+        }
+    }
+}</code></pre>
+<p>对比图的深度优先遍历与广度优先遍历算法，你会发现，它们在时间复杂度上是一样的，不同之处仅仅在于对顶点访问的顺序不同。可见两者在全图遍历上是没有优劣之分的，只是视不同的情况选择不同的算法。<br>不过如果图顶点和边非常多，不能在短时间内遍历完成，遍历的目的是为了寻找合适的顶点，那么选择哪种遍历就要仔细斟酌了。深度优先更适合目标比较明确，以找到目标为主要目的的情况，而广度优先更适合在不断扩大遍历范围时找到相对最优解的情况。  </p>
+<h2 id="7-6-最小生成树"><a href="#7-6-最小生成树" class="headerlink" title="7.6 最小生成树"></a>7.6 最小生成树</h2>]]></content>
       <categories>
         <category>读书笔记</category>
       </categories>
