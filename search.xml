@@ -365,7 +365,8 @@ void MiniSpanTree_Kruskal(MGraph G)
     }
 }</code></pre>
 <p>好了，我们来把克鲁斯卡尔（Kruskal）算法的实现定义归纳一下结束这一节的讲解。<br>假设N=（V,{E}）是连通网，则令最小生成树的初始状态为只有n个顶点而无边的非连通图T={V，{}}，图中每个顶点自成一个连通分量。在E中选择代价最小的边，若该边依附的顶点落在T中不同的连通分量上，则将此边加入到T中，否则舍去此边而选择下一条代价最小的边。依次类推，直至T中所有顶点都在同一连通分量上为止。<br>此算法的Find函数由边数e决定，时间复杂度为O（loge），而外面有一个for 循环e次。所以克鲁斯卡尔算法的时间复杂度为O（eloge）。<br>对比两个算法，克鲁斯卡尔算法主要是针对边来展开，边数少时效率会非常高，所以对于稀疏图有很大的优势；而普里姆算法对于稠密图，即边数非常多的情况会更好一些。  </p>
-<h2 id="7-7-最短路径"><a href="#7-7-最短路径" class="headerlink" title="7.7 最短路径"></a>7.7 最短路径</h2><p>对于网图来说，最短路径，是指两顶点之间经过的边上权值之和最少的路径，并且我们称路径上的第一个顶点是源点，最后一个顶点是终点。<br>迪杰斯特拉（Dijkstra）算法并不是一下子就求出了v0到Vn的最短路径，而是一步步求出它们之间顶点的最短路径，过程中都是基于已经求出的最短路径的基础上，求得更远顶点的最短路径，最终得到你要的结果。  </p>
+<h2 id="7-7-最短路径"><a href="#7-7-最短路径" class="headerlink" title="7.7 最短路径"></a>7.7 最短路径</h2><p>对于网图来说，最短路径，是指两顶点之间经过的边上权值之和最少的路径，并且我们称路径上的第一个顶点是源点，最后一个顶点是终点。  </p>
+<h3 id="7-7-1-迪杰斯特拉（Djkstra）算法"><a href="#7-7-1-迪杰斯特拉（Djkstra）算法" class="headerlink" title="7.7.1 迪杰斯特拉（Djkstra）算法"></a>7.7.1 迪杰斯特拉（Djkstra）算法</h3><p>迪杰斯特拉（Dijkstra）算法并不是一下子就求出了v0到Vn的最短路径，而是一步步求出它们之间顶点的最短路径，过程中都是基于已经求出的最短路径的基础上，求得更远顶点的最短路径，最终得到你要的结果。  </p>
 <pre><code class="c">#define MAXVEX 20
 #define INFINITY 65535
 typedef int Patharc[MAXVEX];    /* 用于存储最短路径下标的数组 */
@@ -408,7 +409,8 @@ void ShortestPath_Dijkstra(MGraph G, int v0, Patharc *P, ShortPathTable *D)
         }
     }
 }</code></pre>
-]]></content>
+<p>此算法的时间复杂度为O（n<sup>2</sup>）。  </p>
+<h3 id="7-7-2-弗洛伊德（Floyd）算法"><a href="#7-7-2-弗洛伊德（Floyd）算法" class="headerlink" title="7.7.2 弗洛伊德（Floyd）算法"></a>7.7.2 弗洛伊德（Floyd）算法</h3>]]></content>
       <categories>
         <category>读书笔记</category>
       </categories>
