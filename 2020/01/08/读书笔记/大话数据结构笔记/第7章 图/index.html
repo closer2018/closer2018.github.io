@@ -67,8 +67,10 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;closer2018&#x2F;picture&#x2F;blob&#x2F;master&#x2F;%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E7%AC%AC%E4%B8%83%E7%AB%A0&#x2F;7-6-7.JPG?raw&#x3D;true">
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;closer2018&#x2F;picture&#x2F;blob&#x2F;master&#x2F;%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E7%AC%AC%E4%B8%83%E7%AB%A0&#x2F;7-8-1.JPG?raw&#x3D;true">
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;closer2018&#x2F;picture&#x2F;blob&#x2F;master&#x2F;%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E7%AC%AC%E4%B8%83%E7%AB%A0&#x2F;7-8-2.JPG?raw&#x3D;true">
+<meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;closer2018&#x2F;picture&#x2F;blob&#x2F;master&#x2F;%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E7%AC%AC%E4%B8%83%E7%AB%A0&#x2F;7-9-4.JPG?raw&#x3D;true">
+<meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;closer2018&#x2F;picture&#x2F;blob&#x2F;master&#x2F;%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E7%AC%AC%E4%B8%83%E7%AB%A0&#x2F;7-10-1.JPG?raw&#x3D;true">
 <meta property="article:published_time" content="2020-01-08T05:05:04.000Z">
-<meta property="article:modified_time" content="2020-01-27T14:13:35.793Z">
+<meta property="article:modified_time" content="2020-01-29T12:30:54.776Z">
 <meta property="article:author" content="closer">
 <meta property="article:tag" content="读书笔记">
 <meta property="article:tag" content="数据结构">
@@ -256,7 +258,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-27 22:13:35" itemprop="dateModified" datetime="2020-01-27T22:13:35+08:00">2020-01-27</time>
+                <time title="修改时间：2020-01-29 20:30:54" itemprop="dateModified" datetime="2020-01-29T20:30:54+08:00">2020-01-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -304,14 +306,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>19k</span>
+              <span>23k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>17 分钟</span>
+              <span>21 分钟</span>
             </span>
 
         </div>
@@ -832,7 +834,99 @@ Status TopologicalSort(GraphAdjList GL)
         return OK;
 }</code></pre>
 <p>分析整个算法，对一个具有n个顶点e条弧的AOV网来说，扫描顶点表，将入度为0的顶点入栈的时间复杂为O（n），而之后的while循环中，每个顶点进一次栈，出一次栈，入度减1的操作共执行了e次，所以整个算法的时间复杂度为O（n+e）。  </p>
-<h2 id="7-9-关键路径"><a href="#7-9-关键路径" class="headerlink" title="7.9 关键路径"></a>7.9 关键路径</h2>
+<h2 id="7-9-关键路径"><a href="#7-9-关键路径" class="headerlink" title="7.9 关键路径"></a>7.9 关键路径</h2><p>在前面讲了AOV网的基础上，我们来介绍一个新的概念。在一个表示工程的带权有向图中，用顶点表示事件，用有向边表示活动，用边上的权值表示活动的持续时间，这种有向图的边表示活动的网，我们称之为AOE网（Activity On Edge Network）。<br>我们把AOE网中没有入边的顶点称为始点或源点，没有出边的顶点称为终点或汇点。<br>我们把路径上各个活动所持续的时间之和称为路径长度，从源点到汇点具有最大长度的路径叫关键路径，在关键路径上的活动叫关键活动。<br>如果我们需要缩短整个工期，去改进轮子的生产效率，哪怕改动成0.1也是无益于整个工期的变化，只有缩短关键路径上的关键活动时间才可以减少整个工期长度。<br>那么现在的问题就是如何找出关键路径。  </p>
+<h3 id="7-9-1-关键路径算法原理"><a href="#7-9-1-关键路径算法原理" class="headerlink" title="7.9.1 关键路径算法原理"></a>7.9.1 关键路径算法原理</h3><p>我们只需要找到所有活动的最早开始时间和最晚开始时间，并且比较它们，如果相等就意味着此活动是关键活动，活动间的路径为关键路径。如果不等，则就不是。<br>为此，我们需要定义如下几个参数。</p>
+<ol>
+<li>事件的最早发生时间etv（earliest time of vertex）：即顶点vk的最早发生时间。</li>
+<li>事件的最晚发生时间ltv（latest time of vertex）：即顶点Vk的最晚发生时间，也就是每个顶点对应的事件最晚需要开始的时间，超出此时间将会延误整个工期。</li>
+<li>活动的最早开工时间ete（earliest time ofedge）：即弧ak的最早发生时间。</li>
+<li>活动的最晚开工时间lte（latest time of edge）：即弧ak的最晚发生时间，也就是不推迟工期的最晚开工时间。  </li>
+</ol>
+<p>我们是由1和2可以求得3和4，然后再根据ete[k]是否与lte[k]相等来判断ak是否是关键活动。  </p>
+<h3 id="7-9-2-关键路径算法"><a href="#7-9-2-关键路径算法" class="headerlink" title="7.9.2 关键路径算法"></a>7.9.2 关键路径算法</h3><p>我们将图7-9-2的AOE网转化为邻接表结构如图7-9-4所示，注意与拓扑排序时邻接表结构不同的地方在于，这里弧链表增加了weight域，用来存储弧的权值。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-9-4.JPG?raw=true" alt="7-9-4"><br>求事件的最早发生时间etv的过程，就是我们从头至尾找拓扑序列的过程，因此，在求关键路径之前，需要先调用一次拓扑序列算法的代码来计算etv和拓扑序列列表。为此，我们首先在程序开始处声明几个全局变量。  </p>
+<pre><code class="c">int *etv,*ltv; /* 事件最早发生时间和最迟发生时间数组，全局变量 */
+int *stack2;   /* 用于存储拓扑序列的栈 */
+int top2;      /* 用于stack2的指针 */</code></pre>
+<p>其中stack2用来存储拓扑序列，以便后面求关键路径时使用。<br>下面是改进过的求拓扑序列算法。  </p>
+<pre><code class="c">/* 拓扑排序,用于关键路径计算 */
+Status TopologicalSort(GraphAdjList GL)
+{    /* 若GL无回路，则输出拓扑排序序列并返回1，若有回路返回0。 */
+    EdgeNode *e;
+    int i,k,gettop;
+    int top=0;  /* 用于栈指针下标  */
+    int count=0;/* 用于统计输出顶点的个数 */
+    int *stack;    /* 建栈将入度为0的顶点入栈  */
+    stack=(int *)malloc(GL-&gt;numVertexes * sizeof(int) );
+    for(i = 0; i&lt;GL-&gt;numVertexes; i++)
+        if(0 == GL-&gt;adjList[i].in) /* 将入度为0的顶点入栈 */
+            stack[++top]=i;
+
+    top2=0;         /* 初始化为0 */
+    etv=(int *)malloc(GL-&gt;numVertexes * sizeof(int) ); /* 事件最早发生时间数组 */
+    for(i=0; i&lt;GL-&gt;numVertexes; i++)
+        etv[i]=0;    /* 初始化为0 */
+    stack2=(int *)malloc(GL-&gt;numVertexes * sizeof(int) );/* 初始化拓扑序列栈 */
+
+    printf(&quot;TopologicalSort:\t&quot;);
+    while(top!=0)
+    {
+        gettop=stack[top--];
+        printf(&quot;%d -&gt; &quot;,GL-&gt;adjList[gettop].data);
+        count++;        /* 输出i号顶点，并计数 */
+
+        stack2[++top2]=gettop;        /* 将弹出的顶点序号压入拓扑序列的栈 */
+
+        for(e = GL-&gt;adjList[gettop].firstedge; e; e = e-&gt;next)
+        {
+            k=e-&gt;adjvex;
+            if( !(--GL-&gt;adjList[k].in) )        /* 将i号顶点的邻接点的入度减1，如果减1后为0，则入栈 */
+                stack[++top]=k;
+
+            if((etv[gettop] + e-&gt;weight)&gt;etv[k])    /* 求各顶点事件的最早发生时间etv值 */
+                etv[k] = etv[gettop] + e-&gt;weight;
+        }
+    }
+    if(count &lt; GL-&gt;numVertexes)
+        return ERROR;
+    else
+        return OK;
+}</code></pre>
+<p>下面我们来看求关键路径的算法代码。</p>
+<pre><code class="c">/* 求关键路径,GL为有向网，输出G的各项关键活动 */
+void CriticalPath(GraphAdjList GL)
+{
+    EdgeNode *e;
+    int i,gettop,k,j;
+    int ete,lte;  /* 声明活动最早发生时间和最迟发生时间变量 */
+    TopologicalSort(GL);   /* 求拓扑序列，计算数组etv和stack2的值 */
+    ltv=(int *)malloc(GL-&gt;numVertexes*sizeof(int));/* 事件最早发生时间数组 */
+    for(i=0; i&lt;GL-&gt;numVertexes; i++)
+        ltv[i]=etv[GL-&gt;numVertexes-1];    /* 初始化 */
+    while(top2!=0)    /* 出栈是求ltv */
+    {
+        gettop=stack2[top2--];
+        for(e = GL-&gt;adjList[gettop].firstedge; e; e = e-&gt;next)
+        {/* 求各顶点事件的最迟发生时间ltv值 */
+            k=e-&gt;adjvex;
+            if(ltv[k] - e-&gt;weight &lt; ltv[gettop])
+                ltv[gettop] = ltv[k] - e-&gt;weight;
+        }
+    }
+    for(j=0; j&lt;GL-&gt;numVertexes; j++)        /* 求ete,lte和关键活动 */
+    {
+        for(e = GL-&gt;adjList[j].firstedge; e; e = e-&gt;next)
+        {
+            k=e-&gt;adjvex;
+            ete = etv[j];        /* 活动最早发生时间 */
+            lte = ltv[k] - e-&gt;weight; /* 活动最迟发生时间 */
+            if(ete == lte)    /* 两者相等即在关键路径上 */
+                printf(&quot;&lt;v%d - v%d&gt; length: %d \n&quot;,GL-&gt;adjList[j].data,GL-&gt;adjList[k].data,e-&gt;weight);
+        }
+    }
+}</code></pre>
+<p>最终求关键路径算法的时间复杂度依然是O（n+e）。<br>实践证明，通过这样的算法对于工程的前期工期估算和中期的计划调整都有很大的帮助。不过注意，本例是唯一一条关键路径，这并不等于不存在多条关键路径的有向无环图。如果是多条关键路径，则单是提高一条关键路径上的关键活动的速度并不能导致整个工程缩短工期，而必须提高同时在几条关键路径上的活动的速度。这就像仅仅是有事业的成功，而没有健康的身体以及快乐的生活，是根本谈不上幸福的人生一样，三者缺一不可。  </p>
+<h2 id="7-10-总结回顾"><a href="#7-10-总结回顾" class="headerlink" title="7.10 总结回顾"></a>7.10 总结回顾</h2><p>图是计算机科学中非常常用的一类数据结构，有许许多多的计算问题都是用图来定义的。由于图也是最复杂的数据结构，对它讲解时，涉及到数组、链表、栈、队列、树等之前学的几乎所有数据结构。因此从某种角度来说，学好了图，基本就等于理解了数据结构这门课的精神。<br>我们在图的定义这一节，介绍了一大堆定义和术语，一开始可能会有些迷茫，不过一回生二回熟，多读几遍，基本都可以理解并记住它们的特征，在图的定义这一节的末尾，我们已经有所总结，这里就不再赘述了。<br>图的存储结构我们一共讲了五种，如图7-10-1所示，其中比较重要的是邻接矩阵和邻接表，它们分别代表着边集是用数组还是链表的方式存储。十字链表是邻接矩阵的一种升级，而邻接多重表则是邻接表的升级。边集数组更多考虑的是对边的关注。用什么存储结构需要具体问题具体分析，通常稠密图，或读存数据较多，结构修改较少的图，用邻接矩阵要更合适，反之则应该考虑邻接表。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-10-1.JPG?raw=true" alt="7-10-1"><br>图的遍历分为深度和广度两种，各有优缺点，就像人在追求卓越时，是着重深度还是看重广度，总是很难说得清楚。<br>图的应用是我们这一章浓墨重彩的一部分，一共谈了三种应用：最小生成树、最短路径和有向无环图的应用。<br>最小生成树，我们讲了两种算法：普里姆（Prim）算法和克鲁斯卡尔（Kruskal）算法。普里姆算法像是走一步看一步的思维方式，逐步生成最小生成树。而克鲁斯卡尔算法则更有全局意识，直接从图中最短权值的边入手，找寻最后的答案。<br>最短路径的现实应用非常多，我们也介绍了两种算法。迪杰斯特拉（Dijkstra）算法更强调单源顶点查找路径的方式，比较符合我们正常的思路，容易理解原理，但算法代码相对复杂。而弗洛伊德（Floyd）算法则完全抛开了单点的局限思维方式，巧妙地应用矩阵的变换，用最清爽的代码实现了多顶点间最短路径求解的方案，原理理解有难度，但算法编写很简洁。<br>有向无环图时常应用于工程规划中，对于整个工程或系统来说，我们一方面关心的是工程能否顺利进行的问题，通过拓扑排序的方式，我们可以有效地分析出一个有向图是否存在环，如果不存在，那它的拓扑序列是什么？另一方面关心的是整个工程完成所必须的最短时间问题，利用求关键路径的算法，可以得到最短完成工程的工期以及关键的活动有哪些。  </p>
+
     </div>
 
     
@@ -945,7 +1039,7 @@ Status TopologicalSort(GraphAdjList GL)
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-7-2-图的定义"><span class="nav-text">7.1-7.2 图的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-1-各种图定义"><span class="nav-text">7.2.1 各种图定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-2-图的顶点与边间关系"><span class="nav-text">7.2.2 图的顶点与边间关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-3-连通图相关术语"><span class="nav-text">7.2.3 连通图相关术语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-4-图的定义与术语总结"><span class="nav-text">7.2.4 图的定义与术语总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-3-图的抽象数据类型"><span class="nav-text">7.3 图的抽象数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-4-图的存储结构"><span class="nav-text">7.4 图的存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-1-邻接矩阵"><span class="nav-text">7.4.1 邻接矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-2-邻接表"><span class="nav-text">7.4.2 邻接表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-3-十字链表"><span class="nav-text">7.4.3 十字链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-4-邻接多重表"><span class="nav-text">7.4.4 邻接多重表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-5-边集数组"><span class="nav-text">7.4.5 边集数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-5-图的遍历"><span class="nav-text">7.5 图的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-5-1-深度优先遍历"><span class="nav-text">7.5.1 深度优先遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-5-2-广度优先遍历"><span class="nav-text">7.5.2 广度优先遍历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-6-最小生成树"><span class="nav-text">7.6 最小生成树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-6-1-普里姆（Prim）算法"><span class="nav-text">7.6.1 普里姆（Prim）算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-6-2-克鲁斯卡尔（Kruskal）算法"><span class="nav-text">7.6.2 克鲁斯卡尔（Kruskal）算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-7-最短路径"><span class="nav-text">7.7 最短路径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-7-1-迪杰斯特拉（Djkstra）算法"><span class="nav-text">7.7.1 迪杰斯特拉（Djkstra）算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-7-2-弗洛伊德（Floyd）算法"><span class="nav-text">7.7.2 弗洛伊德（Floyd）算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-8-拓扑排序"><span class="nav-text">7.8 拓扑排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-8-1-拓扑排序介绍"><span class="nav-text">7.8.1 拓扑排序介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-8-2-拓扑排序算法"><span class="nav-text">7.8.2 拓扑排序算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-9-关键路径"><span class="nav-text">7.9 关键路径</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-7-2-图的定义"><span class="nav-text">7.1-7.2 图的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-1-各种图定义"><span class="nav-text">7.2.1 各种图定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-2-图的顶点与边间关系"><span class="nav-text">7.2.2 图的顶点与边间关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-3-连通图相关术语"><span class="nav-text">7.2.3 连通图相关术语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-4-图的定义与术语总结"><span class="nav-text">7.2.4 图的定义与术语总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-3-图的抽象数据类型"><span class="nav-text">7.3 图的抽象数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-4-图的存储结构"><span class="nav-text">7.4 图的存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-1-邻接矩阵"><span class="nav-text">7.4.1 邻接矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-2-邻接表"><span class="nav-text">7.4.2 邻接表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-3-十字链表"><span class="nav-text">7.4.3 十字链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-4-邻接多重表"><span class="nav-text">7.4.4 邻接多重表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-5-边集数组"><span class="nav-text">7.4.5 边集数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-5-图的遍历"><span class="nav-text">7.5 图的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-5-1-深度优先遍历"><span class="nav-text">7.5.1 深度优先遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-5-2-广度优先遍历"><span class="nav-text">7.5.2 广度优先遍历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-6-最小生成树"><span class="nav-text">7.6 最小生成树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-6-1-普里姆（Prim）算法"><span class="nav-text">7.6.1 普里姆（Prim）算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-6-2-克鲁斯卡尔（Kruskal）算法"><span class="nav-text">7.6.2 克鲁斯卡尔（Kruskal）算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-7-最短路径"><span class="nav-text">7.7 最短路径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-7-1-迪杰斯特拉（Djkstra）算法"><span class="nav-text">7.7.1 迪杰斯特拉（Djkstra）算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-7-2-弗洛伊德（Floyd）算法"><span class="nav-text">7.7.2 弗洛伊德（Floyd）算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-8-拓扑排序"><span class="nav-text">7.8 拓扑排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-8-1-拓扑排序介绍"><span class="nav-text">7.8.1 拓扑排序介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-8-2-拓扑排序算法"><span class="nav-text">7.8.2 拓扑排序算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-9-关键路径"><span class="nav-text">7.9 关键路径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-9-1-关键路径算法原理"><span class="nav-text">7.9.1 关键路径算法原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-9-2-关键路径算法"><span class="nav-text">7.9.2 关键路径算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-10-总结回顾"><span class="nav-text">7.10 总结回顾</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1018,13 +1112,13 @@ Status TopologicalSort(GraphAdjList GL)
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">87k</span>
+    <span title="站点总字数">91k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:19</span>
+    <span title="站点阅读时长">1:23</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.1.0
   </div>
