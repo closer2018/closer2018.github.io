@@ -57,7 +57,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;closer2018&#x2F;picture&#x2F;blob&#x2F;master&#x2F;%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;%E7%AC%AC%E5%85%AB%E7%AB%A0&#x2F;8-2-1.JPG?raw&#x3D;true">
 <meta property="article:published_time" content="2020-01-29T12:34:03.000Z">
-<meta property="article:modified_time" content="2020-01-29T15:01:29.421Z">
+<meta property="article:modified_time" content="2020-01-30T03:28:34.062Z">
 <meta property="article:author" content="closer">
 <meta property="article:tag" content="读书笔记">
 <meta property="article:tag" content="数据结构">
@@ -237,10 +237,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-01-29 20:34:03 / 修改时间：23:01:29" itemprop="dateCreated datePublished" datetime="2020-01-29T20:34:03+08:00">2020-01-29</time>
+              <time title="创建时间：2020-01-29 20:34:03" itemprop="dateCreated datePublished" datetime="2020-01-29T20:34:03+08:00">2020-01-29</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-30 11:28:34" itemprop="dateModified" datetime="2020-01-30T11:28:34+08:00">2020-01-30</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -287,14 +293,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.4k</span>
+              <span>3.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -307,7 +313,7 @@
 
       
         <p><strong>查找（Searching）就是根据给定的某个值，在查找表中确定一个其关键字等于给定值的数据元素（或记录）。</strong></p>
-<h2 id="8-1-8-2-查找概论"><a href="#8-1-8-2-查找概论" class="headerlink" title="8.1-8.2 查找概论"></a>8.1-8.2 查找概论</h2><p>查找表（Search Table）是由同一类型的数据元素（或记录）构成的集合。例如图8-2-1就是一个查找表。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AB%E7%AB%A0/8-2-1.JPG?raw=true" alt="8-2-1"><br>关键字（Key）是数据元素中某个数据项的值，又称为键值，用它可以标识一个数据元素。也可以标识一个记录的某个数据项（字段），我们称为关键码，如图8-2-1中①和②所示。<br>若此关键字可以唯一地标识一个记录，则称此关键字为主关键字（Primary Key）。注意这也就意味着，对不同的记录，其主关键字均不相同。主关键字所在的数据项称为主关键码，如图8-2-1中③和④所示。<br>那么对于那些可以识别多个数据元素（或记录）的关键字，我们称为次关键字（Secondary Key），如图8-2-1中⑤所示。次关键字也可以理解为是不以唯一标识一个数据元素（或记录）的关键字，它对应的数据项就是次关键码。<br>查找表按照操作方式来分有两大种：<strong>静态查找表和动态查找表</strong>。<br>静态查找表（Static Search Table）：只作查找操作的查找表。它的主要操作有：</p>
+<h2 id="8-1-8-2-查找概论"><a href="#8-1-8-2-查找概论" class="headerlink" title="8.1-8.2 查找概论"></a>8.1-8.2 查找概论</h2><p>查找表（Search Table）是由同一类型的数据元素（或记录）构成的集合。例如图8-2-1就是一个查找表。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AB%E7%AB%A0/8-2-1.JPG?raw=true" alt="8-2-1"><br>关键字（Key）是数据元素中某个数据项的值，又称为键值，用它可以标识一个数据元素。也可以标识一个记录的某个数据项（字段），我们称为关键码，如图8-2-1中①和②所示。  <a id="more"></a><br>若此关键字可以唯一地标识一个记录，则称此关键字为主关键字（Primary Key）。注意这也就意味着，对不同的记录，其主关键字均不相同。主关键字所在的数据项称为主关键码，如图8-2-1中③和④所示。<br>那么对于那些可以识别多个数据元素（或记录）的关键字，我们称为次关键字（Secondary Key），如图8-2-1中⑤所示。次关键字也可以理解为是不以唯一标识一个数据元素（或记录）的关键字，它对应的数据项就是次关键码。<br>查找表按照操作方式来分有两大种：<strong>静态查找表和动态查找表</strong>。<br>静态查找表（Static Search Table）：只作查找操作的查找表。它的主要操作有：</p>
 <ol>
 <li>查询某个“特定的”数据元素是否在查找表中。</li>
 <li>检索某个“特定的”数据元素和各种属性。</li>
@@ -361,6 +367,37 @@ int Binary_Search(int *a,int n,int key){
     return 0;
 }</code></pre>
 <p>折半算法的时间复杂度为O（logn），它显然远远好于顺序查找的O（n）时间复杂度。<br>不过由于折半查找的前提条件是需要有序表顺序存储，对于静态查找表，一次排序后不再变化，这样的算法已经比较好了。但对于需要频繁执行插入或删除操作的数据集来说，维护有序的排序会带来不小的工作量，那就不建议使用。  </p>
+<h3 id="8-4-2-插值查找"><a href="#8-4-2-插值查找" class="headerlink" title="8.4.2 插值查找"></a>8.4.2 插值查找</h3><p>折半查找代码的第6句，我们略微等式变换后得到：<br><code>mid=(low+high)/2=low+1/2(high-low);</code><br>我们将在折半查找算法的代码中更改一下，第6行代码如下：<br><code>mid=low+ (high-low)*(key-a[low])/(a[high]-a[low]); /* 插值 */</code><br><strong>插值查找（Interpolation Search）是根据要查找的关键字key与查找表中最大最小记录的关键字比较后的查找方法，其核心就在于插值的计算公式<code>(key-a[low])/(a[high]-a[low])</code>。</strong><br>应该说，从时间复杂度来看，它也是O（logn），但对于表长较大，而关键字分布又比较均匀的查找表来说，插值查找算法的平均性能比折半查找要好得多。反之，数组中如果分布类似{0，1，2，2000，2001……，999998，999999}这种极端不均匀的数据，用插值查找未必是很合适的选择。  </p>
+<h3 id="8-4-3-斐波那契查找"><a href="#8-4-3-斐波那契查找" class="headerlink" title="8.4.3 斐波那契查找"></a>8.4.3 斐波那契查找</h3><p>斐波那契查找（Fibonacci Search），它是利用了黄金分割原理来实现的。<br>下面我们根据代码来看程序是如何运行的。  </p>
+<pre><code class="c">/* 斐波那契查找 */
+int Fibonacci_Search(int *a,int n,int key)
+{
+    int low,high,mid,i,k=0;
+    low=1;    /* 定义最低下标为记录首位 */
+    high=n;    /* 定义最高下标为记录末位 */
+    while(n&gt;F[k]-1) /* 计算n位于斐波那契数列的位置 */
+        k++;
+    for (i=n;i&lt;F[k]-1;i++) /* 将不满的数值补全 */
+        a[i]=a[n];
+    while(low&lt;=high){
+        mid=low+F[k-1]-1;
+        if (key&lt;a[mid]){
+            high=mid-1;
+            k=k-1;
+        }
+        else if (key&gt;a[mid]){
+            low=mid+1;
+            k=k-2;
+        }
+        else{
+            if (mid&lt;=n)
+                return mid;        /* 若相等则说明mid即为查找到的位置 */
+            else
+                return n;
+        }
+    }
+    return 0;
+}</code></pre>
 
     </div>
 
@@ -471,7 +508,7 @@ int Binary_Search(int *a,int n,int key){
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#8-1-8-2-查找概论"><span class="nav-text">8.1-8.2 查找概论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-3-顺序表查找"><span class="nav-text">8.3 顺序表查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-1-顺序表查找算法"><span class="nav-text">8.3.1 顺序表查找算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-2-顺序表查找优化"><span class="nav-text">8.3.2 顺序表查找优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-4-有序表查找"><span class="nav-text">8.4 有序表查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4-1-折半查找"><span class="nav-text">8.4.1 折半查找</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#8-1-8-2-查找概论"><span class="nav-text">8.1-8.2 查找概论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-3-顺序表查找"><span class="nav-text">8.3 顺序表查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-1-顺序表查找算法"><span class="nav-text">8.3.1 顺序表查找算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-2-顺序表查找优化"><span class="nav-text">8.3.2 顺序表查找优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-4-有序表查找"><span class="nav-text">8.4 有序表查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4-1-折半查找"><span class="nav-text">8.4.1 折半查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4-2-插值查找"><span class="nav-text">8.4.2 插值查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4-3-斐波那契查找"><span class="nav-text">8.4.3 斐波那契查找</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -544,13 +581,13 @@ int Binary_Search(int *a,int n,int key){
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">94k</span>
+    <span title="站点总字数">95k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:25</span>
+    <span title="站点阅读时长">1:26</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.1.0
   </div>
