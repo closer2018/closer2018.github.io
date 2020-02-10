@@ -70,7 +70,7 @@
 <meta property="og:image" content="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-9-4.JPG?raw=true">
 <meta property="og:image" content="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-10-1.JPG?raw=true">
 <meta property="article:published_time" content="2020-01-08T05:05:04.000Z">
-<meta property="article:modified_time" content="2020-01-29T12:30:54.776Z">
+<meta property="article:modified_time" content="2020-02-10T11:04:54.129Z">
 <meta property="article:author" content="closer">
 <meta property="article:tag" content="读书笔记">
 <meta property="article:tag" content="数据结构">
@@ -258,7 +258,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-29 20:30:54" itemprop="dateModified" datetime="2020-01-29T20:30:54+08:00">2020-01-29</time>
+                <time title="修改时间：2020-02-10 19:04:54" itemprop="dateModified" datetime="2020-02-10T19:04:54+08:00">2020-02-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -686,7 +686,7 @@ void MiniSpanTree_Kruskal(MGraph G)
         }
     }
 }</code></pre>
-<p>好了，我们来把克鲁斯卡尔（Kruskal）算法的实现定义归纳一下结束这一节的讲解。<br>假设N=（V,{E}）是连通网，则令最小生成树的初始状态为只有n个顶点而无边的非连通图T={V，{}}，图中每个顶点自成一个连通分量。在E中选择代价最小的边，若该边依附的顶点落在T中不同的连通分量上，则将此边加入到T中，否则舍去此边而选择下一条代价最小的边。依次类推，直至T中所有顶点都在同一连通分量上为止。<br>此算法的Find函数由边数e决定，时间复杂度为O（loge），而外面有一个for 循环e次。所以克鲁斯卡尔算法的时间复杂度为O（eloge）。<br>对比两个算法，克鲁斯卡尔算法主要是针对边来展开，边数少时效率会非常高，所以对于稀疏图有很大的优势；而普里姆算法对于稠密图，即边数非常多的情况会更好一些。  </p>
+<p>好了，我们来把克鲁斯卡尔（Kruskal）算法的实现定义归纳一下结束这一节的讲解。<br>假设N=（V,{E}）是连通网，则令最小生成树的初始状态为只有n个顶点而无边的非连通图T={V，{}}，图中每个顶点自成一个连通分量。在E中选择代价最小的边，若该边依附的顶点落在T中不同的连通分量上，则将此边加入到T中，否则舍去此边而选择下一条代价最小的边。依次类推，直至T中所有顶点都在同一连通分量上为止。<br>此算法的Find函数由边数e决定，时间复杂度为O（㏒e），而外面有一个for 循环e次。所以克鲁斯卡尔算法的时间复杂度为O（e㏒e）。<br>对比两个算法，克鲁斯卡尔算法主要是针对边来展开，边数少时效率会非常高，所以对于稀疏图有很大的优势；而普里姆算法对于稠密图，即边数非常多的情况会更好一些。  </p>
 <h2 id="7-7-最短路径"><a href="#7-7-最短路径" class="headerlink" title="7.7 最短路径"></a>7.7 最短路径</h2><p>对于网图来说，最短路径，是指两顶点之间经过的边上权值之和最少的路径，并且我们称路径上的第一个顶点是源点，最后一个顶点是终点。  </p>
 <h3 id="7-7-1-迪杰斯特拉（Djkstra）算法"><a href="#7-7-1-迪杰斯特拉（Djkstra）算法" class="headerlink" title="7.7.1 迪杰斯特拉（Djkstra）算法"></a>7.7.1 迪杰斯特拉（Djkstra）算法</h3><p>迪杰斯特拉（Dijkstra）算法并不是一下子就求出了v0到Vn的最短路径，而是一步步求出它们之间顶点的最短路径，过程中都是基于已经求出的最短路径的基础上，求得更远顶点的最短路径，最终得到你要的结果。  </p>
 <pre><code class="c">#define MAXVEX 20
@@ -1112,13 +1112,13 @@ void CriticalPath(GraphAdjList GL)
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">105k</span>
+    <span title="站点总字数">113k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:35</span>
+    <span title="站点阅读时长">1:43</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
