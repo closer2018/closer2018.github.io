@@ -4,6 +4,10 @@
     <title>如何在markdown中优雅的编辑数学公式</title>
     <url>/2020/02/12/hexo/%E5%A6%82%E4%BD%95%E5%9C%A8markdown%E4%B8%AD%E4%BC%98%E9%9B%85%E7%9A%84%E7%BC%96%E8%BE%91%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/</url>
     <content><![CDATA[<h2 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h2><p>下载IDE软件vscode，安装插件<code>Markdown Preview Enhanced</code>(简称MPE)。<br><a href="https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/" target="_blank" rel="noopener">MPE官方使用文档</a>。  </p>
+<h2 id="hexo博客中使用-KaTeX-来渲染数学表达式"><a href="#hexo博客中使用-KaTeX-来渲染数学表达式" class="headerlink" title="hexo博客中使用 KaTeX 来渲染数学表达式"></a>hexo博客中使用 KaTeX 来渲染数学表达式</h2><ol>
+<li>在Next主题配置下面开启mathjax。（不知道怎么开启的小伙伴请查询官方文档或者github）</li>
+<li>在博客需要用到公式的md文件的头文件中添加一句：<code>mathjax: true</code>。</li>
+</ol>
 <h2 id="上下标及标记"><a href="#上下标及标记" class="headerlink" title="上下标及标记"></a>上下标及标记</h2><a id="more"></a>
 <ol>
 <li>默认下的分隔符：<br><code>$...$</code> 或者<code>\(...\)</code>中的数学表达式将会在行内显示。<br><code>$$...$$</code> 或者 <code>\[...\]</code> 或者 <code>```math</code> 中的数学表达式将会在块内显示。  </li>
@@ -2684,12 +2688,12 @@ npm install hexo-generator-index-pin-top --save   #置顶插件</code></pre>
     <url>/2019/12/01/hexo/hexo%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h2 id="hexo上传部署三连杀命令-先cd进入git目录"><a href="#hexo上传部署三连杀命令-先cd进入git目录" class="headerlink" title="hexo上传部署三连杀命令(先cd进入git目录)"></a>hexo上传部署三连杀命令(先<code>cd</code>进入git目录)</h2><pre><code class="bash">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></pre>
 <a id="more"></a>
-<h3 id="我们运行测试时，经常用到的有三个命令"><a href="#我们运行测试时，经常用到的有三个命令" class="headerlink" title="我们运行测试时，经常用到的有三个命令"></a>我们运行测试时，经常用到的有三个命令</h3><pre><code class="bash">hexo clean #用来清理缓存文件
+<h2 id="我们运行测试时，经常用到的有三个命令"><a href="#我们运行测试时，经常用到的有三个命令" class="headerlink" title="我们运行测试时，经常用到的有三个命令"></a>我们运行测试时，经常用到的有三个命令</h2><pre><code class="bash">hexo clean #用来清理缓存文件
 hexo g      #生成文件
 hexo  d   #上传到服务器</code></pre>
-<h4 id="本地检测时运行"><a href="#本地检测时运行" class="headerlink" title="本地检测时运行"></a>本地检测时运行</h4><pre><code class="bash">hexo s</code></pre>
+<h2 id="本地检测时运行"><a href="#本地检测时运行" class="headerlink" title="本地检测时运行"></a>本地检测时运行</h2><pre><code class="bash">hexo s</code></pre>
 <p>然后打开浏览器，输入localhost:4000，就能看到博客了。<br>这样说明本地环境搭建完成。</p>
-<h3 id="特别感谢B站up主CodeSheep的帮助和细心指导"><a href="#特别感谢B站up主CodeSheep的帮助和细心指导" class="headerlink" title="特别感谢B站up主CodeSheep的帮助和细心指导"></a>特别感谢<a href="https://space.bilibili.com/384068749/" target="_blank" rel="noopener">B站up主CodeSheep</a>的帮助和细心指导</h3>]]></content>
+<h2 id="特别感谢B站up主CodeSheep的帮助和细心指导"><a href="#特别感谢B站up主CodeSheep的帮助和细心指导" class="headerlink" title="特别感谢B站up主CodeSheep的帮助和细心指导"></a>特别感谢<a href="https://space.bilibili.com/384068749/" target="_blank" rel="noopener">B站up主CodeSheep</a>的帮助和细心指导</h2>]]></content>
       <categories>
         <category>hexo</category>
       </categories>
