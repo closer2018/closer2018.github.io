@@ -338,7 +338,7 @@
 <p>为了提高查找的效率，我们需要专门为查找操作设置数据结构，这种<strong>面向查找操作的数据结构称为查找结构</strong>。<br>从逻辑上来说，查找所基于的数据结构是集合，集合中的记录之间没有本质关系。可是要想获得较高的查找性能，我们就不能不改变数据元素之间的关系，在存储时可以将查找集合组织成表、树等结构。<br>例如，对于静态查找表来说，我们不妨应用线性表结构来组织数据，这样可以使用顺序查找算法，如果再对主关键字排序，则可以应用折半查找等技术进行高效的查找。<br>如果是需要动态查找，则会复杂一些，可以考虑二叉排序树的查找技术。  </p>
 <h2 id="8-3-顺序表查找"><a href="#8-3-顺序表查找" class="headerlink" title="8.3 顺序表查找"></a>8.3 顺序表查找</h2><p><strong>顺序查找（Sequential Search）又叫线性查找，是最基本的查找技术，它的查找过程是：从表中第一个（或最后一个）记录开始，逐个进行记录的关键字和给定值比较，若某个记录的关键字和给定值相等，则查找成功，找到所查的记录；如果直到最后一个（或第一个）记录，其关键字和给定值比较都不等时，则表中没有所查的记录，查找不成功。</strong></p>
 <h3 id="8-3-1-顺序表查找算法"><a href="#8-3-1-顺序表查找算法" class="headerlink" title="8.3.1 顺序表查找算法"></a>8.3.1 顺序表查找算法</h3><p>顺序查找的算法实现如下：</p>
-<pre><code class="c">/* 无哨兵顺序查找，a为数组，n为要查找的数组个数，key为要查找的关键字 */
+<pre><code class="lang-c">/* 无哨兵顺序查找，a为数组，n为要查找的数组个数，key为要查找的关键字 */
 int Sequential_Search(int *a,int n,int key)
 {
     int i;
@@ -347,9 +347,10 @@ int Sequential_Search(int *a,int n,int key)
             return i;
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h3 id="8-3-2-顺序表查找优化"><a href="#8-3-2-顺序表查找优化" class="headerlink" title="8.3.2 顺序表查找优化"></a>8.3.2 顺序表查找优化</h3><p>到这里并非足够完美，因为每次循环时都需要对i是否小于等于n作判断。事实上，设置一个哨兵，就不需要每次让i与n作比较。看下面的改进后的顺序查找算法代码。  </p>
-<pre><code class="c">/* 有哨兵顺序查找 */
+<pre><code class="lang-c">/* 有哨兵顺序查找 */
 int Sequential_Search2(int *a,int n,int key)
 {
     int i;
@@ -359,10 +360,11 @@ int Sequential_Search2(int *a,int n,int key)
         i--;
     }
     return i;
-}</code></pre>
+}
+</code></pre>
 <p>这种在查找方向的尽头放置“哨兵”免去了在查找过程中每一次比较后都要判断查找位置是否越界的小技巧，看似与原先差别不大，但在总数据较多时，效率提高很大，是非常好的编码技巧。当然，“哨兵”也不一定就一定要在数组开始，也可以在末端。<br>对于这种顺序查找算法来说，平均查找次数为（n+1）/2，所以最终时间复杂度还是O（n）。<br>很显然，顺序查找技术是有很大缺点的，n很大时，查找效率极为低下，不过优点也是有的，算法非常简单，对静态查找表的记录没有任何要求，在一些小型数据的查找时，是可以适用的。<br>另外，也正由于查找概率的不同，我们完全可以将容易查找到的记录放在前面，而不常用的记录放置在后面，效率就可以有大幅提高。  </p>
 <h2 id="8-4-有序表查找"><a href="#8-4-有序表查找" class="headerlink" title="8.4 有序表查找"></a>8.4 有序表查找</h2><h3 id="8-4-1-折半查找"><a href="#8-4-1-折半查找" class="headerlink" title="8.4.1 折半查找"></a>8.4.1 折半查找</h3><p><strong>折半查找（Binary Search）技术，又称为二分查找。它的前提是线性表中的记录必须是关键码有序（通常从小到大有序），线性表必须采用顺序存储。折半查找的基本思想是：在有序表中，取中间记录作为比较对象，若给定值与中间记录的关键字相等，则查找成功；若给定值小于中间记录的关键字，则在中间记录的左半区继续查找；若给定值大于中间记录的关键字，则在中间记录的右半区继续查找。不断重复上述过程，直到查找成功，或所有查找区域无记录，查找失败为止。</strong><br>折半查找代码如下：</p>
-<pre><code class="c">/* 折半查找 */
+<pre><code class="lang-c">/* 折半查找 */
 int Binary_Search(int *a,int n,int key){
     int low,high,mid;
     low=1;    /* 定义最低下标为记录首位 */
@@ -377,11 +379,12 @@ int Binary_Search(int *a,int n,int key){
             return mid;        /* 若相等则说明mid即为查找到的位置 */
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <p>折半算法的时间复杂度为O（㏒n），它显然远远好于顺序查找的O（n）时间复杂度。<br>不过由于折半查找的前提条件是需要有序表顺序存储，对于静态查找表，一次排序后不再变化，这样的算法已经比较好了。但对于需要频繁执行插入或删除操作的数据集来说，维护有序的排序会带来不小的工作量，那就不建议使用。  </p>
 <h3 id="8-4-2-插值查找"><a href="#8-4-2-插值查找" class="headerlink" title="8.4.2 插值查找"></a>8.4.2 插值查找</h3><p>折半查找代码的第6句，我们略微等式变换后得到：<br><code>mid=(low+high)/2=low+1/2(high-low);</code><br>我们将在折半查找算法的代码中更改一下，第6行代码如下：<br><code>mid=low+ (high-low)*(key-a[low])/(a[high]-a[low]); /* 插值 */</code><br><strong>插值查找（Interpolation Search）是根据要查找的关键字key与查找表中最大最小记录的关键字比较后的查找方法，其核心就在于插值的计算公式<code>(key-a[low])/(a[high]-a[low])</code>。</strong><br>应该说，从时间复杂度来看，它也是O（㏒n），但对于表长较大，而关键字分布又比较均匀的查找表来说，插值查找算法的平均性能比折半查找要好得多。反之，数组中如果分布类似{0，1，2，2000，2001……，999998，999999}这种极端不均匀的数据，用插值查找未必是很合适的选择。  </p>
 <h3 id="8-4-3-斐波那契查找"><a href="#8-4-3-斐波那契查找" class="headerlink" title="8.4.3 斐波那契查找"></a>8.4.3 斐波那契查找</h3><p>斐波那契查找（Fibonacci Search），它是利用了黄金分割原理来实现的。<br>下面我们根据代码来看程序是如何运行的。  </p>
-<pre><code class="c">/* 斐波那契查找 */
+<pre><code class="lang-c">/* 斐波那契查找 */
 int Fibonacci_Search(int *a,int n,int key)
 {
     int low,high,mid,i,k=0;
@@ -409,7 +412,8 @@ int Fibonacci_Search(int *a,int n,int key)
         }
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <p>斐波那契查找算法的核心在于：</p>
 <ol>
 <li>当<code>key=a[mid]</code>时，查找就成功；</li>
@@ -454,14 +458,15 @@ int Fibonacci_Search(int *a,int n,int key)
 </ul>
 <p>这样我们就得到了一棵二叉树，并且当我们对它进行中序遍历时，就可以得到一个有序的序列，所以我们通常称它为二叉排序树。  </p>
 <h3 id="8-6-1-二叉排序树查找操作"><a href="#8-6-1-二叉排序树查找操作" class="headerlink" title="8.6.1 二叉排序树查找操作"></a>8.6.1 二叉排序树查找操作</h3><p>首先我们提供一个二叉树的结构。  </p>
-<pre><code class="c">/* 二叉树的二叉链表结点结构定义 */
+<pre><code class="lang-c">/* 二叉树的二叉链表结点结构定义 */
 typedef  struct BiTNode    /* 结点结构 */
 {
     int data;    /* 结点数据 */
     struct BiTNode *lchild, *rchild;    /* 左右孩子指针 */
-} BiTNode, *BiTree;</code></pre>
+} BiTNode, *BiTree;
+</code></pre>
 <p>然后我们来看看二叉排序树的查找是如何实现的。  </p>
-<pre><code class="c">/* 递归查找二叉排序树T中是否存在key, */
+<pre><code class="lang-c">/* 递归查找二叉排序树T中是否存在key, */
 /* 指针f指向T的双亲，其初始调用值为NULL */
 /* 若查找成功，则指针p指向该数据元素结点，并返回TRUE */
 /* 否则指针p指向查找路径上访问的最后一个结点并返回FALSE */
@@ -481,9 +486,10 @@ Status SearchBST(BiTree T, int key, BiTree f, BiTree *p)
         return SearchBST(T-&gt;lchild, key, T, p);  /*  在左子树中继续查找 */
     else
         return SearchBST(T-&gt;rchild, key, T, p);  /*  在右子树中继续查找 */
-}</code></pre>
+}
+</code></pre>
 <h3 id="8-6-2-二叉排序树插入操作"><a href="#8-6-2-二叉排序树插入操作" class="headerlink" title="8.6.2 二叉排序树插入操作"></a>8.6.2 二叉排序树插入操作</h3><p>有了二叉排序树的查找函数，那么所谓的二叉排序树的插入，其实也就是将关键字放到树中的合适位置而已，来看代码。  </p>
-<pre><code class="c">/*  当二叉排序树T中不存在关键字等于key的数据元素时， */
+<pre><code class="lang-c">/*  当二叉排序树T中不存在关键字等于key的数据元素时， */
 /*  插入key并返回TRUE，否则返回FALSE */
 Status InsertBST(BiTree *T, int key)
 {
@@ -503,13 +509,15 @@ Status InsertBST(BiTree *T, int key)
     }
     else
         return FALSE;  /*  树中已有关键字相同的结点，不再插入 */
-}</code></pre>
+}
+</code></pre>
 <p>有了二叉排序树的插入代码，我们要实现二叉排序树的构建就非常容易了。  </p>
-<pre><code class="c">int i;
+<pre><code class="lang-c">int i;
     int a[10] = { 62,88,58,47,35,73,51,99,37,93 };
     BiTree T = NULL;
     for (i = 0; i &lt; 10; i++)
-        InsertBST(&amp;T, a[i]);</code></pre>
+        InsertBST(&amp;T, a[i]);
+</code></pre>
 <h3 id="8-6-3-二叉排序树删除操作"><a href="#8-6-3-二叉排序树删除操作" class="headerlink" title="8.6.3 二叉排序树删除操作"></a>8.6.3 二叉排序树删除操作</h3><p>对于要删除的结点只有左子树或只有右子树的情况，相对也比较好解决。那就是结点删除后，将它的左子树或右子树整个移动到删除结点的位置即可，可以理解为独子继承父业。最终，整个结构还是一个二叉排序树。<br>但是对于要删除的结点既有左子树又有右子树的情况怎么办呢？<br>比较好的办法就是，找到需要删除的结点p的直接前驱（或直接后继）s，用s来替换结点p，然后再删除此结点s。  </p>
 <p>根据我们对删除结点三种情况的分析：</p>
 <ul>
@@ -518,7 +526,7 @@ Status InsertBST(BiTree *T, int key)
 <li>左右子树都有的结点。</li>
 </ul>
 <p>我们来看代码，下面这个算法是递归方式对二叉排序树T查找key，查找到时删除。  </p>
-<pre><code class="c">/* 若二叉排序树T中存在关键字等于key的数据元素时，则删除该数据元素结点, */
+<pre><code class="lang-c">/* 若二叉排序树T中存在关键字等于key的数据元素时，则删除该数据元素结点, */
 /* 并返回TRUE；否则返回FALSE。 */
 Status DeleteBST(BiTree *T, int key)
 {
@@ -533,9 +541,10 @@ Status DeleteBST(BiTree *T, int key)
         else
             return DeleteBST(&amp;(*T)-&gt;rchild, key);
     }
-}</code></pre>
+}
+</code></pre>
 <p>这段代码和前面的二叉排序树查找几乎完全相同，唯一的区别就在于第8行，此时执行的是Delete方法，对当前结点进行删除操作。我们来看Delete的代码。  </p>
-<pre><code class="c">/* 从二叉排序树中删除结点p，并重接它的左或右子树。 */
+<pre><code class="lang-c">/* 从二叉排序树中删除结点p，并重接它的左或右子树。 */
 Status Delete(BiTree *p)
 {
     BiTree q, s;//q、s为临时结点
@@ -563,21 +572,23 @@ Status Delete(BiTree *p)
         free(s);
     }
     return TRUE;
-}</code></pre>
+}
+</code></pre>
 <p>从这段代码也可以看出，我们其实是在找删除结点的前驱结点替换的方法，对于用后继结点来替换，方法上是一样的。  </p>
 <h3 id="8-6-4-二叉排序树总结"><a href="#8-6-4-二叉排序树总结" class="headerlink" title="8.6.4 二叉排序树总结"></a>8.6.4 二叉排序树总结</h3><p>总之，二叉排序树是以链接的方式存储，保持了链接存储结构在执行插入或删除操作时不用移动元素的优点，只要找到合适的插入和删除位置后，仅需修改链接指针即可。插入删除的时间性能比较好。而对于二叉排序树的查找，走的就是从根结点到要查找的结点的路径，其比较次数等于给定值的结点在二叉排序树的层数。极端情况，最少为1次，即根结点就是要找的结点，最多也不会超过树的深度。也就是说，二叉排序树的查找性能取决于二叉排序树的形状。可问题就在于，二叉排序树的形状是不确定的。<br>如果，数组元素的次序是从小到大有序，则二叉排序树就成了极端的右斜树，查找时间复杂度为O（n），等同于顺序查找。<br>因此，如果我们希望对一个集合按二叉排序树查找，最好是把它构建成一棵平衡的二叉排序树。即其深度与完全二叉树相同，那么查找的时间复杂就为O（㏒n），近似于折半查找。  </p>
 <h2 id="8-7-平衡二叉树（AVL树）"><a href="#8-7-平衡二叉树（AVL树）" class="headerlink" title="8.7 平衡二叉树（AVL树）"></a>8.7 平衡二叉树（AVL树）</h2><p><strong>平衡二叉树（Self-Balancing Binary Search Tree 或Height-Balanced Binary Search Tree），是一种二叉排序树，其中每一个节点的左子树和右子树的高度差至多等于1</strong>。<br>从平衡二叉树的英文名字，你也可以体会到，它是<strong>一种高度平衡的二叉排序树。</strong>那什么叫做高度平衡呢？意思是说，要么它是一棵空树，要么它的左子树和右子树都是平衡二叉树，且左子树和右子树的深度之差的绝对值不超过1。我们<strong>将二叉树上结点的左子树深度减去右子树深度的值称为平衡因子BF（Balance Factor）</strong>，那么平衡二叉树上所有结点的平衡因子只可能是-1、0和1。只要二叉树上有一个结点的平衡因子的绝对值大于1，则该二叉树就是不平衡的。<br><strong>距离插入结点最近的，且平衡因子的绝对值大于1的结点为根的子树，我们称为最小不平衡子树。</strong>  </p>
 <h3 id="8-7-1-平衡二叉树实现原理"><a href="#8-7-1-平衡二叉树实现原理" class="headerlink" title="8.7.1 平衡二叉树实现原理"></a>8.7.1 平衡二叉树实现原理</h3><p>平衡二叉树构建的基本思想就是在构建二叉排序树的过程中，每当插入一个结点时，先检查是否因插入而破坏了树的平衡性，若是，则找出最小不平衡子树。在保持二叉排序树特性的前提下，调整最小不平衡子树中各结点之间的链接关系，进行相应的旋转，使之成为新的平衡子树。<br>所谓的平衡二叉树，其实就是在二叉排序树创建过程中保证它的平衡性，一旦发现有不平衡的情况，马上处理，这样就不会造成不可收拾的情况出现。通过刚才这个例子，你会发现，<strong>当最小不平衡子树根结点的平衡因子BF是大于1时，就右旋，小于-1时就左旋。当插入结点后，最小不平衡子树的BF与它的子树的BF符号相反时，就需要对结点先进行一次旋转以使得符号相同后，再反向旋转一次才能够完成平衡操作。</strong>  </p>
 <h3 id="8-7-2-平衡二叉树实现算法"><a href="#8-7-2-平衡二叉树实现算法" class="headerlink" title="8.7.2 平衡二叉树实现算法"></a>8.7.2 平衡二叉树实现算法</h3><p>首先是需要改进二叉排序树的结点结构，增加一个bf，用来存储平衡因子。  </p>
-<pre><code class="c">/* 二叉树的二叉链表结点结构定义 */
+<pre><code class="lang-c">/* 二叉树的二叉链表结点结构定义 */
 typedef  struct BiTNode    /* 结点结构 */
 {
     int data;    /* 结点数据 */
     int bf; /*  结点的平衡因子 */
     struct BiTNode *lchild, *rchild;    /* 左右孩子指针 */
-} BiTNode, *BiTree;</code></pre>
+} BiTNode, *BiTree;
+</code></pre>
 <p>然后，对于右旋操作，我们的代码如下。  </p>
-<pre><code class="c">/* 对以p为根的二叉排序树作右旋处理， */
+<pre><code class="lang-c">/* 对以p为根的二叉排序树作右旋处理， */
 /* 处理之后p指向新的树根结点，即旋转处理之前的左子树的根结点 */
 void R_Rotate(BiTree *P)
 {
@@ -586,10 +597,11 @@ void R_Rotate(BiTree *P)
     (*P)-&gt;lchild = L-&gt;rchild; /*  L的右子树挂接为P的左子树 */
     L-&gt;rchild = (*P);
     *P = L; /*  P指向新的根结点 */
-}</code></pre>
+}
+</code></pre>
 <p>此函数代码的意思是说，当传入一个二叉排序树P，将它的左孩子结点定义为L，将L的右子树变成P的左子树，再将P改成L的右子树，最后将L替换P成为根结点。这样就完成了一次右旋操作，如图8-7-9所示。图中三角形代表子树，N代表新增结点。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AB%E7%AB%A0/8-7-9.jpg?raw=true" alt="8-7-9">  </p>
 <p>左旋操作代码如下。  </p>
-<pre><code class="c">/* 对以P为根的二叉排序树作左旋处理， */
+<pre><code class="lang-c">/* 对以P为根的二叉排序树作左旋处理， */
 /* 处理之后P指向新的树根结点，即旋转处理之前的右子树的根结点0  */
 void L_Rotate(BiTree *P)
 {
@@ -598,9 +610,10 @@ void L_Rotate(BiTree *P)
     (*P)-&gt;rchild = R-&gt;lchild; /* R的左子树挂接为P的右子树 */
     R-&gt;lchild = (*P);
     *P = R; /*  P指向新的根结点 */
-}</code></pre>
+}
+</code></pre>
 <p>这段代码与右旋代码是对称的，在此不做解释了。<br>现在我们来看左平衡旋转处理的函数代码。  </p>
-<pre><code class="c">#define LH +1 /*  左高 */
+<pre><code class="lang-c">#define LH +1 /*  左高 */
 #define EH 0  /*  等高 */
 #define RH -1 /*  右高 */
 
@@ -634,7 +647,8 @@ void LeftBalance(BiTree *T)
         L_Rotate(&amp;(*T)-&gt;lchild); /*  对T的左子树作左旋平衡处理 */
         R_Rotate(T); /*  对T作右旋平衡处理 */
     }
-}</code></pre>
+}
+</code></pre>
 <p>首先，我们定义了三个常数变量，分别代表1、0、-1。</p>
 <ol>
 <li>函数被调用，传入一个需调整平衡性的子树T。由于LeftBalance 函数被调用时，其实是已经确认当前子树是不平衡状态，且左子树的高度大于右子树的高度。换句话说，此时T的根结点应该是平衡因子BF的值大于1的数。</li>
@@ -647,7 +661,7 @@ void LeftBalance(BiTree *T)
 </ol>
 <p><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AB%E7%AB%A0/8-7-10.JPG?raw=true" alt="8-7-10">  </p>
 <p>同样的，右平衡旋转处理的函数代码非常类似。  </p>
-<pre><code class="c">/*  对以指针T所指结点为根的二叉树作右平衡旋转处理， */
+<pre><code class="lang-c">/*  对以指针T所指结点为根的二叉树作右平衡旋转处理， */
 /*  本算法结束时，指针T指向新的根结点 */
 void RightBalance(BiTree *T)
 {
@@ -674,9 +688,10 @@ void RightBalance(BiTree *T)
         R_Rotate(&amp;(*T)-&gt;rchild); /*  对T的右子树作右旋平衡处理 */
         L_Rotate(T); /*  对T作左旋平衡处理 */
     }
-}</code></pre>
+}
+</code></pre>
 <p>有了这些准备，我们的主函数才算是正式登场了。  </p>
-<pre><code class="c">/*  若在平衡的二叉排序树T中不存在和e有相同关键字的结点，则插入一个 */
+<pre><code class="lang-c">/*  若在平衡的二叉排序树T中不存在和e有相同关键字的结点，则插入一个 */
 /*  数据元素为e的新结点，并返回1，否则返回0。若因插入而使二叉排序树 */
 /*  失去平衡，则作平衡旋转处理，布尔变量taller反映T长高与否。 */
 Status InsertAVL(BiTree *T, int e, Status *taller)
@@ -725,7 +740,8 @@ Status InsertAVL(BiTree *T, int e, Status *taller)
         }
     }
     return TRUE;
-}</code></pre>
+}
+</code></pre>
 <p>不容易，终于讲完了，本算法代码很长，是有些复杂，编程中容易在很多细节上出错，要想真正掌握它，需要同学们自己多练习。不过其思想还是不难理解的，总之就是把不平衡消灭在最早时刻。<br>如果我们需要查找的集合本身没有顺序，在频繁查找的同时也需要经常的插入和删除操作，显然我们需要构建一棵二叉排序树，但是不平衡的二叉排序树，查找效率是非常低的，因此我们需要在构建时，就让这棵二叉排序树是平衡二叉树，此时我们的查找时间复杂度就为O（㏒n），而插入和删除也为O（㏒n）。这显然是比较理想的一种动态查找表算法。  </p>
 <h2 id="8-8-多路查找树（B树）"><a href="#8-8-多路查找树（B树）" class="headerlink" title="8.8 多路查找树（B树）"></a>8.8 多路查找树（B树）</h2><p><strong>多路查找树（muitl-way search tree），其每一个结点的孩子数可以多于两个，且每一个结点处可以存储多个元素</strong>。<br>在这里，每一个结点可以存储多少个元素，以及它的孩子数的多少是非常关键的。为此，我们讲解它的4种特殊形式：2-3树、2-3-4树、B树和B+树。  </p>
 <h3 id="8-8-1-2-3树"><a href="#8-8-1-2-3树" class="headerlink" title="8.8.1 2-3树"></a>8.8.1 2-3树</h3><p><strong>2-3树是这样的一棵多路查找树：其中的每一个结点都具有两个孩子（我们称它为2结点）或三个孩子（我们称它为3结点）。</strong><br><strong>一个2结点包含一个元素和两个孩子（或没有孩子）</strong>，且与二叉排序树类似，左子树包含的元素小于该元素，右子树包含的元素大于该元素。不过，与二叉排序树不同的是，这个2结点要么没有孩子，要有就有两个，不能只有一个孩子。<br><strong>一个3结点包含一小一大两个元素和三个孩子（或没有孩子）</strong>，一个3结点要么没有孩子，要么具有3个孩子。如果某个3结点有孩子的话，左子树包含小于较小元素的元素，右子树包含大于较大元素的元素，中间子树包含介于两元素之间的元素。<br>并且2-3树中所有的叶子都在同一层次上。如图8-8-2所示，就是一棵有效的2-3树。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AB%E7%AB%A0/8-8-2.JPG?raw=true" alt="8-8-2">  </p>
@@ -774,7 +790,7 @@ Status InsertAVL(BiTree *T, int e, Status *taller)
 <h3 id="8-11-3-链地址法"><a href="#8-11-3-链地址法" class="headerlink" title="8.11.3 链地址法"></a>8.11.3 链地址法</h3><p>将所有关键字为同义词的记录存储在一个单链表中，我们称这种表为同义词子表，在散列表中只存储所有同义词子表的头指针。对于关键字集合{12，67，56，16，25，37，22，29，15，47，48，34}，我们用前面同样的12为除数，进行除留余数法，可得到如图8-11-1结构，此时，已经不存在什么冲突换址的问题，无论有多少个冲突，都只是在当前位置给单链表增加结点的问题。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AB%E7%AB%A0/8-11-1.JPG?raw=true" alt="8-11-1"><br>链地址法对于可能会造成很多冲突的散列函数来说，提供了绝不会出现找不到地址的保障。当然，这也就带来了查找时需要遍历单链表的性能损耗。  </p>
 <h3 id="8-11-4-公共溢出区法"><a href="#8-11-4-公共溢出区法" class="headerlink" title="8.11.4 公共溢出区法"></a>8.11.4 公共溢出区法</h3><p>这个方法其实就更加好理解，你不是冲突吗？好吧，凡是冲突的都跟我走，我给你们这些冲突找个地儿待着。这就如同孤儿院收留所有无家可归的孩子一样，我们为所有冲突的关键字建立了一个公共的溢出区来存放。<br>就前面的例子而言，我们共有三个关键字{37，48，34}与之前的关键字位置有冲突，那么就将它们存储到溢出表中，如图8-11-2所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AB%E7%AB%A0/8-11-2.JPG?raw=true" alt="8-11-2"><br>图8-11-2在查找时，对给定值通过散列函数计算出散列地址后，先与基本表的相应位置进行比对，如果相等，则查找成功；如果不相等，则到溢出表去进行顺序查找。如果相对于基本表而言，有冲突的数据很少的情况下，公共溢出区的结构对查找性能来说还是非常高的。  </p>
 <h2 id="8-12-散列表查找实现"><a href="#8-12-散列表查找实现" class="headerlink" title="8.12 散列表查找实现"></a>8.12 散列表查找实现</h2><h3 id="8-12-1-散列表查找算法实现"><a href="#8-12-1-散列表查找算法实现" class="headerlink" title="8.12.1 散列表查找算法实现"></a>8.12.1 散列表查找算法实现</h3><p>首先是需要定义一个散列表的结构以及一些相关的常数。其中HashTable 就是散列表结构。结构当中的elem为一个动态数组。  </p>
-<pre><code class="c">#define SUCCESS 1
+<pre><code class="lang-c">#define SUCCESS 1
 #define UNSUCCESS 0
 #define HASHSIZE 12 /* 定义散列表长为数组的长度 */
 #define NULLKEY -32768
@@ -782,9 +798,10 @@ typedef struct{
     int *elem; /* 数据元素存储基址，动态分配数组 */
     int count; /*  当前数据元素个数 */
 }HashTable;
-int m = 0; /* 散列表表长，全局变量 */</code></pre>
+int m = 0; /* 散列表表长，全局变量 */
+</code></pre>
 <p>有了结构的定义，我们可以对散列表进行初始化。  </p>
-<pre><code class="c">/* 初始化散列表 */
+<pre><code class="lang-c">/* 初始化散列表 */
 Status InitHashTable(HashTable *H){
     int i;
     m = HASHSIZE;
@@ -793,24 +810,27 @@ Status InitHashTable(HashTable *H){
     for (i = 0; i &lt; m; i++)
         H-&gt;elem[i] = NULLKEY;
     return OK;
-}</code></pre>
+}
+</code></pre>
 <p>为了插入时计算地址，我们需要定义散列函数，散列函数可以根据不同情况更改算法。  </p>
-<pre><code class="c">/* 散列函数 */
+<pre><code class="lang-c">/* 散列函数 */
 int Hash(int key)
 {
     return key % m; /* 除留余数法 */
-}</code></pre>
+}
+</code></pre>
 <p>初始化完成后，我们可以对散列表进行插入操作。假设我们插入的关键字集合就是前面的{12，67，56，16，25，37，22，29，15，47，48，34}。  </p>
-<pre><code class="c">/* 插入关键字进散列表 */
+<pre><code class="lang-c">/* 插入关键字进散列表 */
 void InsertHash(HashTable *H, int key)
 {
     int addr = Hash(key); /* 求散列地址 */
     while (H-&gt;elem[addr] != NULLKEY) /* 如果不为空，则冲突 */
         addr = (addr + 1) % m; /* 开放定址法的线性探测 */
     H-&gt;elem[addr] = key; /* 直到有空位后插入关键字 */
-}</code></pre>
+}
+</code></pre>
 <p>代码中插入关键字时，首先算出散列地址，如果当前地址不为空关键字，则说明有冲突。此时我们应用开放定址法的线性探测进行重新寻址，此处也可更改为链地址法等其他解决冲突的办法。<br>散列表存在后，我们在需要时就可以通过散列表查找要的记录。  </p>
-<pre><code class="c">/* 散列表查找关键字 */
+<pre><code class="lang-c">/* 散列表查找关键字 */
 Status SearchHash(HashTable H, int key, int *addr)
 {
     *addr = Hash(key);  /* 求散列地址 */
@@ -821,7 +841,8 @@ Status SearchHash(HashTable H, int key, int *addr)
             return UNSUCCESS;    /* 则说明关键字不存在 */
     }
     return SUCCESS;
-}</code></pre>
+}
+</code></pre>
 <p>查找的代码与插入的代码非常类似，只需做一个不存在关键字的判断而已。  </p>
 <h3 id="8-12-2-散列表查找性能分析"><a href="#8-12-2-散列表查找性能分析" class="headerlink" title="8.12.2 散列表查找性能分析"></a>8.12.2 散列表查找性能分析</h3><p>最后，我们对散列表查找的性能作一个简单分析。如果没有冲突，散列查找是我们本章介绍的所有查找中效率最高的，因为它的时间复杂度为O(1)。可惜，我说的只是“如果”，没有冲突的散列只是一种理想，在实际的应用中，冲突是不可避免的。那么散列查找的平均查找长度取决于哪些因素呢？  </p>
 <ol>
@@ -1017,13 +1038,13 @@ Status SearchHash(HashTable H, int key, int *addr)
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">122k</span>
+    <span title="站点总字数">125k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:51</span>
+    <span title="站点阅读时长">1:54</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
