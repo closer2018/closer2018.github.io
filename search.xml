@@ -11,7 +11,7 @@
 <h2 id="上下标及标记"><a href="#上下标及标记" class="headerlink" title="上下标及标记"></a>上下标及标记</h2><a id="more"></a>
 <ol>
 <li>默认下的分隔符：<br><code>$...$</code> 或者<code>\(...\)</code>中的数学表达式将会在行内显示。<br><code>$$...$$</code> 或者 <code>\[...\]</code> 或者 <code>```math</code> 中的数学表达式将会在块内显示。  </li>
-<li>公式两边用2个<code>$</code>符号标记为公式，如:<br><code>$a^2$</code>就是$a^2$<br><code>\(H~2~O\)</code>就是H<del>2</del>O<br><code>==marked==</code>就是==marked==  </li>
+<li>公式两边用2个<code>$</code>符号标记为公式，如:<br><code>$a^2$</code>显示为$a^2$<br><code>$H_2O$</code>显示为$H_2O$<br><code>==marked==</code>显示为==marked==  </li>
 </ol>
 <h2 id="数学公式"><a href="#数学公式" class="headerlink" title="数学公式"></a>数学公式</h2><p>Markdown Preview Enhanced 使用 KaTeX 来渲染数学表达式。<br>如这个公式：$f(x)=\int_{-\infty}^\infty\widehat f\xi,e^{2\pi i\xi x},d\xi$<br>想要正确地写出它的文本形式可不容易：<br><code>f(x)=\int_{-\infty}^\infty\widehat f\xi\,e^{2\pi i\xi x}\,d\xi</code><br>如果仅仅为了写个公式，就去学LaTeX语法，那没有十天半月的肯定不行。这个时候，你需要一个<a href="http://www.wiris.com/editor/demo/en/developers#output-formats" target="_blank" rel="noopener">可视化公式编辑器</a>的神器，它可以让我们可视化地编辑公式，然后自动得到它的LaTeX文本：<br><img src="https://www.liaoxuefeng.com/files/attachments/1280023417847873/l" alt="使用说明">  </p>
 <p>在线转换地址：<a href="http://www.wiris.com/editor/demo/en/developers#output-formats" target="_blank" rel="noopener">http://www.wiris.com/editor/demo/en/developers#output-formats</a></p>
@@ -185,7 +185,16 @@ for i in L:
 <p>二、将列表传递给函数后，函数就可对其进行修改。在函数中对这个列表所做的任何修改都是永久性的，这让你能够高效地处理大量的数据。<br>有时候，需要禁止函数修改列表。这时候，可向函数传递列表的副本而不是原件。<br><code>def stu(name[:], age[:])</code>  </p>
 <p>三、Python允许函数从调用语句中收集任意数量的实参。<br><code>def make_pizza(*toppings):</code><br>形参名 *toppings 中的星号让Python创建一个名为 toppings 的空元组，并将收到的所有值都封装到这个元组中。<br>如果要让函数接受不同类型的实参，必须在函数定义中将接纳任意数量实参的形参放在最后。Python先匹配位置实参和关键字实参，再将余下的实参都收集到最后一个形参中。<br><code>def make_pizza(size, *toppings):</code>  </p>
 <p>四、使用任意数量的关键字实参<br><code>def build_profile(first, last, **user_info):</code>  </p>
-<h3 id="1-6-2-将函数存储在模块中"><a href="#1-6-2-将函数存储在模块中" class="headerlink" title="1.6.2 将函数存储在模块中"></a>1.6.2 将函数存储在模块中</h3>]]></content>
+<h3 id="1-6-2-将函数存储在模块中"><a href="#1-6-2-将函数存储在模块中" class="headerlink" title="1.6.2 将函数存储在模块中"></a>1.6.2 将函数存储在模块中</h3><p>可以将函数存储在被称为模块的独立文件中，再将模块导入到主程序中。跟c语言差不多，c语言中用头文件，函数文件。  </p>
+<ol>
+<li>导入整个模块<br>假设<code>xxx.py</code>所在目录内有另外一个<code>pizza.py</code>，添加<code>import pizza</code>语句<br>导入名为模块 module_name.py 的的整个模块通用语法：<code>import module_name</code><br>可使用下面的语法来使用其中任何一个函数：<code>module_name.function_name ()</code></li>
+<li>导入特定的函数<br><code>from module_name import function_0 , function_1 , function_2</code><br>通过用逗号分隔函数名，可根据需要从模块中导入任意数量的函数。<br>若使用这种语法，调用函数时就无需使用句点。<code>make_pizza(16, &#39;pepperoni&#39;)</code></li>
+<li>使用 as 给函数指定别名<br>指定别名的通用语法如下：<code>from module_name import function_name as fn</code></li>
+<li>使用 as 给模块指定别名<br>给模块指定别名的通用语法如下：<code>import module_name as mn</code></li>
+<li>导入模块中的所有函数<br>最好只导入你需要用的函数，或者导入整个模块并使用句点表示法。<br>导入模块 module_name 中的所有函数通用语法如下：<code>from module_name import *</code></li>
+</ol>
+<p>所有的 import 语句都应放在文件开头，唯一例外的情形是，在文件开头使用了注释来描述整个程序。</p>
+<h2 id="1-7-类"><a href="#1-7-类" class="headerlink" title="1.7 类"></a>1.7 类</h2>]]></content>
       <categories>
         <category>读书笔记</category>
       </categories>
