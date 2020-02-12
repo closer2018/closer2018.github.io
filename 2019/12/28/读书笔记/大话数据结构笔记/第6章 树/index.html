@@ -75,7 +75,7 @@
 <meta property="og:image" content="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0/6-12-5.JPG?raw=true">
 <meta property="og:image" content="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0/6-12-7.JPG?raw=true">
 <meta property="article:published_time" content="2019-12-28T14:34:58.000Z">
-<meta property="article:modified_time" content="2020-02-12T12:22:19.208Z">
+<meta property="article:modified_time" content="2020-02-12T13:09:22.615Z">
 <meta property="article:author" content="closer">
 <meta property="article:tag" content="读书笔记">
 <meta property="article:tag" content="数据结构">
@@ -263,7 +263,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-12 20:22:19" itemprop="dateModified" datetime="2020-02-12T20:22:19+08:00">2020-02-12</time>
+                <time title="修改时间：2020-02-12 21:09:22" itemprop="dateModified" datetime="2020-02-12T21:09:22+08:00">2020-02-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -437,11 +437,11 @@ typedef struct CSNode
 <li>同样结点数的二叉树，完全二叉树的深度最小。</li>
 </ol>
 <h2 id="6-6-二叉树的性质"><a href="#6-6-二叉树的性质" class="headerlink" title="6.6 二叉树的性质"></a>6.6 二叉树的性质</h2><p>二叉树有一些需要理解并记住的特性，以便于我们更好地使用它。</p>
-<h3 id="6-6-1-二叉树性质1"><a href="#6-6-1-二叉树性质1" class="headerlink" title="6.6.1 二叉树性质1"></a>6.6.1 二叉树性质1</h3><p>性质1：在二叉树的第i层上至多有2<sup>i-1</sup>个结点（i≥1）。</p>
+<h3 id="6-6-1-二叉树性质1"><a href="#6-6-1-二叉树性质1" class="headerlink" title="6.6.1 二叉树性质1"></a>6.6.1 二叉树性质1</h3><p>性质1：在二叉树的第i层上至多有$2^{i-1}$个结点（i≥1）。</p>
 <h3 id="6-6-2-二叉树性质2"><a href="#6-6-2-二叉树性质2" class="headerlink" title="6.6.2 二叉树性质2"></a>6.6.2 二叉树性质2</h3><p>性质2：深度为k的二叉树至多有$2^k-1$个结点（k≥1）。</p>
-<h3 id="6-6-3-二叉树性质3"><a href="#6-6-3-二叉树性质3" class="headerlink" title="6.6.3 二叉树性质3"></a>6.6.3 二叉树性质3</h3><p>性质3：对任何一棵二叉树T，如果其叶子结点数为n<sub>0</sub>，度为2的结点数为n<sub>2</sub>，则n<sub>0</sub>=n<sub>2</sub>+1。  </p>
-<h3 id="6-6-4-二叉树性质4"><a href="#6-6-4-二叉树性质4" class="headerlink" title="6.6.4 二叉树性质4"></a>6.6.4 二叉树性质4</h3><p>性质4：具有n个结点的完全二叉树的深度为[㏒<sub>2</sub>n]+1（[x]表示不大于x的最大整数）。</p>
-<h3 id="6-6-5-二叉树性质5"><a href="#6-6-5-二叉树性质5" class="headerlink" title="6.6.5 二叉树性质5"></a>6.6.5 二叉树性质5</h3><p>性质5：如果对一棵有n个结点的完全二叉树（其深度为[㏒<sub>2</sub>n]+1）的结点按层序编号（从第1层到第[㏒<sub>2</sub>n]+1层，每层从左到右），对任一结点i（1≤i≤n）有：</p>
+<h3 id="6-6-3-二叉树性质3"><a href="#6-6-3-二叉树性质3" class="headerlink" title="6.6.3 二叉树性质3"></a>6.6.3 二叉树性质3</h3><p>性质3：对任何一棵二叉树T，如果其叶子结点数为$n_0$，度为2的结点数为$n_2$，则$n_0=n_2+1$。  </p>
+<h3 id="6-6-4-二叉树性质4"><a href="#6-6-4-二叉树性质4" class="headerlink" title="6.6.4 二叉树性质4"></a>6.6.4 二叉树性质4</h3><p>性质4：具有n个结点的完全二叉树的深度为[㏒$_2$n]+1（[x]表示不大于x的最大整数）。</p>
+<h3 id="6-6-5-二叉树性质5"><a href="#6-6-5-二叉树性质5" class="headerlink" title="6.6.5 二叉树性质5"></a>6.6.5 二叉树性质5</h3><p>性质5：如果对一棵有n个结点的完全二叉树（其深度为[㏒$_2$n]+1）的结点按层序编号（从第1层到第[㏒$_2$n]+1层，每层从左到右），对任一结点i（1≤i≤n）有：</p>
 <ol>
 <li>如果i=1，则结点i是二叉树的根，无双亲；如果i&gt;1，则其双亲是结点[i/2]。</li>
 <li>如果2i&gt;n，则结点i无左孩子（结点i为叶子结点）；否则其左孩子是结点2i。</li>
