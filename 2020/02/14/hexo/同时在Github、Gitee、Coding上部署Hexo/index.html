@@ -202,20 +202,20 @@
         coding: git@e.coding.net:YouID/YouID.coding.me.git
   branch: master</code></pre>
 <h2 id="五：将本地仓库和远程仓库连接"><a href="#五：将本地仓库和远程仓库连接" class="headerlink" title="五：将本地仓库和远程仓库连接"></a>五：将本地仓库和远程仓库连接</h2><ul>
-<li><p>GitHub<br><code>git remote add origin git@github.com:YouID/YouID.github.io.git</code></p>
+<li><p>GitHub<br><code>git remote add githuborigin git@github.com:YouID/YouID.github.io.git</code></p>
 </li>
 <li><p>Gitee<br><code>git remote add giteeorigin git@gitee.com:YouID/YouID.git</code>  </p>
 </li>
 <li><p>Coding<br><code>git remote add codingorigin git@e.coding.net:YouID/YouID.coding.me.git</code></p>
 </li>
 </ul>
-<p>输入<code>git remote -v</code>，成功的话会显示3个你关联的远程库：<code>codingorigin</code>、<code>origin</code>、<code>giteeorigin</code>。如下：</p>
+<p>输入<code>git remote -v</code>，成功的话会显示3个你关联的远程库：<code>codingorigin</code>、<code>githuborigin</code>、<code>giteeorigin</code>。如下：</p>
 <pre><code>codingorigin    git@e.coding.net:YouID/YouID.coding.me.git (fetch)
 codingorigin    git@e.coding.net:YouID/YouID.coding.me.git (push)
 giteeorigin     git@gitee.com:YouID/YouID.git (fetch)
 giteeorigin     git@gitee.com:YouID/YouID.git (push)
-origin  git@github.com:YouID/YouID.github.io.git (fetch)
-origin  git@github.com:YouID/YouID.github.io.git (push)</code></pre><h2 id="六、一键部署必杀命令"><a href="#六、一键部署必杀命令" class="headerlink" title="六、一键部署必杀命令"></a>六、一键部署必杀命令</h2><p><code>git add source/ &amp;&amp; git commit -m &quot;blog文章update&quot; &amp;&amp; git push origin hexo &amp;&amp; git push giteeorigin hexo &amp;&amp; git push codingorigin hexo &amp;&amp; hexo clean &amp;&amp; hexo g &amp;&amp; hexo d &amp;&amp; exit</code><br>把所有命令用<code>&amp;&amp;</code>串起来，有一个失败就会停止；成功，最后一条命令就会退出终端。</p>
+githuborigin  git@github.com:YouID/YouID.github.io.git (fetch)
+githuborigin  git@github.com:YouID/YouID.github.io.git (push)</code></pre><h2 id="六、一键部署必杀命令"><a href="#六、一键部署必杀命令" class="headerlink" title="六、一键部署必杀命令"></a>六、一键部署必杀命令</h2><p><code>git add source/ &amp;&amp; git commit -m &quot;blog文章update&quot; &amp;&amp; git push githuborigin hexo &amp;&amp; git push giteeorigin hexo &amp;&amp; git push codingorigin hexo &amp;&amp; hexo clean &amp;&amp; hexo g &amp;&amp; hexo d &amp;&amp; exit</code><br>把所有命令用<code>&amp;&amp;</code>串起来，有一个失败就会停止；成功，最后一条命令就会退出终端。</p>
 
             <hr>
           </div>
