@@ -48,15 +48,15 @@
   };
 </script>
 
-  <meta name="description" content="git add source&#x2F; &amp;&amp; git commit -m &quot;blog文章update&quot; &amp;&amp; git push origin hexo &amp;&amp; git push giteeorigin hexo &amp;&amp; git push codingorigin hexo &amp;&amp; hexo clean &amp;amp">
+  <meta name="description" content="一、创建托管仓库 GitHub https:&#x2F;&#x2F;github.com与用户名相同，格式为YouID.github.io  Gitee https:&#x2F;&#x2F;gitee.com与用户名相同，格式为YouID  Coding https:&#x2F;&#x2F;coding.net与用户名相同，格式为YouID.coding.me">
 <meta property="og:type" content="article">
 <meta property="og:title" content="同时在Github、Gitee、Coding上部署Hexo">
 <meta property="og:url" content="https://closer_laps.gitee.io/2020/02/14/hexo/%E5%90%8C%E6%97%B6%E5%9C%A8Github%E3%80%81Gitee%E3%80%81Coding%E4%B8%8A%E9%83%A8%E7%BD%B2Hexo/index.html">
 <meta property="og:site_name" content="closer的自留地">
-<meta property="og:description" content="git add source&#x2F; &amp;&amp; git commit -m &quot;blog文章update&quot; &amp;&amp; git push origin hexo &amp;&amp; git push giteeorigin hexo &amp;&amp; git push codingorigin hexo &amp;&amp; hexo clean &amp;amp">
+<meta property="og:description" content="一、创建托管仓库 GitHub https:&#x2F;&#x2F;github.com与用户名相同，格式为YouID.github.io  Gitee https:&#x2F;&#x2F;gitee.com与用户名相同，格式为YouID  Coding https:&#x2F;&#x2F;coding.net与用户名相同，格式为YouID.coding.me">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-02-14T11:21:14.000Z">
-<meta property="article:modified_time" content="2020-02-14T11:30:04.777Z">
+<meta property="article:modified_time" content="2020-02-14T12:07:20.800Z">
 <meta property="article:author" content="closer">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="多平台部署">
@@ -237,7 +237,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-02-14 19:21:14 / 修改时间：19:30:04" itemprop="dateCreated datePublished" datetime="2020-02-14T19:21:14+08:00">2020-02-14</time>
+              <time title="创建时间：2020-02-14 19:21:14 / 修改时间：20:07:20" itemprop="dateCreated datePublished" datetime="2020-02-14T19:21:14+08:00">2020-02-14</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -285,7 +285,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>213</span>
+              <span>1.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -304,8 +304,47 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <a id="more"></a>
-<p><code>git add source/ &amp;&amp; git commit -m &quot;blog文章update&quot; &amp;&amp; git push origin hexo &amp;&amp; git push giteeorigin hexo &amp;&amp; git push codingorigin hexo &amp;&amp; hexo clean &amp;&amp; hexo g &amp;&amp; hexo d &amp;&amp; exit</code></p>
+        <h2 id="一、创建托管仓库"><a href="#一、创建托管仓库" class="headerlink" title="一、创建托管仓库"></a>一、创建托管仓库</h2><ul>
+<li><p>GitHub <a href="https://github.com" target="_blank" rel="noopener">https://github.com</a><br>与用户名相同，格式为YouID.github.io</p>
+</li>
+<li><p>Gitee <a href="https://gitee.com" target="_blank" rel="noopener">https://gitee.com</a><br>与用户名相同，格式为YouID</p>
+</li>
+<li><p>Coding <a href="https://coding.net" target="_blank" rel="noopener">https://coding.net</a><br>与用户名相同，格式为YouID.coding.me</p>
+<a id="more"></a>
+<h2 id="二、在Github、Gitee、Coding上添加SSH"><a href="#二、在Github、Gitee、Coding上添加SSH" class="headerlink" title="二、在Github、Gitee、Coding上添加SSH"></a>二、在Github、Gitee、Coding上添加SSH</h2></li>
+</ul>
+<ol>
+<li>获取id_rsa.pub文件内的公匙;具体如何获取请百度<code>id_rsa.pub</code></li>
+<li>在 Github、Gitee、Coding平台 - 设置 - 添加SSH Keys。</li>
+</ol>
+<h2 id="三、开启Pages服务并绑定域名"><a href="#三、开启Pages服务并绑定域名" class="headerlink" title="三、开启Pages服务并绑定域名"></a>三、开启Pages服务并绑定域名</h2><ul>
+<li>GitHub 进入托管的仓库 -&gt; Settings -&gt; Options 往下拉-&gt;GitHub Pages</li>
+<li>Gitee 进入托管的仓库 -&gt; 服务-&gt; Gitee Pages (绑定域名需要升级Gitee Pro，普通版每次部署更新需要手动点更新！！！)</li>
+<li>Coding 进入托管的仓库 -&gt; Pages服务 -&gt; 设置</li>
+</ul>
+<h2 id="四、Hexo推送设置"><a href="#四、Hexo推送设置" class="headerlink" title="四、Hexo推送设置"></a>四、Hexo推送设置</h2><p>在博客根目录下，打开<code>_config.yml</code>,deploy设置如下所示</p>
+<pre><code class="yml">deploy:
+  type: git
+  repo:
+        github: git@github.com:YouID/YouID.github.io.git
+        gitee: git@gitee.com:YouID/YouID.git
+        coding: git@e.coding.net:YouID/YouID.coding.me.git
+  branch: master</code></pre>
+<h2 id="五：将本地仓库和远程仓库连接"><a href="#五：将本地仓库和远程仓库连接" class="headerlink" title="五：将本地仓库和远程仓库连接"></a>五：将本地仓库和远程仓库连接</h2><ul>
+<li><p>GitHub<br><code>git remote add origin git@github.com:YouID/YouID.github.io.git</code></p>
+</li>
+<li><p>Gitee<br><code>git remote add giteeorigin git@gitee.com:YouID/YouID.git</code>  </p>
+</li>
+<li><p>Coding<br><code>git remote add codingorigin git@e.coding.net:YouID/YouID.coding.me.git</code></p>
+</li>
+</ul>
+<p>输入<code>git remote -v</code>，成功的话会显示3个你关联的远程库：<code>codingorigin</code>、<code>origin</code>、<code>giteeorigin</code>。如下：</p>
+<pre><code>codingorigin    git@e.coding.net:YouID/YouID.coding.me.git (fetch)
+codingorigin    git@e.coding.net:YouID/YouID.coding.me.git (push)
+giteeorigin     git@gitee.com:YouID/YouID.git (fetch)
+giteeorigin     git@gitee.com:YouID/YouID.git (push)
+origin  git@github.com:YouID/YouID.github.io.git (fetch)
+origin  git@github.com:YouID/YouID.github.io.git (push)</code></pre><h2 id="六、一键部署必杀命令"><a href="#六、一键部署必杀命令" class="headerlink" title="六、一键部署必杀命令"></a>六、一键部署必杀命令</h2><p><code>git add source/ &amp;&amp; git commit -m &quot;blog文章update&quot; &amp;&amp; git push origin hexo &amp;&amp; git push giteeorigin hexo &amp;&amp; git push codingorigin hexo &amp;&amp; hexo clean &amp;&amp; hexo g &amp;&amp; hexo d &amp;&amp; exit</code><br>把所有命令用<code>&amp;&amp;</code>串起来，有一个失败就会停止；成功，最后一条命令就会退出终端。</p>
 
     </div>
 
@@ -416,6 +455,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、创建托管仓库"><span class="nav-text">一、创建托管仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、在Github、Gitee、Coding上添加SSH"><span class="nav-text">二、在Github、Gitee、Coding上添加SSH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、开启Pages服务并绑定域名"><span class="nav-text">三、开启Pages服务并绑定域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、Hexo推送设置"><span class="nav-text">四、Hexo推送设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五：将本地仓库和远程仓库连接"><span class="nav-text">五：将本地仓库和远程仓库连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、一键部署必杀命令"><span class="nav-text">六、一键部署必杀命令</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -488,13 +528,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">132k</span>
+    <span title="站点总字数">134k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:01</span>
+    <span title="站点阅读时长">2:02</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
