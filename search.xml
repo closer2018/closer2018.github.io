@@ -3987,15 +3987,15 @@ menu_icons:
   <entry>
     <title>hexo 多客户端上更新博客</title>
     <url>/2019/12/09/hexo/hexo%20%E5%A4%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8A%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<p><code>git add source/ &amp;&amp; git commit -m &quot;博客更新&quot; &amp;&amp; git push githuborigin hexo &amp;&amp; hexo clean &amp;&amp; hexo g &amp;&amp; hexo d &amp;&amp; exit</code></p>
+    <content><![CDATA[<p><code>git add source/ &amp;&amp; git commit -m &quot;blog update&quot; &amp;&amp; git push githuborigin hexo &amp;&amp; hexo clean &amp;&amp; hexo g &amp;&amp; hexo d &amp;&amp; exit</code></p>
 <h2 id="原理">原理</h2>
 <p>静态网页文件存放在<code>master主分支</code>，个人文件存放在<code>hexo分支</code>。</p>
+<a id="more"></a>
 <h2 id="一、本地电脑设置">一、本地电脑设置</h2>
 <p>先新建一个hexo文件夹，在git bash下cd进入hexo文件夹。</p>
 <p>1.<code>git init</code></p>
 <p>2.<code>git checkout -b hexo</code> //新建hexo分支并切换到hexo</p>
 <p>3.将原来博客文件夹里面的<code>_config.yml</code>，<code>theme/</code>，<code>source/</code>，<code>scaffolds/</code>，<code>package.json</code>，<code>.gitignore</code>，共6个文件/文件夹 拷贝到hexo文件夹下面。</p>
-<a id="more"></a>
 <p>需要拷贝的文件如下:</p>
 <ul>
 <li>_config.yml（站点配置）；</li>
