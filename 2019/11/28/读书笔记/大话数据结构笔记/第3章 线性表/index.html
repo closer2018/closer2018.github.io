@@ -175,7 +175,7 @@
           <div class="markdown-body">
             <p>线性表：零个或多个数据元素的有限序列。</p>
 <h2 id="3-1-3-2线性表的定义"><a href="#3-1-3-2线性表的定义" class="headerlink" title="3.1-3.2线性表的定义"></a>3.1-3.2线性表的定义</h2><p>线性表（List）：零个或多个数据元素的有限序列。</p>
-<p>若将线性表记为（a_1，…，a_(i−1)，a_i，a_(i+1)，…，a_n），则表中a_(i−1) 领先于a_i，a_i 领先于a_(i+1)，称a_(i−1) 是a_i 的直接前驱元素，a_(i+1) 是a_i 的直接后继元素。当i=1，2，…，n-1时，a_i 有且仅有一个直接后继，当i=2，3，…，n时，a_i 有且仅有一个直接前驱。<br>如图3-2-1所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.2.1.GIF?raw=true" srcset="/img/loading.gif" alt="3-2-1"></p>
+<p>若将线性表记为（a_1，…，a_(i−1)，a_i，a_(i+1)，…，a_n），则表中a_(i−1) 领先于a_i，a_i 领先于a_(i+1)，称a_(i−1) 是a_i 的直接前驱元素，a_(i+1) 是a_i 的直接后继元素。当i=1，2，…，n-1时，a_i 有且仅有一个直接后继，当i=2，3，…，n时，a_i 有且仅有一个直接前驱。<br>如图3-2-1所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.2.1.GIF?raw=true" srcset="/img/loading.gif" alt="3-2-1"></p>
 <p>所以线性表元素的个数n（n&gt;0）定义为线性表的长度，当n=0时，称为空表。</p>
 <a id="more"></a>
 <p>在较复杂的线性表中，一个数据元素可以由若干个数据项组成。</p>
@@ -274,9 +274,9 @@ endADT</code></pre>
         return OK;
     }</code></pre>
 <p>线性表的顺序存储结构，在存、读数据时，不管是哪个位置，时间复杂度都是O（1）；而插入或删除时，时间复杂度都是O（n）。</p>
-<h3 id="3-5-4线性表顺序存储结构的优缺点"><a href="#3-5-4线性表顺序存储结构的优缺点" class="headerlink" title="3.5.4线性表顺序存储结构的优缺点"></a>3.5.4线性表顺序存储结构的优缺点</h3><p>线性表的顺序存储结构的优缺点如图3-5-3所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.5.3.GIF?raw=true" srcset="/img/loading.gif" alt="3-5-3"></p>
+<h3 id="3-5-4线性表顺序存储结构的优缺点"><a href="#3-5-4线性表顺序存储结构的优缺点" class="headerlink" title="3.5.4线性表顺序存储结构的优缺点"></a>3.5.4线性表顺序存储结构的优缺点</h3><p>线性表的顺序存储结构的优缺点如图3-5-3所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.5.3.GIF?raw=true" srcset="/img/loading.gif" alt="3-5-3"></p>
 <h3 id="3-6线性表的链式存储结构"><a href="#3-6线性表的链式存储结构" class="headerlink" title="3.6线性表的链式存储结构"></a>3.6线性表的链式存储结构</h3><h3 id="3-6-2线性表链式存储结构定义"><a href="#3-6-2线性表链式存储结构定义" class="headerlink" title="3.6.2线性表链式存储结构定义"></a>3.6.2线性表链式存储结构定义</h3><p>为了表示每个数据元素a_i 与其直接后继数据元素a_(i+1) 之间的逻辑关系，对数据元素a1来说，除了存储其本身的信息之外，还需存储一个指示其直接后继的信息（即直接后继的存储位置）。我们把存储数据元素信息的域称为数据域，把存储直接后继位置的域称为指针域。指针域中存储的信息称做指针或链。这两部分信息组成数据元素a_i 的存储映像，称为结点（Node）。<br>n个结点（a_i 的存储映像）链结成一个链表，即为线性表（a_1，a_2，…，a_n）的链式存储结构，因为此链表的每个结点中只包含一个指针域，所以叫做单链表。<br>我们把链表中第一个结点的存储位置叫做头指针,线性链表的最后一个结点指针为“空”（通常用NULL或“^”符号表示）。<br>有时，我们为了更加方便地对链表进行操作，会在单链表的第一个结点前附设一个结点，称为头结点。头结点的数据域可以不存储任何信息。</p>
-<h3 id="3-6-3头指针与头结点的异同"><a href="#3-6-3头指针与头结点的异同" class="headerlink" title="3.6.3头指针与头结点的异同"></a>3.6.3头指针与头结点的异同</h3><p><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.6.3.GIF?raw=true" srcset="/img/loading.gif" alt="3-6-3"></p>
+<h3 id="3-6-3头指针与头结点的异同"><a href="#3-6-3头指针与头结点的异同" class="headerlink" title="3.6.3头指针与头结点的异同"></a>3.6.3头指针与头结点的异同</h3><p><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.6.3.GIF?raw=true" srcset="/img/loading.gif" alt="3-6-3"></p>
 <h3 id="3-6-4线性表链式存储结构代码描述"><a href="#3-6-4线性表链式存储结构代码描述" class="headerlink" title="3.6.4线性表链式存储结构代码描述"></a>3.6.4线性表链式存储结构代码描述</h3><pre><code class="c">//线性表的单链表存储结构
 typedef struct Node
 {
@@ -312,7 +312,7 @@ Status GetElem(LinkList L,int i,ElemType *e)
     return OK;
 }</code></pre>
 <p>这个算法的最坏情况时间复杂度为O(n)。  </p>
-<h2 id="3-8-单链表的插入和删除"><a href="#3-8-单链表的插入和删除" class="headerlink" title="3.8 单链表的插入和删除"></a>3.8 单链表的插入和删除</h2><h3 id="3-8-1-单链表的插入"><a href="#3-8-1-单链表的插入" class="headerlink" title="3.8.1 单链表的插入"></a>3.8.1 单链表的插入</h3><p><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.8.1.GIF?raw=true" srcset="/img/loading.gif" alt="图3-8-1"><br>假设上一个结点是p，下一个结点是p-&gt;next,现在要把结点s插入这两个结点中去。只需要2行代码：<br><code>s-&gt;next=p-&gt;next;//先让s的指针域指向p-&gt;next</code><br><code>p-&gt;next=s;//把s的地址赋给p的指针域</code></p>
+<h2 id="3-8-单链表的插入和删除"><a href="#3-8-单链表的插入和删除" class="headerlink" title="3.8 单链表的插入和删除"></a>3.8 单链表的插入和删除</h2><h3 id="3-8-1-单链表的插入"><a href="#3-8-1-单链表的插入" class="headerlink" title="3.8.1 单链表的插入"></a>3.8.1 单链表的插入</h3><p><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.8.1.GIF?raw=true" srcset="/img/loading.gif" alt="图3-8-1"><br>假设上一个结点是p，下一个结点是p-&gt;next,现在要把结点s插入这两个结点中去。只需要2行代码：<br><code>s-&gt;next=p-&gt;next;//先让s的指针域指向p-&gt;next</code><br><code>p-&gt;next=s;//把s的地址赋给p的指针域</code></p>
 <p>ps:这两句顺序不能交换。<br>如果先<code>p-&gt;next=s</code>;再<code>s-&gt;next=p-&gt;next</code>;就等于<code>s-&gt;next=s</code>;<br>所以这2句如论如何都不能反，这点初学者一定要注意。  </p>
 <p>单链表第i个数据插入结点的算法思路：</p>
 <ol>
@@ -346,7 +346,7 @@ Status ListInsert(LinkList *L,int i,ElemType e)
     p-&gt;next = s;          /* 将s赋值给p的后继 */
     return OK;
 }</code></pre>
-<h3 id="3-8-2-单链表的删除"><a href="#3-8-2-单链表的删除" class="headerlink" title="3.8.2 单链表的删除"></a>3.8.2 单链表的删除</h3><p><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.8.5.GIF?raw=true" srcset="/img/loading.gif" alt="3-8-5"><br>要删除节点q，其实就是要让<code>p-&gt;next=q-&gt;next</code>;<br>单链表第i个数据删除结点的算法思路：</p>
+<h3 id="3-8-2-单链表的删除"><a href="#3-8-2-单链表的删除" class="headerlink" title="3.8.2 单链表的删除"></a>3.8.2 单链表的删除</h3><p><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.8.5.GIF?raw=true" srcset="/img/loading.gif" alt="3-8-5"><br>要删除节点q，其实就是要让<code>p-&gt;next=q-&gt;next</code>;<br>单链表第i个数据删除结点的算法思路：</p>
 <ol>
 <li>声明一结点p指向链表第一个结点，初始化j从1开始</li>
 <li>当<code>j&lt;i</code>时，就遍历链表，让p的指针向后移动，不断指向下一个结点，j累加1；</li>
@@ -428,7 +428,7 @@ void CreateListTail(LinkList *L, int n)
     }
     r-&gt;next = NULL;                       /* 表示当前链表结束 */
 }</code></pre>
-<p>PS：这里需解释一下，<code>r-&gt;next=p</code>的意思，其实就是将刚才的表尾终端结点r的指针指向新结点p，如图3-9-2所示，当中①位置的连线就是表示这个意思。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.9.2.GIF?raw=true" srcset="/img/loading.gif" alt="3-9-2"><br><code>r=p</code>的意思请看图3-9-3，就是本来r是a_(i-1)元素的结点，现在它已经不是最后的结点了，现在最后的结点是a_i，所以应该将p结点这个最后的结点赋值给r。此时r又是最终的尾结点了。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.9.3.GIF?raw=true" srcset="/img/loading.gif" alt="3-9-3">  </p>
+<p>PS：这里需解释一下，<code>r-&gt;next=p</code>的意思，其实就是将刚才的表尾终端结点r的指针指向新结点p，如图3-9-2所示，当中①位置的连线就是表示这个意思。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.9.2.GIF?raw=true" srcset="/img/loading.gif" alt="3-9-2"><br><code>r=p</code>的意思请看图3-9-3，就是本来r是a_(i-1)元素的结点，现在它已经不是最后的结点了，现在最后的结点是a_i，所以应该将p结点这个最后的结点赋值给r。此时r又是最终的尾结点了。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.9.3.GIF?raw=true" srcset="/img/loading.gif" alt="3-9-3">  </p>
 <p>循环结束后，那么应该让这个链表的指针域置空，因此有了<code>r-&gt;next=NULL</code>，以便以后遍历时可以确认其是尾部。  </p>
 <h2 id="3-10单链表的整表删除"><a href="#3-10单链表的整表删除" class="headerlink" title="3.10单链表的整表删除"></a>3.10单链表的整表删除</h2><p>单链表整表删除的算法思路如下：</p>
 <ol>
@@ -455,7 +455,7 @@ Status ClearList(LinkList *L)
     (*L)-&gt;next=NULL;        /* 头结点指针域为空 */
     return OK;
 }</code></pre>
-<h2 id="3-11单链表结构与顺序存储结构优缺点"><a href="#3-11单链表结构与顺序存储结构优缺点" class="headerlink" title="3.11单链表结构与顺序存储结构优缺点"></a>3.11单链表结构与顺序存储结构优缺点</h2><p>简单地对单链表结构和顺序存储结构做对比,如图3-11-1：<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.11.1.GIF?raw=true" srcset="/img/loading.gif" alt="3-11-1">  </p>
+<h2 id="3-11单链表结构与顺序存储结构优缺点"><a href="#3-11单链表结构与顺序存储结构优缺点" class="headerlink" title="3.11单链表结构与顺序存储结构优缺点"></a>3.11单链表结构与顺序存储结构优缺点</h2><p>简单地对单链表结构和顺序存储结构做对比,如图3-11-1：<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.11.1.GIF?raw=true" srcset="/img/loading.gif" alt="3-11-1">  </p>
 <p>通过上面的对比，我们可以得出一些经验性的结论：</p>
 <ul>
 <li>若线性表需要频繁查找，很少进行插入和删除操作时，宜采用顺序存储结构。若需要频繁插入和删除时，宜采用单链表结构。</li>
@@ -469,7 +469,7 @@ typedef struct
     ElemType data;
     int cur;  /* 游标(Cursor) ，为0时表示无指向 */
 } Component,StaticLinkList[MAXSIZE];</code></pre>
-<p>另外我们对数组第一个和最后一个元素作为特殊元素处理，不存数据。我们通常把未被使用的数组元素称为备用链表。而数组第一个元素，即<strong>下标为0的元素的cur就存放备用链表的第一个结点的下标；而数组的最后一个元素的cur则存放第一个有数值的元素的下标</strong>，相当于单链表中的头结点作用，当整个链表为空时，则为0。如图3-12-1所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.12.1.GIF?raw=true" srcset="/img/loading.gif" alt="3-12-1">  </p>
+<p>另外我们对数组第一个和最后一个元素作为特殊元素处理，不存数据。我们通常把未被使用的数组元素称为备用链表。而数组第一个元素，即<strong>下标为0的元素的cur就存放备用链表的第一个结点的下标；而数组的最后一个元素的cur则存放第一个有数值的元素的下标</strong>，相当于单链表中的头结点作用，当整个链表为空时，则为0。如图3-12-1所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.12.1.GIF?raw=true" srcset="/img/loading.gif" alt="3-12-1">  </p>
 <p>初始化数组状态，代码如下：  </p>
 <pre><code class="c">/* 将一维数组space中各分量链成一个备用链表，space[0].cur为头指针，&quot;0&quot;表示空指针 */
 Status InitList(StaticLinkList space)
@@ -547,8 +547,8 @@ int ListLength(StaticLinkList L)
     }
     return j;
 }</code></pre>
-<h3 id="3-12-3静态链表优缺点"><a href="#3-12-3静态链表优缺点" class="headerlink" title="3.12.3静态链表优缺点"></a>3.12.3静态链表优缺点</h3><p>总结一下静态链表的优缺点（见图3-12-5）：<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.12.5.GIF?raw=true" srcset="/img/loading.gif" alt="3-12-5"><br>总的来说，静态链表其实是为了给没有指针的高级语言设计的一种实现单链表能力的方法。尽管大家不一定会用得上，但这样的思考方式是非常巧妙的，应该理解其思想，以备不时之需。  </p>
-<h2 id="3-13循环链表"><a href="#3-13循环链表" class="headerlink" title="3.13循环链表"></a>3.13循环链表</h2><p>将单链表中终端结点的指针端由空指针改为指向头结点，就使整个单链表形成一个环，这种头尾相接的单链表称为单循环链表，简称循环链表（circular linked list）。<br>其实循环链表和单链表的主要差异就在于循环的判断条件上，原来是判断<code>p-&gt;next</code>是否为空，现在则是<code>p-&gt;next</code>不等于头结点，则循环未结束。<br>在单链表中，我们有了头结点时，我们可以用O（1）的时间访问第一个结点，但如果想要用O（1）的时间访问到最后一个结点，则需要改造一下这个循环链表，不用头指针，而是用指向终端结点的尾指针来表示循环链表（如图3-13-5）。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.13.5.GIF?raw=true" srcset="/img/loading.gif" alt="3-13-5"><br>从上图可以看出，终端结点用尾指针rear指示，则查找终端结点是O（1），而开始结点，其实就是<code>rear-&gt;next-&gt;next</code>，其时间复杂也为O（1）。<br>举个程序的例子，要将两个循环链表合并成一个表时，有了尾指针就非常简单了。比如下面的这两个循环链表，它们的尾指针分别是rearA和rearB，如图3-13-6所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.13.6.GIF?raw=true" srcset="/img/loading.gif" alt="3-13-6"><br>要想把它们合并，只需要如下的操作即可，如图3-13-7所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.13.7.GIF?raw=true" srcset="/img/loading.gif" alt="3-13-7"><br>具体代码如下：  </p>
+<h3 id="3-12-3静态链表优缺点"><a href="#3-12-3静态链表优缺点" class="headerlink" title="3.12.3静态链表优缺点"></a>3.12.3静态链表优缺点</h3><p>总结一下静态链表的优缺点（见图3-12-5）：<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.12.5.GIF?raw=true" srcset="/img/loading.gif" alt="3-12-5"><br>总的来说，静态链表其实是为了给没有指针的高级语言设计的一种实现单链表能力的方法。尽管大家不一定会用得上，但这样的思考方式是非常巧妙的，应该理解其思想，以备不时之需。  </p>
+<h2 id="3-13循环链表"><a href="#3-13循环链表" class="headerlink" title="3.13循环链表"></a>3.13循环链表</h2><p>将单链表中终端结点的指针端由空指针改为指向头结点，就使整个单链表形成一个环，这种头尾相接的单链表称为单循环链表，简称循环链表（circular linked list）。<br>其实循环链表和单链表的主要差异就在于循环的判断条件上，原来是判断<code>p-&gt;next</code>是否为空，现在则是<code>p-&gt;next</code>不等于头结点，则循环未结束。<br>在单链表中，我们有了头结点时，我们可以用O（1）的时间访问第一个结点，但如果想要用O（1）的时间访问到最后一个结点，则需要改造一下这个循环链表，不用头指针，而是用指向终端结点的尾指针来表示循环链表（如图3-13-5）。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.13.5.GIF?raw=true" srcset="/img/loading.gif" alt="3-13-5"><br>从上图可以看出，终端结点用尾指针rear指示，则查找终端结点是O（1），而开始结点，其实就是<code>rear-&gt;next-&gt;next</code>，其时间复杂也为O（1）。<br>举个程序的例子，要将两个循环链表合并成一个表时，有了尾指针就非常简单了。比如下面的这两个循环链表，它们的尾指针分别是rearA和rearB，如图3-13-6所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.13.6.GIF?raw=true" srcset="/img/loading.gif" alt="3-13-6"><br>要想把它们合并，只需要如下的操作即可，如图3-13-7所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.13.7.GIF?raw=true" srcset="/img/loading.gif" alt="3-13-7"><br>具体代码如下：  </p>
 <pre><code class="c">p=rearA-&gt;next;     /*保存A表的头结点，即①*/
 rearA-&gt;next=rearB-&gt;next-&gt;next;     /*将本是指向B表的第一个结点（不是头结点）赋值给reaA-&gt;next,即②*/
 rearB-&gt;next=p;/*将原A表的头结点赋值给rearB-&gt;next，即③**/
@@ -561,17 +561,17 @@ typedef struct DulNode
     struct DuLNode *prior；/*直接前驱指针*/
     struct DuLNode *next；/*直接后继指针*/
 }DulNode，*DuLinkList；</code></pre>
-<p>既然单链表也可以有循环链表，那么双向链表当然也可以是循环表。<br>双向链表的循环带头结点的空链表如图3-14-3所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.14.3.GIF?raw=true" srcset="/img/loading.gif" alt="3-14-3"><br>非空的循环的带头结点的双向链表如图3-14-4所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.14.4.GIF?raw=true" srcset="/img/loading.gif" alt="3-14-4"><br>PS：双向链表在插入和删除时，需要更改两个指针变量。<br>插入操作时，其实并不复杂，不过<strong>顺序很重要，千万不能写反了</strong>。<br>我们现在假设存储元素e的结点为s，要实现将结点s插入到结点p和<code>p-&gt;next</code>之间需要下面几步，如图3-14-5所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.14.5.GIF?raw=true" srcset="/img/loading.gif" alt="3-14-5">  </p>
+<p>既然单链表也可以有循环链表，那么双向链表当然也可以是循环表。<br>双向链表的循环带头结点的空链表如图3-14-3所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.14.3.GIF?raw=true" srcset="/img/loading.gif" alt="3-14-3"><br>非空的循环的带头结点的双向链表如图3-14-4所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.14.4.GIF?raw=true" srcset="/img/loading.gif" alt="3-14-4"><br>PS：双向链表在插入和删除时，需要更改两个指针变量。<br>插入操作时，其实并不复杂，不过<strong>顺序很重要，千万不能写反了</strong>。<br>我们现在假设存储元素e的结点为s，要实现将结点s插入到结点p和<code>p-&gt;next</code>之间需要下面几步，如图3-14-5所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.14.5.GIF?raw=true" srcset="/img/loading.gif" alt="3-14-5">  </p>
 <pre><code class="c">s-&gt;prior=p;/*把p赋值给s的前驱，如图中①*/
 s-&gt;next=p-&gt;next;/*把p-&gt;next赋值给s的后继，如图中②*/
 p-&gt;next-&gt;prior=s;/*把s赋值给p-&gt;next的前驱，如图中③*/
 p-&gt;next=s;/*把s赋值给p的后继，如图中④*/</code></pre>
 <p>关键在于它们的顺序，由于第2步和第3步都用到了<code>p-&gt;next</code>。如果第4步先执行，则会使得<code>p-&gt;next</code>提前变成了s，使得插入的工作完不成。所以我们不妨把上面这张图在理解的基础上记忆，顺序是先搞定s的前驱和后继，再搞定后结点的前驱，最后解决前结点的后继。  </p>
-<p>若要删除结点p，只需要下面两步骤，如图3-14-6所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.14.6.GIF?raw=true" srcset="/img/loading.gif" alt="3-14-6">  </p>
+<p>若要删除结点p，只需要下面两步骤，如图3-14-6所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.14.6.GIF?raw=true" srcset="/img/loading.gif" alt="3-14-6">  </p>
 <pre><code class="c">p-&gt;prior-&gt;next=p-&gt;next；/*把p-&gt;next赋值给p-&gt;prior的后继，如图中①*/
 p-&gt;next-&gt;prior=p-&gt;prior；/*把p-&gt;prior 赋值给p-&gt;next的前驱，如图中②*/
 free（p）；/*释放结点*/</code></pre>
-<h2 id="3-15总结回顾"><a href="#3-15总结回顾" class="headerlink" title="3.15总结回顾"></a>3.15总结回顾</h2><p>这一章，主要讲的是线性表。<br>先谈了它的定义，线性表是零个或多个具有相同类型的数据元素的有限序列。然后谈了线性表的抽象数据类型，如它的一些基本操作。<br>之后我们就线性表的两大结构做了讲述，先讲的是比较容易的顺序存储结构，指的是用一段地址连续的存储单元依次存储线性表的数据元素。通常我们都是用数组来实现这一结构。<br>后来是我们的重点，由顺序存储结构的插入和删除操作不方便，引出了链式存储结构。它具有不受固定的存储空间限制，可以比较快捷的插入和删除操作的特点。然后我们分别就链式存储结构的不同形式，如单链表、循环链表和双向链表做了讲解，另外我们还讲了若不使用指针如何处理链表结构的静态链表方法。<br>总的来说，线性表的这两种结构（如图3-15-1所示）是后面其他数据结构的基础，把它们学明白了，对后面的学习有着至关重要的作用。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.15.1.GIF?raw=true" srcset="/img/loading.gif" alt="3-15-1">  </p>
+<h2 id="3-15总结回顾"><a href="#3-15总结回顾" class="headerlink" title="3.15总结回顾"></a>3.15总结回顾</h2><p>这一章，主要讲的是线性表。<br>先谈了它的定义，线性表是零个或多个具有相同类型的数据元素的有限序列。然后谈了线性表的抽象数据类型，如它的一些基本操作。<br>之后我们就线性表的两大结构做了讲述，先讲的是比较容易的顺序存储结构，指的是用一段地址连续的存储单元依次存储线性表的数据元素。通常我们都是用数组来实现这一结构。<br>后来是我们的重点，由顺序存储结构的插入和删除操作不方便，引出了链式存储结构。它具有不受固定的存储空间限制，可以比较快捷的插入和删除操作的特点。然后我们分别就链式存储结构的不同形式，如单链表、循环链表和双向链表做了讲解，另外我们还讲了若不使用指针如何处理链表结构的静态链表方法。<br>总的来说，线性表的这两种结构（如图3-15-1所示）是后面其他数据结构的基础，把它们学明白了，对后面的学习有着至关重要的作用。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%89%E7%AB%A0/3.15.1.GIF?raw=true" srcset="/img/loading.gif" alt="3-15-1">  </p>
 
             <hr>
           </div>

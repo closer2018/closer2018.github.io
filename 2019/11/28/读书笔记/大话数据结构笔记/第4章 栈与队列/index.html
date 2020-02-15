@@ -198,7 +198,7 @@ typedef struct
         SElemType data[MAXSIZE];
         int top; /* 用于栈顶指针 */
 }SqStack;</code></pre>
-<p>若现在有一个栈，StackSize是5，则栈普通情况、空栈和栈满的情况示意图如图4-4-2所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-4-2.JPG?raw=true" srcset="/img/loading.gif" alt="4-4-2">  </p>
+<p>若现在有一个栈，StackSize是5，则栈普通情况、空栈和栈满的情况示意图如图4-4-2所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-4-2.JPG?raw=true" srcset="/img/loading.gif" alt="4-4-2">  </p>
 <h3 id="4-4-2-栈的顺序存储结构——进栈操作"><a href="#4-4-2-栈的顺序存储结构——进栈操作" class="headerlink" title="4.4.2 栈的顺序存储结构——进栈操作"></a>4.4.2 栈的顺序存储结构——进栈操作</h3><p>对于栈的插入，即进栈操作，其实就是在栈顶插入一个元素。<br>进栈操作push，其代码如下：  </p>
 <pre><code class="c">/* 插入元素e为新的栈顶元素 */
 Status Push(SqStack *S,SElemType e)
@@ -274,7 +274,7 @@ typedef struct LinkStack
     LinkStackPtr top;
     int count;
 }LinkStack;</code></pre>
-<h3 id="4-6-2-栈的链式存储结构-进栈操作"><a href="#4-6-2-栈的链式存储结构-进栈操作" class="headerlink" title="4.6.2 栈的链式存储结构-进栈操作"></a>4.6.2 栈的链式存储结构-进栈操作</h3><p>对于链栈的进栈push操作，假设元素值为e的新结点是s，top为栈顶指针，示意图如图4-6-2所示代码如下。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-6-2.JPG?raw=true" srcset="/img/loading.gif" alt="4-6-2">  </p>
+<h3 id="4-6-2-栈的链式存储结构-进栈操作"><a href="#4-6-2-栈的链式存储结构-进栈操作" class="headerlink" title="4.6.2 栈的链式存储结构-进栈操作"></a>4.6.2 栈的链式存储结构-进栈操作</h3><p>对于链栈的进栈push操作，假设元素值为e的新结点是s，top为栈顶指针，示意图如图4-6-2所示代码如下。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-6-2.JPG?raw=true" srcset="/img/loading.gif" alt="4-6-2">  </p>
 <pre><code class="c">/* 插入元素e为新的栈顶元素 */
 Status Push(LinkStack *S,SElemType e)
 {
@@ -285,7 +285,7 @@ Status Push(LinkStack *S,SElemType e)
     S-&gt;count++;
     return OK;
 }</code></pre>
-<h3 id="4-6-3-栈的链式存储结构——出栈操作"><a href="#4-6-3-栈的链式存储结构——出栈操作" class="headerlink" title="4.6.3 栈的链式存储结构——出栈操作"></a>4.6.3 栈的链式存储结构——出栈操作</h3><p>至于链栈的出栈pop操作，也是很简单的三句操作。假设变量p用来存储要删除的栈顶结点，将栈顶指针下移一位，最后释放p即可，如图4-6-3所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-6-3.JPG?raw=true" srcset="/img/loading.gif" alt="4-6-3">  </p>
+<h3 id="4-6-3-栈的链式存储结构——出栈操作"><a href="#4-6-3-栈的链式存储结构——出栈操作" class="headerlink" title="4.6.3 栈的链式存储结构——出栈操作"></a>4.6.3 栈的链式存储结构——出栈操作</h3><p>至于链栈的出栈pop操作，也是很简单的三句操作。假设变量p用来存储要删除的栈顶结点，将栈顶指针下移一位，最后释放p即可，如图4-6-3所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-6-3.JPG?raw=true" srcset="/img/loading.gif" alt="4-6-3">  </p>
 <pre><code class="c">/* 若栈不空，则删除S的栈顶元素，用e返回其值，并返回OK；否则返回ERROR */
 Status Pop(LinkStack *S,SElemType *e)
 {
@@ -369,7 +369,7 @@ Status DeQueue(SqQueue *Q, QElemType *e)
                                     /* 若到最后则转到数组头部 */
     return  OK;
 }</code></pre>
-<h2 id="4-13-队列的链式存储结构及实现"><a href="#4-13-队列的链式存储结构及实现" class="headerlink" title="4.13 队列的链式存储结构及实现"></a>4.13 队列的链式存储结构及实现</h2><p>队列的链式存储结构，其实就是线性表的单链表，只不过它只能尾进头出而已，我们把它简称为链队列。<br>为了操作上的方便，我们将队头指针指向链队列的头结点，而队尾指针指向终端结点，如图4-13-1所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-13-1.JPG?raw=true" srcset="/img/loading.gif" alt="4-13-1"><br>空队列时，front和rear都指向头结点，如图4-13-2所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-13-2.JPG?raw=true" srcset="/img/loading.gif" alt="4-13-2"><br>链队列的结构为：  </p>
+<h2 id="4-13-队列的链式存储结构及实现"><a href="#4-13-队列的链式存储结构及实现" class="headerlink" title="4.13 队列的链式存储结构及实现"></a>4.13 队列的链式存储结构及实现</h2><p>队列的链式存储结构，其实就是线性表的单链表，只不过它只能尾进头出而已，我们把它简称为链队列。<br>为了操作上的方便，我们将队头指针指向链队列的头结点，而队尾指针指向终端结点，如图4-13-1所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-13-1.JPG?raw=true" srcset="/img/loading.gif" alt="4-13-1"><br>空队列时，front和rear都指向头结点，如图4-13-2所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-13-2.JPG?raw=true" srcset="/img/loading.gif" alt="4-13-2"><br>链队列的结构为：  </p>
 <pre><code class="c">typedef int QElemType; /* QElemType类型根据实际情况而定，这里假设为int */
 
 typedef struct QNode    /* 结点结构 */
@@ -382,7 +382,7 @@ typedef struct            /* 队列的链表结构 */
 {
     QueuePtr front, rear; /* 队头、队尾指针 */
 }LinkQueue;</code></pre>
-<h3 id="4-13-1-队列的链式存储结构——入队操作"><a href="#4-13-1-队列的链式存储结构——入队操作" class="headerlink" title="4.13.1 队列的链式存储结构——入队操作"></a>4.13.1 队列的链式存储结构——入队操作</h3><p>入队操作时，其实就是在链表尾部插入结点，如图4-13-3所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-13-3.JPG?raw=true" srcset="/img/loading.gif" alt="4-13-3"><br>入队代码如下：</p>
+<h3 id="4-13-1-队列的链式存储结构——入队操作"><a href="#4-13-1-队列的链式存储结构——入队操作" class="headerlink" title="4.13.1 队列的链式存储结构——入队操作"></a>4.13.1 队列的链式存储结构——入队操作</h3><p>入队操作时，其实就是在链表尾部插入结点，如图4-13-3所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-13-3.JPG?raw=true" srcset="/img/loading.gif" alt="4-13-3"><br>入队代码如下：</p>
 <pre><code class="c">/* 插入元素e为Q的新的队尾元素 */
 Status EnQueue(LinkQueue *Q, QElemType e)
 {
@@ -395,7 +395,7 @@ Status EnQueue(LinkQueue *Q, QElemType e)
     Q-&gt;rear = s;        /* 把当前的s设置为队尾结点，rear指向s，见图中② */
     return OK;
 }</code></pre>
-<h3 id="4-13-2-队列的链式存储结构——出队操作"><a href="#4-13-2-队列的链式存储结构——出队操作" class="headerlink" title="4.13.2 队列的链式存储结构——出队操作"></a>4.13.2 队列的链式存储结构——出队操作</h3><p>出队操作时，就是头结点的后继结点出队，将头结点的后继改为它后面的结点，若链表除头结点外只剩一个元素时，则需将rear指向头结点，如图4-13-4所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-13-4.JPG?raw=true" srcset="/img/loading.gif" alt="4-13-4">  </p>
+<h3 id="4-13-2-队列的链式存储结构——出队操作"><a href="#4-13-2-队列的链式存储结构——出队操作" class="headerlink" title="4.13.2 队列的链式存储结构——出队操作"></a>4.13.2 队列的链式存储结构——出队操作</h3><p>出队操作时，就是头结点的后继结点出队，将头结点的后继改为它后面的结点，若链表除头结点外只剩一个元素时，则需将rear指向头结点，如图4-13-4所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-13-4.JPG?raw=true" srcset="/img/loading.gif" alt="4-13-4">  </p>
 <p>出队代码如下：</p>
 <pre><code class="c">/* 若队列不空,删除Q的队头元素,用e返回其值,并返回OK,否则返回ERROR */
 Status DeQueue(LinkQueue *Q, QElemType *e)
@@ -412,7 +412,7 @@ Status DeQueue(LinkQueue *Q, QElemType *e)
     return OK;
 }</code></pre>
 <p>对于循环队列与链队列的比较，可以从两方面来考虑，从时间上，其实它们的基本操作都是常数时间，即都为O(1)的，不过循环队列是事先申请好空间，使用期间不释放，而对于链队列，每次申请和释放结点也会存在一些时间开销，如果入队出队频繁，则两者还是有细微差异。对于空间上来说，循环队列必须有一个固定的长度，所以就有了存储元素个数和空间浪费的问题。而链队列不存在这个问题，尽管它需要一个指针域，会产生一些空间上的开销，但也可以接受。所以在空间上，链队列更加灵活。<br>总的来说，在可以确定队列长度最大值的情况下，建议用循环队列，如果你无法预估队列的长度时，则用链队列。  </p>
-<h2 id="4-14-总结回顾"><a href="#4-14-总结回顾" class="headerlink" title="4.14 总结回顾"></a>4.14 总结回顾</h2><p>这一章讲的是栈和队列，它们都是特殊的线性表，只不过对插入和删除操作做了限制。<br>栈(stack)是限定仅在表尾进行插入和删除操作的线性表。<br>队列(queue)是只允许在一端进行插入操作，而在另一端进行删除操作的线性表。<br>它们均可以用线性表的顺序存储结构来实现，但都存在着顺序存储的一些弊端。因此它们各自有各自的技巧来解决这个问题。<br>对于栈来说，如果是两个相同数据类型的栈，则可以用数组的两端作栈底的方法来让两个栈共享数据，这就可以最大化地利用数组的空间。<br>对于队列来说，为了避免数组插入和删除时需要移动数据，于是就引入了循环队列，使得队头和队尾可以在数组中循环变化。解决了移动数据的时间损耗，使得本来插入和删除是O(n)的时间复杂度变成了O(1)。<br>它们也都可以通过链式存储结构来实现，实现原则上与线性表基本相同如图4-14-1所示。<br><img src="https://github.com/closer2018/picture/blob/master/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-14-1.JPG?raw=true" srcset="/img/loading.gif" alt="4-14-1">  </p>
+<h2 id="4-14-总结回顾"><a href="#4-14-总结回顾" class="headerlink" title="4.14 总结回顾"></a>4.14 总结回顾</h2><p>这一章讲的是栈和队列，它们都是特殊的线性表，只不过对插入和删除操作做了限制。<br>栈(stack)是限定仅在表尾进行插入和删除操作的线性表。<br>队列(queue)是只允许在一端进行插入操作，而在另一端进行删除操作的线性表。<br>它们均可以用线性表的顺序存储结构来实现，但都存在着顺序存储的一些弊端。因此它们各自有各自的技巧来解决这个问题。<br>对于栈来说，如果是两个相同数据类型的栈，则可以用数组的两端作栈底的方法来让两个栈共享数据，这就可以最大化地利用数组的空间。<br>对于队列来说，为了避免数组插入和删除时需要移动数据，于是就引入了循环队列，使得队头和队尾可以在数组中循环变化。解决了移动数据的时间损耗，使得本来插入和删除是O(n)的时间复杂度变成了O(1)。<br>它们也都可以通过链式存储结构来实现，实现原则上与线性表基本相同如图4-14-1所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%9B%9B%E7%AB%A0/4-14-1.JPG?raw=true" srcset="/img/loading.gif" alt="4-14-1">  </p>
 
             <hr>
           </div>
