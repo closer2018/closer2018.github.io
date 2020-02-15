@@ -4,11 +4,11 @@
     <title>hexo一键上传部署脚本的构建</title>
     <url>/2020/02/15/hexo/hexo%E4%B8%80%E9%94%AE%E4%B8%8A%E4%BC%A0%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC%E7%9A%84%E6%9E%84%E5%BB%BA/</url>
     <content><![CDATA[<ol>
-<li>先右键新建一个文本文档，后缀改为<code>.bat</code>；</li>
-<li>注意：编码要是windows默认编码GBK；</li>
+<li>windows先右键新建一个文本文档，后缀改为<code>.bat</code>；Linux新建一个<code>.sh</code>文档;</li>
+<li>注意：编码要是windows默认编码GBK；Linux上是UTF-8；</li>
 <li>然后复制黏贴，话不多说，直接上代码。</li>
 </ol>
-<pre><code class="php">@echo off
+<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><pre><code class="bat">@echo off
 
 cd G:\code\hexo
 REM 改为hexo根目录
@@ -46,11 +46,12 @@ echo;
 echo;
 
 pause</code></pre>
-]]></content>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2>]]></content>
       <categories>
         <category>hexo</category>
       </categories>
       <tags>
+        <tag>hexo</tag>
         <tag>一键部署</tag>
       </tags>
   </entry>

@@ -8,7 +8,7 @@
     <link href="/2020/02/15/hexo/hexo%E4%B8%80%E9%94%AE%E4%B8%8A%E4%BC%A0%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC%E7%9A%84%E6%9E%84%E5%BB%BA/"/>
     <url>/2020/02/15/hexo/hexo%E4%B8%80%E9%94%AE%E4%B8%8A%E4%BC%A0%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC%E7%9A%84%E6%9E%84%E5%BB%BA/</url>
     
-    <content type="html"><![CDATA[<ol><li>先右键新建一个文本文档，后缀改为<code>.bat</code>；</li><li>注意：编码要是windows默认编码GBK；</li><li>然后复制黏贴，话不多说，直接上代码。</li></ol><pre><code class="php">@echo offcd G:\code\hexoREM 改为hexo根目录echo &quot;当前目录是： G:\code\hexo&quot;REM 改为hexo根目录echo &quot;正在add... ...&quot;git add source/ REM 只添加了blog文件目录，需要的可自行添加...echo;echo &quot;add complete.&quot;echo;echo;echo &quot;正在commit... ...&quot;set now=%date% %time%echo %now%git commit -m &quot;blog update at %now%&quot;echo;echo &quot;commit complete.&quot;echo;echo;echo &quot;正在将更改提交到远程git服务器... ...&quot;git push githuborigin hexo &amp;&amp; git push giteeorigin hexo &amp;&amp; git push codingorigin hexoecho;echo &quot;git push complete.&quot;echo;echo;echo &quot;正在部署blog... ...&quot;hexo clean &amp;&amp; hexo g &amp;&amp; hexo decho;echo &quot;部署 complete.&quot;echo;echo;pause</code></pre>]]></content>
+    <content type="html"><![CDATA[<ol><li>windows先右键新建一个文本文档，后缀改为<code>.bat</code>；Linux新建一个<code>.sh</code>文档;</li><li>注意：编码要是windows默认编码GBK；Linux上是UTF-8；</li><li>然后复制黏贴，话不多说，直接上代码。</li></ol><h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><pre><code class="bat">@echo offcd G:\code\hexoREM 改为hexo根目录echo &quot;当前目录是： G:\code\hexo&quot;REM 改为hexo根目录echo &quot;正在add... ...&quot;git add source/ REM 只添加了blog文件目录，需要的可自行添加...echo;echo &quot;add complete.&quot;echo;echo;echo &quot;正在commit... ...&quot;set now=%date% %time%echo %now%git commit -m &quot;blog update at %now%&quot;echo;echo &quot;commit complete.&quot;echo;echo;echo &quot;正在将更改提交到远程git服务器... ...&quot;git push githuborigin hexo &amp;&amp; git push giteeorigin hexo &amp;&amp; git push codingorigin hexoecho;echo &quot;git push complete.&quot;echo;echo;echo &quot;正在部署blog... ...&quot;hexo clean &amp;&amp; hexo g &amp;&amp; hexo decho;echo &quot;部署 complete.&quot;echo;echo;pause</code></pre><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2>]]></content>
     
     
     <categories>
@@ -19,6 +19,8 @@
     
     
     <tags>
+      
+      <tag>hexo</tag>
       
       <tag>一键部署</tag>
       
