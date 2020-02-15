@@ -16,7 +16,7 @@
   <meta name="description" content="热爱学习的小码农报道">
   <meta name="author" content="closer">
   <meta name="keywords" content="">
-  <title>归档 ~ closer的自留地</title>
+  <title>hexo一键上传部署脚本的构建 ~ closer的自留地</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -40,7 +40,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -119,6 +119,41 @@
             </span>
 
             
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期六, 二月 15日 2020, 1:27 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    207 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      1 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
           </div>
 
           
@@ -129,41 +164,135 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 17 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2019</p>
-    
-    <a href="/2019/11/28/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/%E7%AC%AC3%E7%AB%A0%20%E7%BA%BF%E6%80%A7%E8%A1%A8/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">大话数据结构第三章 线性表</span>
-      <span style="float: right;">11-28</span>
-    </a>
-  
-    
-    <a href="/2019/11/28/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/%E7%AC%AC4%E7%AB%A0%20%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">大话数据结构第四章 栈与队列</span>
-      <span style="float: right;">11-28</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <ol>
+<li>先右键新建一个文本文档，后缀改为<code>.bat</code>；</li>
+<li>注意：编码要是windows默认编码GBK；</li>
+<li>然后复制黏贴，话不多说，直接上代码。</li>
+</ol>
+<pre><code class="php">@echo off
 
-              </div>
-            </div>
+cd G:\code\hexo
+REM 改为hexo根目录
+echo &quot;当前目录是： G:\code\hexo&quot;
+REM 改为hexo根目录
+echo &quot;正在add... ...&quot;
+git add source/ 
+REM 只添加了blog文件目录，需要的可自行添加...
+echo;
+echo &quot;add complete.&quot;
+echo;
+echo;
+
+echo &quot;正在commit... ...&quot;
+set now=%date% %time%
+echo %now%
+git commit -m &quot;blog update at %now%&quot;
+echo;
+echo &quot;commit complete.&quot;
+echo;
+echo;
+
+echo &quot;正在将更改提交到远程git服务器... ...&quot;
+git push githuborigin hexo &amp;&amp; git push giteeorigin hexo &amp;&amp; git push codingorigin hexo
+echo;
+echo &quot;git push complete.&quot;
+echo;
+echo;
+
+echo &quot;正在部署blog... ...&quot;
+hexo clean &amp;&amp; hexo g &amp;&amp; hexo d
+echo;
+echo &quot;部署 complete.&quot;
+echo;
+echo;
+
+pause</code></pre>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/hexo">hexo</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2">一键部署</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function () {
+        this.page.url = 'https://closer_laps.gitee.io/2020/02/15/hexo/hexo一键上传部署脚本的构建/';
+        this.page.identifier = '/2020/02/15/hexo/hexo一键上传部署脚本的构建/';
+      };
+      var oldLoad = window.onload;
+      window.onload = function () {
+        var d = document, s = d.createElement('script');
+        s.type = 'text/javascript';
+        s.src = '//' + 'https-closer2018-github-io' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="nofollow noopener noopener">comments
+        powered by Disqus.</a></noscript>
+  </div>
+
+
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -242,6 +371,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -306,7 +440,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "hexo一键上传部署脚本的构建&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 60,
