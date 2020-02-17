@@ -671,8 +671,8 @@ githuborigin  git@github.com:YouID/YouID.github.io.git (push)</code></pre><h2 id
 <a id="more"></a>
 <h2 id="2-1-外星人入侵"><a href="#2-1-外星人入侵" class="headerlink" title="2.1 外星人入侵"></a>2.1 外星人入侵</h2><h2 id="2-2-数据可视化"><a href="#2-2-数据可视化" class="headerlink" title="2.2 数据可视化"></a>2.2 数据可视化</h2><h2 id="2-3-web应用程序"><a href="#2-3-web应用程序" class="headerlink" title="2.3 web应用程序"></a>2.3 web应用程序</h2>]]></content>
       <categories>
-        <category>读书笔记</category>
         <category>python</category>
+        <category>读书笔记</category>
       </categories>
       <tags>
         <tag>读书笔记</tag>
@@ -1168,8 +1168,8 @@ unittest.main()</code></pre>
 <p>使用 setUp() 来创建一个调查对象和一组答案，供方法 <code>test_store_single_response()</code> 和 <code>test_store_three_responses()</code> 使用。<br>方法 setUp() 做了两件事情：创建一个调查对象（见方法setUp()第4行）；创建一个答案列表（见方法setUp()第5行）。<br>这让两个测试方法都更简单，因为它们都不用创建调查对象和答案。方法 <code>test_store_three_response()</code> 核实 self.responses 中的第一个答案—— self.responses[0] ——被妥善地存储，而方法 <code>test_store_three_response()</code> 核实 self.responses 中的全部三个答案都被妥善地存储。  </p>
 ]]></content>
       <categories>
-        <category>读书笔记</category>
         <category>python</category>
+        <category>读书笔记</category>
       </categories>
       <tags>
         <tag>读书笔记</tag>
