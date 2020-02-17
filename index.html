@@ -160,7 +160,6 @@
         
         <div class="index-excerpt" >
           <div class="index-text mb-1">一： 安装类型
-
 /boot分区（引导）-&gt;512MB-&gt;主分区-&gt;空间起始位置-&gt;Ext4日志文件系统-&gt;/boot。
 / 根分区（相当于windows的c盘）-&gt;102400MB-&gt;主分区-&gt;空间起始位置-&gt;XFS日志文件系统-&gt;/。
 swap分区（桌面系统不分，服务器必分）-&gt;2048MB-&gt;逻辑分区-&gt;空间起始位置-&gt;交换空间。
@@ -168,23 +167,15 @@ swap分区（桌面系统不分，服务器必分）-&gt;2048MB-&gt;逻辑分区
 现在安装。
 
 二： 基础配置
-
-设置root用户密码
-sudo passwd root
-su
-修改镜像源
-
+设置root用户密码sudo passwd rootsu
+修改镜像源  
 sudo nano /etc/apt/sources.list
 将原文件所有内容注释掉；
 复制阿里巴巴镜像源
 黏贴到终端，ctrl+o保存，回车确定,ctrl+x。
 
 
-更新源和系统
-sudo apt update
-sudo apt upgrade
-sudo apt dist-upgrade
-sudo apt aut</div>
+更新源和系统sudo apt updatesudo apt upgradesudo apt dist-upgradesudo apt autoremove</div>
         </div>
       </a>
 
@@ -227,29 +218,21 @@ sudo apt aut</div>
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">一： 前期准备
-1.1 基础环境
-
-python3 + selenium + chrome浏览器。
-如果有不懂的可以查阅selenium-python中文文档
-chrome-&gt;设置-&gt;关于chrome-&gt;查看版本（我的版本是 80.0.3987.106（正式版本） （64 位））。
-需要下载跟你的chrome版本一致的ChromeDriver可执行驱动
-下载完解压放在python根目录(即跟python.exe放在一起)。
+          <div class="index-text mb-1">一： 前期准备1.1 基础环境
+python3 + selenium + chrome浏览器。如果有不懂的可以查阅selenium-python中文文档
+chrome-&gt;设置-&gt;关于chrome-&gt;查看版本（我的版本是 80.0.3987.106（正式版本） （64 位））。  
+需要下载跟你的chrome版本一致的ChromeDriver可执行驱动下载完解压放在python根目录(即跟python.exe放在一起)。
 最好有一台云主机，没有的话需要自己的电脑设定定时开机，定时任务，定时关机。
 
 1.2 安装环境
-
 安装python3,不懂的请查阅我的相关blog文。
-打开windows命令行，安装selenium
-pip install selenium -i https://pypi.tuna.tsinghua.edu.cn/simple
+打开windows命令行，安装seleniumpip install selenium -i https://pypi.tuna.tsinghua.edu.cn/simple
 
-二： 代码
-2.1 源码
-#!/usr/bin/python
+二： 代码2.1 源码#!/usr/bin/python
 # -*- coding: utf-8 -*-
 import time
 from selenium import webdriver
-from selenium</div>
+from selenium.webdr</div>
         </div>
       </a>
 
@@ -296,22 +279,12 @@ from selenium</div>
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">一： 简介
-You-Get 乃一小小哒命令行程序，提供便利的方式来下载网络上的媒体信息，通过python来安装。
-支持主流视频网站如：YouTube、Google+、bilibili哔哩哔哩、163/网易视频/网易云音乐、斗鱼、爱奇艺、Youku、AcFun等等
-二： 安装及其使用
-2.1 安装
-1） 安装python3
-安装教程这里推荐：http://www.runoob.com/python3/python3-install.html
-win下载地址：https://www.python.org/downloads/windows
-Linux下载地址：https://www.python.org/downloads/source
-2） 安装you-get
-然后打开win的cmd命令行、Linux为终端，输入以下命令：
+          <div class="index-text mb-1">一： 简介You-Get 乃一小小哒命令行程序，提供便利的方式来下载网络上的媒体信息，通过python来安装。支持主流视频网站如：YouTube、Google+、bilibili哔哩哔哩、163/网易视频/网易云音乐、斗鱼、爱奇艺、Youku、AcFun等等
+二： 安装及其使用2.1 安装1） 安装python3  安装教程这里推荐：http://www.runoob.com/python3/python3-install.html  win下载地址：https://www.python.org/downloads/windows  Linux下载地址：https://www.python.org/downloads/source  
+2） 安装you-get  然后打开win的cmd命令行、Linux为终端，输入以下命令：  
 
-升级pip
-python -m pip install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple
-安装you-get
-pip install you-get -i https://pypi.t</div>
+升级pippython -m pip install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple
+安装you-getpip install you-get -i https://pypi</div>
         </div>
       </a>
 
@@ -354,29 +327,20 @@ pip install you-get -i https://pypi.t</div>
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">一： 软件工具
-1.1 Python3
-这里选择的是最新版 Python3
-安装教程这里推荐：http://www.runoob.com/python3/python3-install.html
-win下载地址：https://www.python.org/downloads/windows
-Linux下载地址：https://www.python.org/downloads/source
-1.2 PyCharm
-可视化开发工具IDE：https://www.jetbrains.com/pycharm/download/
-二：原理
-2.1 实现步骤
-以图片为例，其实很简单，分以下四步：
+          <div class="index-text mb-1">一： 软件工具1.1 Python3这里选择的是最新版 Python3安装教程这里推荐：http://www.runoob.com/python3/python3-install.htmlwin下载地址：https://www.python.org/downloads/windowsLinux下载地址：https://www.python.org/downloads/source  
+1.2 PyCharm可视化开发工具IDE：https://www.jetbrains.com/pycharm/download/
+二：原理2.1 实现步骤以图片为例，其实很简单，分以下四步：
 
 获取首页的页码数，并创建与页码对应的文件夹
 获取页面的栏目地址
 进入栏目，获取栏目页码数(每个栏目下有多张图片，分页显示)
 获取到栏目下对用标签容器中的图片并下载
 
-2.2 注意事项
-这里以爬取某个网站的套路为例，详细见代码，这里主要说以下几点注意事项：
+2.2 注意事项这里以爬取某个网站的套路为例，详细见代码，这里主要说以下几点注意事项：  
 1）导库，其实就类似于Java中框架或者是工具类，底层都被封装好了
 安装第三方库：
 # Win下直接装的 python3
-pip install B</div>
+pip install Beauti</div>
         </div>
       </a>
 
@@ -424,8 +388,7 @@ windows先右键新建一个文本文档，后缀改为git push hexo.bat；Linux
 注意：编码要是windows默认编码GBK；Linux上是UTF-8；
 然后复制黏贴，话不多说，直接上代码。
 
-Windows
-@echo off
+Windows@echo off
 
 cd G:\code\hexo
 REM 改为hexo根目录
@@ -444,7 +407,7 @@ set now=%date% %time%
 echo %now%
 git commit -m &quot;blog update at %now%&quot;
 echo;
-echo &quot;commit complete.&</div>
+echo &quot;commit complete.&q</div>
         </div>
       </a>
 
@@ -461,9 +424,9 @@ echo &quot;commit complete.&</div>
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/hexo">hexo</a>&nbsp;
-          
             <a href="/tags/%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2">一键部署</a>&nbsp;
+          
+            <a href="/tags/hexo">hexo</a>&nbsp;
           
         
       </div>
@@ -489,20 +452,11 @@ echo &quot;commit complete.&</div>
         
         <div class="index-excerpt" style="max-height: none;">
           <div class="index-text mb-1">一、创建托管仓库
+GitHub https://github.com与用户名相同，格式为YouID.github.io
 
+Gitee https://gitee.com与用户名相同，格式为YouID
 
-GitHub https://github.com
-与用户名相同，格式为YouID.github.io
-
-
-Gitee https://gitee.com
-与用户名相同，格式为YouID
-
-
-Coding https://coding.net
-与用户名相同，格式为YouID.coding.me
-
-...</div>
+Coding https://coding.net与用户名相同，格式为YouID.coding.me...</div>
         </div>
       </a>
 
@@ -546,9 +500,9 @@ Coding https://coding.net
           
         
         <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">本文分为3个项目：
+          <div class="index-text mb-1">本文分为3个项目：  
 
-外星人入侵
+外星人入侵 
 数据可视化
 web应用程序
 
@@ -600,11 +554,8 @@ pip install安装很慢的时候，可以临时改为pip国内源，pip install 
           
         
         <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">IDE
-下载IDE软件vscode，安装插件Markdown Preview Enhanced(简称MPE)。
-MPE官方使用文档。
+          <div class="index-text mb-1">IDE下载IDE软件vscode，安装插件Markdown Preview Enhanced(简称MPE)。MPE官方使用文档。  
 hexo博客中使用 KaTeX 来渲染数学表达式
-
 在Next主题配置下面开启mathjax。（不知道怎么开启的小伙伴请查询官方文档或者github）
 在博客需要用到公式的md文件的头文件中添加一句：mathjax: true。
 
@@ -652,38 +603,22 @@ hexo博客中使用 KaTeX 来渲染数学表达式
           
         
         <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">本文适合有基础c、c++语言知识的人学习，同时也可当作python工具书查阅。
+          <div class="index-text mb-1">本文适合有基础c、c++语言知识的人学习，同时也可当作python工具书查阅。  
 前言
-
-
-这里选择的是最新版 Python3
-安装教程这里推荐：http://www.runoob.com/python3/python3-install.html
-win下载地址：https://www.python.org/downloads/windows
-Linux下载地址：https://www.python.org/downloads/source
-
+这里选择的是最新版 Python3安装教程这里推荐：http://www.runoob.com/python3/python3-install.htmlwin下载地址：https://www.python.org/downloads/windowsLinux下载地址：https://www.python.org/downloads/source  
 
 可视化开发工具IDE：https://www.jetbrains.com/pycharm/download/
 
+因国内pip速度较慢，安装完python后建议改为国内清华大学镜像源，以下：  
 
-因国内pip速度较慢，安装完python后建议改为国内清华大学镜像源，以下：
+临时使用pip install -i https://pypi.tuna.tsinghua.edu.cn/simple 模块名字
 
-
-临时使用
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple 模块名字
-
-
-设为默认
-升级 pip 到最新的版本 (&gt;=10.0.0) 后进行配置：
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
-pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+设为默认升级 pip 到最新的版本 (&gt;=10.0.0) 后进行配置：pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -Upip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
 
 
 
-1.1基础语法
-1.1.1 输出
-打印 print (&quot;Hello, Python!&quot;)
-print 默认输出是换行的，如果要实现不换行需要在变量末尾加上逗号,。
+1.1基础语法1.1.1 输出打印 print (&quot;Hello, Python!&quot;)print 默认输出是换行的，如果要实现不换行需要在变量末尾加上逗号,。  
 1.1.2 字符串转义...</div>
         </div>
       </a>
@@ -730,8 +665,7 @@ print 默认输出是换行的，如果要实现不换行需要在变量末尾�
           
         
         <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">测试。
-成功？...</div>
+          <div class="index-text mb-1">测试。成功？...</div>
         </div>
       </a>
 
