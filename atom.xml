@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://closer_laps.gitee.io/"/>
-  <updated>2020-02-17T04:17:22.273Z</updated>
+  <updated>2020-02-17T04:42:40.922Z</updated>
   <id>https://closer_laps.gitee.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://closer_laps.gitee.io/2020/02/17/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/ubuntu/ubuntu%E5%AE%89%E8%A3%85%E5%AE%8C%E4%BB%A5%E5%90%8E%E7%9A%84%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/"/>
     <id>https://closer_laps.gitee.io/2020/02/17/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/ubuntu/ubuntu%E5%AE%89%E8%A3%85%E5%AE%8C%E4%BB%A5%E5%90%8E%E7%9A%84%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/</id>
     <published>2020-02-17T03:00:33.000Z</published>
-    <updated>2020-02-17T04:17:22.273Z</updated>
+    <updated>2020-02-17T04:42:40.922Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="一：-安装类型"><a href="#一：-安装类型" class="headerlink" title="一： 安装类型"></a>一： 安装类型</h2><ol><li>/boot分区（引导）-&gt;512MB-&gt;主分区-&gt;空间起始位置-&gt;Ext4日志文件系统-&gt;/boot。</li><li>/ 根分区（相当于windows的c盘）-&gt;102400MB-&gt;主分区-&gt;空间起始位置-&gt;XFS日志文件系统-&gt;/。</li><li>swap分区（桌面系统不分，服务器必分）-&gt;2048MB-&gt;逻辑分区-&gt;空间起始位置-&gt;交换空间。</li><li>/home分区（存储空间，剩余都给它）-&gt;max MB-&gt;主分区-&gt;空间起始位置-&gt;XFS日志文件系统-&gt;/home。</li><li>现在安装。</li></ol><h2 id="二：-基础配置"><a href="#二：-基础配置" class="headerlink" title="二： 基础配置"></a>二： 基础配置</h2><ol><li>设置root用户密码<br><code>sudo passwd root</code><br><code>su</code></li><li>修改为镜像源  <ol><li><code>sudo nano /etc/apt/sources.list</code></li><li>将原文件所有内容注释掉；</li><li>复制<a href="https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/" target="_blank" rel="noopener">清华大学镜像源</a></li><li>黏贴到终端，<code>ctrl</code>+<code>o</code>保存，回车确定。</li></ol></li><li>更新源和系统<br><code>sudo apt update</code><br><code>sudo apt upgrade</code><br><code>sudo apt dist-upgrade</code><br><code>sudo apt autoremove</code>  # 清理不需要的旧组件<br><code>reboot</code>  # 重启</li><li>安装输入法  <ol><li><code>sudo apt remove ibus</code>  # 卸载自带ibus</li><li><code>sudo apt install fcitx-bin fcitx-table</code>  # 安装fcitx</li><li><code>sudo apt install fcitx-googlepinyin</code>  # 安装Google拼音</li><li><code>sudo im-config</code>-&gt;确定-&gt;yes-&gt;选择fcitx,确定-&gt;reboot重启。</li></ol></li><li>安装Google浏览器  <ol><li>打开 <a href="https://www.google.cn/intl/zh-CN/chrome/" target="_blank" rel="noopener">https://www.google.cn/intl/zh-CN/chrome/</a></li><li>下载-&gt;64位.deb-&gt;接受并安装。</li><li>在下载文件夹内打开终端。</li><li><code>sudo dpkg -i google-chrome-stable_current_amd64.deb</code></li></ol></li><li>设置-&gt;区域和语言-&gt;管理已安装的语言-&gt;安装。  </li><li><code>sudo apt install vlc</code>  # 安装vlc</li><li>关闭ubuntu内部错误  <ol><li><code>sudo nano /etc/default/apport</code></li><li>enable=1改为0</li><li><code>ctrl</code>+<code>o</code>保存，回车确定。</li></ol></li><li>安装新立得软件包<br><code>sudo apt install synaptic</code></li></ol><h2 id="三：-参考视频"><a href="#三：-参考视频" class="headerlink" title="三： 参考视频"></a>三： 参考视频</h2><p><strong><a href="https://www.bilibili.com/video/av48233413" target="_blank" rel="noopener">https://www.bilibili.com/video/av48233413</a></strong></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="一：-安装类型"><a href="#一：-安装类型" class="headerlink" title="一： 安装类型"></a>一： 安装类型</h2><ol><li>/boot分区（引导）-&gt;512MB-&gt;主分区-&gt;空间起始位置-&gt;Ext4日志文件系统-&gt;/boot。</li><li>/ 根分区（相当于windows的c盘）-&gt;102400MB-&gt;主分区-&gt;空间起始位置-&gt;XFS日志文件系统-&gt;/。</li><li>swap分区（桌面系统不分，服务器必分）-&gt;2048MB-&gt;逻辑分区-&gt;空间起始位置-&gt;交换空间。</li><li>/home分区（存储空间，剩余都给它）-&gt;max MB-&gt;主分区-&gt;空间起始位置-&gt;XFS日志文件系统-&gt;/home。</li><li>现在安装。</li></ol><h2 id="二：-基础配置"><a href="#二：-基础配置" class="headerlink" title="二： 基础配置"></a>二： 基础配置</h2><ol><li>设置root用户密码<br><code>sudo passwd root</code><br><code>su</code></li><li>修改镜像源  <ol><li><code>sudo nano /etc/apt/sources.list</code></li><li>将原文件所有内容注释掉；</li><li>复制<a href="https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/" target="_blank" rel="noopener">清华大学镜像源</a></li><li>黏贴到终端，<code>ctrl</code>+<code>o</code>保存，回车确定,<code>ctrl</code>+<code>x</code>。</li></ol></li><li>更新源和系统<br><code>sudo apt update</code><br><code>sudo apt upgrade</code><br><code>sudo apt dist-upgrade</code><br><code>sudo apt autoremove</code>  # 清理不需要的旧组件<br><code>reboot</code>  # 重启</li><li>安装输入法  <ol><li><code>sudo apt remove ibus</code>  # 卸载自带ibus</li><li><code>sudo apt install fcitx-bin fcitx-table</code>  # 安装fcitx</li><li><code>sudo apt install fcitx-googlepinyin</code>  # 安装Google拼音</li><li><code>sudo im-config</code>-&gt;确定-&gt;yes-&gt;选择fcitx,确定-&gt;reboot重启。</li></ol></li><li>安装Google浏览器  <ol><li>打开 <a href="https://www.google.cn/intl/zh-CN/chrome/" target="_blank" rel="noopener">https://www.google.cn/intl/zh-CN/chrome/</a></li><li>下载-&gt;64位.deb-&gt;接受并安装。</li><li>在下载文件夹内打开终端。</li><li><code>sudo dpkg -i google-chrome-stable_current_amd64.deb</code></li></ol></li><li>设置-&gt;区域和语言-&gt;管理已安装的语言-&gt;安装。  </li><li><code>sudo apt install vlc</code>  # 安装vlc</li><li>关闭ubuntu内部错误  <ol><li><code>sudo nano /etc/default/apport</code></li><li>enable=1改为0</li><li><code>ctrl</code>+<code>o</code>保存，回车确定,<code>ctrl</code>+<code>x</code>。</li></ol></li><li>安装新立得软件包<br><code>sudo apt install synaptic</code></li></ol><h2 id="三：-参考视频"><a href="#三：-参考视频" class="headerlink" title="三： 参考视频"></a>三： 参考视频</h2><p><strong><a href="https://www.bilibili.com/video/av48233413" target="_blank" rel="noopener">https://www.bilibili.com/video/av48233413</a></strong></p>]]></content>
     
     <summary type="html">
     
@@ -39,9 +39,9 @@
       <category term="ubuntu" scheme="https://closer_laps.gitee.io/categories/ubuntu/"/>
     
     
-      <category term="ubuntu" scheme="https://closer_laps.gitee.io/tags/ubuntu/"/>
-    
       <category term="读书笔记" scheme="https://closer_laps.gitee.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="ubuntu" scheme="https://closer_laps.gitee.io/tags/ubuntu/"/>
     
   </entry>
   
@@ -71,9 +71,9 @@
     
       <category term="hexo" scheme="https://closer_laps.gitee.io/tags/hexo/"/>
     
-      <category term="自动签到" scheme="https://closer_laps.gitee.io/tags/%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%88%B0/"/>
-    
       <category term="python" scheme="https://closer_laps.gitee.io/tags/python/"/>
+    
+      <category term="自动签到" scheme="https://closer_laps.gitee.io/tags/%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%88%B0/"/>
     
   </entry>
   

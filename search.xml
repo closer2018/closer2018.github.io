@@ -12,11 +12,11 @@
 </ol>
 <h2 id="二：-基础配置"><a href="#二：-基础配置" class="headerlink" title="二： 基础配置"></a>二： 基础配置</h2><ol>
 <li>设置root用户密码<br><code>sudo passwd root</code><br><code>su</code></li>
-<li>修改为镜像源  <ol>
+<li>修改镜像源  <ol>
 <li><code>sudo nano /etc/apt/sources.list</code></li>
 <li>将原文件所有内容注释掉；</li>
 <li>复制<a href="https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/" target="_blank" rel="noopener">清华大学镜像源</a></li>
-<li>黏贴到终端，<code>ctrl</code>+<code>o</code>保存，回车确定。</li>
+<li>黏贴到终端，<code>ctrl</code>+<code>o</code>保存，回车确定,<code>ctrl</code>+<code>x</code>。</li>
 </ol>
 </li>
 <li>更新源和系统<br><code>sudo apt update</code><br><code>sudo apt upgrade</code><br><code>sudo apt dist-upgrade</code><br><code>sudo apt autoremove</code>  # 清理不需要的旧组件<br><code>reboot</code>  # 重启</li>
@@ -39,7 +39,7 @@
 <li>关闭ubuntu内部错误  <ol>
 <li><code>sudo nano /etc/default/apport</code></li>
 <li>enable=1改为0</li>
-<li><code>ctrl</code>+<code>o</code>保存，回车确定。</li>
+<li><code>ctrl</code>+<code>o</code>保存，回车确定,<code>ctrl</code>+<code>x</code>。</li>
 </ol>
 </li>
 <li>安装新立得软件包<br><code>sudo apt install synaptic</code></li>
@@ -50,8 +50,8 @@
         <category>ubuntu</category>
       </categories>
       <tags>
-        <tag>ubuntu</tag>
         <tag>读书笔记</tag>
+        <tag>ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -152,8 +152,8 @@ rem 上面的代码是等待三分钟。
       </categories>
       <tags>
         <tag>hexo</tag>
-        <tag>自动签到</tag>
         <tag>python</tag>
+        <tag>自动签到</tag>
       </tags>
   </entry>
   <entry>
