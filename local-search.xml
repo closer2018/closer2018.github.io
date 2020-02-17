@@ -132,9 +132,9 @@
     
     <tags>
       
-      <tag>一键部署</tag>
-      
       <tag>hexo</tag>
+      
+      <tag>一键部署</tag>
       
     </tags>
     
@@ -259,7 +259,7 @@
     <link href="/2020/02/11/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/%E7%AC%AC9%E7%AB%A0%20%E6%8E%92%E5%BA%8F/"/>
     <url>/2020/02/11/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/%E7%AC%AC9%E7%AB%A0%20%E6%8E%92%E5%BA%8F/</url>
     
-    <content type="html"><![CDATA[<p>测试。<br>成功？</p><a id="more"></a>]]></content>
+    <content type="html"><![CDATA[<a id="more"></a>]]></content>
     
     
     <categories>
