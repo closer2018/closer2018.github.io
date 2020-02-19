@@ -173,85 +173,44 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h2 id="一：-简介">一： 简介</h2>
-<p>You-Get 乃一小小哒命令行程序，提供便利的方式来下载网络上的媒体信息，通过python来安装。<br>
-支持主流视频网站如：YouTube、Google+、bilibili哔哩哔哩、163/网易视频/网易云音乐、斗鱼、爱奇艺、Youku、AcFun等等</p>
-<h2 id="二：-安装及其使用">二： 安装及其使用</h2>
-<h3 id="2-1-安装">2.1 安装</h3>
-<p>1） 安装python3  <a id="more"></a><br>
-安装教程这里推荐：<a href="http://www.runoob.com/python3/python3-install.html" target="_blank" rel="noopener">http://www.runoob.com/python3/python3-install.html</a><br>
-win下载地址：<a href="https://www.python.org/downloads/windows" target="_blank" rel="noopener">https://www.python.org/downloads/windows</a><br>
-Linux下载地址：<a href="https://www.python.org/downloads/source" target="_blank" rel="noopener">https://www.python.org/downloads/source</a></p>
-<p>2） 安装you-get<br>
-然后打开win的cmd命令行、Linux为终端，输入以下命令：</p>
+            <h2 id="一：-简介"><a href="#一：-简介" class="headerlink" title="一： 简介"></a>一： 简介</h2><p>You-Get 乃一小小哒命令行程序，提供便利的方式来下载网络上的媒体信息，通过python来安装。<br>支持主流视频网站如：YouTube、Google+、bilibili哔哩哔哩、163/网易视频/网易云音乐、斗鱼、爱奇艺、Youku、AcFun等等</p>
+<h2 id="二：-安装及其使用"><a href="#二：-安装及其使用" class="headerlink" title="二： 安装及其使用"></a>二： 安装及其使用</h2><h3 id="2-1-安装"><a href="#2-1-安装" class="headerlink" title="2.1 安装"></a>2.1 安装</h3><p>1） 安装python3  <a id="more"></a><br>  安装教程这里推荐：<a href="http://www.runoob.com/python3/python3-install.html" target="_blank" rel="noopener">http://www.runoob.com/python3/python3-install.html</a><br>  win下载地址：<a href="https://www.python.org/downloads/windows" target="_blank" rel="noopener">https://www.python.org/downloads/windows</a><br>  Linux下载地址：<a href="https://www.python.org/downloads/source" target="_blank" rel="noopener">https://www.python.org/downloads/source</a>  </p>
+<p>2） 安装you-get<br>  然后打开win的cmd命令行、Linux为终端，输入以下命令：  </p>
 <ul>
-<li>升级pip<br>
-<code>python -m pip install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple</code></li>
-<li>安装you-get<br>
-<code>pip install you-get -i https://pypi.tuna.tsinghua.edu.cn/simple</code></li>
-<li>升级you-get<br>
-<code>pip install --upgrade you-get -i https://pypi.tuna.tsinghua.edu.cn/simple</code></li>
+<li>升级pip<br><code>python -m pip install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple</code></li>
+<li>安装you-get<br><code>pip install you-get -i https://pypi.tuna.tsinghua.edu.cn/simple</code></li>
+<li>升级you-get<br><code>pip install --upgrade you-get -i https://pypi.tuna.tsinghua.edu.cn/simple</code></li>
 </ul>
-<p>3） 安装<a href="https://www.ffmpeg.org/" target="_blank" rel="noopener">FFmpeg</a><br>
-FFmpeg用于转换视频格式、播放视频等，下载下来的视频有可能播放格式不支持，不需要也可不装。<br>
-FFmpeg下载地址：<a href="https://www.ffmpeg.org/" target="_blank" rel="noopener">https://www.ffmpeg.org/</a><br>
-windows下载地址：<a href="https://ffmpeg.zeranoe.com/builds/" target="_blank" rel="noopener">https://ffmpeg.zeranoe.com/builds/</a><br>
-ps：windows下载，选择默认选项即可</p>
-<h3 id="2-2-下载">2.2 下载</h3>
-<h4 id="2-2-1-下载默认画质和格式">2.2.1 下载默认画质和格式</h4>
-<p><code>you-get https://www.bilibili.com/video/av77151622/</code></p>
-<p>下载路径默认为文件所在当前路径。<br>
-所以要下载在指定路径需要先cd到指定路径。</p>
-<h4 id="2-2-2-下载指定画质和格式">2.2.2 下载指定画质和格式</h4>
-<p>1） 先用<code>-i</code>以查看所有可用画质与格式。<br>
-<code>you-get -i https://www.bilibili.com/video/av77151622/</code><br>
-最上面的标有<code>[ DASH(也可能是 DEFAULT ） ]</code>为默认画质。如认同，可下载。</p>
-<p>2） 或，您希望下载其他播放格式或者其他清晰度，请追加屏幕上面提示的参数，如本视频是:<br>
-<code>you-get --format=flv720 https://www.bilibili.com/video/av77151622/</code></p>
+<p>3） 安装<a href="https://www.ffmpeg.org/" target="_blank" rel="noopener">FFmpeg</a><br>  FFmpeg用于转换视频格式、播放视频等，下载下来的视频有可能播放格式不支持，不需要也可不装。<br>  FFmpeg下载地址：<a href="https://www.ffmpeg.org/" target="_blank" rel="noopener">https://www.ffmpeg.org/</a><br>  windows下载地址：<a href="https://ffmpeg.zeranoe.com/builds/" target="_blank" rel="noopener">https://ffmpeg.zeranoe.com/builds/</a><br>  ps：windows下载，选择默认选项即可</p>
+<h3 id="2-2-下载"><a href="#2-2-下载" class="headerlink" title="2.2 下载"></a>2.2 下载</h3><h4 id="2-2-1-下载默认画质和格式"><a href="#2-2-1-下载默认画质和格式" class="headerlink" title="2.2.1 下载默认画质和格式"></a>2.2.1 下载默认画质和格式</h4><p><code>you-get https://www.bilibili.com/video/av77151622/</code>  </p>
+<p>下载路径默认为文件所在当前路径。<br>所以要下载在指定路径需要先cd到指定路径。  </p>
+<h4 id="2-2-2-下载指定画质和格式"><a href="#2-2-2-下载指定画质和格式" class="headerlink" title="2.2.2 下载指定画质和格式"></a>2.2.2 下载指定画质和格式</h4><p>1） 先用<code>-i</code>以查看所有可用画质与格式。<br>  <code>you-get -i https://www.bilibili.com/video/av77151622/</code><br>  最上面的标有<code>[ DASH(也可能是 DEFAULT ） ]</code>为默认画质。如认同，可下载。  </p>
+<p>2） 或，您希望下载其他播放格式或者其他清晰度，请追加屏幕上面提示的参数，如本视频是:<br>  <code>you-get --format=flv720 https://www.bilibili.com/video/av77151622/</code>  </p>
 <ul>
-<li>目前，格式选择没有大规模铺开；默认选项为最高画质.</li>
-<li>如不希望you-get合并视频，使用<code>-n</code>。</li>
+<li>目前，格式选择没有大规模铺开；默认选项为最高画质.  </li>
+<li>如不希望you-get合并视频，使用<code>-n</code>。  </li>
 <li>如YouTube视频带有字幕，将被一同下载，以SubRip格式保存.</li>
 </ul>
-<h4 id="2-2-3-下载其他内容">2.2.3 下载其他内容</h4>
-<p>1） 如你有URL，可以直接使用，如下载you-get:<br>
-<code>you-get https://github.com/soimort/you-get/archive/master.zip</code></p>
-<p>2） 或者, you-get将自动检查网页，下载一切有可能感兴趣的内容:<br>
-<code>you-get http://kopasas.tumblr.com/post/69361932517</code></p>
+<h4 id="2-2-3-下载其他内容"><a href="#2-2-3-下载其他内容" class="headerlink" title="2.2.3 下载其他内容"></a>2.2.3 下载其他内容</h4><p>1） 如你有URL，可以直接使用，如下载you-get:<br>  <code>you-get https://github.com/soimort/you-get/archive/master.zip</code>  </p>
+<p>2） 或者, you-get将自动检查网页，下载一切有可能感兴趣的内容:<br>  <code>you-get http://kopasas.tumblr.com/post/69361932517</code></p>
 <ul>
 <li>此功能为测试性，远未完成。对于类似Tumblr和Blogger的大图有效，但是没有办法为所有网站建立通用格式.</li>
 </ul>
-<p>3） 在Google Videos搜索并下载<br>
-you-get可以下载任何东西. 如果不是合法的URL, you-get将在Google查找并下载最相关视频. (可能不是最心仪的，但是很有可能)<br>
-<code>you-get &quot;Richard Stallman eats&quot;</code></p>
-<h4 id="2-2-4-暂停与恢复下载">2.2.4 暂停与恢复下载</h4>
-<p>可以使用<code>Ctrl</code>+<code>C</code> 暂停下载.<br>
-临时的<code>.download</code>文件将保存于输出目录。下次使用you-get传入相同参数时，下载将从上次继续开始. 如果下载已经完成 (临时的<code>.download</code> 扩展名消失), you-get将忽略下载.<br>
-用<code>-f</code>强行重下载. (注意: 将覆盖同名文件或临时文件!)</p>
-<h4 id="2-2-5-设置输出文件名或路径">2.2.5 设置输出文件名或路径</h4>
-<p>使用<code>-o</code> 设定路径为d:, <code>-O</code> 设定输出文件名为out:<br>
-<code>you-get -o d:\ -O out https://www.bilibili.com/video/av77151622/</code><br>
-提示:</p>
+<p>3） 在Google Videos搜索并下载<br>  you-get可以下载任何东西. 如果不是合法的URL, you-get将在Google查找并下载最相关视频. (可能不是最心仪的，但是很有可能)<br>  <code>you-get &quot;Richard Stallman eats&quot;</code>  </p>
+<h4 id="2-2-4-暂停与恢复下载"><a href="#2-2-4-暂停与恢复下载" class="headerlink" title="2.2.4 暂停与恢复下载"></a>2.2.4 暂停与恢复下载</h4><p>可以使用<code>Ctrl</code>+<code>C</code> 暂停下载.<br>临时的<code>.download</code>文件将保存于输出目录。下次使用you-get传入相同参数时，下载将从上次继续开始. 如果下载已经完成 (临时的<code>.download</code> 扩展名消失), you-get将忽略下载.<br>用<code>-f</code>强行重下载. (注意: 将覆盖同名文件或临时文件!)  </p>
+<h4 id="2-2-5-设置输出文件名或路径"><a href="#2-2-5-设置输出文件名或路径" class="headerlink" title="2.2.5 设置输出文件名或路径"></a>2.2.5 设置输出文件名或路径</h4><p>使用<code>-o</code> 设定路径为d:, <code>-O</code> 设定输出文件名为out:<br><code>you-get -o d:\ -O out https://www.bilibili.com/video/av77151622/</code><br>提示:</p>
 <ul>
 <li>如果原视频标题含有与系统不兼容字符，十分有效.</li>
 <li>也可以帮助使用脚本批量下载于指定目录和文件名.</li>
 </ul>
-<h4 id="2-2-6-批量下载">2.2.6 批量下载</h4>
-<p>两种方法：</p>
+<h4 id="2-2-6-批量下载"><a href="#2-2-6-批量下载" class="headerlink" title="2.2.6 批量下载"></a>2.2.6 批量下载</h4><p>两种方法：</p>
 <ol>
-<li>把视频URL用空格隔开<br>
-<code>you-get 视频A网址 视频B网址</code></li>
-<li>用<code>--playlist</code><br>
-<code>you-get --playlist https://www.bilibili.com/video/av5123229</code></li>
+<li>把视频URL用空格隔开<br><code>you-get 视频A网址 视频B网址</code></li>
+<li>用<code>--playlist</code><br><code>you-get --playlist https://www.bilibili.com/video/av5123229</code></li>
 <li>下载视频的同时会下载xml格式弹幕，需要将其转换为ass格式，有一个工具可以帮你：<a href="https://github.com/ikde/danmu2ass/releases/download/v1.1/Danmu2Ass1.1.zip" target="_blank" rel="noopener">Danmu2Ass</a>。</li>
 </ol>
-<h3 id="2-3-观看视频">2.3 观看视频</h3>
-<p>使用 <code>-p</code> 将视频喂进播放器, 例如 mPlayer 或者 vlc,而不是下载:<br>
-<code>you-get -p vlc 'https://www.youtube.com/watch?v=jNQXAC9IVRw'</code><br>
-或者你想在浏览器中观看而不希望看广告或评论区:<br>
-<code>you-get -p chromium 'https://www.youtube.com/watch?v=jNQXAC9IVRw'</code></p>
-<h2 id="三：-官方文档">三： 官方文档</h2>
-<p><a href="https://github.com/soimort/you-get/wiki/%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E" target="_blank" rel="noopener">官方中文文档</a></p>
+<h3 id="2-3-观看视频"><a href="#2-3-观看视频" class="headerlink" title="2.3 观看视频"></a>2.3 观看视频</h3><p>使用 <code>-p</code> 将视频喂进播放器, 例如 mPlayer 或者 vlc,而不是下载:<br><code>you-get -p vlc &#39;https://www.youtube.com/watch?v=jNQXAC9IVRw&#39;</code><br>或者你想在浏览器中观看而不希望看广告或评论区:<br><code>you-get -p chromium &#39;https://www.youtube.com/watch?v=jNQXAC9IVRw&#39;</code>  </p>
+<h2 id="三：-官方文档"><a href="#三：-官方文档" class="headerlink" title="三： 官方文档"></a>三： 官方文档</h2><p><a href="https://github.com/soimort/you-get/wiki/%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E" target="_blank" rel="noopener">官方中文文档</a></p>
 
             <hr>
           </div>
@@ -312,25 +271,31 @@ you-get可以下载任何东西. 如果不是合法的URL, you-get将在Google�
       <br><br>
       
       
-  <div class="disqus" style="width:100%">
-    <div id="disqus_thread"></div>
-    <script>
-      var disqus_config = function () {
-        this.page.url = 'https://closer_laps.gitee.io/2020/02/16/读书笔记/Python/you-get下载视频/';
-        this.page.identifier = '/2020/02/16/读书笔记/Python/you-get下载视频/';
-      };
-      var oldLoad = window.onload;
-      window.onload = function () {
-        var d = document, s = d.createElement('script');
-        s.type = 'text/javascript';
-        s.src = '//' + 'https-8hn9w5-coding-pages-com' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-      };
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="nofollow noopener noopener">comments
-        powered by Disqus.</a></noscript>
-  </div>
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'false' === true;
+    var verify = 'false' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
+        app_key: "HLUt5izfTvTcbEbOrA59W92a",
+        placeholder: "畅所欲言...",
+        avatar: "robohash",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
 
 
     

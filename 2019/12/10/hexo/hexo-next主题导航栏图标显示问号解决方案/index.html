@@ -173,12 +173,9 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h2 id="问题描述">问题描述</h2>
-<p>导航栏图标显示问号，当修改<code>hexo\themes\next\_config.yml</code>主题配置文件后，图标显示正常，但是点击链接不能打开相应主页、标签页、归档页…<br>
-经研究，应该把menu下面的不同页面的/后面的空格删掉，即可。<br>
-具体配置如下：</p>
+            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>导航栏图标显示问号，当修改<code>hexo\themes\next\_config.yml</code>主题配置文件后，图标显示正常，但是点击链接不能打开相应主页、标签页、归档页…<br>经研究，应该把menu下面的不同页面的/后面的空格删掉，即可。<br>具体配置如下：  </p>
 <a id="more"></a>
-<pre><code class="language-yml">menu:
+<pre><code class="yml">menu:
   home: /|| home                  #主页
   archives: /archives/|| archive  #归档
   categories: /categories/|| th   #分类
@@ -200,7 +197,6 @@ menu_icons:
   about: user
   #commonweal: heartbeat
   #search: search
-
 </code></pre>
 
             <hr>
@@ -260,25 +256,31 @@ menu_icons:
       <br><br>
       
       
-  <div class="disqus" style="width:100%">
-    <div id="disqus_thread"></div>
-    <script>
-      var disqus_config = function () {
-        this.page.url = 'https://closer_laps.gitee.io/2019/12/10/hexo/hexo-next主题导航栏图标显示问号解决方案/';
-        this.page.identifier = '/2019/12/10/hexo/hexo-next主题导航栏图标显示问号解决方案/';
-      };
-      var oldLoad = window.onload;
-      window.onload = function () {
-        var d = document, s = d.createElement('script');
-        s.type = 'text/javascript';
-        s.src = '//' + 'https-8hn9w5-coding-pages-com' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-      };
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="nofollow noopener noopener">comments
-        powered by Disqus.</a></noscript>
-  </div>
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'false' === true;
+    var verify = 'false' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
+        app_key: "HLUt5izfTvTcbEbOrA59W92a",
+        placeholder: "畅所欲言...",
+        avatar: "robohash",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
 
 
     

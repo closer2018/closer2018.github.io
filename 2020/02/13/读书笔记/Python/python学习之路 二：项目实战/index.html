@@ -173,9 +173,9 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <p>本文分为3个项目：</p>
+            <p>本文分为3个项目：  </p>
 <ol>
-<li>外星人入侵</li>
+<li>外星人入侵 </li>
 <li>数据可视化</li>
 <li>web应用程序</li>
 </ol>
@@ -183,10 +183,8 @@
 <p><code>pip install</code>安装很慢的时候，可以临时改为pip国内源，<code>pip install PythonPackages -i https://mirrors.aliyun.com/pypi/simple/</code>(阿里源)</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="2-1-外星人入侵">2.1 外星人入侵</h2>
-<h2 id="2-2-数据可视化">2.2 数据可视化</h2>
-<h2 id="2-3-web应用程序">2.3 web应用程序</h2>
 
+<h2 id="2-1-外星人入侵"><a href="#2-1-外星人入侵" class="headerlink" title="2.1 外星人入侵"></a>2.1 外星人入侵</h2><h2 id="2-2-数据可视化"><a href="#2-2-数据可视化" class="headerlink" title="2.2 数据可视化"></a>2.2 数据可视化</h2><h2 id="2-3-web应用程序"><a href="#2-3-web应用程序" class="headerlink" title="2.3 web应用程序"></a>2.3 web应用程序</h2>
             <hr>
           </div>
           <br>
@@ -249,25 +247,31 @@
       <br><br>
       
       
-  <div class="disqus" style="width:100%">
-    <div id="disqus_thread"></div>
-    <script>
-      var disqus_config = function () {
-        this.page.url = 'https://closer_laps.gitee.io/2020/02/13/读书笔记/Python/python学习之路 二：项目实战/';
-        this.page.identifier = '/2020/02/13/读书笔记/Python/python学习之路 二：项目实战/';
-      };
-      var oldLoad = window.onload;
-      window.onload = function () {
-        var d = document, s = d.createElement('script');
-        s.type = 'text/javascript';
-        s.src = '//' + 'https-8hn9w5-coding-pages-com' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-      };
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="nofollow noopener noopener">comments
-        powered by Disqus.</a></noscript>
-  </div>
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'false' === true;
+    var verify = 'false' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
+        app_key: "HLUt5izfTvTcbEbOrA59W92a",
+        placeholder: "畅所欲言...",
+        avatar: "robohash",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
 
 
     

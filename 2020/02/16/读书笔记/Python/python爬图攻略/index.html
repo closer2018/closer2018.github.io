@@ -132,7 +132,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    2.1k 字
+                    2.2k 字
                   </span>&nbsp;
                 
 
@@ -140,7 +140,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      10 分钟
+                      11 分钟
                   </span>&nbsp;
                 
 
@@ -173,36 +173,26 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h2 id="一：-软件工具">一： 软件工具</h2>
-<h3 id="1-1-Python3">1.1 Python3</h3>
-<p>这里选择的是最新版 Python3<br>
-安装教程这里推荐：<a href="http://www.runoob.com/python3/python3-install.html" target="_blank" rel="noopener">http://www.runoob.com/python3/python3-install.html</a><br>
-win下载地址：<a href="https://www.python.org/downloads/windows" target="_blank" rel="noopener">https://www.python.org/downloads/windows</a><br>
-Linux下载地址：<a href="https://www.python.org/downloads/source" target="_blank" rel="noopener">https://www.python.org/downloads/source</a>  <a id="more"></a></p>
-<h3 id="1-2-PyCharm">1.2 PyCharm</h3>
-<p>可视化开发工具IDE：<a href="https://www.jetbrains.com/pycharm/download/" target="_blank" rel="noopener">https://www.jetbrains.com/pycharm/download/</a></p>
-<h2 id="二：原理">二：原理</h2>
-<h3 id="2-1-实现步骤">2.1 实现步骤</h3>
-<p>以图片为例，其实很简单，分以下四步：</p>
+            <h2 id="一：-软件工具"><a href="#一：-软件工具" class="headerlink" title="一： 软件工具"></a>一： 软件工具</h2><h3 id="1-1-Python3"><a href="#1-1-Python3" class="headerlink" title="1.1 Python3"></a>1.1 Python3</h3><p>这里选择的是最新版 Python3<br>安装教程这里推荐：<a href="http://www.runoob.com/python3/python3-install.html" target="_blank" rel="noopener">http://www.runoob.com/python3/python3-install.html</a><br>win下载地址：<a href="https://www.python.org/downloads/windows" target="_blank" rel="noopener">https://www.python.org/downloads/windows</a><br>Linux下载地址：<a href="https://www.python.org/downloads/source" target="_blank" rel="noopener">https://www.python.org/downloads/source</a>  <a id="more"></a></p>
+<h3 id="1-2-PyCharm"><a href="#1-2-PyCharm" class="headerlink" title="1.2 PyCharm"></a>1.2 PyCharm</h3><p>可视化开发工具IDE：<a href="https://www.jetbrains.com/pycharm/download/" target="_blank" rel="noopener">https://www.jetbrains.com/pycharm/download/</a></p>
+<h2 id="二：原理"><a href="#二：原理" class="headerlink" title="二：原理"></a>二：原理</h2><h3 id="2-1-实现步骤"><a href="#2-1-实现步骤" class="headerlink" title="2.1 实现步骤"></a>2.1 实现步骤</h3><p>以图片为例，其实很简单，分以下四步：</p>
 <ul>
 <li>获取首页的页码数，并创建与页码对应的文件夹</li>
 <li>获取页面的栏目地址</li>
 <li>进入栏目，获取栏目页码数(每个栏目下有多张图片，分页显示)</li>
 <li>获取到栏目下对用标签容器中的图片并下载</li>
 </ul>
-<h3 id="2-2-注意事项">2.2 注意事项</h3>
-<p>这里以爬取某个网站的套路为例，详细见代码，这里主要说以下几点注意事项：</p>
+<h3 id="2-2-注意事项"><a href="#2-2-注意事项" class="headerlink" title="2.2 注意事项"></a>2.2 注意事项</h3><p>这里以爬取某个网站的套路为例，详细见代码，这里主要说以下几点注意事项：  </p>
 <p>1）导库，其实就类似于Java中框架或者是工具类，底层都被封装好了</p>
 <p>安装第三方库：</p>
-<pre><code class="language-py"># Win下直接装的 python3
+<pre><code class="py"># Win下直接装的 python3
 pip install BeautifulSoup4 -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip install requests -i https://pypi.tuna.tsinghua.edu.cn/simple
 # Linux python2 python3 共存
 pip3 install BeautifulSoup4 -i https://pypi.tuna.tsinghua.edu.cn/simple
-pip3 install requests -i https://pypi.tuna.tsinghua.edu.cn/simple
-</code></pre>
+pip3 install requests -i https://pypi.tuna.tsinghua.edu.cn/simple</code></pre>
 <p>导入第三方库：</p>
-<pre><code class="language-py"># 导入requests库
+<pre><code class="py"># 导入requests库
 import requests
 # 导入文件操作库
 import os
@@ -213,29 +203,25 @@ from bs4 import BeautifulSoup
 import sys
 # Python 3.x 解决中文编码问题
 import importlib
-importlib.reload(sys)
-</code></pre>
+importlib.reload(sys)</code></pre>
 <p>2）定义方法函数，一个爬虫可能会几百行，所以尽量不要写成一坨</p>
-<pre><code class="language-py">def download(page_no, file_path):
-    # 这里写代码逻辑
-</code></pre>
+<pre><code class="py">def download(page_no, file_path):
+    # 这里写代码逻辑</code></pre>
 <p>3）定义全局变量</p>
-<pre><code class="language-py"># 给请求指定一个请求头来模拟chrome浏览器
+<pre><code class="py"># 给请求指定一个请求头来模拟chrome浏览器
 global headers # 告诉编译器这是全局变量 headers 
-headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'}
+headers = {&#39;User-Agent&#39;: &#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36&#39;}
 
 # 函数内使用之前需要
 # 告诉编译器我在这个方法中使用的a是刚才定义的全局变量 headers ，而不是方法内部的局部变量。
-global headers
-</code></pre>
+global headers</code></pre>
 <p>4）防盗链</p>
 <p>有些网站加入了防盗链，无所不能的 python  解决方案：</p>
-<pre><code class="language-py">headers = {'Referer': href}
-img = requests.get(url, headers=headers)
-</code></pre>
+<pre><code class="py">headers = {&#39;Referer&#39;: href}
+img = requests.get(url, headers=headers)</code></pre>
 <p>5）切换版本</p>
 <p>Linux服务器使用的是阿里云服务器（centos7.4），默认版本 python2，python3 自行安装</p>
-<pre><code class="language-py">[root@AY140216131049Z mzitu]# python2 -V
+<pre><code class="py">[root@AY140216131049Z mzitu]# python2 -V
 Python 2.7.5
 [root@AY140216131049Z mzitu]# python3 -V
 Python 3.7.1
@@ -243,28 +229,22 @@ Python 3.7.1
 [root@AY140216131049Z mzitu]# python -V
 Python 2.7.5
 # 临时切换版本 &lt;whereis python&gt;
-[root@AY140216131049Z mzitu]# alias python='/usr/local/bin/python3.7'
+[root@AY140216131049Z mzitu]# alias python=&#39;/usr/local/bin/python3.7&#39;
 [root@AY140216131049Z mzitu]# python -V
 Python 3.7.1
-
 </code></pre>
 <p>6）异常捕获</p>
 <p>在爬取的过程中可能存在异常页面，这里我们进行捕获，不影响后续操作：</p>
-<pre><code class="language-py">try:
+<pre><code class="py">try:
     # 业务逻辑
 except Exception as e:
-   print(e)
-</code></pre>
-<h3 id="2-3-执行脚本">2.3 执行脚本</h3>
-<pre><code class="language-py">python3 mzitu.py
+   print(e)</code></pre>
+<h3 id="2-3-执行脚本"><a href="#2-3-执行脚本" class="headerlink" title="2.3 执行脚本"></a>2.3 执行脚本</h3><pre><code class="py">python3 mzitu.py
 
 # 或者后台执行
 
-nohup python3 -u mzitu.py &gt; mzitu.log 2&gt;&amp;1 &amp;
-</code></pre>
-<h2 id="三：-源码">三： 源码</h2>
-<h3 id="3-1-win下代码">3.1 win下代码</h3>
-<pre><code class="language-py">#coding=utf-8
+nohup python3 -u mzitu.py &gt; mzitu.log 2&gt;&amp;1 &amp;</code></pre>
+<h2 id="三：-源码"><a href="#三：-源码" class="headerlink" title="三： 源码"></a>三： 源码</h2><h3 id="3-1-win下代码"><a href="#3-1-win下代码" class="headerlink" title="3.1 win下代码"></a>3.1 win下代码</h3><pre><code class="py">#coding=utf-8
 #!/usr/bin/python
 # 导入requests库
 import requests
@@ -286,24 +266,24 @@ meizi_headers = [
     &quot;Mozilla/5.0 (Windows NT 6.1; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0&quot;,
     &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/537.75.14&quot;,
     &quot;Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Win64; x64; Trident/6.0)&quot;,
-    'Mozilla/5.0 (Windows; U; Windows NT 5.1; it; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11',
-    'Opera/9.25 (Windows NT 5.1; U; en)',
-    'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)',
-    'Mozilla/5.0 (compatible; Konqueror/3.5; Linux) KHTML/3.5.5 (like Gecko) (Kubuntu)',
-    'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.0.12) Gecko/20070731 Ubuntu/dapper-security Firefox/1.5.0.12',
-    'Lynx/2.8.5rel.1 libwww-FM/2.14 SSL-MM/1.4.1 GNUTLS/1.2.9',
+    &#39;Mozilla/5.0 (Windows; U; Windows NT 5.1; it; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11&#39;,
+    &#39;Opera/9.25 (Windows NT 5.1; U; en)&#39;,
+    &#39;Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)&#39;,
+    &#39;Mozilla/5.0 (compatible; Konqueror/3.5; Linux) KHTML/3.5.5 (like Gecko) (Kubuntu)&#39;,
+    &#39;Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.0.12) Gecko/20070731 Ubuntu/dapper-security Firefox/1.5.0.12&#39;,
+    &#39;Lynx/2.8.5rel.1 libwww-FM/2.14 SSL-MM/1.4.1 GNUTLS/1.2.9&#39;,
     &quot;Mozilla/5.0 (X11; Linux i686) AppleWebKit/535.7 (KHTML, like Gecko) Ubuntu/11.04 Chromium/16.0.912.77 Chrome/16.0.912.77 Safari/535.7&quot;,
     &quot;Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:10.0) Gecko/20100101 Firefox/10.0&quot;,
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    &#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36&#39;
 ]
 # 给请求指定一个请求头来模拟chrome浏览器
 global headers
-headers = {'User-Agent': random.choice(meizi_headers)}
+headers = {&#39;User-Agent&#39;: random.choice(meizi_headers)}
 # 爬图网址
-mziTu = 'http://www.mzitu.com/'
+mziTu = &#39;http://www.mzitu.com/&#39;
 # 定义图片存储位置
 global save_path
-save_path = 'D:\BeautifulPictures'
+save_path = &#39;D:\BeautifulPictures&#39;
 
 # 创建文件夹
 def createFile(file_path):
@@ -317,48 +297,48 @@ def download(page_no, file_path):
     global headers
     res_sub = requests.get(page_no, headers=headers)
     # 解析html
-    soup_sub = BeautifulSoup(res_sub.text, 'html.parser')
+    soup_sub = BeautifulSoup(res_sub.text, &#39;html.parser&#39;)
     # 获取页面的栏目地址
-    all_a = soup_sub.find('div',class_='postlist').find_all('a',target='_blank')
+    all_a = soup_sub.find(&#39;div&#39;,class_=&#39;postlist&#39;).find_all(&#39;a&#39;,target=&#39;_blank&#39;)
     count = 0
     for a in all_a:
         count = count + 1
         if (count % 2) == 0:
-            headers = {'User-Agent': random.choice(meizi_headers)}
+            headers = {&#39;User-Agent&#39;: random.choice(meizi_headers)}
             print(&quot;内页第几页：&quot; + str(count))
             # 提取href
-            href = a.attrs['href']
+            href = a.attrs[&#39;href&#39;]
             print(&quot;套图地址：&quot; + href)
             res_sub_1 = requests.get(href, headers=headers)
-            soup_sub_1 = BeautifulSoup(res_sub_1.text, 'html.parser')
+            soup_sub_1 = BeautifulSoup(res_sub_1.text, &#39;html.parser&#39;)
             # ------ 这里最好使用异常处理 ------
             try:
                 # 获取套图的最大数量
-                pic_max = soup_sub_1.find('div', class_='pagenavi').find_all('span')[6].text
+                pic_max = soup_sub_1.find(&#39;div&#39;, class_=&#39;pagenavi&#39;).find_all(&#39;span&#39;)[6].text
                 print(&quot;套图数量：&quot; + pic_max)
                 for j in range(1, int(pic_max) + 1):
                     # 单位为秒，1-3 随机数
                     time.sleep(random.randint(1, 3))
-                    headers = {'User-Agent': random.choice(meizi_headers)}
+                    headers = {&#39;User-Agent&#39;: random.choice(meizi_headers)}
                     # print(&quot;子内页第几页：&quot; + str(j))
                     # j int类型需要转字符串
                     href_sub = href + &quot;/&quot; + str(j)
                     print(&quot;图片地址：&quot;+href_sub)
                     res_sub_2 = requests.get(href_sub, headers=headers)
                     soup_sub_2 = BeautifulSoup(res_sub_2.text, &quot;html.parser&quot;)
-                    img = soup_sub_2.find('div', class_='main-image').find('img')
+                    img = soup_sub_2.find(&#39;div&#39;, class_=&#39;main-image&#39;).find(&#39;img&#39;)
                     if isinstance(img, bs4.element.Tag):
                         # 提取src
-                        url = img.attrs['src']
-                        array = url.split('/')
+                        url = img.attrs[&#39;src&#39;]
+                        array = url.split(&#39;/&#39;)
                         file_name = array[len(array)-1]
                         # 防盗链加入Referer
-                        headers = {'User-Agent': random.choice(meizi_headers), 'Referer': url}
+                        headers = {&#39;User-Agent&#39;: random.choice(meizi_headers), &#39;Referer&#39;: url}
                         img = requests.get(url, headers=headers)
-                        print('开始保存图片', img)
-                        f = open(file_name, 'ab')
+                        print(&#39;开始保存图片&#39;, img)
+                        f = open(file_name, &#39;ab&#39;)
                         f.write(img.content)
-                        print(file_name, '图片保存成功！')
+                        print(file_name, &#39;图片保存成功！&#39;)
                         f.close()
             except Exception as e:
                 print(e)
@@ -368,30 +348,28 @@ def download(page_no, file_path):
 def main():
     res = requests.get(mziTu, headers=headers)
     # 使用自带的html.parser解析
-    soup = BeautifulSoup(res.text, 'html.parser')
+    soup = BeautifulSoup(res.text, &#39;html.parser&#39;)
     # 创建文件夹
     createFile(save_path)
     # 获取首页总页数
-    img_max = soup.find('div', class_='nav-links').find_all('a')[3].text
+    img_max = soup.find(&#39;div&#39;, class_=&#39;nav-links&#39;).find_all(&#39;a&#39;)[3].text
     # print(&quot;总页数:&quot;+img_max)
     for i in range(1, int(img_max) + 1):
         # 获取每页的URL地址
         if i == 1:
             page = mziTu
         else:
-            page = mziTu + 'page/' + str(i)
-        file = save_path + '\\' + str(i)
+            page = mziTu + &#39;page/&#39; + str(i)
+        file = save_path + &#39;\\&#39; + str(i)
         createFile(file)
         # 下载每页的图片
         print(&quot;套图页码：&quot; + page)
         download(page, file)
 
 
-if __name__ == '__main__':
-    main()
-</code></pre>
-<h3 id="3-2-linux下代码">3.2 linux下代码</h3>
-<pre><code class="language-py">#coding=utf-8
+if __name__ == &#39;__main__&#39;:
+    main()</code></pre>
+<h3 id="3-2-linux下代码"><a href="#3-2-linux下代码" class="headerlink" title="3.2 linux下代码"></a>3.2 linux下代码</h3><pre><code class="py">#coding=utf-8
 #!/usr/bin/python
 # 导入requests库
 import requests
@@ -405,12 +383,12 @@ importlib.reload(sys)
 
 # 给请求指定一个请求头来模拟chrome浏览器
 global headers
-headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'}
+headers = {&#39;User-Agent&#39;: &#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36&#39;}
 # 爬图地址
-mziTu = 'http://www.mzitu.com/'
+mziTu = &#39;http://www.mzitu.com/&#39;
 # 定义存储位置
 global save_path
-save_path = ​'/mnt/data/mzitu'
+save_path = ​&#39;/mnt/data/mzitu&#39;
 
 # 创建文件夹
 def createFile(file_path):
@@ -424,23 +402,23 @@ def download(page_no, file_path):
     global headers
     res_sub = requests.get(page_no, headers=headers)
     # 解析html
-    soup_sub = BeautifulSoup(res_sub.text, 'html.parser')
+    soup_sub = BeautifulSoup(res_sub.text, &#39;html.parser&#39;)
     # 获取页面的栏目地址
-    all_a = soup_sub.find('div',class_='postlist').find_all('a',target='_blank')
+    all_a = soup_sub.find(&#39;div&#39;,class_=&#39;postlist&#39;).find_all(&#39;a&#39;,target=&#39;_blank&#39;)
     count = 0
     for a in all_a:
         count = count + 1
         if (count % 2) == 0:
             print(&quot;内页第几页：&quot; + str(count))
             # 提取href
-            href = a.attrs['href']
+            href = a.attrs[&#39;href&#39;]
             print(&quot;套图地址：&quot; + href)
             res_sub_1 = requests.get(href, headers=headers)
-            soup_sub_1 = BeautifulSoup(res_sub_1.text, 'html.parser')
+            soup_sub_1 = BeautifulSoup(res_sub_1.text, &#39;html.parser&#39;)
             # ------ 这里最好使用异常处理 ------
             try:
                 # 获取套图的最大数量
-                pic_max = soup_sub_1.find('div',class_='pagenavi').find_all('span')[6].text
+                pic_max = soup_sub_1.find(&#39;div&#39;,class_=&#39;pagenavi&#39;).find_all(&#39;span&#39;)[6].text
                 print(&quot;套图数量：&quot; + pic_max)
                 for j in range(1, int(pic_max) + 1):
                     # print(&quot;子内页第几页：&quot; + str(j))
@@ -449,20 +427,20 @@ def download(page_no, file_path):
                     print(href_sub)
                     res_sub_2 = requests.get(href_sub, headers=headers)
                     soup_sub_2 = BeautifulSoup(res_sub_2.text, &quot;html.parser&quot;)
-                    img = soup_sub_2.find('div', class_='main-image').find('img')
+                    img = soup_sub_2.find(&#39;div&#39;, class_=&#39;main-image&#39;).find(&#39;img&#39;)
                     if isinstance(img, bs4.element.Tag):
                         # 提取src
-                        url = img.attrs['src']
-                        array = url.split('/')
+                        url = img.attrs[&#39;src&#39;]
+                        array = url.split(&#39;/&#39;)
                         file_name = array[len(array)-1]
                         # print(file_name)
                         # 防盗链加入Referer
-                        headers = {'Referer': href}
+                        headers = {&#39;Referer&#39;: href}
                         img = requests.get(url, headers=headers)
-                        # print('开始保存图片')
-                        f = open(file_name, 'ab')
+                        # print(&#39;开始保存图片&#39;)
+                        f = open(file_name, &#39;ab&#39;)
                         f.write(img.content)
-                        # print(file_name, '图片保存成功！')
+                        # print(file_name, &#39;图片保存成功！&#39;)
                         f.close()
             except Exception as e:
                 print(e)
@@ -472,30 +450,28 @@ def download(page_no, file_path):
 def main():
     res = requests.get(mziTu, headers=headers)
     # 使用自带的html.parser解析
-    soup = BeautifulSoup(res.text, 'html.parser')
+    soup = BeautifulSoup(res.text, &#39;html.parser&#39;)
     # 创建文件夹
     createFile(save_path)
     # 获取首页总页数
-    img_max = soup.find('div', class_='nav-links').find_all('a')[3].text
+    img_max = soup.find(&#39;div&#39;, class_=&#39;nav-links&#39;).find_all(&#39;a&#39;)[3].text
     # print(&quot;总页数:&quot;+img_max)
     for i in range(1, int(img_max) + 1):
         # 获取每页的URL地址
         if i == 1:
             page = mziTu
         else:
-            page = mziTu + 'page/' + str(i)
-        file = save_path + '/' + str(i)
+            page = mziTu + &#39;page/&#39; + str(i)
+        file = save_path + &#39;/&#39; + str(i)
         createFile(file)
         # 下载每页的图片
         print(&quot;套图页码：&quot; + page)
         download(page, file)
 
 
-if __name__ == '__main__':
-    main()
-</code></pre>
-<h2 id="四：-参考文献">四： 参考文献</h2>
-<p><a href="https://gitee.com/52itstyle/Python" target="_blank" rel="noopener">小柒2012 / 从零学Python / Day01</a></p>
+if __name__ == &#39;__main__&#39;:
+    main()</code></pre>
+<h2 id="四：-参考文献"><a href="#四：-参考文献" class="headerlink" title="四： 参考文献"></a>四： 参考文献</h2><p><a href="https://gitee.com/52itstyle/Python" target="_blank" rel="noopener">小柒2012 / 从零学Python / Day01</a></p>
 
             <hr>
           </div>
@@ -556,25 +532,31 @@ if __name__ == '__main__':
       <br><br>
       
       
-  <div class="disqus" style="width:100%">
-    <div id="disqus_thread"></div>
-    <script>
-      var disqus_config = function () {
-        this.page.url = 'https://closer_laps.gitee.io/2020/02/16/读书笔记/Python/python爬图攻略/';
-        this.page.identifier = '/2020/02/16/读书笔记/Python/python爬图攻略/';
-      };
-      var oldLoad = window.onload;
-      window.onload = function () {
-        var d = document, s = d.createElement('script');
-        s.type = 'text/javascript';
-        s.src = '//' + 'https-8hn9w5-coding-pages-com' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-      };
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="nofollow noopener noopener">comments
-        powered by Disqus.</a></noscript>
-  </div>
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'false' === true;
+    var verify = 'false' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
+        app_key: "HLUt5izfTvTcbEbOrA59W92a",
+        placeholder: "畅所欲言...",
+        avatar: "robohash",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
 
 
     
