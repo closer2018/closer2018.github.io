@@ -131,7 +131,7 @@ python gitee.py
 echo &quot;等待更新完成再关闭窗口... ...&quot;
 
 timeout /t 300
-rem 上面的代码是等待三分钟。
+rem 上面的代码是等待5分钟。
 </code></pre>
 <ol>
 <li>编写windows批处理脚本，代码如上。注意编码要是windows特有的GBK编码，否则会有乱码，保存为<code>gitee.bat</code>。</li>
@@ -144,7 +144,7 @@ rem 上面的代码是等待三分钟。
 <li><a href="https://blog.csdn.net/ydydyd00/article/details/80882183" target="_blank" rel="noopener">https://blog.csdn.net/ydydyd00/article/details/80882183</a></li>
 <li><a href="https://jingyan.baidu.com/article/154b463130041128ca8f41c7.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/154b463130041128ca8f41c7.html</a></li>
 </ul>
-<p><strong>enjoy.</strong></p>
+<p><strong>enjoy!</strong></p>
 ]]></content>
       <categories>
         <category>python</category>
