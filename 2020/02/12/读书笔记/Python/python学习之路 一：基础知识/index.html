@@ -132,7 +132,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    8.4k 字
+                    8.2k 字
                   </span>&nbsp;
                 
 
@@ -140,7 +140,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      34 分钟
+                      33 分钟
                   </span>&nbsp;
                 
 
@@ -284,15 +284,12 @@ dict_values([&#39;john&#39;, 6734, &#39;sales&#39;])</code></pre>
 </li>
 </ol>
 <h3 id="1-2-3-Python数据类型转换"><a href="#1-2-3-Python数据类型转换" class="headerlink" title="1.2.3 Python数据类型转换"></a>1.2.3 Python数据类型转换</h3><p>和c语言一样。当我们需要对数据内置的类型进行转换，数据类型的转换，你只需要将数据类型作为函数名即可。<br><code>float(2)</code>  </p>
-<h3 id="1-2-4-常用函数"><a href="#1-2-4-常用函数" class="headerlink" title="1.2.4 常用函数"></a>1.2.4 常用函数</h3><ol>
-<li>添加元素<br><code>list.append(&#39;name&#39;</code>)函数将元素添加到表尾；<br><code>list.insert(0,&#39;name&#39;)</code>函数在列表的任何位置添加新元素；  </li>
-<li>删除元素<br><code>del list[1]</code>函数删除列表指定位置的元素；<br><code>list.pop()</code>函数可删除列表末尾的元素，并让你能够接着使用它，list.pop(i)删除指定i位置元素；<br><code>list.remove(&#39;name&#39;)</code>函数根据值删除元素；  </li>
-<li>排序<br><code>list.sort()</code>函数永久进行从小到大排序；<code>list.sort(reverse=True)</code>函数参数反序排序；<br><code>sorted(list)</code>函数临时从小到大排序；<code>sorted(list,reverse=True)</code>函数参数反序排序;<br><code>list.reverse()</code>函数永久性地反转列表元素的排列顺序；</li>
-<li>长度<br><code>len(list)</code>函数可快速获取列表长度。  </li>
-<li>range()<br><code>range(1，101)</code>函数生成数字1-100；<code>numbers = list(range(1,6))</code>生成一个数字列表;<br><code>numbers = list(range(2,11,3))</code>函数第3个参数可指定步长，此例num打印出2，5，8;  </li>
-<li><code>min(list)</code>、<code>max(list)</code>、<code>sum(list)</code>；  </li>
-<li><code>list.title()</code>函数列表单词首字母大写；  </li>
-<li><code>set(favorite_languages.values())</code>函数可以剔除重复项，筛选出唯一项。  </li>
+<h3 id="1-2-4-如何查看模块及其方法的使用和它们的源码"><a href="#1-2-4-如何查看模块及其方法的使用和它们的源码" class="headerlink" title="1.2.4 如何查看模块及其方法的使用和它们的源码"></a>1.2.4 如何查看模块及其方法的使用和它们的源码</h3><ol>
+<li>进入cmd或者终端，python交互模式。</li>
+<li><code>import 模块名</code>  # 导入模块</li>
+<li><code>dir(模块名)</code> # 查看模块拥有的方法</li>
+<li><code>help(模块名)</code> # 查看模块介绍及其所含方法、拉到最后file后面查看源码路径</li>
+<li><code>help(方法名)</code> # 查看方法的内置帮助、用法</li>
 </ol>
 <h2 id="1-3-运算符"><a href="#1-3-运算符" class="headerlink" title="1.3 运算符"></a>1.3 运算符</h2><p><code>+、-、*、/、%</code>和c语言一样<br><code>**</code>是幂，<code>2**3=8</code><br><code>//</code>是取整除,<code>9//2=4</code><br>比较运算符和c语言一样<br>赋值运算符和c语言一样，多了<code>**=</code>,<code>//=</code><br>位运算符和c语言一样<br>逻辑运算符:<code>and</code>等同于c语言中的<code>&amp;&amp;</code>，<code>or</code>等于c语言中的<code>||</code>，<code>not</code>等于c语言中的<code>!</code>  </p>
 <h3 id="1-3-1-成员运算符"><a href="#1-3-1-成员运算符" class="headerlink" title="1.3.1 成员运算符"></a>1.3.1 成员运算符</h3><p>除了以上的一些运算符之外，Python还支持成员运算符，测试实例中包含了一系列的成员，包括字符串，列表或元组。  </p>
