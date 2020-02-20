@@ -96,6 +96,14 @@
             <a class="nav-link" href="/about/">关于</a>
           </li>
         
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
+          </li>
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
@@ -107,10 +115,9 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background"
+    <div class="view intro-2" id="background" false
          style="background: url('/img/default.jpg')no-repeat center center;
-           background-size: cover;
-           background-attachment: fixed;">
+           background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
           <div class="container text-center white-text fadeInUp">
@@ -554,14 +561,14 @@ Status DeQueue(LinkQueue *Q, QElemType *e)
   
     <!-- 不蒜子统计PV -->
     
-    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
-          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
   
   
     <!-- 不蒜子统计UV -->
     
-    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
-            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
   
   <br>
 
@@ -595,7 +602,7 @@ Status DeQueue(LinkQueue *Q, QElemType *e)
 
 
 
-  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+  <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
 
 
 
@@ -676,7 +683,7 @@ Status DeQueue(LinkQueue *Q, QElemType *e)
   <script>
     anchors.options = {
       placement: "right",
-      visible: "false",
+      visible: "always",
       
     };
     var el = "h1,h2,h3,h4,h5,h6".split(",");
@@ -792,6 +799,7 @@ Status DeQueue(LinkQueue *Q, QElemType *e)
       ;
     </script>
   
+
 
 
 
