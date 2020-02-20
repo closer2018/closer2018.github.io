@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://closer_laps.gitee.io/"/>
-  <updated>2020-02-20T08:22:27.057Z</updated>
+  <updated>2020-02-20T08:24:03.204Z</updated>
   <id>https://closer_laps.gitee.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://closer_laps.gitee.io/2020/02/20/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Github/%E5%A6%82%E4%BD%95%E5%9C%A8GitHub%E4%B8%8A%E6%90%9C%E7%B4%A2%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/"/>
     <id>https://closer_laps.gitee.io/2020/02/20/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Github/%E5%A6%82%E4%BD%95%E5%9C%A8GitHub%E4%B8%8A%E6%90%9C%E7%B4%A2%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/</id>
     <published>2020-02-20T07:30:07.000Z</published>
-    <updated>2020-02-20T08:22:27.057Z</updated>
+    <updated>2020-02-20T08:24:03.204Z</updated>
     
     <content type="html"><![CDATA[<h2 id="一：-如何使用搜索栏"><a href="#一：-如何使用搜索栏" class="headerlink" title="一： 如何使用搜索栏"></a>一： 如何使用搜索栏</h2><p>所有搜索需求用空格隔开。</p><p>搜索栏输入：</p><ol><li><p>搜索项目名里面包含python、项目readme里面包含python、描述里面包含python<br><code>in:name python</code>、<code>in:readme python</code>、<code>in:description 爬虫</code>/<code>in:des 爬虫</code><br>PS：description描述里面包含比较准确</p></li><li><p>stars数大于1000、forks数大于xxx<br><code>stars:&gt;1000</code>、<code>forks:&gt;xxx</code></p></li><li><p>指定编程语言<br><code>language:python</code></p></li><li><p>最后更新时间限定<br><code>pushed:&gt;2020-01-01</code></p></li><li><p>限定国内开发者<br><code>location:China</code></p></li></ol><h2 id="二：-chrome插件推荐"><a href="#二：-chrome插件推荐" class="headerlink" title="二： chrome插件推荐"></a>二： chrome插件推荐</h2><ul><li>Octotree</li><li>GitZip for github<br>双击你想下载的文件后面空白的地方，文件前方会出现√，右下角出现<code>Download checked items</code>即可下载。</li><li>英文不好的小伙伴推荐沙拉查词</li></ul><h2 id="三：-git-clone速度慢的解决方案"><a href="#三：-git-clone速度慢的解决方案" class="headerlink" title="三： git clone速度慢的解决方案"></a>三： git clone速度慢的解决方案</h2><p>登录<a href="https://gitee.com/" target="_blank" rel="noopener">Gitee</a> -&gt; 新建仓库 -&gt; 拉到最下的创建上面，点击导入已有仓库 -&gt; 填入你想git clone的GitHub仓库地址 -&gt; 本地，git clone。</p><h2 id="四：-参考视频"><a href="#四：-参考视频" class="headerlink" title="四： 参考视频"></a>四： 参考视频</h2><p><a href="https://www.bilibili.com/video/av75587104" target="_blank" rel="noopener">https://www.bilibili.com/video/av75587104</a></p>]]></content>
     
@@ -155,9 +155,9 @@
       <category term="python" scheme="https://closer_laps.gitee.io/categories/python/"/>
     
     
-      <category term="爬图" scheme="https://closer_laps.gitee.io/tags/%E7%88%AC%E5%9B%BE/"/>
-    
       <category term="python" scheme="https://closer_laps.gitee.io/tags/python/"/>
+    
+      <category term="爬图" scheme="https://closer_laps.gitee.io/tags/%E7%88%AC%E5%9B%BE/"/>
     
   </entry>
   
