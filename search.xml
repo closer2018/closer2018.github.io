@@ -1,6 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>python处理excle实例之字符串减法</title>
+    <url>/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python%E5%A4%84%E7%90%86excle%E5%AE%9E%E4%BE%8B%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%8F%E6%B3%95/</url>
+    <content><![CDATA[<p><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python%2Bexcel.jpg" srcset="/img/loading.gif" alt="python+excel"></p>
+<a id="more"></a>
+
+<pre><code class="py">#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from openpyxl import load_workbook
+
+
+# 求字符串A-B
+def str_A_cut_B(a, b):
+    if b:
+        for x in a:
+            if x in b:
+                a = a.replace(x, &quot;&quot;)
+    return a
+
+
+# 写入模式打开0.txt
+# f = open(&quot;0.txt&quot;, &quot;w&quot;)
+
+# 打开excel名为test
+wb = load_workbook(filename=&#39;test.xlsx&#39;)
+
+# 打开工作表Sheet1
+sheet = wb[&#39;Sheet1&#39;]
+
+for i in range(2, 36):
+    temp = &#39;C&#39; + str(i)
+
+    # 将temp单元格的内容存入str1
+    str1 = sheet[temp].value
+    str0 = &quot;张 朱 颜 赵 杨 施 胡 何 秦 刘 夏 鹏 李 唐 许 王 邓 顾&quot;
+    z = str_A_cut_B(str0, str1)
+
+    # 若单元格为空，换行输出
+    if str1:
+        # 输出格式
+        for j in range(len(z)):
+            print(z[j], end=&#39; &#39;)  # 不换行输出
+            # print(z[j], end=&#39; &#39;, file=f)
+        print(&#39; &#39;)
+        # print(&#39; &#39;, file=f)
+    else:
+        print(&#39; &#39;)
+        # print(&#39; &#39;, file=f)
+# f.close()</code></pre>
+]]></content>
+      <categories>
+        <category>python</category>
+        <category>excel</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>excel</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何在GitHub搜索开源项目</title>
     <url>/2020/02/20/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Github/%E5%A6%82%E4%BD%95%E5%9C%A8GitHub%E4%B8%8A%E6%90%9C%E7%B4%A2%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/</url>
     <content><![CDATA[<h2 id="一：-如何使用搜索栏"><a href="#一：-如何使用搜索栏" class="headerlink" title="一： 如何使用搜索栏"></a>一： 如何使用搜索栏</h2><p>所有搜索需求用空格隔开。</p>
