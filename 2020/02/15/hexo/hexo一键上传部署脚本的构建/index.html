@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    383 字
+                    381 字
                   </span>&nbsp;
                 
 
@@ -185,7 +185,8 @@
 <li>注意：编码要是windows默认编码GBK；Linux上是UTF-8；</li>
 <li>然后复制黏贴，话不多说，直接上代码。  <a id="more"></a></li>
 </ol>
-<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><pre><code class="bat">@echo off
+<h2 id="Windows">Windows</h2>
+<pre><code class="language-bat">@echo off
 
 cd G:\code\hexo
 REM 改为hexo根目录
@@ -207,7 +208,7 @@ echo;
 echo &quot;commit complete.&quot;
 echo;
 echo;
-
+ 
 echo &quot;正在将更改提交到远程git服务器... ...&quot;
 git push githuborigin hexo &amp;&amp; git push giteeorigin hexo &amp;&amp; git push codingorigin hexo
 echo;
@@ -222,9 +223,11 @@ echo &quot;部署 complete.&quot;
 echo;
 echo;
 
-pause</code></pre>
-<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><p>先提升权限，<code>chmod +x ./git\ push\ hexo.sh</code>。</p>
-<pre><code class="sh">cd /home/zs/文档/hexo/closer_laps
+pause
+</code></pre>
+<h2 id="Linux">Linux</h2>
+<p>先提升权限，<code>chmod +x ./git\ push\ hexo.sh</code>。</p>
+<pre><code class="language-sh">cd /home/zs/文档/hexo/closer_laps
 # 改为hexo根目录
 echo &quot;当前目录是： /home/zs/文档/hexo/closer_laps&quot;
 
@@ -237,14 +240,14 @@ echo;
 echo;
 
 echo &quot;正在commit... ...&quot;
-now=`date &#39;+%Y-%m-%d %H:%M:%S&#39;`
+now=`date '+%Y-%m-%d %H:%M:%S'`
 echo &quot;$now&quot;
 git commit -m &quot;blog update at $now&quot;
 echo;
 echo &quot;commit complete.&quot;
 echo;
 echo;
-
+ 
 echo &quot;正在push... ...&quot;
 git push githuborigin hexo &amp;&amp; git push giteeorigin hexo &amp;&amp; git push codingorigin hexo
 echo;
@@ -257,7 +260,8 @@ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d
 echo;
 echo &quot;部署 complete.&quot;
 echo;
-echo;</code></pre>
+echo;
+</code></pre>
 
             <hr>
           </div>
