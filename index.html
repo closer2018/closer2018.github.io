@@ -173,33 +173,28 @@
 本文转载于GitHub项目Python - 100天从新手到大师
 
 一： 关系数据库概述
-
-
 数据持久化 - 将数据保存到能够长久保存数据的存储介质中，在掉电的情况下数据也不会丢失。
-
 
 数据库发展史 - 网状数据库、层次数据库、关系数据库、NoSQL数据库。
 
 1970年，IBM的研究员E.F.Codd在Communication of the ACM上发表了名为A Relational Model of Data for Large Shared Data Banks的论文，提出了关系模型的概念，奠定了关系模型的理论基础。后来Codd又陆续发表多篇文章，论述了范式理论和衡量关系系统的12条标准，用数学理论奠定了关系数据库的基础。
 
 
-
 关系数据库特点。
-
 
 理论基础：集合论和关系代数。
 
-
 具体表象：用二维表（有行和列）组织数据。
-
 
 编程语言：结构化查询语言（SQL）。
 
 
 
-
 ER模型（实体关系模型）和概念模型图。
-ER模型，全称为实体关系模型（Entity-Relationship Model），由美籍华裔计算机科学家陈品山先生提出，是概念数据模型的高层描述方式，如下图所示</div>
+ER模型，全称为实体关系模型（Entity-Relationship Model），由美籍华裔计算机科学家陈品山先生提出，是概念数据模型的高层描述方式，如下图所示。
+
+
+实体 -</div>
         </div>
       </a>
 
@@ -253,10 +248,8 @@ ER模型，全称为实体关系模型（Entity-Relationship Model），由美�
 
 说明：本文中对Linux命令的讲解都是基于名为CentOS的Linux发行版本，我自己使用的是阿里云服务器，系统版本为CentOS Linux release 7.6.1810。不同的Linux发行版本在Shell命令和工具程序上会有一些差别，但是这些差别是很小的。
 
-一： 操作系统发展史
-只有硬件没有软件的计算机系统被称之为“裸机”，我们很难用“裸机”来完成计算机日常的工作（如存储和运算），所以必须用特定的软件来控制硬件的工作。最靠近计算机硬件的软件是系统软件，其中最为重要的就是“操作系统”。“操作系统”是控制和管理整个计算机硬件和软件资源、实现资源分配和任务调配、为系统用户以及其他软件提供接口和环境的程序的集合。
-1.1 没有操作系统（手工操作）
-在计算机诞生之初没有操作系统的年代，人们先把程序纸带（或卡片）装上计算机，然后启动输入机把程序送入计算机，接着通过控制台开关启动程序运行。当程序执行完毕，打印机输出计算的结果，用户卸下并取走纸带（或卡片）。第二个用户上机，重复同样的步骤。在整个过程中用户独占机器，CP</div>
+一： 操作系统发展史只有硬件没有软件的计算机系统被称之为“裸机”，我们很难用“裸机”来完成计算机日常的工作（如存储和运算），所以必须用特定的软件来控制硬件的工作。最靠近计算机硬件的软件是系统软件，其中最为重要的就是“操作系统”。“操作系统”是控制和管理整个计算机硬件和软件资源、实现资源分配和任务调配、为系统用户以及其他软件提供接口和环境的程序的集合。
+1.1 没有操作系统（手工操作）在计算机诞生之初没有操作系统的年代，人们先把程序纸带（或卡片）装上计算机，然后启动输入机把程序送入计算机，接着通过控制台开关启动程序运行。当程序执行完毕，打印机输出计算的结果，用户卸下并取走纸带（或卡片）。第二个用户上机，重复同样的步骤。在整个过程中用户独占机器，CPU等</div>
         </div>
       </a>
 
@@ -275,9 +268,9 @@ ER模型，全称为实体关系模型（Entity-Relationship Model），由美�
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/Linux">Linux</a>&nbsp;
-          
             <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
+          
+            <a href="/tags/Linux">Linux</a>&nbsp;
           
         
       </div>
@@ -307,8 +300,7 @@ ER模型，全称为实体关系模型（Entity-Relationship Model），由美�
           <div class="index-text mb-1">
 本文转载于GitHub项目Python - 100天从新手到大师
 
-一： 正则表达式相关知识
-在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需要，正则表达式就是用于描述这些规则的工具，换句话说正则表达式是一种工具，它定义了字符串的匹配模式（如何检查一个字符串是否有跟某种模式匹配的部分或者从一个字符串中将与模式匹配的部分提取出来或者替换掉）。如果你在Windows操作系统中使用过文件查找并且在指定文件名时使用过通配符（*和?），那么正则表达式也是与之类似的用来进行文本匹配的工具，只不过比起通配符正则表达式更强大，它能更精确地描述你的需求（当然你付出的代价是书写一个正则表达式比打出一个通配符要复杂得多，要知道任何给你带来好处的东西都是有代价的，就如同学习一门编程语言一样），比如你可以编写一个正则表达式，用来查找所有以0开头，后面跟着2-3个数字，然后是一个连字号“-”，最后是7或8位数字的字符串（像028-12345678或0813-7654321），这不就是国内的座机号码吗。最初计算机是为了做数学运算而诞生的，处理的信息基本上都是数值，而今天我们在日常工作中处理</div>
+一： 正则表达式相关知识在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需要，正则表达式就是用于描述这些规则的工具，换句话说正则表达式是一种工具，它定义了字符串的匹配模式（如何检查一个字符串是否有跟某种模式匹配的部分或者从一个字符串中将与模式匹配的部分提取出来或者替换掉）。如果你在Windows操作系统中使用过文件查找并且在指定文件名时使用过通配符（*和?），那么正则表达式也是与之类似的用来进行文本匹配的工具，只不过比起通配符正则表达式更强大，它能更精确地描述你的需求（当然你付出的代价是书写一个正则表达式比打出一个通配符要复杂得多，要知道任何给你带来好处的东西都是有代价的，就如同学习一门编程语言一样），比如你可以编写一个正则表达式，用来查找所有以0开头，后面跟着2-3个数字，然后是一个连字号“-”，最后是7或8位数字的字符串（像028-12345678或0813-7654321），这不就是国内的座机号码吗。最初计算机是为了做数学运算而诞生的，处理的信息基本上都是数值，而今天我们在日常工作中处理的</div>
         </div>
       </a>
 
@@ -405,41 +397,26 @@ ER模型，全称为实体关系模型（Entity-Relationship Model），由美�
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">一： 如何使用搜索栏
-所有搜索需求用空格隔开。
+          <div class="index-text mb-1">一： 如何使用搜索栏所有搜索需求用空格隔开。
 搜索栏输入：
 
+搜索项目名里面包含python、项目readme里面包含python、描述里面包含pythonin:name python、in:readme python、in:description 爬虫/in:des 爬虫PS：description描述里面包含比较准确
 
-搜索项目名里面包含python、项目readme里面包含python、描述里面包含python
-in:name python、in:readme python、in:description 爬虫/in:des 爬虫
-PS：description描述里面包含比较准确
+stars数大于1000、forks数大于xxxstars:&gt;1000、forks:&gt;xxx
 
+指定编程语言language:python
 
-stars数大于1000、forks数大于xxx
-stars:&gt;1000、forks:&gt;xxx
+最后更新时间限定pushed:&gt;2020-01-01
 
-
-指定编程语言
-language:python
-
-
-最后更新时间限定
-pushed:&gt;2020-01-01
-
-
-限定国内开发者
-location:China
+限定国内开发者location:China
 
 
 二： chrome插件推荐
-
 Octotree
-GitZip for github
-双击你想下载的文件后面空白的地方，文件前方会出现√，右下角出现Download checked items即可下载。
+GitZip for github双击你想下载的文件后面空白的地方，文件前方会出现√，右下角出现Download checked items即可下载。
 英文不好的小伙伴推荐沙拉查词
 
-三： git clone速度慢的解决方案
-登录Gitee -&gt; 新建仓库 -&gt; 拉到最下的创建上面，点击导入已有仓库 -&gt; 填入你想g</div>
+三： git clone速度慢的解决方案登录Gitee -&gt; 新建仓库 -&gt; 拉到最下的创建上面，点击导入已有仓库 -&gt; 填入你想git clone的GitHub</div>
         </div>
       </a>
 
@@ -480,17 +457,13 @@ GitZip for github
         
         <div class="index-excerpt" style="max-height: none;">
           <div class="index-text mb-1">一： 安装类型
-
 /boot分区（引导）-&gt;512MB-&gt;主分区-&gt;空间起始位置-&gt;Ext4日志文件系统-&gt;/boot。
 / 根分区（相当于windows的c盘）-&gt;102400MB-&gt;主分区-&gt;空间起始位置-&gt;XFS日志文件系统-&gt;/。
 swap分区（桌面系统不分，服务器必分）-&gt;2048MB-&gt;逻辑分区-&gt;空间起始位置-&gt;交换空间。
 /home分区（存储空间，剩余都给它）-&gt;max MB-&gt;主分区-&gt;空间起始位置-&gt;XFS日志文件系统-&gt;/home。
 现在安装。
 
-二： 基础配置
-2.1 设置root用户密码
-sudo passwd root
-su...</div>
+二： 基础配置2.1 设置root用户密码sudo passwd rootsu...</div>
         </div>
       </a>
 
@@ -509,9 +482,9 @@ su...</div>
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/Linux">Linux</a>&nbsp;
-          
             <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
+          
+            <a href="/tags/Linux">Linux</a>&nbsp;
           
         
       </div>
@@ -539,14 +512,10 @@ su...</div>
           
         
         <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">一： 前期准备
-1.1 基础环境
-
-python3 + selenium + chrome浏览器。
-如果有不懂的可以查阅selenium-python中文文档
-chrome-&gt;设置-&gt;关于chrome-&gt;查看版本（我的版本是 80.0.3987.106（正式版本） （64 位））。
-需要下载跟你的chrome版本一致的ChromeDriver可执行驱动
-下载完解压放在python根目录(即跟python.exe放在一起)。
+          <div class="index-text mb-1">一： 前期准备1.1 基础环境
+python3 + selenium + chrome浏览器。如果有不懂的可以查阅selenium-python中文文档
+chrome-&gt;设置-&gt;关于chrome-&gt;查看版本（我的版本是 80.0.3987.106（正式版本） （64 位））。  
+需要下载跟你的chrome版本一致的ChromeDriver可执行驱动下载完解压放在python根目录(即跟python.exe放在一起)。
 最好有一台云主机，没有的话需要自己的电脑设定定时开机，定时任务，定时关机。...</div>
         </div>
       </a>
@@ -598,12 +567,8 @@ chrome-&gt;设置-&gt;关于chrome-&gt;查看版本（我的版本是 80.0.3987.
           
         
         <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">一： 简介
-You-Get 乃一小小哒命令行程序，提供便利的方式来下载网络上的媒体信息，通过python来安装。
-支持主流视频网站如：YouTube、Google+、bilibili哔哩哔哩、163/网易视频/网易云音乐、斗鱼、爱奇艺、Youku、AcFun等等
-二： 安装及其使用
-2.1 安装
-1） 安装python3...</div>
+          <div class="index-text mb-1">一： 简介You-Get 乃一小小哒命令行程序，提供便利的方式来下载网络上的媒体信息，通过python来安装。支持主流视频网站如：YouTube、Google+、bilibili哔哩哔哩、163/网易视频/网易云音乐、斗鱼、爱奇艺、Youku、AcFun等等
+二： 安装及其使用2.1 安装1） 安装python3...</div>
         </div>
       </a>
 
@@ -650,12 +615,7 @@ You-Get 乃一小小哒命令行程序，提供便利的方式来下载网络上
           
         
         <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">一： 软件工具
-1.1 Python3
-这里选择的是最新版 Python3
-安装教程这里推荐：http://www.runoob.com/python3/python3-install.html
-win下载地址：https://www.python.org/downloads/windows
-Linux下载地址：https://www.python.org/downloads/source...</div>
+          <div class="index-text mb-1">一： 软件工具1.1 Python3这里选择的是最新版 Python3安装教程这里推荐：http://www.runoob.com/python3/python3-install.htmlwin下载地址：https://www.python.org/downloads/windowsLinux下载地址：https://www.python.org/downloads/source...</div>
         </div>
       </a>
 
