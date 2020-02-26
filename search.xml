@@ -2985,8 +2985,8 @@ install_redis &#39;http://download.redis.io/releases/&#39; $1</code></pre>
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>读书笔记</tag>
         <tag>Linux</tag>
+        <tag>读书笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -3500,8 +3500,8 @@ for i in range(2, 36):
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>读书笔记</tag>
         <tag>Linux</tag>
+        <tag>读书笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -3963,8 +3963,8 @@ if __name__ == &#39;__main__&#39;:
         <category>python</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>爬图</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
