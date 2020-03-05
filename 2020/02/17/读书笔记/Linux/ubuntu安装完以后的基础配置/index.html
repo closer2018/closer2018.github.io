@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    417 字
+                    840 字
                   </span>&nbsp;
                 
 
@@ -147,7 +147,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      1 分钟
+                      3 分钟
                   </span>&nbsp;
                 
 
@@ -180,7 +180,11 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h2 id="一：-安装类型"><a href="#一：-安装类型" class="headerlink" title="一： 安装类型"></a>一： 安装类型</h2><ol>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ol>
+<li>先试用ubuntu，打开软件目录 -&gt; 磁盘，右上角菜单。然后格式化磁盘;擦除 -&gt; 不要覆盖…(快速);分区 -&gt; 硬盘2T以下MBR/DOS、2T以上GPT</li>
+<li>不要连接网络 -&gt; 正常安装 -&gt; 其他选项</li>
+</ol>
+<h2 id="一：-安装类型"><a href="#一：-安装类型" class="headerlink" title="一： 安装类型"></a>一： 安装类型</h2><ol>
 <li>/boot分区（引导）-&gt;512MB-&gt;主分区-&gt;空间起始位置-&gt;Ext4日志文件系统-&gt;/boot。</li>
 <li>/ 根分区（相当于windows的c盘）-&gt;102400MB-&gt;主分区-&gt;空间起始位置-&gt;XFS日志文件系统-&gt;/。</li>
 <li>swap分区（桌面系统不分，服务器必分）-&gt;2048MB-&gt;逻辑分区-&gt;空间起始位置-&gt;交换空间。</li>
@@ -217,7 +221,28 @@
 <li><code>ctrl</code>+<code>o</code>保存，回车确定,<code>ctrl</code>+<code>x</code>。</li>
 </ol>
 <h3 id="2-9-安装新立得软件包"><a href="#2-9-安装新立得软件包" class="headerlink" title="2.9 安装新立得软件包"></a>2.9 安装新立得软件包</h3><p><code>sudo apt install synaptic</code></p>
-<h2 id="三：-参考视频"><a href="#三：-参考视频" class="headerlink" title="三： 参考视频"></a>三： 参考视频</h2><p><strong><a href="https://www.bilibili.com/video/av48233413" target="_blank" rel="noopener">https://www.bilibili.com/video/av48233413</a></strong></p>
+<h2 id="三：-常用软件安装"><a href="#三：-常用软件安装" class="headerlink" title="三： 常用软件安装"></a>三： 常用软件安装</h2><p>PS：deb文件如何安装？</p>
+<ul>
+<li><code>sudo dpkg -i 软件名</code> # 安装</li>
+<li><code>sudo apt install -f</code> # 修复依赖</li>
+<li><code>sudo dpkg -r 软件名</code> # 进行卸载</li>
+</ul>
+<p>安装git<br><code>sudo apt install git</code></p>
+<p>生成公匙<br><code>ssh-keygen -t rsa -C &quot;你的邮箱地址&quot;</code><br><code>cat ~/.ssh/id_rsa.pub</code><br>添加到github，gitee，coding</p>
+<p>下载安装wps<br><code>sudo dpkg -i wps-office_11.1.0.9080_amd64.deb</code></p>
+<p>下载安装lantern<br><code>sudo dpkg -i lantern-installer-preview-64-bit.deb</code></p>
+<p>下载安装zoom<br><code>sudo dpkg -i zoom_amd64.deb</code></p>
+<p>下载安装python3<br><code>tar zxvf Python-3.8.2.tgz</code><br><code>cd Python-3.8.2\</code><br><code>sudo apt install gcc</code><br><code>sudo apt install make</code><br><code>./configure</code><br><code>make</code><br><code>sudo make install</code><br><code>sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100</code> # 设置python2为默认<br><code>sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150</code> # 设置python3为默认<br><code>sudo update-alternatives --config python</code> # 选择默认的python版本<br><code>sudo apt install python3-pip</code> # 安装pip3<br><code>pip3 install -U pip -i https://pypi.tuna.tsinghua.edu.cn/simple</code> # 升级pip<br>如果这个升级命令出现问题 ，可以使用以下命令：<code>sudo easy_install --upgrade pip</code><br><code>pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</code> # pip3设置清华源</p>
+<p>下载安装vscode<br><code>sudo dpkg -i code_1.42.1-1581432938_amd64.deb</code><br><code>ctrl+shift+p，然后输入lang -&gt; 选择configure Display language，然后安装简体中文，然后重启vscode</code></p>
+<p>下载安装百度网盘<br><code>sudo dpkg -i baidunetdisk_linux_3.0.1.2.deb</code></p>
+<p>下载安装hexo<br><code>sudo apt install nodejs</code><br><code>sudo apt install npm</code><br><code>sudo npm install hexo-cli -g</code><br><code>sudo npm install</code></p>
+<p>下载安装qBittorrent</p>
+<ul>
+<li>qBittorrent Stable # 稳定版<br> <code>sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable</code></li>
+<li>qBittorrent Unstable # 不稳定版<br> <code>sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-unstable</code></li>
+</ul>
+<p><code>sudo apt-get update &amp;&amp; sudo apt-get install qbittorrent</code></p>
+<h2 id="四：-参考视频"><a href="#四：-参考视频" class="headerlink" title="四： 参考视频"></a>四： 参考视频</h2><p><strong><a href="https://www.bilibili.com/video/av48233413" target="_blank" rel="noopener">https://www.bilibili.com/video/av48233413</a></strong></p>
 
             <hr>
           </div>
