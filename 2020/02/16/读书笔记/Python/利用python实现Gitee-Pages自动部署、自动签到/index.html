@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    868 字
+                    1k 字
                   </span>&nbsp;
                 
 
@@ -147,7 +147,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      3 分钟
+                      4 分钟
                   </span>&nbsp;
                 
 
@@ -190,48 +190,69 @@
 <li>安装python3,不懂的请查阅我的相关blog文。</li>
 <li>打开windows命令行，安装selenium<br><code>pip install selenium -i https://pypi.tuna.tsinghua.edu.cn/simple</code></li>
 </ol>
+<h3 id="1-3-获取cookie"><a href="#1-3-获取cookie" class="headerlink" title="1.3 获取cookie"></a>1.3 获取cookie</h3><p>首先登录gitee的Gitee Pages服务界面；</p>
+<p>点击网页地址栏左边的小锁标志 -&gt; 选择Cookie；</p>
+<p>右边弹出的窗口中展开gitee.com -&gt; 展开Cookie -&gt; 点击名为<code>gitee-session-n</code>的项目 -&gt; 下面的内容后面就是你的cookie；</p>
+<p>记得要全部复制进去，替换掉下面源码的my_cookie里面的内容。</p>
 <h2 id="二：-代码"><a href="#二：-代码" class="headerlink" title="二： 代码"></a>二： 代码</h2><h3 id="2-1-源码"><a href="#2-1-源码" class="headerlink" title="2.1 源码"></a>2.1 源码</h3><pre><code class="py">#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 import time
 from selenium import webdriver
 from selenium.webdriver.common.alert import Alert
+from selenium.webdriver.chrome.options import Options
 
-# 模拟浏览器打开gitee登录界面
-driver = webdriver.Chrome()
-driver.get(&#39;https://gitee.com/login&#39;)
-# 将窗口最大化
-driver.maximize_window()
-time.sleep(2)
+# 将你的cookie内容替换掉下面的内容
+my_cookie = {&#39;domain&#39;: &#39;.gitee.com&#39;, &#39;httpOnly&#39;: True, &#39;name&#39;: &#39;gitee-session-n&#39;, &#39;path&#39;: &#39;/&#39;, &#39;secure&#39;: False,
+             &#39;value&#39;: &#39;内容&#39;}
 
-# 输入账号--通过html的id属性定位输入位置--改为你的账号
-user_login = driver.find_element_by_id(&#39;user_login&#39;)
-user_login.send_keys(&quot;此处改为你的账号&quot;)
-# 输入密码--通过html的id属性定位输入位置--改为你的密码
-driver.find_element_by_id(&#39;user_password&#39;).send_keys(&quot;此处改为你的密码&quot;)
-# 点击登录按钮--通过xpath确定点击位置
-driver.find_element_by_xpath(
-    &#39;/html/body/div[2]/div[2]/div[1]/div/div[2]/div/form[1]/div[2]/div/div/div[4]/input&#39;).click()
+# 实例化一个启动参数对象
+options = Options()
 
-time.sleep(2)
+# 设置启动浏览器时窗口最大化运行
+# options.add_argument(&#39;--start-maximized&#39;)
 
-# 切换到gitee pages界面--改为you_gitee_id
-driver.get(&#39;https://gitee.com/此处改为you_gitee_id/此处改为you_gitee_id/pages&#39;)
+# 设置无界面模式运行浏览器
+options.add_argument(&#39;-headless&#39;)
 
-time.sleep(2)
+# 不加载图片, 提升速度
+prefs = {&quot;profile.managed_default_content_settings.images&quot;: 2}
+options.add_experimental_option(&quot;prefs&quot;, prefs)
+
+# 打开浏览器
+print(&#39;Launch browser&#39;)
+driver = webdriver.Chrome(chrome_options=options)
+
+# 删除缓存
+print(&#39;Delete cookies&#39;)
+driver.delete_all_cookies()
+
+# 访问网页
+print(&#39;Visit website&#39;)
+# 这里链接改为你的码云部署页面的链接
+driver.get(&quot;https://gitee.com/此处改为你的ID/此处改为你的ID/pages&quot;)
+time.sleep(5)
+
+# 加载cookie
+print(&#39;Add cookie&#39;)
+driver.add_cookie(my_cookie)
+
+# 刷新
+print(&#39;Refresh&#39;)
+driver.refresh()
+time.sleep(5)
 
 # 点击更新按钮--通过xpath确定点击位置
-driver.find_element_by_xpath(&#39;/html/body/div[3]/div[2]/div/div[2]/div[1]/form/div[7]&#39;).click()
-
-time.sleep(2)
+driver.find_element_by_xpath(&#39;//*[@id=&quot;pages-branch&quot;]/div[7]&#39;).click()
+time.sleep(3)
 
 # 确认更新提示框--这个函数的作用是确认提示框
 Alert(driver).accept()
 
-# 等待3秒更新
-time.sleep(3)
+# 等待40秒更新
+time.sleep(40)
 
 # 这个print其实没事什么用,如果真的要测试脚本是否运行成功，可以用try来抛出异常
-print(&quot;成功&quot;)
+print(&quot;success&quot;)
 
 # 脚本运行成功,退出浏览器
 driver.quit()
@@ -240,7 +261,7 @@ driver.quit()
 # 我这里是写在D盘
 fp = open(&quot;D:\log.txt&quot;, &quot;a+&quot;)
 # linux写在/home
-# fp = open(&quot;/home/log.log&quot;, &quot;a+&quot;)
+# fp = open(&quot;/home/temp/log.log&quot;, &quot;a+&quot;)
 now_time = time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime())
 fp.write(&quot;auto update time:{0}\n&quot;.format(now_time))
 fp.close()</code></pre>
@@ -270,6 +291,7 @@ rem 上面的代码是等待3分钟。</code></pre>
 <li><a href="https://python-selenium-zh.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">https://python-selenium-zh.readthedocs.io/zh_CN/latest/</a></li>
 <li><a href="https://blog.csdn.net/ydydyd00/article/details/80882183" target="_blank" rel="noopener">https://blog.csdn.net/ydydyd00/article/details/80882183</a></li>
 <li><a href="https://jingyan.baidu.com/article/154b463130041128ca8f41c7.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/154b463130041128ca8f41c7.html</a></li>
+<li><a href="https://jupitersh.gitee.io/2020/02/Preparation-for-Gitee-Auto-Update-by-Ptyhon/" target="_blank" rel="noopener">https://jupitersh.gitee.io/2020/02/Preparation-for-Gitee-Auto-Update-by-Ptyhon/</a></li>
 </ul>
 <p><strong>enjoy!</strong></p>
 
