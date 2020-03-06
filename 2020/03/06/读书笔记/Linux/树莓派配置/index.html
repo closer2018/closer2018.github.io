@@ -16,7 +16,7 @@
   <meta name="description" content="热爱学习的小码农报道">
   <meta name="author" content="closer">
   <meta name="keywords" content="">
-  <title>标签 - Linux ~ closer的自留地</title>
+  <title>树莓派配置 ~ closer的自留地</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -40,7 +40,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -115,7 +115,7 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="view intro-2" id="background" false
          style="background: url('/img/default.jpg')no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
@@ -125,6 +125,41 @@
               
             </span>
 
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期五, 三月 6日 2020, 2:29 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    726 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      3 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
             
           </div>
 
@@ -136,48 +171,153 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-<!--  <p class="h4">共计 3 篇文章</p>-->
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">树莓派配置</span>
-      <span style="float: right;">03-06</span>
-    </a>
-  
-    
-    <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E7%8E%A9%E8%BD%ACLinux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">玩转Linux操作系统</span>
-      <span style="float: right;">02-23</span>
-    </a>
-  
-    
-    <a href="/2020/02/17/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/ubuntu%E5%AE%89%E8%A3%85%E5%AE%8C%E4%BB%A5%E5%90%8E%E7%9A%84%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">ubuntu安装完以后的基础配置</span>
-      <span style="float: right;">02-17</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="一-修改密码及时间"><a href="#一-修改密码及时间" class="headerlink" title="一: 修改密码及时间"></a>一: 修改密码及时间</h2><h3 id="1-1-设置su及pi密码"><a href="#1-1-设置su及pi密码" class="headerlink" title="1.1 设置su及pi密码"></a>1.1 设置su及pi密码</h3><pre><code class="shell">sudo passwd pi                   # 修改 Pi 密码  
+sudo passwd root                 # 设置 root 密码
+su root                          # 切换到 root 用户  
+su pi                            # 切换到 pi 用户</code></pre>
+<h3 id="1-2-修改时间"><a href="#1-2-修改时间" class="headerlink" title="1.2 修改时间"></a>1.2 修改时间</h3><p>使用date 语句查看时间，如不正确，则：首先在终端中用下面的命令安装ntpdate工具</p>
+<p><code>sudo apt install ntpdate</code></p>
+<p>启用NTP </p>
+<p><code>sudo timedatectl set-ntp true</code></p>
+<p>继续使用date语句查看时间，如不正确，则：</p>
+<p><code>sudo dpkg-reconfigure tzdata</code></p>
+<p>修改时区为Asia Shanghai，继续使用date语句查看时间并确认正确</p>
+<h2 id="二-中文环境"><a href="#二-中文环境" class="headerlink" title="二: 中文环境"></a>二: 中文环境</h2><h2 id="2-1-安装中文输入法"><a href="#2-1-安装中文输入法" class="headerlink" title="2.1 安装中文输入法"></a>2.1 安装中文输入法</h2><p><code>sudo apt install scim-pinyin</code></p>
+<h2 id="2-2-配置中文环境"><a href="#2-2-配置中文环境" class="headerlink" title="2.2 配置中文环境"></a>2.2 配置中文环境</h2><p><code>sudo raspi-config</code></p>
+<p>按4 -&gt; 1<br>在Configuring locales窗口中，找到zh_CN.UTF-8 UTF-8</p>
+<p>空格选中，并在确认后再次选择zh_CN.UTF-8</p>
+<h3 id="2-3-安装中文字库"><a href="#2-3-安装中文字库" class="headerlink" title="2.3 安装中文字库"></a>2.3 安装中文字库</h3><p><code>sudo apt install ttf-wqy-zenhei</code></p>
+<p><code>reboot</code></p>
+<h2 id="三-基本设置"><a href="#三-基本设置" class="headerlink" title="三: 基本设置"></a>三: 基本设置</h2><h3 id="3-1-开启SSH访问"><a href="#3-1-开启SSH访问" class="headerlink" title="3.1 开启SSH访问"></a>3.1 开启SSH访问</h3><p><code>sudo raspi-config</code></p>
+<p>5 -&gt; P2 SSH -&gt; enable.</p>
+<h3 id="3-2-设置为固定ip访问"><a href="#3-2-设置为固定ip访问" class="headerlink" title="3.2 设置为固定ip访问"></a>3.2 设置为固定ip访问</h3><p>先进入配置文件<br><code>sudo nano /etc/dhcpcd.conf</code></p>
+<pre><code class="shell"># 有线设置
+interface eth0
+# 路由器ip
+static routers=192.168.2.1
+# DNS
+static domain_name_servers=192.168.2.1 8.8.8.8
+static ip_address=192.168.2.4/24
 
+# 无线设置
+interface wlan0
+static routers=192.168.2.1
+static domain_name_servers=192.168.2.1 8.8.8.8
+static ip_address=192.168.2.4/24</code></pre>
+<h2 id="四-安装Pi-hole搭建DNS缓存服务器，过滤网页广告"><a href="#四-安装Pi-hole搭建DNS缓存服务器，过滤网页广告" class="headerlink" title="四: 安装Pi-hole搭建DNS缓存服务器，过滤网页广告"></a>四: 安装Pi-hole搭建DNS缓存服务器，过滤网页广告</h2><h3 id="4-1-安装Pi-hole"><a href="#4-1-安装Pi-hole" class="headerlink" title="4.1 安装Pi-hole"></a>4.1 安装Pi-hole</h3><p>使用脚本自定义安装，在安装过程中可以自定义Pi-hole，命令如下：</p>
+<pre><code class="sh">git clone --depth 1 https://github.com/pi-hole/pi-hole.git Pi-hole
+cd Pi-hole/automated\ install/
+bash basic-install.sh</code></pre>
+<p>安装过程中，将会下载安装软件包，然后弹出一个红蓝界面，可以选择Pi-hole的配置，选择默认方式即可。安装后会生成后台的登陆密码，请记住，如果没看到这个密码也没关系，安装成功后可以自己设置。等待脚本的安装完成，约1-2个小时。</p>
+<h3 id="4-2-使用"><a href="#4-2-使用" class="headerlink" title="4.2 使用"></a>4.2 使用</h3><p>Pi-hole安装成功后就会开始运行，如果你要使用它，请将你电脑的DNS改为树莓派的IP地址，同时，也应该将家庭路由器的DNS地址更改为树莓派当前的IP地址，这样才能使用树莓派的DNS服务和广告拦截服务。</p>
+<h3 id="4-3-登陆Pi-hole"><a href="#4-3-登陆Pi-hole" class="headerlink" title="4.3 登陆Pi-hole"></a>4.3 登陆Pi-hole</h3><p>Pi-hole有一个美观的界面，可以直观的看到今日DNS查询屏蔽次数、今日DNS查询次数、屏蔽比例、屏蔽库中的域名数量等信息。Pi-hole界面的查看地址为：</p>
+<p><code>http://&lt;your pi’s IP address&gt;/admin</code></p>
+<p>其中<code>&lt;your pi’s IP address&gt;</code>用树莓派的IP地址替换即可。</p>
+<h3 id="4-4-重置密码"><a href="#4-4-重置密码" class="headerlink" title="4.4 重置密码"></a>4.4 重置密码</h3><p>如果你忘记了密码，通过以下命令可以重置新的密码。</p>
+<p><code>sudo pihole -a -p newpassword</code></p>
+<h3 id="4-5-实时监控"><a href="#4-5-实时监控" class="headerlink" title="4.5 实时监控"></a>4.5 实时监控</h3><p>通过SSH实时监控，输入命令：</p>
+<p><code>pihole -c</code></p>
+<h3 id="4-6-升级Pihole"><a href="#4-6-升级Pihole" class="headerlink" title="4.6 升级Pihole"></a>4.6 升级Pihole</h3><p><code>pihole -up</code></p>
 
-              </div>
-            </div>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/Linux">Linux</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/Linux">Linux</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE">树莓派</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-md">
+    <div class="container custom post-content mx-auto">
+      <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-3" style="width:355.4px; height:200px;">
+    </div>
+  </div>
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'false' === true;
+    var verify = 'false' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
+        app_key: "HLUt5izfTvTcbEbOrA59W92a",
+        placeholder: "畅所欲言...",
+        avatar: "robohash",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -256,6 +396,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
@@ -320,7 +465,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "标签 - Linux&nbsp;",
+        "树莓派配置&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 60,

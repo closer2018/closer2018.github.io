@@ -153,6 +153,65 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/" target="_self">
+          <img src="/img/default1.jpg" srcset="/img/loading.gif" alt="树莓派配置" class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2020/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/">
+        <p class="h4 index-header">树莓派配置</p>
+      </a>
+
+      <a href="/2020/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">一: 修改密码及时间1.1 设置su及pi密码sudo passwd pi                   # 修改 Pi 密码  
+sudo passwd root                 # 设置 root 密码
+su root                          # 切换到 root 用户  
+su pi                            # 切换到 pi 用户
+1.2 修改时间使用date 语句查看时间，如不正确，则：首先在终端中用下面的命令安装ntpdate工具
+sudo apt install ntpdate
+启用NTP 
+sudo timedatectl set-ntp true
+继续使用date语句查看时间，如不正确，则：
+sudo dpkg-reconfigure tzdata
+修改时区为Asia Shanghai，继续使用date语句查看时间并确认正确
+二: 中文环境2.1 安装中文输入法sudo apt install scim-pinyin
+2.2 配置中文环境sudo raspi-config
+按4 -&gt; 1</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-06&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Linux">Linux</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Linux">Linux</a>&nbsp;
+          
+            <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE">树莓派</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/MySQL/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93MySQL/" target="_self">
           <img src="/img/mysql.jpg" srcset="/img/loading.gif" alt="关系数据库MySQL入门" class="index-img img-fluid rounded index-thumbnails">
         </a>
@@ -268,9 +327,9 @@ ER模型，全称为实体关系模型（Entity-Relationship Model），由美�
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/Linux">Linux</a>&nbsp;
-          
             <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
+          
+            <a href="/tags/Linux">Linux</a>&nbsp;
           
         
       </div>
@@ -486,9 +545,9 @@ swap分区（桌面系统不分，服务器必分）-&gt;2048MB-&gt;逻辑分区
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/Linux">Linux</a>&nbsp;
-          
             <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
+          
+            <a href="/tags/Linux">Linux</a>&nbsp;
           
         
       </div>
@@ -639,56 +698,6 @@ chrome-&gt;设置-&gt;关于chrome-&gt;查看版本（我的版本是 80.0.3987.
             <a href="/tags/python">python</a>&nbsp;
           
             <a href="/tags/%E7%88%AC%E5%9B%BE">爬图</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/02/15/hexo/hexo%E4%B8%80%E9%94%AE%E4%B8%8A%E4%BC%A0%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC%E7%9A%84%E6%9E%84%E5%BB%BA/" target="_self">
-          <img src="/img/hexo.jpg" srcset="/img/loading.gif" alt="hexo一键上传部署脚本的构建" class="index-img img-fluid rounded index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/02/15/hexo/hexo%E4%B8%80%E9%94%AE%E4%B8%8A%E4%BC%A0%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC%E7%9A%84%E6%9E%84%E5%BB%BA/">
-        <p class="h4 index-header">hexo一键上传部署脚本的构建</p>
-      </a>
-
-      <a href="/2020/02/15/hexo/hexo%E4%B8%80%E9%94%AE%E4%B8%8A%E4%BC%A0%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC%E7%9A%84%E6%9E%84%E5%BB%BA/">
-        
-        
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">
-windows先右键新建一个文本文档，后缀改为git push hexo.bat；Linux新建一个git push hexo.sh文档;
-注意：编码要是windows默认编码GBK；Linux上是UTF-8；
-然后复制黏贴，话不多说，直接上代码。...</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-15&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/hexo">hexo</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/hexo">hexo</a>&nbsp;
-          
-            <a href="/tags/%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2">一键部署</a>&nbsp;
           
         
       </div>
