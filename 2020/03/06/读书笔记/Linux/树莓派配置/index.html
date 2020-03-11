@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    726 字
+                    835 字
                   </span>&nbsp;
                 
 
@@ -213,7 +213,8 @@ interface wlan0
 static routers=192.168.2.1
 static domain_name_servers=192.168.2.1 8.8.8.8
 static ip_address=192.168.2.4/24</code></pre>
-<h2 id="四-安装Pi-hole搭建DNS缓存服务器，过滤网页广告"><a href="#四-安装Pi-hole搭建DNS缓存服务器，过滤网页广告" class="headerlink" title="四: 安装Pi-hole搭建DNS缓存服务器，过滤网页广告"></a>四: 安装Pi-hole搭建DNS缓存服务器，过滤网页广告</h2><h3 id="4-1-安装Pi-hole"><a href="#4-1-安装Pi-hole" class="headerlink" title="4.1 安装Pi-hole"></a>4.1 安装Pi-hole</h3><p>使用脚本自定义安装，在安装过程中可以自定义Pi-hole，命令如下：</p>
+<h2 id="四-安装Pi-hole搭建DNS缓存服务器，过滤网页广告"><a href="#四-安装Pi-hole搭建DNS缓存服务器，过滤网页广告" class="headerlink" title="四: 安装Pi-hole搭建DNS缓存服务器，过滤网页广告"></a>四: 安装Pi-hole搭建DNS缓存服务器，过滤网页广告</h2><p><strong>pi-hole使用后发现并不好用，故不推荐安装。</strong></p>
+<h3 id="4-1-安装Pi-hole"><a href="#4-1-安装Pi-hole" class="headerlink" title="4.1 安装Pi-hole"></a>4.1 安装Pi-hole</h3><p>使用脚本自定义安装，在安装过程中可以自定义Pi-hole，命令如下：</p>
 <pre><code class="sh">git clone --depth 1 https://github.com/pi-hole/pi-hole.git Pi-hole
 cd Pi-hole/automated\ install/
 bash basic-install.sh</code></pre>
@@ -227,6 +228,14 @@ bash basic-install.sh</code></pre>
 <h3 id="4-5-实时监控"><a href="#4-5-实时监控" class="headerlink" title="4.5 实时监控"></a>4.5 实时监控</h3><p>通过SSH实时监控，输入命令：</p>
 <p><code>pihole -c</code></p>
 <h3 id="4-6-升级Pihole"><a href="#4-6-升级Pihole" class="headerlink" title="4.6 升级Pihole"></a>4.6 升级Pihole</h3><p><code>pihole -up</code></p>
+<h3 id="4-7-更改-重置GUI管理员密码"><a href="#4-7-更改-重置GUI管理员密码" class="headerlink" title="4.7 更改/重置GUI管理员密码"></a>4.7 更改/重置GUI管理员密码</h3><p><code>pihole -a -p</code></p>
+<h3 id="4-8-检查pi-hole状态"><a href="#4-8-检查pi-hole状态" class="headerlink" title="4.8 检查pi-hole状态"></a>4.8 检查pi-hole状态</h3><p><code>pihole status</code></p>
+<h3 id="4-9-重新配置pi-hole系统"><a href="#4-9-重新配置pi-hole系统" class="headerlink" title="4.9 重新配置pi-hole系统"></a>4.9 重新配置pi-hole系统</h3><p><code>pihole -r</code></p>
+<h3 id="4-10-从系统中卸载Pi-hole"><a href="#4-10-从系统中卸载Pi-hole" class="headerlink" title="4.10 从系统中卸载Pi-hole"></a>4.10 从系统中卸载Pi-hole</h3><p><code>pihole uninstall</code></p>
+<p>第一次选Y，第二次选N</p>
+<h3 id="4-11-重启Pi-holes子系统"><a href="#4-11-重启Pi-holes子系统" class="headerlink" title="4.11 重启Pi-holes子系统"></a>4.11 重启Pi-holes子系统</h3><p><code>pihole restartdns</code></p>
+<h3 id="4-12-帮助"><a href="#4-12-帮助" class="headerlink" title="4.12 帮助"></a>4.12 帮助</h3><p><code>pihole --help</code></p>
+<p><strong>pi-hole使用后发现并不好用，故不推荐安装，已经卸载。</strong></p>
 
             <hr>
           </div>

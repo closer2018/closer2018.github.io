@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    1k 字
+                    1.2k 字
                   </span>&nbsp;
                 
 
@@ -147,7 +147,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      4 分钟
+                      5 分钟
                   </span>&nbsp;
                 
 
@@ -183,7 +183,7 @@
             <h2 id="一：-前期准备"><a href="#一：-前期准备" class="headerlink" title="一： 前期准备"></a>一： 前期准备</h2><h3 id="1-1-基础环境"><a href="#1-1-基础环境" class="headerlink" title="1.1 基础环境"></a>1.1 基础环境</h3><ol>
 <li>python3 + selenium + chrome浏览器。<br>如果有不懂的可以查阅<a href="https://python-selenium-zh.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">selenium-python中文文档</a></li>
 <li>chrome-&gt;设置-&gt;关于chrome-&gt;查看版本（我的版本是 80.0.3987.106（正式版本） （64 位））。  </li>
-<li>需要下载跟你的chrome版本一致的<a href="http://chromedriver.storage.googleapis.com/index.html" target="_blank" rel="noopener">ChromeDriver可执行驱动</a><br>下载完解压放在python根目录(即跟python.exe放在一起)。</li>
+<li>需要下载跟你的chrome版本一致的<a href="http://chromedriver.storage.googleapis.com/index.html" target="_blank" rel="noopener">ChromeDriver可执行驱动</a><br>下载完解压放在python根目录(即跟python.exe放在一起)。<br><strong>如果上面的ChromeDriver网址打不开，可以使用<a href="https://npm.taobao.org/mirrors/chromedriver/" target="_blank" rel="noopener">ChromeDriver淘宝镜像</a></strong></li>
 <li>最好有一台云主机，没有的话需要自己的电脑设定定时开机，定时任务，定时关机。  <a id="more"></a></li>
 </ol>
 <h3 id="1-2-安装环境"><a href="#1-2-安装环境" class="headerlink" title="1.2 安装环境"></a>1.2 安装环境</h3><ol>
@@ -274,8 +274,8 @@ fp.close()</code></pre>
 <li><p>编写自动签到脚本也差不多同样的道理。</p>
 </li>
 </ul>
-<h2 id="三：-添加定时任务自动部署"><a href="#三：-添加定时任务自动部署" class="headerlink" title="三： 添加定时任务自动部署"></a>三： 添加定时任务自动部署</h2><ol>
-<li>登录云主机，复制<code>gitee.py</code>到D盘根目录。</li>
+<h2 id="三：-添加定时任务自动部署"><a href="#三：-添加定时任务自动部署" class="headerlink" title="三： 添加定时任务自动部署"></a>三： 添加定时任务自动部署</h2><h3 id="3-1-Windows主机"><a href="#3-1-Windows主机" class="headerlink" title="3.1 Windows主机"></a>3.1 Windows主机</h3><ol>
+<li>登录windows云主机，复制<code>gitee.py</code>到D盘根目录。</li>
 <li>云主机内-&gt;右键我的电脑-&gt;管理-&gt;工具-&gt;任务计划程序-&gt;创建基本任务…添加任务每天执行一次，实在不会的请<a href="https://jingyan.baidu.com/article/154b463130041128ca8f41c7.html" target="_blank" rel="noopener">百度</a></li>
 <li>在自己电脑上的话也可以设置定时开关机，并把如下代码添加到<a href="https://8hn9w5.coding-pages.com/2020/02/15/hexo/hexo%E4%B8%80%E9%94%AE%E4%B8%8A%E4%BC%A0%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC%E7%9A%84%E6%9E%84%E5%BB%BA/" target="_blank" rel="noopener">hexo一键上传部署脚本</a>的后面，每次定时git push后自动在gitee的pages界面部署。</li>
 </ol>
@@ -287,6 +287,18 @@ python gitee.py
 echo &quot;等待更新完成过后再关闭窗口&quot;
 timeout /t 180
 rem 上面的代码是等待3分钟。</code></pre>
+<h3 id="3-2-Linux主机"><a href="#3-2-Linux主机" class="headerlink" title="3.2 Linux主机"></a>3.2 Linux主机</h3><ol>
+<li>登录Linux云主机，复制<code>gitee.py</code>到<code>/home/temp/</code>目录。</li>
+<li>添加Linux计划任务<br><code>crontab -e</code></li>
+<li>选择1选项nano编辑，光标拉到最后面，复制如下代码;</li>
+<li><code>0 6 * * * sleep $((RANDOM*3600/32768)) &amp;&amp; /usr/bin/python3 /home/temp/gitee.py start</code></li>
+</ol>
+<p>说明：</p>
+<ul>
+<li><a href="http://www.bejson.com/othertools/cron/" target="_blank" rel="noopener">crontab表达式在线生成</a></li>
+<li>第4中的 <code>sleep</code> 是延迟0<del>1小时(RANDOM是随机0</del>32767之间的数字，3600s就是1h)，执行后面的命令，因为crontab是定时命令，添加延迟命令需要完全路径。</li>
+<li><code>crontab -l</code>查看当前已经保存的计划任务。</li>
+</ul>
 <h2 id="四：-参考文献"><a href="#四：-参考文献" class="headerlink" title="四： 参考文献"></a>四： 参考文献</h2><ul>
 <li><a href="https://python-selenium-zh.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">https://python-selenium-zh.readthedocs.io/zh_CN/latest/</a></li>
 <li><a href="https://blog.csdn.net/ydydyd00/article/details/80882183" target="_blank" rel="noopener">https://blog.csdn.net/ydydyd00/article/details/80882183</a></li>
