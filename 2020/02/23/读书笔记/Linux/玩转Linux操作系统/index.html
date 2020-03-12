@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    14.4k 字
+                    14.5k 字
                   </span>&nbsp;
                 
 
@@ -713,6 +713,8 @@ gr@pe
 @pple
 w@termelon
 or@nge</code></pre>
+<p>先cd目录，将后缀为.cfg的文件里面所有老内容替换为新内容。</p>
+<pre><code class="Shell">sed -i &quot;s/老内容/新内容/g&quot; `find . -type f -name &quot;*.cfg&quot;`</code></pre>
 </li>
 <li><p>模式匹配和处理语言 - <strong>awk</strong>。</p>
 <p>awk是一种编程语言，也是Linux系统中处理文本最为强大的工具，它的作者之一和现在的维护者就是之前提到过的Brian Kernighan（ken和dmr最亲密的伙伴）。通过该命令可以从文本中提取出指定的列、用正则表达式从文本中取出我们想要的内容、显示指定的行以及进行统计和运算，总之它非常强大。</p>
@@ -1342,6 +1344,8 @@ rtt min/avg/max/mdev = 36.392/36.406/36.427/0.156 ms</code></pre>
 </li>
 <li><p>安全文件拷贝 - <strong>scp</strong>。</p>
 <pre><code class="Shell">[root ~]# scp root@1.2.3.4:/root/guido.jpg hellokitty@4.3.2.1:/home/hellokitty/pic.jpg</code></pre>
+<p>scp中使用sshpass带密码传输文件</p>
+<pre><code class="Shell">sshpass -p &#39;密码&#39; scp -r 用户名@ip:/home/file1 /home/file1</code></pre>
 </li>
 <li><p>文件同步工具 - <strong>rsync</strong>。</p>
 <blockquote>

@@ -1954,6 +1954,8 @@ gr@pe
 @pple
 w@termelon
 or@nge</code></pre>
+<p>先cd目录，将后缀为.cfg的文件里面所有老内容替换为新内容。</p>
+<pre><code class="Shell">sed -i &quot;s/老内容/新内容/g&quot; `find . -type f -name &quot;*.cfg&quot;`</code></pre>
 </li>
 <li><p>模式匹配和处理语言 - <strong>awk</strong>。</p>
 <p>awk是一种编程语言，也是Linux系统中处理文本最为强大的工具，它的作者之一和现在的维护者就是之前提到过的Brian Kernighan（ken和dmr最亲密的伙伴）。通过该命令可以从文本中提取出指定的列、用正则表达式从文本中取出我们想要的内容、显示指定的行以及进行统计和运算，总之它非常强大。</p>
@@ -2583,6 +2585,8 @@ rtt min/avg/max/mdev = 36.392/36.406/36.427/0.156 ms</code></pre>
 </li>
 <li><p>安全文件拷贝 - <strong>scp</strong>。</p>
 <pre><code class="Shell">[root ~]# scp root@1.2.3.4:/root/guido.jpg hellokitty@4.3.2.1:/home/hellokitty/pic.jpg</code></pre>
+<p>scp中使用sshpass带密码传输文件</p>
+<pre><code class="Shell">sshpass -p &#39;密码&#39; scp -r 用户名@ip:/home/file1 /home/file1</code></pre>
 </li>
 <li><p>文件同步工具 - <strong>rsync</strong>。</p>
 <blockquote>
@@ -3593,6 +3597,55 @@ for i in range(2, 36):
 <li><code>ctrl</code>+<code>o</code>保存，回车确定,<code>ctrl</code>+<code>x</code>。</li>
 </ol>
 <h3 id="2-9-安装新立得软件包"><a href="#2-9-安装新立得软件包" class="headerlink" title="2.9 安装新立得软件包"></a>2.9 安装新立得软件包</h3><p><code>sudo apt install synaptic</code></p>
+<h3 id="2-10-安装aria2和ariang及配置"><a href="#2-10-安装aria2和ariang及配置" class="headerlink" title="2.10 安装aria2和ariang及配置"></a>2.10 安装aria2和ariang及配置</h3><h4 id="2-10-1-安装aria2及其配置"><a href="#2-10-1-安装aria2及其配置" class="headerlink" title="2.10.1 安装aria2及其配置"></a>2.10.1 安装aria2及其配置</h4><p><code>sudo apt install aria2 -y</code></p>
+<pre><code class="shell">mkdir /home/ubuntu/.aria2
+cd /home/ubuntu/.aria2
+touch aria2.conf aria2.session #创建配置文件与session文件
+vi /home/ubuntu/.aria2/aria2.conf</code></pre>
+<p>aria2.conf配置文件如下</p>
+<pre><code class="sh">dir=~/下载/
+disable-ipv6=true
+
+#打开rpc的目的是为了给web管理端用
+enable-rpc=true
+rpc-allow-origin-all=true
+rpc-listen-all=true
+#rpc-listen-port=6800
+#断点续传
+continue=true
+input-file=/home/ubuntu/.aria2/aria2.session
+save-session=/home/ubuntu/.aria2/aria2.session
+
+#最大同时下载任务数
+max-concurrent-downloads=20
+save-session-interval=120
+
+# Http/FTP 相关
+connect-timeout=120
+#lowest-speed-limit=10K
+#同服务器连接数
+max-connection-per-server=10
+#max-file-not-found=2
+#最小文件分片大小, 下载线程数上限取决于能分出多少片, 对于小文件重要
+min-split-size=10M
+
+#单文件最大线程数, 路由建议值: 5
+split=10
+check-certificate=false
+#http-no-cache=true</code></pre>
+<p>后台运行aria2</p>
+<p><code>aria2c --conf-path=/home/ubuntu/.aria2/aria2.conf -D</code></p>
+<p>设置aria2开机自动启动</p>
+<p><code>sudo vi /etc/rc.local</code></p>
+<p>在最下面加入：</p>
+<p><code>aria2c --conf-path=/home/ubuntu/.aria2/aria2.conf -D &amp;</code></p>
+<h4 id="2-10-2-安装ariang及配置"><a href="#2-10-2-安装ariang及配置" class="headerlink" title="2.10.2 安装ariang及配置"></a>2.10.2 安装ariang及配置</h4><p><a href="http://ariang.mayswind.net/zh_Hans/" target="_blank" rel="noopener">参考官方文档</a></p>
+<pre><code class="sh">sudo apt install nodejs
+sudo apt install npm
+sudo apt install gulp</code></pre>
+<p>然后<a href="https://github.com/mayswind/AriaNg/releases" target="_blank" rel="noopener">下载源码解压并cd进入解压的文件夹</a></p>
+<p>然后安装单文件版</p>
+<p><code>npm install</code><br><code>gulp clean build-bundle</code></p>
 <h2 id="三：-常用软件安装"><a href="#三：-常用软件安装" class="headerlink" title="三： 常用软件安装"></a>三： 常用软件安装</h2><p>PS：deb文件如何安装？</p>
 <ul>
 <li><code>sudo dpkg -i 软件名</code> # 安装</li>
@@ -3739,12 +3792,12 @@ rem 上面的代码是等待3分钟。</code></pre>
 <li>登录Linux云主机，复制<code>gitee.py</code>到<code>/home/temp/</code>目录。</li>
 <li>添加Linux计划任务<br><code>crontab -e</code></li>
 <li>选择1选项nano编辑，光标拉到最后面，复制如下代码;</li>
-<li><code>0 6 * * * sleep $((RANDOM*3600/32768)) &amp;&amp; /usr/bin/python3 /home/temp/gitee.py start</code></li>
+<li><code>10 6 * * * /home/temp/gitee.py start</code></li>
 </ol>
 <p>说明：</p>
 <ul>
 <li><a href="http://www.bejson.com/othertools/cron/" target="_blank" rel="noopener">crontab表达式在线生成</a></li>
-<li>第4中的 <code>sleep</code> 是延迟0<del>1小时(RANDOM是随机0</del>32767之间的数字，3600s就是1h)，执行后面的命令，因为crontab是定时命令，添加延迟命令需要完全路径。</li>
+<li>延迟0~1小时的话，直接在py或者sh文件中利用sleep及random命令设置。</li>
 <li><code>crontab -l</code>查看当前已经保存的计划任务。</li>
 </ul>
 <h2 id="四：-参考文献"><a href="#四：-参考文献" class="headerlink" title="四： 参考文献"></a>四： 参考文献</h2><ul>
@@ -4122,8 +4175,8 @@ if __name__ == &#39;__main__&#39;:
         <category>python</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>爬图</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -4212,8 +4265,8 @@ echo;</code></pre>
         <category>hexo</category>
       </categories>
       <tags>
-        <tag>一键部署</tag>
         <tag>hexo</tag>
+        <tag>一键部署</tag>
       </tags>
   </entry>
   <entry>
