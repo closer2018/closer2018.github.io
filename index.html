@@ -153,6 +153,84 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/03/13/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E5%B1%80%E5%9F%9F%E7%BD%91%E4%B8%BB%E6%9C%BA%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE-%E9%80%9A%E8%BF%87%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" target="_self">
+          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/linux.jpg" srcset="/img/loading.gif" alt="局域网内的主机实现外网访问(通过反向代理)" class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2020/03/13/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E5%B1%80%E5%9F%9F%E7%BD%91%E4%B8%BB%E6%9C%BA%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE-%E9%80%9A%E8%BF%87%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">
+        <p class="h4 index-header">局域网内的主机实现外网访问(通过反向代理)</p>
+      </a>
+
+      <a href="/2020/03/13/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E5%B1%80%E5%9F%9F%E7%BD%91%E4%B8%BB%E6%9C%BA%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE-%E9%80%9A%E8%BF%87%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">本文记录如何在树莓派上如何实现反向代理，穿透内网进行远程登录和操作树莓派。本方法也适用于其他 Linux 系统和 mac osx系统，但目录上有所区别。
+一： 必备条件
+具有公网 IP 的 vps 或者云主机。
+局域网主机（如树莓派、nas）。
+
+二： 准备工作（局域网主机上操作）
+局域网主机生成密匙(如果已经生成，请跳过)打开终端，输入。ssh-keygen # 然后连续按三次Enter
+输入如下命令：ssh-copy-id -i ~/.ssh/id_rsa.pub 中文改为你的云主机用户名@中文改为你的云主机外网IP
+使pi默认可以root登录sudo passwd root # 修改pi的root密码sudo nano /etc/ssh/sshd_config找到PermitRootLogin这一行，将前面的‘#’去掉，这一行改为PermitRootLogin yes。
+
+三： 反向代理的操作原理图：
+
+
+
+编号
+IP
+用户名
+说明
+
+
+
+A
+192.168.1.A
+U_a
+目标 计算机，（即树莓派），在局域网中，可以访问 A
+
+
+B
+B.B.B.B
+U_b
+代理服务器（我们的 </div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-13&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Linux">Linux</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Linux">Linux</a>&nbsp;
+          
+            <a href="/tags/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86">反向代理</a>&nbsp;
+          
+            <a href="/tags/%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE">外网访问</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/03/07/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%20%E4%BA%8C%EF%BC%9Acookie/" target="_self">
           <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python.jpg" srcset="/img/loading.gif" alt="selenium操作cookie" class="index-img img-fluid rounded index-thumbnails">
         </a>
@@ -664,54 +742,6 @@ chrome-&gt;设置-&gt;关于chrome-&gt;查看版本（我的版本是 80.0.3987.
             <a href="/tags/python">python</a>&nbsp;
           
             <a href="/tags/%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%88%B0">自动签到</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/02/16/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/you-get%E4%B8%8B%E8%BD%BD%E8%A7%86%E9%A2%91/" target="_self">
-          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python.jpg" srcset="/img/loading.gif" alt="you-get下载视频" class="index-img img-fluid rounded index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/02/16/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/you-get%E4%B8%8B%E8%BD%BD%E8%A7%86%E9%A2%91/">
-        <p class="h4 index-header">you-get下载视频</p>
-      </a>
-
-      <a href="/2020/02/16/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/you-get%E4%B8%8B%E8%BD%BD%E8%A7%86%E9%A2%91/">
-        
-        
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">一： 简介You-Get 乃一小小哒命令行程序，提供便利的方式来下载网络上的媒体信息，通过python来安装。支持主流视频网站如：YouTube、Google+、bilibili哔哩哔哩、163/网易视频/网易云音乐、斗鱼、爱奇艺、Youku、AcFun等等
-二： 安装及其使用2.1 安装1） 安装python3...</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-16&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/python">python</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/python">python</a>&nbsp;
-          
-            <a href="/tags/you-get">you-get</a>&nbsp;
           
         
       </div>
