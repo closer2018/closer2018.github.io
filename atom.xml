@@ -338,9 +338,9 @@
       <category term="python" scheme="https://closer_laps.gitee.io/categories/python/"/>
     
     
-      <category term="爬图" scheme="https://closer_laps.gitee.io/tags/%E7%88%AC%E5%9B%BE/"/>
-    
       <category term="python" scheme="https://closer_laps.gitee.io/tags/python/"/>
+    
+      <category term="爬图" scheme="https://closer_laps.gitee.io/tags/%E7%88%AC%E5%9B%BE/"/>
     
   </entry>
   
@@ -366,9 +366,9 @@
       <category term="hexo" scheme="https://closer_laps.gitee.io/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="https://closer_laps.gitee.io/tags/hexo/"/>
-    
       <category term="一键部署" scheme="https://closer_laps.gitee.io/tags/%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2/"/>
+    
+      <category term="hexo" scheme="https://closer_laps.gitee.io/tags/hexo/"/>
     
   </entry>
   
