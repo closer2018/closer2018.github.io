@@ -73,10 +73,10 @@ ps aux | grep ssh
 
 # 将云主机设为开机就正向代理
 which rc.local
-# cd进入上面的路径
-sudo vi rc.local
+# cd进入上面的路径,我这边的路径是/etc/
+sudo vi /etc/rc.local
 
-#最后一行添加如下代码，保存退出
+#按i编辑，最后一行添加如下代码，:qw保存退出
 ssh -fCNL &#39;*:12345:localhost:7280&#39; localhost</code></pre>
 <h3 id="3-4-4-通过其他电脑手机访问局域网主机（树莓派）"><a href="#3-4-4-通过其他电脑手机访问局域网主机（树莓派）" class="headerlink" title="3.4.4 通过其他电脑手机访问局域网主机（树莓派）"></a>3.4.4 通过其他电脑手机访问局域网主机（树莓派）</h3><p><code>ssh -p &lt;port_b2&gt; 你的云主机用户名@你的云主机外网IP</code><br><code>&lt;port_b2&gt;</code>改成上面的端口号，如1234</p>
 <p>代码示例：<br><code>ssh -p12345 root@123.123.123.123</code></p>
