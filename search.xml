@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Linux VPS一键更换软件源脚本</title>
+    <url>/2020/03/15/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/Linux-VPS%E4%B8%80%E9%94%AE%E6%9B%B4%E6%8D%A2%E8%BD%AF%E4%BB%B6%E6%BA%90%E8%84%9A%E6%9C%AC/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有时候会遇到Linux的源更新速度非常的缓慢，特别是在国内使用默认的源，因为国内的网络环境，经常会出现无法更新，更新缓慢的情况。在这种情况下，更换一个更适合或者说更近，更快的软件源，会为你的Linux安装更新操作更加的流畅和顺利。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p><strong>系统要求</strong>：<code>CentOS 5+</code>、<code>Ubuntu 14.04+</code>、<code>Debian 7+</code></p>
+<p>使用命令：</p>
+<pre><code class="sh">#下载脚本
+wget git.io/superupdate.sh
+#运行脚本
+bash superupdate.sh</code></pre>
+<p>如果第一步你出现错误或执行后无任何输出，请检查是否安装<code>wget</code>和<code>ca-certificates</code>，使用命令：</p>
+<pre><code class="sh">#Debian、Ubuntu
+apt-get install -y wget &amp;&amp; apt-get install -y ca-certificates
+#CentOS
+yum install -y wget &amp;&amp; yum install -y ca-certificates</code></pre>
+<p>对于Debian默认换源为<code>Fastly CDN</code>的<code>mirror</code>这个源有<code>Fastly</code>的加持对境外主机都有不错的速度。对于<code>Ubuntu</code>和 <code>CentOS</code>系统都默认换为阿里云的<code>mirror</code>，这个源有阿里云全球CDN的加持，全球都有不错的速度。</p>
+<h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><p>对于<code>Debian</code>系统还设置了四套其他的源，<code>阿里云</code>，<code>CloudFront CDN</code>，<code>网易163</code>，<code>中科大的源</code>，请根据需要使用参数一键设置如：</p>
+<pre><code class="sh">bash superupdate.sh cn
+bash superupdate.sh 163
+bash superupdate.sh aliyun
+bash superupdate.sh aws</code></pre>
+<h2 id="还原"><a href="#还原" class="headerlink" title="还原"></a>还原</h2><p>如果配置的文件不满意，一键还原</p>
+<pre><code class="sh">bash superupdate.sh restore</code></pre>
+<p><strong><a href="https://www.moerats.com/archives/784/" target="_blank" rel="noopener">文章出处</a></strong></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>换软件源</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>局域网内的主机实现外网访问(通过反向代理)</title>
     <url>/2020/03/13/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E5%B1%80%E5%9F%9F%E7%BD%91%E4%B8%BB%E6%9C%BA%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE-%E9%80%9A%E8%BF%87%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/</url>
     <content><![CDATA[<p>本文记录如何在树莓派上如何实现反向代理，穿透内网进行远程登录和操作树莓派。本方法也适用于其他 Linux 系统和 mac osx<br>系统，但目录上有所区别。</p>
