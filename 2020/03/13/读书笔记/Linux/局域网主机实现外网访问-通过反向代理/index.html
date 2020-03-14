@@ -232,15 +232,34 @@
 -L 将端口绑定到本地客户端，正向代理
 
 *******************区分大小写啊各位亲******************</code></pre>
-<h3 id="3-4-具体步骤"><a href="#3-4-具体步骤" class="headerlink" title="3.4 具体步骤"></a>3.4 具体步骤</h3><ol>
-<li>建立 A 机器到 B 机器的反向代理【 局域网主机（树莓派）上操作】<br><code>ssh -fCNR &lt;port_b1&gt;:localhost:22 中文改为你的云主机用户名@中文改为你的云主机外网IP</code><br>其中<code>&lt;port_b1&gt;</code>改为访问大于1000的端口号，比如7280<br><code>ssh -fCNR 7280:localhost:22 root@123.123.123.123</code></li>
-<li>登录云主机上开启自动端口转发【云主机上操作】<br><code>sudo vi /etc/ssh/sshd_config</code><br>找到GatewayPorts把前面的#去掉,后面改成yes</li>
-<li>为 B 机器上端口，用来与 A 机器上的22端口绑定 【云主机上操作】<br><code>ssh -fCNL &#39;*:&lt;port_b2&gt;:localhost:&lt;port_b1&gt;&#39; localhost</code><br>其中<code>&lt;port_b1&gt;</code>跟上面的端口相同<br><code>&lt;port_b2&gt;</code>改为和<code>&lt;port_b1&gt;</code>不同的大于1000端口号，如12345<br>如<code>ssh -fCNL &#39;*:12345:localhost:7280&#39; localhost</code><br><code>ps aux | grep ssh</code> # 查看ssh进程</li>
-<li>通过其他电脑手机访问局域网主机（树莓派）<br><code>ssh -p &lt;port_b2&gt; 中文改为你的云主机用户名@中文改为你的云主机外网IP</code><br><code>&lt;port_b2&gt;</code>改成上面的端口号，如1234<br>例子：<code>ssh -p12345 root@123.123.123.123</code></li>
-</ol>
+<h3 id="3-4-具体步骤"><a href="#3-4-具体步骤" class="headerlink" title="3.4 具体步骤"></a>3.4 具体步骤</h3><h4 id="3-4-1-建立-A-机器到-B-机器的反向代理【-局域网主机（树莓派）上操作】"><a href="#3-4-1-建立-A-机器到-B-机器的反向代理【-局域网主机（树莓派）上操作】" class="headerlink" title="3.4.1 建立 A 机器到 B 机器的反向代理【 局域网主机（树莓派）上操作】"></a>3.4.1 建立 A 机器到 B 机器的反向代理【 局域网主机（树莓派）上操作】</h4><p><code>ssh -fCNR &lt;port_b1&gt;:localhost:22 你的云主机用户名@你的云主机外网IP</code><br>其中<code>&lt;port_b1&gt;</code>改为访问大于1000的端口号，比如7280</p>
+<p>代码示例：<br><code>ssh -fCNR 7280:localhost:22 root@123.123.123.123</code></p>
+<h3 id="3-4-2-登录云主机上开启自动端口转发【云主机上操作】"><a href="#3-4-2-登录云主机上开启自动端口转发【云主机上操作】" class="headerlink" title="3.4.2 登录云主机上开启自动端口转发【云主机上操作】"></a>3.4.2 登录云主机上开启自动端口转发【云主机上操作】</h3><p><code>sudo vi /etc/ssh/sshd_config</code></p>
+<p>找到GatewayPorts把前面的#去掉,后面改成yes，开启自动端口转发</p>
+<h3 id="3-4-3-为-B-机器上端口，用来与-A-机器上的22端口绑定-【云主机上操作】"><a href="#3-4-3-为-B-机器上端口，用来与-A-机器上的22端口绑定-【云主机上操作】" class="headerlink" title="3.4.3 为 B 机器上端口，用来与 A 机器上的22端口绑定 【云主机上操作】"></a>3.4.3 为 B 机器上端口，用来与 A 机器上的22端口绑定 【云主机上操作】</h3><pre><code class="sh">
+`ssh -fCNL &#39;*:&lt;port_b2&gt;:localhost:&lt;port_b1&gt;&#39; localhost`
+# 其中&lt;port_b1&gt;跟上面的端口相同
+# &lt;port_b2&gt;改为和&lt;port_b1&gt;不同的大于1000端口号，如12345
+# 代码示例：
+ssh -fCNL &#39;*:12345:localhost:7280&#39; localhost
+
+
+# 查看ssh进程
+ps aux | grep ssh
+
+
+# 将云主机设为开机就正向代理
+which rc.local
+# cd进入上面的路径
+sudo vi rc.local
+
+#最后一行添加如下代码，保存退出
+ssh -fCNL &#39;*:12345:localhost:7280&#39; localhost</code></pre>
+<h3 id="3-4-4-通过其他电脑手机访问局域网主机（树莓派）"><a href="#3-4-4-通过其他电脑手机访问局域网主机（树莓派）" class="headerlink" title="3.4.4 通过其他电脑手机访问局域网主机（树莓派）"></a>3.4.4 通过其他电脑手机访问局域网主机（树莓派）</h3><p><code>ssh -p &lt;port_b2&gt; 你的云主机用户名@你的云主机外网IP</code><br><code>&lt;port_b2&gt;</code>改成上面的端口号，如1234</p>
+<p>代码示例：<br><code>ssh -p12345 root@123.123.123.123</code></p>
 <h2 id="四：-autossh-反向代理"><a href="#四：-autossh-反向代理" class="headerlink" title="四： autossh 反向代理"></a>四： autossh 反向代理</h2><p><strong>在上文中，我们已经能够在C 计算机通过 B 计算机访问 A 计算机，但这个代理是暂时的，会出现代理随时断开或者下次重启树莓派又要重新开启，步骤麻烦。因此，我们把方案优化，升级 ssh 的代理工具，使用 autossh 这个工具。</strong></p>
 <p>我们先要安装 autossh,在局域网主机（树莓派）上。<br><code>sudo apt install autossh</code></p>
-<p>然后输入命令绑定<br><code>autossh -M 5678 -fNR &lt;port_b1&gt;:localhost:22 云主机用户名@云主机外网IP</code><br>比如：<code>autossh -M 5678 -fNR 7280:localhost:22 root@123.123.123.123</code></p>
+<p>然后输入命令绑定<br><code>autossh -M 5678 -fNR &lt;port_b1&gt;:localhost:22 云主机用户名@云主机外网IP</code><br>代码示例：<br><code>autossh -M 5678 -fNR 7280:localhost:22 root@123.123.123.123</code></p>
 <p>就这样开启了反向代理，作用跟前面的一致。但，这里当代理连接断开后，会自动重连，不需要担心，突然连不上自己的 树莓派 了。</p>
 <p>但我们的 pi 重启后，也是要输入上述 sutossh 的命令，为了更加自动化，把autossh 加入开机启动里</p>
 <pre><code class="SH">sudo nano /etc/rc.local
