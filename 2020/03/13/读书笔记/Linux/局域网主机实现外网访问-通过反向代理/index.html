@@ -255,7 +255,6 @@ sudo vi /etc/rc.local
 
 #按i编辑，最后一行添加如下代码，:qw保存退出
 ssh -fCNL &#39;*:12345:localhost:7280&#39; localhost</code></pre>
-<p>sshpass -p ‘qweqweqwe123!!!’ autossh -M 5678 -fCNR 26130:localhost:22 <a href="mailto:root@118.25.101.151">root@118.25.101.151</a></p>
 <h3 id="3-4-4-通过其他电脑手机访问局域网主机（树莓派）"><a href="#3-4-4-通过其他电脑手机访问局域网主机（树莓派）" class="headerlink" title="3.4.4 通过其他电脑手机访问局域网主机（树莓派）"></a>3.4.4 通过其他电脑手机访问局域网主机（树莓派）</h3><p><code>ssh -p &lt;port_b2&gt; 你的云主机用户名@你的云主机外网IP</code><br><code>&lt;port_b2&gt;</code>改成上面的端口号，如1234</p>
 <p>代码示例：<br><code>ssh -p12345 root@123.123.123.123</code></p>
 <h2 id="四：-autossh-反向代理"><a href="#四：-autossh-反向代理" class="headerlink" title="四： autossh 反向代理"></a>四： autossh 反向代理</h2><p><strong>在上文中，我们已经能够在C 计算机通过 B 计算机访问 A 计算机，但这个代理是暂时的，会出现代理随时断开或者下次重启树莓派又要重新开启，步骤麻烦。因此，我们把方案优化，升级 ssh 的代理工具，使用 autossh 这个工具。</strong></p>
