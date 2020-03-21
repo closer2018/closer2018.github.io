@@ -1,6 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>【转】 利用爬虫和树莓派打造萝莉音天气闹钟</title>
+    <url>/2020/03/21/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E3%80%90%E8%BD%AC%E3%80%91%C2%96%E5%88%A9%E7%94%A8%E7%88%AC%E8%99%AB%E5%92%8C%E6%A0%91%E8%8E%93%E6%B4%BE3%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E8%AF%AD%E9%9F%B3%E5%A4%A9%E6%B0%94%E9%97%B9%E9%92%9F/</url>
+    <content><![CDATA[<blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/24983204?refer=woodenrobot" target="_blank" rel="noopener">原帖地址</a></p>
+</blockquote>
+<h2 id="一、-前期准备"><a href="#一、-前期准备" class="headerlink" title="一、 前期准备"></a>一、 前期准备</h2><ol>
+<li>树莓派一个</li>
+<li>小音箱一对</li>
+</ol>
+<p><strong>获取所在位置天气</strong></p>
+<p>这里选择墨迹天气获取实时天气信息，地址：</p>
+<p><a href="http://tianqi.moji.com/" target="_blank" rel="noopener">http://tianqi.moji.com/</a></p>
+<p>进入墨迹天气的页面，墨迹天气会根据你的ip加载相应地区的天气。</p>
+<p>这次我们主要抓取温度、天气、湿度、风力、空气质量和天气提示这几个数据。</p>
+<p>这种小爬虫我们就使用requests和BeautifulSoup这两个超级好用的库可以快速实现。</p>
+<h2 id="二、-环境"><a href="#二、-环境" class="headerlink" title="二、 环境"></a>二、 环境</h2><p>首先树莓派安装python3，python3-pip和requests、beautifulsoup4两个库及mplayer软件。</p>
+<pre><code class="sh">sudo apt install python3 -y
+sudo apt install python3-pip -y
+pip3 install requests
+pip3 install beautifulsoup4
+sudo apt-get install mplayer -y</code></pre>
+<p>至于Requests和Beautiful Soup的用法这里就先不多说了，大家可以去看他们的中文文档。</p>
+<ol>
+<li><a href="https://zh_cn/en/master/zh_CN/latest/index/" target="_blank" rel="noopener">Requests中文wendnag</a></li>
+<li><a href="https://beautifulsoup.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">Beautiful Soup中文文档</a></li>
+</ol>
+<p><strong>使用mplayer实现语音播放,通过以下命令安装mplayer:</strong></p>
+<p>用法很简单输入以下命令即可播放本地音乐：</p>
+<p><code>mplayer \xxx\xxx\xxx.mp3(绝对地址)</code></p>
+<p>如果是在线音乐也可以用mplayer直接通过URL播放：</p>
+<p><code>mplayer &quot;URl&quot;(URL外面一定要用双引号圈起来)</code></p>
+<h2 id="三、-文字转语音"><a href="#三、-文字转语音" class="headerlink" title="三、 文字转语音"></a>三、 文字转语音</h2><p>刚开始想通过python的库实现本地文字转语音，在windows系统下没有问题，但树莓派3上中文无法转换。后来就找到了百度的文字转换语音API，地址：<a href="http://yuyin.baidu.com/#try" target="_blank" rel="noopener">http://yuyin.baidu.com/#try</a></p>
+<p>还可以选各种声音，调节语速。虽然它没有给出直接的api接口，但是我们利用Chrome浏览器的开发者模式可以找到api。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E5%88%A9%E7%94%A8%E7%88%AC%E8%99%AB%E5%92%8C%E6%A0%91%E8%8E%93%E6%B4%BE%E6%89%93%E9%80%A0%E8%90%9D%E8%8E%89%E9%9F%B3%E5%A4%A9%E6%B0%94%E9%97%B9%E9%92%9F.png" srcset="/img/loading.gif" alt="百度语音识别"></p>
+<p>打开开发者模式，点击播放的按钮，在network里就可以找到刚刚发出的请求。</p>
+<p><a href="http://tts.baidu.com/text2audio?idx=1&amp;tex=1&amp;cuid=baidu_speech_demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=5&amp;per=4&amp;vol=5&amp;pit=5" target="_blank" rel="noopener">http://tts.baidu.com/text2audio?idx=1&amp;tex=1&amp;cuid=baidu_speech_demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=5&amp;per=4&amp;vol=5&amp;pit=5</a></p>
+<p>就我们要找的百度文字转语音API,其中per是参数是语音的类型，spd是语速，vol是音量，而tex则是需要转换的文字。通过以下代码就可以实现将特定的文字转换为语音。</p>
+<pre><code class="PY">import os
+
+url = u&#39;http://tts.baidu.com/text2audio?idx=1&amp;tex={0}&amp;cuid=baidu_speech_&#39; \
+      u&#39;demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=4&amp;per=4&amp;vol=5&amp;pit=5&#39;.format(text)
+os.system(&#39;mplayer &quot;%s&quot;&#39; % url)</code></pre>
+<h2 id="四、-代码"><a href="#四、-代码" class="headerlink" title="四、 代码"></a>四、 代码</h2><p>numtozh()函数专门转换数字为中文。最后所有的代码整合起来就是这样啦。</p>
+<pre><code class="sh"># 新建weather_voice.py文件
+touch weather_voice.py
+# 黏贴如下代码
+nano weather_voice.py</code></pre>
+<pre><code class="py"># -*- coding: utf-8 -*-
+# !/usr/bin/python3
+
+import os
+import re
+import time
+import requests
+from datetime import datetime, timedelta
+from bs4 import BeautifulSoup
+
+headers = {
+    &#39;User-Agent&#39;: &#39;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit&#39;
+                  &#39;/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safar&#39;
+                  &#39;i/537.36&#39;,
+}
+
+
+def numtozh(num):
+    num_dict = {1: &#39;一&#39;, 2: &#39;二&#39;, 3: &#39;三&#39;, 4: &#39;四&#39;, 5: &#39;五&#39;, 6: &#39;六&#39;, 7: &#39;七&#39;,
+                8: &#39;八&#39;, 9: &#39;九&#39;, 0: &#39;零&#39;}
+    num = int(num)
+    if 100 &lt;= num &lt; 1000:
+        b_num = num // 100
+        s_num = (num - b_num * 100) // 10
+        g_num = (num - b_num * 100) % 10
+        if g_num == 0 and s_num == 0:
+            num = &#39;%s百&#39; % (num_dict[b_num])
+        elif s_num == 0:
+            num = &#39;%s百%s%s&#39; % (num_dict[b_num], num_dict.get(s_num, &#39;&#39;), num_dict.get(g_num, &#39;&#39;))
+        elif g_num == 0:
+            num = &#39;%s百%s十&#39; % (num_dict[b_num], num_dict.get(s_num, &#39;&#39;))
+        else:
+            num = &#39;%s百%s十%s&#39; % (num_dict[b_num], num_dict.get(s_num, &#39;&#39;), num_dict.get(g_num, &#39;&#39;))
+    elif 10 &lt;= num &lt; 100:
+        s_num = num // 10
+        g_num = (num - s_num * 10) % 10
+        if g_num == 0:
+            g_num = &#39;&#39;
+        num = &#39;%s十%s&#39; % (num_dict[s_num], num_dict.get(g_num, &#39;&#39;))
+    elif 0 &lt;= num &lt; 10:
+        g_num = num
+        num = &#39;%s&#39; % (num_dict[g_num])
+    elif -10 &lt; num &lt; 0:
+        g_num = -num
+        num = &#39;零下%s&#39; % (num_dict[g_num])
+    elif -100 &lt; num &lt;= -10:
+        num = -num
+        s_num = num // 10
+        g_num = (num - s_num * 10) % 10
+        if g_num == 0:
+            g_num = &#39;&#39;
+        num = &#39;零下%s十%s&#39; % (num_dict[s_num], num_dict.get(g_num, &#39;&#39;))
+    return num
+
+
+def get_weather():
+    # 下载墨迹天气主页源码
+    res = requests.get(&#39;http://tianqi.moji.com/&#39;, headers=headers)
+    # 用BeautifulSoup获取所需信息
+    soup = BeautifulSoup(res.text, &quot;html.parser&quot;)
+    temp = soup.find(&#39;div&#39;, attrs={&#39;class&#39;: &#39;wea_weather clearfix&#39;}).em.getText()
+    temp = numtozh(int(temp))
+    weather = soup.find(&#39;div&#39;, attrs={&#39;class&#39;: &#39;wea_weather clearfix&#39;}).b.getText()
+    sd = soup.find(&#39;div&#39;, attrs={&#39;class&#39;: &#39;wea_about clearfix&#39;}).span.getText()
+    sd_num = re.search(r&#39;\d+&#39;, sd).group()
+    sd_num_zh = numtozh(int(sd_num))
+    sd = sd.replace(sd_num, sd_num_zh)
+    wind = soup.find(&#39;div&#39;, attrs={&#39;class&#39;: &#39;wea_about clearfix&#39;}).em.getText()
+    aqi = soup.find(&#39;div&#39;, attrs={&#39;class&#39;: &#39;wea_alert clearfix&#39;}).em.getText()
+    aqi_num = re.search(r&#39;\d+&#39;, aqi).group()
+    aqi_num_zh = numtozh(int(aqi_num))
+    aqi = aqi.replace(aqi_num, aqi_num_zh).replace(&#39; &#39;, &#39;,空气质量&#39;)
+    info = soup.find(&#39;div&#39;, attrs={&#39;class&#39;: &#39;wea_tips clearfix&#39;}).em.getText()
+    sd = sd.replace(&#39; &#39;, &#39;百分之&#39;).replace(&#39;%&#39;, &#39;&#39;)
+    aqi = &#39;aqi&#39; + aqi
+    info = info.replace(&#39;，&#39;, &#39;,&#39;)
+    # 获取今天的日期
+    today = datetime.now().date().strftime(&#39;%Y年%m月%d日&#39;)
+    # 将获取的信息拼接成一句话
+    text = &#39;早上好！今天是%s,天气%s,温度%s摄氏度,%s,%s,%s,%s&#39; % \
+           (today, weather, temp, sd, wind, aqi, info)
+    return text
+
+
+def text2voice(text):
+    url = &#39;http://tts.baidu.com/text2audio?idx=1&amp;tex={0}&amp;cuid=baidu_speech_&#39; \
+          &#39;demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=4&amp;per=4&amp;vol=5&amp;pit=5&#39;.format(text)
+    # 直接播放语音
+    os.system(&#39;mplayer &quot;%s&quot;&#39; % url)
+
+
+def main():
+    # 获取需要转换语音的文字
+    text = get_weather()
+    print(text)
+    # 获取音乐文件绝对地址
+    mp3path2 = os.path.join(os.path.dirname(__file__), &#39;2.mp3&#39;)
+    # 先播放渔舟唱晚cut版做为闹钟
+    os.system(&#39;mplayer %s&#39; % &quot;http://m7.music.126.net/20200321204545/92ef85b98df3233ebcf66b41529b1e0c/ymusic/714d/2975/d488/bcfd91fa30f23266c7151fbf43052634.mp3&quot;)
+    # 播报语音天气
+    text2voice(text)
+
+
+if __name__ == &#39;__main__&#39;:
+    main()</code></pre>
+<h2 id="五、-定时任务"><a href="#五、-定时任务" class="headerlink" title="五、 定时任务"></a>五、 定时任务</h2><p>输入如下命令添加定时任务。</p>
+<p><code>crontab -e</code></p>
+<p>每天8点语音天气。假设你的<code>weather_voice.py</code>绝对路径为<code>/home/pi/Documents/weather_voice.py</code>，则文末添加一句：</p>
+<p><code>0 8 * * * /usr/bin/python3 /home/pi/Documents/weather_voice.py</code></p>
+]]></content>
+      <categories>
+        <category>python</category>
+        <category>树莓派</category>
+      </categories>
+      <tags>
+        <tag>树莓派</tag>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux VPS一键更换软件源脚本</title>
     <url>/2020/03/15/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/Linux-VPS%E4%B8%80%E9%94%AE%E6%9B%B4%E6%8D%A2%E8%BD%AF%E4%BB%B6%E6%BA%90%E8%84%9A%E6%9C%AC/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有时候会遇到Linux的源更新速度非常的缓慢，特别是在国内使用默认的源，因为国内的网络环境，经常会出现无法更新，更新缓慢的情况。在这种情况下，更换一个更适合或者说更近，更快的软件源，会为你的Linux安装更新操作更加的流畅和顺利。</p>
@@ -36,7 +202,10 @@ bash superupdate.sh aws</code></pre>
   <entry>
     <title>局域网内的主机实现外网访问(通过反向代理)</title>
     <url>/2020/03/13/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E5%B1%80%E5%9F%9F%E7%BD%91%E4%B8%BB%E6%9C%BA%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE-%E9%80%9A%E8%BF%87%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/</url>
-    <content><![CDATA[<p>本文记录如何在树莓派上如何实现反向代理，穿透内网进行远程登录和操作树莓派。本方法也适用于其他 Linux 系统和 mac osx<br>系统，但目录上有所区别。</p>
+    <content><![CDATA[<blockquote>
+<p>比较简单的方法：<a href="https://zhuanlan.zhihu.com/p/36156129" target="_blank" rel="noopener">下载脚本，使用frp实现内网穿透</a></p>
+</blockquote>
+<p>本文记录如何在树莓派上如何实现反向代理，穿透内网进行远程登录和操作树莓派。本方法也适用于其他 Linux 系统和 mac osx<br>系统，但目录上有所区别。</p>
 <h2 id="一：-必备条件"><a href="#一：-必备条件" class="headerlink" title="一： 必备条件"></a>一： 必备条件</h2><ol>
 <li>具有公网 IP 的 vps 或者云主机。</li>
 <li>局域网主机（如树莓派、nas）。</li>
