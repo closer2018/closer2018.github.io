@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时">
+  <meta name="author" content="closer">
+  <meta name="keywords" content="">
+  <title>SQL语言学习笔记 ~ closer的自留地</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="closer的自留地" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>welcome!</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" false
+         style="background: url('/img/default.jpg')no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期五, 四月 3日 2020, 2:31 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    3.5k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      14 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="一、SQL简介">一、SQL简介</h2>
+<h3 id="1-1-SQL是什么">1.1 SQL是什么</h3>
+<blockquote>
+<p>SQL是结构化查询语言，它是一种用于存储，操作和检索存储在关系数据库中的数据的计算机语言</p>
+</blockquote>
+<h3 id="1-2-SQL命令">1.2 SQL命令</h3>
+<h4 id="1）-DDL——数据定义语言">1） DDL——数据定义语言</h4>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>CREATE</td>
+<td>用于在数据库中创建新表，表视图或其他对象</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ALTER</td>
+<td>用于修改现有数据库对象，例如：表</td>
+</tr>
+<tr>
+<td>3</td>
+<td>DROP</td>
+<td>用于删除整个表，数据库中的表或其他对象的视图</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2）-DML——数据操纵语言">2） DML——数据操纵语言</h4>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>SELECT</td>
+<td>从一个或多个表中检索某些记录</td>
+</tr>
+<tr>
+<td>2</td>
+<td>INSERT</td>
+<td>创建一条记录</td>
+</tr>
+<tr>
+<td>3</td>
+<td>UPDATE</td>
+<td>用于修改(更新)记录</td>
+</tr>
+<tr>
+<td>4</td>
+<td>DELETE</td>
+<td>删除记录</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3）-DCL——数据控制语言">3） DCL——数据控制语言</h4>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>GRANT</td>
+<td>为用户提供权限</td>
+</tr>
+<tr>
+<td>2</td>
+<td>REVOKE</td>
+<td>撤销用户授予的权限</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-3-数据的完整性">1.3 数据的完整性</h3>
+<p>每个RDBMS(关系型数据库)都存在以下类别的数据完整性</p>
+<ul>
+<li>
+<p>实体完整性 - 表中没有重复的行。</p>
+</li>
+<li>
+<p>域完整性 - 通过限制值的类型，格式或范围，为给定列强制执行有效条目。</p>
+</li>
+<li>
+<p>参照完整性 - 其他记录使用(引用)导致这些行无法删除。</p>
+</li>
+<li>
+<p>用户定义的完整性 - 实施一些不属于实体，域或参照完整性的特定业务规则</p>
+</li>
+</ul>
+<h3 id="1-4-SQL约束">1.4 SQL约束</h3>
+<ul>
+<li>
+<p><a href="https://www.yiibai.com/sql/sql-not-null.html" target="_blank" rel="noopener">NOT NULL约束</a> - 确保列不能具有NULL值。</p>
+</li>
+<li>
+<p><a href="https://www.yiibai.com/sql/sql-default.html" target="_blank" rel="noopener">默认值约束</a> - 在未指定列时为列提供默认值。</p>
+</li>
+<li>
+<p><a href="https://www.yiibai.com/sql/sql-unique.html" target="_blank" rel="noopener">唯一约束</a> - 确保列中的所有值都不同。</p>
+</li>
+<li>
+<p><a href="https://www.yiibai.com/sql/sql-primary-key.html" target="_blank" rel="noopener">主键</a> - 唯一标识数据库表中的每一行/记录。</p>
+</li>
+<li>
+<p><a href="https://www.yiibai.com/sql/sql-foreign-key.html" target="_blank" rel="noopener">外键</a> - 唯一标识任何其他数据库表中的行/记录。</p>
+</li>
+<li>
+<p><a href="https://www.yiibai.com/sql/sql-check.html" target="_blank" rel="noopener">检查约束</a> - CHECK约束确保列中的所有值都满足特定条件。</p>
+</li>
+<li>
+<p><a href="https://www.yiibai.com/sql/sql-index.html" target="_blank" rel="noopener">索引</a> - 用于非常快速地从数据库创建和检索数据。</p>
+</li>
+</ul>
+<h3 id="1-5-数据库范式">1.5 数据库范式</h3>
+<h4 id="1）-第一范式（1NF）">1） 第一范式（1NF）</h4>
+<ol>
+<li>在任何一个关系数据库中，第一范式（1NF）是对关系模式的基本要求，不满足第一范式（1NF）的数据库就不是关系数据库。</li>
+<li>所谓第一范式（1NF）是指数据库表的每一列都是不可分割的基本数据项，同一列中不能有多个值，即实体中的某个属性不能有多个值或者不能有重复的属性。如果出现重复的属性，就可能需要定义一个新的实体，新的实体由重复的属性构成，新实体与原实体之间为一对多关系。在第一范式（1NF）中表的每一行只包含一个实例的信息。</li>
+<li>简而言之，第一范式就是无重复的列。</li>
+</ol>
+<h4 id="2）-第二范式（2NF）">2） 第二范式（2NF）</h4>
+<ol>
+<li>第二范式（2NF）是在第一范式（1NF）的基础上建立起来的，即满足第二范式（2NF）必须先满足第一范式（1NF）。第二范式（2NF）要求数据库表中的每个实例或行必须可以被唯一地区分。为实现区分通常需要为表加上一个列，以存储各个实例的唯一标识。这个唯一属性列被称为主关键字或主键、主码。</li>
+<li>第二范式（2NF）要求实体的属性完全依赖于主关键字。所谓完全依赖是指不能存在仅依赖主关键字一部分的属性。如果存在，那么这个属性和主关键字的这一部分应该分离出来形成一个新的实体，新实体与原实体之间是一对多的关系。为实现区分通常需要为表加上一个列，以存储各个实例的唯一标识。</li>
+<li>简而言之，第二范式就是非主属性<strong>部分依赖于主关键字</strong>。</li>
+</ol>
+<h4 id="3）-第三范式（3NF）">3） 第三范式（3NF）</h4>
+<ol>
+<li>满足第三范式（3NF）必须先满足第二范式（2NF）。简而言之，第三范式（3NF）要求一个数据库表中不包含已在其它表中已包含的非主关键字信息。</li>
+<li>例如，存在一个部门信息表，其中每个部门有部门编号（dept_id）、部门名称、部门简介等信息。那么在员工信息表中列出部门编号后就不能再将部门名称、部门简介等与部门有关的信息再加入员工信息表中。如果不存在部门信息表，则根据第三范式（3NF）也应该构建它，否则就会有大量的数据冗余。</li>
+<li>简而言之，第三范式就是属性<strong>不依赖于其它非主属性</strong>。</li>
+</ol>
+<h3 id="1-6-运算符">1.6 运算符</h3>
+<p>假设变量a的值是：10，变量b的值是：20</p>
+<h4 id="1）-SQL算术运算符">1） SQL算术运算符</h4>
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>描述</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>加法，执行加法运算。</td>
+<td>a + b = 30</td>
+</tr>
+<tr>
+<td>-</td>
+<td>减法，执行减法运算。</td>
+<td>a + b = -10</td>
+</tr>
+<tr>
+<td>*</td>
+<td>除法，执行除法运算</td>
+<td>a * b = 200</td>
+</tr>
+<tr>
+<td>/</td>
+<td>用左操作数除右手操作数</td>
+<td>b / a = 2</td>
+</tr>
+<tr>
+<td>%</td>
+<td>用左手操作数除左手操作数并返回余数</td>
+<td>b % a = 0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-7-在MySQL中创建表的示例">1.7 在MySQL中创建表的示例</h3>
+<pre><code class="language-SQL">CREATE TABLE regions (
+    region_id INT (11) AUTO_INCREMENT PRIMARY KEY,
+    region_name VARCHAR (25) DEFAULT NULL
+);
+
+CREATE TABLE countries (
+    country_id CHAR (2) PRIMARY KEY,
+    country_name VARCHAR (40) DEFAULT NULL,
+    region_id INT (11) NOT NULL,
+    FOREIGN KEY (region_id) REFERENCES regions (region_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE locations (
+    location_id INT (11) AUTO_INCREMENT PRIMARY KEY,
+    street_address VARCHAR (40) DEFAULT NULL,
+    postal_code VARCHAR (12) DEFAULT NULL,
+    city VARCHAR (30) NOT NULL,
+    state_province VARCHAR (25) DEFAULT NULL,
+    country_id CHAR (2) NOT NULL,
+    FOREIGN KEY (country_id) REFERENCES countries (country_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE jobs (
+    job_id INT (11) AUTO_INCREMENT PRIMARY KEY,
+    job_title VARCHAR (35) NOT NULL,
+    min_salary DECIMAL (8, 2) DEFAULT NULL,
+    max_salary DECIMAL (8, 2) DEFAULT NULL
+);
+
+CREATE TABLE departments (
+    department_id INT (11) AUTO_INCREMENT PRIMARY KEY,
+    department_name VARCHAR (30) NOT NULL,
+    location_id INT (11) DEFAULT NULL,
+    FOREIGN KEY (location_id) REFERENCES locations (location_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE employees (
+    employee_id INT (11) AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR (20) DEFAULT NULL,
+    last_name VARCHAR (25) NOT NULL,
+    email VARCHAR (100) NOT NULL,
+    phone_number VARCHAR (20) DEFAULT NULL,
+    hire_date DATE NOT NULL,
+    job_id INT (11) NOT NULL,
+    salary DECIMAL (8, 2) NOT NULL,
+    manager_id INT (11) DEFAULT NULL,
+    department_id INT (11) DEFAULT NULL,
+    FOREIGN KEY (job_id) REFERENCES jobs (job_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (department_id) REFERENCES departments (department_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (manager_id) REFERENCES employees (employee_id)
+);
+
+CREATE TABLE dependents (
+    dependent_id INT (11) AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR (50) NOT NULL,
+    last_name VARCHAR (50) NOT NULL,
+    relationship VARCHAR (25) NOT NULL,
+    employee_id INT (11) NOT NULL,
+    FOREIGN KEY (employee_id) REFERENCES employees (employee_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+</code></pre>
+<h2 id="二、SQL数据库操作">二、SQL数据库操作</h2>
+<p>语句<code>SHOW DATABASES;</code>用于查看可用数据库列表。</p>
+<h3 id="2-1-Create-Database-语句">2.1 Create Database 语句</h3>
+<p>SQL中<code>CREATE DATABASE</code>语句用于创建新的SQL数据库：</p>
+<pre><code class="language-SQL">--语法格式
+CREATE DATABASE database_name;
+
+/*示例*/
+CREATE DATABASE testdb;
+
+/*查看*/
+mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| testdb             |
++--------------------+
+3 rows in set
+</code></pre>
+<p><strong>数据库名称(<code>database_name</code>)在<code>RDBMS(关系数据库管理系统)</code>中必须是唯一的</strong></p>
+<h3 id="2-2-Drop-Database-语句">2.2 Drop Database 语句</h3>
+<p>SQL中<code>DROP DATABASE</code>语句用于删除SQL模式中已存在的数据库。</p>
+<pre><code class="language-SQL">--语法格式
+DROP DATABASE database_name;
+
+/*示例*/
+DROP DATABASE testdb;
+
+mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
++--------------------+
+2 rows in set
+</code></pre>
+<h3 id="2-3-Rename-Database-语句">2.3 Rename Database 语句</h3>
+<p>当需要更改数据库的名称时，将使用SQL <code>RENAME DATABASE</code></p>
+<pre><code class="language-SQL">RENAME DATABASE old_db_name TO new_db_name;
+
+ALTER DATABASE old_name MODIFY NAME = new_name;
+</code></pre>
+<h3 id="2-4-Use-语句">2.4 Use 语句</h3>
+<p>如果SQL模式中有多个数据库，那么在开始操作之前，需要选择一个将执行操作的数据库。</p>
+<p>SQL中的<code>USE</code>语句用于选择SQL模式中的任何现有数据库。</p>
+<pre><code class="language-SQL">--语法格式
+USE database_name;
+
+/*示例*/
+mysql&gt; SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| test               |
++--------------------+
+3 rows in set
+
+USE test;
+</code></pre>
+<h2 id="三、表操作">三、表操作</h2>
+<h3 id="3-1-Create-Table">3.1 Create Table</h3>
+<pre><code class="language-SQL">CREATE TABLE table_name(
+     column_name_1 data_type default value column_constraint,
+     column_name_2 data_type default value column_constraint,
+     ...,
+     table_constraint
+);
+</code></pre>
+<ul>
+<li>由table_name指定的表名在数据库中必须是唯一的</li>
+<li>每个列定义由列名，列的<a href="https://www.yiibai.com/sql/sql-data-types.html" target="_blank" rel="noopener">数据类型</a>，默认值和一个或多个列约束组成</li>
+<li>列的数据类型指定列可以存储的数据类型。 列的数据类型可以是数字，字符，日期等</li>
+<li>列约束控制可以存储在列中的值的类型。 例如，<code>NOT NULL</code>约束确保列不包含<code>NULL</code>值。列可能有多个列约束。 例如，<code>users</code>表的<code>username</code>列可以同时具有<code>NOT NULL</code>和<a href="https://www.yiibai.com/sql/sql-unique-constraint.html" target="_blank" rel="noopener"><code>UNIQUE</code>约束</a>。</li>
+<li>如果约束包含多个列，则使用表约束。 例如，如果表的主键包含两列，则在这种情况下，必须使用<code>PRIMARY KEY</code><a href="https://www.yiibai.com/sql/sql-primary-key.html" target="_blank" rel="noopener">主键约束</a>。</li>
+</ul>
+<pre><code class="language-SQL">/*示例*/
+CREATE TABLE courses (
+    course_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_name VARCHAR(50) NOT NULL
+);
+
+/*
+courses课程表有两列：course_id和course_name;
+
+course_id是课程表的主键列。 每个表都有一个且只有一个主键，用于唯一标识表中的每一行
+
+course_id的数据类型是整数，由INT关键字表示。 此外，course_id列的值为AUTO_INCREMENT(自动递增)。表示当在courses表中插入新行而不提供course_id列的值时，数据库系统将为该列生成一个整数值
+
+course_name存储课程名称。 其数据类型是最大长度为50的可变长度的字符串(VARCHAR)。NOT NULL约束确保course_name列中不存储NULL值。
+*/
+</code></pre>
+<pre><code class="language-SQL">/*有了课程表。 要存储训练数据，请按如下方式创建名为training的新表。*/
+CREATE TABLE trainings (
+    employee_id INT,
+    course_id INT,
+    taken_date DATE,
+    PRIMARY KEY (employee_id , course_id)
+);
+/*trainings表包含三列：
+
+employee_id列存储参加课程的员工的ID。
+course_id列存储员工所采用的课程。
+taken_date列存储员工参加课程的日期。
+
+因为trainings表的主键由两列组成：employee_id和course_id，所以必须使用PRIMARY KEY表约束。*/
+</code></pre>
+<h3 id="3-2-Alter-Table">3.2 Alter Table</h3>
+<p>使用SQL <code>ALTER TABLE</code>更改数据库中现有表的结构</p>
+<p><code>ALTER TABLE</code>语句用于对现有表执行以下操作：</p>
+<ul>
+<li>使用<code>ADD</code>子句添加新列。</li>
+<li>使用<code>CHANGE</code>子句用于修改表中的列名称和数据类型。</li>
+<li>使用<code>ALTER SET DEFAULT</code>子句修改或删除表中指定列的默认值。</li>
+<li>使用<code>MODIFY</code>子句修改列的属性，例如：约束，默认值等。</li>
+<li>使用<code>DROP</code>子句删除列。</li>
+</ul>
+<h4 id="3-2-1-ALTER-TABLE-ADD列">3.2.1 ALTER TABLE ADD列</h4>
+<p>该子句的作用是向表中添加一个或多个列</p>
+<pre><code class="language-SQL">--语法格式
+ALTER TABLE table_name
+ADD [COLUMN] column_name data_type column_constraint [AFTER existing_column];
+/*要向表中添加一个或多个列，需要执行以下步骤：
+
+首先，在ALTER TABLE子句之后指定要添加table_name，表示列所在的表。
+其次，将新列定义放在ADD子句之后。 如果要在表中指定新列的顺序，可以使用可选子句AFTER existing_column。
+*/
+
+/* 以下语句将一个名称为credit_hours的新列添加到courses表中。*/
+ALTER TABLE courses ADD credit_hours INT NOT NULL;
+
+/*示例*/
+ALTER TABLE courses
+ADD COLUMN fee NUMERIC (10, 2) AFTER course_name,
+ADD COLUMN max_limit INT AFTER course_name;
+</code></pre>
+<h4 id="3-2-2-ALTER-TABLE-CHANGE列名称和属性">3.2.2 ALTER TABLE CHANGE列名称和属性</h4>
+<p><code>CHANGE</code>子句用于修改表中的列名称和数据类型。</p>
+<pre><code class="language-SQL">--语法格式
+ALTER TABLE table_name
+CHANGE [COLUMN] column_name new_column_name column_properties;
+
+/*示例*/
+ALTER TABLE students
+CHANGE students_name names varchar(100) NOT NULL;
+</code></pre>
+<h4 id="3-2-3-ALTER-TABLE-ALTER-SET-DEFAULT列">3.2.3 ALTER TABLE ALTER SET DEFAULT列</h4>
+<p><code>ALTER [COLUMN] SET</code>子句修改或删除表中指定列的默认值。</p>
+<pre><code class="language-SQL">--语法格式
+ALTER TABLE table_name
+ALTER [COLUMN] column_name SET DEFAULT 'xxx';
+
+/*示例*/
+ALTER TABLE customers
+ALTER city SET DEFAULT 'beijing';
+</code></pre>
+<h4 id="3-2-4-ALTERE-TABLE-MODIFY列">3.2.4 ALTERE TABLE MODIFY列</h4>
+<p>MODIFY子句用于更改现有列的某些属性,例如，NOT NULL，UNIQUE和数据类型。</p>
+<pre><code class="language-SQL">--语法格式
+ALTER TABLE table_name
+MODIFY [COLUMN] column_name column_properties;
+
+/*示例*/
+ALTER TABLE students MODIFY name VARCHAR(20) NOT NULL;
+</code></pre>
+<h4 id="3-2-5-ALTER-TABLE-DROP列">3.2.5 ALTER TABLE DROP列</h4>
+<p>当表的列已过时且未被任何其他数据库对象(如触发器，视图，存储过程和存储过程)使用时，将其从表中删除，请使用以下语法：</p>
+<pre><code class="language-SQL">--语法格式
+ALTER TABLE table_name
+DROP [COLUMN] column_name,
+DROP [COLUMN] column_name,
+...
+
+/*示例1-删除一列*/
+ALTER TABLE courses DROP fee;
+
+/*示例2-删除多列*/
+ALTER TABLE courses
+DROP COLUMN max_limit,
+DROP COLUMN credit_hours;
+</code></pre>
+<h3 id="3-3-DROP-TABLE">3.3 DROP TABLE</h3>
+<p>使用SQL <code>DROP TABLE</code>语句删除数据库中的一个或多个表</p>
+<pre><code class="language-SQL">--语法格式
+DROP TABLE [IF EXISTS] table_name;
+--为了防止删除不存在的表的错误，使用可选子句IF EXISTS。
+
+/*示例*/
+DROP TABLE students;
+
+/*删除多个表*/
+DROP TABLE IF EXISTS table_name1,table_name2,...;
+</code></pre>
+<ul>
+<li>
+<p>DROP TABLE语句永久删除表的数据和结构，某些数据库系统要求表中的记录必须为空时才能从数据库中删除。这有助于防止意外删除仍在使用的表。</p>
+</li>
+<li>
+<p>要删除表中的所有数据，可以使用<a href="https://www.yiibai.com/sql/sql-delete.html" target="_blank" rel="noopener">DELETE</a>或<a href="https://www.yiibai.com/sql/sql-truncate-table.html" target="_blank" rel="noopener">TRUNCATE TABLE</a>语句。</p>
+</li>
+<li>
+<p>要删除由另一个表的外键约束引用的表，必须在删除表之前禁用或删除外部约束。</p>
+</li>
+</ul>
+<h3 id="3-4-TURNCATE-TABLE">3.4 TURNCATE TABLE</h3>
+<p>使用SQL <code>TRUNCATE TABLE</code>语句高效，快速地删除表中的所有数据</p>
+<pre><code class="language-SQL">--语法格式
+TRUNCATE TABLE table_name;     /*快速删除大表中的所有行*/
+
+TRUNCATE TABLE IF EXISTS table_name1, table_name2, ...;
+
+/*示例*/
+TRUNCATE TABLE IF EXISTS students, teachers;
+</code></pre>
+<h3 id="3-5-RENAME-TABLE">3.5 RENAME TABLE</h3>
+<p>SQL RENAME TABLE用于更改表的名称。</p>
+<pre><code class="language-SQL">--语法格式1
+ALTER TABLE table_name
+RENAME TO new_table_name;
+--语法格式2
+RENAME TABLE old_table_name To new_table_name;
+
+/*示例1*/
+ALTER TABLE Students
+RENAME TO Student_bank;
+/*示例2*/
+RENAME TABLE Student_bank TO Students;
+</code></pre>
+<h3 id="3-6-复制表-临时表">3.6 复制表&amp;临时表</h3>
+<h4 id="1）-复制表">1） 复制表</h4>
+<p>如果要将SQL表复制到同一数据库中的另一个表中，可以使用<code>select</code>语句。</p>
+<pre><code class="language-SQL">--语法格式1
+--从一个表复制到另一个表的语法如下：
+SELECT * INTO &lt;destination_table&gt; FROM &lt;source_table&gt;
+
+/*示例*/
+SELECT * INTO my_table_2 FROM my_table_1;
+</code></pre>
+<blockquote>
+<p>注意：<code>SELECT INTO</code>与<code>INSERT INTO</code>语句完全不同。</p>
+</blockquote>
+<h4 id="2）-临时表">2） 临时表</h4>
+<p>临时表可以在运行时创建，并且可以像普通表一样执行各种操作，这些临时表是在<code>tempdb</code>数据库中创建的。</p>
+<p>根据行为和范围，有如下两种类型的临时表。1. 局部临时变量。 2. 全局临时变量。</p>
+<p>① 局部临时变量</p>
+<pre><code class="language-SQL">/*示例*/
+/*局部临时变量表仅在当前连接时可用。 当用户与实例断开连接时，它会自动删除。 它以哈希(#)符号开头*/
+CREATE TABLE #local temp table (  
+    User_id int,  
+    User_name varchar (50),  
+    User_address varchar (150)  
+)
+</code></pre>
+<p>② 全局临时变量</p>
+<pre><code class="language-SQL">/*全局临时表名称以双哈希(##)开头。 创建此表后，它就像一个永久表。 它始终为所有用户准备好，并且在撤消总连接之前不会被删除。*/
+REATE TABLE ##new global temp table (  
+    User_id int,  
+    User_name varchar (50),  
+    User_address varchar (150)  
+</code></pre>
+<h2 id="四、数据操作语句">四、数据操作语句</h2>
+<h3 id="4-1-INSERT语句">4.1 INSERT语句</h3>
+<p>SQL提供了<code>INSERT</code>语句，用于将一行或多行插入表中。 <code>INSERT</code>语句用于：</p>
+<ul>
+<li>向表中插入一行</li>
+<li>向表中插入多行</li>
+<li>将行从一个表复制到另一个表中。</li>
+</ul>
+<pre><code class="language-SQL">--语法格式
+INSERT INTO table1 (column1, column2,...)
+VALUES
+    (value1, value2,...);
+
+INSERT INTO table1
+VALUES
+    (value1, value2,...),
+    (value1, value2,...),
+    (value1, value2,...),
+    ...;
+</code></pre>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/SQL">SQL</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>
+                
+                  <a class="hover-with-bg" href="/tags/SQL">SQL</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-md">
+    <div class="container custom post-content mx-auto">
+      <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-3" style="width:355.4px; height:200px;">
+    </div>
+  </div>
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'false' === true;
+    var verify = 'false' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
+        app_key: "HLUt5izfTvTcbEbOrA59W92a",
+        placeholder: "畅所欲言...",
+        avatar: "robohash",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+    <!-- Tencent Analytics -->
+    <script>
+      var _mtac = {};
+      (function () {
+        var mta = document.createElement("script");
+        mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+        mta.setAttribute("name", "MTAH5");
+        mta.setAttribute("sid", "500710993");
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(mta, s);
+      })();
+    </script>
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "SQL语言学习笔记&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 60,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "always",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+              processEscapes: true,
+              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+          }
+      });
+
+      MathJax.Hub.Queue(function() {
+          var all = MathJax.Hub.getAllJax(), i;
+          for(i=0; i < all.length; i += 1) {
+              all[i].SourceElement().parentNode.className += ' has-jax';
+          }
+      });
+
+    </script>
+
+    <script src="https://cdn.staticfile.org/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+
+  
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+
+</body>
+</html>

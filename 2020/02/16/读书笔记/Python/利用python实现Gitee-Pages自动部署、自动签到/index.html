@@ -13,7 +13,7 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时。">
+  <meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时">
   <meta name="author" content="closer">
   <meta name="keywords" content="">
   <title>利用python实现Gitee Pages定时自动部署/自动签到 ~ closer的自留地</title>
@@ -180,21 +180,31 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h2 id="一：-前期准备"><a href="#一：-前期准备" class="headerlink" title="一： 前期准备"></a>一： 前期准备</h2><h3 id="1-1-基础环境"><a href="#1-1-基础环境" class="headerlink" title="1.1 基础环境"></a>1.1 基础环境</h3><ol>
-<li>python3 + selenium + chrome浏览器。<br>如果有不懂的可以查阅<a href="https://python-selenium-zh.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">selenium-python中文文档</a></li>
-<li>chrome-&gt;设置-&gt;关于chrome-&gt;查看版本（我的版本是 80.0.3987.106（正式版本） （64 位））。  </li>
-<li>需要下载跟你的chrome版本一致的<a href="http://chromedriver.storage.googleapis.com/index.html" target="_blank" rel="noopener">ChromeDriver可执行驱动</a><br>下载完解压放在python根目录(即跟python.exe放在一起)。<br><strong>如果上面的ChromeDriver网址打不开，可以使用<a href="https://npm.taobao.org/mirrors/chromedriver/" target="_blank" rel="noopener">ChromeDriver淘宝镜像</a></strong></li>
+            <h2 id="一：-前期准备">一： 前期准备</h2>
+<h3 id="1-1-基础环境">1.1 基础环境</h3>
+<ol>
+<li>python3 + selenium + chrome浏览器。<br>
+如果有不懂的可以查阅<a href="https://python-selenium-zh.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">selenium-python中文文档</a></li>
+<li>chrome-&gt;设置-&gt;关于chrome-&gt;查看版本（我的版本是 80.0.3987.106（正式版本） （64 位））。</li>
+<li>需要下载跟你的chrome版本一致的<a href="http://chromedriver.storage.googleapis.com/index.html" target="_blank" rel="noopener">ChromeDriver可执行驱动</a><br>
+下载完解压放在python根目录(即跟python.exe放在一起)。<br>
+<strong>如果上面的ChromeDriver网址打不开，可以使用<a href="https://npm.taobao.org/mirrors/chromedriver/" target="_blank" rel="noopener">ChromeDriver淘宝镜像</a></strong></li>
 <li>最好有一台云主机，没有的话需要自己的电脑设定定时开机，定时任务，定时关机。  <a id="more"></a></li>
 </ol>
-<h3 id="1-2-安装环境"><a href="#1-2-安装环境" class="headerlink" title="1.2 安装环境"></a>1.2 安装环境</h3><ol>
+<h3 id="1-2-安装环境">1.2 安装环境</h3>
+<ol>
 <li>安装python3,不懂的请查阅我的相关blog文。</li>
-<li>打开windows命令行，安装selenium<br><code>pip install selenium -i https://pypi.tuna.tsinghua.edu.cn/simple</code></li>
+<li>打开windows命令行，安装selenium<br>
+<code>pip install selenium -i https://pypi.tuna.tsinghua.edu.cn/simple</code></li>
 </ol>
-<h3 id="1-3-获取cookie"><a href="#1-3-获取cookie" class="headerlink" title="1.3 获取cookie"></a>1.3 获取cookie</h3><p>首先登录gitee的Gitee Pages服务界面；</p>
+<h3 id="1-3-获取cookie">1.3 获取cookie</h3>
+<p>首先登录gitee的Gitee Pages服务界面；</p>
 <p>点击网页地址栏左边的小锁标志 -&gt; 选择Cookie；</p>
-<p>右边弹出的窗口中展开gitee.com -&gt; 展开Cookie -&gt; 点击名为<code>gitee-session-n</code>的项目 -&gt; 下面的内容后面就是你的cookie；</p>
+<p><a href="http://xn--gitee-4n1h40u17dce570gxwgotaq63vh6lqi1f.com" target="_blank" rel="noopener">右边弹出的窗口中展开gitee.com</a> -&gt; 展开Cookie -&gt; 点击名为<code>gitee-session-n</code>的项目 -&gt; 下面的内容后面就是你的cookie；</p>
 <p>记得要全部复制进去，替换掉下面源码的my_cookie里面的内容。</p>
-<h2 id="二：-代码"><a href="#二：-代码" class="headerlink" title="二： 代码"></a>二： 代码</h2><h3 id="2-1-源码"><a href="#2-1-源码" class="headerlink" title="2.1 源码"></a>2.1 源码</h3><pre><code class="py">#!/usr/bin/python3
+<h2 id="二：-代码">二： 代码</h2>
+<h3 id="2-1-源码">2.1 源码</h3>
+<pre><code class="language-py">#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 import time
 from selenium import webdriver
@@ -202,47 +212,47 @@ from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.chrome.options import Options
 
 # 将你的cookie内容替换掉下面的内容
-my_cookie = {&#39;domain&#39;: &#39;.gitee.com&#39;, &#39;httpOnly&#39;: True, &#39;name&#39;: &#39;gitee-session-n&#39;, &#39;path&#39;: &#39;/&#39;, &#39;secure&#39;: False,
-             &#39;value&#39;: &#39;内容&#39;}
+my_cookie = {'domain': '.gitee.com', 'httpOnly': True, 'name': 'gitee-session-n', 'path': '/', 'secure': False,
+             'value': '内容'}
 
 # 实例化一个启动参数对象
 options = Options()
 
 # 设置启动浏览器时窗口最大化运行
-# options.add_argument(&#39;--start-maximized&#39;)
+# options.add_argument('--start-maximized')
 
 # 设置无界面模式运行浏览器
-options.add_argument(&#39;-headless&#39;)
+options.add_argument('-headless')
 
 # 不加载图片, 提升速度
 prefs = {&quot;profile.managed_default_content_settings.images&quot;: 2}
 options.add_experimental_option(&quot;prefs&quot;, prefs)
 
 # 打开浏览器
-print(&#39;Launch browser&#39;)
+print('Launch browser')
 driver = webdriver.Chrome(chrome_options=options)
 
 # 删除缓存
-print(&#39;Delete cookies&#39;)
+print('Delete cookies')
 driver.delete_all_cookies()
 
 # 访问网页
-print(&#39;Visit website&#39;)
+print('Visit website')
 # 这里链接改为你的码云部署页面的链接
 driver.get(&quot;https://gitee.com/此处改为你的ID/此处改为你的ID/pages&quot;)
 time.sleep(5)
 
 # 加载cookie
-print(&#39;Add cookie&#39;)
+print('Add cookie')
 driver.add_cookie(my_cookie)
 
 # 刷新
-print(&#39;Refresh&#39;)
+print('Refresh')
 driver.refresh()
 time.sleep(5)
 
 # 点击更新按钮--通过xpath确定点击位置
-driver.find_element_by_xpath(&#39;//*[@id=&quot;pages-branch&quot;]/div[7]&#39;).click()
+driver.find_element_by_xpath('//*[@id=&quot;pages-branch&quot;]/div[7]').click()
 time.sleep(3)
 
 # 确认更新提示框--这个函数的作用是确认提示框
@@ -264,32 +274,43 @@ fp = open(&quot;D:\log.txt&quot;, &quot;a+&quot;)
 # fp = open(&quot;/home/temp/log.log&quot;, &quot;a+&quot;)
 now_time = time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime())
 fp.write(&quot;auto update time:{0}\n&quot;.format(now_time))
-fp.close()</code></pre>
+fp.close()
+</code></pre>
 <p>把源码黏贴到<code>gitee.py</code>文件内，备用。</p>
-<h3 id="2-2-注意事项"><a href="#2-2-注意事项" class="headerlink" title="2.2 注意事项"></a>2.2 注意事项</h3><ul>
-<li><p>html的id属性、xpath可以通过在chrome的网页里面按F12 -&gt; 选择一个元素进行检查(快捷键Ctrl + Shift + C)查看，如图就是<code>百度一下</code>的div块元素属性。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/CopyFullXPath.png" srcset="/img/loading.gif" alt="CopyXPath"></p>
+<h3 id="2-2-注意事项">2.2 注意事项</h3>
+<ul>
+<li>
+<p>html的id属性、xpath可以通过在chrome的网页里面按F12 -&gt; 选择一个元素进行检查(快捷键Ctrl + Shift + C)查看，如图就是<code>百度一下</code>的div块元素属性。<br>
+<img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/CopyFullXPath.png" srcset="/img/loading.gif" alt="CopyXPath"></p>
 </li>
-<li><p>python selenium模块的具体函数使用方法请参考官方文档。  </p>
+<li>
+<p>python selenium模块的具体函数使用方法请参考官方文档。</p>
 </li>
-<li><p>编写自动签到脚本也差不多同样的道理。</p>
+<li>
+<p>编写自动签到脚本也差不多同样的道理。</p>
 </li>
 </ul>
-<h2 id="三：-添加定时任务自动部署"><a href="#三：-添加定时任务自动部署" class="headerlink" title="三： 添加定时任务自动部署"></a>三： 添加定时任务自动部署</h2><h3 id="3-1-Windows主机"><a href="#3-1-Windows主机" class="headerlink" title="3.1 Windows主机"></a>3.1 Windows主机</h3><ol>
+<h2 id="三：-添加定时任务自动部署">三： 添加定时任务自动部署</h2>
+<h3 id="3-1-Windows主机">3.1 Windows主机</h3>
+<ol>
 <li>登录windows云主机，复制<code>gitee.py</code>到D盘根目录。</li>
 <li>云主机内-&gt;右键我的电脑-&gt;管理-&gt;工具-&gt;任务计划程序-&gt;创建基本任务…添加任务每天执行一次，实在不会的请<a href="https://jingyan.baidu.com/article/154b463130041128ca8f41c7.html" target="_blank" rel="noopener">百度</a></li>
 <li>在自己电脑上的话也可以设置定时开关机，并把如下代码添加到<a href="https://8hn9w5.coding-pages.com/2020/02/15/hexo/hexo%E4%B8%80%E9%94%AE%E4%B8%8A%E4%BC%A0%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC%E7%9A%84%E6%9E%84%E5%BB%BA/" target="_blank" rel="noopener">hexo一键上传部署脚本</a>的后面，每次定时git push后自动在gitee的pages界面部署。</li>
 </ol>
-<pre><code class="bat">@echo off
+<pre><code class="language-bat">@echo off
 
 d:
 
 python gitee.py
 echo &quot;等待更新完成过后再关闭窗口&quot;
 timeout /t 180
-rem 上面的代码是等待3分钟。</code></pre>
-<h3 id="3-2-Linux主机"><a href="#3-2-Linux主机" class="headerlink" title="3.2 Linux主机"></a>3.2 Linux主机</h3><ol>
+rem 上面的代码是等待3分钟。
+</code></pre>
+<h3 id="3-2-Linux主机">3.2 Linux主机</h3>
+<ol>
 <li>登录Linux云主机，复制<code>gitee.py</code>到<code>/home/temp/</code>目录。</li>
-<li>添加Linux计划任务<br><code>crontab -e</code></li>
+<li>添加Linux计划任务<br>
+<code>crontab -e</code></li>
 <li>选择1选项nano编辑，光标拉到最后面，复制如下代码;</li>
 <li><code>10 6 * * * /home/temp/gitee.py start</code></li>
 </ol>
@@ -299,7 +320,8 @@ rem 上面的代码是等待3分钟。</code></pre>
 <li>延迟0~1小时的话，直接在py或者sh文件中利用sleep及random命令设置。</li>
 <li><code>crontab -l</code>查看当前已经保存的计划任务。</li>
 </ul>
-<h2 id="四：-参考文献"><a href="#四：-参考文献" class="headerlink" title="四： 参考文献"></a>四： 参考文献</h2><ul>
+<h2 id="四：-参考文献">四： 参考文献</h2>
+<ul>
 <li><a href="https://python-selenium-zh.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">https://python-selenium-zh.readthedocs.io/zh_CN/latest/</a></li>
 <li><a href="https://blog.csdn.net/ydydyd00/article/details/80882183" target="_blank" rel="noopener">https://blog.csdn.net/ydydyd00/article/details/80882183</a></li>
 <li><a href="https://jingyan.baidu.com/article/154b463130041128ca8f41c7.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/154b463130041128ca8f41c7.html</a></li>

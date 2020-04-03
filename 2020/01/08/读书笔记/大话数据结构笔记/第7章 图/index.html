@@ -13,7 +13,7 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时。">
+  <meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时">
   <meta name="author" content="closer">
   <meta name="keywords" content="">
   <title>大话数据结构第七章 图 ~ closer的自留地</title>
@@ -180,26 +180,60 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h2 id="7-1-7-2-图的定义"><a href="#7-1-7-2-图的定义" class="headerlink" title="7.1-7.2 图的定义"></a>7.1-7.2 图的定义</h2><p>图（Graph）是由顶点的有穷非空集合和顶点之间边的集合组成，通常表示为：G（V，E），其中，G表示一个图，V是图G中顶点的集合，E是图G中边的集合。<br>对于图的定义，我们需要明确几个注意的地方。</p>
+            <h2 id="7-1-7-2-图的定义">7.1-7.2 图的定义</h2>
+<p>图（Graph）是由顶点的有穷非空集合和顶点之间边的集合组成，通常表示为：G（V，E），其中，G表示一个图，V是图G中顶点的集合，E是图G中边的集合。<br>
+对于图的定义，我们需要明确几个注意的地方。</p>
 <a id="more"></a>
-
 <ul>
 <li>线性表中我们把数据元素叫元素，树中将数据元素叫结点，<strong>在图中数据元素，我们则称之为顶点（Vertex）</strong>。</li>
 <li>线性表中可以没有数据元素，称为空表。树中可以没有结点，叫做空树。我们根本不认为一张空白纸算作画的。同样，在图结构中，不允许没有顶点。在定义中，若V是顶点的集合，则强调了顶点集合V有穷非空。</li>
 <li>线性表中，相邻的数据元素之间具有线性关系，树结构中，相邻两层的结点具有层次关系，而图中，任意两个顶点之间都可能有关系，顶点之间的逻辑关系用边来表示，边集可以是空的。</li>
 </ul>
-<h3 id="7-2-1-各种图定义"><a href="#7-2-1-各种图定义" class="headerlink" title="7.2.1 各种图定义"></a>7.2.1 各种图定义</h3><p><strong>无向边：若顶点vi到vj之间的边没有方向，则称这条边为无向边（Edge），用无序偶对（ViVj）来表示</strong>。<br>如果图中任意两个顶点之间的边都是无向边，则称该图为无向图（Undirected graphs）。<br>有向边：若从顶点Vi到Vj的边有方向，则称这条边为有向边，也称为弧（Arc）。<br>用有序偶&lt;vi，vj&gt;来表示，vi称为弧尾（Tail），vj称为弧头（Head）。如果图中任意两个顶点之间的边都是有向边，则称该图为有向图（Directed graphs）。图7-2-3就是一个有向图。连接顶点A到D的有向边就是弧，A是弧尾，D是弧头，&lt;A，D&gt;表示弧，注意不能写成&lt;D，A&gt;。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-2-3.JPG?raw=true" srcset="/img/loading.gif" alt="7-2-3"><br>对于图7-2-3中的有向图G2来说，G2=(V2,{E2})，其中顶点集合V2={A.B，C，D}；弧集合E2={&lt;A，D&gt;，&lt;B，A&gt;，&lt;C，A&gt;，&lt;B，C&gt;}。<br>看清楚了，无向边用小括号“（）”表示，而有向边则是用尖括号“&lt;&gt;”表示。<br>在图中，若不存在顶点到其自身的边，且同一条边不重复出现，则称这样的图为简单图。<br><strong>在无向图中，如果任意两个顶点之间都存在边，则称该图为无向完全图</strong>。含有n个顶点的无向完全图有（nx(n-1)）/2条边。<br><strong>在有向图中，如果任意两个顶点之间都存在方向互为相反的两条弧，则称该图为有向完全图</strong>。含有n个顶点的有向完全图有n×（n-1）条边。<br><strong>有很少条边或弧的图称为稀疏图，反之称为稠密图</strong>。<br>有些图的边或弧具有与它相关的数字，这种<strong>与图的边或弧相关的数叫做权（Weight）</strong>。这些权可以表示从一个顶点到另一个顶点的距离或耗费。<strong>这种带权的图通常称为网（Network）</strong>。图7-2-7就是一张带权的图，即标识中国四大城市的直线距离的网，此图中的权就是两地的距离。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-2-7.JPG?raw=true" srcset="/img/loading.gif" alt="7-2-7"><br>假设有两个图G=（V，{E}）和G’=（V’,{E’}），如果V’⊆V且E’⊆E，则称G’为G的子图（SubGraph）。  </p>
-<h3 id="7-2-2-图的顶点与边间关系"><a href="#7-2-2-图的顶点与边间关系" class="headerlink" title="7.2.2 图的顶点与边间关系"></a>7.2.2 图的顶点与边间关系</h3><p>对于无向图G=（V,{E}），如果边（v,v’）∈E，则称顶点v和v’互为邻接点（Adjacent），即v和v’相邻接。边（v，v’）依附（incident）于顶点v和v’，或者说（v,v’）与顶点v和v’相关联。顶点v的度（Degree）是和v相关联的边的数目，记为TD（v）。<br>对于有向图G=（V,{E}），如果弧&lt;v,v’&gt;∈E，则称顶点v邻接到顶点v’，顶点v’邻接自顶点v。弧&lt;v，v’&gt;和顶点v，v’相关联。以顶点v为头的弧的数目称为v的入度（InDegree），记为ID（v）；以v为尾的弧的数目称为v的出度（OutDegree），记为OD（v）；顶点v的度为TD（v）=ID（v）+OD（v）。<br>无向图G=（V，{E}）中从顶点v到顶点v’的路径（Path）是一个顶点序列（v=$v_{i,0}$,$v_{i,1}$,…,$v_{i,m}$=v’），其中（$v_{i,j-1}$，$v_{i,j}$）∈E，1≤j≤m。<br>树中根结点到任意结点的路径是唯一的，但是图中顶点与顶点之间的路径却是不唯一的。<br><strong>路径的长度是路径上的边或弧的数目。</strong><br>第一个顶点到最后一个顶点相同的路径称为回路或环（Cycle）。序列中顶点不重复出现的路径称为简单路径。除了第一个顶点和最后一个顶点之外，其余顶点不重复出现的回路，称为简单回路或简单环。  </p>
-<h3 id="7-2-3-连通图相关术语"><a href="#7-2-3-连通图相关术语" class="headerlink" title="7.2.3 连通图相关术语"></a>7.2.3 连通图相关术语</h3><p>在无向图G中，如果从顶点v到顶点v’有路径，则称v和v’是连通的。如果对于图中任意两个顶点$v_i$、$v_j$∈E，$v_i$和$v_j$都是连通的，则称G是连通图（Connected Graph）。<br><strong>无向图中的极大连通子图称为连通分量</strong>。注意连通分量的概念，它强调：</p>
+<h3 id="7-2-1-各种图定义">7.2.1 各种图定义</h3>
+<p><strong>无向边：若顶点vi到vj之间的边没有方向，则称这条边为无向边（Edge），用无序偶对（ViVj）来表示</strong>。<br>
+如果图中任意两个顶点之间的边都是无向边，则称该图为无向图（Undirected graphs）。<br>
+有向边：若从顶点Vi到Vj的边有方向，则称这条边为有向边，也称为弧（Arc）。<br>
+用有序偶&lt;vi，vj&gt;来表示，vi称为弧尾（Tail），vj称为弧头（Head）。如果图中任意两个顶点之间的边都是有向边，则称该图为有向图（Directed graphs）。图7-2-3就是一个有向图。连接顶点A到D的有向边就是弧，A是弧尾，D是弧头，&lt;A，D&gt;表示弧，注意不能写成&lt;D，A&gt;。<br>
+<img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-2-3.JPG?raw=true" srcset="/img/loading.gif" alt="7-2-3"><br>
+对于图7-2-3中的有向图G2来说，G2=(V2,{E2})，其中顶点集合V2={A.B，C，D}；弧集合E2={&lt;A，D&gt;，&lt;B，A&gt;，&lt;C，A&gt;，&lt;B，C&gt;}。<br>
+看清楚了，无向边用小括号“（）”表示，而有向边则是用尖括号“&lt;&gt;”表示。<br>
+在图中，若不存在顶点到其自身的边，且同一条边不重复出现，则称这样的图为简单图。<br>
+<strong>在无向图中，如果任意两个顶点之间都存在边，则称该图为无向完全图</strong>。含有n个顶点的无向完全图有（nx(n-1)）/2条边。<br>
+<strong>在有向图中，如果任意两个顶点之间都存在方向互为相反的两条弧，则称该图为有向完全图</strong>。含有n个顶点的有向完全图有n×（n-1）条边。<br>
+<strong>有很少条边或弧的图称为稀疏图，反之称为稠密图</strong>。<br>
+有些图的边或弧具有与它相关的数字，这种<strong>与图的边或弧相关的数叫做权（Weight）</strong>。这些权可以表示从一个顶点到另一个顶点的距离或耗费。<strong>这种带权的图通常称为网（Network）</strong>。图7-2-7就是一张带权的图，即标识中国四大城市的直线距离的网，此图中的权就是两地的距离。<br>
+<img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-2-7.JPG?raw=true" srcset="/img/loading.gif" alt="7-2-7"><br>
+假设有两个图G=（V，{E}）和G’=（V’,{E’}），如果V’⊆V且E’⊆E，则称G’为G的子图（SubGraph）。</p>
+<h3 id="7-2-2-图的顶点与边间关系">7.2.2 图的顶点与边间关系</h3>
+<p>对于无向图G=（V,{E}），如果边（v,v’）∈E，则称顶点v和v’互为邻接点（Adjacent），即v和v’相邻接。边（v，v’）依附（incident）于顶点v和v’，或者说（v,v’）与顶点v和v’相关联。顶点v的度（Degree）是和v相关联的边的数目，记为TD（v）。<br>
+对于有向图G=（V,{E}），如果弧&lt;v,v’&gt;∈E，则称顶点v邻接到顶点v’，顶点v’邻接自顶点v。弧&lt;v，v’&gt;和顶点v，v’相关联。以顶点v为头的弧的数目称为v的入度（InDegree），记为ID（v）；以v为尾的弧的数目称为v的出度（OutDegree），记为OD（v）；顶点v的度为TD（v）=ID（v）+OD（v）。<br>
+无向图G=（V，{E}）中从顶点v到顶点v’的路径（Path）是一个顶点序列（v=$v_{i,0}$,$v_{i,1}$,…,$v_{i,m}$=v’），其中（$v_{i,j-1}$，$v_{i,j}$）∈E，1≤j≤m。<br>
+树中根结点到任意结点的路径是唯一的，但是图中顶点与顶点之间的路径却是不唯一的。<br>
+<strong>路径的长度是路径上的边或弧的数目。</strong><br>
+第一个顶点到最后一个顶点相同的路径称为回路或环（Cycle）。序列中顶点不重复出现的路径称为简单路径。除了第一个顶点和最后一个顶点之外，其余顶点不重复出现的回路，称为简单回路或简单环。</p>
+<h3 id="7-2-3-连通图相关术语">7.2.3 连通图相关术语</h3>
+<p>在无向图G中，如果从顶点v到顶点v’有路径，则称v和v’是连通的。如果对于图中任意两个顶点$v_i$、$v_j$∈E，$v_i$和$v_j$都是连通的，则称G是连通图（Connected Graph）。<br>
+<strong>无向图中的极大连通子图称为连通分量</strong>。注意连通分量的概念，它强调：</p>
 <ul>
 <li>要是子图；</li>
 <li>子图要是连通的；</li>
 <li>连通子图含有极大顶点数；</li>
 <li>具有极大顶点数的连通子图包含依附于这些顶点的所有边。</li>
 </ul>
-<p><strong>在有向图G中，如果对于每一对$v_i$、$v_j$∈V、$v_i$≠$v_j$，从$v_i$到$v_j$和从$v_j$到$v_i$都存在路径，则称G是强连通图。有向图中的极大强连通子图称做有向图的强连通分量</strong>。<br><strong>所谓的一个连通图的生成树是一个极小的连通子图，它含有图中全部的n个顶点，但只有足以构成一棵树的n-1条边</strong>。<br>如果一个有向图恰有一个顶点的入度为0，其余顶点的入度均为1，则是一棵有向树。<br>一个有向图的生成森林由若干棵有向树组成，含有图中全部顶点，但只有足以构成若干棵不相交的有向树的弧。  </p>
-<h3 id="7-2-4-图的定义与术语总结"><a href="#7-2-4-图的定义与术语总结" class="headerlink" title="7.2.4 图的定义与术语总结"></a>7.2.4 图的定义与术语总结</h3><p>术语终于介绍得差不多了，可能有不少同学有些头晕，我们再来整理一下。<br>图按照有无方向分为无向图和有向图。无向图由顶点和边构成，有向图由顶点和弧构成。弧有弧尾和弧头之分。<br>图按照边或弧的多少分稀疏图和稠密图。如果任意两个顶点之间都存在边叫完全图，有向的叫有向完全图。若无重复的边或顶点到自身的边则叫简单图。<br>图中顶点之间有邻接点、依附的概念。无向图顶点的边数叫做度，有向图顶点分为入度和出度。<br>图上的边或弧上带权则称为网。<br>图中顶点间存在路径，两顶点存在路径则说明是连通的，如果路径最终回到起始点则称为环，当中不重复叫简单路径。若任意两顶点都是连通的，则图就是连通图，有向则称强连通图。图中有子图，若子图极大连通则就是连通分量，有向的则称强连通分量。<br>无向图中连通且n个顶点n-1条边叫生成树。有向图中一顶点入度为0其余顶点入度为1的叫有向树。一个有向图由若干棵有向树构成生成森林。  </p>
-<h2 id="7-3-图的抽象数据类型"><a href="#7-3-图的抽象数据类型" class="headerlink" title="7.3 图的抽象数据类型"></a>7.3 图的抽象数据类型</h2><pre><code class="c">ADT图（Graph）
+<p><strong>在有向图G中，如果对于每一对$v_i$、$v_j$∈V、$v_i$≠$v_j$，从$v_i$到$v_j$和从$v_j$到$v_i$都存在路径，则称G是强连通图。有向图中的极大强连通子图称做有向图的强连通分量</strong>。<br>
+<strong>所谓的一个连通图的生成树是一个极小的连通子图，它含有图中全部的n个顶点，但只有足以构成一棵树的n-1条边</strong>。<br>
+如果一个有向图恰有一个顶点的入度为0，其余顶点的入度均为1，则是一棵有向树。<br>
+一个有向图的生成森林由若干棵有向树组成，含有图中全部顶点，但只有足以构成若干棵不相交的有向树的弧。</p>
+<h3 id="7-2-4-图的定义与术语总结">7.2.4 图的定义与术语总结</h3>
+<p>术语终于介绍得差不多了，可能有不少同学有些头晕，我们再来整理一下。<br>
+图按照有无方向分为无向图和有向图。无向图由顶点和边构成，有向图由顶点和弧构成。弧有弧尾和弧头之分。<br>
+图按照边或弧的多少分稀疏图和稠密图。如果任意两个顶点之间都存在边叫完全图，有向的叫有向完全图。若无重复的边或顶点到自身的边则叫简单图。<br>
+图中顶点之间有邻接点、依附的概念。无向图顶点的边数叫做度，有向图顶点分为入度和出度。<br>
+图上的边或弧上带权则称为网。<br>
+图中顶点间存在路径，两顶点存在路径则说明是连通的，如果路径最终回到起始点则称为环，当中不重复叫简单路径。若任意两顶点都是连通的，则图就是连通图，有向则称强连通图。图中有子图，若子图极大连通则就是连通分量，有向的则称强连通分量。<br>
+无向图中连通且n个顶点n-1条边叫生成树。有向图中一顶点入度为0其余顶点入度为1的叫有向树。一个有向图由若干棵有向树构成生成森林。</p>
+<h2 id="7-3-图的抽象数据类型">7.3 图的抽象数据类型</h2>
+<pre><code class="language-c">ADT图（Graph）
 Data
   顶点的有穷非空集合和边的集合。
 Operation
@@ -216,23 +250,32 @@ Operation
   DeleteArc（*G，V，w）：在图G中删除弧&lt;v，w&gt;，若G是无向图，则还删除对称弧&lt;w，v&gt;。
   DFSTraverse（G）：对图G中进行深度优先遍历，在遍历过程对每个顶点调用。
   HFSTraverse（G）：对图G中进行广度优先遍历，在遍历过程对每个顶点调用。
-endADT</code></pre>
-<h2 id="7-4-图的存储结构"><a href="#7-4-图的存储结构" class="headerlink" title="7.4 图的存储结构"></a>7.4 图的存储结构</h2><p>前辈们提供了五种不同的存储结构。</p>
-<h3 id="7-4-1-邻接矩阵"><a href="#7-4-1-邻接矩阵" class="headerlink" title="7.4.1 邻接矩阵"></a>7.4.1 邻接矩阵</h3><p><strong>图的邻接矩阵（Adjacency Matrix）存储方式是用两个数组来表示图。一个一维数组存储图中顶点信息，一个二维数组（称为邻接矩阵）存储图中的边或弧的信息</strong>。<br>无向图的边数组构成的是一个对称矩阵。<br>有了这个矩阵，我们就可以很容易地知道图中的信息。</p>
+endADT
+</code></pre>
+<h2 id="7-4-图的存储结构">7.4 图的存储结构</h2>
+<p>前辈们提供了五种不同的存储结构。</p>
+<h3 id="7-4-1-邻接矩阵">7.4.1 邻接矩阵</h3>
+<p><strong>图的邻接矩阵（Adjacency Matrix）存储方式是用两个数组来表示图。一个一维数组存储图中顶点信息，一个二维数组（称为邻接矩阵）存储图中的边或弧的信息</strong>。<br>
+无向图的边数组构成的是一个对称矩阵。<br>
+有了这个矩阵，我们就可以很容易地知道图中的信息。</p>
 <ol>
 <li>我们要判定任意两顶点是否有边无边就非常容易了。</li>
 <li>我们要知道某个顶点的度，其实就是这个顶点vi在邻接矩阵中第i行（或第i列）的元素之和。比如顶点v1的度就是1+0+1+0=2。</li>
 <li>求顶点vi的所有邻接点就是将矩阵中第i行元素扫描一遍，arc[i][j]为1就是邻接点。</li>
 </ol>
-<p>在图的术语中，我们提到了网的概念，也就是每条边上带有权的图叫做网。那么这些权值就需要存下来，如何处理这个矩阵来适应这个需求呢？我们有办法。<br>设图G是网图，有n个顶点，则邻接矩阵是一个n×n的方阵，定义为：<br>arc[i][j]=</p>
+<p>在图的术语中，我们提到了网的概念，也就是每条边上带有权的图叫做网。那么这些权值就需要存下来，如何处理这个矩阵来适应这个需求呢？我们有办法。<br>
+设图G是网图，有n个顶点，则邻接矩阵是一个n×n的方阵，定义为：<br>
+arc[i][j]=</p>
 <ol>
 <li>$W_{ij}$,若（$v_i$，$v_j$）∈E或&lt;$v_i$,$v_j$&gt;∈E</li>
 <li>0,若i=j</li>
 <li>∞，反之</li>
 </ol>
-<p>这里$W_{ij}$表示（$v_i$，$v_j$）或&lt;$v_i$,$v_j$&gt;上的权值。∞表示一个计算机允许的、大于所有边上权值的值，也就是一个不可能的极限值。<br>如图7-4-4左图就是一个有向网图，右图就是它的邻接矩阵。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-4-4.JPG?raw=true" srcset="/img/loading.gif" alt="7-4-4">  </p>
+<p>这里$W_{ij}$表示（$v_i$，$v_j$）或&lt;$v_i$,$v_j$&gt;上的权值。∞表示一个计算机允许的、大于所有边上权值的值，也就是一个不可能的极限值。<br>
+如图7-4-4左图就是一个有向网图，右图就是它的邻接矩阵。<br>
+<img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-4-4.JPG?raw=true" srcset="/img/loading.gif" alt="7-4-4"></p>
 <p>图的邻接矩阵存储的结构，代码如下。</p>
-<pre><code class="c">typedef char VertexType; /* 顶点类型应由用户定义  */
+<pre><code class="language-c">typedef char VertexType; /* 顶点类型应由用户定义  */
 typedef int EdgeType; /* 边上的权值类型应由用户定义 */
 #define MAXVEX 100 /* 最大顶点数，应由用户定义 */
 #define INFINITY 65535
@@ -241,9 +284,10 @@ typedef struct
     VertexType vexs[MAXVEX]; /* 顶点表 */
     EdgeType arc[MAXVEX][MAXVEX];/* 邻接矩阵，可看作边表 */
     int numVertexes, numEdges; /* 图中当前的顶点数和边数  */
-}MGraph;</code></pre>
+}MGraph;
+</code></pre>
 <p>有了这个结构定义，我们构造一个图，其实就是给顶点表和边表输入数据的过程。我们来看看无向网图的创建代码。</p>
-<pre><code class="c">/* 建立无向网图的邻接矩阵表示 */
+<pre><code class="language-c">/* 建立无向网图的邻接矩阵表示 */
 void CreateMGraph(MGraph *G)
 {
     int i, j, k, w;
@@ -261,15 +305,25 @@ void CreateMGraph(MGraph *G)
         G-&gt;arc[i][j] = w;
         G-&gt;arc[j][i] = G-&gt;arc[i][j]; /* 因为是无向图，矩阵对称 */
     }
-}</code></pre>
+}
+</code></pre>
 <p>从代码中也可以得到，n个顶点和e条边的无向网图的创建，时间复杂度为O（n+n²+e），其中对邻接矩阵Garc的初始化耗费了O（n²）的时间。</p>
-<h3 id="7-4-2-邻接表"><a href="#7-4-2-邻接表" class="headerlink" title="7.4.2 邻接表"></a>7.4.2 邻接表</h3><p>将结点存入数组，并对结点的数组进行链式存储，不管有多少结点，也不会存在空间浪费问题。我们把这种数组与链表相结合的存储方法称为邻接表（Adjacency List）。<br>邻接表的处理办法是这样。</p>
+<h3 id="7-4-2-邻接表">7.4.2 邻接表</h3>
+<p>将结点存入数组，并对结点的数组进行链式存储，不管有多少结点，也不会存在空间浪费问题。我们把这种数组与链表相结合的存储方法称为邻接表（Adjacency List）。<br>
+邻接表的处理办法是这样。</p>
 <ol>
 <li>图中顶点用一个一维数组存储，当然，顶点也可以用单链表来存储，不过数组可以较容易地读取顶点信息，更加方便。另外，对于顶点数组中，每个数据元素还需要存储指向第一个邻接点的指针，以便于查找该顶点的边信息。</li>
 <li>图中每个顶点vi的所有邻接点构成一个线性表，由于邻接点的个数不定，所以用单链表存储，无向图称为顶点vi的边表，有向图则称为顶点vi作为弧尾的出边表。</li>
 </ol>
-<p>例如图7-4-6所示的就是一个无向图的邻接表结构。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-4-6.JPG?raw=true" srcset="/img/loading.gif" alt="7-4-6"><br>从图中我们知道，顶点表的各个结点由data和firstedge两个域表示，data是数据域，存储顶点的信息，firstedge是指针域，指向边表的第一个结点，即此顶点的第一个邻接点。边表结点由adjvex和next两个域组成。adjvex是邻接点域，存储某顶点的邻接点在顶点表中的下标，next则存储指向边表中下一个结点的指针。比如v1顶点与v0、v2互为邻接点，则在v1的边表中，adjvex分别为v0的0和v2的2。<br>若是有向图，邻接表结构是类似的，比如图7-4-7中第一幅图的邻接表就是第二幅图。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-4-7.JPG?raw=true" srcset="/img/loading.gif" alt="7-4-7"><br>但要注意的是有向图由于有方向，我们是以顶点为弧尾来存储边表的，这样很容易就可以得到每个顶点的出度。但也有时为了便于确定顶点的入度或以顶点为弧头的弧，我们可以建立一个有向图的逆邻接表，即对每个顶点vi都建立一个链接为vi为弧头的表。如图7-4-7的第三幅图所示。<br>对于带权值的网图，可以在边表结点定义中再增加一个weight的数据域，存储权值信息即可。<br>有了这些结构的图，下面关于结点定义的代码就很好理解了。  </p>
-<pre><code class="c">typedef char VertexType; /* 顶点类型应由用户定义 */
+<p>例如图7-4-6所示的就是一个无向图的邻接表结构。<br>
+<img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-4-6.JPG?raw=true" srcset="/img/loading.gif" alt="7-4-6"><br>
+从图中我们知道，顶点表的各个结点由data和firstedge两个域表示，data是数据域，存储顶点的信息，firstedge是指针域，指向边表的第一个结点，即此顶点的第一个邻接点。边表结点由adjvex和next两个域组成。adjvex是邻接点域，存储某顶点的邻接点在顶点表中的下标，next则存储指向边表中下一个结点的指针。比如v1顶点与v0、v2互为邻接点，则在v1的边表中，adjvex分别为v0的0和v2的2。<br>
+若是有向图，邻接表结构是类似的，比如图7-4-7中第一幅图的邻接表就是第二幅图。<br>
+<img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-4-7.JPG?raw=true" srcset="/img/loading.gif" alt="7-4-7"><br>
+但要注意的是有向图由于有方向，我们是以顶点为弧尾来存储边表的，这样很容易就可以得到每个顶点的出度。但也有时为了便于确定顶点的入度或以顶点为弧头的弧，我们可以建立一个有向图的逆邻接表，即对每个顶点vi都建立一个链接为vi为弧头的表。如图7-4-7的第三幅图所示。<br>
+对于带权值的网图，可以在边表结点定义中再增加一个weight的数据域，存储权值信息即可。<br>
+有了这些结构的图，下面关于结点定义的代码就很好理解了。</p>
+<pre><code class="language-c">typedef char VertexType; /* 顶点类型应由用户定义 */
 typedef int EdgeType; /* 边上的权值类型应由用户定义 */
 
 typedef struct EdgeNode /* 边表结点  */
@@ -289,9 +343,10 @@ typedef struct
 {
     AdjList adjList;
     int numNodes,numEdges; /* 图中当前顶点数和边数 */
-}GraphAdjList;</code></pre>
+}GraphAdjList;
+</code></pre>
 <p>对于邻接表的创建，也就是顺理成章之事。无向图的邻接表创建代码如下。</p>
-<pre><code class="c">/* 建立图的邻接表结构 */
+<pre><code class="language-c">/* 建立图的邻接表结构 */
 void  CreateALGraph(GraphAdjList *G)
 {
     int i,j,k;
@@ -316,14 +371,73 @@ void  CreateALGraph(GraphAdjList *G)
         e-&gt;next=G-&gt;adjList[j].firstedge;    /* 将e的指针指向当前顶点上指向的结点 */
         G-&gt;adjList[j].firstedge=e;        /* 将当前顶点的指针指向e */
     }
-}</code></pre>
+}
+</code></pre>
 <p>这里代码，是应用了我们在单链表创建中讲解到的头插法，由于对于无向图，一条边对应都是两个顶点，所以在循环中，一次就针对i和j分别进行了插入。本算法的时间复杂度，对于n个顶点e条边来说，很容易得出是O（n+e）。</p>
-<h3 id="7-4-3-十字链表"><a href="#7-4-3-十字链表" class="headerlink" title="7.4.3 十字链表"></a>7.4.3 十字链表</h3><p>有向图的一种存储方法：十字链表是邻接表与逆邻接表的结合。<br>我们重新定义顶点表结点结构如表7-4-1所示。<br>表7-4-1<br>data|firstin|firstout<br>-|-|-<br>其中firstin表示入边表头指针，指向该顶点的入边表中第一个结点，firstout表示出边表头指针，指向该顶点的出边表中的第一个结点。<br>重新定义的边表结点结构如表7-4-2所示。<br>表7-4-2<br>tailvex|headvex|headlink|taillink<br>-|-|-|-<br>其中tailvex是指弧起点在顶点表的下标，headvex是指弧终点在顶点表中的下标，headlink是指入边表指针域，指向终点相同的下一条边，taillink是指边表指针域，指向起点相同的下一条边。如果是网，还可以再增加一个weight域来存储权值。<br>比如图7-4-10，顶点依然是存入一个一维数组{v0，v1，v2，v3}，实线箭头指针的图示完全与图7-4-7的邻接表相同。就以顶点v0来说，firstout 指向的是出边表中的第一个结点v3。所以v0边表结点的headvex=3，而tailvex其实就是当前顶点v0的下标0，由于v0只有一个出边顶点，所以headlink和taillink都是空。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-4-10.JPG?raw=true" srcset="/img/loading.gif" alt="7-4-10"><br>我们重点需要来解释虚线箭头的含义，它其实就是此图的逆邻接表的表示。对于v0来说，它有两个顶点v1和v2的入边。因此v0的firstin指向顶点v1的边表结点中headvex为0的结点，如图7-4-10右图中的①。接着由入边结点的headlink指向下一个入边顶点v2，如图中的②。对于顶点v1，它有一个入边顶点v2，所以它的firstin指向顶点v2的边表结点中headvex为1的结点，如图中的③。顶点v2和v3也是同样有一个入边顶点，如图中④和⑤。<br>十字链表的好处就是因为把邻接表和逆邻接表整合在了一起，这样既容易找到以vi为尾的弧，也容易找到以vi为头的弧，因而容易求得顶点的出度和入度。而且它除了结构复杂一点外，其实创建图算法的时间复杂度是和邻接表相同的，因此，在有向图的应用中，十字链表是非常好的数据结构模型。  </p>
-<h3 id="7-4-4-邻接多重表"><a href="#7-4-4-邻接多重表" class="headerlink" title="7.4.4 邻接多重表"></a>7.4.4 邻接多重表</h3><p>仿照十字链表的方式，对边表结点的结构进行一些改造，可以优化无向图的邻接表的便操作。<br>重新定义的边表结点结构如表7-4-3所示。<br>ivex|ilink|jvex|jlink<br>-|-|-|-<br>其中<strong>ivex和jvex是与某条边依附的两个顶点在顶点表中下标。ilink 指向依附顶点ivex的下一条边，jlink 指向依附顶点jvex的下一条边。这就是邻接多重表结构</strong>。<br>我们来看结构示意图的绘制过程，理解了它是如何连线的，也就理解邻接多重表构造原理了。如图7-4-12所示，左图告诉我们它有4个顶点和5条边，显然，我们就应该先将4个顶点和5条边的边表结点画出来。由于是无向图，所以ivex是0、jvex是1还是反过来都是无所谓的，不过为了绘图方便，都将ivex值设置得与一旁的顶点下标相同。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-4-12.JPG?raw=true" srcset="/img/loading.gif" alt="7-4-12"><br>我们开始连线，如图7-4-13。首先连线的①②③④就是将顶点的firstedge指向一条边，顶点下标要与ivex的值相同，这很好理解。接着，由于顶点v0的（v0，v1）边的邻边有（v0，v3）和（v0，v2）。因此⑤⑥的连线就是满足指向下一条依附于顶点v0的边的目标，注意ilink指向的结点的jvex一定要和它本身的ivex的值相同。同样的道理，连线⑦就是指（v1,v0）这条边，它是相当于顶点v1指向（v1，v2）边后的下一条。v2有三条边依附，所以在③之后就有了⑧⑨。连线⑩的就是顶点v3在连线④之后的下一条边。左图一共有5条边，所以右图有10条连线，完全符合预期。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-4-13.JPG?raw=true" srcset="/img/loading.gif" alt="7-4-13"><br>到这里，大家应该可以明白，邻接多重表与邻接表的差别，仅仅是在于同一条边在邻接表中用两个结点表示，而在邻接多重表中只有一个结点。这样对边的操作就方便多了，若要删除左图的（v0，v2）这条边，只需要将右图的⑥⑨的链接指向改为^即可。由于各种基本操作的实现也和邻接表是相似的，这里我们就不讲解代码了。</p>
-<h3 id="7-4-5-边集数组"><a href="#7-4-5-边集数组" class="headerlink" title="7.4.5 边集数组"></a>7.4.5 边集数组</h3><p>边集数组是由两个一维数组构成。一个是存储顶点的信息；另一个是存储边的信息，这个边数组每个数据元素由一条边的起点下标（begin）、终点下标（end）和权（weight）组成。</p>
-<h2 id="7-5-图的遍历"><a href="#7-5-图的遍历" class="headerlink" title="7.5 图的遍历"></a>7.5 图的遍历</h2><p>从图中某一顶点出发访遍图中其余顶点，且使每一个顶点仅被访问一次，这一过程就叫做图的遍历（Traversing Graph）。<br>对于图的遍历来说，如何避免因回路陷入死循环，就需要科学地设计遍历方案，通常有两种遍历次序方案：它们是深度优先遍历和广度优先遍历。  </p>
-<h3 id="7-5-1-深度优先遍历"><a href="#7-5-1-深度优先遍历" class="headerlink" title="7.5.1 深度优先遍历"></a>7.5.1 深度优先遍历</h3><p>深度优先遍历（Depth_FirstSearch），也有称为深度优先搜索，简称为DFS。<br>深度优先遍历其实就是一个递归的过程，就像是一棵树的前序遍历，从图中某个顶点v出发，访问此顶点，然后从v的未被访问的邻接点出发深度优先遍历图，直至图中所有和v有路径相通的顶点都被访问到。<br>若图中尚有顶点未被访问，则另选图中一个未曾被访问的顶点作起始点，重复上述过程，直至图中所有顶点都被访问到为止。<br>如果我们用的是邻接矩阵的方式，则代码如下：</p>
-<pre><code class="c">typedef int Boolean; /* Boolean是布尔类型,其值是TRUE或FALSE */
+<h3 id="7-4-3-十字链表">7.4.3 十字链表</h3>
+<p>有向图的一种存储方法：十字链表是邻接表与逆邻接表的结合。<br>
+我们重新定义顶点表结点结构如表7-4-1所示。<br>
+表7-4-1</p>
+<table>
+<thead>
+<tr>
+<th>data</th>
+<th>firstin</th>
+<th>firstout</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<p>其中firstin表示入边表头指针，指向该顶点的入边表中第一个结点，firstout表示出边表头指针，指向该顶点的出边表中的第一个结点。<br>
+重新定义的边表结点结构如表7-4-2所示。<br>
+表7-4-2</p>
+<table>
+<thead>
+<tr>
+<th>tailvex</th>
+<th>headvex</th>
+<th>headlink</th>
+<th>taillink</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<p>其中tailvex是指弧起点在顶点表的下标，headvex是指弧终点在顶点表中的下标，headlink是指入边表指针域，指向终点相同的下一条边，taillink是指边表指针域，指向起点相同的下一条边。如果是网，还可以再增加一个weight域来存储权值。<br>
+比如图7-4-10，顶点依然是存入一个一维数组{v0，v1，v2，v3}，实线箭头指针的图示完全与图7-4-7的邻接表相同。就以顶点v0来说，firstout 指向的是出边表中的第一个结点v3。所以v0边表结点的headvex=3，而tailvex其实就是当前顶点v0的下标0，由于v0只有一个出边顶点，所以headlink和taillink都是空。<br>
+<img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-4-10.JPG?raw=true" srcset="/img/loading.gif" alt="7-4-10"><br>
+我们重点需要来解释虚线箭头的含义，它其实就是此图的逆邻接表的表示。对于v0来说，它有两个顶点v1和v2的入边。因此v0的firstin指向顶点v1的边表结点中headvex为0的结点，如图7-4-10右图中的①。接着由入边结点的headlink指向下一个入边顶点v2，如图中的②。对于顶点v1，它有一个入边顶点v2，所以它的firstin指向顶点v2的边表结点中headvex为1的结点，如图中的③。顶点v2和v3也是同样有一个入边顶点，如图中④和⑤。<br>
+十字链表的好处就是因为把邻接表和逆邻接表整合在了一起，这样既容易找到以vi为尾的弧，也容易找到以vi为头的弧，因而容易求得顶点的出度和入度。而且它除了结构复杂一点外，其实创建图算法的时间复杂度是和邻接表相同的，因此，在有向图的应用中，十字链表是非常好的数据结构模型。</p>
+<h3 id="7-4-4-邻接多重表">7.4.4 邻接多重表</h3>
+<p>仿照十字链表的方式，对边表结点的结构进行一些改造，可以优化无向图的邻接表的便操作。<br>
+重新定义的边表结点结构如表7-4-3所示。</p>
+<table>
+<thead>
+<tr>
+<th>ivex</th>
+<th>ilink</th>
+<th>jvex</th>
+<th>jlink</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<p>其中<strong>ivex和jvex是与某条边依附的两个顶点在顶点表中下标。ilink 指向依附顶点ivex的下一条边，jlink 指向依附顶点jvex的下一条边。这就是邻接多重表结构</strong>。<br>
+我们来看结构示意图的绘制过程，理解了它是如何连线的，也就理解邻接多重表构造原理了。如图7-4-12所示，左图告诉我们它有4个顶点和5条边，显然，我们就应该先将4个顶点和5条边的边表结点画出来。由于是无向图，所以ivex是0、jvex是1还是反过来都是无所谓的，不过为了绘图方便，都将ivex值设置得与一旁的顶点下标相同。<br>
+<img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-4-12.JPG?raw=true" srcset="/img/loading.gif" alt="7-4-12"><br>
+我们开始连线，如图7-4-13。首先连线的①②③④就是将顶点的firstedge指向一条边，顶点下标要与ivex的值相同，这很好理解。接着，由于顶点v0的（v0，v1）边的邻边有（v0，v3）和（v0，v2）。因此⑤⑥的连线就是满足指向下一条依附于顶点v0的边的目标，注意ilink指向的结点的jvex一定要和它本身的ivex的值相同。同样的道理，连线⑦就是指（v1,v0）这条边，它是相当于顶点v1指向（v1，v2）边后的下一条。v2有三条边依附，所以在③之后就有了⑧⑨。连线⑩的就是顶点v3在连线④之后的下一条边。左图一共有5条边，所以右图有10条连线，完全符合预期。<br>
+<img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-4-13.JPG?raw=true" srcset="/img/loading.gif" alt="7-4-13"><br>
+到这里，大家应该可以明白，邻接多重表与邻接表的差别，仅仅是在于同一条边在邻接表中用两个结点表示，而在邻接多重表中只有一个结点。这样对边的操作就方便多了，若要删除左图的（v0，v2）这条边，只需要将右图的⑥⑨的链接指向改为^即可。由于各种基本操作的实现也和邻接表是相似的，这里我们就不讲解代码了。</p>
+<h3 id="7-4-5-边集数组">7.4.5 边集数组</h3>
+<p>边集数组是由两个一维数组构成。一个是存储顶点的信息；另一个是存储边的信息，这个边数组每个数据元素由一条边的起点下标（begin）、终点下标（end）和权（weight）组成。</p>
+<h2 id="7-5-图的遍历">7.5 图的遍历</h2>
+<p>从图中某一顶点出发访遍图中其余顶点，且使每一个顶点仅被访问一次，这一过程就叫做图的遍历（Traversing Graph）。<br>
+对于图的遍历来说，如何避免因回路陷入死循环，就需要科学地设计遍历方案，通常有两种遍历次序方案：它们是深度优先遍历和广度优先遍历。</p>
+<h3 id="7-5-1-深度优先遍历">7.5.1 深度优先遍历</h3>
+<p>深度优先遍历（Depth_FirstSearch），也有称为深度优先搜索，简称为DFS。<br>
+深度优先遍历其实就是一个递归的过程，就像是一棵树的前序遍历，从图中某个顶点v出发，访问此顶点，然后从v的未被访问的邻接点出发深度优先遍历图，直至图中所有和v有路径相通的顶点都被访问到。<br>
+若图中尚有顶点未被访问，则另选图中一个未曾被访问的顶点作起始点，重复上述过程，直至图中所有顶点都被访问到为止。<br>
+如果我们用的是邻接矩阵的方式，则代码如下：</p>
+<pre><code class="language-c">typedef int Boolean; /* Boolean是布尔类型,其值是TRUE或FALSE */
 Boolean visited[MAXVEX]; /* 访问标志的数组 */
 /* 邻接矩阵的深度优先递归算法 */
 void DFS(MGraph G, int i)
@@ -345,9 +459,11 @@ void DFSTraverse(MGraph G)
     for(i = 0; i &lt; G.numVertexes; i++)
         if(!visited[i]) /* 对未访问过的顶点调用DFS，若是连通图，只会执行一次 */
             DFS(G, i);
-}</code></pre>
-<p>代码的执行过程，其实就是我们刚才迷宫找寻所有顶点的过程。<br>如果图结构是邻接表结构，其DFSTraverse函数的代码是几乎相同的，只是在递归函数中因为将数组换成了链表而有不同，代码如下。  </p>
-<pre><code class="c">/* 邻接表的深度优先递归算法 */
+}
+</code></pre>
+<p>代码的执行过程，其实就是我们刚才迷宫找寻所有顶点的过程。<br>
+如果图结构是邻接表结构，其DFSTraverse函数的代码是几乎相同的，只是在递归函数中因为将数组换成了链表而有不同，代码如下。</p>
+<pre><code class="language-c">/* 邻接表的深度优先递归算法 */
 void DFS(GraphAdjList GL, int i)
 {
     EdgeNode *p;
@@ -371,10 +487,16 @@ void DFSTraverse(GraphAdjList GL)
     for(i = 0; i &lt; GL-&gt;numVertexes; i++)
         if(!visited[i]) /* 对未访问过的顶点调用DFS,若是连通图,只会执行一次 */ 
             DFS(GL, i);
-}</code></pre>
-<p>对比两个不同存储结构的深度优先遍历算法，对于n个顶点e条边的图来说，邻接矩阵由于是二维数组，要查找每个顶点的邻接点需要访问矩阵中的所有元素，因此都需要O(n²)的时间。而邻接表做存储结构时，找邻接点所需的时间取决于顶点和边的数量，所以是O（n+e）。显然对于点多边少的稀疏图来说，邻接表结构使得算法在时间效率上大大提高。  </p>
-<h3 id="7-5-2-广度优先遍历"><a href="#7-5-2-广度优先遍历" class="headerlink" title="7.5.2 广度优先遍历"></a>7.5.2 广度优先遍历</h3><p>广度优先遍历（Breadth_First_Search），又称为广度优先搜索，简称BFS。<br>如果说图的深度优先遍历类似树的前序遍历，那么图的广度优先遍历就类似于树的层序遍历了。我们将图7-5-3的第一幅图稍微变形，变形原则是顶点A放置在最上第一层，让与它有边的顶点B、F为第二层，再让与B和F有边的顶点C、I、G、E为第三层，再将这四个顶点有边的D、H放在第四层，如图7-5-3的第二幅图所示。<br>此时在视觉上感觉图的形状发生了变化，其实顶点和边的关系还是完全相同的。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-5-3.JPG?raw=true" srcset="/img/loading.gif" alt="7-5-3"><br>有了这个讲解，我们来看代码就非常容易了。以下是邻接矩阵结构的广度优先遍历算法。  </p>
-<pre><code class="c">/* 邻接矩阵的广度遍历算法 */
+}
+</code></pre>
+<p>对比两个不同存储结构的深度优先遍历算法，对于n个顶点e条边的图来说，邻接矩阵由于是二维数组，要查找每个顶点的邻接点需要访问矩阵中的所有元素，因此都需要O(n²)的时间。而邻接表做存储结构时，找邻接点所需的时间取决于顶点和边的数量，所以是O（n+e）。显然对于点多边少的稀疏图来说，邻接表结构使得算法在时间效率上大大提高。</p>
+<h3 id="7-5-2-广度优先遍历">7.5.2 广度优先遍历</h3>
+<p>广度优先遍历（Breadth_First_Search），又称为广度优先搜索，简称BFS。<br>
+如果说图的深度优先遍历类似树的前序遍历，那么图的广度优先遍历就类似于树的层序遍历了。我们将图7-5-3的第一幅图稍微变形，变形原则是顶点A放置在最上第一层，让与它有边的顶点B、F为第二层，再让与B和F有边的顶点C、I、G、E为第三层，再将这四个顶点有边的D、H放在第四层，如图7-5-3的第二幅图所示。<br>
+此时在视觉上感觉图的形状发生了变化，其实顶点和边的关系还是完全相同的。<br>
+<img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-5-3.JPG?raw=true" srcset="/img/loading.gif" alt="7-5-3"><br>
+有了这个讲解，我们来看代码就非常容易了。以下是邻接矩阵结构的广度优先遍历算法。</p>
+<pre><code class="language-c">/* 邻接矩阵的广度遍历算法 */
 void BFSTraverse(MGraph G)
 {
     int i, j;
@@ -405,9 +527,10 @@ void BFSTraverse(MGraph G)
             }
         }
     }
-}</code></pre>
+}
+</code></pre>
 <p>对于邻接表的广度优先遍历，代码与邻接矩阵差异不大，代码如下。</p>
-<pre><code class="c">/* 邻接表的广度遍历算法 */
+<pre><code class="language-c">/* 邻接表的广度遍历算法 */
 void BFSTraverse(GraphAdjList GL)
 {
     int i;
@@ -440,11 +563,15 @@ void BFSTraverse(GraphAdjList GL)
             }
         }
     }
-}</code></pre>
-<p>对比图的深度优先遍历与广度优先遍历算法，你会发现，它们在时间复杂度上是一样的，不同之处仅仅在于对顶点访问的顺序不同。可见两者在全图遍历上是没有优劣之分的，只是视不同的情况选择不同的算法。<br>不过如果图顶点和边非常多，不能在短时间内遍历完成，遍历的目的是为了寻找合适的顶点，那么选择哪种遍历就要仔细斟酌了。深度优先更适合目标比较明确，以找到目标为主要目的的情况，而广度优先更适合在不断扩大遍历范围时找到相对最优解的情况。  </p>
-<h2 id="7-6-最小生成树"><a href="#7-6-最小生成树" class="headerlink" title="7.6 最小生成树"></a>7.6 最小生成树</h2><p>我们把构造连通网的最小代价生成树称为最小生成树（Minimum Cost Spanning Tree）。</p>
-<h3 id="7-6-1-普里姆（Prim）算法"><a href="#7-6-1-普里姆（Prim）算法" class="headerlink" title="7.6.1 普里姆（Prim）算法"></a>7.6.1 普里姆（Prim）算法</h3><p>普里姆（Prim）算法代码如下，左侧数字为行号。其中INFINITY为权值极大值，不妨是65535，MAXVEX为顶点个数最大值，此处大于等于9即可。现在假设我们自己就是计算机，在调用MiniSpanTree_Prim函数，输入上述的邻接矩阵后，看看它是如何运行并打印出最小生成树的。  </p>
-<pre><code class="c">/* Prim算法生成最小生成树  */
+}
+</code></pre>
+<p>对比图的深度优先遍历与广度优先遍历算法，你会发现，它们在时间复杂度上是一样的，不同之处仅仅在于对顶点访问的顺序不同。可见两者在全图遍历上是没有优劣之分的，只是视不同的情况选择不同的算法。<br>
+不过如果图顶点和边非常多，不能在短时间内遍历完成，遍历的目的是为了寻找合适的顶点，那么选择哪种遍历就要仔细斟酌了。深度优先更适合目标比较明确，以找到目标为主要目的的情况，而广度优先更适合在不断扩大遍历范围时找到相对最优解的情况。</p>
+<h2 id="7-6-最小生成树">7.6 最小生成树</h2>
+<p>我们把构造连通网的最小代价生成树称为最小生成树（Minimum Cost Spanning Tree）。</p>
+<h3 id="7-6-1-普里姆（Prim）算法">7.6.1 普里姆（Prim）算法</h3>
+<p>普里姆（Prim）算法代码如下，左侧数字为行号。其中INFINITY为权值极大值，不妨是65535，MAXVEX为顶点个数最大值，此处大于等于9即可。现在假设我们自己就是计算机，在调用MiniSpanTree_Prim函数，输入上述的邻接矩阵后，看看它是如何运行并打印出最小生成树的。</p>
+<pre><code class="language-c">/* Prim算法生成最小生成树  */
 void MiniSpanTree_Prim(MGraph G)
 {
     int min, i, j, k;
@@ -483,17 +610,24 @@ void MiniSpanTree_Prim(MGraph G)
             }
         }
     }
-}</code></pre>
-<p>假设N=（P,{E}）是连通网，TE是N上最小生成树中边的集合。算法从U={u0}（u0∈V），TE={}开始。重复执行下述操作：在所有u∈U，v∈V-U的边（u，v）∈E中找一条代价最小的边（u0，v0）并入集合TE，同时v0并入U，直至U=V为止。此时TE中必有n-1条边，则T=（V.{TE}）为N的最小生成树。<br>由算法代码中的循环嵌套可得知此算法的时间复杂度为O(n²)。</p>
-<h3 id="7-6-2-克鲁斯卡尔（Kruskal）算法"><a href="#7-6-2-克鲁斯卡尔（Kruskal）算法" class="headerlink" title="7.6.2 克鲁斯卡尔（Kruskal）算法"></a>7.6.2 克鲁斯卡尔（Kruskal）算法</h3><p>现在我们来换一种思考方式，普里姆（Prim）算法是以某顶点为起点，逐步找各顶点上最小权值的边来构建最小生成树的。<br>同样的思路，我们也可以直接就以边为目标去构建，因为权值是在边上，直接去找最小权值的边来构建生成树也是很自然的想法，只不过构建时要考虑是否会形成环路而已。此时我们就用到了图的存储结构中的边集数组结构。以下是edge边集数组结构的定义代码：  </p>
-<pre><code class="c">typedef struct
+}
+</code></pre>
+<p>假设N=（P,{E}）是连通网，TE是N上最小生成树中边的集合。算法从U={u0}（u0∈V），TE={}开始。重复执行下述操作：在所有u∈U，v∈V-U的边（u，v）∈E中找一条代价最小的边（u0，v0）并入集合TE，同时v0并入U，直至U=V为止。此时TE中必有n-1条边，则T=（V.{TE}）为N的最小生成树。<br>
+由算法代码中的循环嵌套可得知此算法的时间复杂度为O(n²)。</p>
+<h3 id="7-6-2-克鲁斯卡尔（Kruskal）算法">7.6.2 克鲁斯卡尔（Kruskal）算法</h3>
+<p>现在我们来换一种思考方式，普里姆（Prim）算法是以某顶点为起点，逐步找各顶点上最小权值的边来构建最小生成树的。<br>
+同样的思路，我们也可以直接就以边为目标去构建，因为权值是在边上，直接去找最小权值的边来构建生成树也是很自然的想法，只不过构建时要考虑是否会形成环路而已。此时我们就用到了图的存储结构中的边集数组结构。以下是edge边集数组结构的定义代码：</p>
+<pre><code class="language-c">typedef struct
 {
     int begin;
     int end;
     int weight;
-}Edge;   /* 对边集数组Edge结构的定义 */</code></pre>
-<p>我们将图7-6-3的邻接矩阵通过程序转化为图7-6-7的右图的边集数组，并且对它们按权值从小到大排序。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-6-7.JPG?raw=true" srcset="/img/loading.gif" alt="7-6-7"><br>于是克鲁斯卡尔（Kruskal）算法代码如下，左侧数字为行号。其中MAXEDGE为边数量的极大值，此处大于等于15即可，MAXVEX为顶点个数最大值，此处大于等于9即可。现在假设我们自己就是计算机，在调用MiniSpanTree_Kruskal函数，输入图7-6-3右图的邻接矩阵后，看看它是如何运行并打印出最小生成树的。  </p>
-<pre><code class="c">/* 查找连线顶点的尾部下标 */
+}Edge;   /* 对边集数组Edge结构的定义 */
+</code></pre>
+<p>我们将图7-6-3的邻接矩阵通过程序转化为图7-6-7的右图的边集数组，并且对它们按权值从小到大排序。<br>
+<img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-6-7.JPG?raw=true" srcset="/img/loading.gif" alt="7-6-7"><br>
+于是克鲁斯卡尔（Kruskal）算法代码如下，左侧数字为行号。其中MAXEDGE为边数量的极大值，此处大于等于15即可，MAXVEX为顶点个数最大值，此处大于等于9即可。现在假设我们自己就是计算机，在调用MiniSpanTree_Kruskal函数，输入图7-6-3右图的邻接矩阵后，看看它是如何运行并打印出最小生成树的。</p>
+<pre><code class="language-c">/* 查找连线顶点的尾部下标 */
 int Find(int *parent, int f)
 {
     while ( parent[f] &gt; 0)
@@ -541,11 +675,17 @@ void MiniSpanTree_Kruskal(MGraph G)
             printf(&quot;(%d, %d) %d\n&quot;, edges[i].begin, edges[i].end, edges[i].weight);
         }
     }
-}</code></pre>
-<p>好了，我们来把克鲁斯卡尔（Kruskal）算法的实现定义归纳一下结束这一节的讲解。<br>假设N=（V,{E}）是连通网，则令最小生成树的初始状态为只有n个顶点而无边的非连通图T={V，{}}，图中每个顶点自成一个连通分量。在E中选择代价最小的边，若该边依附的顶点落在T中不同的连通分量上，则将此边加入到T中，否则舍去此边而选择下一条代价最小的边。依次类推，直至T中所有顶点都在同一连通分量上为止。<br>此算法的Find函数由边数e决定，时间复杂度为O（㏒e），而外面有一个for 循环e次。所以克鲁斯卡尔算法的时间复杂度为O（e㏒e）。<br>对比两个算法，克鲁斯卡尔算法主要是针对边来展开，边数少时效率会非常高，所以对于稀疏图有很大的优势；而普里姆算法对于稠密图，即边数非常多的情况会更好一些。  </p>
-<h2 id="7-7-最短路径"><a href="#7-7-最短路径" class="headerlink" title="7.7 最短路径"></a>7.7 最短路径</h2><p>对于网图来说，最短路径，是指两顶点之间经过的边上权值之和最少的路径，并且我们称路径上的第一个顶点是源点，最后一个顶点是终点。  </p>
-<h3 id="7-7-1-迪杰斯特拉（Djkstra）算法"><a href="#7-7-1-迪杰斯特拉（Djkstra）算法" class="headerlink" title="7.7.1 迪杰斯特拉（Djkstra）算法"></a>7.7.1 迪杰斯特拉（Djkstra）算法</h3><p>迪杰斯特拉（Dijkstra）算法并不是一下子就求出了v0到Vn的最短路径，而是一步步求出它们之间顶点的最短路径，过程中都是基于已经求出的最短路径的基础上，求得更远顶点的最短路径，最终得到你要的结果。  </p>
-<pre><code class="c">#define MAXVEX 20
+}
+</code></pre>
+<p>好了，我们来把克鲁斯卡尔（Kruskal）算法的实现定义归纳一下结束这一节的讲解。<br>
+假设N=（V,{E}）是连通网，则令最小生成树的初始状态为只有n个顶点而无边的非连通图T={V，{}}，图中每个顶点自成一个连通分量。在E中选择代价最小的边，若该边依附的顶点落在T中不同的连通分量上，则将此边加入到T中，否则舍去此边而选择下一条代价最小的边。依次类推，直至T中所有顶点都在同一连通分量上为止。<br>
+此算法的Find函数由边数e决定，时间复杂度为O（㏒e），而外面有一个for 循环e次。所以克鲁斯卡尔算法的时间复杂度为O（e㏒e）。<br>
+对比两个算法，克鲁斯卡尔算法主要是针对边来展开，边数少时效率会非常高，所以对于稀疏图有很大的优势；而普里姆算法对于稠密图，即边数非常多的情况会更好一些。</p>
+<h2 id="7-7-最短路径">7.7 最短路径</h2>
+<p>对于网图来说，最短路径，是指两顶点之间经过的边上权值之和最少的路径，并且我们称路径上的第一个顶点是源点，最后一个顶点是终点。</p>
+<h3 id="7-7-1-迪杰斯特拉（Djkstra）算法">7.7.1 迪杰斯特拉（Djkstra）算法</h3>
+<p>迪杰斯特拉（Dijkstra）算法并不是一下子就求出了v0到Vn的最短路径，而是一步步求出它们之间顶点的最短路径，过程中都是基于已经求出的最短路径的基础上，求得更远顶点的最短路径，最终得到你要的结果。</p>
+<pre><code class="language-c">#define MAXVEX 20
 #define INFINITY 65535
 typedef int Patharc[MAXVEX];    /* 用于存储最短路径下标的数组 */
 typedef int ShortPathTable[MAXVEX]; /* 用于存储到各点最短路径的权值和 */
@@ -586,9 +726,11 @@ void ShortestPath_Dijkstra(MGraph G, int v0, Patharc *P, ShortPathTable *D)
             }
         }
     }
-}</code></pre>
-<p>此算法的时间复杂度为O（n²）。  </p>
-<h3 id="7-7-2-弗洛伊德（Floyd）算法"><a href="#7-7-2-弗洛伊德（Floyd）算法" class="headerlink" title="7.7.2 弗洛伊德（Floyd）算法"></a>7.7.2 弗洛伊德（Floyd）算法</h3><pre><code class="c">typedef int Patharc[MAXVEX][MAXVEX];
+}
+</code></pre>
+<p>此算法的时间复杂度为O（n²）。</p>
+<h3 id="7-7-2-弗洛伊德（Floyd）算法">7.7.2 弗洛伊德（Floyd）算法</h3>
+<pre><code class="language-c">typedef int Patharc[MAXVEX][MAXVEX];
 typedef int ShortPathTable[MAXVEX][MAXVEX];
 /* Floyd算法，求网图G中各顶点v到其余顶点w的最短路径P[v][w]及带权长度D[v][w]。 */
 void ShortestPath_Floyd(MGraph G, Patharc *P, ShortPathTable *D)
@@ -616,9 +758,10 @@ void ShortestPath_Floyd(MGraph G, Patharc *P, ShortPathTable *D)
             }
         }
     }
-}</code></pre>
-<p>求最短路径的显示代码可以这样写：  </p>
-<pre><code class="c">    for(v=0; v&lt;G.numVertexes; ++v)
+}
+</code></pre>
+<p>求最短路径的显示代码可以这样写：</p>
+<pre><code class="language-c">    for(v=0; v&lt;G.numVertexes; ++v)
     {
         for(w=v+1; w&lt;G.numVertexes; w++)  
         {
@@ -633,12 +776,23 @@ void ShortestPath_Floyd(MGraph G, Patharc *P, ShortPathTable *D)
             printf(&quot; -&gt; %d\n&quot;,w);    /* 打印终点 */
         }
         printf(&quot;\n&quot;);
-    }</code></pre>
-<p>再次回过头来看看弗洛伊德（Floyd）算法，它的代码简洁到就是一个二重循环初始化加一个三重循环权值修正，就完成了所有顶点到所有顶点的最短路径计算。几乎就如同是我们在学习C语言循环嵌套的样例代码而已。如此简单的实现，真是巧妙之极，在我看来，这是非常漂亮的算法，不知道你们是否喜欢？很可惜由于它的三重循环，因此也是O（n³）时间复杂度。如果你面临需要求所有顶点至所有顶点的最短路径问题时，弗洛伊德（Floyd）算法应该是不错的选择。  </p>
-<h2 id="7-8-拓扑排序"><a href="#7-8-拓扑排序" class="headerlink" title="7.8 拓扑排序"></a>7.8 拓扑排序</h2><p>说了两个有环的图应用，现在我们来谈谈无环的图应用。无环，即是图中没有回路的意思。  </p>
-<h3 id="7-8-1-拓扑排序介绍"><a href="#7-8-1-拓扑排序介绍" class="headerlink" title="7.8.1 拓扑排序介绍"></a>7.8.1 拓扑排序介绍</h3><p>在一个表示工程的有向图中，用顶点表示活动，用弧表示活动之间的优先关系，这样的有向图为顶点表示活动的网，我们称为AOV网（Activity On Vertex Network）。<br>设G=（V，E）是一个具有n个顶点的有向图，V中的顶点序列v1，V2，……，Vn，满足若从顶点vi到vj有一条路径，则在顶点序列中顶点vi必在顶点vj之前。则我们称这样的顶点序列为一个拓扑序列。<br><strong>所谓拓扑排序，其实就是对一个有向图构造拓扑序列的过程。</strong>构造时会有两个结果，如果此网的全部顶点都被输出，则说明它是不存在环（回路）的AOV网；如果输出顶点数少了，哪怕是少了一个，也说明这个网存在环（回路），不是AOV网。  </p>
-<h3 id="7-8-2-拓扑排序算法"><a href="#7-8-2-拓扑排序算法" class="headerlink" title="7.8.2 拓扑排序算法"></a>7.8.2 拓扑排序算法</h3><p>对AOV网进行拓扑排序的基本思路是：从AOV网中选择一个入度为0的顶点输出，然后删去此顶点，并删除以此顶点为尾的弧，继续重复此步骤，直到输出全部顶点或者AOV网中不存在入度为0的顶点为止。<br>首先我们需要确定一下这个图需要使用的数据结构。前面求最小生成树和最短路径时，我们用的都是邻接矩阵，但由于拓扑排序的过程中，需要删除顶点，显然用邻接表会更加方便。因此我们需要为AOV网建立一个邻接表。考虑到算法过程中始终要查找入度为0的顶点，我们在原来顶点表结点结构中，增加一个入度域in，结构如表7-8-1所示，其中in就是入度的数字。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-8-1.JPG?raw=true" srcset="/img/loading.gif" alt="7-8-1"><br>因此对于图7-8-2的第一幅图AOV网，我们可以得到如第二幅图的邻接表数据结构。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-8-2.JPG?raw=true" srcset="/img/loading.gif" alt="7-8-2"><br>在拓扑排序算法中，涉及的结构代码如下:</p>
-<pre><code class="c">typedef struct EdgeNode /* 边表结点  */
+    }
+</code></pre>
+<p>再次回过头来看看弗洛伊德（Floyd）算法，它的代码简洁到就是一个二重循环初始化加一个三重循环权值修正，就完成了所有顶点到所有顶点的最短路径计算。几乎就如同是我们在学习C语言循环嵌套的样例代码而已。如此简单的实现，真是巧妙之极，在我看来，这是非常漂亮的算法，不知道你们是否喜欢？很可惜由于它的三重循环，因此也是O（n³）时间复杂度。如果你面临需要求所有顶点至所有顶点的最短路径问题时，弗洛伊德（Floyd）算法应该是不错的选择。</p>
+<h2 id="7-8-拓扑排序">7.8 拓扑排序</h2>
+<p>说了两个有环的图应用，现在我们来谈谈无环的图应用。无环，即是图中没有回路的意思。</p>
+<h3 id="7-8-1-拓扑排序介绍">7.8.1 拓扑排序介绍</h3>
+<p>在一个表示工程的有向图中，用顶点表示活动，用弧表示活动之间的优先关系，这样的有向图为顶点表示活动的网，我们称为AOV网（Activity On Vertex Network）。<br>
+设G=（V，E）是一个具有n个顶点的有向图，V中的顶点序列v1，V2，……，Vn，满足若从顶点vi到vj有一条路径，则在顶点序列中顶点vi必在顶点vj之前。则我们称这样的顶点序列为一个拓扑序列。<br>
+**所谓拓扑排序，其实就是对一个有向图构造拓扑序列的过程。**构造时会有两个结果，如果此网的全部顶点都被输出，则说明它是不存在环（回路）的AOV网；如果输出顶点数少了，哪怕是少了一个，也说明这个网存在环（回路），不是AOV网。</p>
+<h3 id="7-8-2-拓扑排序算法">7.8.2 拓扑排序算法</h3>
+<p>对AOV网进行拓扑排序的基本思路是：从AOV网中选择一个入度为0的顶点输出，然后删去此顶点，并删除以此顶点为尾的弧，继续重复此步骤，直到输出全部顶点或者AOV网中不存在入度为0的顶点为止。<br>
+首先我们需要确定一下这个图需要使用的数据结构。前面求最小生成树和最短路径时，我们用的都是邻接矩阵，但由于拓扑排序的过程中，需要删除顶点，显然用邻接表会更加方便。因此我们需要为AOV网建立一个邻接表。考虑到算法过程中始终要查找入度为0的顶点，我们在原来顶点表结点结构中，增加一个入度域in，结构如表7-8-1所示，其中in就是入度的数字。<br>
+<img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-8-1.JPG?raw=true" srcset="/img/loading.gif" alt="7-8-1"><br>
+因此对于图7-8-2的第一幅图AOV网，我们可以得到如第二幅图的邻接表数据结构。<br>
+<img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-8-2.JPG?raw=true" srcset="/img/loading.gif" alt="7-8-2"><br>
+在拓扑排序算法中，涉及的结构代码如下:</p>
+<pre><code class="language-c">typedef struct EdgeNode /* 边表结点  */
 {
     int adjvex;    /* 邻接点域，存储该顶点对应的下标 */
     int weight;        /* 用于存储权值，对于非网图可以不需要 */
@@ -656,9 +810,11 @@ typedef struct
 {
     AdjList adjList;
     int numVertexes,numEdges; /* 图中当前顶点数和边数 */
-}graphAdjList,*GraphAdjList;</code></pre>
-<p>在算法中，我还需要辅助的数据结构一栈，用来存储处理过程中入度为0的顶点，目的是为了避免每个查找时都要去遍历顶点表找有没有入度为0的顶点。<br>现在我们来看代码:  </p>
-<pre><code class="c">/* 拓扑排序，若GL无回路，则输出拓扑排序序列并返回1，若有回路返回0。 */
+}graphAdjList,*GraphAdjList;
+</code></pre>
+<p>在算法中，我还需要辅助的数据结构一栈，用来存储处理过程中入度为0的顶点，目的是为了避免每个查找时都要去遍历顶点表找有没有入度为0的顶点。<br>
+现在我们来看代码:</p>
+<pre><code class="language-c">/* 拓扑排序，若GL无回路，则输出拓扑排序序列并返回1，若有回路返回0。 */
 Status TopologicalSort(GraphAdjList GL)
 {
     EdgeNode *e;
@@ -688,23 +844,36 @@ Status TopologicalSort(GraphAdjList GL)
         return ERROR;
     else
         return OK;
-}</code></pre>
-<p>分析整个算法，对一个具有n个顶点e条弧的AOV网来说，扫描顶点表，将入度为0的顶点入栈的时间复杂为O（n），而之后的while循环中，每个顶点进一次栈，出一次栈，入度减1的操作共执行了e次，所以整个算法的时间复杂度为O（n+e）。  </p>
-<h2 id="7-9-关键路径"><a href="#7-9-关键路径" class="headerlink" title="7.9 关键路径"></a>7.9 关键路径</h2><p>在前面讲了AOV网的基础上，我们来介绍一个新的概念。在一个表示工程的带权有向图中，用顶点表示事件，用有向边表示活动，用边上的权值表示活动的持续时间，这种有向图的边表示活动的网，我们称之为AOE网（Activity On Edge Network）。<br>我们把AOE网中没有入边的顶点称为始点或源点，没有出边的顶点称为终点或汇点。<br>我们把路径上各个活动所持续的时间之和称为路径长度，从源点到汇点具有最大长度的路径叫关键路径，在关键路径上的活动叫关键活动。<br>如果我们需要缩短整个工期，去改进轮子的生产效率，哪怕改动成0.1也是无益于整个工期的变化，只有缩短关键路径上的关键活动时间才可以减少整个工期长度。<br>那么现在的问题就是如何找出关键路径。  </p>
-<h3 id="7-9-1-关键路径算法原理"><a href="#7-9-1-关键路径算法原理" class="headerlink" title="7.9.1 关键路径算法原理"></a>7.9.1 关键路径算法原理</h3><p>我们只需要找到所有活动的最早开始时间和最晚开始时间，并且比较它们，如果相等就意味着此活动是关键活动，活动间的路径为关键路径。如果不等，则就不是。<br>为此，我们需要定义如下几个参数。</p>
+}
+</code></pre>
+<p>分析整个算法，对一个具有n个顶点e条弧的AOV网来说，扫描顶点表，将入度为0的顶点入栈的时间复杂为O（n），而之后的while循环中，每个顶点进一次栈，出一次栈，入度减1的操作共执行了e次，所以整个算法的时间复杂度为O（n+e）。</p>
+<h2 id="7-9-关键路径">7.9 关键路径</h2>
+<p>在前面讲了AOV网的基础上，我们来介绍一个新的概念。在一个表示工程的带权有向图中，用顶点表示事件，用有向边表示活动，用边上的权值表示活动的持续时间，这种有向图的边表示活动的网，我们称之为AOE网（Activity On Edge Network）。<br>
+我们把AOE网中没有入边的顶点称为始点或源点，没有出边的顶点称为终点或汇点。<br>
+我们把路径上各个活动所持续的时间之和称为路径长度，从源点到汇点具有最大长度的路径叫关键路径，在关键路径上的活动叫关键活动。<br>
+如果我们需要缩短整个工期，去改进轮子的生产效率，哪怕改动成0.1也是无益于整个工期的变化，只有缩短关键路径上的关键活动时间才可以减少整个工期长度。<br>
+那么现在的问题就是如何找出关键路径。</p>
+<h3 id="7-9-1-关键路径算法原理">7.9.1 关键路径算法原理</h3>
+<p>我们只需要找到所有活动的最早开始时间和最晚开始时间，并且比较它们，如果相等就意味着此活动是关键活动，活动间的路径为关键路径。如果不等，则就不是。<br>
+为此，我们需要定义如下几个参数。</p>
 <ol>
 <li>事件的最早发生时间etv（earliest time of vertex）：即顶点vk的最早发生时间。</li>
 <li>事件的最晚发生时间ltv（latest time of vertex）：即顶点Vk的最晚发生时间，也就是每个顶点对应的事件最晚需要开始的时间，超出此时间将会延误整个工期。</li>
 <li>活动的最早开工时间ete（earliest time ofedge）：即弧ak的最早发生时间。</li>
-<li>活动的最晚开工时间lte（latest time of edge）：即弧ak的最晚发生时间，也就是不推迟工期的最晚开工时间。  </li>
+<li>活动的最晚开工时间lte（latest time of edge）：即弧ak的最晚发生时间，也就是不推迟工期的最晚开工时间。</li>
 </ol>
-<p>我们是由1和2可以求得3和4，然后再根据ete[k]是否与lte[k]相等来判断ak是否是关键活动。  </p>
-<h3 id="7-9-2-关键路径算法"><a href="#7-9-2-关键路径算法" class="headerlink" title="7.9.2 关键路径算法"></a>7.9.2 关键路径算法</h3><p>我们将图7-9-2的AOE网转化为邻接表结构如图7-9-4所示，注意与拓扑排序时邻接表结构不同的地方在于，这里弧链表增加了weight域，用来存储弧的权值。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-9-4.JPG?raw=true" srcset="/img/loading.gif" alt="7-9-4"><br>求事件的最早发生时间etv的过程，就是我们从头至尾找拓扑序列的过程，因此，在求关键路径之前，需要先调用一次拓扑序列算法的代码来计算etv和拓扑序列列表。为此，我们首先在程序开始处声明几个全局变量。  </p>
-<pre><code class="c">int *etv,*ltv; /* 事件最早发生时间和最迟发生时间数组，全局变量 */
+<p>我们是由1和2可以求得3和4，然后再根据ete[k]是否与lte[k]相等来判断ak是否是关键活动。</p>
+<h3 id="7-9-2-关键路径算法">7.9.2 关键路径算法</h3>
+<p>我们将图7-9-2的AOE网转化为邻接表结构如图7-9-4所示，注意与拓扑排序时邻接表结构不同的地方在于，这里弧链表增加了weight域，用来存储弧的权值。<br>
+<img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-9-4.JPG?raw=true" srcset="/img/loading.gif" alt="7-9-4"><br>
+求事件的最早发生时间etv的过程，就是我们从头至尾找拓扑序列的过程，因此，在求关键路径之前，需要先调用一次拓扑序列算法的代码来计算etv和拓扑序列列表。为此，我们首先在程序开始处声明几个全局变量。</p>
+<pre><code class="language-c">int *etv,*ltv; /* 事件最早发生时间和最迟发生时间数组，全局变量 */
 int *stack2;   /* 用于存储拓扑序列的栈 */
-int top2;      /* 用于stack2的指针 */</code></pre>
-<p>其中stack2用来存储拓扑序列，以便后面求关键路径时使用。<br>下面是改进过的求拓扑序列算法。  </p>
-<pre><code class="c">/* 拓扑排序,用于关键路径计算 */
+int top2;      /* 用于stack2的指针 */
+</code></pre>
+<p>其中stack2用来存储拓扑序列，以便后面求关键路径时使用。<br>
+下面是改进过的求拓扑序列算法。</p>
+<pre><code class="language-c">/* 拓扑排序,用于关键路径计算 */
 Status TopologicalSort(GraphAdjList GL)
 {    /* 若GL无回路，则输出拓扑排序序列并返回1，若有回路返回0。 */
     EdgeNode *e;
@@ -746,9 +915,10 @@ Status TopologicalSort(GraphAdjList GL)
         return ERROR;
     else
         return OK;
-}</code></pre>
+}
+</code></pre>
 <p>下面我们来看求关键路径的算法代码。</p>
-<pre><code class="c">/* 求关键路径,GL为有向网，输出G的各项关键活动 */
+<pre><code class="language-c">/* 求关键路径,GL为有向网，输出G的各项关键活动 */
 void CriticalPath(GraphAdjList GL)
 {
     EdgeNode *e;
@@ -779,9 +949,20 @@ void CriticalPath(GraphAdjList GL)
                 printf(&quot;&lt;v%d - v%d&gt; length: %d \n&quot;,GL-&gt;adjList[j].data,GL-&gt;adjList[k].data,e-&gt;weight);
         }
     }
-}</code></pre>
-<p>最终求关键路径算法的时间复杂度依然是O（n+e）。<br>实践证明，通过这样的算法对于工程的前期工期估算和中期的计划调整都有很大的帮助。不过注意，本例是唯一一条关键路径，这并不等于不存在多条关键路径的有向无环图。如果是多条关键路径，则单是提高一条关键路径上的关键活动的速度并不能导致整个工程缩短工期，而必须提高同时在几条关键路径上的活动的速度。这就像仅仅是有事业的成功，而没有健康的身体以及快乐的生活，是根本谈不上幸福的人生一样，三者缺一不可。  </p>
-<h2 id="7-10-总结回顾"><a href="#7-10-总结回顾" class="headerlink" title="7.10 总结回顾"></a>7.10 总结回顾</h2><p>图是计算机科学中非常常用的一类数据结构，有许许多多的计算问题都是用图来定义的。由于图也是最复杂的数据结构，对它讲解时，涉及到数组、链表、栈、队列、树等之前学的几乎所有数据结构。因此从某种角度来说，学好了图，基本就等于理解了数据结构这门课的精神。<br>我们在图的定义这一节，介绍了一大堆定义和术语，一开始可能会有些迷茫，不过一回生二回熟，多读几遍，基本都可以理解并记住它们的特征，在图的定义这一节的末尾，我们已经有所总结，这里就不再赘述了。<br>图的存储结构我们一共讲了五种，如图7-10-1所示，其中比较重要的是邻接矩阵和邻接表，它们分别代表着边集是用数组还是链表的方式存储。十字链表是邻接矩阵的一种升级，而邻接多重表则是邻接表的升级。边集数组更多考虑的是对边的关注。用什么存储结构需要具体问题具体分析，通常稠密图，或读存数据较多，结构修改较少的图，用邻接矩阵要更合适，反之则应该考虑邻接表。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-10-1.JPG?raw=true" srcset="/img/loading.gif" alt="7-10-1"><br>图的遍历分为深度和广度两种，各有优缺点，就像人在追求卓越时，是着重深度还是看重广度，总是很难说得清楚。<br>图的应用是我们这一章浓墨重彩的一部分，一共谈了三种应用：最小生成树、最短路径和有向无环图的应用。<br>最小生成树，我们讲了两种算法：普里姆（Prim）算法和克鲁斯卡尔（Kruskal）算法。普里姆算法像是走一步看一步的思维方式，逐步生成最小生成树。而克鲁斯卡尔算法则更有全局意识，直接从图中最短权值的边入手，找寻最后的答案。<br>最短路径的现实应用非常多，我们也介绍了两种算法。迪杰斯特拉（Dijkstra）算法更强调单源顶点查找路径的方式，比较符合我们正常的思路，容易理解原理，但算法代码相对复杂。而弗洛伊德（Floyd）算法则完全抛开了单点的局限思维方式，巧妙地应用矩阵的变换，用最清爽的代码实现了多顶点间最短路径求解的方案，原理理解有难度，但算法编写很简洁。<br>有向无环图时常应用于工程规划中，对于整个工程或系统来说，我们一方面关心的是工程能否顺利进行的问题，通过拓扑排序的方式，我们可以有效地分析出一个有向图是否存在环，如果不存在，那它的拓扑序列是什么？另一方面关心的是整个工程完成所必须的最短时间问题，利用求关键路径的算法，可以得到最短完成工程的工期以及关键的活动有哪些。  </p>
+}
+</code></pre>
+<p>最终求关键路径算法的时间复杂度依然是O（n+e）。<br>
+实践证明，通过这样的算法对于工程的前期工期估算和中期的计划调整都有很大的帮助。不过注意，本例是唯一一条关键路径，这并不等于不存在多条关键路径的有向无环图。如果是多条关键路径，则单是提高一条关键路径上的关键活动的速度并不能导致整个工程缩短工期，而必须提高同时在几条关键路径上的活动的速度。这就像仅仅是有事业的成功，而没有健康的身体以及快乐的生活，是根本谈不上幸福的人生一样，三者缺一不可。</p>
+<h2 id="7-10-总结回顾">7.10 总结回顾</h2>
+<p>图是计算机科学中非常常用的一类数据结构，有许许多多的计算问题都是用图来定义的。由于图也是最复杂的数据结构，对它讲解时，涉及到数组、链表、栈、队列、树等之前学的几乎所有数据结构。因此从某种角度来说，学好了图，基本就等于理解了数据结构这门课的精神。<br>
+我们在图的定义这一节，介绍了一大堆定义和术语，一开始可能会有些迷茫，不过一回生二回熟，多读几遍，基本都可以理解并记住它们的特征，在图的定义这一节的末尾，我们已经有所总结，这里就不再赘述了。<br>
+图的存储结构我们一共讲了五种，如图7-10-1所示，其中比较重要的是邻接矩阵和邻接表，它们分别代表着边集是用数组还是链表的方式存储。十字链表是邻接矩阵的一种升级，而邻接多重表则是邻接表的升级。边集数组更多考虑的是对边的关注。用什么存储结构需要具体问题具体分析，通常稠密图，或读存数据较多，结构修改较少的图，用邻接矩阵要更合适，反之则应该考虑邻接表。<br>
+<img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/7-10-1.JPG?raw=true" srcset="/img/loading.gif" alt="7-10-1"><br>
+图的遍历分为深度和广度两种，各有优缺点，就像人在追求卓越时，是着重深度还是看重广度，总是很难说得清楚。<br>
+图的应用是我们这一章浓墨重彩的一部分，一共谈了三种应用：最小生成树、最短路径和有向无环图的应用。<br>
+最小生成树，我们讲了两种算法：普里姆（Prim）算法和克鲁斯卡尔（Kruskal）算法。普里姆算法像是走一步看一步的思维方式，逐步生成最小生成树。而克鲁斯卡尔算法则更有全局意识，直接从图中最短权值的边入手，找寻最后的答案。<br>
+最短路径的现实应用非常多，我们也介绍了两种算法。迪杰斯特拉（Dijkstra）算法更强调单源顶点查找路径的方式，比较符合我们正常的思路，容易理解原理，但算法代码相对复杂。而弗洛伊德（Floyd）算法则完全抛开了单点的局限思维方式，巧妙地应用矩阵的变换，用最清爽的代码实现了多顶点间最短路径求解的方案，原理理解有难度，但算法编写很简洁。<br>
+有向无环图时常应用于工程规划中，对于整个工程或系统来说，我们一方面关心的是工程能否顺利进行的问题，通过拓扑排序的方式，我们可以有效地分析出一个有向图是否存在环，如果不存在，那它的拓扑序列是什么？另一方面关心的是整个工程完成所必须的最短时间问题，利用求关键路径的算法，可以得到最短完成工程的工期以及关键的活动有哪些。</p>
 
             <hr>
           </div>

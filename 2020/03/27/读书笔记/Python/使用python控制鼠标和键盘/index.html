@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时">
+  <meta name="author" content="closer">
+  <meta name="keywords" content="">
+  <title>使用python控制鼠标和键盘 ~ closer的自留地</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="closer的自留地" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>welcome!</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" false
+         style="background: url('/img/default.jpg')no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期五, 三月 27日 2020, 9:05 晚上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.3k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      5 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>使用pyautogui这个库，来达到和按键精灵差不多的效果。可以运行在多平台。</p>
+<p>PyAutoGUI的五个特点:</p>
+<ul>
+<li>移动鼠标点击或输入其他应用程序的窗口。</li>
+<li>按键发送给应用程序(例如,填写表格)。</li>
+<li>截图,给定一个图像(例如,一个按钮或复选框),在屏幕上找到它。</li>
+<li>定位应用程序的窗口,和移动,调整,最大化、最小化、关闭(仅适用于windows,目前)</li>
+<li>显示消息框进行用户交互,而您的GUI自动化脚本运行。</li>
+</ul>
+<h2 id="一：-安装pyautogui库">一： 安装pyautogui库</h2>
+<p><code>pip3 install pyautogui</code></p>
+<p><strong>ubuntu系统，可能需要<code>sudo apt-get install python3-tk python3-dev</code>，如果安装不上，请参考<a href="https://pyautogui.readthedocs.io/en/latest/install.html" target="_blank" rel="noopener">官方文档如何安装</a></strong></p>
+<h2 id="二：-使用方法">二： 使用方法</h2>
+<p><a href="https://pyautogui.readthedocs.io/en/latest/" target="_blank" rel="noopener">官方文档</a></p>
+<h3 id="2-1-常规功能">2.1 常规功能</h3>
+<pre><code class="language-py">&gt;&gt;&gt; import pyautogui
+&gt;&gt;&gt; pyautogui.position()  # 当前鼠标 x， y坐标
+(968, 56)
+&gt;&gt;&gt; pyautogui.size()  # 当前屏幕分辨率宽和高
+(1920, 1080)
+&gt;&gt;&gt; pyautogui.onScreen(x, y)  # 鼠标坐标x且y，在屏幕内
+True
+&gt;&gt;&gt; pyautogui.PAUSE = 2.5 # 在每次PyAutoGUI调用之后设置2.5秒的暂停：
+</code></pre>
+<h3 id="2-2-鼠标功能">2.2 鼠标功能</h3>
+<pre><code class="language-py"># XY坐标在屏幕的左上角具有0、0的原点。X向右增加，Y向向下增加。
+
+# 移动鼠标
+&gt;&gt;&gt; pyautogui.moveTo(x, y, duration=num_seconds)  # num秒内移动鼠标到XY坐标
+&gt;&gt;&gt; pyautogui.move(xOffset, yOffset, duration=num_seconds)  # 相对于当前位置，鼠标移动XY
+# 如果duration为0或未指定，则立即移动，duration以秒为单位。
+# 例： pyautogui.move(300, 200, 2)
+
+# 拖拽鼠标
+&gt;&gt;&gt; pyautogui.dragTo(x, y, duration=num_seconds)  # 拖拽鼠标到XY
+&gt;&gt;&gt; pyautogui.drag(xOffset, yOffset, duration=num_seconds)  # 相对于当前位置，鼠标拖拽XY
+# 例： pyautogui.drag(300, 200, 2)
+
+# 点击鼠标
+# 调用click()即在鼠标的当前位置左键单击一次，但是关键字参数可以改变它：
+&gt;&gt;&gt; pyautogui.click(x=moveToX, y=moveToY, clicks=num_of_clicks, interval=secs_between_clicks, button='left')
+# clicks关键字控制点击次数;interval关键字控制点击时间间隔。
+# 该button关键字参数可以是'left'，'middle'或'right'。即左击，中击，右击。
+# 例：pyautogui.click(300, 200,clicks=2,interval=3,button='right')
+
+# 右击，中击及双、三击
+&gt;&gt;&gt; pyautogui.rightClick(x=moveToX, y=moveToY)
+&gt;&gt;&gt; pyautogui.middleClick(x=moveToX, y=moveToY)
+&gt;&gt;&gt; pyautogui.doubleClick(x=moveToX, y=moveToY) # 双击
+&gt;&gt;&gt; pyautogui.tripleClick(x=moveToX, y=moveToY) # 三击
+
+# 鼠标中键滚动
+# 正向滚动将向上滚动，负向滚动将向下滚动：
+&gt;&gt;&gt; pyautogui.scroll(amount_to_scroll, x=moveToX, y=moveToY)
+# 例： pyautogui.scroll(-10) 
+
+# 鼠标按下或者弹起：
+&gt;&gt;&gt; pyautogui.mouseDown(x=moveToX, y=moveToY, button='left')
+&gt;&gt;&gt; pyautogui.mouseUp(x=moveToX, y=moveToY, button='left')
+</code></pre>
+<h3 id="2-3-键盘功能">2.3 键盘功能</h3>
+<pre><code class="language-py"># 在键盘光标所在的位置按键。
+
+# 输入字符串
+&gt;&gt;&gt; pyautogui.write('Hello world!\n', interval=secs_between_keys)  # 用于输入文本，回车换行
+# interval是字母输入间隔时间
+
+# 依次按下键盘
+# 也可以传递键名列表：
+&gt;&gt;&gt; pyautogui.write(['a', 'b', 'c', 'left', 'backspace', 'enter', 'f1'], interval=secs_between_keys)
+# 键名的完整列表在pyautogui.KEYBOARD_KEYS中。
+# 例： pyautogwrite(['a', 'b', 'c'], interval=0.25)
+
+# 多次按键
+&gt;&gt;&gt; pyautogui.press(['left', 'left', 'left'])
+# 或者你可以设置按多少次左键 :
+&gt;&gt;&gt; pyautogui.press('1', presses=3)
+
+# 键盘快捷键（如Ctrl-S或Ctrl-Shift-1）可以通过将键名列表传递给来完成hotkey()：
+&gt;&gt;&gt; pyautogui.hotkey('ctrl', 'c')  # ctrl-c to copy
+&gt;&gt;&gt; pyautogui.hotkey('ctrl', 'v')  # ctrl-v to paste
+
+# 键盘按下和弹起可以分别调用：
+&gt;&gt;&gt; pyautogui.keyDown(key_name)
+&gt;&gt;&gt; pyautogui.keyUp(key_name)
+</code></pre>
+<h3 id="2-4-消息框的功能">2.4 消息框的功能</h3>
+<pre><code class="language-py"># PyAutoGUI利用PyMsgBox消息框功能提供跨平台的,纯Python方法显示javascript式消息框。 有四个消息框功能。
+
+# alert显示()函数 
+&gt;&gt;&gt; alert(text='', title='', button='OK')
+# 显示一个简单的消息框,文本和一个OK按钮。 返回文本的按钮点击。
+# 例：pyautogui.alert('这将显示一些文本和OK按钮.')
+
+# confirm确认()函数 
+&gt;&gt;&gt; confirm(text='', title='', buttons=['OK', 'Cancel'])
+# 显示一个消息框好和取消按钮。 数量和文本的按钮可以定制。 返回文本的按钮点击。
+# 例： pyautogui.confirm('显示文本和OK及取消键。')
+
+# prompt提示()函数 
+&gt;&gt;&gt; prompt(text='', title='' , default='')
+# 显示一个消息框,文本输入,OK和Cancel按钮。 返回输入的文本,或没有,如果点击取消。
+# 例： pyautogui.prompt(text='显示文本输入框，OK及取消键', title='标题' , default='')
+
+# password密码()函数 
+&gt;&gt;&gt; password(text='', title='', default='', mask='*')
+# 显示一个消息框,文本输入,OK和Cancel按钮。 输入字符显示为 * 。 返回输入的文本,或没有,如果点击取消。
+# 例： pyautogui.password(text='显示文本输入框，OK及取消键', title='标题' , default='默认密码' , mask='*')
+</code></pre>
+<h3 id="2-5-屏幕截图功能">2.5 屏幕截图功能</h3>
+<p>在ubuntu系统中支持的不是很好，比较复杂。<br>
+<a href="https://pyautogui.readthedocs.io/en/latest/screenshot.html" target="_blank" rel="noopener">具体参照官方文档</a></p>
+<p>还可以根据色块或图片返回对应的坐标。这个就比较强大啦。比如可以制作自动游戏脚本等等。</p>
+<h2 id="三：-实战演练">三： 实战演练</h2>
+<h3 id="3-1-实时显示鼠标位置">3.1 实时显示鼠标位置</h3>
+<pre><code class="language-py">#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+import pyautogui, sys
+print('Press Ctrl-C to quit.')
+try:
+    while True:
+        x, y = pyautogui.position()
+        positionStr = 'X: ' + str(x).rjust(4) + ' Y: ' + str(y).rjust(4)
+        print(positionStr, end='')
+        print('\b' * len(positionStr), end='', flush=True)
+except KeyboardInterrupt:
+    print('\n')
+</code></pre>
+<h3 id="3-2-画图软件中画出方形螺旋图">3.2 画图软件中画出方形螺旋图</h3>
+<pre><code class="language-py">#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+import pyautogui
+distance = 200
+while distance &gt; 0:
+        pyautogui.drag(distance, 0, duration=0.5)   # move right
+        distance -= 5
+        pyautogui.drag(0, distance, duration=0.5)   # move down
+        pyautogui.drag(-distance, 0, duration=0.5)  # move left
+        distance -= 5
+        pyautogui.drag(0, -distance, duration=0.5)  # move up
+</code></pre>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/python">python</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/python">python</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E6%8C%89%E9%94%AE%E7%B2%BE%E7%81%B5">按键精灵</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-md">
+    <div class="container custom post-content mx-auto">
+      <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-3" style="width:355.4px; height:200px;">
+    </div>
+  </div>
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'false' === true;
+    var verify = 'false' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
+        app_key: "HLUt5izfTvTcbEbOrA59W92a",
+        placeholder: "畅所欲言...",
+        avatar: "robohash",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+    <!-- Tencent Analytics -->
+    <script>
+      var _mtac = {};
+      (function () {
+        var mta = document.createElement("script");
+        mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+        mta.setAttribute("name", "MTAH5");
+        mta.setAttribute("sid", "500710993");
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(mta, s);
+      })();
+    </script>
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "使用python控制鼠标和键盘&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 60,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "always",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+              processEscapes: true,
+              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+          }
+      });
+
+      MathJax.Hub.Queue(function() {
+          var all = MathJax.Hub.getAllJax(), i;
+          for(i=0; i < all.length; i += 1) {
+              all[i].SourceElement().parentNode.className += ' has-jax';
+          }
+      });
+
+    </script>
+
+    <script src="https://cdn.staticfile.org/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+
+  
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+
+</body>
+</html>
