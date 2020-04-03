@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    3.5k 字
+                    3.9k 字
                   </span>&nbsp;
                 
 
@@ -147,7 +147,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      14 分钟
+                      15 分钟
                   </span>&nbsp;
                 
 
@@ -523,7 +523,8 @@ course_id的数据类型是整数，由INT关键字表示。 此外，course_id�
 course_name存储课程名称。 其数据类型是最大长度为50的可变长度的字符串(VARCHAR)。NOT NULL约束确保course_name列中不存储NULL值。
 */
 </code></pre>
-<pre><code class="language-SQL">/*有了课程表。 要存储训练数据，请按如下方式创建名为training的新表。*/
+<pre><code class="language-SQL">--示例
+/*有了课程表。 要存储训练数据，请按如下方式创建名为training的新表。*/
 CREATE TABLE trainings (
     employee_id INT,
     course_id INT,
@@ -700,17 +701,96 @@ REATE TABLE ##new global temp table (
 <li>将行从一个表复制到另一个表中。</li>
 </ul>
 <pre><code class="language-SQL">--语法格式
+--插入一行,不建议省略column。
 INSERT INTO table1 (column1, column2,...)
 VALUES
     (value1, value2,...);
 
-INSERT INTO table1
+--插入多行
+INSERT INTO table1 (column1, column2,...)
 VALUES
     (value1, value2,...),
     (value1, value2,...),
-    (value1, value2,...),
-    ...;
+    (value1, value2,...);
+
+--从其他表复制行记录
+INSERT INTO table1 (column1, column2,...)
+SELECT
+    column1,
+    column2
+FROM
+    table2
+WHERE
+    condition1;
+
+/*示例1*/
+INSERT INTO temp(id,name)
+VALUES
+    (1,'xiaoming');
+
+/*示例2*/
+INSERT INTO temp(id,name)
+VALUES
+    (2,'xiaoli'),
+    (3,'xiaowang'),
+    (4,'xiaojun');
+
+/*示例3,需要先创建temp1表*/
+INSERT INTO temp1
+SELECT
+    id,name
+FROM
+    temp
+WHERE
+    id=1;
 </code></pre>
+<h3 id="4-2-Insert-Into-Select">4.2 Insert Into Select</h3>
+<p>在表中插入多行，可以将<code>Insert</code>与<code>select</code>语句结合使用。</p>
+<pre><code class="language-SQL">INSERT INTO &quot;table 1&quot; (&quot;column1&quot;, &quot;column2&quot;,....)  
+SELECT &quot;column3&quot;, &quot;column4&quot;,....  
+FROM &quot;table2&quot;;
+</code></pre>
+<p><code>INSERT INTO</code>语句还可以包含许多子句，如：<code>SELECT</code>，<code>GROUP BY</code>，<code>HAVING</code>以及<code>JOIN</code>和<code>ALIAS</code>。 因此，<code>insert into select</code>语句可能会有些复杂。</p>
+<pre><code class="language-SQL">/*示例*/
+INSERT INTO store (store_name, sales, transaction_date)  
+SELECT store_name, sum (sales), transaction_date  
+FROM sales_information  
+GROUP BY store_name, transaction_date;
+</code></pre>
+<h3 id="4-3-Update语句">4.3 Update语句</h3>
+<p>使用SQL <code>UPDATE</code>语句来修改表中现有行的数据</p>
+<pre><code class="language-SQL">--语法格式
+UPDATE table_name
+SET column1 = value1,
+ column2 = value2
+WHERE
+    condition;
+/*在上面的语法中
+首先，在SET子句中指定要修改的列。 SET子句中未列出的列的值不会被修改。
+其次，指定WHERE子句中要更新的行。
+第三，WHERE子句是可选的，如果省略它，表中的所有行都将受到影响。*/
+
+/*示例1,小于3000的工资改为3000*/
+UPDATE
+    workers
+SET
+    salary=3000
+WHERE
+    salary&lt;3000;
+
+/*示例2-确保子项dependents的last_name始终与employees表中的last_name匹配*/
+UPDATE dependents
+SET last_name = (
+    SELECT
+        last_name
+    FROM
+        employees
+    WHERE
+        employee_id = dependents.employee_id
+);
+</code></pre>
+<h3 id="4-4-UPDATE-JOIN语句">4.4 UPDATE &amp; JOIN语句</h3>
+<p><code>UPDATE JOIN</code>可使用一个表和连接条件来更新另一个表。</p>
 
             <hr>
           </div>
