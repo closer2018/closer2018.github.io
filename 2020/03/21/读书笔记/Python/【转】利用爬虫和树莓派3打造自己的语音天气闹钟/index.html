@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    1.3k 字
+                    1.4k 字
                   </span>&nbsp;
                 
 
@@ -147,7 +147,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      6 分钟
+                      7 分钟
                   </span>&nbsp;
                 
 
@@ -183,8 +183,7 @@
             <blockquote>
 <p><a href="https://zhuanlan.zhihu.com/p/24983204?refer=woodenrobot" target="_blank" rel="noopener">原帖地址</a></p>
 </blockquote>
-<h2 id="一、-前期准备">一、 前期准备</h2>
-<ol>
+<h2 id="一、-前期准备"><a href="#一、-前期准备" class="headerlink" title="一、 前期准备"></a>一、 前期准备</h2><ol>
 <li>树莓派一个</li>
 <li>小音箱一对</li>
 </ol>
@@ -194,14 +193,12 @@
 <p>进入墨迹天气的页面，墨迹天气会根据你的ip加载相应地区的天气。</p>
 <p>这次我们主要抓取温度、天气、湿度、风力、空气质量和天气提示这几个数据。</p>
 <p>这种小爬虫我们就使用requests和BeautifulSoup这两个超级好用的库可以快速实现。</p>
-<h2 id="二、-环境">二、 环境</h2>
-<p>首先树莓派安装python3，python3-pip和requests、beautifulsoup4两个库及mplayer软件。</p>
-<pre><code class="language-sh">sudo apt install python3 -y
+<h2 id="二、-环境"><a href="#二、-环境" class="headerlink" title="二、 环境"></a>二、 环境</h2><p>首先树莓派安装python3，python3-pip和requests、beautifulsoup4两个库及mplayer软件。</p>
+<pre><code class="sh">sudo apt install python3 -y
 sudo apt install python3-pip -y
 pip3 install requests
 pip3 install beautifulsoup4
-sudo apt-get install mplayer -y
-</code></pre>
+sudo apt-get install mplayer -y</code></pre>
 <p>至于Requests和Beautiful Soup的用法这里就先不多说了，大家可以去看他们的中文文档。</p>
 <ol>
 <li><a href="https://zh_cn/en/master/zh_CN/latest/index/" target="_blank" rel="noopener">Requests中文wendnag</a></li>
@@ -212,27 +209,22 @@ sudo apt-get install mplayer -y
 <p><code>mplayer \xxx\xxx\xxx.mp3(绝对地址)</code></p>
 <p>如果是在线音乐也可以用mplayer直接通过URL播放：</p>
 <p><code>mplayer &quot;URl&quot;(URL外面一定要用双引号圈起来)</code></p>
-<h2 id="三、-文字转语音">三、 文字转语音</h2>
-<p>刚开始想通过python的库实现本地文字转语音，在windows系统下没有问题，但树莓派3上中文无法转换。后来就找到了百度的文字转换语音API，地址：<a href="http://yuyin.baidu.com/#try" target="_blank" rel="noopener">http://yuyin.baidu.com/#try</a></p>
-<p>还可以选各种声音，调节语速。虽然它没有给出直接的api接口，但是我们利用Chrome浏览器的开发者模式可以找到api。<br>
-<img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E5%88%A9%E7%94%A8%E7%88%AC%E8%99%AB%E5%92%8C%E6%A0%91%E8%8E%93%E6%B4%BE%E6%89%93%E9%80%A0%E8%90%9D%E8%8E%89%E9%9F%B3%E5%A4%A9%E6%B0%94%E9%97%B9%E9%92%9F.png" srcset="/img/loading.gif" alt="百度语音识别"></p>
+<h2 id="三、-文字转语音"><a href="#三、-文字转语音" class="headerlink" title="三、 文字转语音"></a>三、 文字转语音</h2><p>刚开始想通过python的库实现本地文字转语音，在windows系统下没有问题，但树莓派3上中文无法转换。后来就找到了百度的文字转换语音API，地址：<a href="http://yuyin.baidu.com/#try" target="_blank" rel="noopener">http://yuyin.baidu.com/#try</a></p>
+<p>还可以选各种声音，调节语速。虽然它没有给出直接的api接口，但是我们利用Chrome浏览器的开发者模式可以找到api。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E5%88%A9%E7%94%A8%E7%88%AC%E8%99%AB%E5%92%8C%E6%A0%91%E8%8E%93%E6%B4%BE%E6%89%93%E9%80%A0%E8%90%9D%E8%8E%89%E9%9F%B3%E5%A4%A9%E6%B0%94%E9%97%B9%E9%92%9F.png" srcset="/img/loading.gif" alt="百度语音识别"></p>
 <p>打开开发者模式，点击播放的按钮，在network里就可以找到刚刚发出的请求。</p>
 <p><a href="http://tts.baidu.com/text2audio?idx=1&amp;tex=1&amp;cuid=baidu_speech_demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=5&amp;per=4&amp;vol=5&amp;pit=5" target="_blank" rel="noopener">http://tts.baidu.com/text2audio?idx=1&amp;tex=1&amp;cuid=baidu_speech_demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=5&amp;per=4&amp;vol=5&amp;pit=5</a></p>
 <p>就我们要找的百度文字转语音API,其中per是参数是语音的类型，spd是语速，vol是音量，而tex则是需要转换的文字。通过以下代码就可以实现将特定的文字转换为语音。</p>
-<pre><code class="language-PY">import os
-  
-url = u'http://tts.baidu.com/text2audio?idx=1&amp;tex={0}&amp;cuid=baidu_speech_' \
-      u'demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=4&amp;per=4&amp;vol=5&amp;pit=5'.format(text)
-os.system('mplayer &quot;%s&quot;' % url)
-</code></pre>
-<h2 id="四、-代码">四、 代码</h2>
-<p>numtozh()函数专门转换数字为中文。最后所有的代码整合起来就是这样啦。</p>
-<pre><code class="language-sh"># 新建weather_voice.py文件
+<pre><code class="PY">import os
+
+url = u&#39;http://tts.baidu.com/text2audio?idx=1&amp;tex={0}&amp;cuid=baidu_speech_&#39; \
+      u&#39;demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=4&amp;per=4&amp;vol=5&amp;pit=5&#39;.format(text)
+os.system(&#39;mplayer &quot;%s&quot;&#39; % url)</code></pre>
+<h2 id="四、-代码"><a href="#四、-代码" class="headerlink" title="四、 代码"></a>四、 代码</h2><p>numtozh()函数专门转换数字为中文。最后所有的代码整合起来就是这样啦。</p>
+<pre><code class="sh"># 新建weather_voice.py文件
 touch weather_voice.py
 # 黏贴如下代码
-nano weather_voice.py
-</code></pre>
-<pre><code class="language-py"># -*- coding: utf-8 -*-
+nano weather_voice.py</code></pre>
+<pre><code class="py"># -*- coding: utf-8 -*-
 # !/usr/bin/python3
 
 import os
@@ -243,84 +235,84 @@ from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 
 headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit'
-                  '/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safar'
-                  'i/537.36',
+    &#39;User-Agent&#39;: &#39;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit&#39;
+                  &#39;/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safar&#39;
+                  &#39;i/537.36&#39;,
 }
 
 
 def numtozh(num):
-    num_dict = {1: '一', 2: '二', 3: '三', 4: '四', 5: '五', 6: '六', 7: '七',
-                8: '八', 9: '九', 0: '零'}
+    num_dict = {1: &#39;一&#39;, 2: &#39;二&#39;, 3: &#39;三&#39;, 4: &#39;四&#39;, 5: &#39;五&#39;, 6: &#39;六&#39;, 7: &#39;七&#39;,
+                8: &#39;八&#39;, 9: &#39;九&#39;, 0: &#39;零&#39;}
     num = int(num)
     if 100 &lt;= num &lt; 1000:
         b_num = num // 100
         s_num = (num - b_num * 100) // 10
         g_num = (num - b_num * 100) % 10
         if g_num == 0 and s_num == 0:
-            num = '%s百' % (num_dict[b_num])
+            num = &#39;%s百&#39; % (num_dict[b_num])
         elif s_num == 0:
-            num = '%s百%s%s' % (num_dict[b_num], num_dict.get(s_num, ''), num_dict.get(g_num, ''))
+            num = &#39;%s百%s%s&#39; % (num_dict[b_num], num_dict.get(s_num, &#39;&#39;), num_dict.get(g_num, &#39;&#39;))
         elif g_num == 0:
-            num = '%s百%s十' % (num_dict[b_num], num_dict.get(s_num, ''))
+            num = &#39;%s百%s十&#39; % (num_dict[b_num], num_dict.get(s_num, &#39;&#39;))
         else:
-            num = '%s百%s十%s' % (num_dict[b_num], num_dict.get(s_num, ''), num_dict.get(g_num, ''))
+            num = &#39;%s百%s十%s&#39; % (num_dict[b_num], num_dict.get(s_num, &#39;&#39;), num_dict.get(g_num, &#39;&#39;))
     elif 10 &lt;= num &lt; 100:
         s_num = num // 10
         g_num = (num - s_num * 10) % 10
         if g_num == 0:
-            g_num = ''
-        num = '%s十%s' % (num_dict[s_num], num_dict.get(g_num, ''))
+            g_num = &#39;&#39;
+        num = &#39;%s十%s&#39; % (num_dict[s_num], num_dict.get(g_num, &#39;&#39;))
     elif 0 &lt;= num &lt; 10:
         g_num = num
-        num = '%s' % (num_dict[g_num])
+        num = &#39;%s&#39; % (num_dict[g_num])
     elif -10 &lt; num &lt; 0:
         g_num = -num
-        num = '零下%s' % (num_dict[g_num])
+        num = &#39;零下%s&#39; % (num_dict[g_num])
     elif -100 &lt; num &lt;= -10:
         num = -num
         s_num = num // 10
         g_num = (num - s_num * 10) % 10
         if g_num == 0:
-            g_num = ''
-        num = '零下%s十%s' % (num_dict[s_num], num_dict.get(g_num, ''))
+            g_num = &#39;&#39;
+        num = &#39;零下%s十%s&#39; % (num_dict[s_num], num_dict.get(g_num, &#39;&#39;))
     return num
 
 
 def get_weather():
     # 下载墨迹天气主页源码
-    res = requests.get('http://tianqi.moji.com/', headers=headers)
+    res = requests.get(&#39;http://tianqi.moji.com/&#39;, headers=headers)
     # 用BeautifulSoup获取所需信息
     soup = BeautifulSoup(res.text, &quot;html.parser&quot;)
-    temp = soup.find('div', attrs={'class': 'wea_weather clearfix'}).em.getText()
+    temp = soup.find(&#39;div&#39;, attrs={&#39;class&#39;: &#39;wea_weather clearfix&#39;}).em.getText()
     temp = numtozh(int(temp))
-    weather = soup.find('div', attrs={'class': 'wea_weather clearfix'}).b.getText()
-    sd = soup.find('div', attrs={'class': 'wea_about clearfix'}).span.getText()
-    sd_num = re.search(r'\d+', sd).group()
+    weather = soup.find(&#39;div&#39;, attrs={&#39;class&#39;: &#39;wea_weather clearfix&#39;}).b.getText()
+    sd = soup.find(&#39;div&#39;, attrs={&#39;class&#39;: &#39;wea_about clearfix&#39;}).span.getText()
+    sd_num = re.search(r&#39;\d+&#39;, sd).group()
     sd_num_zh = numtozh(int(sd_num))
     sd = sd.replace(sd_num, sd_num_zh)
-    wind = soup.find('div', attrs={'class': 'wea_about clearfix'}).em.getText()
-    aqi = soup.find('div', attrs={'class': 'wea_alert clearfix'}).em.getText()
-    aqi_num = re.search(r'\d+', aqi).group()
+    wind = soup.find(&#39;div&#39;, attrs={&#39;class&#39;: &#39;wea_about clearfix&#39;}).em.getText()
+    aqi = soup.find(&#39;div&#39;, attrs={&#39;class&#39;: &#39;wea_alert clearfix&#39;}).em.getText()
+    aqi_num = re.search(r&#39;\d+&#39;, aqi).group()
     aqi_num_zh = numtozh(int(aqi_num))
-    aqi = aqi.replace(aqi_num, aqi_num_zh).replace(' ', ',空气质量')
-    info = soup.find('div', attrs={'class': 'wea_tips clearfix'}).em.getText()
-    sd = sd.replace(' ', '百分之').replace('%', '')
-    aqi = 'aqi' + aqi
-    info = info.replace('，', ',')
+    aqi = aqi.replace(aqi_num, aqi_num_zh).replace(&#39; &#39;, &#39;,空气质量&#39;)
+    info = soup.find(&#39;div&#39;, attrs={&#39;class&#39;: &#39;wea_tips clearfix&#39;}).em.getText()
+    sd = sd.replace(&#39; &#39;, &#39;百分之&#39;).replace(&#39;%&#39;, &#39;&#39;)
+    aqi = &#39;aqi&#39; + aqi
+    info = info.replace(&#39;，&#39;, &#39;,&#39;)
     # 获取今天的日期
-    today = datetime.now().date().strftime('%Y年%m月%d日')
+    today = datetime.now().date().strftime(&#39;%Y年%m月%d日&#39;)
     # 将获取的信息拼接成一句话
-    text = '早上好！今天是%s,天气%s,温度%s摄氏度,%s,%s,%s,%s' % \
+    text = &#39;早上好！今天是%s,天气%s,温度%s摄氏度,%s,%s,%s,%s&#39; % \
            (today, weather, temp, sd, wind, aqi, info)
     return text
 
 
 def text2voice(text):
-    url = 'http://tts.baidu.com/text2audio?idx=1&amp;tex={0}&amp;cuid=baidu_speech_' \
-          'demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=4&amp;per=4&amp;vol=5&amp;pit=5'.format(text)
+    url = &#39;http://tts.baidu.com/text2audio?idx=1&amp;tex={0}&amp;cuid=baidu_speech_&#39; \
+          &#39;demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=4&amp;per=4&amp;vol=5&amp;pit=5&#39;.format(text)
     # 直接播放语音
-    os.system('mplayer &quot;%s&quot;' % url)
+    os.system(&#39;mplayer &quot;%s&quot;&#39; % url)
 
 
 def main():
@@ -328,18 +320,16 @@ def main():
     text = get_weather()
     print(text)
     # 获取音乐文件绝对地址
-    mp3path2 = os.path.join(os.path.dirname(__file__), '2.mp3')
+    mp3path2 = os.path.join(os.path.dirname(__file__), &#39;2.mp3&#39;)
     # 先播放渔舟唱晚cut版做为闹钟
-    os.system('mplayer %s' % &quot;http://m7.music.126.net/20200321204545/92ef85b98df3233ebcf66b41529b1e0c/ymusic/714d/2975/d488/bcfd91fa30f23266c7151fbf43052634.mp3&quot;)
+    os.system(&#39;mplayer %s&#39; % &quot;http://m7.music.126.net/20200321204545/92ef85b98df3233ebcf66b41529b1e0c/ymusic/714d/2975/d488/bcfd91fa30f23266c7151fbf43052634.mp3&quot;)
     # 播报语音天气
     text2voice(text)
 
 
-if __name__ == '__main__':
-    main()
-</code></pre>
-<h2 id="五、-定时任务">五、 定时任务</h2>
-<p>输入如下命令添加定时任务。</p>
+if __name__ == &#39;__main__&#39;:
+    main()</code></pre>
+<h2 id="五、-定时任务"><a href="#五、-定时任务" class="headerlink" title="五、 定时任务"></a>五、 定时任务</h2><p>输入如下命令添加定时任务。</p>
 <p><code>crontab -e</code></p>
 <p>每天8点语音天气。假设你的<code>weather_voice.py</code>绝对路径为<code>/home/pi/Documents/weather_voice.py</code>，则文末添加一句：</p>
 <p><code>0 8 * * * /usr/bin/python3 /home/pi/Documents/weather_voice.py</code></p>
@@ -365,9 +355,9 @@ if __name__ == '__main__':
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/python">python</a>
-                
                   <a class="hover-with-bg" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE">树莓派</a>
+                
+                  <a class="hover-with-bg" href="/tags/python">python</a>
                 
               </span>
             

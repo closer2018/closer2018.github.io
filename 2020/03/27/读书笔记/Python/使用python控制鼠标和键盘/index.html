@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    1.3k 字
+                    1.5k 字
                   </span>&nbsp;
                 
 
@@ -147,7 +147,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      5 分钟
+                      6 分钟
                   </span>&nbsp;
                 
 
@@ -189,23 +189,18 @@
 <li>定位应用程序的窗口,和移动,调整,最大化、最小化、关闭(仅适用于windows,目前)</li>
 <li>显示消息框进行用户交互,而您的GUI自动化脚本运行。</li>
 </ul>
-<h2 id="一：-安装pyautogui库">一： 安装pyautogui库</h2>
-<p><code>pip3 install pyautogui</code></p>
+<h2 id="一：-安装pyautogui库"><a href="#一：-安装pyautogui库" class="headerlink" title="一： 安装pyautogui库"></a>一： 安装pyautogui库</h2><p><code>pip3 install pyautogui</code></p>
 <p><strong>ubuntu系统，可能需要<code>sudo apt-get install python3-tk python3-dev</code>，如果安装不上，请参考<a href="https://pyautogui.readthedocs.io/en/latest/install.html" target="_blank" rel="noopener">官方文档如何安装</a></strong></p>
-<h2 id="二：-使用方法">二： 使用方法</h2>
-<p><a href="https://pyautogui.readthedocs.io/en/latest/" target="_blank" rel="noopener">官方文档</a></p>
-<h3 id="2-1-常规功能">2.1 常规功能</h3>
-<pre><code class="language-py">&gt;&gt;&gt; import pyautogui
+<h2 id="二：-使用方法"><a href="#二：-使用方法" class="headerlink" title="二： 使用方法"></a>二： 使用方法</h2><p><a href="https://pyautogui.readthedocs.io/en/latest/" target="_blank" rel="noopener">官方文档</a></p>
+<h3 id="2-1-常规功能"><a href="#2-1-常规功能" class="headerlink" title="2.1 常规功能"></a>2.1 常规功能</h3><pre><code class="py">&gt;&gt;&gt; import pyautogui
 &gt;&gt;&gt; pyautogui.position()  # 当前鼠标 x， y坐标
 (968, 56)
 &gt;&gt;&gt; pyautogui.size()  # 当前屏幕分辨率宽和高
 (1920, 1080)
 &gt;&gt;&gt; pyautogui.onScreen(x, y)  # 鼠标坐标x且y，在屏幕内
 True
-&gt;&gt;&gt; pyautogui.PAUSE = 2.5 # 在每次PyAutoGUI调用之后设置2.5秒的暂停：
-</code></pre>
-<h3 id="2-2-鼠标功能">2.2 鼠标功能</h3>
-<pre><code class="language-py"># XY坐标在屏幕的左上角具有0、0的原点。X向右增加，Y向向下增加。
+&gt;&gt;&gt; pyautogui.PAUSE = 2.5 # 在每次PyAutoGUI调用之后设置2.5秒的暂停：</code></pre>
+<h3 id="2-2-鼠标功能"><a href="#2-2-鼠标功能" class="headerlink" title="2.2 鼠标功能"></a>2.2 鼠标功能</h3><pre><code class="py"># XY坐标在屏幕的左上角具有0、0的原点。X向右增加，Y向向下增加。
 
 # 移动鼠标
 &gt;&gt;&gt; pyautogui.moveTo(x, y, duration=num_seconds)  # num秒内移动鼠标到XY坐标
@@ -220,10 +215,10 @@ True
 
 # 点击鼠标
 # 调用click()即在鼠标的当前位置左键单击一次，但是关键字参数可以改变它：
-&gt;&gt;&gt; pyautogui.click(x=moveToX, y=moveToY, clicks=num_of_clicks, interval=secs_between_clicks, button='left')
+&gt;&gt;&gt; pyautogui.click(x=moveToX, y=moveToY, clicks=num_of_clicks, interval=secs_between_clicks, button=&#39;left&#39;)
 # clicks关键字控制点击次数;interval关键字控制点击时间间隔。
-# 该button关键字参数可以是'left'，'middle'或'right'。即左击，中击，右击。
-# 例：pyautogui.click(300, 200,clicks=2,interval=3,button='right')
+# 该button关键字参数可以是&#39;left&#39;，&#39;middle&#39;或&#39;right&#39;。即左击，中击，右击。
+# 例：pyautogui.click(300, 200,clicks=2,interval=3,button=&#39;right&#39;)
 
 # 右击，中击及双、三击
 &gt;&gt;&gt; pyautogui.rightClick(x=moveToX, y=moveToY)
@@ -237,80 +232,69 @@ True
 # 例： pyautogui.scroll(-10) 
 
 # 鼠标按下或者弹起：
-&gt;&gt;&gt; pyautogui.mouseDown(x=moveToX, y=moveToY, button='left')
-&gt;&gt;&gt; pyautogui.mouseUp(x=moveToX, y=moveToY, button='left')
-</code></pre>
-<h3 id="2-3-键盘功能">2.3 键盘功能</h3>
-<pre><code class="language-py"># 在键盘光标所在的位置按键。
+&gt;&gt;&gt; pyautogui.mouseDown(x=moveToX, y=moveToY, button=&#39;left&#39;)
+&gt;&gt;&gt; pyautogui.mouseUp(x=moveToX, y=moveToY, button=&#39;left&#39;)</code></pre>
+<h3 id="2-3-键盘功能"><a href="#2-3-键盘功能" class="headerlink" title="2.3 键盘功能"></a>2.3 键盘功能</h3><pre><code class="py"># 在键盘光标所在的位置按键。
 
 # 输入字符串
-&gt;&gt;&gt; pyautogui.write('Hello world!\n', interval=secs_between_keys)  # 用于输入文本，回车换行
+&gt;&gt;&gt; pyautogui.write(&#39;Hello world!\n&#39;, interval=secs_between_keys)  # 用于输入文本，回车换行
 # interval是字母输入间隔时间
 
 # 依次按下键盘
 # 也可以传递键名列表：
-&gt;&gt;&gt; pyautogui.write(['a', 'b', 'c', 'left', 'backspace', 'enter', 'f1'], interval=secs_between_keys)
+&gt;&gt;&gt; pyautogui.write([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;left&#39;, &#39;backspace&#39;, &#39;enter&#39;, &#39;f1&#39;], interval=secs_between_keys)
 # 键名的完整列表在pyautogui.KEYBOARD_KEYS中。
-# 例： pyautogwrite(['a', 'b', 'c'], interval=0.25)
+# 例： pyautogwrite([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;], interval=0.25)
 
 # 多次按键
-&gt;&gt;&gt; pyautogui.press(['left', 'left', 'left'])
+&gt;&gt;&gt; pyautogui.press([&#39;left&#39;, &#39;left&#39;, &#39;left&#39;])
 # 或者你可以设置按多少次左键 :
-&gt;&gt;&gt; pyautogui.press('1', presses=3)
+&gt;&gt;&gt; pyautogui.press(&#39;1&#39;, presses=3)
 
 # 键盘快捷键（如Ctrl-S或Ctrl-Shift-1）可以通过将键名列表传递给来完成hotkey()：
-&gt;&gt;&gt; pyautogui.hotkey('ctrl', 'c')  # ctrl-c to copy
-&gt;&gt;&gt; pyautogui.hotkey('ctrl', 'v')  # ctrl-v to paste
+&gt;&gt;&gt; pyautogui.hotkey(&#39;ctrl&#39;, &#39;c&#39;)  # ctrl-c to copy
+&gt;&gt;&gt; pyautogui.hotkey(&#39;ctrl&#39;, &#39;v&#39;)  # ctrl-v to paste
 
 # 键盘按下和弹起可以分别调用：
 &gt;&gt;&gt; pyautogui.keyDown(key_name)
-&gt;&gt;&gt; pyautogui.keyUp(key_name)
-</code></pre>
-<h3 id="2-4-消息框的功能">2.4 消息框的功能</h3>
-<pre><code class="language-py"># PyAutoGUI利用PyMsgBox消息框功能提供跨平台的,纯Python方法显示javascript式消息框。 有四个消息框功能。
+&gt;&gt;&gt; pyautogui.keyUp(key_name)</code></pre>
+<h3 id="2-4-消息框的功能"><a href="#2-4-消息框的功能" class="headerlink" title="2.4 消息框的功能"></a>2.4 消息框的功能</h3><pre><code class="py"># PyAutoGUI利用PyMsgBox消息框功能提供跨平台的,纯Python方法显示javascript式消息框。 有四个消息框功能。
 
 # alert显示()函数 
-&gt;&gt;&gt; alert(text='', title='', button='OK')
+&gt;&gt;&gt; alert(text=&#39;&#39;, title=&#39;&#39;, button=&#39;OK&#39;)
 # 显示一个简单的消息框,文本和一个OK按钮。 返回文本的按钮点击。
-# 例：pyautogui.alert('这将显示一些文本和OK按钮.')
+# 例：pyautogui.alert(&#39;这将显示一些文本和OK按钮.&#39;)
 
 # confirm确认()函数 
-&gt;&gt;&gt; confirm(text='', title='', buttons=['OK', 'Cancel'])
+&gt;&gt;&gt; confirm(text=&#39;&#39;, title=&#39;&#39;, buttons=[&#39;OK&#39;, &#39;Cancel&#39;])
 # 显示一个消息框好和取消按钮。 数量和文本的按钮可以定制。 返回文本的按钮点击。
-# 例： pyautogui.confirm('显示文本和OK及取消键。')
+# 例： pyautogui.confirm(&#39;显示文本和OK及取消键。&#39;)
 
 # prompt提示()函数 
-&gt;&gt;&gt; prompt(text='', title='' , default='')
+&gt;&gt;&gt; prompt(text=&#39;&#39;, title=&#39;&#39; , default=&#39;&#39;)
 # 显示一个消息框,文本输入,OK和Cancel按钮。 返回输入的文本,或没有,如果点击取消。
-# 例： pyautogui.prompt(text='显示文本输入框，OK及取消键', title='标题' , default='')
+# 例： pyautogui.prompt(text=&#39;显示文本输入框，OK及取消键&#39;, title=&#39;标题&#39; , default=&#39;&#39;)
 
 # password密码()函数 
-&gt;&gt;&gt; password(text='', title='', default='', mask='*')
+&gt;&gt;&gt; password(text=&#39;&#39;, title=&#39;&#39;, default=&#39;&#39;, mask=&#39;*&#39;)
 # 显示一个消息框,文本输入,OK和Cancel按钮。 输入字符显示为 * 。 返回输入的文本,或没有,如果点击取消。
-# 例： pyautogui.password(text='显示文本输入框，OK及取消键', title='标题' , default='默认密码' , mask='*')
-</code></pre>
-<h3 id="2-5-屏幕截图功能">2.5 屏幕截图功能</h3>
-<p>在ubuntu系统中支持的不是很好，比较复杂。<br>
-<a href="https://pyautogui.readthedocs.io/en/latest/screenshot.html" target="_blank" rel="noopener">具体参照官方文档</a></p>
+# 例： pyautogui.password(text=&#39;显示文本输入框，OK及取消键&#39;, title=&#39;标题&#39; , default=&#39;默认密码&#39; , mask=&#39;*&#39;)</code></pre>
+<h3 id="2-5-屏幕截图功能"><a href="#2-5-屏幕截图功能" class="headerlink" title="2.5 屏幕截图功能"></a>2.5 屏幕截图功能</h3><p>在ubuntu系统中支持的不是很好，比较复杂。<br><a href="https://pyautogui.readthedocs.io/en/latest/screenshot.html" target="_blank" rel="noopener">具体参照官方文档</a></p>
 <p>还可以根据色块或图片返回对应的坐标。这个就比较强大啦。比如可以制作自动游戏脚本等等。</p>
-<h2 id="三：-实战演练">三： 实战演练</h2>
-<h3 id="3-1-实时显示鼠标位置">3.1 实时显示鼠标位置</h3>
-<pre><code class="language-py">#!/usr/bin/python3
+<h2 id="三：-实战演练"><a href="#三：-实战演练" class="headerlink" title="三： 实战演练"></a>三： 实战演练</h2><h3 id="3-1-实时显示鼠标位置"><a href="#3-1-实时显示鼠标位置" class="headerlink" title="3.1 实时显示鼠标位置"></a>3.1 实时显示鼠标位置</h3><pre><code class="py">#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 import pyautogui, sys
-print('Press Ctrl-C to quit.')
+print(&#39;Press Ctrl-C to quit.&#39;)
 try:
     while True:
         x, y = pyautogui.position()
-        positionStr = 'X: ' + str(x).rjust(4) + ' Y: ' + str(y).rjust(4)
-        print(positionStr, end='')
-        print('\b' * len(positionStr), end='', flush=True)
+        positionStr = &#39;X: &#39; + str(x).rjust(4) + &#39; Y: &#39; + str(y).rjust(4)
+        print(positionStr, end=&#39;&#39;)
+        print(&#39;\b&#39; * len(positionStr), end=&#39;&#39;, flush=True)
 except KeyboardInterrupt:
-    print('\n')
-</code></pre>
-<h3 id="3-2-画图软件中画出方形螺旋图">3.2 画图软件中画出方形螺旋图</h3>
-<pre><code class="language-py">#!/usr/bin/python3
+    print(&#39;\n&#39;)</code></pre>
+<h3 id="3-2-画图软件中画出方形螺旋图"><a href="#3-2-画图软件中画出方形螺旋图" class="headerlink" title="3.2 画图软件中画出方形螺旋图"></a>3.2 画图软件中画出方形螺旋图</h3><pre><code class="py">#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 import pyautogui
@@ -321,8 +305,7 @@ while distance &gt; 0:
         pyautogui.drag(0, distance, duration=0.5)   # move down
         pyautogui.drag(-distance, 0, duration=0.5)  # move left
         distance -= 5
-        pyautogui.drag(0, -distance, duration=0.5)  # move up
-</code></pre>
+        pyautogui.drag(0, -distance, duration=0.5)  # move up</code></pre>
 
             <hr>
           </div>

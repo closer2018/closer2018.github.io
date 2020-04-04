@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    179 字
+                    205 字
                   </span>&nbsp;
                 
 
@@ -182,7 +182,8 @@
           <div class="markdown-body">
             <p><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python%2Bexcel.jpg" srcset="/img/loading.gif" alt="python+excel"></p>
 <a id="more"></a>
-<pre><code class="language-py">#!/usr/bin/python
+
+<pre><code class="py">#!/usr/bin/python
 # -*- coding: utf-8 -*-
 from openpyxl import load_workbook
 
@@ -200,13 +201,13 @@ def str_A_cut_B(a, b):
 # f = open(&quot;output.txt&quot;, &quot;w&quot;)
 
 # 打开excel名为test
-wb = load_workbook(filename='test.xlsx')
+wb = load_workbook(filename=&#39;test.xlsx&#39;)
 
 # 打开工作表Sheet1
-sheet = wb['Sheet1']
+sheet = wb[&#39;Sheet1&#39;]
 
 for i in range(2, 36):
-    temp = 'C' + str(i)
+    temp = &#39;C&#39; + str(i)
 
     # 将temp单元格的内容存入str1
     str1 = sheet[temp].value
@@ -217,15 +218,14 @@ for i in range(2, 36):
     if str1:
         # 输出格式
         for j in range(len(z)):
-            print(z[j], end=' ')  # 不换行输出
-            # print(z[j], end=' ', file=f)
-        print('\n', end='')
-        # print('\n', end='', file=f)
+            print(z[j], end=&#39; &#39;)  # 不换行输出
+            # print(z[j], end=&#39; &#39;, file=f)
+        print(&#39;\n&#39;, end=&#39;&#39;)
+        # print(&#39;\n&#39;, end=&#39;&#39;, file=f)
     else:
-        print('\n', end='')
-        # print('\n', end='', file=f)
-# f.close()
-</code></pre>
+        print(&#39;\n&#39;, end=&#39;&#39;)
+        # print(&#39;\n&#39;, end=&#39;&#39;, file=f)
+# f.close()</code></pre>
 
             <hr>
           </div>
