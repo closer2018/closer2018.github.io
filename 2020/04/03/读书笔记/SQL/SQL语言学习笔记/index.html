@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    4.9k 字
+                    6.7k 字
                   </span>&nbsp;
                 
 
@@ -147,7 +147,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      19 分钟
+                      27 分钟
                   </span>&nbsp;
                 
 
@@ -613,7 +613,7 @@ CREATE TABLE #local temp table (
 )</code></pre>
 <p>② 全局临时变量</p>
 <pre><code class="SQL">/*全局临时表名称以双哈希(##)开头。 创建此表后，它就像一个永久表。 它始终为所有用户准备好，并且在撤消总连接之前不会被删除。*/
-REATE TABLE ##new global temp table (  
+cREATE TABLE ##new global temp table (  
     User_id int,  
     User_name varchar (50),  
     User_address varchar (150)  </code></pre>
@@ -868,8 +868,289 @@ WHERE
             employees
         ORDER BY salary DESC
         LIMIT 1 , 1);</code></pre>
-<h3 id="5-5-FETCH语句"><a href="#5-5-FETCH语句" class="headerlink" title="5.5 FETCH语句"></a>5.5 FETCH语句</h3><p>功能和<code>LIMIT</code>一样，建议使用<code>LIMIT</code>。</p>
+<h3 id="5-5-ALL-ANY-SOME语句"><a href="#5-5-ALL-ANY-SOME语句" class="headerlink" title="5.5 ALL,ANY,SOME语句"></a>5.5 ALL,ANY,SOME语句</h3><p>SQL <code>ALL</code>与集合中所有元素比较；<code>ANY</code>和<code>SOME</code>与集合中的某些元素比较。</p>
+<pre><code class="SQL">/*示例1--找出所有 工资至少比生物系一个教师的工资要高 的教师*/
+SELECT name
+FROM instructor
+WHERE salary &gt; SOME(SELECT salary
+                    FROM instructor
+                    WHERE dept_name=&#39;Biology&#39;);
 
+/*示例2--找出平均工资最高的系*/
+SELECT dept_name
+FROM instructor
+GROUP BY dept_name
+having avg(salary) &gt;= ALL(SELECT avg(salary)
+                          FROM instructor
+                          GROUP BY dept_name);</code></pre>
+<h3 id="5-6-BETWEEN-IN-LIKE-NULL"><a href="#5-6-BETWEEN-IN-LIKE-NULL" class="headerlink" title="5.6 BETWEEN | IN | LIKE | NULL"></a>5.6 BETWEEN | IN | LIKE | NULL</h3><h4 id="5-6-1-BETWEEN"><a href="#5-6-1-BETWEEN" class="headerlink" title="5.6.1 BETWEEN"></a>5.6.1 BETWEEN</h4><p>SQL <code>BETWEEN</code>运算符选择指定范围内的值。</p>
+<pre><code class="SQL">--语法格式
+expression BETWEEN low AND high;
+expression NOT BETWEEN low AND high;
+
+/*示例*/
+SELECT
+    employee_id, first_name, last_name, hire_date
+FROM
+    employees
+WHERE
+    hire_date BETWEEN &#39;1999-01-01&#39; AND &#39;2000-12-31&#39;
+ORDER BY hire_date;
+
+/*1. BETWEEN运算符需要低值和高值。如果低值大于高值，将得到一个空的结果集。
+2. 2000-12-31默认为2000-12-31  00:00:00.000000*/</code></pre>
+<h4 id="5-6-2-IN"><a href="#5-6-2-IN" class="headerlink" title="5.6.2 IN"></a>5.6.2 IN</h4><p>SQL <code>IN</code>运算符将列中的值与括号内的一组值进行比较。<br>要比较连续的值可用<code>LIMIT</code>，比如5-100。</p>
+<pre><code class="SQL">--语法格式
+expression IN (value1,value2,...)
+expression NOT IN (value1, value2,...)
+
+/*示例--查找工作ID不是8,9或10的所有员工*/
+SELECT
+    employee_id, first_name, last_name, job_id
+FROM
+    employees
+WHERE
+    job_id NOT IN (8, 9, 10)
+ORDER BY
+    job_id;</code></pre>
+<h4 id="5-6-3-LIKE"><a href="#5-6-3-LIKE" class="headerlink" title="5.6.3 LIKE"></a>5.6.3 LIKE</h4><p>SQL <code>LIKE</code>运算符来测试表达式是否与模式匹配。</p>
+<p>要构造模式，请使用两个SQL通配符：</p>
+<ul>
+<li><code>%</code> 百分号匹配零个，一个或多个字符。</li>
+<li><code>_</code> 下划线符号匹配单个字符</li>
+</ul>
+<p>下表说明了一些模式及其含义：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LIKE ‘Yii%’</td>
+<td>匹配以Yii开始的字符串</td>
+</tr>
+<tr>
+<td>LIKE ‘%su’</td>
+<td>匹配以su结尾的字符串</td>
+</tr>
+<tr>
+<td>LIKE ‘%ch%</td>
+<td>匹配包含ch的字符串</td>
+</tr>
+<tr>
+<td>LIKE ‘Luc_’</td>
+<td>以Luc开始，后面只有一个字符，例如：Lucy，LucC等</td>
+</tr>
+<tr>
+<td>LIKE ‘_cy’</td>
+<td>以cy结尾，前面只有一个字符，例如：Lcy，ucy等</td>
+</tr>
+<tr>
+<td>LIKE ‘%yiiBai_’</td>
+<td>包含yiiBai，以任意数量的字符开头，最多以一个字符结尾。</td>
+</tr>
+<tr>
+<td>LIKE ‘_yiiBai%’</td>
+<td>包含yiiBai，最多以一个字符开头，以任意数量的字符结尾。</td>
+</tr>
+</tbody></table>
+<pre><code class="SQL">--语法格式
+expression LIKE pattern
+
+/*如果要匹配通配符%或_，则必须使用反斜杠字符\来对其进行转义。 如果要使用其它的转义字符而不是反斜杠，可以在LIKE表达式中使用ESCAPE子句，如下所示：*/
+expression LIKE pattern ESCAPE escape_character
+
+/*示例--要查找名字以M开头但不以Ma开头的所有员工，请使用以下语句：*/
+SELECT
+    employee_id, first_name, last_name
+FROM
+    employees
+WHERE
+    first_name LIKE &#39;M%&#39;
+AND first_name NOT LIKE &#39;Ma%&#39;
+ORDER BY
+    first_name;</code></pre>
+<h4 id="5-6-4-NULL"><a href="#5-6-4-NULL" class="headerlink" title="5.6.4 NULL"></a>5.6.4 NULL</h4><p>使用SQL <code>IS NULL</code>和<code>IS NOT NULL</code>运算符来测试表达式是否为<code>NULL</code>。</p>
+<p><code>NULL</code>表示数据未知的值，在数据库中缺少数据。</p>
+<pre><code class="SQL">--语法格式
+expression IS NULL;
+
+/*示例--查找具有电话号码的所有员工，请使用IS NOT NULL，如以下语句所示：*/
+SELECT
+    employee_id,
+    first_name,
+    last_name,
+    phone_number
+FROM
+    employees
+WHERE
+    phone_number IS NOT NULL;</code></pre>
+<p>注意：</p>
+<ol>
+<li>不能使用比较运算符的等于(=)将值与<code>NULL</code>值进行比较</li>
+<li><code>NULL</code>值是特殊的，任何与<code>NULL</code>值的比较都不会返回<code>true</code>或<code>false</code>，而是返回未知</li>
+</ol>
+<h3 id="5-7-SQL别名"><a href="#5-7-SQL别名" class="headerlink" title="5.7 SQL别名"></a>5.7 SQL别名</h3><p>SQL别名，包括表和列别名，使查询更短，更易理解。</p>
+<p>使用关键词<code>AS</code>，可省略。</p>
+<h4 id="5-7-1-列别名"><a href="#5-7-1-列别名" class="headerlink" title="5.7.1 列别名"></a>5.7.1 列别名</h4><pre><code class="SQL">/*示例*/
+SELECT
+    inv_no AS invoice_no,
+    amount,
+    due_date AS &#39;截止日期&#39;,
+    cust_no &#39;客户编号&#39;
+FROM
+    invoices;
+/*别名包含空格，必须使用单引号(&#39;)或双引号(&quot;)来包围别名。*/</code></pre>
+<h4 id="5-7-2-表别名"><a href="#5-7-2-表别名" class="headerlink" title="5.7.2 表别名"></a>5.7.2 表别名</h4><pre><code class="SQL">--语法格式
+SELECT
+    d.department_name
+FROM
+    departments AS d
+
+/*示例一--以下查询使用inner join子句从employees和departments表中选择数据。*/
+SELECT
+    employee_id,
+    first_name,
+    last_name,
+    e.department_id,
+    department_name
+FROM
+    employees e
+INNER JOIN departments d ON d.department_id = e.department_id
+ORDER BY
+    first_name;
+
+/*示例二--以下查询使用self-join将employee表自联接。*/
+SELECT
+    e.first_name AS employee,
+    m.first_name AS manager
+FROM
+    employees e
+LEFT JOIN employees m ON m.employee_id = e.manager_id
+ORDER BY
+    manager;</code></pre>
+<h3 id="5-8-JOIN操作"><a href="#5-8-JOIN操作" class="headerlink" title="5.8 JOIN操作"></a>5.8 JOIN操作</h3><p><code>SELECT</code>语句不仅能从单个表中查询数据，而且可以将多个表链接在一起。连接表的过程称为<code>Join</code>。</p>
+<p>SQL提供了多种连接，如内连接，左连接，右连接，全外连接等。</p>
+<h4 id="5-8-1-INNER-JOIN"><a href="#5-8-1-INNER-JOIN" class="headerlink" title="5.8.1 INNER JOIN"></a>5.8.1 INNER JOIN</h4><p>SQL <code>INNER JOIN</code>内连接子句来查询来自两个或多个表的数据。</p>
+<p>内连接子句消除了与另一个表的行不匹配的行，相当于交集。</p>
+<pre><code class="SQL">--语法格式
+SELECT
+  A.n
+FROM A
+INNER JOIN B ON B.n = A.n
+
+/*示例--employees表中的department_id列是将员工链接到departments表的外键列。*/
+SELECT
+    first_name,
+    last_name,
+    employees.department_id,
+    departments.department_id,
+    department_name
+FROM
+    employees
+        INNER JOIN
+    departments ON departments.department_id = employees.department_id
+WHERE
+    employees.department_id IN (1, 2, 3);
+
+--语法格式
+/*INNER JOIN子句可以连接三个或更多表，只要它们具有关系，通常是外键关系。*/
+SELECT
+  A.n
+FROM A
+INNER JOIN B ON B.n = A.n
+INNER JOIN C ON C.n = A.n;
+
+/*示例--使用内部联接子句连接3个表：员工，部门和工作岗位，以获取在部门ID为：1,2和3中工作的员工的信息。*/
+SELECT
+    first_name, last_name, job_title, department_name
+FROM
+    employees e
+INNER JOIN departments d ON d.department_id = e.department_id
+INNER JOIN jobs j ON j.job_id = e.job_id
+WHERE
+    e.department_id IN (1, 2, 3);</code></pre>
+<h4 id="5-8-2-LEFT-JOIN"><a href="#5-8-2-LEFT-JOIN" class="headerlink" title="5.8.2 LEFT JOIN"></a>5.8.2 LEFT JOIN</h4><p>左连接将返回左表中的所有行，而不管右表中是否存在匹配的行，相当于AB交集后显示A。</p>
+<pre><code class="SQL">--语法格式
+SELECT
+    A.n
+FROM
+    A
+LEFT JOIN B ON B.n = A.n;
+
+/*示例*/
+SELECT
+    c.country_name, c.country_id, l.country_id, l.street_address, l.city
+FROM
+    countries c
+LEFT JOIN locations l ON l.country_id = c.country_id
+WHERE
+    c.country_id IN (&#39;US&#39;, &#39;UK&#39;, &#39;CN&#39;)
+/*右表中的非匹配行使用NULL值填充*/</code></pre>
+<h4 id="5-8-3-FULL-OUTER-JOIN"><a href="#5-8-3-FULL-OUTER-JOIN" class="headerlink" title="5.8.3 FULL OUTER JOIN"></a>5.8.3 FULL OUTER JOIN</h4><p>完全外连接是左连接和右连接的组合。完整外连接包括连接表中的所有行，相当于并集。</p>
+<p>如果连接表中的行不匹配，则使用NULL值填充。</p>
+<pre><code class="SQL">--语法格式
+SELECT column_list
+FROM A
+FULL OUTER JOIN B ON B.n = A.n;
+
+/*示例--查找不存储任何水果的空篮子*/
+SELECT
+    basket_name,
+    fruit_name
+FROM
+    fruits
+FULL OUTER JOIN baskets ON baskets.basket_id = fruits.basket_id
+WHERE
+    fruit_name IS NULL;</code></pre>
+<h4 id="5-8-4-Cross-Join"><a href="#5-8-4-Cross-Join" class="headerlink" title="5.8.4 Cross Join"></a>5.8.4 Cross Join</h4><p>SQL <code>Cross Join</code>交叉连接是一种连接操作，它生成两个或多个表的笛卡尔积。</p>
+<pre><code class="SQL">--语法格式
+SELECT column_list
+FROM table_A
+CROSS JOIN table_B;
+/*在SQL中，假设A表有n行，而B表有m行，那么A和B表的交叉连接结果有n x m行*/
+
+/*以下语句等同于使用上面的CROSS JOIN子句的语句*/
+SELECT
+    column_list
+FROM
+    table_A,table_B;</code></pre>
+<h4 id="5-8-5-自连接"><a href="#5-8-5-自连接" class="headerlink" title="5.8.5 自连接"></a>5.8.5 自连接</h4><p>SQL自连接技术将表连接到自身。</p>
+<p>我们将一张表连接到自身来评估同一个表中其他行的行。 要执行自联接，我们使用内连接或左连接子句。</p>
+<p>因为同一张表在单个查询中出现两次，所以必须使用表别名。</p>
+<pre><code class="SQL">--语法格式
+SELECT
+    column1,
+    column2,
+    column3,
+        ...
+FROM
+    table1 A
+INNER JOIN table1 B ON B.column1 = A.column2;
+/*在此语句中，使用INNER JOIN子句将table1连接到自身。 A和B是table1的表别名。 B.column1 = A.column2是连接条件。*/
+
+/*示例一--查询每位员工的上级经理信息。*/
+SELECT
+    CONCAT(e.first_name, &#39; &#39;, e.last_name) as employee,
+    CONCAT(m.first_name, &#39; &#39;, m.last_name) as manager
+FROM
+    employees e
+        INNER JOIN
+    employees m ON m.employee_id = e.manager_id
+ORDER BY manager;
+
+/*示例二--查询每位员工的上级经理信息。包含最高领导。*/
+SELECT
+    CONCAT(e.first_name, &#39; &#39;, e.last_name) as employee,
+    CONCAT(m.first_name, &#39; &#39;, m.last_name) as manager
+FROM
+    employees e
+        LEFT JOIN
+    employees m ON m.employee_id = e.manager_id
+ORDER BY manager;</code></pre>
+<h2 id="六、聚合函数"><a href="#六、聚合函数" class="headerlink" title="六、聚合函数"></a>六、聚合函数</h2>
             <hr>
           </div>
           <br>
