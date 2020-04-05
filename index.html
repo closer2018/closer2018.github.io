@@ -169,15 +169,20 @@
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">一、SQL简介1.1 SQL是什么
+          <div class="index-text mb-1">一、SQL简介
+1.1 SQL是什么
+
 SQL是结构化查询语言，它是一种用于存储，操作和检索存储在关系数据库中的数据的计算机语言
 
-1.2 SQL命令1） DDL——数据定义语言
+1.2 SQL命令
+1） DDL——数据定义语言
+
 
 
 序号
 命令
 描述
+
 
 
 
@@ -196,12 +201,15 @@ DROP
 用于删除整个表，数据库中的表或其他对象的视图
 
 
+
 2） DML——数据操纵语言
+
 
 
 序号
 命令
 描述
+
 
 
 
@@ -225,12 +233,15 @@ DELETE
 删除记录
 
 
+
 3） DCL——数据控制语言
+
 
 
 序号
 命令
 描述
+
 
 
 
@@ -244,15 +255,18 @@ REVOKE
 撤销用户授予的权限
 
 
-1.3 数据的完整性每个RDBMS(关系型数据库)都存在以下类别的数据完整性
+
+1.3 数据的完整性
+每个RDBMS(关系型数据库)都存在以下类别的数据完整性
+
 
 实体完整性 - 表中没有重复的行。
 
+
 域完整性 - 通过限制值的类型，格式或范围，为给定列强制执行有效条目。
 
-参照完整性 - 其他记录使用(引用)导致这些行无法删除。
 
-用户</div>
+参照完整性 - 其他记录使用(引</div>
         </div>
       </a>
 
@@ -309,15 +323,18 @@ PyAutoGUI的五个特点:
 定位应用程序的窗口,和移动,调整,最大化、最小化、关闭(仅适用于windows,目前)
 显示消息框进行用户交互,而您的GUI自动化脚本运行。
 
-一： 安装pyautogui库pip3 install pyautogui
+一： 安装pyautogui库
+pip3 install pyautogui
 ubuntu系统，可能需要sudo apt-get install python3-tk python3-dev，如果安装不上，请参考官方文档如何安装
-二： 使用方法官方文档
-2.1 常规功能&gt;&gt;&gt; import pyautogui
+二： 使用方法
+官方文档
+2.1 常规功能
+&gt;&gt;&gt; import pyautogui
 &gt;&gt;&gt; pyautogui.position()  # 当前鼠标 x， y坐标
 (968, 56)
 &gt;&gt;&gt; pyautogui.size()  # 当前屏幕分辨率宽和高
 (1920, 1080)
-&gt;&gt;&gt; pyauto</div>
+&gt;&gt;&gt; pya</div>
         </div>
       </a>
 
@@ -367,6 +384,7 @@ ubuntu系统，可能需要sudo apt-get install python3-tk python3-dev，如果�
 原帖地址
 
 一、 前期准备
+
 树莓派一个
 小音箱一对
 
@@ -376,16 +394,18 @@ http://tianqi.moji.com/
 进入墨迹天气的页面，墨迹天气会根据你的ip加载相应地区的天气。
 这次我们主要抓取温度、天气、湿度、风力、空气质量和天气提示这几个数据。
 这种小爬虫我们就使用requests和BeautifulSoup这两个超级好用的库可以快速实现。
-二、 环境首先树莓派安装python3，python3-pip和requests、beautifulsoup4两个库及mplayer软件。
+二、 环境
+首先树莓派安装python3，python3-pip和requests、beautifulsoup4两个库及mplayer软件。
 sudo apt install python3 -y
 sudo apt install python3-pip -y
 pip3 install requests
 pip3 install beautifulsoup4
 sudo apt-get install mplayer -y
+
 至于Requests和Beautiful Soup的用法这里就先不多说了，大家可以去看他们的中文文档。
 
 Requests中文wendnag
-Beautiful Soup中文文档</div>
+Beautiful Soup中</div>
         </div>
       </a>
 
@@ -404,9 +424,9 @@ Beautiful Soup中文文档</div>
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE">树莓派</a>&nbsp;
-          
             <a href="/tags/python">python</a>&nbsp;
+          
+            <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE">树莓派</a>&nbsp;
           
         
       </div>
@@ -433,19 +453,23 @@ Beautiful Soup中文文档</div>
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">前言有时候会遇到Linux的源更新速度非常的缓慢，特别是在国内使用默认的源，因为国内的网络环境，经常会出现无法更新，更新缓慢的情况。在这种情况下，更换一个更适合或者说更近，更快的软件源，会为你的Linux安装更新操作更加的流畅和顺利。
-使用系统要求：CentOS 5+、Ubuntu 14.04+、Debian 7+
+          <div class="index-text mb-1">前言
+有时候会遇到Linux的源更新速度非常的缓慢，特别是在国内使用默认的源，因为国内的网络环境，经常会出现无法更新，更新缓慢的情况。在这种情况下，更换一个更适合或者说更近，更快的软件源，会为你的Linux安装更新操作更加的流畅和顺利。
+使用
+系统要求：CentOS 5+、Ubuntu 14.04+、Debian 7+
 使用命令：
 #下载脚本
 wget git.io/superupdate.sh
 #运行脚本
 bash superupdate.sh
+
 如果第一步你出现错误或执行后无任何输出，请检查是否安装wget和ca-certificates，使用命令：
 #Debian、Ubuntu
 apt-get install -y wget &amp;&amp; apt-get install -y ca-certificates
 #CentOS
 yum install -y wget &amp;&amp; yum install -y ca-certificates
-对于Debian默认换源为Fastly CDN的mirror这个源有Fastly的加持对境外主机都有不错的速度。对于Ubuntu和 C</div>
+
+对于Debian默认换源为Fastly CDN的mirror这个源有Fastly的加持对境外主机都有不错的速度。对于Ubunt</div>
         </div>
       </a>
 
@@ -494,17 +518,27 @@ yum install -y wget &amp;&amp; yum install -y ca-certificates
           <div class="index-text mb-1">
 比较简单的方法：下载脚本，使用frp实现内网穿透
 
-本文记录如何在树莓派上如何实现反向代理，穿透内网进行远程登录和操作树莓派。本方法也适用于其他 Linux 系统和 mac osx系统，但目录上有所区别。
+本文记录如何在树莓派上如何实现反向代理，穿透内网进行远程登录和操作树莓派。本方法也适用于其他 Linux 系统和 mac osx
+系统，但目录上有所区别。
 一： 必备条件
+
 具有公网 IP 的 vps 或者云主机。
 局域网主机（如树莓派、nas）。
 
 二： 准备工作（局域网主机上操作）
-局域网主机生成密匙(如果已经生成，请跳过)打开终端，输入。ssh-keygen # 然后连续按三次Enter
-输入如下命令：ssh-copy-id -i ~/.ssh/id_rsa.pub 中文改为你的云主机用户名@中文改为你的云主机外网IP
-使pi默认可以root登录sudo passwd root # 修改pi的root密码sudo nano /etc/ssh/sshd_config找到PermitRootLogin这一行，将前面的‘#’去掉，这一行改为PermitRootLogin yes。
 
-三： 反向代理的操作原理图：
+局域网主机生成密匙(如果已经生成，请跳过)
+打开终端，输入。
+ssh-keygen # 然后连续按三次Enter
+输入如下命令：
+ssh-copy-id -i ~/.ssh/id_rsa.pub 中文改为你的云主机用户名@中文改为你的云主机外网IP
+使pi默认可以root登录
+sudo passwd root # 修改pi的root密码
+sudo nano /etc/ssh/sshd_config
+找到PermitRootLogin这一行，将前面的‘#’去掉，这一行改为PermitRootLogin yes。
+
+三： 反向代理的操作
+原理图：
 
 
 
@@ -515,10 +549,11 @@ IP
 
 
 
+
 A
 192.168.1.A
 U_a
-目标 计算机，（即树莓派），在局域网中，可以访问 A</div>
+目标 计算机，（即树莓派），在</div>
         </div>
       </a>
 
@@ -567,19 +602,25 @@ U_a
         
         <div class="index-excerpt" >
           <div class="index-text mb-1">一： 查看cookie
-查看cookie的方法：按下F12打开开发者工具。在network中可以看到请求发送的信息，在返回头中，会带有服务器提供的设置cookie的信息。在application当中，可以看到相应网站的所有cookie，并不是只有登录信息，也不是所有的网站都有cookie。
-http协议是一个无状态的协议，用到cookie和session来保存访问中的一些状态。cookie和session都是由服务器生成的，cookie将保存在浏览器的本地，session记录在服务端。
+
+查看cookie的方法：按下F12打开开发者工具。
+在network中可以看到请求发送的信息，在返回头中，会带有服务器提供的设置cookie的信息。
+在application当中，可以看到相应网站的所有cookie，并不是只有登录信息，也不是所有的网站都有cookie。
+http协议是一个无状态的协议，用到cookie和session来保存访问中的一些状态。
+cookie和session都是由服务器生成的，cookie将保存在浏览器的本地，session记录在服务端。
 cookie的几大属性
+
 name：名字（键），cookie的必须字段。
 value：值。
 domain：域。cookie的作用域名。
-path：表示路径。/表示当前域名下所有的网页都能使用该cookie。domain和path结合在一起，限定了cookie的适用范围。
+path：表示路径。/表示当前域名下所有的网页都能使用该cookie。
+domain和path结合在一起，限定了cookie的适用范围。
 expires：生命周期。限定cookie的使用时间。如果生命周期为Session的，表示只在当前这次会话中cookie有效，关闭浏览器之后立即失效。
 sessionID：本次访问的会话留下的ID号。
 
 
 
-二： 用selenium操作通</div>
+二： 用selen</div>
         </div>
       </a>
 
@@ -627,20 +668,27 @@ sessionID：本次访问的会话留下的ID号。
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">一: 修改密码及时间1.1 设置su及pi密码sudo passwd pi                   # 修改 Pi 密码  
+          <div class="index-text mb-1">一: 修改密码及时间
+1.1 设置su及pi密码
+sudo passwd pi                   # 修改 Pi 密码  
 sudo passwd root                 # 设置 root 密码
 su root                          # 切换到 root 用户  
 su pi                            # 切换到 pi 用户
-1.2 修改时间使用date 语句查看时间，如不正确，则：首先在终端中用下面的命令安装ntpdate工具
+
+1.2 修改时间
+使用date 语句查看时间，如不正确，则：首先在终端中用下面的命令安装ntpdate工具
 sudo apt install ntpdate
-启用NTP 
+启用NTP
 sudo timedatectl set-ntp true
 继续使用date语句查看时间，如不正确，则：
 sudo dpkg-reconfigure tzdata
 修改时区为Asia Shanghai，继续使用date语句查看时间并确认正确
-二: 中文环境2.1 安装中文输入法sudo apt install scim-pinyin
-2.2 配置中文环境sudo raspi-config
-按4 -&gt; 1</div>
+二: 中文环境
+2.1 安装中文输入法
+sudo apt install scim-pinyin
+2.2 配置中文环境
+sudo raspi-config
+按4 -</div>
         </div>
       </a>
 
@@ -690,28 +738,33 @@ sudo dpkg-reconfigure tzdata
 本文转载于GitHub项目Python - 100天从新手到大师
 
 一： 关系数据库概述
+
+
 数据持久化 - 将数据保存到能够长久保存数据的存储介质中，在掉电的情况下数据也不会丢失。
+
 
 数据库发展史 - 网状数据库、层次数据库、关系数据库、NoSQL数据库。
 
 1970年，IBM的研究员E.F.Codd在Communication of the ACM上发表了名为A Relational Model of Data for Large Shared Data Banks的论文，提出了关系模型的概念，奠定了关系模型的理论基础。后来Codd又陆续发表多篇文章，论述了范式理论和衡量关系系统的12条标准，用数学理论奠定了关系数据库的基础。
 
 
+
 关系数据库特点。
+
 
 理论基础：集合论和关系代数。
 
+
 具体表象：用二维表（有行和列）组织数据。
+
 
 编程语言：结构化查询语言（SQL）。
 
 
 
+
 ER模型（实体关系模型）和概念模型图。
-ER模型，全称为实体关系模型（Entity-Relationship Model），由美籍华裔计算机科学家陈品山先生提出，是概念数据模型的高层描述方式，如下图所示。
-
-
-实体 -</div>
+ER模型，全称为实体关系模型（Entity-Relationship Model），由美籍华裔计算机科学家陈品山先生提出，是概念数据模型的高层描述方式，如下图所示</div>
         </div>
       </a>
 
@@ -765,8 +818,10 @@ ER模型，全称为实体关系模型（Entity-Relationship Model），由美�
 
 说明：本文中对Linux命令的讲解都是基于名为CentOS的Linux发行版本，我自己使用的是阿里云服务器，系统版本为CentOS Linux release 7.6.1810。不同的Linux发行版本在Shell命令和工具程序上会有一些差别，但是这些差别是很小的。
 
-一： 操作系统发展史只有硬件没有软件的计算机系统被称之为“裸机”，我们很难用“裸机”来完成计算机日常的工作（如存储和运算），所以必须用特定的软件来控制硬件的工作。最靠近计算机硬件的软件是系统软件，其中最为重要的就是“操作系统”。“操作系统”是控制和管理整个计算机硬件和软件资源、实现资源分配和任务调配、为系统用户以及其他软件提供接口和环境的程序的集合。
-1.1 没有操作系统（手工操作）在计算机诞生之初没有操作系统的年代，人们先把程序纸带（或卡片）装上计算机，然后启动输入机把程序送入计算机，接着通过控制台开关启动程序运行。当程序执行完毕，打印机输出计算的结果，用户卸下并取走纸带（或卡片）。第二个用户上机，重复同样的步骤。在整个过程中用户独占机器，CPU等</div>
+一： 操作系统发展史
+只有硬件没有软件的计算机系统被称之为“裸机”，我们很难用“裸机”来完成计算机日常的工作（如存储和运算），所以必须用特定的软件来控制硬件的工作。最靠近计算机硬件的软件是系统软件，其中最为重要的就是“操作系统”。“操作系统”是控制和管理整个计算机硬件和软件资源、实现资源分配和任务调配、为系统用户以及其他软件提供接口和环境的程序的集合。
+1.1 没有操作系统（手工操作）
+在计算机诞生之初没有操作系统的年代，人们先把程序纸带（或卡片）装上计算机，然后启动输入机把程序送入计算机，接着通过控制台开关启动程序运行。当程序执行完毕，打印机输出计算的结果，用户卸下并取走纸带（或卡片）。第二个用户上机，重复同样的步骤。在整个过程中用户独占机器，CP</div>
         </div>
       </a>
 
@@ -817,7 +872,8 @@ ER模型，全称为实体关系模型（Entity-Relationship Model），由美�
           <div class="index-text mb-1">
 本文转载于GitHub项目Python - 100天从新手到大师
 
-一： 正则表达式相关知识在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需要，正则表达式就是用于描述这些规则的工具，换句话说正则表达式是一种工具，它定义了字符串的匹配模式（如何检查一个字符串是否有跟某种模式匹配的部分或者从一个字符串中将与模式匹配的部分提取出来或者替换掉）。如果你在Windows操作系统中使用过文件查找并且在指定文件名时使用过通配符（*和?），那么正则表达式也是与之类似的用来进行文本匹配的工具，只不过比起通配符正则表达式更强大，它能更精确地描述你的需求（当然你付出的代价是书写一个正则表达式比打出一个通配符要复杂得多，要知道任何给你带来好处的东西都是有代价的，就如同学习一门编程语言一样），比如你可以编写一个正则表达式，用来查找所有以0开头，后面跟着2-3个数字，然后是一个连字号“-”，最后是7或8位数字的字符串（像028-12345678或0813-7654321），这不就是国内的座机号码吗。最初计算机是为了做数学运算而诞生的，处理的信息基本上都是数值，而今天我们在日常工作中处理的</div>
+一： 正则表达式相关知识
+在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需要，正则表达式就是用于描述这些规则的工具，换句话说正则表达式是一种工具，它定义了字符串的匹配模式（如何检查一个字符串是否有跟某种模式匹配的部分或者从一个字符串中将与模式匹配的部分提取出来或者替换掉）。如果你在Windows操作系统中使用过文件查找并且在指定文件名时使用过通配符（*和?），那么正则表达式也是与之类似的用来进行文本匹配的工具，只不过比起通配符正则表达式更强大，它能更精确地描述你的需求（当然你付出的代价是书写一个正则表达式比打出一个通配符要复杂得多，要知道任何给你带来好处的东西都是有代价的，就如同学习一门编程语言一样），比如你可以编写一个正则表达式，用来查找所有以0开头，后面跟着2-3个数字，然后是一个连字号“-”，最后是7或8位数字的字符串（像028-12345678或0813-7654321），这不就是国内的座机号码吗。最初计算机是为了做数学运算而诞生的，处理的信息基本上都是数值，而今天我们在日常工作中处理</div>
         </div>
       </a>
 
