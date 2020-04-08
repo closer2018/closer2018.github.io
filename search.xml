@@ -504,14 +504,23 @@ GROUP BY store_name, transaction_date;</code></pre>
 UPDATE table_name
 SET column1 = value1,
  column2 = value2
-WHERE
-    condition;
+[WHERE
+    condition];
 /*在上面的语法中
 首先，在SET子句中指定要修改的列。 SET子句中未列出的列的值不会被修改。
 其次，指定WHERE子句中要更新的行。
 第三，WHERE子句是可选的，如果省略它，表中的所有行都将受到影响。*/
 
-/*示例1,小于3000的工资改为3000*/
+--语法格式2l
+case
+when pred1 then result1
+when pred2 then result2
+...
+when predn then resultn
+else result0
+end
+
+/*示例1--小于3000的工资改为3000*/
 UPDATE
     workers
 SET
@@ -519,7 +528,7 @@ SET
 WHERE
     salary&lt;3000;
 
-/*示例2-确保子项dependents的last_name始终与employees表中的last_name匹配*/
+/*示例2--确保子项dependents的last_name始终与employees表中的last_name匹配*/
 UPDATE dependents
 SET last_name = (
     SELECT
@@ -528,7 +537,14 @@ SET last_name = (
         employees
     WHERE
         employee_id = dependents.employee_id
-);</code></pre>
+);
+
+/*示例3--给工资超过100000美元的教师涨3%的工资，其余教师涨5%*/
+UPDATE instructor
+SET salary=case
+        when salary&lt;=100000 then salary * 1.05
+        else salary * 1.03
+end</code></pre>
 <h3 id="4-4-UPDATE-amp-JOIN语句"><a href="#4-4-UPDATE-amp-JOIN语句" class="headerlink" title="4.4 UPDATE &amp; JOIN语句"></a>4.4 UPDATE &amp; JOIN语句</h3><p><code>UPDATE JOIN</code>可使用一个表和连接条件来更新另一个表。</p>
 <pre><code class="SQL">/*假设有一个客户表，要用最新数据来更新客户表。可使用客户ID来连接在目标表和源表之间执行连接*/
 
@@ -573,7 +589,14 @@ WHERE
 DELETE FROM dependents
 WHERE
     employee_id IN (100 , 101, 102);</code></pre>
-<h2 id="五、SQL查询语句"><a href="#五、SQL查询语句" class="headerlink" title="五、SQL查询语句"></a>五、SQL查询语句</h2><h3 id="5-1-SELECT语句"><a href="#5-1-SELECT语句" class="headerlink" title="5.1 SELECT语句"></a>5.1 SELECT语句</h3><p>除了<code>SELECT</code>和<code>FROM</code>子句之外，<code>SELECT</code>语句还可以包含许多其他子句，例如 -</p>
+<h2 id="五、SQL查询语句"><a href="#五、SQL查询语句" class="headerlink" title="五、SQL查询语句"></a>五、SQL查询语句</h2><p>SQL查询语句的通用形式：</p>
+<pre><code class="SQL">select &lt;[distinct] c1，c2…&gt;
+from &lt;r1,……&gt;
+[where &lt;condition&gt;]
+[group by &lt;c1，c2.…&gt; [having &lt;cond2&gt;]]
+[order by&lt;c1[desc] ,[c2[desc|asc],…]&gt;</code></pre>
+<p>SQL查询语句执行顺序：<br><code>from→where→group（aggregate）→having→select→order by</code></p>
+<h3 id="5-1-SELECT语句"><a href="#5-1-SELECT语句" class="headerlink" title="5.1 SELECT语句"></a>5.1 SELECT语句</h3><p>除了<code>SELECT</code>和<code>FROM</code>子句之外，<code>SELECT</code>语句还可以包含许多其他子句，例如 -</p>
 <ul>
 <li><a href="https://www.yiibai.com/sql/sql-where.html" target="_blank" rel="noopener">WHERE</a> - 用于根据指定条件过滤数据</li>
 <li><a href="https://www.yiibai.com/sql/sql-order-by.html" target="_blank" rel="noopener">ORDER BY</a> - 用于对结果集进行排序</li>
@@ -1300,7 +1323,8 @@ WHERE
             salary &gt; 10000
                 AND e.department_id = d.department_id)
 ORDER BY department_name;</code></pre>
-<h2 id="八、约束"><a href="#八、约束" class="headerlink" title="八、约束"></a>八、约束</h2><h3 id="8-1-SQL主键约束"><a href="#8-1-SQL主键约束" class="headerlink" title="8.1 SQL主键约束"></a>8.1 SQL主键约束</h3><p>每个表都有一个且只有一个主键。 主键不接受<code>NULL</code>或重复值。如果主键由两列或更多列组成，则值可能在一列中重复，但主键中所有列的值组合必须是唯一的。</p>
+<h2 id="八、约束"><a href="#八、约束" class="headerlink" title="八、约束"></a>八、约束</h2><p>完整性约束保证授权用户对数据库所做的修改不会破坏数据的一致性。</p>
+<h3 id="8-1-SQL主键约束"><a href="#8-1-SQL主键约束" class="headerlink" title="8.1 SQL主键约束"></a>8.1 SQL主键约束</h3><p>每个表都有一个且只有一个主键。 主键不接受<code>NULL</code>或重复值。如果主键由两列或更多列组成，则值可能在一列中重复，但主键中所有列的值组合必须是唯一的。</p>
 <pre><code class="SQL">/*示例1 ： 主键由多列组成，用PRIMARY KEY定义主键*/
 CREATE TABLE project_assignments (
     project_id INT,
@@ -1316,8 +1340,13 @@ ADD PRIMARY KEY (milestone_id);
 /*示例3-- 删除project_milestones表的主键约束*/
 ALTER TABLE project_milestones
 DROP CONSTRAINT pk_milestone_id;</code></pre>
-<h3 id="8-2-外键约束"><a href="#8-2-外键约束" class="headerlink" title="8.2 外键约束"></a>8.2 外键约束</h3><p>SQL外键<code>FOREIGN KEY</code>约束以强制表之间的关系。</p>
-<pre><code class="SQL">/*示例1--创建表时创建FOREIGN KEY约束*/
+<h3 id="8-2-外键约束"><a href="#8-2-外键约束" class="headerlink" title="8.2 外键约束"></a>8.2 外键约束</h3><p>SQL外键<code>FOREIGN KEY</code>约束以强制表之间的关系。定义外码的主要目的是：希望系统做参照完整性约束的检查。</p>
+<p><strong>参照关系中外码的值必须在被参照关系中实际存在或为null</strong>。</p>
+<pre><code class="SQL">--语法格式
+--默认地，外码参照被参照关系中的主码，即下面dept_name是外码，department是主码
+foreign key (dept_name) references department
+
+/*示例1--创建表时创建FOREIGN KEY约束*/
 CREATE TABLE project_milestones (
     milestone_id INT AUTO_INCREMENT PRIMARY KEY,
     project_id INT,
@@ -1421,7 +1450,71 @@ CREATE TABLE products (
     cost NUMERIC (10, 2) CHECK (cost &gt; 0),
     CONSTRAINT valid_selling_price  CHECK (selling_price &gt; cost)
 );</code></pre>
-]]></content>
+<h3 id="8-6-域约束"><a href="#8-6-域约束" class="headerlink" title="8.6 域约束"></a>8.6 域约束</h3><p><code>create domain</code>域约束是完整性约束的最基本形式，可用于检测插入到数据库中的数据的合法性</p>
+<pre><code class="SQL">--从现有数据类型可以创建新的域
+create domain Dollars as numeric(12，2) not null
+create domain Pounds as numeric(12，2);
+create table instructor
+    (ID char(5) primary key,
+    name varchar(20),
+    dept name varchar(20),
+    salary Dollars,
+    comm Pounds
+    );</code></pre>
+<h3 id="8-7-级联动作"><a href="#8-7-级联动作" class="headerlink" title="8.7 级联动作"></a>8.7 级联动作</h3><pre><code class="SQL">--语法格式
+create table course(
+    ...
+    foreign key(dept_name) references department
+        [on delete cascade]
+        [on update cascade]
+    ...);</code></pre>
+<h2 id="九、视图与索引"><a href="#九、视图与索引" class="headerlink" title="九、视图与索引"></a>九、视图与索引</h2><h3 id="9-1-视图"><a href="#9-1-视图" class="headerlink" title="9.1 视图"></a>9.1 视图</h3><p>在某些情况下，让所有用户看到整个逻辑模型是不合适的，视图就提供了这种机制：向用户隐藏特定的数据。</p>
+<p>SQL允许通过查询来定义“虚关系”，它在概念上包含查询的结果，但并不预先计算并存储。像这种作为虚关系对用户可见的关系称为视图（view）。</p>
+<h4 id="9-1-1-创建视图"><a href="#9-1-1-创建视图" class="headerlink" title="9.1.1 创建视图"></a>9.1.1 创建视图</h4><pre><code class="SQL">--创建视图语法格式
+create view v as &lt;query expression〉
+/*1. &lt;query expression&gt;可以是任何合法的查询表达式v表示视图名
+2. 使用视图的目的：安全及易于使用
+3. 对应地，删除视图，使用命令：drop view v*/
+
+/*示例--使用视图physics_fall_2009，找到所有于2009年秋季学期在Watson大楼开设的Physics课程*/
+select course_id, room_number
+from physics_fall_2009
+where building=&#39;Watson&#39;;
+
+/*示例2--视图嵌套。*/
+/*视图physics_fall_2009_Watson，列出于2009年秋季学期在Watson大楼开设的所有Physics课程的标识和教室号*/
+create view physics_fall_2009_watson as
+select course_id，room_number
+from physics_fall_2009
+where building=&#39;Watson&#39;；</code></pre>
+<h4 id="9-1-2-更新视图"><a href="#9-1-2-更新视图" class="headerlink" title="9.1.2 更新视图"></a>9.1.2 更新视图</h4><p>一般地，如果定义视图的查询能满足下列条件，我们称SQL视图是可更新的（updatable），即视图上可以执行插入、更新或删除</p>
+<ul>
+<li><code>from</code>子句中只有一个数据库关系</li>
+<li><code>select</code>子句中只包含关系的属性名，不包含任何表达式、聚集或<code>distinct</code>声明</li>
+<li>任何没有出现在<code>select</code>子句中的属性可以取空值；即这些属性上没有<code>not null</code>约束，也不构成主码的一部分</li>
+<li>查询中不含有<code>group by</code>或<code>having</code>子句</li>
+</ul>
+<pre><code class="SQL">--假设我们向视图faculty插入一条新元组，可写为：
+insert into faculty values(‘30765&#39;，‘Green&#39;，‘Music&#39;);</code></pre>
+<h3 id="9-2-索引"><a href="#9-2-索引" class="headerlink" title="9.2 索引"></a>9.2 索引</h3><p>我们用<code>create index</code>命令，为关系中的某些属性创建索引，它允许数据库系统高效地找到关系中那些在索引属性上取给定值的元组，而不用扫描关系中的所有元组</p>
+<pre><code class="SQL">--语法格式
+CREATE INDEX &lt;i_name&gt; ON &lt;table_name&gt; (&lt;attribute-list&gt;);
+
+/*示例*/
+CREATE INDEX ins_ID_name_index on instructor（ID，name）;
+
+--我们用`create unique index`命令，为关系中的某些属性创建唯一索引
+CREATE UNIQUE INDEX uni_stu_index on student（ID）;
+
+--我们用`drop index`命令，删除一个索引
+DROP INDEX &lt;i_name&gt;</code></pre>
+<h2 id="十、事务"><a href="#十、事务" class="headerlink" title="十、事务"></a>十、事务</h2><p>事务（transaction）由查询和更新语句的序列组成。SQL标准规定当一条SQL语句被执行，就隐式地开始了一个事务。</p>
+<p>下列SQL语句之一会结束一个事务：</p>
+<ul>
+<li><code>Commit work</code>：提交当前事务，也就是将该事务所做的更新在数据库中持久保存。在事务被提交后，一个新的事务自动开始</li>
+<li><code>Rollback work</code>：回滚当前事务，即撤销该事务中所有SQL语句对数据库的更新。这样，数据库就恢复到执行该事务第一条语句之前的状态</li>
+</ul>
+<h2 id="十一、断言及触发器"><a href="#十一、断言及触发器" class="headerlink" title="十一、断言及触发器"></a>十一、断言及触发器</h2>]]></content>
       <categories>
         <category>读书笔记</category>
         <category>SQL</category>
@@ -1731,8 +1824,8 @@ if __name__ == &#39;__main__&#39;:
         <category>树莓派</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>树莓派</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -1966,8 +2059,8 @@ bash basic-install.sh</code></pre>
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>树莓派</tag>
         <tag>Linux</tag>
+        <tag>树莓派</tag>
       </tags>
   </entry>
   <entry>
@@ -4959,8 +5052,8 @@ install_redis &#39;http://download.redis.io/releases/&#39; $1</code></pre>
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>读书笔记</tag>
         <tag>Linux</tag>
+        <tag>读书笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -5548,8 +5641,8 @@ sudo apt install gulp</code></pre>
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>读书笔记</tag>
         <tag>Linux</tag>
+        <tag>读书笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -6700,8 +6793,8 @@ unittest.main()</code></pre>
         <category>读书笔记</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>读书笔记</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
