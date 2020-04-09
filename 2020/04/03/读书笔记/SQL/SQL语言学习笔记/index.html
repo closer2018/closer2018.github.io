@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    10k 字
+                    10.3k 字
                   </span>&nbsp;
                 
 
@@ -147,7 +147,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      42 分钟
+                      43 分钟
                   </span>&nbsp;
                 
 
@@ -1691,7 +1691,32 @@ DROP INDEX &lt;i_name&gt;</code></pre>
 <li><code>Commit work</code>：提交当前事务，也就是将该事务所做的更新在数据库中持久保存。在事务被提交后，一个新的事务自动开始</li>
 <li><code>Rollback work</code>：回滚当前事务，即撤销该事务中所有SQL语句对数据库的更新。这样，数据库就恢复到执行该事务第一条语句之前的状态</li>
 </ul>
-<h2 id="十一、断言及触发器"><a href="#十一、断言及触发器" class="headerlink" title="十一、断言及触发器"></a>十一、断言及触发器</h2>
+<h2 id="十一、断言及触发器"><a href="#十一、断言及触发器" class="headerlink" title="十一、断言及触发器"></a>十一、断言及触发器</h2><h3 id="11-1-断言"><a href="#11-1-断言" class="headerlink" title="11.1 断言"></a>11.1 断言</h3><p>断言（assertion）是表达要求数据库永远满足的条件的谓词（复杂check条件）</p>
+<p>SQL中的断言形式如下：</p>
+<pre><code class="SQL">create assertion &lt;assertion_name&gt; check &lt;predicate&gt;</code></pre>
+<p>创建了某断言之后，系统将检查它的合法性，并对每一个可能破坏该断言的数据库更新进行检测<br><strong>这种检测会产生大量的开销，因此断言的使用应非常谨慎</strong></p>
+<pre><code class="SQL">--例2，每位教师不能在同一个学期的同一个时间段在两个不同的教室授
+create assertion ins_teaches_constraint check not exists
+(select ID，name,section_id,semester,year,time_slot_id,
+    count(distinct building,room,number)
+from instructor natural join teaches natural join section
+group by (ID,name,section_id,semester,year,time_slot_id)
+having count(building,room_number)&gt;1)</code></pre>
+<h3 id="11-2-触发器"><a href="#11-2-触发器" class="headerlink" title="11.2 触发器"></a>11.2 触发器</h3><p>触发器（trigger）是由数据库更新操作引起的被系统自动执行的语句</p>
+<p>设计触发器必须：</p>
+<ul>
+<li>指明触发器被执行的条件</li>
+<li>指明触发器执行时所做的具体操作</li>
+</ul>
+<pre><code class="SQL">--例，使用触发器来确保关系section中属性time_slot_id的参照完整性
+create trigger timeslot_check1 after insert on section
+         referencing new row as nrow
+         for each row
+         when (nrow.time_slot_id not in
+                (select time_slot_id from
+                 time_slot))/*time_slot中不存在该time_slot_id*/
+begin rollback end；</code></pre>
+
             <hr>
           </div>
           <br>
