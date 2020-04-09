@@ -110,6 +110,81 @@ Event Form1.Button1.Click
         Delay rate
     Wend
 End Event</code></pre>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><pre><code class="VB">DimEnv T1
+DimEnv T2
+Call start_1
+Sub start_1
+    //线程1
+    T1 = BeginThread(thread1)
+    T2 = BeginThread(thread2)
+    BeginThread Stop
+End Sub
+Sub thread1
+    name_1 = &quot;测试1&quot;
+    t_1 = 0
+    rate_1 = 1000
+    times_1 = 100
+    subfix_1=true
+    test_1 = &quot;测试&quot;
+    //while循环
+    Hwnd_1 = Plugin.Window.Find(0, name_1)
+    //当输入t=-1时则循环发送消息至按终止键为止
+    While t_1 &lt;= times_1 OR times_1 = 0
+        If subfix_1 Then
+            //后台发送文本加自增计数变量
+            Call Plugin.Bkgnd.SendString(Hwnd_1,test_1 &amp; t_1)
+        Else
+            //后台发送文本test_1
+            Call Plugin.Bkgnd.SendString(Hwnd_1,test_1)
+        End If
+        Call Plugin.Bkgnd.KeyPress(Hwnd_1, 13)
+        t_1 = t_1 + 1
+        //发送事件间隔为变量rate_1
+        Delay rate_1
+    Wend
+End Sub
+Sub thread2
+    name_2 = &quot;测试2&quot;
+    t_2 = 0
+    rate_2 = 1000
+    times_2 = 100
+    subfix_2=true
+    test_2 = &quot;测试&quot;
+    //while循环
+    Hwnd_2 = Plugin.Window.Find(0,name_2)
+    While t_2 &lt;= times_2 OR times_2 = 0
+        If subfix_2 Then
+            //后台发送文本加自增计数变量
+            Call Plugin.Bkgnd.SendString(Hwnd_2,test_2 &amp; t_2)
+        Else
+            //后台发送文本test_2
+            Call Plugin.Bkgnd.SendString(Hwnd_2,test_2)
+        End If
+        Call Plugin.Bkgnd.KeyPress(Hwnd_2, 13)
+        t_2 = t_2 + 1
+        //发送事件间隔为变量rate_2
+        Delay rate_2
+    Wend
+End Sub
+Sub stop
+    s_1 = &quot;A&quot;
+    s_2 = &quot;Z&quot;
+    running = True
+    While True
+        //监听按键
+        s = Waitkey
+        If s = Asc(s_1) and running  Then
+            PauseThread T1
+            running = False
+        ElseIf s = Asc(s_1) and not running Then
+            PauseThread T1
+            running = True
+        ElseIf s = Asc(s_2) Then
+            StopThread T2
+        End If
+    Wend
+End Sub
+</code></pre>
 <h2 id="参考视频"><a href="#参考视频" class="headerlink" title="参考视频"></a>参考视频</h2><p><a href="https://space.bilibili.com/3196036/channel/detail?cid=100704" target="_blank" rel="noopener">https://space.bilibili.com/3196036/channel/detail?cid=100704</a></p>
 ]]></content>
       <tags>
@@ -6373,8 +6448,8 @@ echo;</code></pre>
         <category>hexo</category>
       </categories>
       <tags>
-        <tag>一键部署</tag>
         <tag>hexo</tag>
+        <tag>一键部署</tag>
       </tags>
   </entry>
   <entry>
