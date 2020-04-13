@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    1.2k 字
+                    1.9k 字
                   </span>&nbsp;
                 
 
@@ -147,7 +147,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      5 分钟
+                      9 分钟
                   </span>&nbsp;
                 
 
@@ -362,6 +362,168 @@ Sub stop
     Wend
 End Sub
 </code></pre>
+<h2 id="一个简单的脚本示例"><a href="#一个简单的脚本示例" class="headerlink" title="一个简单的脚本示例"></a>一个简单的脚本示例</h2><pre><code class="VB">//声明窗口句柄变量
+Dim Hwnd, sRect
+Dim Array
+//下面这句是查找窗口类名(&quot;Notepad&quot;)或者标题(0),返回找到的句柄Hwnd
+Hwnd = Plugin.Window.Find(&quot;DNF Taiwan&quot;,&quot;DNF Taiwan&quot;)
+//调试输出
+TracePrint Hwnd
+//返回窗口大小
+sRect = Plugin.Window.GetWindowRect(Hwnd)
+//窗口大小转为数组
+Array = Split(sRect, &quot;|&quot;)
+TracePrint Array(0)
+TracePrint Array(1)
+
+//功能选择
+UserVar Var0 = DropList{&quot;自动增幅&quot;:&quot;1&quot;|&quot;娃娃机&quot;:&quot;2&quot;|&quot;先娃娃机再增幅&quot;:&quot;3&quot;|&quot;鼠标左键连点&quot;:&quot;4&quot;|&quot;自动锻造&quot;:&quot;5&quot;}=3 &quot;功能选择&quot;
+
+//选择窗口，选择力量还是智力
+UserVar Var1 = DropList{&quot;增幅力量&quot;:&quot;1&quot;|&quot;增幅智力&quot;:&quot;2&quot;}=0 &quot;选择增幅力量还是智力&quot;
+//选择窗口，选择15还是13增幅券
+UserVar Var2 = DropList{&quot;13&quot;:13|&quot;15&quot;:15}=1 &quot;选择13还是15增幅券&quot;
+//设置鼠标点击延迟
+UserVar Yanshi=50 &quot;两次点击的时间间隔（毫秒）&quot;
+
+//强打增幅1件装备
+Function increase(x,y)
+    //使用强打书
+    KeyPress &quot;1&quot;, 1
+    //延迟
+    Delay 200
+    //点击力量增幅
+    If var1 = 1 Then
+        MoveTo Array(0)+406, Array(1)+300
+        LeftClick 1
+        //点击智力增幅
+    Else
+        MoveTo Array(0)+406, Array(1)+342
+        LeftClick 1
+    End If
+    Delay 200
+    //点击使用
+    MoveTo Array(0)+374, Array(1)+391
+    LeftClick 1
+    Delay 200
+    //点击第一格装备
+    MoveTo Array(0)+x, Array(1)+y
+    LeftClick 1
+    Delay 200
+    //确定
+    KeyPress &quot;Enter&quot;, 1
+    Delay 200
+    KeyPress &quot;Enter&quot;, 1
+    Delay 200
+    //使用增幅书
+    KeyPress &quot;2&quot;, 1
+    Delay 200
+    //点击第一格装备
+    MoveTo Array(0)+x, Array(1)+y
+    LeftClick 1
+    Delay 200
+    //确定
+    KeyPress &quot;Enter&quot;, 1
+    Delay 200
+    If var2 = 13 Then
+        KeyPress &quot;Enter&quot;, 1
+        Delay 200
+    End If
+    //一格装备完成
+End Function
+
+//增幅装备栏
+Function zengfu()
+    //主程序
+    x = 488
+    y = 288
+    For i=0 To 5
+        For j=0 TO 7
+            Call increase(x, y)
+            x = x + 30
+        Next
+        x = 488
+        y = y + 30
+    Next
+End Function
+
+//抽娃娃机
+Function wawaji()
+    For temp=0 TO 46
+        //投币
+        MoveTo Array(0)+152, Array(1)+402
+        LeftClick 1
+        Delay 200
+        //确认
+        MoveTo Array(0)+358, Array(1)+345
+        LeftClick 1
+        Delay 200
+        //停止
+        MoveTo Array(0)+200, Array(1)+402
+        LeftClick 1
+        Delay 5500
+        //确定
+        KeyPress &quot;Enter&quot;, 1
+        Delay 200
+    Next
+End Function
+
+//抽娃娃机和增幅装备栏
+Function wawajiandzengfu()
+    Call wawaji()
+    KeyPress &quot;Esc&quot;, 1
+    Delay 200
+    KeyPress &quot;i&quot;, 1
+    Delay 200
+    Call zengfu()
+End Function
+
+//鼠标左击
+Function autoLeftClick()
+    While True
+        //说明：按照一定频率反复点击鼠标左键
+        //1秒 = 1000毫秒
+        LeftClick 1
+        Delay Yanshi
+    Wend
+End Function
+
+
+//自动锻造
+Function autoDuanZao()
+    SetSimMode 0
+    While True
+        //拖拽第一格装备到锻造炉
+        MoveTo Array(0) + 488, Array(1) + 288
+        LeftDownS 1
+        Delay 200
+        MoveTo Array(0) + 331, Array(1) + 295
+        Delay 200
+        LeftUpS 1
+        //确定
+        MoveTo Array(0) + 336, Array(1) + 375
+        Delay 200
+        LeftClick 1
+        //延迟
+        Delay 6500
+        //确定
+        KeyPress &quot;Enter&quot;, 1
+        Delay 200
+    Wend
+End Function
+
+//主程序
+If Var0 = 1 Then
+    Call zengfu()
+ElseIf Var0 = 2 Then
+    Call wawaji()
+ElseIf Var0 = 3 Then
+    Call wawajiandzengfu()
+ElseIf Var0 = 4 Then
+    Call autoLeftClick()
+ElseIf  Var0 = 5 Then
+    Call autoDuanZao()
+End If</code></pre>
 <h2 id="参考视频"><a href="#参考视频" class="headerlink" title="参考视频"></a>参考视频</h2><p><a href="https://space.bilibili.com/3196036/channel/detail?cid=100704" target="_blank" rel="noopener">https://space.bilibili.com/3196036/channel/detail?cid=100704</a></p>
 
             <hr>

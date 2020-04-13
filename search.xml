@@ -185,6 +185,168 @@ Sub stop
     Wend
 End Sub
 </code></pre>
+<h2 id="一个简单的脚本示例"><a href="#一个简单的脚本示例" class="headerlink" title="一个简单的脚本示例"></a>一个简单的脚本示例</h2><pre><code class="VB">//声明窗口句柄变量
+Dim Hwnd, sRect
+Dim Array
+//下面这句是查找窗口类名(&quot;Notepad&quot;)或者标题(0),返回找到的句柄Hwnd
+Hwnd = Plugin.Window.Find(&quot;DNF Taiwan&quot;,&quot;DNF Taiwan&quot;)
+//调试输出
+TracePrint Hwnd
+//返回窗口大小
+sRect = Plugin.Window.GetWindowRect(Hwnd)
+//窗口大小转为数组
+Array = Split(sRect, &quot;|&quot;)
+TracePrint Array(0)
+TracePrint Array(1)
+
+//功能选择
+UserVar Var0 = DropList{&quot;自动增幅&quot;:&quot;1&quot;|&quot;娃娃机&quot;:&quot;2&quot;|&quot;先娃娃机再增幅&quot;:&quot;3&quot;|&quot;鼠标左键连点&quot;:&quot;4&quot;|&quot;自动锻造&quot;:&quot;5&quot;}=3 &quot;功能选择&quot;
+
+//选择窗口，选择力量还是智力
+UserVar Var1 = DropList{&quot;增幅力量&quot;:&quot;1&quot;|&quot;增幅智力&quot;:&quot;2&quot;}=0 &quot;选择增幅力量还是智力&quot;
+//选择窗口，选择15还是13增幅券
+UserVar Var2 = DropList{&quot;13&quot;:13|&quot;15&quot;:15}=1 &quot;选择13还是15增幅券&quot;
+//设置鼠标点击延迟
+UserVar Yanshi=50 &quot;两次点击的时间间隔（毫秒）&quot;
+
+//强打增幅1件装备
+Function increase(x,y)
+    //使用强打书
+    KeyPress &quot;1&quot;, 1
+    //延迟
+    Delay 200
+    //点击力量增幅
+    If var1 = 1 Then
+        MoveTo Array(0)+406, Array(1)+300
+        LeftClick 1
+        //点击智力增幅
+    Else
+        MoveTo Array(0)+406, Array(1)+342
+        LeftClick 1
+    End If
+    Delay 200
+    //点击使用
+    MoveTo Array(0)+374, Array(1)+391
+    LeftClick 1
+    Delay 200
+    //点击第一格装备
+    MoveTo Array(0)+x, Array(1)+y
+    LeftClick 1
+    Delay 200
+    //确定
+    KeyPress &quot;Enter&quot;, 1
+    Delay 200
+    KeyPress &quot;Enter&quot;, 1
+    Delay 200
+    //使用增幅书
+    KeyPress &quot;2&quot;, 1
+    Delay 200
+    //点击第一格装备
+    MoveTo Array(0)+x, Array(1)+y
+    LeftClick 1
+    Delay 200
+    //确定
+    KeyPress &quot;Enter&quot;, 1
+    Delay 200
+    If var2 = 13 Then
+        KeyPress &quot;Enter&quot;, 1
+        Delay 200
+    End If
+    //一格装备完成
+End Function
+
+//增幅装备栏
+Function zengfu()
+    //主程序
+    x = 488
+    y = 288
+    For i=0 To 5
+        For j=0 TO 7
+            Call increase(x, y)
+            x = x + 30
+        Next
+        x = 488
+        y = y + 30
+    Next
+End Function
+
+//抽娃娃机
+Function wawaji()
+    For temp=0 TO 46
+        //投币
+        MoveTo Array(0)+152, Array(1)+402
+        LeftClick 1
+        Delay 200
+        //确认
+        MoveTo Array(0)+358, Array(1)+345
+        LeftClick 1
+        Delay 200
+        //停止
+        MoveTo Array(0)+200, Array(1)+402
+        LeftClick 1
+        Delay 5500
+        //确定
+        KeyPress &quot;Enter&quot;, 1
+        Delay 200
+    Next
+End Function
+
+//抽娃娃机和增幅装备栏
+Function wawajiandzengfu()
+    Call wawaji()
+    KeyPress &quot;Esc&quot;, 1
+    Delay 200
+    KeyPress &quot;i&quot;, 1
+    Delay 200
+    Call zengfu()
+End Function
+
+//鼠标左击
+Function autoLeftClick()
+    While True
+        //说明：按照一定频率反复点击鼠标左键
+        //1秒 = 1000毫秒
+        LeftClick 1
+        Delay Yanshi
+    Wend
+End Function
+
+
+//自动锻造
+Function autoDuanZao()
+    SetSimMode 0
+    While True
+        //拖拽第一格装备到锻造炉
+        MoveTo Array(0) + 488, Array(1) + 288
+        LeftDownS 1
+        Delay 200
+        MoveTo Array(0) + 331, Array(1) + 295
+        Delay 200
+        LeftUpS 1
+        //确定
+        MoveTo Array(0) + 336, Array(1) + 375
+        Delay 200
+        LeftClick 1
+        //延迟
+        Delay 6500
+        //确定
+        KeyPress &quot;Enter&quot;, 1
+        Delay 200
+    Wend
+End Function
+
+//主程序
+If Var0 = 1 Then
+    Call zengfu()
+ElseIf Var0 = 2 Then
+    Call wawaji()
+ElseIf Var0 = 3 Then
+    Call wawajiandzengfu()
+ElseIf Var0 = 4 Then
+    Call autoLeftClick()
+ElseIf  Var0 = 5 Then
+    Call autoDuanZao()
+End If</code></pre>
 <h2 id="参考视频"><a href="#参考视频" class="headerlink" title="参考视频"></a>参考视频</h2><p><a href="https://space.bilibili.com/3196036/channel/detail?cid=100704" target="_blank" rel="noopener">https://space.bilibili.com/3196036/channel/detail?cid=100704</a></p>
 ]]></content>
       <tags>
@@ -346,7 +508,9 @@ End Sub
 <td>b % a = 0</td>
 </tr>
 </tbody></table>
-<h3 id="1-7-在MySQL中创建表的示例"><a href="#1-7-在MySQL中创建表的示例" class="headerlink" title="1.7 在MySQL中创建表的示例"></a>1.7 在MySQL中创建表的示例</h3><pre><code class="SQL">CREATE TABLE regions (
+<h3 id="1-7-在MySQL中创建表的示例"><a href="#1-7-在MySQL中创建表的示例" class="headerlink" title="1.7 在MySQL中创建表的示例"></a>1.7 在MySQL中创建表的示例</h3><pre><code class="SQL">create database test default character set utf8 collate utf8_general_ci;
+
+CREATE TABLE regions (
     region_id INT (11) AUTO_INCREMENT PRIMARY KEY,
     region_name VARCHAR (25) DEFAULT NULL
 );
@@ -1531,7 +1695,7 @@ ADD PRIMARY KEY (milestone_id);
 /*示例3-- 删除project_milestones表的主键约束*/
 ALTER TABLE project_milestones
 DROP CONSTRAINT pk_milestone_id;</code></pre>
-<h3 id="8-2-外键约束"><a href="#8-2-外键约束" class="headerlink" title="8.2 外键约束"></a>8.2 外键约束</h3><p>SQL外键<code>FOREIGN KEY</code>约束以强制表之间的关系。定义外码的主要目的是：希望系统做参照完整性约束的检查。</p>
+<h3 id="8-2-外键约束"><a href="#8-2-外键约束" class="headerlink" title="8.2 外键约束"></a>8.2 外键约束</h3><p>SQL外键<code>FOREIGN KEY</code>约束以强制表之间的关系。定义外码的主要目的是：让系统做参照完整性约束的检查。</p>
 <p><strong>参照关系中外码的值必须在被参照关系中实际存在或为null</strong>。</p>
 <pre><code class="SQL">--语法格式
 --默认地，外码参照被参照关系中的主码，即下面dept_name是外码，department是主码
@@ -1729,7 +1893,96 @@ create trigger timeslot_check1 after insert on section
          when (nrow.time_slot_id not in
                 (select time_slot_id from
                  time_slot))/*time_slot中不存在该time_slot_id*/
-begin rollback end；</code></pre>
+begin rollback end;
+
+--例，某种物品库存量小到一定程度就发订货单或打开报警灯
+create trigger reorder_trigger after update of level on inventory
+    referencing old row as orow, new row as nrow
+    for each row
+    when nrow.level&lt;=/*保证修改后库存量低于最小库存量,更新前库存大于最小库存*/
+            (select level/*目的是只更新一次*/
+            from minlevel
+            where minlevel.item=nrow.item) and orow.level&gt;
+                    (select level
+                    from minlevel
+                    where minlevel.item= orow.item)
+begin
+    insert into orders
+            (select item, amount
+             from reorder
+             where reorder.item= orow.item)
+end</code></pre>
+<h2 id="十二、-安全性"><a href="#十二、-安全性" class="headerlink" title="十二、 安全性"></a>十二、 安全性</h2><h3 id="12-1-权限管理"><a href="#12-1-权限管理" class="headerlink" title="12.1 权限管理"></a>12.1 权限管理</h3><p>数据库系统级</p>
+<ul>
+<li><strong>验证</strong>和<strong>授权</strong>机制使得特定用户存取特定数据</li>
+<li>本章中主要讨论授权机制</li>
+</ul>
+<p>对数据的授权包括：</p>
+<ul>
+<li>读权限 允许读，但不允许更新数据</li>
+<li>插入权限 允许插入新数据，但不允许更新现有数据</li>
+<li>修改权限 允许修改，但不允许删除数据</li>
+<li>删除权限 允许删除数据</li>
+</ul>
+<p>对修改数据库模式的授权包括：</p>
+<ul>
+<li>索引权限-允许创建和删除索引</li>
+<li>资源权限-允许创建新关系</li>
+<li>修改权限-允许增加或删除关系的属性</li>
+<li>删除权限-允许删除关系</li>
+</ul>
+<pre><code class="SQL">--语法格式
+--grant语句用于授权
+GRANT &lt;privilege list&gt;
+ON &lt;relation name or view name&gt; TO &lt;user list&gt;;</code></pre>
+<p><code>privilege list</code>可有以下选择:</p>
+<ol>
+<li>select：允许读关系，或查询视图<pre><code> 例如：授予用户U1，U2，Ua对instructor关系的select权限：
+ `grant select on instructor to U1,U2,U3`</code></pre></li>
+<li><code>insert</code>：允许插入元组</li>
+<li><code>update</code>：允许修改元组</li>
+<li><code>delete</code>：允许删除元组</li>
+<li><code>references</code>：创建关系时允许声明外键</li>
+<li><code>all privileges</code>：所有权限</li>
+<li><code>with grant option</code>：允许用户把被授予的权限再转授给其他用户<pre><code> 例如：授予U1，对instructor的select权限并允许U1，将此权限授予其他用户
+ `grant select on instructor to U1 with grant option`</code></pre></li>
+</ol>
+<pre><code class="SQL">--收回权限
+--revoke语句用于回收权限
+REVOKE &lt;privilege list&gt; ON &lt;relation name or view name&gt;
+FROM &lt;user list&gt; [ restrict | cascade ]
+
+/*示例*/
+revoke select on instructor from U1,,U2,U3 cascade
+/*从一用户收回权限可能导致其他用户也失去该权限，称为级联回收*/
+
+--指定restrict可以阻止级联回收
+revoke select on instructor from U1,U2,U3 restrict
+/*如果要求级联回收，则带有restrict的revoke命令将会失败*/</code></pre>
+<h3 id="12-2-审计跟踪"><a href="#12-2-审计跟踪" class="headerlink" title="12.2 审计跟踪"></a>12.2 审计跟踪</h3><p>分为语句审计和对象审计</p>
+<pre><code class="SQL">--语法格式-语句审计
+AUDIT &lt;st-opt&gt; [BY &lt;users&gt;]
+[BY SESSION | ACCESS]
+[WHENEVER SUCCESSFUL | WHENEVER NOT SUCCESSFUL]
+--当BY &lt;users&gt;缺省，对所有用户审计
+--BY SESSION每次会话期间，相同类型的需审计的SQL语句仅记录一次
+--常用的&lt;st-opt&gt;:table，view，role，index，……
+--取消审计：NOAUDIT…（其余同audit语句）
+
+/*示例--审计用户scott每次成功执行有关table的语句。*/
+audit table by scott by access whenever successful;</code></pre>
+<pre><code class="SQL">--语法格式-对象审计
+AUDIT &lt;obj-opt&gt; ON &lt;obj&gt;|DEFAULT
+[BY SESSION | BY ACCESS]
+[WHENEVER SUCCESSFUL | WHENEVER NOT SUCCESSFUL]
+--obj-opt:insert，delete，update，select，grant，…
+--实体审计对所有的用户起作用
+--ON&lt;obj&gt;指出审计对象表、视图名
+--ONDEFAULT 对其后创建的所有对象起作用
+--取消审计：NOAUDIT…
+
+/*示例--审计所有用户对student表的delete和update操作*/
+audit delete,update on student;</code></pre>
 ]]></content>
       <categories>
         <category>读书笔记</category>
@@ -2040,8 +2293,8 @@ if __name__ == &#39;__main__&#39;:
         <category>树莓派</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>树莓派</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
