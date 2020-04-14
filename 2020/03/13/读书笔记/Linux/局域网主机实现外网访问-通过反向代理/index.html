@@ -266,6 +266,8 @@ sudo sshpass -p &#39;云主机密码&#39; autossh -M 5678 -CNR 7280:localhost:22
 <p>但我们的 pi 重启后，也是要输入上述 autossh 的命令，为了更加自动化，把autossh 加入开机启动里(需要ssh免密码登录)</p>
 <pre><code class="SH"># ssh免密码登录
 sudo nano /etc/rc.local
+
+# 光标移动到exit 0 的上一行，输入命令。比如花生壳是用phddns.start启动，再这里加入后花生壳就会自动启动了。
 /bin/su -c /usr/bin/autossh -M 5678 -CNR 7280:localhost:22 root@123.123.123.123</code></pre>
 <p>-M 5678参数，负责通过5678端口监视连接状态，连接有问题时就会自动重连.</p>
 <h3 id="4-2-通过其他电脑手机访问局域网主机（树莓派）"><a href="#4-2-通过其他电脑手机访问局域网主机（树莓派）" class="headerlink" title="4.2 通过其他电脑手机访问局域网主机（树莓派）"></a>4.2 通过其他电脑手机访问局域网主机（树莓派）</h3><p><code>ssh -p &lt;port_b2&gt; 你的云主机用户名@你的云主机外网IP</code><br><code>&lt;port_b2&gt;</code>改成上面的端口号，如1234</p>
