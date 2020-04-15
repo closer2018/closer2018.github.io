@@ -180,9 +180,12 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>导航栏图标显示问号，当修改<code>hexo\themes\next\_config.yml</code>主题配置文件后，图标显示正常，但是点击链接不能打开相应主页、标签页、归档页…<br>经研究，应该把menu下面的不同页面的/后面的空格删掉，即可。<br>具体配置如下：  </p>
+            <h2 id="问题描述">问题描述</h2>
+<p>导航栏图标显示问号，当修改<code>hexo\themes\next\_config.yml</code>主题配置文件后，图标显示正常，但是点击链接不能打开相应主页、标签页、归档页…<br>
+经研究，应该把menu下面的不同页面的/后面的空格删掉，即可。<br>
+具体配置如下：</p>
 <a id="more"></a>
-<pre><code class="yml">menu:
+<pre><code class="language-yml">menu:
   home: /|| home                  #主页
   archives: /archives/|| archive  #归档
   categories: /categories/|| th   #分类
@@ -204,6 +207,7 @@ menu_icons:
   about: user
   #commonweal: heartbeat
   #search: search
+
 </code></pre>
 
             <hr>

@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    831 字
+                    812 字
                   </span>&nbsp;
                 
 
@@ -147,7 +147,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      4 分钟
+                      3 分钟
                   </span>&nbsp;
                 
 
@@ -180,9 +180,10 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h2 id="hexo配置文件设置"><a href="#hexo配置文件设置" class="headerlink" title="hexo配置文件设置"></a>hexo配置文件设置</h2><p>hexo配置文件<code>_config.yml</code>基本配置</p>
+            <h2 id="hexo配置文件设置">hexo配置文件设置</h2>
+<p>hexo配置文件<code>_config.yml</code>基本配置</p>
 <a id="more"></a>
-<pre><code class="yml"># Hexo Configuration
+<pre><code class="language-yml"># Hexo Configuration
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
@@ -193,17 +194,17 @@ description: up up up
 keywords:
 author: closer
 language: zh-CN #语言
-timezone: &#39;&#39;
+timezone: ''
 
 # URL 网址
-## If your site is put in a subdirectory, set url as &#39;http://yoursite.com/child&#39; and root as &#39;/child/&#39;
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://closer_laps.gitee.io/
 root: / #根目录位置，如果只是github pages的子目录需要更改
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
-  trailing_index: true # Set to false to remove trailing &#39;index.html&#39; from permalinks
-  trailing_html: true # Set to false to remove trailing &#39;.html&#39; from permalinks
+  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
+  trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
 # Directory #文件结构 默认即可
 source_dir: source
@@ -223,7 +224,7 @@ titlecase: false # 把标题转换为 title case
 external_link:
   enable: true # Open external links in new tab
   field: site # Apply to the whole site
-  exclude: &#39;&#39;
+  exclude: ''
 filename_case: 0 #把文件名称转换为 (1) 小写或 (2) 大写 
 render_drafts: false #显示草稿
 post_asset_folder: false #启动 Asset 文件夹 
@@ -233,16 +234,16 @@ highlight:  #代码块的设置
  enable: false  #开启代码块高亮 
  auto_detect: false #如果未指定语言，则启用自动检测 
  line_number: true #显示行数 
- tab_replace: &#39;&#39; #用 n 个空格替换 tabs；如果值为空，则不会替换 tabs 
+ tab_replace: '' #用 n 个空格替换 tabs；如果值为空，则不会替换 tabs 
  wrap: true
  hljs: false
 
 # Home page setting
-# path: Root path for your blogs index page. (default = &#39;&#39;)
+# path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: &#39;&#39;
+  path: ''
   per_page: 10
   order_by: -date
 
@@ -261,7 +262,7 @@ meta_generator: true
 ## http://momentjs.com/docs/#/displaying/format/
 date_format: YYYY-MM-DD #日期格式 
 time_format: HH:mm:ss #时间格式
-## Use post&#39;s date for updated date unless set in front-matter
+## Use post's date for updated date unless set in front-matter
 use_date_for_updated: false
 
 # Pagination #分页器
@@ -270,7 +271,7 @@ per_page: 10 #每页显示的文章量 (0 = 关闭分页功能) 10
 pagination_dir: page #分页目录 
 
 # Include / Exclude file(s)
-## include:/exclude: options only apply to the &#39;source/&#39; folder
+## include:/exclude: options only apply to the 'source/' folder
 include:
 exclude:
 ignore:
@@ -302,17 +303,23 @@ symbols_count_time:
     symbols: true
     time: true
     total_symbols: true
-    total_time: true</code></pre>
+    total_time: true
+</code></pre>
 <p>以上就是配置文件的基础设置。</p>
-<h2 id="更换主题NexT"><a href="#更换主题NexT" class="headerlink" title="更换主题NexT"></a>更换主题NexT</h2><p>Hexo安装主题的方式非常简单，只需要将主题文件放置于站点目录的themes下，然后修改下配置文件即可。这里我以NexT主题为例。<br>在git bash操作下cd至博客根目录，执行如下代码：  </p>
+<h2 id="更换主题NexT">更换主题NexT</h2>
+<p>Hexo安装主题的方式非常简单，只需要将主题文件放置于站点目录的themes下，然后修改下配置文件即可。这里我以NexT主题为例。<br>
+在git bash操作下cd至博客根目录，执行如下代码：</p>
 <p><code>git clone https://github.com/iissnan/hexo-theme-next themes/next</code></p>
-<p>等待下载完成后，修改根目录下_config.yml文件的theme字段为next即可启用NexT主题，十分简单便捷。<br>其它具体设置可参照<a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT官方文档</a>。</p>
-<h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><p>cd至blog根目录。  </p>
-<pre><code class="yml">npm install hexo-generator-searchdb --save  #搜索插件
+<p>等待下载完成后，修改根目录下_config.yml文件的theme字段为next即可启用NexT主题，十分简单便捷。<br>
+其它具体设置可参照<a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT官方文档</a>。</p>
+<h2 id="安装插件">安装插件</h2>
+<p>cd至blog根目录。</p>
+<pre><code class="language-yml">npm install hexo-generator-searchdb --save  #搜索插件
 npm install --save hexo-generator-feed   #RSS插件
 npm install hexo-wordcount --save   #字符统计及阅读时长估计
 npm install hexo-generator-sitemap --save  #博客添加网站地图sitemap
-npm install hexo-generator-index-pin-top --save   #置顶插件</code></pre>
+npm install hexo-generator-index-pin-top --save   #置顶插件
+</code></pre>
 
             <hr>
           </div>

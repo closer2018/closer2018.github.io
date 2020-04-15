@@ -172,7 +172,8 @@
           <div class="index-text mb-1">
 本文转载于GitHub项目Python - 100天从新手到大师
 
-一： 正则表达式相关知识在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需要，正则表达式就是用于描述这些规则的工具，换句话说正则表达式是一种工具，它定义了字符串的匹配模式（如何检查一个字符串是否有跟某种模式匹配的部分或者从一个字符串中将与模式匹配的部分提取出来或者替换掉）。如果你在Windows操作系统中使用过文件查找并且在指定文件名时使用过通配符（*和?），那么正则表达式也是与之类似的用来进行文本匹配的工具，只不过比起通配符正则表达式更强大，它能更精确地描述你的需求（当然你付出的代价是书写一个正则表达式比打出一个通配符要复杂得多，要知道任何给你带来好处的东西都是有代价的，就如同学习一门编程语言一样），比如你可以编写一个正则表达式，用来查找所有以0开头，后面跟着2-3个数字，然后是一个连字号“-”，最后是7或8位数字的字符串（像028-12345678或0813-7654321），这不就是国内的座机号码吗。最初计算机是为了做数学运算而诞生的，处理的信息基本上都是数值，而今天我们在日常工作中处理的</div>
+一： 正则表达式相关知识
+在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需要，正则表达式就是用于描述这些规则的工具，换句话说正则表达式是一种工具，它定义了字符串的匹配模式（如何检查一个字符串是否有跟某种模式匹配的部分或者从一个字符串中将与模式匹配的部分提取出来或者替换掉）。如果你在Windows操作系统中使用过文件查找并且在指定文件名时使用过通配符（*和?），那么正则表达式也是与之类似的用来进行文本匹配的工具，只不过比起通配符正则表达式更强大，它能更精确地描述你的需求（当然你付出的代价是书写一个正则表达式比打出一个通配符要复杂得多，要知道任何给你带来好处的东西都是有代价的，就如同学习一门编程语言一样），比如你可以编写一个正则表达式，用来查找所有以0开头，后面跟着2-3个数字，然后是一个连字号“-”，最后是7或8位数字的字符串（像028-12345678或0813-7654321），这不就是国内的座机号码吗。最初计算机是为了做数学运算而诞生的，处理的信息基本上都是数值，而今天我们在日常工作中处理</div>
         </div>
       </a>
 
@@ -269,26 +270,41 @@
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">一： 如何使用搜索栏所有搜索需求用空格隔开。
+          <div class="index-text mb-1">一： 如何使用搜索栏
+所有搜索需求用空格隔开。
 搜索栏输入：
 
-搜索项目名里面包含python、项目readme里面包含python、描述里面包含pythonin:name python、in:readme python、in:description 爬虫/in:des 爬虫PS：description描述里面包含比较准确
 
-stars数大于1000、forks数大于xxxstars:&gt;1000、forks:&gt;xxx
+搜索项目名里面包含python、项目readme里面包含python、描述里面包含python
+in:name python、in:readme python、in:description 爬虫/in:des 爬虫
+PS：description描述里面包含比较准确
 
-指定编程语言language:python
 
-最后更新时间限定pushed:&gt;2020-01-01
+stars数大于1000、forks数大于xxx
+stars:&gt;1000、forks:&gt;xxx
 
-限定国内开发者location:China
+
+指定编程语言
+language:python
+
+
+最后更新时间限定
+pushed:&gt;2020-01-01
+
+
+限定国内开发者
+location:China
 
 
 二： chrome插件推荐
+
 Octotree
-GitZip for github双击你想下载的文件后面空白的地方，文件前方会出现√，右下角出现Download checked items即可下载。
+GitZip for github
+双击你想下载的文件后面空白的地方，文件前方会出现√，右下角出现Download checked items即可下载。
 英文不好的小伙伴推荐沙拉查词
 
-三： git clone速度慢的解决方案登录Gitee -&gt; 新建仓库 -&gt; 拉到最下的创建上面，点击导入已有仓库 -&gt; 填入你想git clone的GitHub</div>
+三： git clone速度慢的解决方案
+登录Gitee -&gt; 新建仓库 -&gt; 拉到最下的创建上面，点击导入已有仓库 -&gt; 填入你想g</div>
         </div>
       </a>
 
@@ -329,17 +345,22 @@ GitZip for github双击你想下载的文件后面空白的地方，文件前方
         
         <div class="index-excerpt" style="max-height: none;">
           <div class="index-text mb-1">前言
+
 先试用ubuntu，打开软件目录 -&gt; 磁盘，右上角菜单。然后格式化磁盘;擦除 -&gt; 不要覆盖…(快速);分区 -&gt; 硬盘2T以下MBR/DOS、2T以上GPT
 不要连接网络 -&gt; 正常安装 -&gt; 其他选项
 
 一： 安装类型
+
 /boot分区（引导）-&gt;512MB-&gt;主分区-&gt;空间起始位置-&gt;Ext4日志文件系统-&gt;/boot。
 / 根分区（相当于windows的c盘）-&gt;102400MB-&gt;主分区-&gt;空间起始位置-&gt;XFS日志文件系统-&gt;/。
 swap分区（桌面系统不分，服务器必分）-&gt;2048MB-&gt;逻辑分区-&gt;空间起始位置-&gt;交换空间。
 /home分区（存储空间，剩余都给它）-&gt;max MB-&gt;主分区-&gt;空间起始位置-&gt;XFS日志文件系统-&gt;/home。
 现在安装。
 
-二： 基础配置2.1 设置root用户密码sudo passwd rootsu...</div>
+二： 基础配置
+2.1 设置root用户密码
+sudo passwd root
+su...</div>
         </div>
       </a>
 
@@ -388,10 +409,15 @@ swap分区（桌面系统不分，服务器必分）-&gt;2048MB-&gt;逻辑分区
           
         
         <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">一： 前期准备1.1 基础环境
-python3 + selenium + chrome浏览器。如果有不懂的可以查阅selenium-python中文文档
-chrome-&gt;设置-&gt;关于chrome-&gt;查看版本（我的版本是 80.0.3987.106（正式版本） （64 位））。  
-需要下载跟你的chrome版本一致的ChromeDriver可执行驱动下载完解压放在python根目录(即跟python.exe放在一起)。如果上面的ChromeDriver网址打不开，可以使用ChromeDriver淘宝镜像
+          <div class="index-text mb-1">一： 前期准备
+1.1 基础环境
+
+python3 + selenium + chrome浏览器。
+如果有不懂的可以查阅selenium-python中文文档
+chrome-&gt;设置-&gt;关于chrome-&gt;查看版本（我的版本是 80.0.3987.106（正式版本） （64 位））。
+需要下载跟你的chrome版本一致的ChromeDriver可执行驱动
+下载完解压放在python根目录(即跟python.exe放在一起)。
+如果上面的ChromeDriver网址打不开，可以使用ChromeDriver淘宝镜像
 最好有一台云主机，没有的话需要自己的电脑设定定时开机，定时任务，定时关机。...</div>
         </div>
       </a>
@@ -443,8 +469,12 @@ chrome-&gt;设置-&gt;关于chrome-&gt;查看版本（我的版本是 80.0.3987.
           
         
         <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">一： 简介You-Get 乃一小小哒命令行程序，提供便利的方式来下载网络上的媒体信息，通过python来安装。支持主流视频网站如：YouTube、Google+、bilibili哔哩哔哩、163/网易视频/网易云音乐、斗鱼、爱奇艺、Youku、AcFun等等
-二： 安装及其使用2.1 安装1） 安装python3...</div>
+          <div class="index-text mb-1">一： 简介
+You-Get 乃一小小哒命令行程序，提供便利的方式来下载网络上的媒体信息，通过python来安装。
+支持主流视频网站如：YouTube、Google+、bilibili哔哩哔哩、163/网易视频/网易云音乐、斗鱼、爱奇艺、Youku、AcFun等等
+二： 安装及其使用
+2.1 安装
+1） 安装python3...</div>
         </div>
       </a>
 
@@ -491,7 +521,12 @@ chrome-&gt;设置-&gt;关于chrome-&gt;查看版本（我的版本是 80.0.3987.
           
         
         <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">一： 软件工具1.1 Python3这里选择的是最新版 Python3安装教程这里推荐：http://www.runoob.com/python3/python3-install.htmlwin下载地址：https://www.python.org/downloads/windowsLinux下载地址：https://www.python.org/downloads/source...</div>
+          <div class="index-text mb-1">一： 软件工具
+1.1 Python3
+这里选择的是最新版 Python3
+安装教程这里推荐：http://www.runoob.com/python3/python3-install.html
+win下载地址：https://www.python.org/downloads/windows
+Linux下载地址：https://www.python.org/downloads/source...</div>
         </div>
       </a>
 
@@ -589,11 +624,20 @@ windows先右键新建一个文本文档，后缀改为git push hexo.bat；Linux
         
         <div class="index-excerpt" style="max-height: none;">
           <div class="index-text mb-1">一、创建托管仓库
-GitHub https://github.com与用户名相同，格式为YouID.github.io
 
-Gitee https://gitee.com与用户名相同，格式为YouID
 
-Coding https://coding.net与用户名相同，格式为YouID.coding.me...</div>
+GitHub https://github.com
+与用户名相同，格式为YouID.github.io
+
+
+Gitee https://gitee.com
+与用户名相同，格式为YouID
+
+
+Coding https://coding.net
+与用户名相同，格式为YouID.coding.me
+
+...</div>
         </div>
       </a>
 
@@ -640,9 +684,11 @@ Coding https://coding.net与用户名相同，格式为YouID.coding.me...</div>
           
         
         <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">IDE下载IDE软件vscode，安装插件Markdown Preview Enhanced(简称MPE)。
-MPE官方使用文档。  
+          <div class="index-text mb-1">IDE
+下载IDE软件vscode，安装插件Markdown Preview Enhanced(简称MPE)。
+MPE官方使用文档。
 hexo博客中使用 KaTeX 来渲染数学表达式
+
 在Next主题配置下面开启mathjax。（不知道怎么开启的小伙伴请查询官方文档或者github）
 在博客需要用到公式的md文件的头文件中添加一句：mathjax: true。
 
