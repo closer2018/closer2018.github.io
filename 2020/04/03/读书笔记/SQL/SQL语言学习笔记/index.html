@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    11.9k 字
+                    12k 字
                   </span>&nbsp;
                 
 
@@ -660,11 +660,14 @@ DESC test.classes;</code></pre>
 <li>向表中插入多行</li>
 <li>将行从一个表复制到另一个表中。</li>
 </ul>
-<pre><code class="SQL">--语法格式
+<pre><code class="SQL">--语法格式1
 --插入一行,不建议省略column_name。
 INSERT [INTO] table_name [(col_name,...)]
 {VALUES | VALUE}
     ({expr | DEFAULT},...),(...),...;
+--语法格式2
+INSERT [INTO] table_name
+    SET col_name={expr | DEFAULT},...
 /*&quot;expr&quot;，表示一个常量、变量或一个表达式，也可以是空值NULL
 “DEFAULT”关键字，用于指定此列值为该列的默认值，前提是该列已经有默认值。*/
 
@@ -690,14 +693,9 @@ VALUES
     (3,&#39;xiaowang&#39;),
     (4,&#39;xiaojun&#39;);
 
-/*示例3,需要先创建temp1表*/
-INSERT INTO temp1
-SELECT
-    id,name
-FROM
-    temp
-WHERE
-    id=1;</code></pre>
+/*示例3*/
+INSERT INTO customers
+    SET cust_name=&#39;李四&#39;,cust_address=&#39;武汉市&#39;,cust_sex=DEFAULT;</code></pre>
 <h3 id="4-2-Insert-Into-Select"><a href="#4-2-Insert-Into-Select" class="headerlink" title="4.2 Insert Into Select"></a>4.2 Insert Into Select</h3><p>在表中插入多行，可以将<code>Insert</code>与<code>select</code>语句结合使用。</p>
 <pre><code class="SQL">INSERT INTO &quot;table 1&quot; (&quot;column1&quot;, &quot;column2&quot;,....)  
 SELECT &quot;column3&quot;, &quot;column4&quot;,....  
@@ -711,16 +709,17 @@ GROUP BY store_name, transaction_date;</code></pre>
 <h3 id="4-3-Update语句"><a href="#4-3-Update语句" class="headerlink" title="4.3 Update语句"></a>4.3 Update语句</h3><p>使用SQL <code>UPDATE</code>语句来修改表中现有行的数据</p>
 <pre><code class="SQL">--语法格式
 UPDATE table_name
-SET column1 = value1,
- column2 = value2
-[WHERE
-    condition];
+    SET col_name1={expr1 | DEFAULT}
+        [,col_name2 = {expr2 | DEFAULT}] ...
+    [WHERE condition]
+    [ORDER BY ...]
+    [LIMIT row_count];
 /*在上面的语法中
 首先，在SET子句中指定要修改的列。 SET子句中未列出的列的值不会被修改。
 其次，指定WHERE子句中要更新的行。
 第三，WHERE子句是可选的，如果省略它，表中的所有行都将受到影响。*/
 
---语法格式2l
+--语法格式2
 case
 when pred1 then result1
 when pred2 then result2
