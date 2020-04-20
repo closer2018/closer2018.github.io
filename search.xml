@@ -895,15 +895,6 @@ UPDATE table_name
 其次，指定WHERE子句中要更新的行。
 第三，WHERE子句是可选的，如果省略它，表中的所有行都将受到影响。*/
 
---语法格式2
-case
-when pred1 then result1
-when pred2 then result2
-...
-when predn then resultn
-else result0
-end
-
 /*示例1--小于3000的工资改为3000*/
 UPDATE
     workers
@@ -983,18 +974,37 @@ from &lt;r1,……&gt;
 <h3 id="5-1-SELECT语句"><a href="#5-1-SELECT语句" class="headerlink" title="5.1 SELECT语句"></a>5.1 SELECT语句</h3><p>除了<code>SELECT</code>和<code>FROM</code>子句之外，<code>SELECT</code>语句还可以包含许多其他子句，例如 -</p>
 <ul>
 <li><a href="https://www.yiibai.com/sql/sql-where.html" target="_blank" rel="noopener">WHERE</a> - 用于根据指定条件过滤数据</li>
-<li><a href="https://www.yiibai.com/sql/sql-order-by.html" target="_blank" rel="noopener">ORDER BY</a> - 用于对结果集进行排序</li>
-<li><a href="https://www.yiibai.com/sql/sql-limit.html" target="_blank" rel="noopener">LIMIT</a> - 用于限制返回的行</li>
 <li><a href="https://www.yiibai.com/sql/sql-inner-join.html" target="_blank" rel="noopener">JOIN</a> - 用于查询来自多个相关表的数据</li>
 <li><a href="https://www.yiibai.com/sql/sql-group-by.html" target="_blank" rel="noopener">GROUP BY</a> - 用于根据一列或多列对数据进行分组</li>
 <li><a href="https://www.yiibai.com/sql/sql-having.html" target="_blank" rel="noopener">HAVING</a> - 用于过滤分组</li>
+<li><a href="https://www.yiibai.com/sql/sql-order-by.html" target="_blank" rel="noopener">ORDER BY</a> - 用于对结果集进行排序</li>
+<li><a href="https://www.yiibai.com/sql/sql-limit.html" target="_blank" rel="noopener">LIMIT</a> - 用于限制返回的行</li>
 </ul>
 <pre><code class="SQL">--语法格式
-/*查询表中所有的数据*/
 SELECT
-    *
-FROM
-    table_name
+    [ALL | DISTINCT | DISTINCTROW ]
+    select_expr [, select_expr ...]
+    [FROM table_references
+    [WHERE where_condition]
+    [GROUP BY {col_name | expr | position}
+      [ASC | DESC], ... [WITH ROLLUP]]
+    [HAVING where_condition]
+    [ORDER BY {col_name | expr | position}
+      [ASC | DESC], ...]
+    [LIMIT {[offset,] row_count | row_count OFFSET offset}]
+/*select子句的使用顺序需要按照上述语法格式依次输入执行。
+[ALL | DISTINCT | DISTINCTROW ]指定是否返回结果集中的重复行，默认ALL。
+SELECT * FROM table_name查询tbl_name中所有行列。*/
+
+--语法格式附加
+--替换查询结果集中的数据
+CASE
+WHEN 条件1 THEN 表达式1
+    WHEN 条件2 THEN 表达式2
+    ...
+    WHEN 条件n THEN 表达式n
+ELSE 表达式n
+END
 
 /*示例*/
 /*查询特定的列*/
@@ -1006,7 +1016,7 @@ SELECT
 FROM
     employees;
 
-/*执行简单的计算*/
+/*示例2*/
 /*以下查询使用FLOOR()，DATEDIFF()和CURRENT_DATE函数计算员工的服务年份。要计算服务年份，将DATEDIFF()函数的结果除以365。FLOOR()函数返回小于或等于数值表达式结果的最大整数。YoS是下面表达式的列别名。*/
 SELECT
     employee_id,
@@ -1014,7 +1024,15 @@ SELECT
     last_name,
     FLOOR(DATEDIFF(NOW(), hire_date) / 365) AS YoS
 FROM
-    employees;</code></pre>
+    employees;
+
+/*示例3--判断结果集中的值，如果值为M，输出男，否则为女，同时列名为性别*/
+SELECT name,
+    CASE
+    WHEN gender=&#39;M&#39; THEN &#39;男&#39;
+    ELSE &#39;女&#39;
+    END AS 性别
+FROM students;</code></pre>
 <h3 id="5-2-ORDER-BY排序"><a href="#5-2-ORDER-BY排序" class="headerlink" title="5.2 ORDER BY排序"></a>5.2 ORDER BY排序</h3><p>SQL <code>ORDER BY</code>子句根据指定的标准按升序或降序对结果集进行排序。</p>
 <pre><code class="SQL">--语法格式
 SELECT
@@ -1028,18 +1046,12 @@ ORDER BY column1 ASC ,  --默认升序
 1. 升序(使用：ASC表示，默认是升序)
 2. 降序(使用：DESC表示)*/
 
-/*示例*/
-SELECT
-    employee_id,
-    first_name,
-    last_name,
-    hire_date,
-    salary
-FROM
-    employees
-ORDER BY
-    first_name,
-    last_name DESC;</code></pre>
+/*示例--班级id按人数多少升序排列*/
+select class_id,count(*) AS &quot;人数&quot;
+    FROM students
+    GROUP BY class_id
+    HAVING count(*)&gt;=1
+    ORDER BY count(*);</code></pre>
 <h3 id="5-3-DISTINCT运算符"><a href="#5-3-DISTINCT运算符" class="headerlink" title="5.3 DISTINCT运算符"></a>5.3 DISTINCT运算符</h3><p>使用SQL <code>DISTINCT</code>运算符从结果集中删除重复数据项。</p>
 <pre><code class="SQL">--语法格式
 SELECT DISTINCT
@@ -1060,22 +1072,19 @@ ORDER BY
 <h3 id="5-4-LIMIT子句"><a href="#5-4-LIMIT子句" class="headerlink" title="5.4 LIMIT子句"></a>5.4 LIMIT子句</h3><p>使用SQL <code>LIMIT</code>子句来限制<code>SELECT</code>语句返回的行数。</p>
 <pre><code class="SQL">--语法格式
 --使用LIMIT和OFFSET子句。
-SELECT
-    column_list
-FROM
-    table1
-ORDER BY column_list
-LIMIT row_count OFFSET offset_count;
-/*1. row_count确定将返回的行数。
-2. OFFSET子句在开始返回行之前跳过偏移行。OFFSET子句是可选的。如果同时使用LIMIT和OFFSET子句，OFFSET会在LIMIT约束行数之前先跳过偏移行。*/
+LIMIT {[offset,] row_count | row_count OFFSET offset}
+/*1. row_count用于返回数据的行数。
+2. OFFSET可选项，默认为0。用于指定返回数据的第一行在SELECT语句结果集中的偏移量，其必须是非负的整数常量。
+3.row_count OFFSET offset:从第offset+1行开始，取row_count行。*/
 
-/*示例-跳过三行并获取接下来的五行*/
+/*示例--跳过三行并获取接下来的五行,即显示4-8行*/
 SELECT
     employee_id, first_name, last_name
 FROM
     employees
 ORDER BY first_name
 LIMIT 5 OFFSET 3;
+/*LIMIT 5 OFFSET 3等同于LIMIT 3,5*/
 
 /*示例2-获取薪水最高的前5名*/
 SELECT
@@ -1085,8 +1094,8 @@ FROM
 ORDER BY salary DESC
 LIMIT 5;
 
-/*示例3-获取薪水排名第二高的人名*/
-/*通过嵌套子查询，先查出第二高的是多少salary，然后查name*/
+/*示例3-获取薪水排名第三高的人名*/
+/*通过嵌套子查询，先查出第三高的是多少salary，然后查name*/
 SELECT
     employee_id, first_name, last_name, salary
 FROM
@@ -1097,7 +1106,7 @@ WHERE
         FROM
             employees
         ORDER BY salary DESC
-        LIMIT 1 , 1);</code></pre>
+        LIMIT 2 , 1);</code></pre>
 <h3 id="5-5-ALL-ANY-SOME语句"><a href="#5-5-ALL-ANY-SOME语句" class="headerlink" title="5.5 ALL,ANY,SOME语句"></a>5.5 ALL,ANY,SOME语句</h3><p>SQL <code>ALL</code>与集合中所有元素比较；<code>ANY</code>和<code>SOME</code>与集合中的某些元素比较。</p>
 <pre><code class="SQL">/*示例1--找出所有 工资至少比生物系一个教师的工资要高 的教师*/
 SELECT name
@@ -1548,19 +1557,22 @@ GROUP BY
 HAVING
     MAX(salary) &gt; 12000;</code></pre>
 <h3 id="6-6-Group-By子句"><a href="#6-6-Group-By子句" class="headerlink" title="6.6 Group By子句"></a>6.6 Group By子句</h3><p><code>GROUP BY</code>子句是<code>SELECT</code>语句的可选子句，它根据指定列中的匹配值将行组合成组，每组返回一行。</p>
-<p>经常将<code>GROUP BY</code>与<code>MIN，MAX，AVG，SUM</code>或<code>COUNT</code>等聚合函数结合使用，以计算为每个分组提供信息的度量。</p>
 <pre><code class="SQL">--语法格式
-SELECT
-    column1,
-    column2,
-    AGGREGATE_FUNCTION (column3)
-FROM
-    table1
-GROUP BY
-    column1,
-    column2;</code></pre>
-<h3 id="6-6-HAVING"><a href="#6-6-HAVING" class="headerlink" title="6.6 HAVING"></a>6.6 HAVING</h3><p>SQL <code>HAVING</code>子句，该子句用于为<code>GROUP BY</code>子句汇总的组指定条件</p>
-<pre><code class="SQL">--示例
+[GROUP BY {col_name | expr | position}
+      [ASC | DESC], ... [WITH ROLLUP]]
+/*1. col_name:指定用于分组的选择列，可指定多列，彼此间用逗号分隔。
+2.expr:指定用于分组的表达式
+3.position:指定用于分组的选择列在SELECT语句结果集中的位置，通常是一个正整数。
+4.ASC | DESC:升降序排列，默认ASC升序。
+5.WITH ROLLUP:用于指定在结果集中不仅包含由GROUP BY子句分组后的数据行，还包括各分组的汇总行，以及所有分组的整体汇总行。*/
+
+/*示例--结果集包含相同地址的男性客户人数、女性客户人数、总人数以及客户的总人数*/
+SELECT cust_address,cust_sex,COUNT(*) AS &quot;人数&quot;
+    FROM customers
+    GROUP BY cust_address,cust_sex
+    WITH ROLLUP;</code></pre>
+<h3 id="6-6-HAVING"><a href="#6-6-HAVING" class="headerlink" title="6.6 HAVING"></a>6.6 HAVING</h3><p>SQL <code>HAVING</code>子句，该子句用于为<code>GROUP BY</code>子句汇总的组指定条件，一般搭配<code>GROUP BY</code>子句使用。</p>
+<pre><code class="SQL">--语法格式
 SELECT
     column1,
     column2,
@@ -1572,7 +1584,13 @@ GROUP BY
     column2
 HAVING
     group_condition;
-/*注：需要注意的是，在GROUP BY子句之前应用WHERE子句之后应用HAVING子句之前*/</code></pre>
+/*注：需要注意的是，在GROUP BY子句之前应用WHERE子句之后应用HAVING子句之前*/
+
+/*示例--统计人数大于1的班级*/
+SELECT class_id,count(*) AS &quot;人数&quot;
+    FROM students
+    GROUP BY class_id
+    HAVING count(*)&gt;1;</code></pre>
 <h2 id="七、高级查询"><a href="#七、高级查询" class="headerlink" title="七、高级查询"></a>七、高级查询</h2><h3 id="7-1-GROUPING-SETS运算符"><a href="#7-1-GROUPING-SETS运算符" class="headerlink" title="7.1 GROUPING SETS运算符"></a>7.1 GROUPING SETS运算符</h3><p>使用SQL <code>GROUPING SETS</code>运算符生成多个分组集</p>
 <p>分组集是一组使用<code>GROUP BY</code>子句进行分组的列。 通常，单个聚合查询定义单个分组集</p>
 <pre><code class="SQL">--语法格式
@@ -1854,32 +1872,58 @@ create table course(
     ...);</code></pre>
 <h2 id="九、视图与索引"><a href="#九、视图与索引" class="headerlink" title="九、视图与索引"></a>九、视图与索引</h2><h3 id="9-1-视图"><a href="#9-1-视图" class="headerlink" title="9.1 视图"></a>9.1 视图</h3><p>在某些情况下，让所有用户看到整个逻辑模型是不合适的，视图就提供了这种机制：向用户隐藏特定的数据。</p>
 <p>SQL允许通过查询来定义“虚关系”，它在概念上包含查询的结果，但并不预先计算并存储。像这种作为虚关系对用户可见的关系称为视图（view）。</p>
-<h4 id="9-1-1-创建视图"><a href="#9-1-1-创建视图" class="headerlink" title="9.1.1 创建视图"></a>9.1.1 创建视图</h4><pre><code class="SQL">--创建视图语法格式
-create view v as &lt;query expression〉
-/*1. &lt;query expression&gt;可以是任何合法的查询表达式v表示视图名
-2. 使用视图的目的：安全及易于使用
-3. 对应地，删除视图，使用命令：drop view v*/
+<h4 id="9-1-1-创建视图"><a href="#9-1-1-创建视图" class="headerlink" title="9.1.1 创建视图"></a>9.1.1 创建视图</h4><pre><code class="SQL">--语法格式
+CREATE [OR REPLACE] VIEW view_name [(column_list)]
+    AS select_statement
+    [WITH [CASCADED | LOCAL] CHECK OPTION]
+/*1. view_name:指定视图的名称，且必须唯一。不能重名。
+2. column_list:可选项，用于为视图中每个列指定明确的名称，必须与select的列数相同，逗号分隔。
+3.select_statement:指定创建视图的SELECT语句。
+4.WITH CHECK OPTION:可选项，用于指定在可更新视图上所进行的修改都需要符合select_statement中所指定的限制条件，这样可以确保数据修改后，仍可以通过视图看到修改后的数据。
+5.CASCADED | LOCAL:决定检查测试的范围。默认CASCADED，它会对所有视图进行检查。而LOCAL只对定义的视图进行检查。*/
 
-/*示例--使用视图physics_fall_2009，找到所有于2009年秋季学期在Watson大楼开设的Physics课程*/
+/*示例--视图physics_fall_2009_Watson，列出于2009年秋季学期在Watson大楼开设的所有Physics课程的标识和教室号*/
+create view physics_fall_2009_watson as
 select course_id, room_number
 from physics_fall_2009
 where building=&#39;Watson&#39;;
 
-/*示例2--视图嵌套。*/
-/*视图physics_fall_2009_Watson，列出于2009年秋季学期在Watson大楼开设的所有Physics课程的标识和教室号*/
-create view physics_fall_2009_watson as
-select course_id，room_number
-from physics_fall_2009
-where building=&#39;Watson&#39;；</code></pre>
-<h4 id="9-1-2-更新视图"><a href="#9-1-2-更新视图" class="headerlink" title="9.1.2 更新视图"></a>9.1.2 更新视图</h4><p>一般地，如果定义视图的查询能满足下列条件，我们称SQL视图是可更新的（updatable），即视图上可以执行插入、更新或删除</p>
+/*示例2--创建视图customers_view,要求包含客户信息表中所有男性客户，并要求保证今后对该视图数据的修改都必须符和客户性别为男性这个条件。*/
+CREATE OR REPLACE VIEW mysql_test.customers_view
+    AS
+    SELECT * FROM mysql_test.customers
+        WHERE cust_sex=&#39;M&#39;
+    WITH CHECK OPTION;</code></pre>
+<h4 id="9-1-2-删除视图"><a href="#9-1-2-删除视图" class="headerlink" title="9.1.2 删除视图"></a>9.1.2 删除视图</h4><pre><code class="SQL">--语法格式
+DROP VIEW [IF EXISTS]
+    view_name [, view_name] ...
+    [RESTRICT | CASCADE]</code></pre>
+<h4 id="9-1-3-更新视图"><a href="#9-1-3-更新视图" class="headerlink" title="9.1.3 更新视图"></a>9.1.3 更新视图</h4><pre><code class="SQL">--语法格式
+ALTER VIEW view_name [(column_list)]
+    AS select_statement
+    [WITH [CASCADED | LOCAL] CHECK OPTION]
+/*语法与创建视图语法相似，也可以通过先删除再创建来实现修改视图*/</code></pre>
+<h4 id="9-1-4-查看视图定义"><a href="#9-1-4-查看视图定义" class="headerlink" title="9.1.4 查看视图定义"></a>9.1.4 查看视图定义</h4><pre><code class="SQL">--语法格式
+SHOW CREATE VIEW view_name</code></pre>
+<h4 id="9-1-5-更新视图数据"><a href="#9-1-5-更新视图数据" class="headerlink" title="9.1.5 更新视图数据"></a>9.1.5 更新视图数据</h4><p>一般地，如果定义视图的查询能满足下列条件，我们称SQL视图是可更新的（updatable），即视图上可以执行插入、更新或删除</p>
 <ul>
 <li><code>from</code>子句中只有一个数据库关系</li>
 <li><code>select</code>子句中只包含关系的属性名，不包含任何表达式、聚集或<code>distinct</code>声明</li>
 <li>任何没有出现在<code>select</code>子句中的属性可以取空值；即这些属性上没有<code>not null</code>约束，也不构成主码的一部分</li>
 <li>查询中不含有<code>group by</code>或<code>having</code>子句</li>
 </ul>
-<pre><code class="SQL">--假设我们向视图faculty插入一条新元组，可写为：
-insert into faculty values(‘30765&#39;，‘Green&#39;，‘Music&#39;);</code></pre>
+<pre><code class="SQL">/*示例1--通过INSERT语句通过视图向基本表插入数据*/
+--假设我们向视图faculty插入一条新元组，可写为：
+insert into faculty values(‘30765&#39;，‘Green&#39;，‘Music&#39;);
+/*该语句能够成功执行，是因为创建视图时添加了WITH CHECK OPTION*/
+
+/*示例2--使用UPDATE语句通过视图修改基本表的数据*/
+UPDATE mysql_test.customers_view
+    SET cust_address=&#39;上海市&#39;;
+
+/*示例3--使用DELETE语句通过视图删除基本表的数据*/
+DELETE FROM mysql_test.customers_view
+    WHERE cust_name=&#39;周明&#39;;</code></pre>
 <h3 id="9-2-索引"><a href="#9-2-索引" class="headerlink" title="9.2 索引"></a>9.2 索引</h3><h4 id="9-2-1-索引的创建"><a href="#9-2-1-索引的创建" class="headerlink" title="9.2.1 索引的创建"></a>9.2.1 索引的创建</h4><p>我们用<code>create index</code>命令，为关系中的某些属性创建索引。索引，就是DBMS根据表中的一列或若干列按照一定顺序建立的列值与记录行之间的对应关系表，因而索引实质上是一张描述索引列的列值与原表中的记录行之间一对应关系的有序表。</p>
 <p>更新表的时候索引会被自动更新，因此索引提高查询速度，降低更新速度。</p>
 <h5 id="9-2-1-1-使用CREATE-INDEX语句"><a href="#9-2-1-1-使用CREATE-INDEX语句" class="headerlink" title="9.2.1.1 使用CREATE INDEX语句"></a>9.2.1.1 使用CREATE INDEX语句</h5><pre><code class="SQL">--语法格式全面
