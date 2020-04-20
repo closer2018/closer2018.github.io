@@ -2109,6 +2109,169 @@ AUDIT &lt;obj-opt&gt; ON &lt;obj&gt;|DEFAULT
 
 /*示例--审计所有用户对student表的delete和update操作*/
 audit delete,update on student;</code></pre>
+<h2 id="十三、-数据库编程"><a href="#十三、-数据库编程" class="headerlink" title="十三、 数据库编程"></a>十三、 数据库编程</h2><h3 id="13-1-存储过程"><a href="#13-1-存储过程" class="headerlink" title="13.1 存储过程"></a>13.1 存储过程</h3><h4 id="13-1-1-存储过程的基本概念"><a href="#13-1-1-存储过程的基本概念" class="headerlink" title="13.1.1 存储过程的基本概念"></a>13.1.1 存储过程的基本概念</h4><p>存储过程是一组SQL语句编译成一个SQL。类似于批量处理的SQL脚本。</p>
+<p>存储过程的好处：</p>
+<ul>
+<li>可增强SQL语言的功能和灵活性</li>
+<li>良好的封装性</li>
+<li>高性能</li>
+<li>可减少网络流量</li>
+<li>存储过程可作为一种安全机制来确保数据库的安全性和数据的完整性</li>
+</ul>
+<h4 id="13-1-2-创建存储过程"><a href="#13-1-2-创建存储过程" class="headerlink" title="13.1.2 创建存储过程"></a>13.1.2 创建存储过程</h4><p><code>delimiter</code>是<code>MySQL</code>中的命令，这个命令与存储过程没什么关系。</p>
+<p>其实就是告诉<code>mysql</code>解释器，该段命令是否已经结束了，mysql是否可以执行了。即改变输入结束符。</p>
+<p>默认情况下，<code>delimiter</code>是分号“;”。</p>
+<p>但有时候，不希望<code>MySQL</code>这么做。因为可能输入较多的语句，且语句中包含有分号。</p>
+<p>默认情况下，<code>mysql</code>一遇到分号，它就要自动执行。</p>
+<p>这种情况下，就可以使用<code>delimiter</code>，把<code>delimiter</code>后面换成其它符号，如<code>//</code>或<code>$$</code>。</p>
+<p>此时，<code>delimiter</code>作用就是对整个小段语句做一个简单的封装。</p>
+<pre><code class="SQL">delimiter //
+delimiter ;</code></pre>
+<p>每次使用完要记得换回原来的分号<code>;</code></p>
+<p>使用<code>CREATE PROCEDURE</code>来创建存储过程：</p>
+<pre><code class="SQL">--语法格式
+CREATE PROCEDURE sp_name ([proc_parameter[,...]])
+    routine_body
+/*其中“proc_parameter”语法格式是[IN | OUT |INOUT]param_name type,
+1.在此语法格式中，“sp_name”用于指定存储过程的名称，且默认在当前数据库中创建。
+2.“proc_parameter”用于指定存储过程中的参数列表，“type”为SQL的数据类型。
+3.IN | OUT |INOUT：表示输入、输出和输入/输出参数。输入参数传递参数给存储过程；输出参数用于存储过程返回一个操作结果；而输出/输出参数则两者皆可。
+4.参数的取名不能和表中列名相同，会引发不可预知结果。
+5.routine_body：表示存储过程的主体部分。以BEGIN开始，END结束。*/
+
+/*示例*/
+use test;
+delimiter $$
+CREATE PROCEDURE sp_update_sex (IN cid INT,IN csex CHAR(1))
+BEGIN
+    UPDATE customers SET cust_sex=csex WHERE cust_id=cid;
+END$$
+delimiter ;</code></pre>
+<h4 id="13-1-3-存储过程体"><a href="#13-1-3-存储过程体" class="headerlink" title="13.1.3 存储过程体"></a>13.1.3 存储过程体</h4><h5 id="13-1-3-1-局部变量"><a href="#13-1-3-1-局部变量" class="headerlink" title="13.1.3.1 局部变量"></a>13.1.3.1 局部变量</h5><p>使用<code>DECLARE</code>语句来声明局部变量。</p>
+<pre><code class="SQL">--语法格式
+DECLARE var_name [, var_name] ... type [DEFAULT value]
+/*var_name:用于指定局部变量的名称。
+type:用于声明局部变量的数据类型。
+DEFAULT:用于为局部变量指定一个默认值，若没有指定，默认为NULL。*/
+
+/*示例*/
+DECLARE cid INT(10);
+--局部变量智能在存储过程体的BEGIN...END语句块中声明使用。</code></pre>
+<h5 id="13-1-3-2-SET语句"><a href="#13-1-3-2-SET语句" class="headerlink" title="13.1.3.2 SET语句"></a>13.1.3.2 SET语句</h5><p><code>SET</code>为局部变量赋值。</p>
+<pre><code class="SQL">--语法格式
+SET var_name=expr [, var_name=expr] ...
+
+/*示例*/
+SET cid=910;</code></pre>
+<h5 id="13-1-3-3-SELECT…INTO语句"><a href="#13-1-3-3-SELECT…INTO语句" class="headerlink" title="13.1.3.3 SELECT…INTO语句"></a>13.1.3.3 SELECT…INTO语句</h5><p><code>SELECT...INTO</code>语句把选定列的值直接存储到局部变量中。</p>
+<pre><code class="SQL">--语法格式
+SELECT col_name [,...] INTO var_name [,...] table_expr
+/*col_name用于指定列名。
+var_name用于指定要赋值的变量名。
+table_expr表示SELECT语句中FROM子句及其后面的语法部分。
+SELECT...INTO语句返回的结果集只能有一行数据。*/</code></pre>
+<h5 id="13-1-3-4-游标"><a href="#13-1-3-4-游标" class="headerlink" title="13.1.3.4 游标"></a>13.1.3.4 游标</h5><p>游标是一个被<code>SELECT</code>语句检索出来的结果集。在存储了游标后，应用程序或用户就可以根据需要滚动或浏览其中的数据。使用游标的步骤如下：</p>
+<p>1） 声明游标</p>
+<pre><code class="SQL">--语法格式
+DECLARE cursor_name CURSOR FOR select_statement
+/*1. cursor_name：用于指定要创建的游标的名称
+2. select_statement:用于指定一个SELECT语句，返回一到多行数据。*/</code></pre>
+<p>2） 打开游标</p>
+<p>必须打开游标才能使用。</p>
+<pre><code class="SQL">OPEN cursor_name;
+/*游标可被打开多次，若其他用户或程序更新数据表，每次打开游标结果集可能不同*/</code></pre>
+<p>3） 读取数据</p>
+<pre><code class="SQL">FETCH cursor_name INTO var_name [,var_name] ...
+/*cursor_name:用于指定已经打开的游标
+var_name:指定存放数据的变量名*/</code></pre>
+<p>4） 关闭游标</p>
+<pre><code class="SQL">CLOSE cursor_name;</code></pre>
+<p>5） 示例</p>
+<p>创建一个存储过程，用于计算表customers中数据行的行数。</p>
+<pre><code class="SQL">delimiter $$
+create procedure sp_sumofrow(out rows int)
+begin
+    declare cid int;
+    declare found boolean default true;
+    declare cur_cid cursor for
+        select cust_id from customers;
+    declare continue handler for not found
+        set found=false;
+    set rows=0;
+    open cur_cid;
+    fetch cur_cid into cid;
+    while found do
+        set rows=rows+1;
+        fetch cur_cid into cid;
+    end while;
+    close cur_cid;
+end$$
+delimiter ;
+/*定义一个CONTINUE HANDLER句柄，它是在条件出现时被执行的代码，用于控制循环语句，实现游标的下移。
+定义局部变量必须在定义任意游标和句柄之前。*/
+
+/*游标只能用于存储过程或存储函数中，不能单独在查询操作中使用。*/</code></pre>
+<h4 id="13-1-4-调用存储过程"><a href="#13-1-4-调用存储过程" class="headerlink" title="13.1.4 调用存储过程"></a>13.1.4 调用存储过程</h4><pre><code class="SQL">--语法格式
+CALL sp_name([parameter[,...]]);
+CALL sp_name[()];
+/*sp_name:指定被调用的存储过程的名称。
+parameter：指定调用存储过程所使用的参数*/
+
+/*示例*/
+CALL sp_update_sex(909,&#39;M&#39;);</code></pre>
+<h4 id="13-1-5-删除存储过程"><a href="#13-1-5-删除存储过程" class="headerlink" title="13.1.5 删除存储过程"></a>13.1.5 删除存储过程</h4><pre><code class="SQL">--语法格式
+DROP PROCEDURE [IF EXISTS] sp_name;
+
+/*示例*/
+DROP PROCEDURE IF EXISTS sp_update_sex;</code></pre>
+<h3 id="13-2-存储函数"><a href="#13-2-存储函数" class="headerlink" title="13.2 存储函数"></a>13.2 存储函数</h3><p>存储过程和存储函数的区别：</p>
+<ul>
+<li>存储函数不能拥有输出参数，自身即是输出参数；存储过程可以拥有输出参数</li>
+<li>存储函数可以被直接调用，而存储过程必须通过CALL语句调用</li>
+<li>存储函数中必须包含一条RETURN语句，而这条特殊的SQL语句不允许包含于存储过程中</li>
+</ul>
+<pre><code class="SQL">--1.创建函数
+--语法格式
+CREATE FUNCTION sp_name ([func_parameter[,...]])
+    RETURNS type
+    routine_body
+
+/*示例--根据给定学生id号返回学生性别，如果没有给定id，则返回&quot;没有该学生&quot;*/
+USE test;
+DELIMITER $$
+CREATE FUNCTION fn_search(cid INT)
+    RETURNS CHAR(2)
+BEGIN
+    DECLARE SEX CHAR(2);
+    SELECT gender INTO SEX FROM students
+        WHERE id=cid;
+    IF SEX IS NULL THEN
+        RETURN(SELECT &quot;没有该学生&quot;);
+    ELSE
+        IF SEX=&#39;F&#39; THEN
+            RETURN(SELECT &#39;女&#39;);
+        ELSE
+            RETURN(SELECT &#39;男&#39;);
+        END IF;
+    END IF;
+END$$
+DELIMITER ;
+
+
+--2.调用函数
+--语法格式
+SELECT sp_name([func_parameter[,...]])
+
+/*示例*/
+SELECT fn_search(10);
+
+
+--3.删除函数
+--语法格式
+DROP FUNCTION [IF EXISTS] sp_name
+
+/*示例*/
+DROP FUNCTION IF EXISTS fn_search;</code></pre>
 ]]></content>
       <categories>
         <category>读书笔记</category>
