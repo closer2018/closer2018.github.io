@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    14.1k 字
+                    15.4k 字
                   </span>&nbsp;
                 
 
@@ -147,7 +147,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      59 分钟
+                      64 分钟
                   </span>&nbsp;
                 
 
@@ -1550,12 +1550,16 @@ WHERE
                 AND e.department_id = d.department_id)
 ORDER BY department_name;</code></pre>
 <h2 id="八、约束"><a href="#八、约束" class="headerlink" title="八、约束"></a>八、约束</h2><p>完整性约束保证授权用户对数据库所做的修改不会破坏数据的一致性。</p>
-<h3 id="8-1-SQL主键约束"><a href="#8-1-SQL主键约束" class="headerlink" title="8.1 SQL主键约束"></a>8.1 SQL主键约束</h3><p>每个表都有一个且只有一个主键。 主键不接受<code>NULL</code>或重复值。如果主键由两列或更多列组成，则值可能在一列中重复，但主键中所有列的值组合必须是唯一的。</p>
+<h3 id="8-1-实体完整性-主键约束"><a href="#8-1-实体完整性-主键约束" class="headerlink" title="8.1 实体完整性-主键约束"></a>8.1 实体完整性-主键约束</h3><ul>
+<li>每个表都有一个且只有一个主键。 主键不接受<code>NULL</code>或重复值。</li>
+<li>如果主键由两列或更多列组成，则值可能在一列中重复，但主键中所有列的值组合必须是唯一的。</li>
+<li>复合主键不能包含不必要的多余列。</li>
+</ul>
 <pre><code class="SQL">/*示例1 ： 主键由多列组成，用PRIMARY KEY定义主键*/
 CREATE TABLE project_assignments (
     project_id INT,
     employee_id INT,
-    join_date DATE NOT NULL,
+    join_date DATETIME NOT NULL,
     CONSTRAINT pk_assgn PRIMARY KEY (project_id , employee_id)
 );
 
@@ -1566,41 +1570,7 @@ ADD PRIMARY KEY (milestone_id);
 /*示例3-- 删除project_milestones表的主键约束*/
 ALTER TABLE project_milestones
 DROP CONSTRAINT pk_milestone_id;</code></pre>
-<h3 id="8-2-外键约束"><a href="#8-2-外键约束" class="headerlink" title="8.2 外键约束"></a>8.2 外键约束</h3><p>SQL外键<code>FOREIGN KEY</code>约束以强制表之间的关系。定义外码的主要目的是：让系统做参照完整性约束的检查。</p>
-<p><strong>参照关系中外码的值必须在被参照关系中实际存在或为null</strong>。</p>
-<pre><code class="SQL">--语法格式
---默认地，外码参照被参照关系中的主码，即下面dept_name是外码，department是主码
-foreign key (dept_name) references department
-
-/*示例1--创建表时创建FOREIGN KEY约束*/
-CREATE TABLE project_milestones (
-    milestone_id INT AUTO_INCREMENT PRIMARY KEY,
-    project_id INT,
-    milestone_name VARCHAR(100),
-    FOREIGN KEY (project_id)
-        REFERENCES projects (project_id)
-);
---FOREIGN KEY子句将project_milestones表的project_id设置为引用project表的project_id列的外键。
-
-/*可以为FOREIGN KEY约束指定名称*/
-CREATE TABLE project_milestones (
-    milestone_id INT AUTO_INCREMENT PRIMARY KEY,
-    project_id INT,
-    milestone_name VARCHAR(100),
-    CONSTRAINT fk_project FOREIGN KEY (project_id)
-        REFERENCES projects (project_id)
-);
---fk_project是FOREIGN KEY约束的名称。
-
-/*使用ALTER来向现有表中添加FOREIGN KEY约束*/
-ALTER TABLE table_1
-ADD CONSTRAINT fk_name FOREIGN KEY (fk_key_column)
-   REFERENCES table_2(pk_key_column)
-
-/*删除外键约束*/
-ALTER TABLE table_name
-DROP CONSTRAINT fk_name;</code></pre>
-<h3 id="8-3-唯一约束"><a href="#8-3-唯一约束" class="headerlink" title="8.3 唯一约束"></a>8.3 唯一约束</h3><p>使用SQL <code>UNIQUE</code>约束强制列或一组列中值的唯一性</p>
+<h3 id="8-2-实体完整性-唯一约束"><a href="#8-2-实体完整性-唯一约束" class="headerlink" title="8.2 实体完整性-唯一约束"></a>8.2 实体完整性-唯一约束</h3><p>使用SQL <code>UNIQUE</code>约束强制列或一组列中值的唯一性</p>
 <p><code>UNIQUE</code>约束定义了一个规则，该规则可防止存储在不参与主键的特定列中有重复值</p>
 <p><code>UNIQUE</code>约束和<code>PRIMARY KEY</code>约束之间的区别：<br>比较项|<code>PRIMARY KEY</code>约束|<code>UNIQUE</code>约束<br>-|-|-<br>约束的数量|一个|多个<br>NULL值|不允许|允许</p>
 <pre><code class="SQL">/*示例1--创建了UNIQUE约束作为列约束。*/
@@ -1628,7 +1598,79 @@ ADD new_column data_type UNIQUE;
 /*示例4： 删除UNIQUE约束*/
 ALTER TABLE table_name
 DROP CONSTRAINT unique_constraint_name;</code></pre>
-<h3 id="8-4-NOT-NULL"><a href="#8-4-NOT-NULL" class="headerlink" title="8.4 NOT NULL"></a>8.4 NOT NULL</h3><p><code>NOT NULL</code>约束是一个列约束，它定义将列限制为仅具有非<code>NULL</code>值的规则。</p>
+<h3 id="8-3-参照完整性-外键约束"><a href="#8-3-参照完整性-外键约束" class="headerlink" title="8.3 参照完整性-外键约束"></a>8.3 参照完整性-外键约束</h3><p>SQL外键<code>FOREIGN KEY</code>约束以强制表之间的关系。</p>
+<p>定义外码的主要目的是：让系统做参照完整性约束的检查。</p>
+<p><strong>参照关系中外码的值必须在被参照关系中实际存在或为null</strong>。</p>
+<pre><code class="SQL">--语法格式
+--默认地，外码参照被参照关系中的主码，即下面FOREIGN KEY后面是外键，REFERENCES后面列是主键
+[CONSTRAINT [symbol]] FOREIGN KEY
+    [index_name] (index_col_name, ...)
+    REFERENCES tbl_name (index_col_name,...)
+    [ON DELETE reference_option]
+    [ON UPDATE reference_option]
+--其中reference_option的语法格式如下:
+RESTRICT | CASCADE | SET NULL | NO ACTION
+
+/*
+相关语法说明如下：
+
+1. CONSTRAINT [symbol]：可以为外键约束指定名称。
+2. tbl_name：指定外键所参照的表名，这个表称为被参照表，而外键所在表称为参照表。
+3. index_col_name：指定被参照的列名。
+4. ON DELETE/UPDATE：指定参照动作所对应的DELETE/UPDATE语句
+5. reference_option：指定参照完整性约束的实现策略。RESTRICT是限制策略，同时也是默认策略，CASCADE是级联策略，SET NULL是置空策略，NO ACTION表示不采取实施策略。
+6. RESTRICT限制策略：当要删除或更新被参照表中被参照列上在外键中出现的值时，拒绝对被参照表的删除或更新操作。默认策略。
+7. CASCADE级联策略：即从被参照表中删除或更新记录行时，自动删除或更新参照表中匹配的记录行。
+8. SET NULL置空策略：即在被参照表中操作时，设置参照表中与之对应的外键列值为NULL。
+9. NO ACTION不采取实施策略：语义动作同RESTRICT限制策略。
+*/</code></pre>
+<pre><code class="SQL">/*示例1--创建表时创建FOREIGN KEY约束*/
+CREATE TABLE project_milestones (
+    milestone_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT,
+    milestone_name VARCHAR(100),
+    FOREIGN KEY (project_id)
+        REFERENCES projects (project_id)
+);
+--FOREIGN KEY子句将project_milestones表的project_id设置为引用project表的project_id列的外键。
+
+/*示例2--可以为FOREIGN KEY约束指定名称*/
+CREATE TABLE project_milestones (
+    milestone_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT,
+    milestone_name VARCHAR(100),
+    CONSTRAINT fk_project FOREIGN KEY (project_id)
+        REFERENCES projects (project_id)
+);
+--fk_project是FOREIGN KEY约束的名称。
+
+/*示例3*/
+CREATE TABLE orders
+(
+    order_id INT NOT NULL AUTO_INCREMENT,
+    order_product CHAR(50) NOT NULL,
+    order_product_type CHAR(50) NOT NULL,
+    cust_id INT NOT NULL,
+    order_date DATETIME NOT NULL,
+    order_price DOUBLE NOT NULL,
+    order_amount INT NOT NULL,
+    PRIMARY KEY(order_id),
+    FOREIGN KEY(cust_id)
+        REFERENCES customers(cust_id)
+            ON DELETE RESTRICT
+            ON UPDATE RESTRICT
+);
+/*该外键参照完整性约束确保：插入表orders中的每一个订购客户id号都执行一次检测，查看这个订购客户id号是否已经出现在表customers的客户id号（主键）中，若没有，数据无法正常插入。*/
+
+/*示例4--使用ALTER来向现有表中添加FOREIGN KEY约束*/
+ALTER TABLE table_1
+ADD CONSTRAINT fk_name FOREIGN KEY (fk_key_column)
+   REFERENCES table_2(pk_key_column)
+
+/*示例5--删除外键约束*/
+ALTER TABLE table_name
+DROP CONSTRAINT fk_name;</code></pre>
+<h3 id="8-4-用户定义完整性-NOT-NULL"><a href="#8-4-用户定义完整性-NOT-NULL" class="headerlink" title="8.4 用户定义完整性-NOT NULL"></a>8.4 用户定义完整性-NOT NULL</h3><p><code>NOT NULL</code>约束是一个列约束，它定义将列限制为仅具有非<code>NULL</code>值的规则。</p>
 <pre><code class="SQL">--语法格式
 CREATE TABLE table_name(
    ...
@@ -1647,7 +1689,7 @@ CREATE TABLE training (
 /*示例2--ALTER TABLE NOT NULL语句*/
 ALTER TABLE training
 MODIFY taken_date date NOT NULL;</code></pre>
-<h3 id="8-5-检查约束"><a href="#8-5-检查约束" class="headerlink" title="8.5 检查约束"></a>8.5 检查约束</h3><p><code>CHECK</code>约束是SQL中的完整性约束，它允许指定列或列集中的值必须满足布尔表达式</p>
+<h3 id="8-5-用户定义完整性-CHECK约束"><a href="#8-5-用户定义完整性-CHECK约束" class="headerlink" title="8.5 用户定义完整性-CHECK约束"></a>8.5 用户定义完整性-CHECK约束</h3><p><code>CHECK</code>约束是SQL中的完整性约束，它允许指定列或列集中的值必须满足布尔表达式</p>
 <pre><code class="SQL">--语法格式
 --CHECK约束由关键字CHECK后跟括号中的布尔表达式组成：
 CHECK(Boolean_expression)
@@ -1687,13 +1729,6 @@ create table instructor
     salary Dollars,
     comm Pounds
     );</code></pre>
-<h3 id="8-7-级联动作"><a href="#8-7-级联动作" class="headerlink" title="8.7 级联动作"></a>8.7 级联动作</h3><pre><code class="SQL">--语法格式
-create table course(
-    ...
-    foreign key(dept_name) references department
-        [on delete cascade]
-        [on update cascade]
-    ...);</code></pre>
 <h2 id="九、视图与索引"><a href="#九、视图与索引" class="headerlink" title="九、视图与索引"></a>九、视图与索引</h2><h3 id="9-1-视图"><a href="#9-1-视图" class="headerlink" title="9.1 视图"></a>9.1 视图</h3><p>在某些情况下，让所有用户看到整个逻辑模型是不合适的，视图就提供了这种机制：向用户隐藏特定的数据。</p>
 <p>SQL允许通过查询来定义“虚关系”，它在概念上包含查询的结果，但并不预先计算并存储。像这种作为虚关系对用户可见的关系称为视图（view）。</p>
 <h4 id="9-1-1-创建视图"><a href="#9-1-1-创建视图" class="headerlink" title="9.1.1 创建视图"></a>9.1.1 创建视图</h4><pre><code class="SQL">--语法格式
@@ -1813,7 +1848,8 @@ DROP INDEX index_name;
 ALTER TABLE seller
     DROP PRIMARY KEY,
     DROP INDEX index_seller;</code></pre>
-<h2 id="十、事务"><a href="#十、事务" class="headerlink" title="十、事务"></a>十、事务</h2><p>事务（transaction）由查询和更新语句的序列组成。SQL标准规定当一条SQL语句被执行，就隐式地开始了一个事务。</p>
+<h2 id="十、事务"><a href="#十、事务" class="headerlink" title="十、事务"></a>十、事务</h2><p>当多个用户同时更新时，为了保证数据库的正确性，避免数据库的不一致性，控制这种并发操作的机制称为“并发控制”。而事务就是为保证数据的一致性而产生的一个概念和基本手段。</p>
+<p><strong>事务（transaction）用户定义的一个数据操作序列，是一个完整的工作单元，要么全部执行，要么全部不执行。</strong></p>
 <p>下列SQL语句之一会结束一个事务：</p>
 <ul>
 <li><code>Commit work</code>：提交当前事务，也就是将该事务所做的更新在数据库中持久保存。在事务被提交后，一个新的事务自动开始</li>
@@ -1830,22 +1866,47 @@ create assertion ins_teaches_constraint check not exists
 from instructor natural join teaches natural join section
 group by (ID,name,section_id,semester,year,time_slot_id)
 having count(building,room_number)&gt;1)</code></pre>
-<h3 id="11-2-触发器"><a href="#11-2-触发器" class="headerlink" title="11.2 触发器"></a>11.2 触发器</h3><p>触发器（trigger）是由数据库更新操作引起的被系统自动执行的语句</p>
+<h3 id="11-2-触发器trigger"><a href="#11-2-触发器trigger" class="headerlink" title="11.2 触发器trigger"></a>11.2 触发器trigger</h3><p>触发器（trigger）是由数据库更新操作引起的被系统自动执行的语句。</p>
 <p>设计触发器必须：</p>
 <ul>
 <li>指明触发器被执行的条件</li>
 <li>指明触发器执行时所做的具体操作</li>
 </ul>
-<pre><code class="SQL">--例，使用触发器来确保关系section中属性time_slot_id的参照完整性
-create trigger timeslot_check1 after insert on section
-         referencing new row as nrow
-         for each row
-         when (nrow.time_slot_id not in
-                (select time_slot_id from
-                 time_slot))/*time_slot中不存在该time_slot_id*/
+<p>1） 创建触发器</p>
+<pre><code class="SQL">--语法格式
+CREATE TRIGGER trigger_name trigger_time trigger_event
+    ON tbl_name FOR EACH ROW trigger_body
+/*1. trigger_name：指定触发器名称，名称唯一。
+2. trigger_time：指定触发器被触发的时刻。有2个选项，BEFORE和AFTER。
+3. trigger_event：指定触发事件。可以是关键字INSERT,UPDATE,DELETE。
+4. FOR EACH ROW：指定对于受触发事件影响的每一行都要激活触发器的动作。
+5. trigger_body：指定触发器动作主体，即MYSQL语句块。
+6. 每个表每个事件只允许一个触发器，即INSERT,UPDATE,DELETE的“之前”、“之后”，共最多支持6个触发器。
+7. INSERT触发器代码内，可引用一个名为NEW的虚拟表，来访问被插入的行。
+8. DELETE触发器代码内，可引用一个名为OLD的虚拟表，来访问被删除的行。
+9. UPDATE触发器代码内，可引用名为NEW的虚拟表，来访问新更新的值，OLD访问以前的值。
+*/
+
+/*例1--INSERT触发器--每次插入数据时，设置用户变量str的值为新插入客户的id*/
+CREATE TRIGGER mysql_test.customers_insert_trigger AFTER INSERT
+    ON mysql_test.customers FOR EACH ROW SET @str=NEW.cust_id;
+
+/*例2--UPDATE触发器--每次更新表时，将表中cust_address列的值设置为cust_contact列的值*/
+CREATE TRIGGER mysql_test.customers_update_trigger BEFORE UPDATE
+    ON mysql_test.customers FOR EACH ROW
+    SET NEW.cust_address=OLD.cust_contact;
+
+/*例3--使用触发器来确保关系section中属性time_slot_id的参照完整性*/
+create trigger timeslot_check1 after insert
+        ON section
+        referencing new row as nrow
+        for each row
+        when (nrow.time_slot_id not in
+            (select time_slot_id from
+                time_slot))/*time_slot中不存在该time_slot_id*/
 begin rollback end;
 
---例，某种物品库存量小到一定程度就发订货单或打开报警灯
+/*例4--某种物品库存量小到一定程度就发订货单或打开报警灯*/
 create trigger reorder_trigger after update of level on inventory
     referencing old row as orow, new row as nrow
     for each row
@@ -1862,29 +1923,62 @@ begin
              from reorder
              where reorder.item= orow.item)
 end</code></pre>
-<h2 id="十二、-安全性"><a href="#十二、-安全性" class="headerlink" title="十二、 安全性"></a>十二、 安全性</h2><h3 id="12-1-权限管理"><a href="#12-1-权限管理" class="headerlink" title="12.1 权限管理"></a>12.1 权限管理</h3><p>数据库系统级</p>
-<ul>
-<li><strong>验证</strong>和<strong>授权</strong>机制使得特定用户存取特定数据</li>
-<li>本章中主要讨论授权机制</li>
-</ul>
-<p>对数据的授权包括：</p>
-<ul>
-<li>读权限 允许读，但不允许更新数据</li>
-<li>插入权限 允许插入新数据，但不允许更新现有数据</li>
-<li>修改权限 允许修改，但不允许删除数据</li>
-<li>删除权限 允许删除数据</li>
-</ul>
-<p>对修改数据库模式的授权包括：</p>
-<ul>
-<li>索引权限-允许创建和删除索引</li>
-<li>资源权限-允许创建新关系</li>
-<li>修改权限-允许增加或删除关系的属性</li>
-<li>删除权限-允许删除关系</li>
-</ul>
+<p>2） 删除触发器</p>
 <pre><code class="SQL">--语法格式
---grant语句用于授权
-GRANT &lt;privilege list&gt;
-ON &lt;relation name or view name&gt; TO &lt;user list&gt;;</code></pre>
+DROP TRIGGER [IF EXISTS] [schema_name.]trigger_name
+/*1. schema_name.：用于指定触发器所在数据库名称
+2. 当删除一个表时，自动删除该表上的触发器。且触发器无法修改，只能删除再创建的方式来修改。*/
+
+/*示例*/
+DROP TRIGGER IF EXISTS mysql_test.customers_insert_trigger;</code></pre>
+<h2 id="十二、-安全性"><a href="#十二、-安全性" class="headerlink" title="十二、 安全性"></a>十二、 安全性</h2><h3 id="12-1-用户账号管理"><a href="#12-1-用户账号管理" class="headerlink" title="12.1 用户账号管理"></a>12.1 用户账号管理</h3><h4 id="12-1-1-创建账户"><a href="#12-1-1-创建账户" class="headerlink" title="12.1.1 创建账户"></a>12.1.1 创建账户</h4><pre><code class="SQL">--语法格式
+CREATE USER user [IDENTIFIED BY [PASSWORD] &#39;password&#39;]
+/*1. user：指定创建用户账号，格式为&#39;user_name&#39;@&#39;host_name&#39;。其中host_name表示主机名,主机名默认为&#39;%&#39;。
+1. IDENTIFIED BY:可选项，指定用户账号对应口令。
+2. PASSWORD:可选项，用于指定散列口令，若需要使用明文设置口令，需忽略PASSWORD关键字。
+3. &#39;password&#39;：指定用户账号的口令。
+4. 创建的账户权限很少，只允许进行不需要权限的操作。*/
+
+/*示例--添加2个新用户，用户名为zhangsan和lisi，主机名localhost，张三明文口令123，李四口令为456对应PASSWORD()函数返回的散列值*/
+SELECT PASSWORD(456);
+&gt;&gt;*531E182E2F72080AB0740FE2F2D689DBE0146E04
+CREATE USER &#39;zhangsan&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;123&#39;,
+            &#39;lisi&#39;@&#39;localhost&#39; IDENTIFIED BY PASSWORD &#39;*531E182E2F72080AB0740FE2F2D689DBE0146E04&#39;;</code></pre>
+<h4 id="12-1-2-删除账户"><a href="#12-1-2-删除账户" class="headerlink" title="12.1.2 删除账户"></a>12.1.2 删除账户</h4><pre><code class="SQL">--语法格式
+DROP USER [IF EXISTS] user [, user] ...
+
+/*示例*/
+DROP USER lisi@localhost;
+/*用户删除不会影响他们创建的数据库对象，MYSQL并不记录是谁创建的。*/</code></pre>
+<h4 id="12-1-3-修改用户账号"><a href="#12-1-3-修改用户账号" class="headerlink" title="12.1.3 修改用户账号"></a>12.1.3 修改用户账号</h4><pre><code class="SQL">--语法格式
+RENAME USER old_user TO new_user
+    [, old_user TO new_user] ...
+
+/*示例*/
+RENAME USER &#39;zhangsan&#39;@&#39;localhost&#39; TO &#39;wangwu&#39;@&#39;127.0.0.1&#39;;</code></pre>
+<h4 id="12-1-4-修改用户口令"><a href="#12-1-4-修改用户口令" class="headerlink" title="12.1.4 修改用户口令"></a>12.1.4 修改用户口令</h4><pre><code class="SQL">--语法格式
+SET PASSWORD [FOR user] =
+    {
+        PASSWORD(&#39;cleartext password&#39;)
+      | &#39;encrypted password&#39;
+    }
+/*1. FOR user：格式为&#39;user_name&#39;@&#39;host_name&#39;，不加上的话默认当前账户。
+2. 只能用PASSWORD(&#39;cleartext password&#39;)或&#39;encrypted password&#39;中一项，且必须一项。
+3. cleartext password是明文，encrypted password是加密密码*/
+
+/*示例*/
+SET PASSWORD FOR &#39;bob&#39;@&#39;%.example.org&#39; = PASSWORD(&#39;cleartext password&#39;);</code></pre>
+<h3 id="12-2-用户权限管理"><a href="#12-2-用户权限管理" class="headerlink" title="12.2 用户权限管理"></a>12.2 用户权限管理</h3><p>新创建的账户没有访问权限，不能执行任何数据库操作。</p>
+<pre><code class="SQL">--查看用户授权表
+SHOW GRANTS FOR &#39;user_name&#39;@&#39;host_name&#39;;
+
+--授权语法格式
+GRANT
+    priv_type [(column_list)]
+      [, priv_type [(column_list)]] ...
+    ON [object_type] priv_level
+    TO user_specification [, user_specification] ...
+    [WITH with_option ...]</code></pre>
 <p><code>privilege list</code>可有以下选择:</p>
 <ol>
 <li>select：允许读关系，或查询视图<pre><code> 例如：授予用户U1，U2，Ua对instructor关系的select权限：
@@ -1908,8 +2002,11 @@ revoke select on instructor from U1,,U2,U3 cascade
 
 --指定restrict可以阻止级联回收
 revoke select on instructor from U1,U2,U3 restrict
-/*如果要求级联回收，则带有restrict的revoke命令将会失败*/</code></pre>
-<h3 id="12-2-审计跟踪"><a href="#12-2-审计跟踪" class="headerlink" title="12.2 审计跟踪"></a>12.2 审计跟踪</h3><p>分为语句审计和对象审计</p>
+/*如果要求级联回收，则带有restrict的revoke命令将会失败*/
+
+/*示例--更新权限*/
+FLUSH PRIVILEGES;</code></pre>
+<h3 id="12-3-审计跟踪"><a href="#12-3-审计跟踪" class="headerlink" title="12.3 审计跟踪"></a>12.3 审计跟踪</h3><p>分为语句审计和对象审计</p>
 <pre><code class="SQL">--语法格式-语句审计
 AUDIT &lt;st-opt&gt; [BY &lt;users&gt;]
 [BY SESSION | ACCESS]

@@ -238,7 +238,7 @@ nano /etc/mysql/mariadb.conf.d/50-server.cnf
 # bind-address            = 127.0.0.1
 # 这样MariaDB就监听了所有的IP。</code></pre>
 <pre><code class="sql">--授权用户能够连接MariaDB Server
-GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;改为你的密码，如root&#39; WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;改为你的密码，如root&#39;;
 --更新权限
 FLUSH PRIVILEGES;</code></pre>
 <h2 id="四-安装Pi-hole搭建DNS缓存服务器，过滤网页广告"><a href="#四-安装Pi-hole搭建DNS缓存服务器，过滤网页广告" class="headerlink" title="四: 安装Pi-hole搭建DNS缓存服务器，过滤网页广告"></a>四: 安装Pi-hole搭建DNS缓存服务器，过滤网页广告</h2><p><strong>pi-hole使用后发现并不好用，故不推荐安装。</strong></p>
