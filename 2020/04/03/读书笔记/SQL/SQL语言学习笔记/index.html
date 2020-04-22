@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    15.4k 字
+                    16k 字
                   </span>&nbsp;
                 
 
@@ -147,7 +147,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      64 分钟
+                      67 分钟
                   </span>&nbsp;
                 
 
@@ -1848,14 +1848,7 @@ DROP INDEX index_name;
 ALTER TABLE seller
     DROP PRIMARY KEY,
     DROP INDEX index_seller;</code></pre>
-<h2 id="十、事务"><a href="#十、事务" class="headerlink" title="十、事务"></a>十、事务</h2><p>当多个用户同时更新时，为了保证数据库的正确性，避免数据库的不一致性，控制这种并发操作的机制称为“并发控制”。而事务就是为保证数据的一致性而产生的一个概念和基本手段。</p>
-<p><strong>事务（transaction）用户定义的一个数据操作序列，是一个完整的工作单元，要么全部执行，要么全部不执行。</strong></p>
-<p>下列SQL语句之一会结束一个事务：</p>
-<ul>
-<li><code>Commit work</code>：提交当前事务，也就是将该事务所做的更新在数据库中持久保存。在事务被提交后，一个新的事务自动开始</li>
-<li><code>Rollback work</code>：回滚当前事务，即撤销该事务中所有SQL语句对数据库的更新。这样，数据库就恢复到执行该事务第一条语句之前的状态</li>
-</ul>
-<h2 id="十一、断言及触发器"><a href="#十一、断言及触发器" class="headerlink" title="十一、断言及触发器"></a>十一、断言及触发器</h2><h3 id="11-1-断言"><a href="#11-1-断言" class="headerlink" title="11.1 断言"></a>11.1 断言</h3><p>断言（assertion）是表达要求数据库永远满足的条件的谓词（复杂check条件）</p>
+<h2 id="十、断言及触发器"><a href="#十、断言及触发器" class="headerlink" title="十、断言及触发器"></a>十、断言及触发器</h2><h3 id="10-1-断言"><a href="#10-1-断言" class="headerlink" title="10.1 断言"></a>10.1 断言</h3><p>断言（assertion）是表达要求数据库永远满足的条件的谓词（复杂check条件）</p>
 <p>SQL中的断言形式如下：</p>
 <pre><code class="SQL">create assertion &lt;assertion_name&gt; check &lt;predicate&gt;</code></pre>
 <p>创建了某断言之后，系统将检查它的合法性，并对每一个可能破坏该断言的数据库更新进行检测<br><strong>这种检测会产生大量的开销，因此断言的使用应非常谨慎</strong></p>
@@ -1866,7 +1859,7 @@ create assertion ins_teaches_constraint check not exists
 from instructor natural join teaches natural join section
 group by (ID,name,section_id,semester,year,time_slot_id)
 having count(building,room_number)&gt;1)</code></pre>
-<h3 id="11-2-触发器trigger"><a href="#11-2-触发器trigger" class="headerlink" title="11.2 触发器trigger"></a>11.2 触发器trigger</h3><p>触发器（trigger）是由数据库更新操作引起的被系统自动执行的语句。</p>
+<h3 id="10-2-触发器trigger"><a href="#10-2-触发器trigger" class="headerlink" title="10.2 触发器trigger"></a>10.2 触发器trigger</h3><p>触发器（trigger）是由数据库更新操作引起的被系统自动执行的语句。</p>
 <p>设计触发器必须：</p>
 <ul>
 <li>指明触发器被执行的条件</li>
@@ -1931,7 +1924,7 @@ DROP TRIGGER [IF EXISTS] [schema_name.]trigger_name
 
 /*示例*/
 DROP TRIGGER IF EXISTS mysql_test.customers_insert_trigger;</code></pre>
-<h2 id="十二、-安全性"><a href="#十二、-安全性" class="headerlink" title="十二、 安全性"></a>十二、 安全性</h2><h3 id="12-1-用户账号管理"><a href="#12-1-用户账号管理" class="headerlink" title="12.1 用户账号管理"></a>12.1 用户账号管理</h3><h4 id="12-1-1-创建账户"><a href="#12-1-1-创建账户" class="headerlink" title="12.1.1 创建账户"></a>12.1.1 创建账户</h4><pre><code class="SQL">--语法格式
+<h2 id="十一、-安全性"><a href="#十一、-安全性" class="headerlink" title="十一、 安全性"></a>十一、 安全性</h2><h3 id="11-1-用户账号管理"><a href="#11-1-用户账号管理" class="headerlink" title="11.1 用户账号管理"></a>11.1 用户账号管理</h3><h4 id="11-1-1-创建账户"><a href="#11-1-1-创建账户" class="headerlink" title="11.1.1 创建账户"></a>11.1.1 创建账户</h4><pre><code class="SQL">--语法格式
 CREATE USER user [IDENTIFIED BY [PASSWORD] &#39;password&#39;]
 /*1. user：指定创建用户账号，格式为&#39;user_name&#39;@&#39;host_name&#39;。其中host_name表示主机名,主机名默认为&#39;%&#39;。
 1. IDENTIFIED BY:可选项，指定用户账号对应口令。
@@ -1944,19 +1937,19 @@ SELECT PASSWORD(456);
 &gt;&gt;*531E182E2F72080AB0740FE2F2D689DBE0146E04
 CREATE USER &#39;zhangsan&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;123&#39;,
             &#39;lisi&#39;@&#39;localhost&#39; IDENTIFIED BY PASSWORD &#39;*531E182E2F72080AB0740FE2F2D689DBE0146E04&#39;;</code></pre>
-<h4 id="12-1-2-删除账户"><a href="#12-1-2-删除账户" class="headerlink" title="12.1.2 删除账户"></a>12.1.2 删除账户</h4><pre><code class="SQL">--语法格式
+<h4 id="11-1-2-删除账户"><a href="#11-1-2-删除账户" class="headerlink" title="11.1.2 删除账户"></a>11.1.2 删除账户</h4><pre><code class="SQL">--语法格式
 DROP USER [IF EXISTS] user [, user] ...
 
 /*示例*/
 DROP USER lisi@localhost;
 /*用户删除不会影响他们创建的数据库对象，MYSQL并不记录是谁创建的。*/</code></pre>
-<h4 id="12-1-3-修改用户账号"><a href="#12-1-3-修改用户账号" class="headerlink" title="12.1.3 修改用户账号"></a>12.1.3 修改用户账号</h4><pre><code class="SQL">--语法格式
+<h4 id="11-1-3-修改用户账号"><a href="#11-1-3-修改用户账号" class="headerlink" title="11.1.3 修改用户账号"></a>11.1.3 修改用户账号</h4><pre><code class="SQL">--语法格式
 RENAME USER old_user TO new_user
     [, old_user TO new_user] ...
 
 /*示例*/
 RENAME USER &#39;zhangsan&#39;@&#39;localhost&#39; TO &#39;wangwu&#39;@&#39;127.0.0.1&#39;;</code></pre>
-<h4 id="12-1-4-修改用户口令"><a href="#12-1-4-修改用户口令" class="headerlink" title="12.1.4 修改用户口令"></a>12.1.4 修改用户口令</h4><pre><code class="SQL">--语法格式
+<h4 id="11-1-4-修改用户口令"><a href="#11-1-4-修改用户口令" class="headerlink" title="11.1.4 修改用户口令"></a>11.1.4 修改用户口令</h4><pre><code class="SQL">--语法格式
 SET PASSWORD [FOR user] =
     {
         PASSWORD(&#39;cleartext password&#39;)
@@ -1968,45 +1961,82 @@ SET PASSWORD [FOR user] =
 
 /*示例*/
 SET PASSWORD FOR &#39;bob&#39;@&#39;%.example.org&#39; = PASSWORD(&#39;cleartext password&#39;);</code></pre>
-<h3 id="12-2-用户权限管理"><a href="#12-2-用户权限管理" class="headerlink" title="12.2 用户权限管理"></a>12.2 用户权限管理</h3><p>新创建的账户没有访问权限，不能执行任何数据库操作。</p>
-<pre><code class="SQL">--查看用户授权表
-SHOW GRANTS FOR &#39;user_name&#39;@&#39;host_name&#39;;
-
---授权语法格式
+<h3 id="11-2-用户权限管理"><a href="#11-2-用户权限管理" class="headerlink" title="11.2 用户权限管理"></a>11.2 用户权限管理</h3><p>新创建的账户没有访问权限，不能执行任何数据库操作。</p>
+<pre><code class="SQL">--查看用户权限
+SHOW GRANTS FOR &#39;user_name&#39;@&#39;host_name&#39;;</code></pre>
+<h4 id="11-2-1-权限的授予"><a href="#11-2-1-权限的授予" class="headerlink" title="11.2.1 权限的授予"></a>11.2.1 权限的授予</h4><pre><code class="SQL">--语法格式
 GRANT
     priv_type [(column_list)]
       [, priv_type [(column_list)]] ...
     ON [object_type] priv_level
     TO user_specification [, user_specification] ...
-    [WITH with_option ...]</code></pre>
-<p><code>privilege list</code>可有以下选择:</p>
+    [WITH with_option ...]
+/*1. priv_type：用于指定权限的名称；
+2. column_list：用于指定权限要授予给表中哪些具体的列；
+3. ON: 用于指定权限授予的对象和级别；
+4. object_type：可选项，指定权限授予的对象类型；
+5. priv_level：指定权限的级别，可以授予的权限有：列权限、表权限、数据库权限和用户权限；&#39;*&#39;表示当前数据库中所有表，&#39;*.*&#39;表示所有数据库中所有表，&#39;db_name.routine_name&#39;表示某个数据库中某个存储程序或函数；
+6. TO：用来设定用户口令，以及指定被授予权限的用户user。GRANT 语句也可以用来创建用户账户；
+7. user_specification：语法格式为`user [IDENTIFIED BY [PASSWORD] &#39;password&#39;]`;
+8. WITH with_option:用于权限转移；
+*/</code></pre>
+<p>其中<code>priv_type</code>可有以下选择:</p>
 <ol>
-<li>select：允许读关系，或查询视图<pre><code> 例如：授予用户U1，U2，Ua对instructor关系的select权限：
- `grant select on instructor to U1,U2,U3`</code></pre></li>
-<li><code>insert</code>：允许插入元组</li>
-<li><code>update</code>：允许修改元组</li>
-<li><code>delete</code>：允许删除元组</li>
+<li><code>select</code>、<code>insert</code>、<code>update</code>、<code>delete</code>：允许读关系，或查询视图、插入元组、修改元组、删除元组</li>
 <li><code>references</code>：创建关系时允许声明外键</li>
+<li><code>CREATE</code>、<code>ALTER</code>、<code>DROP</code>: 允许创建表、修改表、删除表权限</li>
+<li><code>INDEX</code>：允许定义索引权限</li>
+<li><code>CREATE ROUTINE</code>、<code>ALTER ROUTINE</code>、<code>EXECUTE ROUTINE</code>：允许创建、更新/删除、调用特定数据库的存储过程和存储函数的权限</li>
+<li><code>CREATE USER</code>、<code>SHOW DATABASES</code>:允许创建或删除新用户、查看已有数据库的定义的权限</li>
 <li><code>all privileges</code>：所有权限</li>
-<li><code>with grant option</code>：允许用户把被授予的权限再转授给其他用户<pre><code> 例如：授予U1，对instructor的select权限并允许U1，将此权限授予其他用户
- `grant select on instructor to U1 with grant option`</code></pre></li>
+<li><code>with grant option</code>：允许用户把被授予的权限再转授给其他用户</li>
 </ol>
-<pre><code class="SQL">--收回权限
---revoke语句用于回收权限
-REVOKE &lt;privilege list&gt; ON &lt;relation name or view name&gt;
-FROM &lt;user list&gt; [ restrict | cascade ]
+<pre><code class="SQL">/*示例1--授予张三再customers上拥有列cust_id和name的select权限*/
+GRANT SELECT (cust_id,cust_name)
+    ON mysql_test.customers
+    TO &#39;zhangsan&#39;@&#39;localhost&#39;;
 
-/*示例*/
-revoke select on instructor from U1,,U2,U3 cascade
+/*示例2--创建李明和黄两个用户，并赋予表customers上SELECT和UPDATE权限*/
+GRANT SELECT,UPDATE
+    ON mysql_test.customers
+    TO &#39;liming&#39;@&#39;127.0.0.1&#39; IDENTIFIED BY &#39;123&#39;
+        &#39;huang&#39;@&#39;127.0.0.1&#39; IDENTIFIED BY &#39;789&#39;;
+
+/*示例3--授予王五mysql_test的所有表所有操作权限*/
+GRANT ALL
+    ON mysql_test.*
+    TO &#39;wangwu&#39;@&#39;localhost&#39;;
+
+/*示例4--授予王五拥有创建用户权限*/
+GRANT CREATE USER
+    ON *.*
+    TO &#39;wangwu&#39;@&#39;localhost&#39;;
+
+/*示例5--授予用户可以SSH远程登录权限*/
+GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;登录密码&#39;;
+--刷新权限
+flush privileges;</code></pre>
+<h4 id="11-2-2-权限的转移"><a href="#11-2-2-权限的转移" class="headerlink" title="11.2.2 权限的转移"></a>11.2.2 权限的转移</h4><p><code>with grant option</code>使用这条语句，可把自身拥有的权限赋予其他人</p>
+<h4 id="11-2-3-权限的撤销"><a href="#11-2-3-权限的撤销" class="headerlink" title="11.2.3 权限的撤销"></a>11.2.3 权限的撤销</h4><pre><code class="SQL">--语法格式
+REVOKE
+    priv_type [(column_list)]
+      [, priv_type [(column_list)]] ...
+    ON [object_type] priv_level
+    FROM user [, user] ...
+
+/*语法格式--收回所有权限*/
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM user [,user] ...
+
+/*示例1*/
+revoke select
+    on mysql_test.customers from &#39;tom&#39;@&#39;localhost&#39;;
 /*从一用户收回权限可能导致其他用户也失去该权限，称为级联回收*/
 
---指定restrict可以阻止级联回收
-revoke select on instructor from U1,U2,U3 restrict
-/*如果要求级联回收，则带有restrict的revoke命令将会失败*/
-
-/*示例--更新权限*/
-FLUSH PRIVILEGES;</code></pre>
-<h3 id="12-3-审计跟踪"><a href="#12-3-审计跟踪" class="headerlink" title="12.3 审计跟踪"></a>12.3 审计跟踪</h3><p>分为语句审计和对象审计</p>
+/*示例2--指定restrict可以阻止级联回收*/
+revoke select
+    on instructor from U1,U2,U3 restrict;
+/*如果要求级联回收，则带有restrict的revoke命令将会失败*/</code></pre>
+<h3 id="11-3-审计跟踪"><a href="#11-3-审计跟踪" class="headerlink" title="11.3 审计跟踪"></a>11.3 审计跟踪</h3><p>分为语句审计和对象审计</p>
 <pre><code class="SQL">--语法格式-语句审计
 AUDIT &lt;st-opt&gt; [BY &lt;users&gt;]
 [BY SESSION | ACCESS]
@@ -2030,7 +2060,22 @@ AUDIT &lt;obj-opt&gt; ON &lt;obj&gt;|DEFAULT
 
 /*示例--审计所有用户对student表的delete和update操作*/
 audit delete,update on student;</code></pre>
-<h2 id="十三、-数据库编程"><a href="#十三、-数据库编程" class="headerlink" title="十三、 数据库编程"></a>十三、 数据库编程</h2><h3 id="13-1-存储过程"><a href="#13-1-存储过程" class="headerlink" title="13.1 存储过程"></a>13.1 存储过程</h3><h4 id="13-1-1-存储过程的基本概念"><a href="#13-1-1-存储过程的基本概念" class="headerlink" title="13.1.1 存储过程的基本概念"></a>13.1.1 存储过程的基本概念</h4><p>存储过程是一组SQL语句编译成一个SQL。类似于批量处理的SQL脚本。</p>
+<h3 id="11-4-事务"><a href="#11-4-事务" class="headerlink" title="11.4 事务"></a>11.4 事务</h3><h4 id="11-4-1-事务的概念"><a href="#11-4-1-事务的概念" class="headerlink" title="11.4.1 事务的概念"></a>11.4.1 事务的概念</h4><p>当多个用户同时更新时，为了保证数据库的正确性，避免数据库的不一致性，控制这种并发操作的机制称为“并发控制”。而事务就是为保证数据的一致性而产生的一个概念和基本手段。</p>
+<p><strong>事务（transaction）用户定义的一个数据操作序列，是一个完整的工作单元，要么全部执行，要么全部不执行。</strong></p>
+<p>事务以<code>BEGIN TRANSACTION</code>语句开始。</p>
+<p>下列SQL语句之一会结束一个事务：</p>
+<ul>
+<li><code>Commit</code>：提交当前事务，也就是将该事务所做的更新在数据库中持久保存。在事务被提交后，一个新的事务自动开始</li>
+<li><code>Rollback</code>：回滚当前事务，即撤销该事务中所有SQL语句对数据库的更新。这样，数据库就恢复到执行该事务第一条语句之前的状态</li>
+</ul>
+<h4 id="11-4-2-事务的特征"><a href="#11-4-2-事务的特征" class="headerlink" title="11.4.2 事务的特征"></a>11.4.2 事务的特征</h4><p>为保证数据一致性和正确性，数据库确保事务具有如下4个特征，简称事务的ACID特征：</p>
+<ol>
+<li>原子性(Atomicity)：一组更新操作是原子不可分。</li>
+<li>一致性(Consistency)：满足数据库完整性约束。</li>
+<li>隔离性(Isolation)：事务彼此独立，隔离，不被其他事务干扰。一个执行完，另一个才能存取。</li>
+<li>持续性(Durability)：一旦提交，对数据的改变是永久的。</li>
+</ol>
+<h4 id="11-4-3-并发操作问题"><a href="#11-4-3-并发操作问题" class="headerlink" title="11.4.3 并发操作问题"></a>11.4.3 并发操作问题</h4><h4 id="11-4-4-封锁"><a href="#11-4-4-封锁" class="headerlink" title="11.4.4 封锁"></a>11.4.4 封锁</h4><h2 id="十二、-数据库编程"><a href="#十二、-数据库编程" class="headerlink" title="十二、 数据库编程"></a>十二、 数据库编程</h2><h3 id="12-1-存储过程"><a href="#12-1-存储过程" class="headerlink" title="12.1 存储过程"></a>12.1 存储过程</h3><h4 id="12-1-1-存储过程的基本概念"><a href="#12-1-1-存储过程的基本概念" class="headerlink" title="12.1.1 存储过程的基本概念"></a>12.1.1 存储过程的基本概念</h4><p>存储过程是一组SQL语句编译成一个SQL。类似于批量处理的SQL脚本。</p>
 <p>存储过程的好处：</p>
 <ul>
 <li>可增强SQL语言的功能和灵活性</li>
@@ -2039,7 +2084,7 @@ audit delete,update on student;</code></pre>
 <li>可减少网络流量</li>
 <li>存储过程可作为一种安全机制来确保数据库的安全性和数据的完整性</li>
 </ul>
-<h4 id="13-1-2-创建存储过程"><a href="#13-1-2-创建存储过程" class="headerlink" title="13.1.2 创建存储过程"></a>13.1.2 创建存储过程</h4><p><code>delimiter</code>是<code>MySQL</code>中的命令，这个命令与存储过程没什么关系。</p>
+<h4 id="12-1-2-创建存储过程"><a href="#12-1-2-创建存储过程" class="headerlink" title="12.1.2 创建存储过程"></a>12.1.2 创建存储过程</h4><p><code>delimiter</code>是<code>MySQL</code>中的命令，这个命令与存储过程没什么关系。</p>
 <p>其实就是告诉<code>mysql</code>解释器，该段命令是否已经结束了，mysql是否可以执行了。即改变输入结束符。</p>
 <p>默认情况下，<code>delimiter</code>是分号“;”。</p>
 <p>但有时候，不希望<code>MySQL</code>这么做。因为可能输入较多的语句，且语句中包含有分号。</p>
@@ -2068,7 +2113,7 @@ BEGIN
     UPDATE customers SET cust_sex=csex WHERE cust_id=cid;
 END$$
 delimiter ;</code></pre>
-<h4 id="13-1-3-存储过程体"><a href="#13-1-3-存储过程体" class="headerlink" title="13.1.3 存储过程体"></a>13.1.3 存储过程体</h4><h5 id="13-1-3-1-局部变量"><a href="#13-1-3-1-局部变量" class="headerlink" title="13.1.3.1 局部变量"></a>13.1.3.1 局部变量</h5><p>使用<code>DECLARE</code>语句来声明局部变量。</p>
+<h4 id="12-1-3-存储过程体"><a href="#12-1-3-存储过程体" class="headerlink" title="12.1.3 存储过程体"></a>12.1.3 存储过程体</h4><h5 id="12-1-3-1-局部变量"><a href="#12-1-3-1-局部变量" class="headerlink" title="12.1.3.1 局部变量"></a>12.1.3.1 局部变量</h5><p>使用<code>DECLARE</code>语句来声明局部变量。</p>
 <pre><code class="SQL">--语法格式
 DECLARE var_name [, var_name] ... type [DEFAULT value]
 /*var_name:用于指定局部变量的名称。
@@ -2078,20 +2123,20 @@ DEFAULT:用于为局部变量指定一个默认值，若没有指定，默认为
 /*示例*/
 DECLARE cid INT(10);
 --局部变量智能在存储过程体的BEGIN...END语句块中声明使用。</code></pre>
-<h5 id="13-1-3-2-SET语句"><a href="#13-1-3-2-SET语句" class="headerlink" title="13.1.3.2 SET语句"></a>13.1.3.2 SET语句</h5><p><code>SET</code>为局部变量赋值。</p>
+<h5 id="12-1-3-2-SET语句"><a href="#12-1-3-2-SET语句" class="headerlink" title="12.1.3.2 SET语句"></a>12.1.3.2 SET语句</h5><p><code>SET</code>为局部变量赋值。</p>
 <pre><code class="SQL">--语法格式
 SET var_name=expr [, var_name=expr] ...
 
 /*示例*/
 SET cid=910;</code></pre>
-<h5 id="13-1-3-3-SELECT…INTO语句"><a href="#13-1-3-3-SELECT…INTO语句" class="headerlink" title="13.1.3.3 SELECT…INTO语句"></a>13.1.3.3 SELECT…INTO语句</h5><p><code>SELECT...INTO</code>语句把选定列的值直接存储到局部变量中。</p>
+<h5 id="12-1-3-3-SELECT…INTO语句"><a href="#12-1-3-3-SELECT…INTO语句" class="headerlink" title="12.1.3.3 SELECT…INTO语句"></a>12.1.3.3 SELECT…INTO语句</h5><p><code>SELECT...INTO</code>语句把选定列的值直接存储到局部变量中。</p>
 <pre><code class="SQL">--语法格式
 SELECT col_name [,...] INTO var_name [,...] table_expr
 /*col_name用于指定列名。
 var_name用于指定要赋值的变量名。
 table_expr表示SELECT语句中FROM子句及其后面的语法部分。
 SELECT...INTO语句返回的结果集只能有一行数据。*/</code></pre>
-<h5 id="13-1-3-4-游标"><a href="#13-1-3-4-游标" class="headerlink" title="13.1.3.4 游标"></a>13.1.3.4 游标</h5><p>游标是一个被<code>SELECT</code>语句检索出来的结果集。在存储了游标后，应用程序或用户就可以根据需要滚动或浏览其中的数据。使用游标的步骤如下：</p>
+<h5 id="12-1-3-4-游标"><a href="#12-1-3-4-游标" class="headerlink" title="12.1.3.4 游标"></a>12.1.3.4 游标</h5><p>游标是一个被<code>SELECT</code>语句检索出来的结果集。在存储了游标后，应用程序或用户就可以根据需要滚动或浏览其中的数据。使用游标的步骤如下：</p>
 <p>1） 声明游标</p>
 <pre><code class="SQL">--语法格式
 DECLARE cursor_name CURSOR FOR select_statement
@@ -2132,7 +2177,7 @@ delimiter ;
 定义局部变量必须在定义任意游标和句柄之前。*/
 
 /*游标只能用于存储过程或存储函数中，不能单独在查询操作中使用。*/</code></pre>
-<h4 id="13-1-4-调用存储过程"><a href="#13-1-4-调用存储过程" class="headerlink" title="13.1.4 调用存储过程"></a>13.1.4 调用存储过程</h4><pre><code class="SQL">--语法格式
+<h4 id="12-1-4-调用存储过程"><a href="#12-1-4-调用存储过程" class="headerlink" title="12.1.4 调用存储过程"></a>12.1.4 调用存储过程</h4><pre><code class="SQL">--语法格式
 CALL sp_name([parameter[,...]]);
 CALL sp_name[()];
 /*sp_name:指定被调用的存储过程的名称。
@@ -2140,12 +2185,12 @@ parameter：指定调用存储过程所使用的参数*/
 
 /*示例*/
 CALL sp_update_sex(909,&#39;M&#39;);</code></pre>
-<h4 id="13-1-5-删除存储过程"><a href="#13-1-5-删除存储过程" class="headerlink" title="13.1.5 删除存储过程"></a>13.1.5 删除存储过程</h4><pre><code class="SQL">--语法格式
+<h4 id="12-1-5-删除存储过程"><a href="#12-1-5-删除存储过程" class="headerlink" title="12.1.5 删除存储过程"></a>12.1.5 删除存储过程</h4><pre><code class="SQL">--语法格式
 DROP PROCEDURE [IF EXISTS] sp_name;
 
 /*示例*/
 DROP PROCEDURE IF EXISTS sp_update_sex;</code></pre>
-<h3 id="13-2-存储函数"><a href="#13-2-存储函数" class="headerlink" title="13.2 存储函数"></a>13.2 存储函数</h3><p>存储过程和存储函数的区别：</p>
+<h3 id="12-2-存储函数"><a href="#12-2-存储函数" class="headerlink" title="12.2 存储函数"></a>12.2 存储函数</h3><p>存储过程和存储函数的区别：</p>
 <ul>
 <li>存储函数不能拥有输出参数，自身即是输出参数；存储过程可以拥有输出参数</li>
 <li>存储函数可以被直接调用，而存储过程必须通过CALL语句调用</li>
@@ -2215,9 +2260,9 @@ DROP FUNCTION IF EXISTS fn_search;</code></pre>
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/SQL">SQL</a>
-                
                   <a class="hover-with-bg" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>
+                
+                  <a class="hover-with-bg" href="/tags/SQL">SQL</a>
                 
               </span>
             
