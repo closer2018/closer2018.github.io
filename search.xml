@@ -2432,8 +2432,8 @@ DROP FUNCTION IF EXISTS fn_search;</code></pre>
         <category>SQL</category>
       </categories>
       <tags>
-        <tag>读书笔记</tag>
         <tag>SQL</tag>
+        <tag>读书笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -2570,8 +2570,8 @@ while distance &gt; 0:
         <category>python</category>
       </categories>
       <tags>
-        <tag>按键精灵</tag>
         <tag>python</tag>
+        <tag>按键精灵</tag>
       </tags>
   </entry>
   <entry>
@@ -2736,8 +2736,8 @@ if __name__ == &#39;__main__&#39;:
         <category>树莓派</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>树莓派</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -5994,8 +5994,8 @@ install_redis &#39;http://download.redis.io/releases/&#39; $1</code></pre>
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>读书笔记</tag>
         <tag>Linux</tag>
+        <tag>读书笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -6583,8 +6583,8 @@ sudo apt install gulp</code></pre>
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>读书笔记</tag>
         <tag>Linux</tag>
+        <tag>读书笔记</tag>
       </tags>
   </entry>
   <entry>
