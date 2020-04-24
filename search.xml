@@ -34,7 +34,7 @@ sudo docker pull portainer/portainer
 # 创建 portainer 容器
 sudo docker volume create portainer_data
 
-# 运行 portainer
+# 运行 portainer(需要9000端口没有被占用，如被占用，自行更换第一个宿主机端口)
 sudo docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
 
 # 浏览器输入ip:9000登录图形管理界面</code></pre>
@@ -58,7 +58,7 @@ docker pull mysql
 # 查看docker镜像及镜像id，命令：
 docker images
 
-# 运行一个容器，命令：基于mysql镜像运行一个容器
+# 运行一个容器，命令：基于mysql镜像运行一个容器(需要3310端口没有被占用，如被占用，自行更换第一个宿主机端口)
 docker run --name firstMysql -p 3310:3306 -e MYSQL\_ROOT\_PASSWORD=123456 -d mysql
 :&#39;
 # 具体run命令参数详解查看进阶命令
