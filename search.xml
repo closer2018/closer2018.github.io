@@ -2432,8 +2432,8 @@ DROP FUNCTION IF EXISTS fn_search;</code></pre>
         <category>SQL</category>
       </categories>
       <tags>
-        <tag>SQL</tag>
         <tag>读书笔记</tag>
+        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -2736,8 +2736,8 @@ if __name__ == &#39;__main__&#39;:
         <category>树莓派</category>
       </categories>
       <tags>
-        <tag>树莓派</tag>
         <tag>python</tag>
+        <tag>树莓派</tag>
       </tags>
   </entry>
   <entry>
@@ -6364,6 +6364,9 @@ def main():
 if __name__ == &#39;__main__&#39;:
     main()</code></pre>
 <h3 id="三：-后话"><a href="#三：-后话" class="headerlink" title="三： 后话"></a>三： 后话</h3><p>如果要从事爬虫类应用的开发，那么正则表达式一定是一个非常好的助手，因为它可以帮助我们迅速的从网页代码中发现某种我们指定的模式并提取出我们需要的信息，当然对于初学者来收，要编写一个正确的适当的正则表达式可能并不是一件容易的事情（当然有些常用的正则表达式可以直接在网上找找），所以实际开发爬虫应用的时候，有很多人会选择<a href="https://www.crummy.com/software/BeautifulSoup/" target="_blank" rel="noopener">Beautiful Soup</a>或<a href="http://lxml.de/" target="_blank" rel="noopener">Lxml</a>来进行匹配和信息的提取，前者简单方便但是性能较差，后者既好用性能也好，但是安装稍嫌麻烦。</p>
+<h3 id="四：-文献及工具"><a href="#四：-文献及工具" class="headerlink" title="四： 文献及工具"></a>四： 文献及工具</h3><p><a href="https://regex101.com/" target="_blank" rel="noopener">在线正则表达式：https://regex101.com/</a><br><a href="https://regex101.com/settings" target="_blank" rel="noopener">设置里面可以切换语言</a></p>
+<p><a href="https://gist.github.com/JavaCS3/e36e494e78a02049950bfa7c7ebeb929" target="_blank" rel="noopener">实用文档：https://gist.github.com/JavaCS3/e36e494e78a02049950bfa7c7ebeb929</a></p>
+<p><a href="https://www.bilibili.com/video/BV1ef4y1U7V4" target="_blank" rel="noopener">视频教程：https://www.bilibili.com/video/BV1ef4y1U7V4</a></p>
 ]]></content>
       <categories>
         <category>python</category>
