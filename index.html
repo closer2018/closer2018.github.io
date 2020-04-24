@@ -153,6 +153,79 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/04/24/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_self">
+          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/docker.jpg" srcset="/img/loading.gif" alt="docker学习笔记" class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2020/04/24/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+        <p class="h4 index-header">docker学习笔记</p>
+      </a>
+
+      <a href="/2020/04/24/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
+docker官方文档
+
+一、 安装及加速安装适用于ubuntu,其他系统请参考官方文档。基础配置及加速通用。
+# 安装（根据系统自行选择方式）
+sudo apt install docker.io
+
+# 查看版本
+docker -v
+
+# 配置docker镜像加速
+# 阿里云镜像获取地址：https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors，登陆后，左侧菜单选中镜像加速器就可以看到你的专属地址了
+# 按照页面的操作文档配置加速
+sudo mkdir -p /etc/docker
+
+sudo tee /etc/docker/daemon.json &lt;&lt;-&#39;EOF&#39;
+{
+  &quot;registry-mirrors&quot;: [&quot;https://改为你的加速器地址.mirror.aliyuncs.com&quot;]
+}
+EOF
+
+sudo systemctl daemon-reload
+
+sudo systemctl restart docker
+
+# 下载 Docker 图</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-24&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/linux">linux</a>&nbsp;
+          
+            <a href="/categories/docker">docker</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/docker">docker</a>&nbsp;
+          
+            <a href="/tags/linux">linux</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/04/21/games/DNF/DNF%E6%90%AD%E5%BB%BA/" target="_self">
           <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/games/DNF/dnf.png" srcset="/img/loading.gif" alt="DNF搭建说明" class="index-img img-fluid rounded index-thumbnails">
         </a>
@@ -373,9 +446,9 @@ REVOKE
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
-          
             <a href="/tags/SQL">SQL</a>&nbsp;
+          
+            <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
           
         
       </div>
@@ -506,9 +579,9 @@ Beautiful Soup中文文档</div>
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/python">python</a>&nbsp;
-          
             <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE">树莓派</a>&nbsp;
+          
+            <a href="/tags/python">python</a>&nbsp;
           
         
       </div>
@@ -762,79 +835,6 @@ sudo dpkg-reconfigure tzdata
             <a href="/tags/Linux">Linux</a>&nbsp;
           
             <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE">树莓派</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/SQL/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93MySQL/" target="_self">
-          <img src="/img/mysql.jpg" srcset="/img/loading.gif" alt="关系数据库MySQL入门" class="index-img img-fluid rounded index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/SQL/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93MySQL/">
-        <p class="h4 index-header">关系数据库MySQL入门</p>
-      </a>
-
-      <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/SQL/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93MySQL/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">
-本文转载于GitHub项目Python - 100天从新手到大师
-
-一： 关系数据库概述
-数据持久化 - 将数据保存到能够长久保存数据的存储介质中，在掉电的情况下数据也不会丢失。
-
-数据库发展史 - 网状数据库、层次数据库、关系数据库、NoSQL数据库。
-
-1970年，IBM的研究员E.F.Codd在Communication of the ACM上发表了名为A Relational Model of Data for Large Shared Data Banks的论文，提出了关系模型的概念，奠定了关系模型的理论基础。后来Codd又陆续发表多篇文章，论述了范式理论和衡量关系系统的12条标准，用数学理论奠定了关系数据库的基础。
-
-
-关系数据库特点。
-
-理论基础：集合论和关系代数。
-
-具体表象：用二维表（有行和列）组织数据。
-
-编程语言：结构化查询语言（SQL）。
-
-
-
-ER模型（实体关系模型）和概念模型图。
-ER模型，全称为实体关系模型（Entity-Relationship Model），由美籍华裔计算机科学家陈品山先生提出，是概念数据模型的高层描述方式，如下图所示。
-
-
-实体 -</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-23&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
-          
-            <a href="/categories/MYSQL">MYSQL</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
-          
-            <a href="/tags/MySQL">MySQL</a>&nbsp;
           
         
       </div>
