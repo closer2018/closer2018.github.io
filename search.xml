@@ -2415,7 +2415,116 @@ audit delete,update on student;</code></pre>
 <li>隔离性(Isolation)：事务彼此独立，隔离，不被其他事务干扰。一个执行完，另一个才能存取。</li>
 <li>持续性(Durability)：一旦提交，对数据的改变是永久的。</li>
 </ol>
-<h4 id="11-4-3-并发操作问题"><a href="#11-4-3-并发操作问题" class="headerlink" title="11.4.3 并发操作问题"></a>11.4.3 并发操作问题</h4><h4 id="11-4-4-封锁"><a href="#11-4-4-封锁" class="headerlink" title="11.4.4 封锁"></a>11.4.4 封锁</h4><h2 id="十二、-数据库编程"><a href="#十二、-数据库编程" class="headerlink" title="十二、 数据库编程"></a>十二、 数据库编程</h2><h3 id="12-1-存储过程"><a href="#12-1-存储过程" class="headerlink" title="12.1 存储过程"></a>12.1 存储过程</h3><h4 id="12-1-1-存储过程的基本概念"><a href="#12-1-1-存储过程的基本概念" class="headerlink" title="12.1.1 存储过程的基本概念"></a>12.1.1 存储过程的基本概念</h4><p>存储过程是一组SQL语句编译成一个SQL。类似于批量处理的SQL脚本。</p>
+<h4 id="11-4-3-并发操作问题"><a href="#11-4-3-并发操作问题" class="headerlink" title="11.4.3 并发操作问题"></a>11.4.3 并发操作问题</h4><p>事务的ACID特征可能遭到破坏的原因之一是多个事务对数据库的并发操作造成的。</p>
+<p>典型的并发操作问题有如下三个：</p>
+<ol>
+<li>丢失更新：读入同一数据并修改，导致之前修改丢失。</li>
+<li>不可重复读：读第一次和读第二次的结果不一样，因为别人在中间修改插入删除了某些数据<ol>
+<li>事务T1读取某一数据后，T2对其修改，T1再次读到与之前不一样的值。</li>
+<li>T1读取某一数据后，T2删除部分记录，T1再次读发现某些记录丢失了。</li>
+<li>T1读取某一数据后，T2插入一些记录，T1再次读发现多了一些记录。</li>
+</ol>
+</li>
+<li>读‘脏’数据：T1修改某一数据并写回，T2读取，T1撤销操作，T2的数据便是脏数据</li>
+</ol>
+<h4 id="11-4-4-封锁"><a href="#11-4-4-封锁" class="headerlink" title="11.4.4 封锁"></a>11.4.4 封锁</h4><p>封锁是最常用的并发控制技术。原理是：需要时，事务通过向系统请求对它所希望的数据对象加锁，确保它不被非预期改变。</p>
+<h5 id="11-4-4-1-封锁类型"><a href="#11-4-4-1-封锁类型" class="headerlink" title="11.4.4.1 封锁类型"></a>11.4.4.1 封锁类型</h5><p>基本的封锁类型有两种：排他锁（X锁）、共享锁（S锁）。</p>
+<ul>
+<li><p><strong>排他锁：写锁</strong>。若事务T对数据对象A加上X锁，则只允许T读取和修改A，其他任何事务都不能再对A加任何类型的锁，直到T释放A上的锁为止。这就保证了其他事务在T释放A上的锁之前不能再读取和修改A。</p>
+</li>
+<li><p><strong>共享锁：读锁</strong>，若事务T对数据对象A加上S锁，则事务T可以读A但不能修改A，其他事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁为止，这就保证了其他事务可以读A，但在T上释放A的S锁之前不能对A做任何修改。</p>
+</li>
+</ul>
+<h5 id="11-4-4-2-封锁协议"><a href="#11-4-4-2-封锁协议" class="headerlink" title="11.4.4.2 封锁协议"></a>11.4.4.2 封锁协议</h5><ol>
+<li><p>一级封锁协议：事务T在修改数据R前必须先对其加X锁，直到事务结束才释放。只能保证不发生丢失修改。</p>
+</li>
+<li><p>二级封锁协议：在一级封锁协议基础上，增加事务T在读取数据R前必须先对其加S锁，读完后即可释放S锁。增加保证了不发生读“脏”数据</p>
+</li>
+<li><p>三级封锁协议：在一级封锁协议的基础上，增加事务T在读取数据R前必须先对其加S锁，直到事务结束才释放进一步防止了不可重复读</p>
+</li>
+</ol>
+<p>封锁协议级别越高，一致性程度越高</p>
+<p><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/MySQL/%E4%B8%8D%E5%90%8C%E7%BA%A7%E5%88%AB%E7%9A%84%E5%B0%81%E9%94%81%E5%8D%8F%E8%AE%AE%E5%92%8C%E4%B8%80%E8%87%B4%E6%80%A7%E4%BF%9D%E8%AF%81.png" srcset="/img/loading.gif" alt="不同级别的封锁协议和一致性保证"></p>
+<h5 id="11-4-4-3-活锁与死锁"><a href="#11-4-4-3-活锁与死锁" class="headerlink" title="11.4.4.3 活锁与死锁"></a>11.4.4.3 活锁与死锁</h5><p><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/MySQL/%E6%B4%BB%E9%94%81.png" srcset="/img/loading.gif" alt="活锁"></p>
+<p>避免活锁最简单的方法是“先来先服务”。</p>
+<p><strong>两个以上事务循环等待被同组中另一事务锁住的数据单元的情形，称为“死锁”。</strong></p>
+<p><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/MySQL/%E6%AD%BB%E9%94%81.png" srcset="/img/loading.gif" alt="死锁"></p>
+<p><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/MySQL/%E6%AD%BB%E9%94%81%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.png" srcset="/img/loading.gif" alt="死锁解决办法"></p>
+<p>预防死锁的办法：</p>
+<ol>
+<li>一次封锁法：每个事务必须一次将所有要使用的数据全部加锁。<br> 缺点：降低了系统的并发度。而且数据是不断变化的，很难事先精确确定每个事务所要封锁的数据对象。</li>
+<li>顺序封锁法：预先对数据对象规定一个封锁顺序，所有事务都按这个顺序实现封锁。<br> 缺点：封锁的数据对象极多且在不断变化。事务的封锁请求随着事务的执行而动态地决定，很难事先确定。</li>
+<li>序列化处理：通过应用设计为每一数据单元建立“主人程序”，所有请求发给“主人”，而“主人”以单道运行。<br> 缺点：系统性能、数据完整性可能受到影响。</li>
+<li>资源剥夺：每当事务因锁请求不能满足而受阻，强行令冲突中的一方回滚，释放所有锁，然后重新运行。<br> 缺点：需要预防活锁发生。</li>
+</ol>
+<p>死锁的诊断与解除</p>
+<ol>
+<li>超时法：实现简单，用得最多<br> 缺点：可能误判。若时限太长不能及时发现</li>
+<li>等待图法：精确判断死锁</li>
+</ol>
+<h5 id="11-4-4-4-可串行性"><a href="#11-4-4-4-可串行性" class="headerlink" title="11.4.4.4 可串行性"></a>11.4.4.4 可串行性</h5><p>定义：若一个调度等价于某一串行高度，即它所产生的结果与某一串行调度的结果一样，称这种调度是可串行化的。</p>
+<p>两段封锁法是一种简单有效的保障封锁其调度是可串行性的方法。</p>
+<p>两段封锁法：所有事务必须分两个阶段对数据项进行加锁和解锁</p>
+<ul>
+<li>在对任何数据进行读写操作之前，首先要申请并获得对该数据的封锁</li>
+<li>在释放一个封锁之后，事务不再申请和获得任何其他封锁</li>
+</ul>
+<p>事务分为两个阶段：</p>
+<ol>
+<li>获得封锁，也称为扩展阶段，可以申请获得任何数据项上的任何类型的锁，不能释放任何锁</li>
+<li>释放封锁，也称为收缩阶段，可以释放任何锁，但是不能申请任何锁</li>
+</ol>
+<p>可以证明，若并发执行的所有事务均遵守两段锁协议，则对这些事务的任何并发调度策略都是可串行化的（充分不必要条件），但是可能导致死锁。</p>
+<h3 id="11-5-备份与恢复表"><a href="#11-5-备份与恢复表" class="headerlink" title="11.5 备份与恢复表"></a>11.5 备份与恢复表</h3><ol>
+<li>用SELECT INTO … OUTFILE备份数据</li>
+<li>用LOAD DATA…INFILE恢复数据</li>
+</ol>
+<pre><code class="SQL">--备份语法格式
+SELECT * INTO OUTFILE &#39;file_name&#39; export_options
+      | INTO DUMPFILE &#39;file_name&#39;
+/*其中export_options格式为*/
+[{FIELDS | COLUMNS}
+    [TERMINATED BY &#39;string&#39;]
+    [[OPTIONALLY] ENCLOSED BY &#39;char&#39;]
+    [ESCAPED BY &#39;char&#39;]
+]
+[LINES TERMINATED BY &#39;string&#39;]
+/*1. FIELDS和LINES子句指定数据行在备份文件中存储的格式。
+2. TERMINATED BY：指定字段值之间的符号；
+3. ENCLOSED BY：指定包裹文件中字符值的符号；[OPTIONALLY]可选项，所有值都放在符号中。
+4. ESCAPED BY：指定转义字符。
+5. TERMINATED BY：指定数据行结束标志。
+6. DUMPFILE：导出的所有数据行彼此紧挨，值与行之间没有标记。*/
+
+--恢复语法格式
+LOAD DATA INFILE &#39;file_name&#39;
+    INTO TABLE tbl_name
+    [{FIELDS | COLUMNS}
+        [TERMINATED BY &#39;string&#39;]
+        [[OPTIONALLY] ENCLOSED BY &#39;char&#39;]
+        [ESCAPED BY &#39;char&#39;]
+    ]
+    [LINES
+        [STARTING BY &#39;string&#39;]
+        [TERMINATED BY &#39;string&#39;]
+    ]
+/*STARTING BY：指定一个前缀，导入数据行时，忽略数据行中该前缀和前缀之间的内容。若某行不包括该前缀，则整个数据行被跳过。*/
+
+/*示例--备份*/
+SELECT * FROM mysql_test.customers
+    INTO OUTFILE &#39;C:/BACKUP/backupfile.txt&#39;
+    FIELDS TERMINATED BY &#39;,&#39;
+    OPTIONALLY ENCLOSED BY &quot;&quot;
+    LINES TERMINATED BY &#39;?&#39;;
+
+/*示例--恢复*/
+LOAD DATA INFILE &#39;C:/BACKUP/backupfile.txt&#39;
+    INTO TABLE mysql_test.customers_copy
+    FIELDS TERMINATED BY &#39;,&#39;
+    OPTIONALLY ENCLOSED BY &quot;&quot;
+    LINES TERMINATED BY &#39;?&#39;;</code></pre>
+<p><strong>注意：多个用户使用MYSQL时，备份时在指定表上使用<code>LOCK TABLES table_name READ</code>语句做个读锁定，防止备份中被其他用户更新；恢复时使用<code>LOCK TABLES table_name WRITE</code>语句做个写锁定，防止数据冲突。备份恢复完成后，用<code>UNLOCK TABLES</code>语句对该表进行解锁。</strong></p>
+<h2 id="十二、-数据库编程"><a href="#十二、-数据库编程" class="headerlink" title="十二、 数据库编程"></a>十二、 数据库编程</h2><h3 id="12-1-存储过程"><a href="#12-1-存储过程" class="headerlink" title="12.1 存储过程"></a>12.1 存储过程</h3><h4 id="12-1-1-存储过程的基本概念"><a href="#12-1-1-存储过程的基本概念" class="headerlink" title="12.1.1 存储过程的基本概念"></a>12.1.1 存储过程的基本概念</h4><p>存储过程是一组SQL语句编译成一个SQL。类似于批量处理的SQL脚本。</p>
 <p>存储过程的好处：</p>
 <ul>
 <li>可增强SQL语言的功能和灵活性</li>
@@ -2584,8 +2693,8 @@ DROP FUNCTION IF EXISTS fn_search;</code></pre>
         <category>SQL</category>
       </categories>
       <tags>
-        <tag>SQL</tag>
         <tag>读书笔记</tag>
+        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -7361,8 +7470,8 @@ echo;</code></pre>
         <category>hexo</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
         <tag>一键部署</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
