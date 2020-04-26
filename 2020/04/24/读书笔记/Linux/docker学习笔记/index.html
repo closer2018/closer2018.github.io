@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    1.5k 字
+                    1.4k 字
                   </span>&nbsp;
                 
 
@@ -147,7 +147,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      6 分钟
+                      5 分钟
                   </span>&nbsp;
                 
 
@@ -236,17 +236,9 @@ docker pull mysql
 docker images
 
 # 运行一个容器，命令：基于mysql镜像运行一个容器(需要3310端口没有被占用，如被占用，自行更换第一个宿主机端口)
-docker run --name firstMysql -p 3310:3306 -e MYSQL\_ROOT\_PASSWORD=123456 -d mysql
-:&#39;
-# 具体run命令参数详解查看进阶命令
-run           运行一个容器
---name        后面是这个容器的名称
--p 3310:3306  表示在这个容器中使用3306端口(第二个)映射到本机(宿主机)的端口号也为3310(第一个)
--d            表示使用守护进程运行，即服务挂在后台
--e            指定环境变量，容器中可以使用该环境变量  
-&#39;
-
-# 查看在运行的容器，及容器id，命令：
+docker run --name firstMysql -p 3310:3306 -e MYSQL\_ROOT\_PASSWORD=123456 -d mysql</code></pre>
+<p><a href="#dockerRun_all">跳转到docker run的命令参数详解</a></p>
+<pre><code class="SHELL"># 查看在运行的容器，及容器id，命令：
 docker ps
 
 # 查看所有容器（包括未运行的容器）及容器id，命令:
@@ -275,7 +267,8 @@ docker rmi $(docker images | awk &#39;{print $3}&#39; |tail -n +2)
 
 # 查看镜像详细信息，命令：
 docker inspect 镜像id</code></pre>
-<h2 id="三、-进阶命令"><a href="#三、-进阶命令" class="headerlink" title="三、 进阶命令"></a>三、 进阶命令</h2><h3 id="3-1-run命令参数"><a href="#3-1-run命令参数" class="headerlink" title="3.1 run命令参数"></a>3.1 run命令参数</h3><pre><code class="SH">Usage: docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+<h2 id="三、-进阶命令"><a href="#三、-进阶命令" class="headerlink" title="三、 进阶命令"></a>三、 进阶命令</h2><p><a id="dockerRun_all"></a></p>
+<h3 id="3-1-docker-run命令参数"><a href="#3-1-docker-run命令参数" class="headerlink" title="3.1 docker run命令参数"></a>3.1 docker run命令参数</h3><pre><code class="SH">Usage: docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 
 -d, --detach=false     指定容器运行于前台还是后台，默认为false
 -i, --interactive=false    打开STDIN，用于控制台交互

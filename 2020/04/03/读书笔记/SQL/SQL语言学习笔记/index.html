@@ -1911,6 +1911,7 @@ create trigger reorder_trigger after update of level on inventory
                     from minlevel
                     where minlevel.item= orow.item)
 begin
+    insert into ordersbegin
     insert into orders
             (select item, amount
              from reorder
@@ -2369,9 +2370,9 @@ DROP FUNCTION IF EXISTS fn_search;</code></pre>
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>
-                
                   <a class="hover-with-bg" href="/tags/SQL">SQL</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>
                 
               </span>
             
