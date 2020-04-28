@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    499 字
+                    502 字
                   </span>&nbsp;
                 
 
@@ -180,40 +180,57 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h2 id="一、创建托管仓库"><a href="#一、创建托管仓库" class="headerlink" title="一、创建托管仓库"></a>一、创建托管仓库</h2><ul>
-<li><p>GitHub <a href="https://github.com" target="_blank" rel="noopener">https://github.com</a><br>与用户名相同，格式为YouID.github.io</p>
+            <h2 id="一、创建托管仓库">一、创建托管仓库</h2>
+<ul>
+<li>
+<p>GitHub <a href="https://github.com" target="_blank" rel="noopener">https://github.com</a><br>
+与用户名相同，<a href="http://xn--YouID-dq1hm91h5lp.github.io" target="_blank" rel="noopener">格式为YouID.github.io</a></p>
 </li>
-<li><p>Gitee <a href="https://gitee.com" target="_blank" rel="noopener">https://gitee.com</a><br>与用户名相同，格式为YouID</p>
+<li>
+<p>Gitee <a href="https://gitee.com" target="_blank" rel="noopener">https://gitee.com</a><br>
+与用户名相同，格式为YouID</p>
 </li>
-<li><p>Coding <a href="https://coding.net" target="_blank" rel="noopener">https://coding.net</a><br>与用户名相同，格式为YouID.coding.me</p>
-<a id="more"></a>
-
+<li>
+<p>Coding <a href="https://coding.net" target="_blank" rel="noopener">https://coding.net</a><br>
+与用户名相同，<a href="http://xn--YouID-dq1hm91h5lp.coding.me" target="_blank" rel="noopener">格式为YouID.coding.me</a></p>
 </li>
 </ul>
-<h2 id="二、在Github、Gitee、Coding上添加SSH，并push"><a href="#二、在Github、Gitee、Coding上添加SSH，并push" class="headerlink" title="二、在Github、Gitee、Coding上添加SSH，并push"></a>二、在Github、Gitee、Coding上添加SSH，并push</h2><ol>
+<a id="more"></a>
+<h2 id="二、在Github、Gitee、Coding上添加SSH，并push">二、在Github、Gitee、Coding上添加SSH，并push</h2>
+<ol>
 <li>获取id_rsa.pub文件内的公匙;具体如何获取请百度<code>id_rsa.pub</code></li>
 <li>在 Github、Gitee、Coding平台 - 设置 - 添加SSH Keys。</li>
 <li>将博客分支master和分支hexo里的内容push到仓库，并设定hexo为主分支（hexo分支的好处请参考<a href="https://closer_laps.gitee.io/2019/12/09/hexo/hexo%20%E5%A4%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8A%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/"> hexo 多客户端上更新博客</a>）。</li>
 </ol>
-<h2 id="三、开启Pages服务并绑定域名"><a href="#三、开启Pages服务并绑定域名" class="headerlink" title="三、开启Pages服务并绑定域名"></a>三、开启Pages服务并绑定域名</h2><ul>
+<h2 id="三、开启Pages服务并绑定域名">三、开启Pages服务并绑定域名</h2>
+<ul>
 <li>GitHub 进入托管的仓库 -&gt; Settings -&gt; Options 往下拉-&gt;GitHub Pages</li>
 <li>Gitee 进入托管的仓库 -&gt; 服务-&gt; Gitee Pages (绑定域名需要升级Gitee Pro，普通版每次部署更新需要手动点更新！！！)</li>
 <li>Coding 进入托管的仓库 -&gt; Pages服务 -&gt; 设置</li>
 </ul>
-<h2 id="四、Hexo推送设置"><a href="#四、Hexo推送设置" class="headerlink" title="四、Hexo推送设置"></a>四、Hexo推送设置</h2><p>在博客根目录下，打开<code>_config.yml</code>,deploy设置如下所示</p>
-<pre><code class="yml">deploy:
+<h2 id="四、Hexo推送设置">四、Hexo推送设置</h2>
+<p>在博客根目录下，打开<code>_config.yml</code>,deploy设置如下所示</p>
+<pre><code class="language-yml">deploy:
   type: git
   repo:
         github: git@github.com:YouID/YouID.github.io.git
         gitee: git@gitee.com:YouID/YouID.git
         coding: git@e.coding.net:YouID/YouID.coding.me.git
-  branch: master</code></pre>
-<h2 id="五：将本地仓库和远程仓库连接"><a href="#五：将本地仓库和远程仓库连接" class="headerlink" title="五：将本地仓库和远程仓库连接"></a>五：将本地仓库和远程仓库连接</h2><ul>
-<li><p>GitHub<br><code>git remote add githuborigin git@github.com:YouID/YouID.github.io.git</code></p>
+  branch: master
+</code></pre>
+<h2 id="五：将本地仓库和远程仓库连接">五：将本地仓库和远程仓库连接</h2>
+<ul>
+<li>
+<p>GitHub<br>
+<code>git remote add githuborigin git@github.com:YouID/YouID.github.io.git</code></p>
 </li>
-<li><p>Gitee<br><code>git remote add giteeorigin git@gitee.com:YouID/YouID.git</code>  </p>
+<li>
+<p>Gitee<br>
+<code>git remote add giteeorigin git@gitee.com:YouID/YouID.git</code></p>
 </li>
-<li><p>Coding<br><code>git remote add codingorigin git@e.coding.net:YouID/YouID.coding.me.git</code></p>
+<li>
+<p>Coding<br>
+<code>git remote add codingorigin git@e.coding.net:YouID/YouID.coding.me.git</code></p>
 </li>
 </ul>
 <p>输入<code>git remote -v</code>，成功的话会显示3个你关联的远程库：<code>codingorigin</code>、<code>githuborigin</code>、<code>giteeorigin</code>。如下：</p>
@@ -222,7 +239,11 @@ codingorigin    git@e.coding.net:YouID/YouID.coding.me.git (push)
 giteeorigin     git@gitee.com:YouID/YouID.git (fetch)
 giteeorigin     git@gitee.com:YouID/YouID.git (push)
 githuborigin  git@github.com:YouID/YouID.github.io.git (fetch)
-githuborigin  git@github.com:YouID/YouID.github.io.git (push)</code></pre><h2 id="六、一键部署必杀命令"><a href="#六、一键部署必杀命令" class="headerlink" title="六、一键部署必杀命令"></a>六、一键部署必杀命令</h2><p><code>git add source/ &amp;&amp; git commit -m &quot;blog update&quot; &amp;&amp; git push githuborigin hexo &amp;&amp; git push giteeorigin hexo &amp;&amp; git push codingorigin hexo &amp;&amp; hexo clean &amp;&amp; hexo g &amp;&amp; hexo d &amp;&amp; exit</code><br>把所有命令用<code>&amp;&amp;</code>串起来，有一个失败就会停止；成功，最后一条命令就会退出终端。</p>
+githuborigin  git@github.com:YouID/YouID.github.io.git (push)
+</code></pre>
+<h2 id="六、一键部署必杀命令">六、一键部署必杀命令</h2>
+<p><code>git add source/ &amp;&amp; git commit -m &quot;blog update&quot; &amp;&amp; git push githuborigin hexo &amp;&amp; git push giteeorigin hexo &amp;&amp; git push codingorigin hexo &amp;&amp; hexo clean &amp;&amp; hexo g &amp;&amp; hexo d &amp;&amp; exit</code><br>
+把所有命令用<code>&amp;&amp;</code>串起来，有一个失败就会停止；成功，最后一条命令就会退出终端。</p>
 
             <hr>
           </div>

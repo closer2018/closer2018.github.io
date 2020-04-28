@@ -181,9 +181,11 @@
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
             <p>windows或者Android(需要root权限)下按键精灵有时候写一些简单的脚本还是挺好用的。没有最好的语言，只有最适合的工具。在此记录下常用的基本语法。</p>
-<h2 id="句柄及后台运行"><a href="#句柄及后台运行" class="headerlink" title="句柄及后台运行"></a>句柄及后台运行</h2><p>句柄可以获取后台窗口的类名或者标题，以达到获取坐标或后台运行脚本的目的。<br><strong>后台只支持部分窗口，以实际测试为准。</strong></p>
+<h2 id="句柄及后台运行">句柄及后台运行</h2>
+<p>句柄可以获取后台窗口的类名或者标题，以达到获取坐标或后台运行脚本的目的。<br>
+<strong>后台只支持部分窗口，以实际测试为准。</strong></p>
 <p>句柄的类名或者标题，可以用按键精灵自带的抓抓工具抓取。</p>
-<pre><code class="vb">//声明窗口句柄变量，窗口大小变量
+<pre><code class="language-vb">//声明窗口句柄变量，窗口大小变量
 Dim Hwnd, sRect
 //声明数组
 Dim Array
@@ -247,10 +249,12 @@ For i=0 To 5
     Next
     x = 488
     y = y + 30
-Next</code></pre>
-<h2 id="带GUI的脚本"><a href="#带GUI的脚本" class="headerlink" title="带GUI的脚本"></a>带GUI的脚本</h2><p>先要在界面画出窗体（form）及各种输入框，下拉框，标签，按钮等。。。</p>
+Next
+</code></pre>
+<h2 id="带GUI的脚本">带GUI的脚本</h2>
+<p>先要在界面画出窗体（form）及各种输入框，下拉框，标签，按钮等。。。</p>
 <p>下面是QQ后台刷屏脚本，先画4个标签，4个输入框，1个下拉框，1个按钮</p>
-<pre><code class="VB">//事件：form是窗体，load是加载，定义下拉框属性
+<pre><code class="language-VB">//事件：form是窗体，load是加载，定义下拉框属性
 Event Form1.Load
     //窗体1中的ComboBox1下拉框1有是和否2个选择
     Form1.ComboBox1.List = &quot;是|否&quot;
@@ -286,8 +290,10 @@ Event Form1.Button1.Click
         //发送事件间隔为变量rate
         Delay rate
     Wend
-End Event</code></pre>
-<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><pre><code class="VB">DimEnv T1
+End Event
+</code></pre>
+<h2 id="多线程">多线程</h2>
+<pre><code class="language-VB">DimEnv T1
 DimEnv T2
 Call start_1
 Sub start_1
@@ -361,8 +367,10 @@ Sub stop
         End If
     Wend
 End Sub
+
 </code></pre>
-<h2 id="一个简单的脚本示例"><a href="#一个简单的脚本示例" class="headerlink" title="一个简单的脚本示例"></a>一个简单的脚本示例</h2><pre><code class="VB">//声明窗口句柄变量
+<h2 id="一个简单的脚本示例">一个简单的脚本示例</h2>
+<pre><code class="language-VB">//声明窗口句柄变量
 Dim Hwnd, sRect
 Dim Array
 //下面这句是查找窗口类名(&quot;Notepad&quot;)或者标题(0),返回找到的句柄Hwnd
@@ -523,8 +531,10 @@ ElseIf Var0 = 4 Then
     Call autoLeftClick()
 ElseIf  Var0 = 5 Then
     Call autoDuanZao()
-End If</code></pre>
-<h2 id="参考视频"><a href="#参考视频" class="headerlink" title="参考视频"></a>参考视频</h2><p><a href="https://space.bilibili.com/3196036/channel/detail?cid=100704" target="_blank" rel="noopener">https://space.bilibili.com/3196036/channel/detail?cid=100704</a></p>
+End If
+</code></pre>
+<h2 id="参考视频">参考视频</h2>
+<p><a href="https://space.bilibili.com/3196036/channel/detail?cid=100704" target="_blank" rel="noopener">https://space.bilibili.com/3196036/channel/detail?cid=100704</a></p>
 
             <hr>
           </div>

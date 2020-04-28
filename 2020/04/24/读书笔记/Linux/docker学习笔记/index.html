@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    1.4k 字
+                    1.5k 字
                   </span>&nbsp;
                 
 
@@ -183,8 +183,9 @@
             <blockquote>
 <p><a href="https://docs.docker.com/" target="_blank" rel="noopener">docker官方文档</a></p>
 </blockquote>
-<h2 id="一、-安装及加速"><a href="#一、-安装及加速" class="headerlink" title="一、 安装及加速"></a>一、 安装及加速</h2><p>安装适用于ubuntu,其他系统请参考官方文档。基础配置及加速通用。</p>
-<pre><code class="shell"># 安装（根据系统自行选择方式）
+<h2 id="一、-安装及加速">一、 安装及加速</h2>
+<p>安装适用于ubuntu,其他系统请参考官方文档。基础配置及加速通用。</p>
+<pre><code class="language-shell"># 安装（根据系统自行选择方式）
 sudo apt install docker.io
 
 # 查看版本
@@ -195,7 +196,7 @@ docker -v
 # 按照页面的操作文档配置加速
 sudo mkdir -p /etc/docker
 
-sudo tee /etc/docker/daemon.json &lt;&lt;-&#39;EOF&#39;
+sudo tee /etc/docker/daemon.json &lt;&lt;-'EOF'
 {
   &quot;registry-mirrors&quot;: [&quot;https://改为你的加速器地址.mirror.aliyuncs.com&quot;]
 }
@@ -214,16 +215,21 @@ sudo docker volume create portainer_data
 # 运行 portainer(需要9000端口没有被占用，如被占用，自行更换第一个宿主机端口)
 sudo docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
 
-# 浏览器输入ip:9000登录图形管理界面</code></pre>
-<h2 id="二、-基础命令"><a href="#二、-基础命令" class="headerlink" title="二、 基础命令"></a>二、 基础命令</h2><h3 id="2-1-安装、启动及停止"><a href="#2-1-安装、启动及停止" class="headerlink" title="2.1 安装、启动及停止"></a>2.1 安装、启动及停止</h3><pre><code class="SH"># 安装命令：
+# 浏览器输入ip:9000登录图形管理界面
+</code></pre>
+<h2 id="二、-基础命令">二、 基础命令</h2>
+<h3 id="2-1-安装、启动及停止">2.1 安装、启动及停止</h3>
+<pre><code class="language-SH"># 安装命令：
 apt-get install docker.io
 
 # 关闭docker服务，命令：
 service docker stop
 
 # 启动docker 服务，命令：
-service docker start</code></pre>
-<h3 id="2-2-常用命令"><a href="#2-2-常用命令" class="headerlink" title="2.2 常用命令"></a>2.2 常用命令</h3><pre><code class="SH"># 查看docker版本，命令：
+service docker start
+</code></pre>
+<h3 id="2-2-常用命令">2.2 常用命令</h3>
+<pre><code class="language-SH"># 查看docker版本，命令：
 docker version
 
 # 搜索可用docker镜像，命令：如搜索mysql
@@ -236,9 +242,10 @@ docker pull mysql
 docker images
 
 # 运行一个容器，命令：基于mysql镜像运行一个容器(需要3310端口没有被占用，如被占用，自行更换第一个宿主机端口)
-docker run --name firstMysql -p 3310:3306 -e MYSQL\_ROOT\_PASSWORD=123456 -d mysql</code></pre>
-<p><a href="#dockerRun_all">跳转到docker run的命令参数详解</a></p>
-<pre><code class="SHELL"># 查看在运行的容器，及容器id，命令：
+docker run --name firstMysql -p 3310:3306 -e MYSQL\_ROOT\_PASSWORD=123456 -d mysql
+</code></pre>
+<p><a href="#3-1-docker-run命令参数">跳转到docker run的命令参数详解</a></p>
+<pre><code class="language-SHELL"># 查看在运行的容器，及容器id，命令：
 docker ps
 
 # 查看所有容器（包括未运行的容器）及容器id，命令:
@@ -254,21 +261,31 @@ docker rm 容器id
 docker rmi 镜像id
 
 # 启动所有容器，命令：
-docker start $(docker ps -a | awk &#39;{ print $1}&#39; | tail -n +2)
+docker start $(docker ps -a | awk '{ print $1}' | tail -n +2)
 
 # 关闭所有容器，命令：
-docker stop $(docker ps -a | awk &#39;{ print $1}&#39; | tail -n +2)
+docker stop $(docker ps -a | awk '{ print $1}' | tail -n +2)
 
 # 删除所有容器，命令：
-docker rm $(docker ps -a | awk &#39;{ print $1}&#39; | tail -n +2)
+docker rm $(docker ps -a | awk '{ print $1}' | tail -n +2)
 
 # 删除所有镜像（先关闭所有的容器，再删除所有容器，才能删除所有镜像），命令：
-docker rmi $(docker images | awk &#39;{print $3}&#39; |tail -n +2)
+docker rmi $(docker images | awk '{print $3}' |tail -n +2)
 
 # 查看镜像详细信息，命令：
-docker inspect 镜像id</code></pre>
-<h2 id="三、-进阶命令"><a href="#三、-进阶命令" class="headerlink" title="三、 进阶命令"></a>三、 进阶命令</h2><p><a id="dockerRun_all"></a></p>
-<h3 id="3-1-docker-run命令参数"><a href="#3-1-docker-run命令参数" class="headerlink" title="3.1 docker run命令参数"></a>3.1 docker run命令参数</h3><pre><code class="SH">Usage: docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+docker inspect 镜像id
+
+# 进入运行的容器修改相关参数
+docker exec -it 容器名称 bash
+# 其中bash为进入容器后执行的命令。
+# 其中  -d :分离模式: 在后台运行
+#       -i :即使没有附加也保持STDIN 打开
+#       -t :分配一个伪终端
+
+</code></pre>
+<h2 id="三、-进阶命令">三、 进阶命令</h2>
+<h3 id="3-1-docker-run命令参数">3.1 docker run命令参数</h3>
+<pre><code class="language-SH">Usage: docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 
 -d, --detach=false     指定容器运行于前台还是后台，默认为false
 -i, --interactive=false    打开STDIN，用于控制台交互
@@ -308,9 +325,11 @@ docker inspect 镜像id</code></pre>
                               on-failure：容器故障退出（返回值非零）时重启
                               always：容器退出时总是重启
 --rm=false                 指定容器停止后自动删除容器(不支持以docker run -d启动的容器)
---sig-proxy=true           设置由代理接受并处理信号，但是SIGCHLD、SIGSTOP和SIGKILL不能被代理</code></pre>
+--sig-proxy=true           设置由代理接受并处理信号，但是SIGCHLD、SIGSTOP和SIGKILL不能被代理
+</code></pre>
 <p>未完待续。。。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.bilibili.com/video/BV1Hb411U76Y" target="_blank" rel="noopener">Docker使用入门教程</a></p>
+<h2 id="参考">参考</h2>
+<p><a href="https://www.bilibili.com/video/BV1Hb411U76Y" target="_blank" rel="noopener">Docker使用入门教程</a></p>
 <p><a href="https://odcn.top/2019/02/13/2529/" target="_blank" rel="noopener">Docker run命令参数中文介绍</a></p>
 
             <hr>

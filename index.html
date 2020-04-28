@@ -172,7 +172,8 @@
           <div class="index-text mb-1">
 docker官方文档
 
-一、 安装及加速安装适用于ubuntu,其他系统请参考官方文档。基础配置及加速通用。
+一、 安装及加速
+安装适用于ubuntu,其他系统请参考官方文档。基础配置及加速通用。
 # 安装（根据系统自行选择方式）
 sudo apt install docker.io
 
@@ -184,7 +185,7 @@ docker -v
 # 按照页面的操作文档配置加速
 sudo mkdir -p /etc/docker
 
-sudo tee /etc/docker/daemon.json &lt;&lt;-&#39;EOF&#39;
+sudo tee /etc/docker/daemon.json &lt;&lt;-'EOF'
 {
   &quot;registry-mirrors&quot;: [&quot;https://改为你的加速器地址.mirror.aliyuncs.com&quot;]
 }
@@ -194,7 +195,7 @@ sudo systemctl daemon-reload
 
 sudo systemctl restart docker
 
-# 下载 Docker 图</div>
+# 下载 Docker 图形化界面 po</div>
         </div>
       </a>
 
@@ -290,7 +291,9 @@ sudo systemctl restart docker
         
         <div class="index-excerpt" >
           <div class="index-text mb-1">windows或者Android(需要root权限)下按键精灵有时候写一些简单的脚本还是挺好用的。没有最好的语言，只有最适合的工具。在此记录下常用的基本语法。
-句柄及后台运行句柄可以获取后台窗口的类名或者标题，以达到获取坐标或后台运行脚本的目的。后台只支持部分窗口，以实际测试为准。
+句柄及后台运行
+句柄可以获取后台窗口的类名或者标题，以达到获取坐标或后台运行脚本的目的。
+后台只支持部分窗口，以实际测试为准。
 句柄的类名或者标题，可以用按键精灵自带的抓抓工具抓取。
 //声明窗口句柄变量，窗口大小变量
 Dim Hwnd, sRect
@@ -308,7 +311,7 @@ TracePrint Hwnd
 sRect = Plugin.Window.GetWindowRect(Hwnd)
 
 //窗口大小转为数组，可以获得窗口左上角的坐标
-//语法</div>
+//</div>
         </div>
       </a>
 
@@ -347,16 +350,21 @@ sRect = Plugin.Window.GetWindowRect(Hwnd)
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">一、SQL简介1.1 SQL是什么
+          <div class="index-text mb-1">一、SQL简介
+1.1 SQL是什么
+
 SQL是结构化查询语言，它是一种用于存储，操作和检索存储在关系数据库中的数据的计算机语言
 
 关系型数据库可以通过E-R图转换而来，E-R图中矩形是实体集，菱形是关系，椭圆是属性。
-1.2 SQL命令1） DDL——数据定义语言
+1.2 SQL命令
+1） DDL——数据定义语言
+
 
 
 序号
 命令
 描述
+
 
 
 
@@ -375,12 +383,15 @@ DROP
 用于删除整个表，数据库中的表或其他对象的视图
 
 
+
 2） DML——数据操纵语言
+
 
 
 序号
 命令
 描述
+
 
 
 
@@ -404,12 +415,15 @@ DELETE
 删除记录
 
 
+
 3） DCL——数据控制语言
+
 
 
 序号
 命令
 描述
+
 
 
 
@@ -423,11 +437,15 @@ REVOKE
 撤销用户授予的权限
 
 
-1.3 数据的完整性每个RDBMS(关系型数据库)都存在以下类别的数据完整性
+
+1.3 数据的完整性
+每个RDBMS(关系型数据库)都存在以下类别的数据完整性
+
 
 实体完整性 - 表中没有重复的行。
 
-域完整性 - 通过限制值的类型，格式或范围，为给定</div>
+
+域完整性 - 通过限</div>
         </div>
       </a>
 
@@ -446,9 +464,9 @@ REVOKE
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/SQL">SQL</a>&nbsp;
-          
             <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
+          
+            <a href="/tags/SQL">SQL</a>&nbsp;
           
         
       </div>
@@ -484,15 +502,18 @@ PyAutoGUI的五个特点:
 定位应用程序的窗口,和移动,调整,最大化、最小化、关闭(仅适用于windows,目前)
 显示消息框进行用户交互,而您的GUI自动化脚本运行。
 
-一： 安装pyautogui库pip3 install pyautogui
+一： 安装pyautogui库
+pip3 install pyautogui
 ubuntu系统，可能需要sudo apt-get install python3-tk python3-dev，如果安装不上，请参考官方文档如何安装
-二： 使用方法官方文档
-2.1 常规功能&gt;&gt;&gt; import pyautogui
+二： 使用方法
+官方文档
+2.1 常规功能
+&gt;&gt;&gt; import pyautogui
 &gt;&gt;&gt; pyautogui.position()  # 当前鼠标 x， y坐标
 (968, 56)
 &gt;&gt;&gt; pyautogui.size()  # 当前屏幕分辨率宽和高
 (1920, 1080)
-&gt;&gt;&gt; pyauto</div>
+&gt;&gt;&gt; pya</div>
         </div>
       </a>
 
@@ -542,6 +563,7 @@ ubuntu系统，可能需要sudo apt-get install python3-tk python3-dev，如果�
 原帖地址
 
 一、 前期准备
+
 树莓派一个
 小音箱一对
 
@@ -551,16 +573,18 @@ http://tianqi.moji.com/
 进入墨迹天气的页面，墨迹天气会根据你的ip加载相应地区的天气。
 这次我们主要抓取温度、天气、湿度、风力、空气质量和天气提示这几个数据。
 这种小爬虫我们就使用requests和BeautifulSoup这两个超级好用的库可以快速实现。
-二、 环境首先树莓派安装python3，python3-pip和requests、beautifulsoup4两个库及mplayer软件。
+二、 环境
+首先树莓派安装python3，python3-pip和requests、beautifulsoup4两个库及mplayer软件。
 sudo apt install python3 -y
 sudo apt install python3-pip -y
 pip3 install requests
 pip3 install beautifulsoup4
 sudo apt-get install mplayer -y
+
 至于Requests和Beautiful Soup的用法这里就先不多说了，大家可以去看他们的中文文档。
 
 Requests中文wendnag
-Beautiful Soup中文文档</div>
+Beautiful Soup中</div>
         </div>
       </a>
 
@@ -608,19 +632,23 @@ Beautiful Soup中文文档</div>
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">前言有时候会遇到Linux的源更新速度非常的缓慢，特别是在国内使用默认的源，因为国内的网络环境，经常会出现无法更新，更新缓慢的情况。在这种情况下，更换一个更适合或者说更近，更快的软件源，会为你的Linux安装更新操作更加的流畅和顺利。
-使用系统要求：CentOS 5+、Ubuntu 14.04+、Debian 7+
+          <div class="index-text mb-1">前言
+有时候会遇到Linux的源更新速度非常的缓慢，特别是在国内使用默认的源，因为国内的网络环境，经常会出现无法更新，更新缓慢的情况。在这种情况下，更换一个更适合或者说更近，更快的软件源，会为你的Linux安装更新操作更加的流畅和顺利。
+使用
+系统要求：CentOS 5+、Ubuntu 14.04+、Debian 7+
 使用命令：
 #下载脚本
 wget git.io/superupdate.sh
 #运行脚本
 bash superupdate.sh
+
 如果第一步你出现错误或执行后无任何输出，请检查是否安装wget和ca-certificates，使用命令：
 #Debian、Ubuntu
 apt-get install -y wget &amp;&amp; apt-get install -y ca-certificates
 #CentOS
 yum install -y wget &amp;&amp; yum install -y ca-certificates
-对于Debian默认换源为Fastly CDN的mirror这个源有Fastly的加持对境外主机都有不错的速度。对于Ubuntu和 C</div>
+
+对于Debian默认换源为Fastly CDN的mirror这个源有Fastly的加持对境外主机都有不错的速度。对于Ubunt</div>
         </div>
       </a>
 
@@ -669,17 +697,27 @@ yum install -y wget &amp;&amp; yum install -y ca-certificates
           <div class="index-text mb-1">
 比较简单的方法：下载脚本，使用frp实现内网穿透
 
-本文记录如何在树莓派上如何实现反向代理，穿透内网进行远程登录和操作树莓派。本方法也适用于其他 Linux 系统和 mac osx系统，但目录上有所区别。
+本文记录如何在树莓派上如何实现反向代理，穿透内网进行远程登录和操作树莓派。本方法也适用于其他 Linux 系统和 mac osx
+系统，但目录上有所区别。
 一： 必备条件
+
 具有公网 IP 的 vps 或者云主机。
 局域网主机（如树莓派、nas）。
 
 二： 准备工作（局域网主机上操作）
-局域网主机生成密匙(如果已经生成，请跳过)打开终端，输入。ssh-keygen # 然后连续按三次Enter
-输入如下命令：ssh-copy-id -i ~/.ssh/id_rsa.pub 中文改为你的云主机用户名@中文改为你的云主机外网IP
-使pi默认可以root登录sudo passwd root # 修改pi的root密码sudo nano /etc/ssh/sshd_config找到PermitRootLogin这一行，将前面的‘#’去掉，这一行改为PermitRootLogin yes。
 
-三： 反向代理的操作原理图：
+局域网主机生成密匙(如果已经生成，请跳过)
+打开终端，输入。
+ssh-keygen # 然后连续按三次Enter
+输入如下命令：
+ssh-copy-id -i ~/.ssh/id_rsa.pub 中文改为你的云主机用户名@中文改为你的云主机外网IP
+使pi默认可以root登录
+sudo passwd root # 修改pi的root密码
+sudo nano /etc/ssh/sshd_config
+找到PermitRootLogin这一行，将前面的‘#’去掉，这一行改为PermitRootLogin yes。
+
+三： 反向代理的操作
+原理图：
 
 
 
@@ -690,10 +728,11 @@ IP
 
 
 
+
 A
 192.168.1.A
 U_a
-目标 计算机，（即树莓派），在局域网中，可以访问 A</div>
+目标 计算机，（即树莓派），在</div>
         </div>
       </a>
 
@@ -742,19 +781,25 @@ U_a
         
         <div class="index-excerpt" >
           <div class="index-text mb-1">一： 查看cookie
-查看cookie的方法：按下F12打开开发者工具。在network中可以看到请求发送的信息，在返回头中，会带有服务器提供的设置cookie的信息。在application当中，可以看到相应网站的所有cookie，并不是只有登录信息，也不是所有的网站都有cookie。
-http协议是一个无状态的协议，用到cookie和session来保存访问中的一些状态。cookie和session都是由服务器生成的，cookie将保存在浏览器的本地，session记录在服务端。
+
+查看cookie的方法：按下F12打开开发者工具。
+在network中可以看到请求发送的信息，在返回头中，会带有服务器提供的设置cookie的信息。
+在application当中，可以看到相应网站的所有cookie，并不是只有登录信息，也不是所有的网站都有cookie。
+http协议是一个无状态的协议，用到cookie和session来保存访问中的一些状态。
+cookie和session都是由服务器生成的，cookie将保存在浏览器的本地，session记录在服务端。
 cookie的几大属性
+
 name：名字（键），cookie的必须字段。
 value：值。
 domain：域。cookie的作用域名。
-path：表示路径。/表示当前域名下所有的网页都能使用该cookie。domain和path结合在一起，限定了cookie的适用范围。
+path：表示路径。/表示当前域名下所有的网页都能使用该cookie。
+domain和path结合在一起，限定了cookie的适用范围。
 expires：生命周期。限定cookie的使用时间。如果生命周期为Session的，表示只在当前这次会话中cookie有效，关闭浏览器之后立即失效。
 sessionID：本次访问的会话留下的ID号。
 
 
 
-二： 用selenium操作通</div>
+二： 用selen</div>
         </div>
       </a>
 
@@ -802,20 +847,27 @@ sessionID：本次访问的会话留下的ID号。
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">一: 修改密码及时间1.1 设置su及pi密码sudo passwd pi                   # 修改 Pi 密码  
+          <div class="index-text mb-1">一: 修改密码及时间
+1.1 设置su及pi密码
+sudo passwd pi                   # 修改 Pi 密码  
 sudo passwd root                 # 设置 root 密码
 su root                          # 切换到 root 用户  
 su pi                            # 切换到 pi 用户
-1.2 修改时间使用date 语句查看时间，如不正确，则：首先在终端中用下面的命令安装ntpdate工具
+
+1.2 修改时间
+使用date 语句查看时间，如不正确，则：首先在终端中用下面的命令安装ntpdate工具
 sudo apt install ntpdate
-启用NTP 
+启用NTP
 sudo timedatectl set-ntp true
 继续使用date语句查看时间，如不正确，则：
 sudo dpkg-reconfigure tzdata
 修改时区为Asia Shanghai，继续使用date语句查看时间并确认正确
-二: 中文环境2.1 安装中文输入法sudo apt install scim-pinyin
-2.2 配置中文环境sudo raspi-config
-按4 -&gt; 1</div>
+二: 中文环境
+2.1 安装中文输入法
+sudo apt install scim-pinyin
+2.2 配置中文环境
+sudo raspi-config
+按4 -</div>
         </div>
       </a>
 
