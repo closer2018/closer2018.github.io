@@ -209,7 +209,6 @@ make menuconfig</code></pre>
 <h3 id="2-2-定制配置"><a href="#2-2-定制配置" class="headerlink" title="2.2 定制配置"></a>2.2 定制配置</h3><p><code>make menuconfig</code>后，会有一个编译管理器，在里面可以选择型号、OP功能组件，需要用到方向键、回车键、空格键。方向键是移动光标，回车键是确认，空格键是选择（在选项框按下空格键，*号是编译进固件，M是编译但是不编译进固件）</p>
 <p>下面的假如没有说明，就是默认选项。</p>
 <p>①. Target System（Atheros AR7xxx…）<br>    选择CPU型号,看你的CPU架构，软路由或虚拟机一般是是X86<br>②. Subtarget(x86_64)<br>    选择多少位系统，默认64即可<br>③. Target Profile<br>    选择路由型号，默认即可<br>④. Target Images<br>    勾选上squashfs（new）即可，然后其他默认<br>⑤. Base system<br>    选择默认的dnsmasq-full即可,另外2个dnsmasq切记不要选。<br>⑥. Administration<br>    根据你的需求选择。<br>⑦. LuCI-&gt;Applications<br>    整个系统精华所在，非常重要，<a id="常用配置">常用配置如下</a></p>
-<p><a href="#2-4-全部LuCI-gt-Applications配置">查看详细LuCI配置</a></p>
 <pre><code class="SH"># 选择LuCI常用配置 添加常用插件应用：
 #-----------------------------------------------------------------------------------------
 LuCI ---&gt; Applications ---&gt; luci-app-accesscontrol  #访问时间控制
@@ -256,6 +255,7 @@ LuCI ---&gt; Applications ---&gt; luci-app-xlnetacc  #迅雷快鸟
 LuCI ---&gt; Applications ---&gt; luci-app-zerotier  #ZeroTier内网穿透
 Extra packages  ---&gt;  ipv6helper  #支持 ipv6
 Utilities  ---&gt;  open-vm-tools  #打开适用于VMware的VM Tools</code></pre>
+<p><a href="#2-4-全部LuCI-gt-Applications配置">查看详细LuCI配置</a></p>
 <p>⑧. Network-&gt;Download Manager<br>    选择ariaNG<br>⑨. Utilities-&gt;Editors<br>    1. 选择默认编辑器-&gt;nano，习惯vim的选择vim<br>    2. 打开适用于VMware的VM Tools<br>        Utilities  —&gt;  open-vm-tools<br>⑩. 如果要支持 iPv6，勾选下面的选项：<br>    Extra packages  —&gt;  ipv6helper  （选定这个后下面几项自动选择了）<br>      Network  —&gt;  odhcp6c<br>      Network  —&gt;  odhcpd-ipv6only<br>      LuCI  —&gt;  Protocols  —&gt;  luci-proto-ipv6<br>      LuCI  —&gt;  Protocols  —&gt;  luci-proto-ppp</p>
 <p>离开选择功能界面，EXIT-&gt;YES</p>
 <pre><code class="SH">#  下载dl库
