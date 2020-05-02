@@ -153,6 +153,66 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/05/02/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/openwrt%E7%9A%84%E7%BC%96%E8%AF%91%E5%8F%8A%E5%85%B6%E4%BD%BF%E7%94%A8/" target="_self">
+          <img src="/img/default.jpg" srcset="/img/loading.gif" alt="openwrt的编译及其使用" class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2020/05/02/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/openwrt%E7%9A%84%E7%BC%96%E8%AF%91%E5%8F%8A%E5%85%B6%E4%BD%BF%E7%94%A8/">
+        <p class="h4 index-header">openwrt的编译及其使用</p>
+      </a>
+
+      <a href="/2020/05/02/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/openwrt%E7%9A%84%E7%BC%96%E8%AF%91%E5%8F%8A%E5%85%B6%E4%BD%BF%E7%94%A8/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
+基于coolsnowwolf大神源码编译,源码地址
+
+一、 前言自己编译需要linux知识、装系统的知识和能够全局的访问外网，而折腾openwrt需要部分计算机网络原理的知识。
+如果不能自己编译，可以下载Lean大编译好的固件
+也可以下载eSir大佬基于L大源码编译的固件。
+二、 编译2.1 搭建编译环境首先打开Lean大的GitHub项目地址，仔细阅读说明，其实很简单，直接复制黏贴命令行就行。
+然后虚拟机安装Ubuntu 18 LTS x64 Server版本
+然后ssh登录Ubuntu，后面命令需要全局外网来进行编译了。
+输入如下命令行
+# 命令行输入
+sudo apt-get update
+
+# 然后输入
+sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3.5 python2.7 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-02&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/linux">linux</a>&nbsp;
+          
+            <a href="/categories/openwrt">openwrt</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/openwrt">openwrt</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/04/24/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_self">
           <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/docker.jpg" srcset="/img/loading.gif" alt="docker学习笔记" class="index-img img-fluid rounded index-thumbnails">
         </a>
@@ -776,65 +836,6 @@ sessionID：本次访问的会话留下的ID号。
             <a href="/tags/python">python</a>&nbsp;
           
             <a href="/tags/cookie">cookie</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/" target="_self">
-          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/linux.jpg" srcset="/img/loading.gif" alt="树莓派配置" class="index-img img-fluid rounded index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/">
-        <p class="h4 index-header">树莓派配置</p>
-      </a>
-
-      <a href="/2020/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">一: 修改密码及时间1.1 设置su及pi密码sudo passwd pi                   # 修改 Pi 密码  
-sudo passwd root                 # 设置 root 密码
-su root                          # 切换到 root 用户  
-su pi                            # 切换到 pi 用户
-1.2 修改时间使用date 语句查看时间，如不正确，则：首先在终端中用下面的命令安装ntpdate工具
-sudo apt install ntpdate
-启用NTP 
-sudo timedatectl set-ntp true
-继续使用date语句查看时间，如不正确，则：
-sudo dpkg-reconfigure tzdata
-修改时区为Asia Shanghai，继续使用date语句查看时间并确认正确
-二: 中文环境2.1 安装中文输入法sudo apt install scim-pinyin
-2.2 配置中文环境sudo raspi-config
-按4 -&gt; 1</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-06&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Linux">Linux</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Linux">Linux</a>&nbsp;
-          
-            <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE">树莓派</a>&nbsp;
           
         
       </div>
