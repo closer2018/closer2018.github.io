@@ -1,8 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>计算机组成原理-读书笔记</title>
+    <url>/2020/05/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>读书笔记</category>
+        <category>计算机组成原理</category>
+      </categories>
+      <tags>
+        <tag>读书笔记</tag>
+        <tag>计算机组成原理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机网络原理-读书笔记</title>
+    <url>/2020/05/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h2 id="先学习计算机组成原理和操作系统…"><a href="#先学习计算机组成原理和操作系统…" class="headerlink" title="先学习计算机组成原理和操作系统…"></a>先学习计算机组成原理和操作系统…</h2>]]></content>
+      <categories>
+        <category>读书笔记</category>
+        <category>network</category>
+      </categories>
+      <tags>
+        <tag>读书笔记</tag>
+        <tag>network</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>openwrt的编译及其使用</title>
-    <url>/2020/05/02/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/openwrt%E7%9A%84%E7%BC%96%E8%AF%91%E5%8F%8A%E5%85%B6%E4%BD%BF%E7%94%A8/</url>
+    <url>/2020/05/02/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/openwrt%E7%9A%84%E7%BC%96%E8%AF%91%E5%8F%8A%E5%85%B6%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<blockquote>
 <p>基于coolsnowwolf大神源码编译,<a href="https://github.com/coolsnowwolf/lede" target="_blank" rel="noopener">源码地址</a></p>
 </blockquote>
@@ -272,7 +298,7 @@ LuCI ---&gt; Applications ---&gt; luci-app-wol   #WOL网络唤醒
 LuCI ---&gt; Applications ---&gt; luci-app-wrtbwmon  #实时流量监测
 LuCI ---&gt; Applications ---&gt; luci-app-xlnetacc  #迅雷快鸟
 LuCI ---&gt; Applications ---&gt; luci-app-zerotier  #ZeroTier内网穿透</code></pre>
-<h2 id="三、-使用"><a href="#三、-使用" class="headerlink" title="三、 使用"></a>三、 使用</h2><p>winscp登录Ubuntu系统，在<code>/home/you_name/lede/bin/targets/x86/64/</code>下面</p>
+<h2 id="三、-使用"><a href="#三、-使用" class="headerlink" title="三、 使用"></a>三、 使用</h2><h3 id="3-1-初始设置"><a href="#3-1-初始设置" class="headerlink" title="3.1 初始设置"></a>3.1 初始设置</h3><p>winscp登录Ubuntu系统，在<code>/home/you_name/lede/bin/targets/x86/64/</code>下面</p>
 <p><code>openwrt-x86-x64-combined-squashfs.img</code>就是我们需要的镜像文件了</p>
 <p>把镜像文件下载下来，通过<code>winPE</code>的U盘安装烧录到路由器硬盘里，也可以烧写到U盘里，通过U盘启动</p>
 <p>网线连接到路由器的Lan口，默认登陆IP <code>192.168.1.1</code>, 密码 <code>password</code>，进行配置(也可以通过PUTTY连接，端口22)</p>
@@ -283,12 +309,21 @@ vi /etc/config/network
 # 重启网络
 /etc/init.d/network restart</code></pre>
 <p>网页地址栏输入<code>192.168.10.1</code>，进行配置。</p>
-<p>怎么配置可参考如下2张图片</p>
+<p>接线配置可参考如下2张图片</p>
 <p><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/network/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E5%9B%BE.png" srcset="/img/loading.gif" alt="家庭网络结构图"></p>
 <p><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/network/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E5%9B%BE.png" srcset="/img/loading.gif" alt="家庭网络配置图"></p>
+<h3 id="3-2-openwrt内部配置"><a href="#3-2-openwrt内部配置" class="headerlink" title="3.2 openwrt内部配置"></a>3.2 openwrt内部配置</h3><ol>
+<li><p>网络 -&gt; 接口 -&gt; LAN口修改 -&gt; IPv4地址 修改为访问路由的地址 -&gt; 网关为路由ip地址 -&gt;<strong>DNS</strong>填写114.114.114.114,119.29.29.29,223.5.5.5和<strong>你的网络运营商提供的DNS</strong>(可以在命令行中用ping ip来查看哪个DNS访问的最快) -&gt; IPv6分配长度停用 -&gt; 旁路由关闭DHCP，主路由开启动态DHCP</p>
+</li>
+<li><p>Turbo ACC 网络加速设置 -&gt; 除了HWNAT硬件加速全选 -&gt; 上游 DNS 服务器(国内) -&gt; 查询填入你所在的网络运营商所提供的DNS<a href="https://ip.cn/dns.html" target="_blank" rel="noopener">查询地址1</a>、<a href="https://cloud.tencent.com/developer/article/1352604" target="_blank" rel="noopener">查询地址2</a></p>
+</li>
+<li><p>旁路由不用设置wan口，主路由自行设置wan口，不用ipv6，最好关闭ipv6.</p>
+</li>
+</ol>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://github.com/coolsnowwolf/lede" target="_blank" rel="noopener">Lean大源码地址</a></p>
 <p><a href="https://www.right.com.cn/forum/thread-3682029-1-1.html" target="_blank" rel="noopener">OpenWrt 编译 LuCI -&gt; Applications 添加插件应用说明</a></p>
 <p><a href="https://www.youtube.com/watch?v=ZMh-AvQV8n0&t=57s" target="_blank" rel="noopener">How to build your own Openwrt firmware</a></p>
+<p><a href="https://www.youtube.com/watch?v=zy16nR8MlX0" target="_blank" rel="noopener">openwrt基础设置</a></p>
 ]]></content>
       <categories>
         <category>linux</category>
