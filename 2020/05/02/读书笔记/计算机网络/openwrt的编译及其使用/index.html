@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    4.3k 字
+                    4.4k 字
                   </span>&nbsp;
                 
 
@@ -449,6 +449,10 @@ LuCI ---&gt; Applications ---&gt; luci-app-wol   #WOL网络唤醒
 LuCI ---&gt; Applications ---&gt; luci-app-wrtbwmon  #实时流量监测
 LuCI ---&gt; Applications ---&gt; luci-app-xlnetacc  #迅雷快鸟
 LuCI ---&gt; Applications ---&gt; luci-app-zerotier  #ZeroTier内网穿透</code></pre>
+<h3 id="2-5-自动编译"><a href="#2-5-自动编译" class="headerlink" title="2.5 自动编译"></a>2.5 自动编译</h3><p><a href="https://github.com/esirplayground/AutoBuild-OpenWrt" target="_blank" rel="noopener">项目地址</a></p>
+<p>自定义编译前需要在编译环境中运行<code>./scripts/diffconfig.sh &gt; diffconfig</code></p>
+<p>然后把<code>/lede/diffconfig</code>里内容替换项目里面相应的.config文件内容。</p>
+<p><a href="https://www.youtube.com/watch?v=9YO7nxNry-4" target="_blank" rel="noopener">自动编译视频教程</a></p>
 <h2 id="三、-使用"><a href="#三、-使用" class="headerlink" title="三、 使用"></a>三、 使用</h2><h3 id="3-1-初始设置"><a href="#3-1-初始设置" class="headerlink" title="3.1 初始设置"></a>3.1 初始设置</h3><p>winscp登录Ubuntu系统，在<code>/home/you_name/lede/bin/targets/x86/64/</code>下面</p>
 <p><code>openwrt-x86-x64-combined-squashfs.img</code>就是我们需要的镜像文件了</p>
 <p>把镜像文件下载下来，通过<code>winPE</code>的U盘安装烧录到路由器硬盘里，也可以烧写到U盘里，通过U盘启动</p>
