@@ -7,39 +7,32 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
   <link rel="icon" type="image/png" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="theme-color" content="#2f4154">
   <meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时">
   <meta name="author" content="closer">
   <meta name="keywords" content="">
-  <title>openwrt的编译及其使用 - closer的自留地</title>
+  <title>openwrt的编译及其使用 ~ closer的自留地</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
 
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
 
 
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
 
 
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="closer的自留地" type="application/atom+xml">
@@ -51,7 +44,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>welcome!</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -66,46 +59,49 @@
           
           
           
+          
           <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              首页</a>
+            <a class="nav-link" href="/">首页</a>
           </li>
         
           
           
           
+          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              归档</a>
+            <a class="nav-link" href="/archives/">归档</a>
           </li>
         
           
           
           
+          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              分类</a>
+            <a class="nav-link" href="/categories/">分类</a>
           </li>
         
           
           
           
+          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              标签</a>
+            <a class="nav-link" href="/tags/">标签</a>
           </li>
         
           
           
           
+          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              关于</a>
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
           </li>
         
         
@@ -119,48 +115,51 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/default.jpg') no-repeat center center;
+    <div class="view intro-2" id="background" false
+         style="background: url('/img/default.jpg')no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+        <div class="mask rgba-black-light flex-center">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
             </span>
 
             
+              <br>
               
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-05-02 20:18">
-                    2020年5月2日 晚上
-                  </time>
-                </div>
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期六, 五月 2日 2020, 8:18 晚上
+                </p>
               
 
-              <div class="mt-1">
+              <p>
                 
                   
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
                     4.4k 字
-                  </span>
+                  </span>&nbsp;
                 
 
                 
                   
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    64
-                     分钟
-                  </span>
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      20 分钟
+                  </span>&nbsp;
                 
 
                 
-              </div>
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
             
           </div>
 
@@ -178,12 +177,10 @@
   <div class="row">
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
-            
-            <article class="markdown-body">
-              <blockquote>
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <blockquote>
 <p>基于coolsnowwolf大神源码编译,<a href="https://github.com/coolsnowwolf/lede" target="_blank" rel="noopener">源码地址</a></p>
 </blockquote>
 <h2 id="一、-前言"><a href="#一、-前言" class="headerlink" title="一、 前言"></a>一、 前言</h2><p>自己编译需要linux知识、装系统的知识和能够全局的访问外网，而折腾openwrt需要部分计算机网络原理的知识。</p>
@@ -193,270 +190,265 @@
 <p>然后虚拟机安装<a href="http://releases.ubuntu.com/18.04/ubuntu-18.04.4-live-server-amd64.iso.torrent?_ga=2.101048392.870121867.1588423003-365844835.1588423003" target="_blank" rel="noopener">Ubuntu 18 LTS x64 Server版本</a></p>
 <p>然后ssh登录Ubuntu，后面命令需要全局外网来进行编译了。</p>
 <p>输入如下命令行</p>
-<pre><code class="hljs SH"><span class="hljs-comment"># 命令行输入</span>
+<pre><code class="SH"># 命令行输入
 sudo apt-get update
 
-<span class="hljs-comment"># 然后输入</span>
+# 然后输入
 sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3.5 python2.7 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf
 
-<span class="hljs-comment"># 下载好源代码</span>
-git <span class="hljs-built_in">clone</span> https://github.com/coolsnowwolf/lede
-<span class="hljs-comment"># 进入目录</span>
-<span class="hljs-built_in">cd</span> lede
+# 下载好源代码
+git clone https://github.com/coolsnowwolf/lede
+# 进入目录
+cd lede
 
 ./scripts/feeds update -a
 
 ./scripts/feeds install -a
 
 make menuconfig</code></pre>
-
 <h3 id="2-2-定制配置"><a href="#2-2-定制配置" class="headerlink" title="2.2 定制配置"></a>2.2 定制配置</h3><p><code>make menuconfig</code>后，会有一个编译管理器，在里面可以选择型号、OP功能组件，需要用到方向键、回车键、空格键。方向键是移动光标，回车键是确认，空格键是选择（在选项框按下空格键，*号是编译进固件，M是编译但是不编译进固件）</p>
 <p>下面的假如没有说明，就是默认选项。</p>
 <p>①. Target System（Atheros AR7xxx…）<br>    选择CPU型号,看你的CPU架构，软路由或虚拟机一般是是X86<br>②. Subtarget(x86_64)<br>    选择多少位系统，默认64即可<br>③. Target Profile<br>    选择路由型号，默认即可<br>④. Target Images<br>    勾选上squashfs（new）即可，然后其他默认<br>⑤. Base system<br>    选择默认的dnsmasq-full即可,另外2个dnsmasq切记不要选。<br>⑥. Administration<br>    根据你的需求选择。<br>⑦. LuCI-&gt;Applications<br>    整个系统精华所在，非常重要，<a id="常用配置">常用配置如下</a></p>
-<pre><code class="hljs SH"><span class="hljs-comment"># 选择LuCI常用配置 添加常用插件应用：</span>
-<span class="hljs-comment">#-----------------------------------------------------------------------------------------</span>
-LuCI ---&gt; Applications ---&gt; luci-app-accesscontrol  <span class="hljs-comment">#访问时间控制</span>
-LuCI ---&gt; Applications ---&gt; luci-app-adbyby-plus   <span class="hljs-comment">#广告屏蔽大师Plus +</span>
-LuCI ---&gt; Applications ---&gt; luci-app-aria2 <span class="hljs-comment"># Aria2下载工具</span>
-LuCI ---&gt; Applications ---&gt; luci-app-arpbind  <span class="hljs-comment">#IP/MAC绑定</span>
-LuCI ---&gt; Applications ---&gt; luci-app-autoreboot  <span class="hljs-comment">#支持计划重启</span>
-LuCI ---&gt; Applications ---&gt; luci-app-ddns   <span class="hljs-comment">#动态域名 DNS（集成阿里DDNS客户端）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-filetransfer  <span class="hljs-comment">#文件传输（可web安装ipk包）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-firewall   <span class="hljs-comment">#添加防火墙</span>
-LuCI ---&gt; Applications ---&gt; luci-app-hd-idle  <span class="hljs-comment">#硬盘休眠</span>
-LuCI ---&gt; Applications ---&gt; luci-app-flowoffload  <span class="hljs-comment">#Turbo ACC网络加速（集成FLOW,BBR,NAT,DNS...</span>
-LuCI ---&gt; Applications ---&gt; luci-app-sfe  <span class="hljs-comment">#Turbo ACC网络加速（flowoffload二选一）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-frpc   <span class="hljs-comment">#内网穿透 Frp</span>
-LuCI ---&gt; Applications ---&gt; luci-app-ipsec-virtual**d  <span class="hljs-comment">#virtual**服务器 IPSec</span>
-LuCI ---&gt; Applications ---&gt; luci-app-mwan3   <span class="hljs-comment">#MWAN3负载均衡</span>
-LuCI ---&gt; Applications ---&gt; luci-app-mwan3helper   <span class="hljs-comment">#MWAN3分流助手</span>
-LuCI ---&gt; Applications ---&gt; luci-app-nlbwmon   <span class="hljs-comment">#网络带宽监视器</span>
-LuCI ---&gt; Applications ---&gt; luci-app-ramfree  <span class="hljs-comment">#释放内存</span>
-LuCI ---&gt; Applications ---&gt; luci-app-samba   <span class="hljs-comment">#网络共享（Samba）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-sqm  <span class="hljs-comment">#流量智能队列管理（QOS）</span>
-<span class="hljs-comment">#-------------------------------------------------------------------------------------------</span>
-LuCI ---&gt; Applications ---&gt; luci-app-乳酸菌饮料-plus   <span class="hljs-comment">#乳酸菌饮料低调上网Plus+</span>
-    luci-app-乳酸菌饮料-plus ---&gt; Include s<span class="hljs-_">-s</span> v贰瑞 Plugin  <span class="hljs-comment">#SS v贰瑞插件   *</span>
-    luci-app-乳酸菌饮料-plus ---&gt; Include v贰瑞  <span class="hljs-comment">#v贰瑞代理</span>
-    luci-app-乳酸菌饮料-plus ---&gt; Include Trojan  <span class="hljs-comment">#Trojan代理</span>
-    luci-app-乳酸菌饮料-plus ---&gt; Include red---socks2  <span class="hljs-comment">#red---socks2代理   *</span>
-    luci-app-乳酸菌饮料-plus ---&gt; Include Kcptun  <span class="hljs-comment">#Kcptun加速</span>
-    luci-app-乳酸菌饮料-plus ---&gt; Include 违禁软件 Server  <span class="hljs-comment">#乳酸菌饮料服务器</span>
-<span class="hljs-comment">#-------------------------------------------------------------------------------------------</span>
-LuCI ---&gt; Applications ---&gt; luci-app-乳酸菌饮料server-python  <span class="hljs-comment">#软件的Python服务器</span>
-LuCI ---&gt; Applications ---&gt; luci-app-syncdial  <span class="hljs-comment">#多拨虚拟网卡（原macvlan）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-unblockmusic  <span class="hljs-comment">#解锁网易云灰色歌曲3合1新版本</span>
-    UnblockNeteaseMusic Golang Version  <span class="hljs-comment">#Golang版本   *</span>
-    UnblockNeteaseMusic NodeJS Version  <span class="hljs-comment">#NodeJS版本   *</span>
-LuCI ---&gt; Applications ---&gt; luci-app-upnp   <span class="hljs-comment">#通用即插即用UPnP（端口自动转发）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-vlmcsd  <span class="hljs-comment">#KMS服务器激活win和office</span>
-LuCI ---&gt; Applications ---&gt; luci-app-vsftpd  <span class="hljs-comment">#FTP服务器</span>
-LuCI ---&gt; Applications ---&gt; luci-app-wifischedule  <span class="hljs-comment">#WiFi 计划</span>
-LuCI ---&gt; Applications ---&gt; luci-app-wirele违禁软件egdb  <span class="hljs-comment">#WiFi无线</span>
-LuCI ---&gt; Applications ---&gt; luci-app-wol   <span class="hljs-comment">#WOL网络唤醒</span>
-LuCI ---&gt; Applications ---&gt; luci-app-wrtbwmon  <span class="hljs-comment">#实时流量监测</span>
-LuCI ---&gt; Applications ---&gt; luci-app-xlnetacc  <span class="hljs-comment">#迅雷快鸟</span>
-LuCI ---&gt; Applications ---&gt; luci-app-zerotier  <span class="hljs-comment">#ZeroTier内网穿透</span>
-Extra packages  ---&gt;  ipv6helper  <span class="hljs-comment">#支持 ipv6</span>
-Utilities  ---&gt;  open-vm-tools  <span class="hljs-comment">#打开适用于VMware的VM Tools</span></code></pre>
-
+<pre><code class="SH"># 选择LuCI常用配置 添加常用插件应用：
+#-----------------------------------------------------------------------------------------
+LuCI ---&gt; Applications ---&gt; luci-app-accesscontrol  #访问时间控制
+LuCI ---&gt; Applications ---&gt; luci-app-adbyby-plus   #广告屏蔽大师Plus +
+LuCI ---&gt; Applications ---&gt; luci-app-aria2 # Aria2下载工具
+LuCI ---&gt; Applications ---&gt; luci-app-arpbind  #IP/MAC绑定
+LuCI ---&gt; Applications ---&gt; luci-app-autoreboot  #支持计划重启
+LuCI ---&gt; Applications ---&gt; luci-app-ddns   #动态域名 DNS（集成阿里DDNS客户端）
+LuCI ---&gt; Applications ---&gt; luci-app-filetransfer  #文件传输（可web安装ipk包）
+LuCI ---&gt; Applications ---&gt; luci-app-firewall   #添加防火墙
+LuCI ---&gt; Applications ---&gt; luci-app-hd-idle  #硬盘休眠
+LuCI ---&gt; Applications ---&gt; luci-app-flowoffload  #Turbo ACC网络加速（集成FLOW,BBR,NAT,DNS...
+LuCI ---&gt; Applications ---&gt; luci-app-sfe  #Turbo ACC网络加速（flowoffload二选一）
+LuCI ---&gt; Applications ---&gt; luci-app-frpc   #内网穿透 Frp
+LuCI ---&gt; Applications ---&gt; luci-app-ipsec-virtual**d  #virtual**服务器 IPSec
+LuCI ---&gt; Applications ---&gt; luci-app-mwan3   #MWAN3负载均衡
+LuCI ---&gt; Applications ---&gt; luci-app-mwan3helper   #MWAN3分流助手
+LuCI ---&gt; Applications ---&gt; luci-app-nlbwmon   #网络带宽监视器
+LuCI ---&gt; Applications ---&gt; luci-app-ramfree  #释放内存
+LuCI ---&gt; Applications ---&gt; luci-app-samba   #网络共享（Samba）
+LuCI ---&gt; Applications ---&gt; luci-app-sqm  #流量智能队列管理（QOS）
+#-------------------------------------------------------------------------------------------
+LuCI ---&gt; Applications ---&gt; luci-app-乳酸菌饮料-plus   #乳酸菌饮料低调上网Plus+
+    luci-app-乳酸菌饮料-plus ---&gt; Include s-s v贰瑞 Plugin  #SS v贰瑞插件   *
+    luci-app-乳酸菌饮料-plus ---&gt; Include v贰瑞  #v贰瑞代理
+    luci-app-乳酸菌饮料-plus ---&gt; Include Trojan  #Trojan代理
+    luci-app-乳酸菌饮料-plus ---&gt; Include red---socks2  #red---socks2代理   *
+    luci-app-乳酸菌饮料-plus ---&gt; Include Kcptun  #Kcptun加速
+    luci-app-乳酸菌饮料-plus ---&gt; Include 违禁软件 Server  #乳酸菌饮料服务器
+#-------------------------------------------------------------------------------------------
+LuCI ---&gt; Applications ---&gt; luci-app-乳酸菌饮料server-python  #软件的Python服务器
+LuCI ---&gt; Applications ---&gt; luci-app-syncdial  #多拨虚拟网卡（原macvlan）
+LuCI ---&gt; Applications ---&gt; luci-app-unblockmusic  #解锁网易云灰色歌曲3合1新版本
+    UnblockNeteaseMusic Golang Version  #Golang版本   *
+    UnblockNeteaseMusic NodeJS Version  #NodeJS版本   *
+LuCI ---&gt; Applications ---&gt; luci-app-upnp   #通用即插即用UPnP（端口自动转发）
+LuCI ---&gt; Applications ---&gt; luci-app-vlmcsd  #KMS服务器激活win和office
+LuCI ---&gt; Applications ---&gt; luci-app-vsftpd  #FTP服务器
+LuCI ---&gt; Applications ---&gt; luci-app-wifischedule  #WiFi 计划
+LuCI ---&gt; Applications ---&gt; luci-app-wirele违禁软件egdb  #WiFi无线
+LuCI ---&gt; Applications ---&gt; luci-app-wol   #WOL网络唤醒
+LuCI ---&gt; Applications ---&gt; luci-app-wrtbwmon  #实时流量监测
+LuCI ---&gt; Applications ---&gt; luci-app-xlnetacc  #迅雷快鸟
+LuCI ---&gt; Applications ---&gt; luci-app-zerotier  #ZeroTier内网穿透
+Extra packages  ---&gt;  ipv6helper  #支持 ipv6
+Utilities  ---&gt;  open-vm-tools  #打开适用于VMware的VM Tools</code></pre>
 <p><a href="#2-4-全部LuCI-gt-Applications配置">查看详细LuCI配置</a></p>
 <p>⑧. Network-&gt;Download Manager<br>    选择ariaNG<br>⑨. Utilities-&gt;Editors<br>    1. 选择默认编辑器-&gt;nano，习惯vim的选择vim<br>    2. 打开适用于VMware的VM Tools<br>        Utilities  —&gt;  open-vm-tools<br>⑩. 如果要支持 iPv6，勾选下面的选项：<br>    Extra packages  —&gt;  ipv6helper  （选定这个后下面几项自动选择了）<br>      Network  —&gt;  odhcp6c<br>      Network  —&gt;  odhcpd-ipv6only<br>      LuCI  —&gt;  Protocols  —&gt;  luci-proto-ipv6<br>      LuCI  —&gt;  Protocols  —&gt;  luci-proto-ppp</p>
 <p>离开选择功能界面，EXIT-&gt;YES</p>
-<pre><code class="hljs SH"><span class="hljs-comment">#  下载dl库</span>
+<pre><code class="SH">#  下载dl库
 make -j8 download V=s
 
-<span class="hljs-comment"># 进行编译，初次编译看配置，可能会4小时以上，以后会快一点</span>
-<span class="hljs-comment"># （-j1 后面是线程数。第一次编译推荐用单线程）即可开始编译你要的固件了。</span>
+# 进行编译，初次编译看配置，可能会4小时以上，以后会快一点
+# （-j1 后面是线程数。第一次编译推荐用单线程）即可开始编译你要的固件了。
 make -j1 V=s</code></pre>
-
-<h3 id="2-3-功能不满意？二次编译"><a href="#2-3-功能不满意？二次编译" class="headerlink" title="2.3 功能不满意？二次编译"></a>2.3 功能不满意？二次编译</h3><pre><code class="hljs SH"><span class="hljs-comment"># 编译完成后清除之前的编译作业（使用这个命令前，记得把编译好的固件备份出来，不然会被删除掉，切记）</span>
+<h3 id="2-3-功能不满意？二次编译"><a href="#2-3-功能不满意？二次编译" class="headerlink" title="2.3 功能不满意？二次编译"></a>2.3 功能不满意？二次编译</h3><pre><code class="SH"># 编译完成后清除之前的编译作业（使用这个命令前，记得把编译好的固件备份出来，不然会被删除掉，切记）
 make clean
 
-<span class="hljs-comment"># 进入LEDE目录</span>
-<span class="hljs-built_in">cd</span> lede
+# 进入LEDE目录
+cd lede
 
-<span class="hljs-comment"># 同步更新大雕源码</span>
+# 同步更新大雕源码
 git pull
 
-<span class="hljs-comment"># 更新Feeds</span>
+# 更新Feeds
 ./scripts/feeds update -a &amp;&amp; ./scripts/feeds install -a
 
-<span class="hljs-comment"># 清除编译配置和缓存</span>
+# 清除编译配置和缓存
 rm -rf ./tmp &amp;&amp; rm -rf .config
 
-<span class="hljs-comment"># 进入编译配置菜单</span>
+# 进入编译配置菜单
 make menuconfig
 
-<span class="hljs-comment"># 开始编译 n=线程数+1，例如4线程的I5填-j5</span>
+# 开始编译 n=线程数+1，例如4线程的I5填-j5
 make -jn V=99</code></pre>
-
 <h3 id="2-4-全部LuCI-gt-Applications配置"><a href="#2-4-全部LuCI-gt-Applications配置" class="headerlink" title="2.4 全部LuCI-&gt;Applications配置"></a>2.4 全部LuCI-&gt;Applications配置</h3><p><a href="#常用配置">返回常用LuCI配置</a></p>
-<pre><code class="hljs SH"><span class="hljs-comment"># 以下是详细配置：               注：应用后面标记 “ * ” 为最近新添加</span>
-<span class="hljs-comment"># -----------------------------------------------------------------------------------------</span>
-LuCI ---&gt; Applications ---&gt; luci-app-accesscontrol  <span class="hljs-comment">#访问时间控制</span>
-LuCI ---&gt; Applications ---&gt; luci-app-acme  <span class="hljs-comment">#ACME自动化证书管理环境</span>
-LuCI ---&gt; Applications ---&gt; luci-app-adblock   <span class="hljs-comment">#ADB广告过滤</span>
-LuCI ---&gt; Applications ---&gt; luci-app-adbyby-plus  <span class="hljs-comment">#广告屏蔽大师Plus +</span>
-LuCI ---&gt; Applications ---&gt; luci-app-adbyby   <span class="hljs-comment">#广告过滤大师（已弃）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-adkill   <span class="hljs-comment">#广告过滤（已弃）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-advanced-reboot  <span class="hljs-comment">#Linksys高级重启</span>
-LuCI ---&gt; Applications ---&gt; luci-app-ahcp  <span class="hljs-comment">#支持AHCPd</span>
-LuCI ---&gt; Applications ---&gt; luci-app-airplay2   <span class="hljs-comment">#AirPlay音乐推流(安卓+IOS)   *</span>
-LuCI ---&gt; Applications ---&gt; luci-app-aliddns   <span class="hljs-comment">#阿里DDNS客户端（已弃，集成至ddns）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-amule  <span class="hljs-comment">#aMule下载工具</span>
-LuCI ---&gt; Applications ---&gt; luci-app-aria2 <span class="hljs-comment"># Aria2下载工具</span>
-LuCI ---&gt; Applications ---&gt; luci-app-arpbind  <span class="hljs-comment">#IP/MAC绑定</span>
-LuCI ---&gt; Applications ---&gt; luci-app-asterisk  <span class="hljs-comment">#支持Asterisk电话服务器</span>
-LuCI ---&gt; Applications ---&gt; luci-app-attendedsysupgrade  <span class="hljs-comment">#固件更新升级相关</span>
-LuCI ---&gt; Applications ---&gt; luci-app-autoreboot  <span class="hljs-comment">#支持计划重启</span>
-LuCI ---&gt; Applications ---&gt; luci-app-baidupcs-web  <span class="hljs-comment">#百度网盘管理</span>
-LuCI ---&gt; Applications ---&gt; luci-app-bcp38  <span class="hljs-comment">#BCP38网络入口过滤（不确定）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-bird1-ipv4  <span class="hljs-comment">#对Bird1-ipv4的支持</span>
-LuCI ---&gt; Applications ---&gt; luci-app-bird1-ipv6  <span class="hljs-comment">#对Bird1-ipv6的支持</span>
-LuCI ---&gt; Applications ---&gt; luci-app-bird4   <span class="hljs-comment">#Bird 4（未知）（已弃）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-bird6   <span class="hljs-comment">#Bird 6（未知）（已弃）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-bmx6  <span class="hljs-comment">#BMX6路由协议</span>
-LuCI ---&gt; Applications ---&gt; luci-app-bmx7  <span class="hljs-comment">#BMX7路由协议</span>
-LuCI ---&gt; Applications ---&gt; luci-app-caldav  <span class="hljs-comment">#联系人（已弃）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-cifs-mount   <span class="hljs-comment">#CIFS/SMB挂载设置   *</span>
-LuCI ---&gt; Applications ---&gt; luci-app-cifsd  <span class="hljs-comment">#CIFS/SMB网络共享   *</span>
-LuCI ---&gt; Applications ---&gt; luci-app-cjdns  <span class="hljs-comment">#加密IPV6网络相关</span>
-LuCI ---&gt; Applications ---&gt; luci-app-clamav  <span class="hljs-comment">#ClamAV杀毒软件</span>
-LuCI ---&gt; Applications ---&gt; luci-app-commands   <span class="hljs-comment">#Shell命令模块</span>
-LuCI ---&gt; Applications ---&gt; luci-app-cshark   <span class="hljs-comment">#CloudShark捕获工具</span>
-LuCI ---&gt; Applications ---&gt; luci-app-ddns   <span class="hljs-comment">#动态域名 DNS（集成阿里DDNS客户端）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-diag-core   <span class="hljs-comment">#core诊断工具</span>
-LuCI ---&gt; Applications ---&gt; luci-app-diskman   <span class="hljs-comment">#磁盘管理工具   *</span>
-    luci-app-diskman ---&gt; Include btrfs-progs   <span class="hljs-comment">#新型的写时复制 (COW)</span>
-    luci-app-diskman ---&gt; Include lsblk   <span class="hljs-comment">#lsblk命令 用于列出所有可用块设备的信息</span>
-    luci-app-diskman ---&gt; Include mdadm   <span class="hljs-comment">#mdadm命令 用于创建、管理、监控RAID设备的工具</span>
-    luci-app-diskman ---&gt; Include kmod-md-raid456   <span class="hljs-comment">#RAID 4,5,6 驱动程序模块</span>
-    luci-app-diskman ---&gt; Include kmod-md-linear   <span class="hljs-comment">#RAID 驱动程序模块</span>
-LuCI ---&gt; Applications ---&gt; luci-app-dnscrypt-proxy  <span class="hljs-comment">#DNSCrypt解决DNS污染</span>
-LuCI ---&gt; Applications ---&gt; luci-app-dnsforwarder  <span class="hljs-comment">#DNSForwarder防DNS污染</span>
-LuCI ---&gt; Applications ---&gt; luci-app-dnspod  <span class="hljs-comment">#DNSPod动态域名解析（已弃）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-dockerman  <span class="hljs-comment">#Docker容器</span>
-LuCI ---&gt; Applications ---&gt; luci-app-dump1090  <span class="hljs-comment">#民航无线频率（不确定）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-dynapoint  <span class="hljs-comment">#DynaPoint（未知）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-e2guardian   <span class="hljs-comment">#Web内容过滤器</span>
-LuCI ---&gt; Applications ---&gt; luci-app-familycloud   <span class="hljs-comment">#家庭云盘</span>
-LuCI ---&gt; Applications ---&gt; luci-app-filetransfer  <span class="hljs-comment">#文件传输（可web安装ipk包）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-firewall   <span class="hljs-comment">#添加防火墙</span>
-LuCI ---&gt; Applications ---&gt; luci-app-flowoffload  <span class="hljs-comment">#Turbo ACC网络加速（集成FLOW,BBR,NAT,DNS...</span>
-LuCI ---&gt; Applications ---&gt; luci-app-freifunk-diagnostics   <span class="hljs-comment">#freifunk组件 诊断（未知）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-freifunk-policyrouting  <span class="hljs-comment">#freifunk组件 策略路由（未知）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-freifunk-widgets  <span class="hljs-comment">#freifunk组件 索引（未知）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-frpc   <span class="hljs-comment">#内网穿透Frp客户端</span>
-LuCI ---&gt; Applications ---&gt; luci-app-frps   <span class="hljs-comment">#内网穿透Frp服务端   *</span>
-LuCI ---&gt; Applications ---&gt; luci-app-fwknopd  <span class="hljs-comment">#Firewall Knock Operator服务器</span>
-LuCI ---&gt; Applications ---&gt; luci-app-guest-wifi   <span class="hljs-comment">#WiFi访客网络</span>
-LuCI ---&gt; Applications ---&gt; luci-app-gfwlist   <span class="hljs-comment">#GFW域名列表（已弃）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-haproxy-tcp   <span class="hljs-comment">#HAProxy负载均衡-TCP</span>
-LuCI ---&gt; Applications ---&gt; luci-app-hd-idle  <span class="hljs-comment">#硬盘休眠</span>
-LuCI ---&gt; Applications ---&gt; luci-app-hnet  <span class="hljs-comment">#Homenet Status家庭网络控制协议</span>
-LuCI ---&gt; Applications ---&gt; luci-app-ipsec-virtual**d  <span class="hljs-comment">#virtual**服务器 IPSec</span>
-LuCI ---&gt; Applications ---&gt; luci-app-kodexplorer  <span class="hljs-comment">#KOD可道云私人网盘</span>
-LuCI ---&gt; Applications ---&gt; luci-app-kooldns  <span class="hljs-comment">#virtual**服务器 ddns替代方案（已弃）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-koolproxy  <span class="hljs-comment">#KP去广告（已弃）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-lxc   <span class="hljs-comment">#LXC容器管理</span>
-LuCI ---&gt; Applications ---&gt; luci-app-meshwizard <span class="hljs-comment">#网络设置向导</span>
-LuCI ---&gt; Applications ---&gt; luci-app-minidlna   <span class="hljs-comment">#完全兼容DLNA / UPnP-AV客户端的服务器软件</span>
-LuCI ---&gt; Applications ---&gt; luci-app-mjpg-streamer   <span class="hljs-comment">#兼容Linux-UVC的摄像头程序</span>
-LuCI ---&gt; Applications ---&gt; luci-app-mtwifi  <span class="hljs-comment">#MTWiFi驱动的支持</span>
-LuCI ---&gt; Applications ---&gt; luci-app-mmc-over-gpio   <span class="hljs-comment">#添加SD卡操作界面（已弃）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-multiwan   <span class="hljs-comment">#多拨虚拟网卡（已弃，移至syncdial）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-mwan   <span class="hljs-comment">#MWAN负载均衡（已弃）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-music-remote-center   <span class="hljs-comment">#DAAP遥控音乐服务器   *</span>
-LuCI ---&gt; Applications ---&gt; luci-app-mwan3   <span class="hljs-comment">#MWAN3负载均衡</span>
-LuCI ---&gt; Applications ---&gt; luci-app-mwan3helper   <span class="hljs-comment">#MWAN3分流助手</span>
-LuCI ---&gt; Applications ---&gt; luci-app-n2n_v2   <span class="hljs-comment">#N2N内网穿透 N2N v2 virtual**服务</span>
-LuCI ---&gt; Applications ---&gt; luci-app-netdata  <span class="hljs-comment">#Netdata实时监控（图表）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-nfs   <span class="hljs-comment">#NFS网络共享   *</span>
-LuCI ---&gt; Applications ---&gt; luci-app-nft-qos  <span class="hljs-comment">#QOS流控 Nftables版</span>
-LuCI ---&gt; Applications ---&gt; luci-app-ngrokc  <span class="hljs-comment">#Ngrok 内网穿透（已弃）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-nlbwmon   <span class="hljs-comment">#网络带宽监视器</span>
-LuCI ---&gt; Applications ---&gt; luci-app-noddos  <span class="hljs-comment">#NodDOS Clients 阻止DDoS攻击</span>
-LuCI ---&gt; Applications ---&gt; luci-app-ntpc   <span class="hljs-comment">#NTP时间同步服务器</span>
-LuCI ---&gt; Applications ---&gt; luci-app-ocserv  <span class="hljs-comment">#OpenConnect virtual**服务</span>
-LuCI ---&gt; Applications ---&gt; luci-app-olsr  <span class="hljs-comment">#OLSR配置和状态模块</span>
-LuCI ---&gt; Applications ---&gt; luci-app-olsr-services  <span class="hljs-comment">#OLSR服务器</span>
-LuCI ---&gt; Applications ---&gt; luci-app-olsr-viz   <span class="hljs-comment">#OLSR可视化</span>
-LuCI ---&gt; Applications ---&gt; luci-app-openvirtual**  <span class="hljs-comment">#Openvirtual**客户端</span>
-LuCI ---&gt; Applications ---&gt; luci-app-openvirtual**-server  <span class="hljs-comment">#易于使用的Openvirtual**服务器 Web-UI</span>
-LuCI ---&gt; Applications ---&gt; luci-app-oscam   <span class="hljs-comment">#OSCAM服务器（已弃）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-p910nd   <span class="hljs-comment">#打印服务器模块</span>
-LuCI ---&gt; Applications ---&gt; luci-app-pagekitec   <span class="hljs-comment">#Pagekite内网穿透客户端</span>
-LuCI ---&gt; Applications ---&gt; luci-app-polipo  <span class="hljs-comment">#Polipo代理(是一个小型且快速的网页缓存代理)</span>
-LuCI ---&gt; Applications ---&gt; luci-app-pppoe-relay  <span class="hljs-comment">#PPPoE NAT穿透 点对点协议（PPP）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-p p t p-server  <span class="hljs-comment">#virtual**服务器 p p t p（已弃）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-privoxy  <span class="hljs-comment">#Privoxy网络代理(带过滤无缓存)</span>
-LuCI ---&gt; Applications ---&gt; luci-app-qbittorrent  <span class="hljs-comment">#BT下载工具（qBittorrent）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-qos   <span class="hljs-comment">#流量服务质量(QoS)流控</span>
-LuCI ---&gt; Applications ---&gt; luci-app-radicale   <span class="hljs-comment">#CalDAV/CardDAV同步工具</span>
-LuCI ---&gt; Applications ---&gt; luci-app-ramfree  <span class="hljs-comment">#释放内存</span>
-LuCI ---&gt; Applications ---&gt; luci-app-rp-pppoe-server  <span class="hljs-comment">#Roaring Penguin PPPoE Server 服务器</span>
-LuCI ---&gt; Applications ---&gt; luci-app-samba   <span class="hljs-comment">#网络共享（Samba）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-samba4   <span class="hljs-comment">#网络共享（Samba4）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-sfe  <span class="hljs-comment">#Turbo ACC网络加速（flowoffload二选一）</span>
-LuCI ---&gt; Applications ---&gt; luci-app<span class="hljs-_">-s</span><span class="hljs-_">-s</span>   <span class="hljs-comment">#SS低调上网（已弃）</span>
-LuCI ---&gt; Applications ---&gt; luci-app<span class="hljs-_">-s</span><span class="hljs-_">-s</span>-libes  <span class="hljs-comment">#SS-libev服务端</span>
-LuCI ---&gt; Applications ---&gt; luci-app-shairplay  <span class="hljs-comment">#支持AirPlay功能</span>
-LuCI ---&gt; Applications ---&gt; luci-app-siitwizard  <span class="hljs-comment">#SIIT配置向导  SIIT-Wizzard</span>
-LuCI ---&gt; Applications ---&gt; luci-app-simple-adblock  <span class="hljs-comment">#简单的广告拦截</span>
-LuCI ---&gt; Applications ---&gt; luci-app-smartdns  <span class="hljs-comment">#SmartDNS本地服务器（已弃）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-softethervirtual**  <span class="hljs-comment">#SoftEther virtual**服务器  NAT穿透</span>
-LuCI ---&gt; Applications ---&gt; luci-app-splash  <span class="hljs-comment">#Client-Splash是无线MESH网络的一个热点认证系统</span>
-LuCI ---&gt; Applications ---&gt; luci-app-sqm  <span class="hljs-comment">#流量智能队列管理（QOS）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-squid   <span class="hljs-comment">#Squid代理服务器</span>
-LuCI ---&gt; Applications ---&gt; luci-app-乳酸菌饮料-plus   <span class="hljs-comment">#乳酸菌饮料低调上网Plus+</span>
-    luci-app-乳酸菌饮料-plus ---&gt; Include s<span class="hljs-_">-s</span> New Version  <span class="hljs-comment">#新SS代理（已弃）</span>
-    luci-app-乳酸菌饮料-plus ---&gt; Include s<span class="hljs-_">-s</span> Simple-obfs Plugin  <span class="hljs-comment">#simple-obfs简单混淆工具（已弃）</span>
-    luci-app-乳酸菌饮料-plus ---&gt; Include s<span class="hljs-_">-s</span> v贰瑞 Plugin  <span class="hljs-comment">#SS v贰瑞插件   *</span>
-    luci-app-乳酸菌饮料-plus ---&gt; Include v贰瑞  <span class="hljs-comment">#v贰瑞代理</span>
-    luci-app-乳酸菌饮料-plus ---&gt; Include Trojan  <span class="hljs-comment">#Trojan代理</span>
-    luci-app-乳酸菌饮料-plus ---&gt; Include red---socks2  <span class="hljs-comment">#red---socks2代理   *</span>
-    luci-app-乳酸菌饮料-plus ---&gt; Include Kcptun  <span class="hljs-comment">#Kcptun加速</span>
-    luci-app-乳酸菌饮料-plus ---&gt; Include 违禁软件 Server  <span class="hljs-comment">#乳酸菌饮料服务器</span>
-    luci-app-乳酸菌饮料-plus ---&gt; Include DNS2SOCKS  <span class="hljs-comment">#DNS服务器（已弃）</span>
+<pre><code class="SH"># 以下是详细配置：               注：应用后面标记 “ * ” 为最近新添加
+# -----------------------------------------------------------------------------------------
+LuCI ---&gt; Applications ---&gt; luci-app-accesscontrol  #访问时间控制
+LuCI ---&gt; Applications ---&gt; luci-app-acme  #ACME自动化证书管理环境
+LuCI ---&gt; Applications ---&gt; luci-app-adblock   #ADB广告过滤
+LuCI ---&gt; Applications ---&gt; luci-app-adbyby-plus  #广告屏蔽大师Plus +
+LuCI ---&gt; Applications ---&gt; luci-app-adbyby   #广告过滤大师（已弃）
+LuCI ---&gt; Applications ---&gt; luci-app-adkill   #广告过滤（已弃）
+LuCI ---&gt; Applications ---&gt; luci-app-advanced-reboot  #Linksys高级重启
+LuCI ---&gt; Applications ---&gt; luci-app-ahcp  #支持AHCPd
+LuCI ---&gt; Applications ---&gt; luci-app-airplay2   #AirPlay音乐推流(安卓+IOS)   *
+LuCI ---&gt; Applications ---&gt; luci-app-aliddns   #阿里DDNS客户端（已弃，集成至ddns）
+LuCI ---&gt; Applications ---&gt; luci-app-amule  #aMule下载工具
+LuCI ---&gt; Applications ---&gt; luci-app-aria2 # Aria2下载工具
+LuCI ---&gt; Applications ---&gt; luci-app-arpbind  #IP/MAC绑定
+LuCI ---&gt; Applications ---&gt; luci-app-asterisk  #支持Asterisk电话服务器
+LuCI ---&gt; Applications ---&gt; luci-app-attendedsysupgrade  #固件更新升级相关
+LuCI ---&gt; Applications ---&gt; luci-app-autoreboot  #支持计划重启
+LuCI ---&gt; Applications ---&gt; luci-app-baidupcs-web  #百度网盘管理
+LuCI ---&gt; Applications ---&gt; luci-app-bcp38  #BCP38网络入口过滤（不确定）
+LuCI ---&gt; Applications ---&gt; luci-app-bird1-ipv4  #对Bird1-ipv4的支持
+LuCI ---&gt; Applications ---&gt; luci-app-bird1-ipv6  #对Bird1-ipv6的支持
+LuCI ---&gt; Applications ---&gt; luci-app-bird4   #Bird 4（未知）（已弃）
+LuCI ---&gt; Applications ---&gt; luci-app-bird6   #Bird 6（未知）（已弃）
+LuCI ---&gt; Applications ---&gt; luci-app-bmx6  #BMX6路由协议
+LuCI ---&gt; Applications ---&gt; luci-app-bmx7  #BMX7路由协议
+LuCI ---&gt; Applications ---&gt; luci-app-caldav  #联系人（已弃）
+LuCI ---&gt; Applications ---&gt; luci-app-cifs-mount   #CIFS/SMB挂载设置   *
+LuCI ---&gt; Applications ---&gt; luci-app-cifsd  #CIFS/SMB网络共享   *
+LuCI ---&gt; Applications ---&gt; luci-app-cjdns  #加密IPV6网络相关
+LuCI ---&gt; Applications ---&gt; luci-app-clamav  #ClamAV杀毒软件
+LuCI ---&gt; Applications ---&gt; luci-app-commands   #Shell命令模块
+LuCI ---&gt; Applications ---&gt; luci-app-cshark   #CloudShark捕获工具
+LuCI ---&gt; Applications ---&gt; luci-app-ddns   #动态域名 DNS（集成阿里DDNS客户端）
+LuCI ---&gt; Applications ---&gt; luci-app-diag-core   #core诊断工具
+LuCI ---&gt; Applications ---&gt; luci-app-diskman   #磁盘管理工具   *
+    luci-app-diskman ---&gt; Include btrfs-progs   #新型的写时复制 (COW)
+    luci-app-diskman ---&gt; Include lsblk   #lsblk命令 用于列出所有可用块设备的信息
+    luci-app-diskman ---&gt; Include mdadm   #mdadm命令 用于创建、管理、监控RAID设备的工具
+    luci-app-diskman ---&gt; Include kmod-md-raid456   #RAID 4,5,6 驱动程序模块
+    luci-app-diskman ---&gt; Include kmod-md-linear   #RAID 驱动程序模块
+LuCI ---&gt; Applications ---&gt; luci-app-dnscrypt-proxy  #DNSCrypt解决DNS污染
+LuCI ---&gt; Applications ---&gt; luci-app-dnsforwarder  #DNSForwarder防DNS污染
+LuCI ---&gt; Applications ---&gt; luci-app-dnspod  #DNSPod动态域名解析（已弃）
+LuCI ---&gt; Applications ---&gt; luci-app-dockerman  #Docker容器
+LuCI ---&gt; Applications ---&gt; luci-app-dump1090  #民航无线频率（不确定）
+LuCI ---&gt; Applications ---&gt; luci-app-dynapoint  #DynaPoint（未知）
+LuCI ---&gt; Applications ---&gt; luci-app-e2guardian   #Web内容过滤器
+LuCI ---&gt; Applications ---&gt; luci-app-familycloud   #家庭云盘
+LuCI ---&gt; Applications ---&gt; luci-app-filetransfer  #文件传输（可web安装ipk包）
+LuCI ---&gt; Applications ---&gt; luci-app-firewall   #添加防火墙
+LuCI ---&gt; Applications ---&gt; luci-app-flowoffload  #Turbo ACC网络加速（集成FLOW,BBR,NAT,DNS...
+LuCI ---&gt; Applications ---&gt; luci-app-freifunk-diagnostics   #freifunk组件 诊断（未知）
+LuCI ---&gt; Applications ---&gt; luci-app-freifunk-policyrouting  #freifunk组件 策略路由（未知）
+LuCI ---&gt; Applications ---&gt; luci-app-freifunk-widgets  #freifunk组件 索引（未知）
+LuCI ---&gt; Applications ---&gt; luci-app-frpc   #内网穿透Frp客户端
+LuCI ---&gt; Applications ---&gt; luci-app-frps   #内网穿透Frp服务端   *
+LuCI ---&gt; Applications ---&gt; luci-app-fwknopd  #Firewall Knock Operator服务器
+LuCI ---&gt; Applications ---&gt; luci-app-guest-wifi   #WiFi访客网络
+LuCI ---&gt; Applications ---&gt; luci-app-gfwlist   #GFW域名列表（已弃）
+LuCI ---&gt; Applications ---&gt; luci-app-haproxy-tcp   #HAProxy负载均衡-TCP
+LuCI ---&gt; Applications ---&gt; luci-app-hd-idle  #硬盘休眠
+LuCI ---&gt; Applications ---&gt; luci-app-hnet  #Homenet Status家庭网络控制协议
+LuCI ---&gt; Applications ---&gt; luci-app-ipsec-virtual**d  #virtual**服务器 IPSec
+LuCI ---&gt; Applications ---&gt; luci-app-kodexplorer  #KOD可道云私人网盘
+LuCI ---&gt; Applications ---&gt; luci-app-kooldns  #virtual**服务器 ddns替代方案（已弃）
+LuCI ---&gt; Applications ---&gt; luci-app-koolproxy  #KP去广告（已弃）
+LuCI ---&gt; Applications ---&gt; luci-app-lxc   #LXC容器管理
+LuCI ---&gt; Applications ---&gt; luci-app-meshwizard #网络设置向导
+LuCI ---&gt; Applications ---&gt; luci-app-minidlna   #完全兼容DLNA / UPnP-AV客户端的服务器软件
+LuCI ---&gt; Applications ---&gt; luci-app-mjpg-streamer   #兼容Linux-UVC的摄像头程序
+LuCI ---&gt; Applications ---&gt; luci-app-mtwifi  #MTWiFi驱动的支持
+LuCI ---&gt; Applications ---&gt; luci-app-mmc-over-gpio   #添加SD卡操作界面（已弃）
+LuCI ---&gt; Applications ---&gt; luci-app-multiwan   #多拨虚拟网卡（已弃，移至syncdial）
+LuCI ---&gt; Applications ---&gt; luci-app-mwan   #MWAN负载均衡（已弃）
+LuCI ---&gt; Applications ---&gt; luci-app-music-remote-center   #DAAP遥控音乐服务器   *
+LuCI ---&gt; Applications ---&gt; luci-app-mwan3   #MWAN3负载均衡
+LuCI ---&gt; Applications ---&gt; luci-app-mwan3helper   #MWAN3分流助手
+LuCI ---&gt; Applications ---&gt; luci-app-n2n_v2   #N2N内网穿透 N2N v2 virtual**服务
+LuCI ---&gt; Applications ---&gt; luci-app-netdata  #Netdata实时监控（图表）
+LuCI ---&gt; Applications ---&gt; luci-app-nfs   #NFS网络共享   *
+LuCI ---&gt; Applications ---&gt; luci-app-nft-qos  #QOS流控 Nftables版
+LuCI ---&gt; Applications ---&gt; luci-app-ngrokc  #Ngrok 内网穿透（已弃）
+LuCI ---&gt; Applications ---&gt; luci-app-nlbwmon   #网络带宽监视器
+LuCI ---&gt; Applications ---&gt; luci-app-noddos  #NodDOS Clients 阻止DDoS攻击
+LuCI ---&gt; Applications ---&gt; luci-app-ntpc   #NTP时间同步服务器
+LuCI ---&gt; Applications ---&gt; luci-app-ocserv  #OpenConnect virtual**服务
+LuCI ---&gt; Applications ---&gt; luci-app-olsr  #OLSR配置和状态模块
+LuCI ---&gt; Applications ---&gt; luci-app-olsr-services  #OLSR服务器
+LuCI ---&gt; Applications ---&gt; luci-app-olsr-viz   #OLSR可视化
+LuCI ---&gt; Applications ---&gt; luci-app-openvirtual**  #Openvirtual**客户端
+LuCI ---&gt; Applications ---&gt; luci-app-openvirtual**-server  #易于使用的Openvirtual**服务器 Web-UI
+LuCI ---&gt; Applications ---&gt; luci-app-oscam   #OSCAM服务器（已弃）
+LuCI ---&gt; Applications ---&gt; luci-app-p910nd   #打印服务器模块
+LuCI ---&gt; Applications ---&gt; luci-app-pagekitec   #Pagekite内网穿透客户端
+LuCI ---&gt; Applications ---&gt; luci-app-polipo  #Polipo代理(是一个小型且快速的网页缓存代理)
+LuCI ---&gt; Applications ---&gt; luci-app-pppoe-relay  #PPPoE NAT穿透 点对点协议（PPP）
+LuCI ---&gt; Applications ---&gt; luci-app-p p t p-server  #virtual**服务器 p p t p（已弃）
+LuCI ---&gt; Applications ---&gt; luci-app-privoxy  #Privoxy网络代理(带过滤无缓存)
+LuCI ---&gt; Applications ---&gt; luci-app-qbittorrent  #BT下载工具（qBittorrent）
+LuCI ---&gt; Applications ---&gt; luci-app-qos   #流量服务质量(QoS)流控
+LuCI ---&gt; Applications ---&gt; luci-app-radicale   #CalDAV/CardDAV同步工具
+LuCI ---&gt; Applications ---&gt; luci-app-ramfree  #释放内存
+LuCI ---&gt; Applications ---&gt; luci-app-rp-pppoe-server  #Roaring Penguin PPPoE Server 服务器
+LuCI ---&gt; Applications ---&gt; luci-app-samba   #网络共享（Samba）
+LuCI ---&gt; Applications ---&gt; luci-app-samba4   #网络共享（Samba4）
+LuCI ---&gt; Applications ---&gt; luci-app-sfe  #Turbo ACC网络加速（flowoffload二选一）
+LuCI ---&gt; Applications ---&gt; luci-app-s-s   #SS低调上网（已弃）
+LuCI ---&gt; Applications ---&gt; luci-app-s-s-libes  #SS-libev服务端
+LuCI ---&gt; Applications ---&gt; luci-app-shairplay  #支持AirPlay功能
+LuCI ---&gt; Applications ---&gt; luci-app-siitwizard  #SIIT配置向导  SIIT-Wizzard
+LuCI ---&gt; Applications ---&gt; luci-app-simple-adblock  #简单的广告拦截
+LuCI ---&gt; Applications ---&gt; luci-app-smartdns  #SmartDNS本地服务器（已弃）
+LuCI ---&gt; Applications ---&gt; luci-app-softethervirtual**  #SoftEther virtual**服务器  NAT穿透
+LuCI ---&gt; Applications ---&gt; luci-app-splash  #Client-Splash是无线MESH网络的一个热点认证系统
+LuCI ---&gt; Applications ---&gt; luci-app-sqm  #流量智能队列管理（QOS）
+LuCI ---&gt; Applications ---&gt; luci-app-squid   #Squid代理服务器
+LuCI ---&gt; Applications ---&gt; luci-app-乳酸菌饮料-plus   #乳酸菌饮料低调上网Plus+
+    luci-app-乳酸菌饮料-plus ---&gt; Include s-s New Version  #新SS代理（已弃）
+    luci-app-乳酸菌饮料-plus ---&gt; Include s-s Simple-obfs Plugin  #simple-obfs简单混淆工具（已弃）
+    luci-app-乳酸菌饮料-plus ---&gt; Include s-s v贰瑞 Plugin  #SS v贰瑞插件   *
+    luci-app-乳酸菌饮料-plus ---&gt; Include v贰瑞  #v贰瑞代理
+    luci-app-乳酸菌饮料-plus ---&gt; Include Trojan  #Trojan代理
+    luci-app-乳酸菌饮料-plus ---&gt; Include red---socks2  #red---socks2代理   *
+    luci-app-乳酸菌饮料-plus ---&gt; Include Kcptun  #Kcptun加速
+    luci-app-乳酸菌饮料-plus ---&gt; Include 违禁软件 Server  #乳酸菌饮料服务器
+    luci-app-乳酸菌饮料-plus ---&gt; Include DNS2SOCKS  #DNS服务器（已弃）
     luci-app-乳酸菌饮料-plus ---&gt; Include 违禁软件 Socks and Tunnel（已弃）
-    luci-app-乳酸菌饮料-plus ---&gt; Include Socks Server  <span class="hljs-comment">#socks代理服务器（已弃）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-乳酸菌饮料-pro  <span class="hljs-comment">#乳酸菌饮料-Pro（已弃）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-乳酸菌饮料server-python  <span class="hljs-comment">#违禁软件 Python服务器</span>
-LuCI ---&gt; Applications ---&gt; luci-app-statistics  <span class="hljs-comment">#流量监控工具</span>
-LuCI ---&gt; Applications ---&gt; luci-app-syncdial  <span class="hljs-comment">#多拨虚拟网卡（原macvlan）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-tinyproxy  <span class="hljs-comment">#Tinyproxy是 HTTP(S)代理服务器</span>
-LuCI ---&gt; Applications ---&gt; luci-app-transmission   <span class="hljs-comment">#BT下载工具</span>
-LuCI ---&gt; Applications ---&gt; luci-app-travelmate  <span class="hljs-comment">#旅行路由器</span>
-LuCI ---&gt; Applications ---&gt; luci-app-ttyd   <span class="hljs-comment">#网页终端命令行</span>
-LuCI ---&gt; Applications ---&gt; luci-app-udpxy  <span class="hljs-comment">#udpxy做组播服务器</span>
-LuCI ---&gt; Applications ---&gt; luci-app-uhttpd  <span class="hljs-comment">#uHTTPd Web服务器</span>
-LuCI ---&gt; Applications ---&gt; luci-app-unblockmusic  <span class="hljs-comment">#解锁网易云灰色歌曲3合1新版本</span>
-    UnblockNeteaseMusic Golang Version  <span class="hljs-comment">#Golang版本   *</span>
-    UnblockNeteaseMusic NodeJS Version  <span class="hljs-comment">#NodeJS版本   *</span>
-LuCI ---&gt; Applications ---&gt; luci-app-unblockneteasemusic-go  <span class="hljs-comment">#解除网易云音乐（合并）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-unblockneteasemusic-mini  <span class="hljs-comment">#解除网易云音乐（合并）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-unbound  <span class="hljs-comment">#Unbound DNS解析器</span>
-LuCI ---&gt; Applications ---&gt; luci-app-upnp   <span class="hljs-comment">#通用即插即用UPnP（端口自动转发）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-usb-printer   <span class="hljs-comment">#USB 打印服务器</span>
-LuCI ---&gt; Applications ---&gt; luci-app-v贰瑞-server   <span class="hljs-comment">#v贰瑞 服务器</span>
-LuCI ---&gt; Applications ---&gt; luci-app-v贰瑞-pro  <span class="hljs-comment">#v贰瑞透明代理（已弃，集成乳酸菌饮料）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-verysync  <span class="hljs-comment">#微力同步</span>
-LuCI ---&gt; Applications ---&gt; luci-app-vlmcsd  <span class="hljs-comment">#KMS服务器设置</span>
-LuCI ---&gt; Applications ---&gt; luci-app-vnstat   <span class="hljs-comment">#vnStat网络监控（图表）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-virtual**bypass  <span class="hljs-comment">#virtual** BypassWebUI  绕过virtual**设置</span>
-LuCI ---&gt; Applications ---&gt; luci-app-vsftpd  <span class="hljs-comment">#FTP服务器</span>
-LuCI ---&gt; Applications ---&gt; luci-app-watchcat  <span class="hljs-comment">#断网检测功能与定时重启</span>
-LuCI ---&gt; Applications ---&gt; luci-app-webadmin  <span class="hljs-comment">#Web管理页面设置</span>
-LuCI ---&gt; Applications ---&gt; luci-app-webshell  <span class="hljs-comment">#网页命令行终端（已弃）</span>
-LuCI ---&gt; Applications ---&gt; luci-app-wifischedule  <span class="hljs-comment">#WiFi 计划</span>
-LuCI ---&gt; Applications ---&gt; luci-app-wireguard  <span class="hljs-comment">#virtual**服务器 WireGuard状态</span>
-LuCI ---&gt; Applications ---&gt; luci-app-wirele违禁软件egdb  <span class="hljs-comment">#WiFi无线</span>
-LuCI ---&gt; Applications ---&gt; luci-app-wol   <span class="hljs-comment">#WOL网络唤醒</span>
-LuCI ---&gt; Applications ---&gt; luci-app-wrtbwmon  <span class="hljs-comment">#实时流量监测</span>
-LuCI ---&gt; Applications ---&gt; luci-app-xlnetacc  <span class="hljs-comment">#迅雷快鸟</span>
-LuCI ---&gt; Applications ---&gt; luci-app-zerotier  <span class="hljs-comment">#ZeroTier内网穿透</span></code></pre>
-
+    luci-app-乳酸菌饮料-plus ---&gt; Include Socks Server  #socks代理服务器（已弃）
+LuCI ---&gt; Applications ---&gt; luci-app-乳酸菌饮料-pro  #乳酸菌饮料-Pro（已弃）
+LuCI ---&gt; Applications ---&gt; luci-app-乳酸菌饮料server-python  #违禁软件 Python服务器
+LuCI ---&gt; Applications ---&gt; luci-app-statistics  #流量监控工具
+LuCI ---&gt; Applications ---&gt; luci-app-syncdial  #多拨虚拟网卡（原macvlan）
+LuCI ---&gt; Applications ---&gt; luci-app-tinyproxy  #Tinyproxy是 HTTP(S)代理服务器
+LuCI ---&gt; Applications ---&gt; luci-app-transmission   #BT下载工具
+LuCI ---&gt; Applications ---&gt; luci-app-travelmate  #旅行路由器
+LuCI ---&gt; Applications ---&gt; luci-app-ttyd   #网页终端命令行
+LuCI ---&gt; Applications ---&gt; luci-app-udpxy  #udpxy做组播服务器
+LuCI ---&gt; Applications ---&gt; luci-app-uhttpd  #uHTTPd Web服务器
+LuCI ---&gt; Applications ---&gt; luci-app-unblockmusic  #解锁网易云灰色歌曲3合1新版本
+    UnblockNeteaseMusic Golang Version  #Golang版本   *
+    UnblockNeteaseMusic NodeJS Version  #NodeJS版本   *
+LuCI ---&gt; Applications ---&gt; luci-app-unblockneteasemusic-go  #解除网易云音乐（合并）
+LuCI ---&gt; Applications ---&gt; luci-app-unblockneteasemusic-mini  #解除网易云音乐（合并）
+LuCI ---&gt; Applications ---&gt; luci-app-unbound  #Unbound DNS解析器
+LuCI ---&gt; Applications ---&gt; luci-app-upnp   #通用即插即用UPnP（端口自动转发）
+LuCI ---&gt; Applications ---&gt; luci-app-usb-printer   #USB 打印服务器
+LuCI ---&gt; Applications ---&gt; luci-app-v贰瑞-server   #v贰瑞 服务器
+LuCI ---&gt; Applications ---&gt; luci-app-v贰瑞-pro  #v贰瑞透明代理（已弃，集成乳酸菌饮料）
+LuCI ---&gt; Applications ---&gt; luci-app-verysync  #微力同步
+LuCI ---&gt; Applications ---&gt; luci-app-vlmcsd  #KMS服务器设置
+LuCI ---&gt; Applications ---&gt; luci-app-vnstat   #vnStat网络监控（图表）
+LuCI ---&gt; Applications ---&gt; luci-app-virtual**bypass  #virtual** BypassWebUI  绕过virtual**设置
+LuCI ---&gt; Applications ---&gt; luci-app-vsftpd  #FTP服务器
+LuCI ---&gt; Applications ---&gt; luci-app-watchcat  #断网检测功能与定时重启
+LuCI ---&gt; Applications ---&gt; luci-app-webadmin  #Web管理页面设置
+LuCI ---&gt; Applications ---&gt; luci-app-webshell  #网页命令行终端（已弃）
+LuCI ---&gt; Applications ---&gt; luci-app-wifischedule  #WiFi 计划
+LuCI ---&gt; Applications ---&gt; luci-app-wireguard  #virtual**服务器 WireGuard状态
+LuCI ---&gt; Applications ---&gt; luci-app-wirele违禁软件egdb  #WiFi无线
+LuCI ---&gt; Applications ---&gt; luci-app-wol   #WOL网络唤醒
+LuCI ---&gt; Applications ---&gt; luci-app-wrtbwmon  #实时流量监测
+LuCI ---&gt; Applications ---&gt; luci-app-xlnetacc  #迅雷快鸟
+LuCI ---&gt; Applications ---&gt; luci-app-zerotier  #ZeroTier内网穿透</code></pre>
 <h3 id="2-5-自动编译"><a href="#2-5-自动编译" class="headerlink" title="2.5 自动编译"></a>2.5 自动编译</h3><p><a href="https://github.com/esirplayground/AutoBuild-OpenWrt" target="_blank" rel="noopener">项目地址</a></p>
 <p>自定义编译前需要在编译环境中运行<code>./scripts/diffconfig.sh &gt; diffconfig</code></p>
 <p>然后把<code>/lede/diffconfig</code>里内容替换项目里面相应的.config文件内容。</p>
@@ -465,13 +457,12 @@ LuCI ---&gt; Applications ---&gt; luci-app-zerotier  <span class="hljs-comment">
 <p><code>openwrt-x86-x64-combined-squashfs.img</code>就是我们需要的镜像文件了</p>
 <p>把镜像文件下载下来，通过<code>winPE</code>的U盘安装烧录到路由器硬盘里，也可以烧写到U盘里，通过U盘启动</p>
 <p>网线连接到路由器的Lan口，默认登陆IP <code>192.168.1.1</code>, 密码 <code>password</code>，进行配置(也可以通过PUTTY连接，端口22)</p>
-<pre><code class="hljs SH"><span class="hljs-comment"># 修改LAN口固定IP</span>
+<pre><code class="SH"># 修改LAN口固定IP
 vi /etc/config/network
-<span class="hljs-comment"># option ipaddr可以改为你想要管理路由的IP地址，比如'192.168.10.1'</span>
+# option ipaddr可以改为你想要管理路由的IP地址，比如&#39;192.168.10.1&#39;
 
-<span class="hljs-comment"># 重启网络</span>
+# 重启网络
 /etc/init.d/network restart</code></pre>
-
 <p>网页地址栏输入<code>192.168.10.1</code>，进行配置。</p>
 <p>接线配置可参考如下2张图片</p>
 <p><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/network/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E5%9B%BE.png" srcset="/img/loading.gif" alt="家庭网络结构图"></p>
@@ -489,84 +480,103 @@ vi /etc/config/network
 <p><a href="https://www.youtube.com/watch?v=ZMh-AvQV8n0&t=57s" target="_blank" rel="noopener">How to build your own Openwrt firmware</a></p>
 <p><a href="https://www.youtube.com/watch?v=zy16nR8MlX0" target="_blank" rel="noopener">openwrt基础设置</a></p>
 
-            </article>
             <hr>
-            <div>
-              <div class="post-metas mb-3">
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
                 
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/linux/">linux</a>
-                    
-                      <a class="hover-with-bg" href="/categories/linux/openwrt/">openwrt</a>
-                    
-                  </div>
+                  <a class="hover-with-bg" href="/categories/linux">linux</a>
+                  &nbsp;
                 
+                  <a class="hover-with-bg" href="/categories/openwrt">openwrt</a>
+                  &nbsp;
                 
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/openwrt/">openwrt</a>
-                    
-                  </div>
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
                 
-              </div>
-              
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-              
-              
-                <div class="post-prevnext row">
-                  <div class="post-prev col-6">
-                    
-                    
-                      <a href="/2020/05/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">计算机网络原理-读书笔记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </div>
-                  <div class="post-next col-6">
-                    
-                    
-                      <a href="/2020/04/24/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-                        <span class="hidden-mobile">docker学习笔记</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </div>
-                </div>
-              
-            </div>
-
+                  <a class="hover-with-bg" href="/tags/openwrt">openwrt</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
             
           </div>
         </div>
       </div>
     </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
-</div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
 
-      </div>
-    
+    </div>
   </div>
 </div>
 
-<!-- Custom -->
+<!-- custom -->
 
+  <div class="col-lg-7 mx-auto nopadding-md">
+    <div class="container custom post-content mx-auto">
+      <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-3" style="width:355.4px; height:200px;">
+    </div>
+  </div>
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'false' === true;
+    var verify = 'false' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
+        app_key: "HLUt5izfTvTcbEbOrA59W92a",
+        placeholder: "畅所欲言...",
+        avatar: "robohash",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+    
+  </div>
+</div>
 
     
   </main>
 
   
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
     </a>
   
 
@@ -594,79 +604,116 @@ vi /etc/config/network
 </div>
   
 
-  
-
-  
-
   <footer class="mt-5">
   <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
     
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
 
     
 
+
+    <!-- cnzz Analytics icon -->
     
+
   </div>
 </footer>
 
 <!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="/js/main.js" ></script>
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
 
 
-  <script  src="/js/lazyload.js" ></script>
+  <script src="/js/lazyload.js" ></script>
 
 
 
   
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '.post-content',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
 
 
 
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
+  <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
 
 
 
-
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 <!-- Plugins -->
 
 
+  
+    <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
 
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  
+
+  
+    <!-- Tencent Analytics -->
+    <script>
+      var _mtac = {};
+      (function () {
+        var mta = document.createElement("script");
+        mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+        mta.setAttribute("name", "MTAH5");
+        mta.setAttribute("sid", "500710993");
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(mta, s);
+      })();
+    </script>
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
   <script>
     var typed = new Typed('#subtitle', {
       strings: [
@@ -674,7 +721,7 @@ vi /etc/config/network
         "openwrt的编译及其使用&nbsp;",
       ],
       cursorChar: "_",
-      typeSpeed: 70,
+      typeSpeed: 60,
       loop: false,
     });
     typed.stop();
@@ -686,11 +733,11 @@ vi /etc/config/network
 
 
 
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script src="/lib/anchor/anchor.min.js" ></script>
   <script>
     anchors.options = {
       placement: "right",
-      visible: "hover",
+      visible: "always",
       
     };
     var el = "h1,h2,h3,h4,h5,h6".split(",");
@@ -703,27 +750,25 @@ vi /etc/config/network
 
 
 
-  <script  src="/js/local-search.js" ></script>
+  <script src="/js/local-search.js" ></script>
   <script>
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
+      getSearchFile(path);
       this.onclick = null
     }
   </script>
 
 
 
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
   <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
       function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
         $(this).wrap(element);
       }
     );
@@ -731,13 +776,83 @@ vi /etc/config/network
 
 
 
+  
+
+  
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+              processEscapes: true,
+              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+          }
+      });
+
+      MathJax.Hub.Queue(function() {
+          var all = MathJax.Hub.getAllJax(), i;
+          for(i=0; i < all.length; i += 1) {
+              all[i].SourceElement().parentNode.className += ' has-jax';
+          }
+      });
+
+    </script>
+
+    <script src="https://cdn.staticfile.org/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+
+  
 
 
 
-
-
-
-
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
 
 
 

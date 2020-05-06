@@ -7,39 +7,32 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
   <link rel="icon" type="image/png" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="theme-color" content="#2f4154">
   <meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时">
   <meta name="author" content="closer">
   <meta name="keywords" content="">
   <title>closer的自留地</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
 
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
 
 
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
 
 
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="closer的自留地" type="application/atom+xml">
@@ -51,7 +44,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>welcome!</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -66,46 +59,49 @@
           
           
           
+          
           <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              首页</a>
+            <a class="nav-link" href="/">首页</a>
           </li>
         
           
           
           
+          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              归档</a>
+            <a class="nav-link" href="/archives/">归档</a>
           </li>
         
           
           
           
+          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              分类</a>
+            <a class="nav-link" href="/categories/">分类</a>
           </li>
         
           
           
           
+          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              标签</a>
+            <a class="nav-link" href="/tags/">标签</a>
           </li>
         
           
           
           
+          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              关于</a>
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
           </li>
         
         
@@ -120,10 +116,10 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('https://api.dujin.org/bing/1920.php')no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+        <div class="mask rgba-black-light flex-center">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -134,7 +130,7 @@
 
           
             <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
             </div>
           
         </div>
@@ -145,8 +141,7 @@
   <main>
     
       <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          style=margin-top:0>
+        <div class="py-5 z-depth-3" id="board">
           
           <div class="container">
             <div class="row">
@@ -157,21 +152,24 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/03/13/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E5%B1%80%E5%9F%9F%E7%BD%91%E4%B8%BB%E6%9C%BA%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE-%E9%80%9A%E8%BF%87%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" target="_self">
-          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/linux.jpg" srcset="/img/loading.gif" alt="局域网内的主机实现外网访问(通过反向代理)">
+          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/linux.jpg" srcset="/img/loading.gif" alt="局域网内的主机实现外网访问(通过反向代理)" class="index-img img-fluid rounded index-thumbnails">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/03/13/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E5%B1%80%E5%9F%9F%E7%BD%91%E4%B8%BB%E6%9C%BA%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE-%E9%80%9A%E8%BF%87%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">局域网内的主机实现外网访问(通过反向代理)</a>
+      <a href="/2020/03/13/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E5%B1%80%E5%9F%9F%E7%BD%91%E4%B8%BB%E6%9C%BA%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE-%E9%80%9A%E8%BF%87%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">
+        <p class="h4 index-header">局域网内的主机实现外网访问(通过反向代理)</p>
+      </a>
 
-      <a href="/2020/03/13/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E5%B1%80%E5%9F%9F%E7%BD%91%E4%B8%BB%E6%9C%BA%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE-%E9%80%9A%E8%BF%87%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" class="index-excerpt">
+      <a href="/2020/03/13/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E5%B1%80%E5%9F%9F%E7%BD%91%E4%B8%BB%E6%9C%BA%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE-%E9%80%9A%E8%BF%87%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">
         
         
           
         
-        <div>
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
 比较简单的方法：下载脚本，使用frp实现内网穿透
 
 本文记录如何在树莓派上如何实现反向代理，穿透内网进行远程登录和操作树莓派。本方法也适用于其他 Linux 系统和 mac osx系统，但目录上有所区别。
@@ -180,34 +178,47 @@
 局域网主机（如树莓派、nas）。
 
 二： 准备工作（局域网主机上操作）
-局域网主机生成密匙(如果已经生成，请跳过)打开终端，输入。ss</div>
+局域网主机生成密匙(如果已经生成，请跳过)打开终端，输入。ssh-keygen # 然后连续按三次Enter
+输入如下命令：ssh-copy-id -i ~/.ssh/id_rsa.pub 中文改为你的云主机用户名@中文改为你的云主机外网IP
+使pi默认可以root登录sudo passwd root # 修改pi的root密码sudo nano /etc/ssh/sshd_config找到PermitRootLogin这一行，将前面的‘#’去掉，这一行改为PermitRootLogin yes。
+
+三： 反向代理的操作原理图：
+
+
+
+编号
+IP
+用户名
+说明
+
+
+
+A
+192.168.1.A
+U_a
+目标 计算机，（即树莓派），在局域网中，可以访问 A</div>
+        </div>
       </a>
 
-      <div class="index-btm post-metas">
+      <div class="index-btm">
         
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-03-13
-          </div>
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-13&nbsp;&nbsp;
         
         
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Linux/">Linux</a>
-            
-          </div>
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Linux">Linux</a>&nbsp;
+          &nbsp;
         
         
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">Linux</a>
-            
-              <a href="/tags/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">反向代理</a>
-            
-              <a href="/tags/%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/">外网访问</a>
-            
-          </div>
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Linux">Linux</a>&nbsp;
+          
+            <a href="/tags/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86">反向代理</a>&nbsp;
+          
+            <a href="/tags/%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE">外网访问</a>&nbsp;
+          
         
       </div>
     </div>
@@ -216,50 +227,59 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/03/07/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%20%E4%BA%8C%EF%BC%9Acookie/" target="_self">
-          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python.jpg" srcset="/img/loading.gif" alt="selenium操作cookie">
+          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python.jpg" srcset="/img/loading.gif" alt="selenium操作cookie" class="index-img img-fluid rounded index-thumbnails">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/03/07/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%20%E4%BA%8C%EF%BC%9Acookie/">selenium操作cookie</a>
+      <a href="/2020/03/07/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%20%E4%BA%8C%EF%BC%9Acookie/">
+        <p class="h4 index-header">selenium操作cookie</p>
+      </a>
 
-      <a href="/2020/03/07/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%20%E4%BA%8C%EF%BC%9Acookie/" class="index-excerpt">
+      <a href="/2020/03/07/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%20%E4%BA%8C%EF%BC%9Acookie/">
         
         
           
         
-        <div>一： 查看cookie
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">一： 查看cookie
 查看cookie的方法：按下F12打开开发者工具。在network中可以看到请求发送的信息，在返回头中，会带有服务器提供的设置cookie的信息。在application当中，可以看到相应网站的所有cookie，并不是只有登录信息，也不是所有的网站都有cookie。
-http协议是一个无状态的协议，用到cookie和session来保存访问中的一些状态。cookie和ses</div>
+http协议是一个无状态的协议，用到cookie和session来保存访问中的一些状态。cookie和session都是由服务器生成的，cookie将保存在浏览器的本地，session记录在服务端。
+cookie的几大属性
+name：名字（键），cookie的必须字段。
+value：值。
+domain：域。cookie的作用域名。
+path：表示路径。/表示当前域名下所有的网页都能使用该cookie。domain和path结合在一起，限定了cookie的适用范围。
+expires：生命周期。限定cookie的使用时间。如果生命周期为Session的，表示只在当前这次会话中cookie有效，关闭浏览器之后立即失效。
+sessionID：本次访问的会话留下的ID号。
+
+
+
+二： 用selenium操作通</div>
+        </div>
       </a>
 
-      <div class="index-btm post-metas">
+      <div class="index-btm">
         
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-03-07
-          </div>
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-07&nbsp;&nbsp;
         
         
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/python/">python</a>
-            
-              <a href="/categories/python/cookie/">cookie</a>
-            
-          </div>
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/python">python</a>&nbsp;
+          
+            <a href="/categories/cookie">cookie</a>&nbsp;
+          &nbsp;
         
         
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/python/">python</a>
-            
-              <a href="/tags/cookie/">cookie</a>
-            
-          </div>
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/python">python</a>&nbsp;
+          
+            <a href="/tags/cookie">cookie</a>&nbsp;
+          
         
       </div>
     </div>
@@ -268,49 +288,57 @@ http协议是一个无状态的协议，用到cookie和session来保存访问中
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/" target="_self">
-          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/linux.jpg" srcset="/img/loading.gif" alt="树莓派配置">
+          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/linux.jpg" srcset="/img/loading.gif" alt="树莓派配置" class="index-img img-fluid rounded index-thumbnails">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/">树莓派配置</a>
+      <a href="/2020/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/">
+        <p class="h4 index-header">树莓派配置</p>
+      </a>
 
-      <a href="/2020/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/" class="index-excerpt">
+      <a href="/2020/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/">
         
         
           
         
-        <div>一: 修改密码及时间1.1 设置su及pi密码sudo passwd pi                   # 修改 Pi 密码  
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">一: 修改密码及时间1.1 设置su及pi密码sudo passwd pi                   # 修改 Pi 密码  
 sudo passwd root                 # 设置 root 密码
 su root                          # 切换到 root 用户  
-su pi                            # 切</div>
+su pi                            # 切换到 pi 用户
+1.2 修改时间使用date 语句查看时间，如不正确，则：首先在终端中用下面的命令安装ntpdate工具
+sudo apt install ntpdate
+启用NTP 
+sudo timedatectl set-ntp true
+继续使用date语句查看时间，如不正确，则：
+sudo dpkg-reconfigure tzdata
+修改时区为Asia Shanghai，继续使用date语句查看时间并确认正确
+二: 中文环境2.1 安装中文输入法sudo apt install scim-pinyin
+2.2 配置中文环境sudo raspi-config
+按4 -&gt; 1</div>
+        </div>
       </a>
 
-      <div class="index-btm post-metas">
+      <div class="index-btm">
         
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-03-06
-          </div>
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-06&nbsp;&nbsp;
         
         
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Linux/">Linux</a>
-            
-          </div>
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Linux">Linux</a>&nbsp;
+          &nbsp;
         
         
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">Linux</a>
-            
-              <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a>
-            
-          </div>
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Linux">Linux</a>&nbsp;
+          
+            <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE">树莓派</a>&nbsp;
+          
         
       </div>
     </div>
@@ -319,21 +347,24 @@ su pi                            # 切</div>
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/SQL/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93MySQL/" target="_self">
-          <img src="/img/mysql.jpg" srcset="/img/loading.gif" alt="关系数据库MySQL入门">
+          <img src="/img/mysql.jpg" srcset="/img/loading.gif" alt="关系数据库MySQL入门" class="index-img img-fluid rounded index-thumbnails">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/SQL/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93MySQL/">关系数据库MySQL入门</a>
+      <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/SQL/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93MySQL/">
+        <p class="h4 index-header">关系数据库MySQL入门</p>
+      </a>
 
-      <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/SQL/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93MySQL/" class="index-excerpt">
+      <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/SQL/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93MySQL/">
         
         
           
         
-        <div>
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
 本文转载于GitHub项目Python - 100天从新手到大师
 
 一： 关系数据库概述
@@ -341,34 +372,46 @@ su pi                            # 切</div>
 
 数据库发展史 - 网状数据库、层次数据库、关系数据库、NoSQL数据库。
 
-1970年，IBM的研究员E.F.Codd在Communication of the ACM上发表了名为A Relational Model</div>
+1970年，IBM的研究员E.F.Codd在Communication of the ACM上发表了名为A Relational Model of Data for Large Shared Data Banks的论文，提出了关系模型的概念，奠定了关系模型的理论基础。后来Codd又陆续发表多篇文章，论述了范式理论和衡量关系系统的12条标准，用数学理论奠定了关系数据库的基础。
+
+
+关系数据库特点。
+
+理论基础：集合论和关系代数。
+
+具体表象：用二维表（有行和列）组织数据。
+
+编程语言：结构化查询语言（SQL）。
+
+
+
+ER模型（实体关系模型）和概念模型图。
+ER模型，全称为实体关系模型（Entity-Relationship Model），由美籍华裔计算机科学家陈品山先生提出，是概念数据模型的高层描述方式，如下图所示。
+
+
+实体 -</div>
+        </div>
       </a>
 
-      <div class="index-btm post-metas">
+      <div class="index-btm">
         
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-02-23
-          </div>
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-23&nbsp;&nbsp;
         
         
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
-            
-              <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/MYSQL/">MYSQL</a>
-            
-          </div>
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
+          
+            <a href="/categories/MYSQL">MYSQL</a>&nbsp;
+          &nbsp;
         
         
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
-            
-              <a href="/tags/MySQL/">MySQL</a>
-            
-          </div>
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
+          
+            <a href="/tags/MySQL">MySQL</a>&nbsp;
+          
         
       </div>
     </div>
@@ -377,54 +420,53 @@ su pi                            # 切</div>
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E7%8E%A9%E8%BD%ACLinux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" target="_self">
-          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/linux.jpg" srcset="/img/loading.gif" alt="玩转Linux操作系统">
+          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/linux.jpg" srcset="/img/loading.gif" alt="玩转Linux操作系统" class="index-img img-fluid rounded index-thumbnails">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E7%8E%A9%E8%BD%ACLinux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">玩转Linux操作系统</a>
+      <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E7%8E%A9%E8%BD%ACLinux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+        <p class="h4 index-header">玩转Linux操作系统</p>
+      </a>
 
-      <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E7%8E%A9%E8%BD%ACLinux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="index-excerpt">
+      <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E7%8E%A9%E8%BD%ACLinux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
         
         
           
         
-        <div>
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
 本文转载于GitHub项目Python - 100天从新手到大师
 
 
 说明：本文中对Linux命令的讲解都是基于名为CentOS的Linux发行版本，我自己使用的是阿里云服务器，系统版本为CentOS Linux release 7.6.1810。不同的Linux发行版本在Shell命令和工具程序上会有一些差别，但是这些差别是很小的。
 
-一： 操作系统发展史只有硬件没有软件的计算机系统被称之为“</div>
+一： 操作系统发展史只有硬件没有软件的计算机系统被称之为“裸机”，我们很难用“裸机”来完成计算机日常的工作（如存储和运算），所以必须用特定的软件来控制硬件的工作。最靠近计算机硬件的软件是系统软件，其中最为重要的就是“操作系统”。“操作系统”是控制和管理整个计算机硬件和软件资源、实现资源分配和任务调配、为系统用户以及其他软件提供接口和环境的程序的集合。
+1.1 没有操作系统（手工操作）在计算机诞生之初没有操作系统的年代，人们先把程序纸带（或卡片）装上计算机，然后启动输入机把程序送入计算机，接着通过控制台开关启动程序运行。当程序执行完毕，打印机输出计算的结果，用户卸下并取走纸带（或卡片）。第二个用户上机，重复同样的步骤。在整个过程中用户独占机器，CPU等</div>
+        </div>
       </a>
 
-      <div class="index-btm post-metas">
+      <div class="index-btm">
         
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-02-23
-          </div>
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-23&nbsp;&nbsp;
         
         
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
-            
-              <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/">Linux</a>
-            
-          </div>
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
+          
+            <a href="/categories/Linux">Linux</a>&nbsp;
+          &nbsp;
         
         
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">Linux</a>
-            
-              <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
-            
-          </div>
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Linux">Linux</a>&nbsp;
+          
+            <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
+          
         
       </div>
     </div>
@@ -433,51 +475,49 @@ su pi                            # 切</div>
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" target="_self">
-          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python.jpg" srcset="/img/loading.gif" alt="使用正则表达式">
+          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python.jpg" srcset="/img/loading.gif" alt="使用正则表达式" class="index-img img-fluid rounded index-thumbnails">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">使用正则表达式</a>
+      <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+        <p class="h4 index-header">使用正则表达式</p>
+      </a>
 
-      <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="index-excerpt">
+      <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
         
         
           
         
-        <div>
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
 本文转载于GitHub项目Python - 100天从新手到大师
 
-一： 正则表达式相关知识在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需要，正则表达式就是用于描述这些规则的工具，换句话说正则表达式是一种工具，它定义了字符串的匹配模式（如何检查一个字符串是否有跟某种模式匹配的部分或者从一个字符串中将与模式匹配的部分提取出来或者替换掉）。如果你在Windows操作系统中使</div>
+一： 正则表达式相关知识在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需要，正则表达式就是用于描述这些规则的工具，换句话说正则表达式是一种工具，它定义了字符串的匹配模式（如何检查一个字符串是否有跟某种模式匹配的部分或者从一个字符串中将与模式匹配的部分提取出来或者替换掉）。如果你在Windows操作系统中使用过文件查找并且在指定文件名时使用过通配符（*和?），那么正则表达式也是与之类似的用来进行文本匹配的工具，只不过比起通配符正则表达式更强大，它能更精确地描述你的需求（当然你付出的代价是书写一个正则表达式比打出一个通配符要复杂得多，要知道任何给你带来好处的东西都是有代价的，就如同学习一门编程语言一样），比如你可以编写一个正则表达式，用来查找所有以0开头，后面跟着2-3个数字，然后是一个连字号“-”，最后是7或8位数字的字符串（像028-12345678或0813-7654321），这不就是国内的座机号码吗。最初计算机是为了做数学运算而诞生的，处理的信息基本上都是数值，而今天我们在日常工作中处理的</div>
+        </div>
       </a>
 
-      <div class="index-btm post-metas">
+      <div class="index-btm">
         
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-02-23
-          </div>
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-23&nbsp;&nbsp;
         
         
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/python/">python</a>
-            
-              <a href="/categories/python/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
-            
-          </div>
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/python">python</a>&nbsp;
+          
+            <a href="/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">正则表达式</a>&nbsp;
+          &nbsp;
         
         
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/python/">python</a>
-            
-              <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
-            
-          </div>
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/python">python</a>&nbsp;
+          
+            <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">正则表达式</a>&nbsp;
+          
         
       </div>
     </div>
@@ -486,48 +526,47 @@ su pi                            # 切</div>
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python%E5%A4%84%E7%90%86excle%E5%AE%9E%E4%BE%8B%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%8F%E6%B3%95/" target="_self">
-          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python.jpg" srcset="/img/loading.gif" alt="python处理excle实例之字符串减法">
+          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python.jpg" srcset="/img/loading.gif" alt="python处理excle实例之字符串减法" class="index-img img-fluid rounded index-thumbnails">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python%E5%A4%84%E7%90%86excle%E5%AE%9E%E4%BE%8B%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%8F%E6%B3%95/">python处理excle实例之字符串减法</a>
+      <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python%E5%A4%84%E7%90%86excle%E5%AE%9E%E4%BE%8B%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%8F%E6%B3%95/">
+        <p class="h4 index-header">python处理excle实例之字符串减法</p>
+      </a>
 
-      <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python%E5%A4%84%E7%90%86excle%E5%AE%9E%E4%BE%8B%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%8F%E6%B3%95/" class="index-excerpt">
+      <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python%E5%A4%84%E7%90%86excle%E5%AE%9E%E4%BE%8B%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%8F%E6%B3%95/">
         
         
           
+          
         
-        <div></div>
+        <div class="index-excerpt" style="max-height: none;">
+          <div class="index-text mb-1">...</div>
+        </div>
       </a>
 
-      <div class="index-btm post-metas">
+      <div class="index-btm">
         
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-02-23
-          </div>
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-23&nbsp;&nbsp;
         
         
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/python/">python</a>
-            
-              <a href="/categories/python/excel/">excel</a>
-            
-          </div>
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/python">python</a>&nbsp;
+          
+            <a href="/categories/excel">excel</a>&nbsp;
+          &nbsp;
         
         
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/python/">python</a>
-            
-              <a href="/tags/excel/">excel</a>
-            
-          </div>
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/python">python</a>&nbsp;
+          
+            <a href="/tags/excel">excel</a>&nbsp;
+          
         
       </div>
     </div>
@@ -536,42 +575,56 @@ su pi                            # 切</div>
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/02/20/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Github/%E5%A6%82%E4%BD%95%E5%9C%A8GitHub%E4%B8%8A%E6%90%9C%E7%B4%A2%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" target="_self">
-          <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1582197100197&di=2242c9eaa7989115b25e6d8fab8ca53c&imgtype=0&src=http%3A%2F%2Fpic4.zhimg.com%2Fv2-24b62548b48af3e019a3c82df54758a8_r.jpg" srcset="/img/loading.gif" alt="如何在GitHub搜索开源项目">
+          <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1582197100197&di=2242c9eaa7989115b25e6d8fab8ca53c&imgtype=0&src=http%3A%2F%2Fpic4.zhimg.com%2Fv2-24b62548b48af3e019a3c82df54758a8_r.jpg" srcset="/img/loading.gif" alt="如何在GitHub搜索开源项目" class="index-img img-fluid rounded index-thumbnails">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/02/20/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Github/%E5%A6%82%E4%BD%95%E5%9C%A8GitHub%E4%B8%8A%E6%90%9C%E7%B4%A2%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/">如何在GitHub搜索开源项目</a>
+      <a href="/2020/02/20/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Github/%E5%A6%82%E4%BD%95%E5%9C%A8GitHub%E4%B8%8A%E6%90%9C%E7%B4%A2%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/">
+        <p class="h4 index-header">如何在GitHub搜索开源项目</p>
+      </a>
 
-      <a href="/2020/02/20/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Github/%E5%A6%82%E4%BD%95%E5%9C%A8GitHub%E4%B8%8A%E6%90%9C%E7%B4%A2%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" class="index-excerpt">
+      <a href="/2020/02/20/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Github/%E5%A6%82%E4%BD%95%E5%9C%A8GitHub%E4%B8%8A%E6%90%9C%E7%B4%A2%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/">
         
         
           
         
-        <div>一： 如何使用搜索栏所有搜索需求用空格隔开。
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">一： 如何使用搜索栏所有搜索需求用空格隔开。
 搜索栏输入：
 
 搜索项目名里面包含python、项目readme里面包含python、描述里面包含pythonin:name python、in:readme python、in:description 爬虫/in:des 爬虫PS：description描述里面包含比较准确
 
-stars数大于1000、forks数大于xxxstars:&gt;100</div>
+stars数大于1000、forks数大于xxxstars:&gt;1000、forks:&gt;xxx
+
+指定编程语言language:python
+
+最后更新时间限定pushed:&gt;2020-01-01
+
+限定国内开发者location:China
+
+
+二： chrome插件推荐
+Octotree
+GitZip for github双击你想下载的文件后面空白的地方，文件前方会出现√，右下角出现Download checked items即可下载。
+英文不好的小伙伴推荐沙拉查词
+
+三： git clone速度慢的解决方案登录Gitee -&gt; 新建仓库 -&gt; 拉到最下的创建上面，点击导入已有仓库 -&gt; 填入你想git clone的GitHub</div>
+        </div>
       </a>
 
-      <div class="index-btm post-metas">
+      <div class="index-btm">
         
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-02-20
-          </div>
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-20&nbsp;&nbsp;
         
         
         
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/github/">github</a>
-            
-          </div>
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/github">github</a>&nbsp;
+          
         
       </div>
     </div>
@@ -580,54 +633,58 @@ stars数大于1000、forks数大于xxxstars:&gt;100</div>
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/02/17/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/ubuntu%E5%AE%89%E8%A3%85%E5%AE%8C%E4%BB%A5%E5%90%8E%E7%9A%84%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/" target="_self">
-          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/ubuntu.jpg" srcset="/img/loading.gif" alt="ubuntu安装完以后的基础配置">
+          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/ubuntu.jpg" srcset="/img/loading.gif" alt="ubuntu安装完以后的基础配置" class="index-img img-fluid rounded index-thumbnails">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/02/17/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/ubuntu%E5%AE%89%E8%A3%85%E5%AE%8C%E4%BB%A5%E5%90%8E%E7%9A%84%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/">ubuntu安装完以后的基础配置</a>
+      <a href="/2020/02/17/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/ubuntu%E5%AE%89%E8%A3%85%E5%AE%8C%E4%BB%A5%E5%90%8E%E7%9A%84%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/">
+        <p class="h4 index-header">ubuntu安装完以后的基础配置</p>
+      </a>
 
-      <a href="/2020/02/17/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/ubuntu%E5%AE%89%E8%A3%85%E5%AE%8C%E4%BB%A5%E5%90%8E%E7%9A%84%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/" class="index-excerpt">
+      <a href="/2020/02/17/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/ubuntu%E5%AE%89%E8%A3%85%E5%AE%8C%E4%BB%A5%E5%90%8E%E7%9A%84%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/">
         
         
           
+          
         
-        <div>前言
+        <div class="index-excerpt" style="max-height: none;">
+          <div class="index-text mb-1">前言
 先试用ubuntu，打开软件目录 -&gt; 磁盘，右上角菜单。然后格式化磁盘;擦除 -&gt; 不要覆盖…(快速);分区 -&gt; 硬盘2T以下MBR/DOS、2T以上GPT
 不要连接网络 -&gt; 正常安装 -&gt; 其他选项
 
 一： 安装类型
 /boot分区（引导）-&gt;512MB-&gt;主分区-&gt;空间起始位置-&gt;Ext4日志文件系统-&gt;/boot。
-/ </div>
+/ 根分区（相当于windows的c盘）-&gt;102400MB-&gt;主分区-&gt;空间起始位置-&gt;XFS日志文件系统-&gt;/。
+swap分区（桌面系统不分，服务器必分）-&gt;2048MB-&gt;逻辑分区-&gt;空间起始位置-&gt;交换空间。
+/home分区（存储空间，剩余都给它）-&gt;max MB-&gt;主分区-&gt;空间起始位置-&gt;XFS日志文件系统-&gt;/home。
+现在安装。
+
+二： 基础配置2.1 设置root用户密码sudo passwd rootsu...</div>
+        </div>
       </a>
 
-      <div class="index-btm post-metas">
+      <div class="index-btm">
         
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-02-17
-          </div>
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-17&nbsp;&nbsp;
         
         
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
-            
-              <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/">Linux</a>
-            
-          </div>
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
+          
+            <a href="/categories/Linux">Linux</a>&nbsp;
+          &nbsp;
         
         
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">Linux</a>
-            
-              <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
-            
-          </div>
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Linux">Linux</a>&nbsp;
+          
+            <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
+          
         
       </div>
     </div>
@@ -636,53 +693,53 @@ stars数大于1000、forks数大于xxxstars:&gt;100</div>
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/02/16/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E5%88%A9%E7%94%A8python%E5%AE%9E%E7%8E%B0Gitee-Pages%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E3%80%81%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%88%B0/" target="_self">
-          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python.jpg" srcset="/img/loading.gif" alt="利用python实现Gitee Pages定时自动部署/自动签到">
+          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python.jpg" srcset="/img/loading.gif" alt="利用python实现Gitee Pages定时自动部署/自动签到" class="index-img img-fluid rounded index-thumbnails">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/02/16/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E5%88%A9%E7%94%A8python%E5%AE%9E%E7%8E%B0Gitee-Pages%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E3%80%81%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%88%B0/">利用python实现Gitee Pages定时自动部署/自动签到</a>
+      <a href="/2020/02/16/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E5%88%A9%E7%94%A8python%E5%AE%9E%E7%8E%B0Gitee-Pages%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E3%80%81%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%88%B0/">
+        <p class="h4 index-header">利用python实现Gitee Pages定时自动部署/自动签到</p>
+      </a>
 
-      <a href="/2020/02/16/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E5%88%A9%E7%94%A8python%E5%AE%9E%E7%8E%B0Gitee-Pages%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E3%80%81%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%88%B0/" class="index-excerpt">
+      <a href="/2020/02/16/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E5%88%A9%E7%94%A8python%E5%AE%9E%E7%8E%B0Gitee-Pages%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E3%80%81%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%88%B0/">
         
         
           
+          
         
-        <div>一： 前期准备1.1 基础环境
+        <div class="index-excerpt" style="max-height: none;">
+          <div class="index-text mb-1">一： 前期准备1.1 基础环境
 python3 + selenium + chrome浏览器。如果有不懂的可以查阅selenium-python中文文档
 chrome-&gt;设置-&gt;关于chrome-&gt;查看版本（我的版本是 80.0.3987.106（正式版本） （64 位））。  
-需要下载跟你的chrome版本一致的ChromeDriver可执行驱动下载完解压放在python根目</div>
+需要下载跟你的chrome版本一致的ChromeDriver可执行驱动下载完解压放在python根目录(即跟python.exe放在一起)。如果上面的ChromeDriver网址打不开，可以使用ChromeDriver淘宝镜像
+最好有一台云主机，没有的话需要自己的电脑设定定时开机，定时任务，定时关机。...</div>
+        </div>
       </a>
 
-      <div class="index-btm post-metas">
+      <div class="index-btm">
         
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-02-16
-          </div>
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-16&nbsp;&nbsp;
         
         
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/python/">python</a>
-            
-              <a href="/categories/python/hexo/">hexo</a>
-            
-          </div>
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/python">python</a>&nbsp;
+          
+            <a href="/categories/hexo">hexo</a>&nbsp;
+          &nbsp;
         
         
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/hexo/">hexo</a>
-            
-              <a href="/tags/python/">python</a>
-            
-              <a href="/tags/%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%88%B0/">自动签到</a>
-            
-          </div>
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/hexo">hexo</a>&nbsp;
+          
+            <a href="/tags/python">python</a>&nbsp;
+          
+            <a href="/tags/%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%88%B0">自动签到</a>&nbsp;
+          
         
       </div>
     </div>
@@ -690,14 +747,14 @@ chrome-&gt;设置-&gt;关于chrome-&gt;查看版本（我的版本是 80.0.3987.
 
 
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="iconfont icon-arrowright"></i></a>
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
   <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
       ele.href += '#board';
     }
   </script>
@@ -713,8 +770,8 @@ chrome-&gt;设置-&gt;关于chrome-&gt;查看版本（我的版本是 80.0.3987.
   </main>
 
   
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
     </a>
   
 
@@ -742,59 +799,119 @@ chrome-&gt;设置-&gt;关于chrome-&gt;查看版本（我的版本是 80.0.3987.
 </div>
   
 
-  
-
-  
-
   <footer class="mt-5">
   <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
     
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
 
     
 
+
+    <!-- cnzz Analytics icon -->
     
+
   </div>
 </footer>
 
 <!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="/js/main.js" ></script>
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
 
 
-  <script  src="/js/lazyload.js" ></script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
+  <script src="/js/lazyload.js" ></script>
 
 
 
 
+
+  <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 <!-- Plugins -->
 
 
+  
+    <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
 
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  
+
+  
+    <!-- Tencent Analytics -->
+    <script>
+      var _mtac = {};
+      (function () {
+        var mta = document.createElement("script");
+        mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+        mta.setAttribute("name", "MTAH5");
+        mta.setAttribute("sid", "500710993");
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(mta, s);
+      })();
+    </script>
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
   <script>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "An elegant Material-Design theme for Hexo&nbsp;",
+        "此后如竟没有炬火，我便是唯一的光.&nbsp;",
       ],
       cursorChar: "_",
-      typeSpeed: 70,
+      typeSpeed: 60,
       loop: false,
     });
     typed.stop();
@@ -806,11 +923,11 @@ chrome-&gt;设置-&gt;关于chrome-&gt;查看版本（我的版本是 80.0.3987.
 
 
 
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script src="/lib/anchor/anchor.min.js" ></script>
   <script>
     anchors.options = {
       placement: "right",
-      visible: "hover",
+      visible: "always",
       
     };
     var el = "h1,h2,h3,h4,h5,h6".split(",");
@@ -823,27 +940,109 @@ chrome-&gt;设置-&gt;关于chrome-&gt;查看版本（我的版本是 80.0.3987.
 
 
 
-  <script  src="/js/local-search.js" ></script>
+  <script src="/js/local-search.js" ></script>
   <script>
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
+      getSearchFile(path);
       this.onclick = null
     }
   </script>
 
 
 
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
 
 
 
+  
+
+  
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+              processEscapes: true,
+              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+          }
+      });
+
+      MathJax.Hub.Queue(function() {
+          var all = MathJax.Hub.getAllJax(), i;
+          for(i=0; i < all.length; i += 1) {
+              all[i].SourceElement().parentNode.className += ' has-jax';
+          }
+      });
+
+    </script>
+
+    <script src="https://cdn.staticfile.org/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+
+  
 
 
 
-
-
-
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
 
 
 
