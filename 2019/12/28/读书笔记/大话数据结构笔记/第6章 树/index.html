@@ -7,32 +7,39 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#2f4154">
   <meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时">
   <meta name="author" content="closer">
   <meta name="keywords" content="">
-  <title>大话数据结构第六章 树 ~ closer的自留地</title>
+  <title>大话数据结构第六章 树 - closer的自留地</title>
 
-  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
-<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
-<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
-<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-
-  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
-
-<link rel="stylesheet" href="/css/main.css"  >
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
 
 
-  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
 
 
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="closer的自留地" type="application/atom+xml">
@@ -44,7 +51,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>welcome!</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -59,49 +66,46 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">首页</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">归档</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">分类</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">标签</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">关于</a>
-          </li>
-        
-          
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/links/">友链</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
           </li>
         
         
@@ -115,51 +119,48 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" false
-         style="background: url('/img/default.jpg')no-repeat center center;
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
             </span>
 
             
-              <br>
               
-                <p class="mt-3">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期六, 十二月 28日 2019, 10:34 晚上
-                </p>
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2019-12-28 22:34">
+                    2019年12月28日 晚上
+                  </time>
+                </div>
               
 
-              <p>
+              <div class="mt-1">
                 
                   
-                  &nbsp;<i class="far fa-chart-bar"></i>
-                  <span class="post-count">
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
                     10.4k 字
-                  </span>&nbsp;
+                  </span>
                 
 
                 
                   
-                  &nbsp;<i class="far fa-clock"></i>
-                  <span class="post-count">
-                      37 分钟
-                  </span>&nbsp;
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    114
+                     分钟
+                  </span>
                 
 
                 
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
-                  <span id="busuanzi_container_page_pv">
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>&nbsp;
-                
-              </p>
+              </div>
             
           </div>
 
@@ -177,10 +178,12 @@
   <div class="row">
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          <div class="markdown-body">
-            <h2 id="6-1-6-2-树的定义"><a href="#6-1-6-2-树的定义" class="headerlink" title="6.1-6.2 树的定义"></a>6.1-6.2 树的定义</h2><p><strong>树(Tree)是n(n≥0)个结点的有限集。n=0时称为空树。在任意一棵非空树中：1)有且仅有一个特定的称为根(Root)的结点；2)当n&gt;1时，其余结点可分为m(m&gt;0)个互不相交的有限集T1、T2、……、Tm，其中每一个集合本身又是一棵树，并且称为根的子树(SubTree)。</strong> </p>
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h2 id="6-1-6-2-树的定义"><a href="#6-1-6-2-树的定义" class="headerlink" title="6.1-6.2 树的定义"></a>6.1-6.2 树的定义</h2><p><strong>树(Tree)是n(n≥0)个结点的有限集。n=0时称为空树。在任意一棵非空树中：1)有且仅有一个特定的称为根(Root)的结点；2)当n&gt;1时，其余结点可分为m(m&gt;0)个互不相交的有限集T1、T2、……、Tm，其中每一个集合本身又是一棵树，并且称为根的子树(SubTree)。</strong> </p>
 <a id="more"></a>
 
 <p>对于树的定义还需要强调两点：  </p>
@@ -191,7 +194,7 @@
 <h3 id="6-2-1-结点分类"><a href="#6-2-1-结点分类" class="headerlink" title="6.2.1 结点分类"></a>6.2.1 结点分类</h3><p>树的结点包含一个数据元素及若干指向其子树的分支。结点拥有的子树数称为结点的度（Degree）。度为0的结点称为叶结点（Leaf）或终端结点；度不为0的结点称为非终端结点或分支结点。除根结点之外，分支结点也称为内部结点。树的度是树内各结点的度的最大值。如图6-2-4所示，因为这棵树结点的度的最大值是结点D的度为3，所以树的度也为3。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0/6-2-4.JPG?raw=true" srcset="/img/loading.gif" alt="6-2-4">  </p>
 <h3 id="6-2-2-结点间关系"><a href="#6-2-2-结点间关系" class="headerlink" title="6.2.2 结点间关系"></a>6.2.2 结点间关系</h3><p>结点的子树的根称为该结点的孩子（Child），相应地，该结点称为孩子的双亲（Parent）。同一个双亲的孩子之间互称兄弟（Sibling）。结点的祖先是从根到该结点所经分支上的所有结点。反之，以某结点为根的子树中的任一结点都称为该结点的子孙。  </p>
 <h3 id="6-2-3-树的其他相关概念"><a href="#6-2-3-树的其他相关概念" class="headerlink" title="6.2.3 树的其他相关概念"></a>6.2.3 树的其他相关概念</h3><p>结点的层次（Level）从根开始定义起，根为第一层，根的孩子为第二层。其双亲在同一层的结点互为堂兄弟。树中结点的最大层次称为树的深度（Depth）或高度。<br>如果将树中结点的各子树看成从左至右是有次序的，不能互换的，则称该树为有序树，否则称为无序树。<br>森林（Forest）是m（m&gt;0）棵互不相交的树的集合。<br>对比线性表与树的结构，它们有很大的不同，如图6-2-7所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0/6-2-7.JPG?raw=true" srcset="/img/loading.gif" alt="6-2-7"></p>
-<h2 id="6-3-树的抽象数据类型"><a href="#6-3-树的抽象数据类型" class="headerlink" title="6.3 树的抽象数据类型"></a>6.3 树的抽象数据类型</h2><pre><code class="c">ADT 树（tree）
+<h2 id="6-3-树的抽象数据类型"><a href="#6-3-树的抽象数据类型" class="headerlink" title="6.3 树的抽象数据类型"></a>6.3 树的抽象数据类型</h2><pre><code class="hljs c">ADT 树（tree）
 Data
   树是由一个根结点和若干棵子树构成。树中结点具有相同数据类型及层次关系。
 Operation
@@ -199,7 +202,7 @@ Operation
   DestroyTree（*T）：销毁树T。
   CreateTree（*T，definition）：按definition中给出树的定义来构造树。
   ClearTree（*T）：若树T存在，则将树T清为空树。
-  TreeEmpty（T）：若T为空树，返回true，否则返回false。
+  TreeEmpty（T）：若T为空树，返回<span class="hljs-literal">true</span>，否则返回<span class="hljs-literal">false</span>。
   TreeDepth（T）：返回T的深度。
   Root（T）：返回T的根结点。
   Value（T，cur_e）：cur_e是树T中一个结点，返回此结点的值。
@@ -207,24 +210,26 @@ Operation
   Parent（T，cur_e）：若cur_e是树T的非根结点，则返回它的双亲，否则返回空。
   LeftChild（T，cure）：若cur_e是树T的非叶结点，则返回它的最左孩子，否则返回空。
   RightSibling（T，cur_e）：若cur_e有右兄弟，则返回它的右兄弟，否则返回空。
-  InsertChild（*T，*p，i，c）：其中p指向树T的某个结点，i为所指结点p的度加上1，非空树c与T不相交，操作结果为插入c为树T中p指结点的第i棵子树。
+  InsertChild（*T，*p，i，c）：其中p指向树T的某个结点，i为所指结点p的度加上<span class="hljs-number">1</span>，非空树c与T不相交，操作结果为插入c为树T中p指结点的第i棵子树。
   DeleteChild（*T，*p，i）：其中p指向树T的某个结点，i为所指结点p的度，操作结果为删除T中p所指结点的第i棵子树。
 endADT</code></pre>
+
 <h2 id="6-4-树的存储结构"><a href="#6-4-树的存储结构" class="headerlink" title="6.4 树的存储结构"></a>6.4 树的存储结构</h2><p>充分利用顺序存储和链式存储结构的特点，可以实现对树的存储结构的表示。我们这里要介绍三种不同的表示法：双亲表示法、孩子表示法、孩子兄弟表示法。  </p>
 <h3 id="6-4-1-双亲表示法"><a href="#6-4-1-双亲表示法" class="headerlink" title="6.4.1 双亲表示法"></a>6.4.1 双亲表示法</h3><p>树除了根结点外，其余每个结点，它不一定有孩子，但是一定有且仅有一个双亲。<br>我们假设以一组连续空间存储树的结点，同时在每个结点中，附设一个指示器指示其双亲结点到链表中的位置。也就是说，每个结点除了知道自己是谁以外，还知道它的双亲在哪里。<br>data数据域，存储结点的数据信息。而parent指针域，存储该结点的双亲在数组中的下标。<br>以下是我们的双亲表示法的结点结构定义代码:  </p>
-<pre><code class="c">/* 树的双亲表示法结点结构定义 */
-#define MAX_TREE_SIZE 100 /* 二叉树的最大结点数 */
-typedef int TElemType;  /* 树结点的数据类型，目前暂定为整型 */
-typedef struct PTNode/*结点结构*/
-{
-  TElemType data;/*结点数据*/
-  int parent;/*双亲位置*/
-}PTNode;
-typedef struct /* 树结构 */
-{
-  PTNode nodes[MAX_TREE_SI2E];/* 结点数组 */
-  int r，n;/* 根的位置和结点数 */
-}PTree;</code></pre>
+<pre><code class="hljs c"><span class="hljs-comment">/* 树的双亲表示法结点结构定义 */</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAX_TREE_SIZE 100 <span class="hljs-comment">/* 二叉树的最大结点数 */</span></span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">int</span> TElemType;  <span class="hljs-comment">/* 树结点的数据类型，目前暂定为整型 */</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">PTNode</span>/*结点结构*/
+&#123;</span>
+  TElemType data;<span class="hljs-comment">/*结点数据*/</span>
+  <span class="hljs-keyword">int</span> parent;<span class="hljs-comment">/*双亲位置*/</span>
+&#125;PTNode;
+<span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> /* 树结构 */
+&#123;</span>
+  PTNode nodes[MAX_TREE_SI2E];<span class="hljs-comment">/* 结点数组 */</span>
+  <span class="hljs-keyword">int</span> r，n;<span class="hljs-comment">/* 根的位置和结点数 */</span>
+&#125;PTree;</code></pre>
+
 <p>有了这样的结构定义，我们就可以来实现双亲表示法了。由于根结点是没有双亲的，所以我们约定根结点的位置域设置为-1，这也就意味着，我们所有的结点都存有它双亲的位置。如图6-4-1中的树结构和表6-4-2中的树双亲表示所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0/6-4-1.JPG?raw=true" srcset="/img/loading.gif" alt="6-4-1">  </p>
 <p>这样的存储结构，我们可以根据结点的parent指针很容易找到它的双亲结点，所用的时间复杂度为O(1)，直到parent为-1时，表示找到了树结点的根。可如果我们要知道结点的孩子是什么，请遍历整个结构才行。如何改进呢？<br>我们增加一个结点最左边孩子的域，不妨叫它长子域，这样就可以很容易得到结点的孩子。如果没有孩子的结点，这个长子域就设置为-1，如表6-4-3所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0/6-4-3.JPG?raw=true" srcset="/img/loading.gif" alt="6-4-3">  </p>
 <p>对于有0个或1个孩子结点来说，这样的结构是解决了要找结点孩子的问题了。甚至是有2个孩子，知道了长子是谁，另一个当然就是次子了。<br>另外一个问题是，我们很关注各兄弟之间的关系，双亲表示法无法体现这样的关系，那我们怎么办？嗯，可以增加一个右兄弟域来体现兄弟关系，也就是说，每一个结点如果它存在右兄弟，则记录下右兄弟的下标。同样的，如果右兄弟不存在，则赋值为-1。<br>但如果结点的孩子很多，超过了2个。我们又关注结点的双亲、又关注结点的孩子、还关注结点的兄弟，而且对时间遍历要求还比较高，那么我们还可以把此结构扩展为有双亲域、长子域、再有右兄弟域。存储结构的设计是一个非常灵活的过程。一个存储结构设计得是否合理，取决于基于该存储结构的运算是否适合、是否方便，时间复杂度好不好等。注意也不是越多越好，有需要时再设计相应的结构。  </p>
@@ -232,31 +237,33 @@ typedef struct /* 树结构 */
 <h4 id="6-4-2-1-方案一"><a href="#6-4-2-1-方案一" class="headerlink" title="6.4.2.1 方案一"></a>6.4.2.1 方案一</h4><p>一种是指针域的个数就等于树的度，复习一下，树的度是树各个结点度的最大值。其结构如表6-4-5所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0/6-4-5.JPG?raw=true" srcset="/img/loading.gif" alt="6-4-5"><br>其中data是数据域。child1到child d是指针域，用来指向该结点的孩子结点。<br>对于图6-4-1的树来说，树的度是3，所以我们的指针域的个数是3，这种方法实现如图6-4-2所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0/6-4-2.JPG?raw=true" srcset="/img/loading.gif" alt="6-4-2"><br>这种方法对于树中各结点的度相差很大时，显然是很浪费空间的，因为有很多的结点，它的指针域都是空的。不过如果树的各结点度相差很小时，那就意味着开辟的空间被充分利用了，这时存储结构的缺点反而变成了优点。<br>既然很多指针域都可能为空，那么我们可以按需分配空间。  </p>
 <h4 id="6-4-2-2-方案二"><a href="#6-4-2-2-方案二" class="headerlink" title="6.4.2.2 方案二"></a>6.4.2.2 方案二</h4><p>第二种方案每个结点指针域的个数等于该结点的度，我们专门取一个位置来存储结点指针域的个数，其结构如表6-4-6所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0/6-4-6.JPG?raw=true" srcset="/img/loading.gif" alt="6-4-6"><br>其中data为数据域，degree为度域，也就是存储该结点的孩子结点的个数，child1到child d为指针域，指向该结点的各个孩子的结点。<br>对于图6-4-2的树来说，这种方法实现如图6-4-3所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0/6-4-7.JPG?raw=true" srcset="/img/loading.gif" alt="6-4-7"><br>这种方法克服了浪费空间的缺点，对空间利用率是很高了，但是由于各个结点的链表是不相同的结构，加上要维护结点的度的数值，在运算上就会带来时间上的损耗。  </p>
 <p>孩子表示法。具体办法是，<strong>把每个结点的孩子结点排列起来，以单链表作存储结构，则n个结点有n个孩子链表，如果是叶子结点则此单链表为空。然后n个头指针又组成一个线性表，采用顺序存储结构，存放进一个一维数组中</strong>，如图6-4-4所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0/6-4-8.JPG?raw=true" srcset="/img/loading.gif" alt="6-4-8"><br>以下是我们的孩子表示法的结构定义代码:  </p>
-<pre><code class="c">/*树的孩子表示法结构定义*/
-#define MAX_TREE_SIZE 100
-typedef struct cTNode/* 孩子结点 */
-{
-  int child;
-  struct CTNode *next;
-}*ChildPtr;
-typedef struct  /* 表头结构 */
-{
+<pre><code class="hljs c"><span class="hljs-comment">/*树的孩子表示法结构定义*/</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAX_TREE_SIZE 100</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">cTNode</span>/* 孩子结点 */
+&#123;</span>
+  <span class="hljs-keyword">int</span> child;
+  <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CTNode</span> *<span class="hljs-title">next</span>;</span>
+&#125;*ChildPtr;
+<span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span>  /* 表头结构 */
+&#123;</span>
   TElemType data;
   ChildPtr firstChild;
-}CTBox;
-typedef struct  /* 树结构 */
-{
-  CTBox nodes[MAX_TREE_SIZE];  /* 结点数组 */
-  int r，n;  /* 根的位置和结点数 */
-}CTree;</code></pre>
+&#125;CTBox;
+<span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span>  /* 树结构 */
+&#123;</span>
+  CTBox nodes[MAX_TREE_SIZE];  <span class="hljs-comment">/* 结点数组 */</span>
+  <span class="hljs-keyword">int</span> r，n;  <span class="hljs-comment">/* 根的位置和结点数 */</span>
+&#125;CTree;</code></pre>
+
 <p>这样的结构对于我们要查找某个结点的某个孩子，或者找某个结点的兄弟，只需要查找这个结点的孩子单链表即可。对于遍历整棵树也是很方便的，对头结点的数组循环即可。<br>但是，这也存在着问题，我如何知道某个结点的双亲是谁呢？比较麻烦，需要整棵树遍历才行，难道就不可以把双亲表示法和孩子表示法综合一下吗？当然是可以。如图6-4-5所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0/6-4-9.JPG?raw=true" srcset="/img/loading.gif" alt="6-4-9"><br>我们把这种方法称为双亲孩子表示法。</p>
 <h3 id="6-4-3-孩子兄弟表示法"><a href="#6-4-3-孩子兄弟表示法" class="headerlink" title="6.4.3 孩子兄弟表示法"></a>6.4.3 孩子兄弟表示法</h3><p><strong>我们观察后发现，任意一棵树，它的结点的第一个孩子如果存在就是唯一的，它的右兄弟如果存在也是唯一的。因此，我们设置两个指针，分别指向该结点的第一个孩子和此结点的右兄弟。</strong><br>结点结构如下所示。<br>data | firstChild | rightSib<br>—–|————|———<br>其中data是数据域，firstChild为指针域，存储该结点的第一个孩子结点的存储地址，rightSib是指针域，存储该结点的右兄弟结点的存储地址。<br>结构定义代码如下:  </p>
-<pre><code class="c">/*树的孩子兄弟表示法结构定义*/
-typedef struct CSNode
-{
+<pre><code class="hljs c"><span class="hljs-comment">/*树的孩子兄弟表示法结构定义*/</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CSNode</span>
+&#123;</span>
   TElemType data;
-  struct CSNode *firstChild， *rightSib;
-}CSNode,*CSTree;</code></pre>
+  <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CSNode</span> *<span class="hljs-title">firstChild</span>， *<span class="hljs-title">rightSib</span>;</span>
+&#125;CSNode,*CSTree;</code></pre>
+
 <p>对于图6-4-1的树来说，这种方法实现的示意图如图6-4-6所示。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0/6-4-10.JPG?raw=true" srcset="/img/loading.gif" alt="6-4-10"><br>这种表示法，给查找某个结点的某个孩子带来了方便，只需要通过firstChild找到此结点的长子，然后再通过长子结点的rightSib找到它的二弟，接着一直下去，直到找到具体的孩子。</p>
 <h2 id="6-5-二叉树的定义"><a href="#6-5-二叉树的定义" class="headerlink" title="6.5 二叉树的定义"></a>6.5 二叉树的定义</h2><p><strong>二叉树（Binary Tree）是n（n≥0）个结点的有限集合，该集合或者为空集（称为空二叉树），或者由一个根结点和两棵互不相交的、分别称为根结点的左子树和右子树的二叉树组成。</strong></p>
 <h3 id="6-5-1-二叉树特点"><a href="#6-5-1-二叉树特点" class="headerlink" title="6.5.1 二叉树特点"></a>6.5.1 二叉树特点</h3><p>二叉树的特点有：</p>
@@ -301,11 +308,12 @@ typedef struct CSNode
 </ol>
 <h2 id="6-7-二叉树的存储结构"><a href="#6-7-二叉树的存储结构" class="headerlink" title="6.7 二叉树的存储结构"></a>6.7 二叉树的存储结构</h2><h3 id="6-7-1-二叉树顺序存储结构"><a href="#6-7-1-二叉树顺序存储结构" class="headerlink" title="6.7.1 二叉树顺序存储结构"></a>6.7.1 二叉树顺序存储结构</h3><p>二叉树的顺序存储结构就是用一维数组存储二叉树中的结点，并且结点的存储位置，也就是数组的下标要能体现结点之间的逻辑关系。<br>所以用来表示完全二叉树比较好。由于它定义的严格，所以用顺序结构也可以表现出二叉树的结构来。<br>当然对于一般的二叉树，尽管层序编号不能反映逻辑关系，但是可以将其按完全二叉树编号，只不过，把不存在的结点设置为“^”而已。如图6-7-3所示，浅色结点表示不存在。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0/6-7-3.JPG?raw=true" srcset="/img/loading.gif" alt="6-7-3"><br>但是对于一般二叉树，一棵深度为k的右斜树，它只有k个结点，却需要分配$2^k$-1个存储单元空间，这显然是对存储空间的浪费。<br>所以，顺序存储结构一般只用于完全二叉树。  </p>
 <h3 id="6-7-2-二叉链表"><a href="#6-7-2-二叉链表" class="headerlink" title="6.7.2 二叉链表"></a>6.7.2 二叉链表</h3><p>链式存储结构中。二叉树每个结点最多有两个孩子，所以为它设计一个数据域和两个指针域是比较自然的想法，我们称这样的链表叫做二叉链表。结点结构图如表格6-7-1所示。<br>lChild|data|rChild|<br>–|–|–<br>其中data是数据域，lChild和rChild都是指针域，分别存放指向左孩子和右孩子的指针。<br>以下是我们的二叉链表的结点结构定义代码。</p>
-<pre><code class="c">typedef struct BiTNode  /* 结点结构 */
-{
-   TElemType data;    /* 结点数据 */
-   struct BiTNode *lchild,*rchild; /* 左右孩子指针 */
-}BiTNode,*BiTree;</code></pre>
+<pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BiTNode</span>  /* 结点结构 */
+&#123;</span>
+   TElemType data;    <span class="hljs-comment">/* 结点数据 */</span>
+   <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BiTNode</span> *<span class="hljs-title">lchild</span>,*<span class="hljs-title">rchild</span>;</span> <span class="hljs-comment">/* 左右孩子指针 */</span>
+&#125;BiTNode,*BiTree;</code></pre>
+
 <p>就如同树的存储结构中讨论的一样，如果有需要，还可以再增加一个指向其双亲的指针域，那样就称之为三叉链表。  </p>
 <h2 id="6-8遍历二叉树"><a href="#6-8遍历二叉树" class="headerlink" title="6.8遍历二叉树"></a>6.8遍历二叉树</h2><h3 id="6-8-1二叉树遍历原理"><a href="#6-8-1二叉树遍历原理" class="headerlink" title="6.8.1二叉树遍历原理"></a>6.8.1二叉树遍历原理</h3><p>二叉树的遍历（traversing binary tree）是指从根结点出发，按照某种次序依次访问二叉树中所有结点，使得每个结点被访问一次且仅被访问一次。  </p>
 <h3 id="6-8-2二叉树遍历方法"><a href="#6-8-2二叉树遍历方法" class="headerlink" title="6.8.2二叉树遍历方法"></a>6.8.2二叉树遍历方法</h3><p>二叉树的遍历方式可以很多，如果我们限制了从左到右的习惯方式，那么主要就分为四种：  </p>
@@ -321,35 +329,38 @@ typedef struct CSNode
 </ol>
 <p>技巧：每个结点单独看。比如后序遍历，每个右结点的左边是该结点的左节点，右边必然是对应的根结点。</p>
 <h3 id="6-8-3-前序遍历算法"><a href="#6-8-3-前序遍历算法" class="headerlink" title="6.8.3 前序遍历算法"></a>6.8.3 前序遍历算法</h3><p>二叉树的定义是用递归的方式，所以，实现遍历算法也可以采用递归，而且极其简洁明了。先来看看二叉树的前序遍历算法。代码如下：  </p>
-<pre><code class="c">/* 二叉树的前序遍历递归算法 */
-void PreOrderTraverse(BiTree T)
-{
-    if (T == NULL)
-        return;
-    printf(&quot;%c&quot;, T-&gt;data); /* 显示结点数据，可以更改为其它对结点操作 */
-    PreOrderTraverse(T-&gt;lchild); /* 再先序遍历左子树 */
-    PreOrderTraverse(T-&gt;rchild); /* 最后先序遍历右子树 */
-}</code></pre>
+<pre><code class="hljs c"><span class="hljs-comment">/* 二叉树的前序遍历递归算法 */</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">PreOrderTraverse</span><span class="hljs-params">(BiTree T)</span>
+</span>&#123;
+    <span class="hljs-keyword">if</span> (T == <span class="hljs-literal">NULL</span>)
+        <span class="hljs-keyword">return</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%c"</span>, T-&gt;data); <span class="hljs-comment">/* 显示结点数据，可以更改为其它对结点操作 */</span>
+    PreOrderTraverse(T-&gt;lchild); <span class="hljs-comment">/* 再先序遍历左子树 */</span>
+    PreOrderTraverse(T-&gt;rchild); <span class="hljs-comment">/* 最后先序遍历右子树 */</span>
+&#125;</code></pre>
+
 <h3 id="6-8-4-中序遍历算法"><a href="#6-8-4-中序遍历算法" class="headerlink" title="6.8.4 中序遍历算法"></a>6.8.4 中序遍历算法</h3><p>二叉树的中序遍历算法和前序遍历算法仅仅只是代码的顺序上的差异。</p>
-<pre><code class="c">/* 二叉树的中序遍历递归算法 */
-void InOrderTraverse(BiTree T)
-{
-    if (T == NULL)
-        return;
-    InOrderTraverse(T-&gt;lchild); /* 中序遍历左子树 */
-    printf(&quot;%c&quot;, T-&gt;data);/* 显示结点数据，可以更改为其它对结点操作 */
-    InOrderTraverse(T-&gt;rchild); /* 最后中序遍历右子树 */
-}</code></pre>
+<pre><code class="hljs c"><span class="hljs-comment">/* 二叉树的中序遍历递归算法 */</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">InOrderTraverse</span><span class="hljs-params">(BiTree T)</span>
+</span>&#123;
+    <span class="hljs-keyword">if</span> (T == <span class="hljs-literal">NULL</span>)
+        <span class="hljs-keyword">return</span>;
+    InOrderTraverse(T-&gt;lchild); <span class="hljs-comment">/* 中序遍历左子树 */</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%c"</span>, T-&gt;data);<span class="hljs-comment">/* 显示结点数据，可以更改为其它对结点操作 */</span>
+    InOrderTraverse(T-&gt;rchild); <span class="hljs-comment">/* 最后中序遍历右子树 */</span>
+&#125;</code></pre>
+
 <h3 id="6-8-5后序遍历算法"><a href="#6-8-5后序遍历算法" class="headerlink" title="6.8.5后序遍历算法"></a>6.8.5后序遍历算法</h3><p>那么同样的，后序遍历也就很容易想到应该如何写代码了。</p>
-<pre><code class="c">/* 二叉树的后序遍历递归算法 */
-void PostOrderTraverse(BiTree T)
-{
-    if (T == NULL)
-        return;
-    PostOrderTraverse(T-&gt;lchild); /* 先后序遍历左子树  */
-    PostOrderTraverse(T-&gt;rchild); /* 再后序遍历右子树  */
-    printf(&quot;%c&quot;, T-&gt;data);/* 显示结点数据，可以更改为其它对结点操作 */
-}</code></pre>
+<pre><code class="hljs c"><span class="hljs-comment">/* 二叉树的后序遍历递归算法 */</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">PostOrderTraverse</span><span class="hljs-params">(BiTree T)</span>
+</span>&#123;
+    <span class="hljs-keyword">if</span> (T == <span class="hljs-literal">NULL</span>)
+        <span class="hljs-keyword">return</span>;
+    PostOrderTraverse(T-&gt;lchild); <span class="hljs-comment">/* 先后序遍历左子树  */</span>
+    PostOrderTraverse(T-&gt;rchild); <span class="hljs-comment">/* 再后序遍历右子树  */</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%c"</span>, T-&gt;data);<span class="hljs-comment">/* 显示结点数据，可以更改为其它对结点操作 */</span>
+&#125;</code></pre>
+
 <h3 id="6-8-6-推导遍历结果"><a href="#6-8-6-推导遍历结果" class="headerlink" title="6.8.6 推导遍历结果"></a>6.8.6 推导遍历结果</h3><p>题目是这样：二叉树的中序序列是ABCDEFG，后序序列是BDCAFGE，求前序序列。<br>这次简单点，由后序的BDCAFG E，得到E是根结点，因此前序首字母是E。<br>于是根据中序序列分为两棵树ABCD和FG，由后序序列的BDCA FGE，知道A是E的左孩子，前序序列目前分析为EA。<br>再由中序序列的A BCDEFG，知道BCD是A结点的右子孙，再由后序序列的BDC AFGE知道C结点是A结点的右孩子，前序序列目前分析得到EAC。<br>中序序列AB C DEFG，得到B是C的左孩子，D是C的右孩子，所以前序序列目前分析结果为EACBD。<br>由后序序列BDCAF G E，得到G是E的右孩子，于是F就是G的孩子。前序遍历序列的最终结果就是EACBDGF。  </p>
 <p>两个二叉树遍历的性质。</p>
 <ul>
@@ -358,25 +369,26 @@ void PostOrderTraverse(BiTree T)
 </ul>
 <p>但要注意了，已知前序和后序遍历，是不能确定一棵二叉树的，原因也很简单，比如前序序列是ABC，后序序列是CBA。我们可以确定A一定是根结点，但接下来，我们无法知道，哪个结点是左子树，哪个是右子树。这棵树可能有如图6-8-24所示的四种可能。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0/6-8-24.JPG?raw=true" srcset="/img/loading.gif" alt="6-8-24">  </p>
 <h2 id="6-9-二叉树的建立"><a href="#6-9-二叉树的建立" class="headerlink" title="6.9 二叉树的建立"></a>6.9 二叉树的建立</h2><p>如果我们要在内存中建立一个二叉树，为了能让每个结点确认是否有左右孩子，我们对它进行了扩展，也就是将二叉树中每个结点的空指针引出一个虚结点，其值为一特定值，比如“#”。我们称这种处理后的二叉树为原二叉树的扩展二叉树。扩展二叉树就可以做到一个遍历序列确定一棵二叉树了。<br>前序遍历序列生成二叉树的代码如下：</p>
-<pre><code class="c">/* 按前序输入二叉树中结点的值（一个字符） */
-/* #表示空树，构造二叉链表表示二叉树T。 */
-void CreateBiTree(BiTree *T)
-{
+<pre><code class="hljs c"><span class="hljs-comment">/* 按前序输入二叉树中结点的值（一个字符） */</span>
+<span class="hljs-comment">/* #表示空树，构造二叉链表表示二叉树T。 */</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CreateBiTree</span><span class="hljs-params">(BiTree *T)</span>
+</span>&#123;
     TElemType ch;
-    /* scanf(&quot;%c&quot;,&amp;ch); */
+    <span class="hljs-comment">/* scanf("%c",&amp;ch); */</span>
     ch = str[index++];
-    if (ch == &#39;#&#39;)
-        *T = NULL;
-    else
-    {
-        *T = (BiTree)malloc(sizeof(BiTNode));
-        if (!*T)
-            exit(OVERFLOW);
-        (*T)-&gt;data = ch; /* 生成根结点 */
-        CreateBiTree(&amp;(*T)-&gt;lchild); /* 构造左子树 */
-        CreateBiTree(&amp;(*T)-&gt;rchild); /* 构造右子树 */
-    }
-}</code></pre>
+    <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">'#'</span>)
+        *T = <span class="hljs-literal">NULL</span>;
+    <span class="hljs-keyword">else</span>
+    &#123;
+        *T = (BiTree)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(BiTNode));
+        <span class="hljs-keyword">if</span> (!*T)
+            <span class="hljs-built_in">exit</span>(OVERFLOW);
+        (*T)-&gt;data = ch; <span class="hljs-comment">/* 生成根结点 */</span>
+        CreateBiTree(&amp;(*T)-&gt;lchild); <span class="hljs-comment">/* 构造左子树 */</span>
+        CreateBiTree(&amp;(*T)-&gt;rchild); <span class="hljs-comment">/* 构造右子树 */</span>
+    &#125;
+&#125;</code></pre>
+
 <p>当然，你完全也可以用中序或后序遍历的方式实现二叉树的建立，只不过代码里生成结点和构造左右子树的代码顺序交换一下。另外，输入的字符也要做相应的更改。</p>
 <h2 id="6-10-线索二叉树"><a href="#6-10-线索二叉树" class="headerlink" title="6.10 线索二叉树"></a>6.10 线索二叉树</h2><h3 id="6-10-1-线索二叉树原理"><a href="#6-10-1-线索二叉树原理" class="headerlink" title="6.10.1 线索二叉树原理"></a>6.10.1 线索二叉树原理</h3><p><strong>指向前驱和后继的指针称为线索，加上线索的二叉链表称为线索链表，相应的二叉树就称为线索二叉树（Threaded Binary Tree）。</strong><br>其实线索二叉树，等于是把一棵二叉树转变成了一个双向链表，这样对我们的插入删除结点、查找某个结点都带来了方便。所以<strong>我们对二叉树以某种次序遍历使其变为线索二叉树的过程称做是线索化</strong>。<br>但是变为线索二叉树，我们并不知道某个结点的lChild是指向它的左孩子还是指向前驱…<br>因此，我们在每个结点再增设两个标志域lTag和rTag，注意lTag和rTag只是存放0或1数字的布尔型变量，其占用的内存空间要小于像lchild和rchild的指针变量。结点结构如下表所示。<br>lChild|lTag|data|rTag|rChild<br>-|-|-|-|-<br>其中：</p>
 <ul>
@@ -384,60 +396,63 @@ void CreateBiTree(BiTree *T)
 <li>rTag为0时指向该结点的右孩子，为1时指向该结点的后继。</li>
 </ul>
 <h3 id="6-10-2-线索二叉树结构实现"><a href="#6-10-2-线索二叉树结构实现" class="headerlink" title="6.10.2 线索二叉树结构实现"></a>6.10.2 线索二叉树结构实现</h3><p>由此二叉树的线索存储结构定义代码如下：</p>
-<pre><code class="c">/* 二叉树的二叉线索存储结构定义 */
-typedef enum { Link, Thread } PointerTag; /* Link==0表示指向左右孩子指针, */
-                                          /* Thread==1表示指向前驱或后继的线索 */
-typedef  struct BiThrNode                 /* 二叉线索存储结点结构 */
-{
-    TElemType data;    /* 结点数据 */
-    struct BiThrNode *lchild, *rchild;    /* 左右孩子指针 */
+<pre><code class="hljs c"><span class="hljs-comment">/* 二叉树的二叉线索存储结构定义 */</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">enum</span> &#123; Link, Thread &#125; PointerTag; <span class="hljs-comment">/* Link==0表示指向左右孩子指针, */</span>
+                                          <span class="hljs-comment">/* Thread==1表示指向前驱或后继的线索 */</span>
+<span class="hljs-keyword">typedef</span>  <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BiThrNode</span>                 /* 二叉线索存储结点结构 */
+&#123;</span>
+    TElemType data;    <span class="hljs-comment">/* 结点数据 */</span>
+    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BiThrNode</span> *<span class="hljs-title">lchild</span>, *<span class="hljs-title">rchild</span>;</span>    <span class="hljs-comment">/* 左右孩子指针 */</span>
     PointerTag LTag;
-    PointerTag RTag;        /* 左右标志 */
-} BiThrNode, *BiThrTree;</code></pre>
+    PointerTag RTag;        <span class="hljs-comment">/* 左右标志 */</span>
+&#125; BiThrNode, *BiThrTree;</code></pre>
+
 <p>线索化的实质就是将二叉链表中的空指针改为指向前驱或后继的线索。由于前驱和后继的信息只有在遍历该二叉树时才能得到，所以<strong>线索化的过程就是在遍历的过程中修改空指针的过程</strong>。<br>中序遍历线索化的递归函数代码如下：</p>
-<pre><code class="c">BiThrTree pre; /* 全局变量,始终指向刚刚访问过的结点 */
-/* 中序遍历进行中序线索化 */
-void InThreading(BiThrTree p)
-{
-    if (p)
-    {
-        InThreading(p-&gt;lchild); /* 递归左子树线索化 */
-        if (!p-&gt;lchild) /* 没有左孩子 */
-        {
-            p-&gt;LTag = Thread; /* 前驱线索 */
-            p-&gt;lchild = pre; /* 左孩子指针指向前驱 */
-        }
-        if (!pre-&gt;rchild) /* 前驱没有右孩子 */
-        {
-            pre-&gt;RTag = Thread; /* 后继线索 */
-            pre-&gt;rchild = p; /* 前驱右孩子指针指向后继(当前结点p) */
-        }
-        pre = p; /* 保持pre指向p的前驱 */
-        InThreading(p-&gt;rchild); /* 递归右子树线索化 */
-    }
-}</code></pre>
+<pre><code class="hljs c">BiThrTree pre; <span class="hljs-comment">/* 全局变量,始终指向刚刚访问过的结点 */</span>
+<span class="hljs-comment">/* 中序遍历进行中序线索化 */</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">InThreading</span><span class="hljs-params">(BiThrTree p)</span>
+</span>&#123;
+    <span class="hljs-keyword">if</span> (p)
+    &#123;
+        InThreading(p-&gt;lchild); <span class="hljs-comment">/* 递归左子树线索化 */</span>
+        <span class="hljs-keyword">if</span> (!p-&gt;lchild) <span class="hljs-comment">/* 没有左孩子 */</span>
+        &#123;
+            p-&gt;LTag = Thread; <span class="hljs-comment">/* 前驱线索 */</span>
+            p-&gt;lchild = pre; <span class="hljs-comment">/* 左孩子指针指向前驱 */</span>
+        &#125;
+        <span class="hljs-keyword">if</span> (!pre-&gt;rchild) <span class="hljs-comment">/* 前驱没有右孩子 */</span>
+        &#123;
+            pre-&gt;RTag = Thread; <span class="hljs-comment">/* 后继线索 */</span>
+            pre-&gt;rchild = p; <span class="hljs-comment">/* 前驱右孩子指针指向后继(当前结点p) */</span>
+        &#125;
+        pre = p; <span class="hljs-comment">/* 保持pre指向p的前驱 */</span>
+        InThreading(p-&gt;rchild); <span class="hljs-comment">/* 递归右子树线索化 */</span>
+    &#125;
+&#125;</code></pre>
+
 <p>if（!p-&gt;lChild）表示如果某结点的左指针域为空，因为其前驱结点刚刚访问过，赋值给了pre，所以可以将pre赋值给p-&gt;lChild，并修改p-&gt;LTag=Thread（也就是定义为1）以完成前驱结点的线索化。<br>后继就要稍稍麻烦一些。因为此时p结点的后继还没有访问到，因此只能对它的前驱结点pre的右指针rchild做判断，if（!pre-&gt;rchild）表示如果为空，则p就是pre的后继，于是pre-&gt;rchild=p，并且设置pre-&gt;RTag=Thread，完成后继结点的线素化。<br>完成前驱和后继的判断后，别忘记将当前的结点p赋值给pre，以便于下一次使用。<br>有了线索二叉树后，我们对它进行遍历时发现，其实就等于是操作一个双向链表结构。<br>和双向链表结构一样，在二叉树线素链表上添加一个头结点，如图6-10-6所示，并令其lchild域的指针指向二叉树的根结点（图中的①），其rchild域的指针指向中序遍历时访问的最后一个结点（图中的②）。反之，令二叉树的中序序列中的第一个结点中，lchild 域指针和最后一个结点的rchild 域指针均指向头结点（图中的③和④）。这样定义的好处就是我们既可以从第一个结点起顺后继进行遍历，也可以从最后一个结点起顺前驱进行遍历。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0/6-10-6.JPG?raw=true" srcset="/img/loading.gif" alt="6-10-6">  </p>
 <p>遍历的代码如下：</p>
-<pre><code class="c">/*T指向头结点，头结点左链lchild指向根结点，头结点右链rchild指向中序遍历的*/
-/*最后一个结点。中序遍历二叉线索链表表示的二叉树T*/
-Status InOrderTraverse_Thr(BiThrTree T)
-{
+<pre><code class="hljs c"><span class="hljs-comment">/*T指向头结点，头结点左链lchild指向根结点，头结点右链rchild指向中序遍历的*/</span>
+<span class="hljs-comment">/*最后一个结点。中序遍历二叉线索链表表示的二叉树T*/</span>
+<span class="hljs-function">Status <span class="hljs-title">InOrderTraverse_Thr</span><span class="hljs-params">(BiThrTree T)</span>
+</span>&#123;
     BiThrTree p;
-    p = T-&gt;lchild; /* p指向根结点 */
-    while (p != T) /* 空树或遍历结束时，p==T */
-    { /* 空树或遍历结束时,p==T */
-        while (p-&gt;LTag == Link) /*当LTag==0时循环到中序序列第一个结点 */
+    p = T-&gt;lchild; <span class="hljs-comment">/* p指向根结点 */</span>
+    <span class="hljs-keyword">while</span> (p != T) <span class="hljs-comment">/* 空树或遍历结束时，p==T */</span>
+    &#123; <span class="hljs-comment">/* 空树或遍历结束时,p==T */</span>
+        <span class="hljs-keyword">while</span> (p-&gt;LTag == Link) <span class="hljs-comment">/*当LTag==0时循环到中序序列第一个结点 */</span>
             p = p-&gt;lchild;
-        printf(&quot;%c&quot;,p-&gt;data); /* 显示结点数据，可以更改为其他对结点操作 */
-        while (p-&gt;RTag == Thread &amp;&amp; p-&gt;rchild != T)
-        {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%c"</span>,p-&gt;data); <span class="hljs-comment">/* 显示结点数据，可以更改为其他对结点操作 */</span>
+        <span class="hljs-keyword">while</span> (p-&gt;RTag == Thread &amp;&amp; p-&gt;rchild != T)
+        &#123;
             p = p-&gt;rchild;
-            printf(&quot;%c&quot;,p-&gt;data);
-        }
-        p = p-&gt;rchild; /* p进至其右子树根 */
-    }
-    return OK;
-}</code></pre>
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%c"</span>,p-&gt;data);
+        &#125;
+        p = p-&gt;rchild; <span class="hljs-comment">/* p进至其右子树根 */</span>
+    &#125;
+    <span class="hljs-keyword">return</span> OK;
+&#125;</code></pre>
+
 <p>从这段代码也可以看出，它等于是一个链表的扫描，所以时间复杂度为O(n)。<br>由于它充分利用了空指针域的空间（这等于节省了空间），又保证了创建时的一次遍历就可以终生受用前驱后继的信息（这意味着节省了时间）。所以在实际问题中，<strong>如果所用的二叉树需经常遍历或查找结点时需要某种遍历序列中的前驱和后继，那么采用线索二叉链表的存储结构就是非常不错的选择</strong>。</p>
 <h2 id="6-11-树、森林与二叉树的转换"><a href="#6-11-树、森林与二叉树的转换" class="headerlink" title="6.11 树、森林与二叉树的转换"></a>6.11 树、森林与二叉树的转换</h2><h3 id="6-11-1-树转换为二叉树"><a href="#6-11-1-树转换为二叉树" class="headerlink" title="6.11.1 树转换为二叉树"></a>6.11.1 树转换为二叉树</h3><p>将树转换为二叉树的步骤如下</p>
 <ol>
@@ -496,105 +511,86 @@ Status InOrderTraverse_Thr(BiThrTree T)
 <h3 id="6-12-3-赫夫曼编码"><a href="#6-12-3-赫夫曼编码" class="headerlink" title="6.12.3 赫夫曼编码"></a>6.12.3 赫夫曼编码</h3><p>按照不同字母出现的频率重新按照赫夫曼树来规划它们。将规划出来的树权值左分支改为0，右分支改为1后。对字母从树根到叶子所经过路径的0或1来编码，可以看出结果串变小了，编码得到了压缩，节约了存储和传输成本。<br>当我们接收到压缩过的新编码时，我们应该如何把它解码出来呢？<br>编码中非0即1，长短不等的话其实是很容易混淆的，所以<strong>若要设计长短不等的编码，则必须是任一字符的编码都不是另一个字符的编码的前缀，这种编码称做前缀编码</strong>。<br>可仅仅是这样不足以让我们去方便地解码的，因此在解码时，还是要用到赫夫曼树，即发送方和接收方必须要约定好同样的赫夫曼编码规则。<br><strong>一般地，设需要编码的字符集为{d1，d2，…，dn}，各个字符在电文中出现的次数或频率集合为{W1，w2，…，Wn}，以d1，d2，…，dn作为叶子结点，以w1，W2，Wn作为相应叶子结点的权值来构造一棵赫夫曼树。规定赫夫曼树的左分支代表0，右分支代表1，则从根结点到叶子结点所经过的路径分支组成的0和1的序列便为该结点对应字符的编码，这就是赫夫曼编码</strong>。  </p>
 <h2 id="6-13-总结回顾"><a href="#6-13-总结回顾" class="headerlink" title="6.13 总结回顾"></a>6.13 总结回顾</h2><p>终于到了总结的时间，这一章与前面章节相比，显得过于庞大了些，原因也就在于树的复杂性和变化丰富度是前面的线性表所不可比拟的。即使在本章之后，我们还要讲解关于树这一数据结构的相关知识，可见它的重要性。<br>开头我们提到了树的定义，讲到了递归在树定义中的应用。提到了如子树、结点、度、叶子、分支结点、双亲、孩子、层次、深度、森林等诸多概念，这些都是需要在理解的基础上去记忆的。<br>我们谈到了树的存储结构时，讲了双亲表示法、孩子表示法、孩子兄弟表示法等不同的存储结构。<br>并由孩子兄弟表示法引出了我们这章中最重要一种树，二叉树。<br>二叉树每个结点最多两棵子树，有左右之分。提到了斜树，满二叉树、完全二叉树等特殊二叉树的概念。<br>我们接着谈到它的各种性质，这些性质给我们研究二叉树带来了方便。<br>二叉树的存储结构由于其特殊性使得既可以用顺序存储结构又可以用链式存储结构表示。<br>遍历是二叉树最重要的一门学问，前序、中序、后序以及层序遍历都是需要熟练掌握的知识。要让自己要学会用计算机的运行思维去模拟递归的实现，可以加深我们对递归的理解。不过，并非二叉树遍历就一定要用到递归，只不过递归的实现比较优雅而已。这点需要明确。<br>二叉树的建立自然也是可以通过递归来实现。<br>研究中也发现，二叉链表有很多浪费的空指针可以利用，查找某个结点的前驱和后继为什么非要每次遍历才可以得到，这就引出了如何构造一棵线索二叉树的问题。<br>线索二叉树给二叉树的结点查找和遍历带来了高效率。<br>树、森林看似复杂，其实它们都可以转化为简单的二叉树来处理，我们提供了树、森林与二叉树的互相转换的办法，这样就使得面对树和森林的数据结构时，编码实现成为了可能。<br>最后，我们提到了关于二叉树的一个应用，赫夫曼树和赫夫曼编码，对于带权路径的二叉树做了详尽地讲述，让你初步理解数据压缩的原理，并明白其是如何做到无损编码和无错解码的。  </p>
 
+            </article>
             <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-            
-              <span>
-                <i class="iconfont icon-inbox"></i>
+            <div>
+              <div class="post-metas mb-3">
                 
-                  <a class="hover-with-bg" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>
-                  &nbsp;
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">大话数据结构</a>
+                    
+                  </div>
                 
-                  <a class="hover-with-bg" href="/categories/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">大话数据结构</a>
-                  &nbsp;
                 
-              </span>&nbsp;&nbsp;
-            
-            
-              <span>
-                <i class="iconfont icon-tag"></i>
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+                    
+                  </div>
                 
-                  <a class="hover-with-bg" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>
-                
-                  <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>
-                
-              </span>
-            
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/01/08/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/%E7%AC%AC7%E7%AB%A0%20%E5%9B%BE/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">大话数据结构第七章 图</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2019/12/25/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/%E7%AC%AC5%E7%AB%A0%20%E4%B8%B2/">
+                        <span class="hidden-mobile">大话数据结构第五章 串</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
             
           </div>
         </div>
       </div>
     </div>
-    <div class="d-none d-lg-block col-lg-2 toc-container">
-      
-  <div id="toc">
-    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
-    <div id="tocbot"></div>
-  </div>
-
-    </div>
-  </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
 </div>
 
-<!-- custom -->
-
-  <div class="col-lg-7 mx-auto nopadding-md">
-    <div class="container custom post-content mx-auto">
-      <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-3" style="width:355.4px; height:200px;">
-    </div>
-  </div>
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-      <br><br>
-      
-      
-  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-  <script>
-    var notify = 'false' === true;
-    var verify = 'false' === true;
-    var oldLoad = window.onload;
-    window.onload = function () {
-      new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
-        app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
-        app_key: "HLUt5izfTvTcbEbOrA59W92a",
-        placeholder: "畅所欲言...",
-        avatar: "robohash",
-        meta: ['nick', 'mail', 'link'],
-        pageSize: "10",
-      });
-      oldLoad && oldLoad();
-    };
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
-      powered by Valine.</a></noscript>
-
-
+      </div>
     
   </div>
 </div>
+
+<!-- Custom -->
+
 
     
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -622,116 +618,79 @@ Status InOrderTraverse_Thr(BiThrTree T)
 </div>
   
 
+  
+
+  
+
   <footer class="mt-5">
   <div class="text-center py-3">
-    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
-    <i class="iconfont icon-love"></i>
-    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
-    <br>
-
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
     
-  
-    <!-- 不蒜子统计PV -->
-    
-    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
-          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
-  
-  
-    <!-- 不蒜子统计UV -->
-    
-    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
-            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
-  
-  <br>
-
-
 
     
 
-
-    <!-- cnzz Analytics icon -->
     
-
   </div>
 </footer>
 
 <!-- SCRIPTS -->
-<script src="/lib/jquery/jquery.min.js" ></script>
-<script src="/lib/popper/popper.min.js" ></script>
-<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
-<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
-<script src="/js/main.js" ></script>
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
 
 
-  <script src="/js/lazyload.js" ></script>
+  <script  src="/js/lazyload.js" ></script>
 
 
 
   
-    <script src="/lib/tocbot/tocbot.min.js" ></script>
-  
-  <script src="/js/post.js" ></script>
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
 
 
 
-  <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
 
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 <!-- Plugins -->
 
 
-  
-    <!-- Baidu Analytics -->
-    <script>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
 
-  
-
-  
-    <!-- Tencent Analytics -->
-    <script>
-      var _mtac = {};
-      (function () {
-        var mta = document.createElement("script");
-        mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
-        mta.setAttribute("name", "MTAH5");
-        mta.setAttribute("sid", "500710993");
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(mta, s);
-      })();
-    </script>
-  
-
-  
-
-  <!-- cnzz Analytics -->
-  
-
-
-
-  <script src="/lib/prettify/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  linenums');
-      prettyPrint();
-    })
-  </script>
-
-
-
-  <script src="/lib/typed/typed.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
   <script>
     var typed = new Typed('#subtitle', {
       strings: [
@@ -739,7 +698,7 @@ Status InOrderTraverse_Thr(BiThrTree T)
         "大话数据结构第六章 树&nbsp;",
       ],
       cursorChar: "_",
-      typeSpeed: 60,
+      typeSpeed: 70,
       loop: false,
     });
     typed.stop();
@@ -751,11 +710,11 @@ Status InOrderTraverse_Thr(BiThrTree T)
 
 
 
-  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
   <script>
     anchors.options = {
       placement: "right",
-      visible: "always",
+      visible: "hover",
       
     };
     var el = "h1,h2,h3,h4,h5,h6".split(",");
@@ -768,25 +727,27 @@ Status InOrderTraverse_Thr(BiThrTree T)
 
 
 
-  <script src="/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
   <script>
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
 
 
 
-  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
   <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
       function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
         $(this).wrap(element);
       }
     );
@@ -794,83 +755,13 @@ Status InOrderTraverse_Thr(BiThrTree T)
 
 
 
-  
-
-  
-    <!-- MathJax -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-          tex2jax: {
-              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-              processEscapes: true,
-              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-          }
-      });
-
-      MathJax.Hub.Queue(function() {
-          var all = MathJax.Hub.getAllJax(), i;
-          for(i=0; i < all.length; i += 1) {
-              all[i].SourceElement().parentNode.className += ' has-jax';
-          }
-      });
-
-    </script>
-
-    <script src="https://cdn.staticfile.org/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
-
-  
 
 
 
-  
-  
-    <script type="text/javascript">
-      //定义获取词语下标
-      var a_idx = 0;
-      jQuery(document).ready(function ($) {
-        //点击body时触发事件
-        $("body").click(function (e) {
-          //需要显示的词语
-          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
-          //设置词语给span标签
-          var $i = $("<span/>").text(a[a_idx]);
-          //下标等于原来下标+1  余 词语总数
-          a_idx = (a_idx + 1) % a.length;
-          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
-          //获取x和y的指针坐标
-          var x = e.pageX, y = e.pageY;
-          //在鼠标的指针的位置给$i定义的span标签添加css样式
-          $i.css({
-            "z-index": 999,
-            "top": y - 20,
-            "left": x,
-            "position": "absolute",
-            "font-weight": "bold",
-            "color": rand_color()
-          });
-          // 随机颜色
-          function rand_color() {
-            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
-          }
-          //在body添加这个标签
-          $("body").append($i);
-          //animate() 方法执行 CSS 属性集的自定义动画。
-          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
-          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
-          $i.animate({
-            //将原来的位置向上移动180
-            "top": y - 180,
-            "opacity": 0
-            //1500动画的速度
-          }, 1500, function () {
-            //时间到了自动删除
-            $i.remove();
-          });
-        });
-      })
-      ;
-    </script>
-  
+
+
+
+
 
 
 

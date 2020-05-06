@@ -7,32 +7,39 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#2f4154">
   <meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时">
   <meta name="author" content="closer">
   <meta name="keywords" content="">
   <title>closer的自留地</title>
 
-  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
-<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
-<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
-<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-
-  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
-
-<link rel="stylesheet" href="/css/main.css"  >
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
 
 
-  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
 
 
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="closer的自留地" type="application/atom+xml">
@@ -44,7 +51,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>welcome!</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -59,49 +66,46 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">首页</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">归档</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">分类</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">标签</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">关于</a>
-          </li>
-        
-          
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/links/">友链</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
           </li>
         
         
@@ -116,10 +120,10 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('https://api.dujin.org/bing/1920.php')no-repeat center center;
+         style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -130,7 +134,7 @@
 
           
             <div class="scroll-down-bar">
-              <i class="fas fa-angle-down scroll-down-arrow"></i>
+              <i class="iconfont icon-arrowdown"></i>
             </div>
           
         </div>
@@ -141,7 +145,8 @@
   <main>
     
       <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
+        <div class="py-5" id="board"
+          style=margin-top:0>
           
           <div class="container">
             <div class="row">
@@ -152,46 +157,48 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/05/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" target="_self">
-          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86.png" srcset="/img/loading.gif" alt="计算机组成原理-读书笔记" class="index-img img-fluid rounded index-thumbnails">
+          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86.png" srcset="/img/loading.gif" alt="计算机组成原理-读书笔记">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/05/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
-        <p class="h4 index-header">计算机组成原理-读书笔记</p>
+      <a class="index-header" href="/2020/05/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">计算机组成原理-读书笔记</a>
+
+      <a href="/2020/05/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="index-excerpt">
+        
+        
+          
+        
+        <div></div>
       </a>
 
-      <a href="/2020/05/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-05-03
+          </div>
         
         
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1"></div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-03&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+            
+              <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
-          
-            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86">计算机组成原理</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
-          
-            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86">计算机组成原理</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+            
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+            
+          </div>
         
       </div>
     </div>
@@ -200,46 +207,48 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/05/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" target="_self">
-          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86.jpg" srcset="/img/loading.gif" alt="计算机网络原理-读书笔记" class="index-img img-fluid rounded index-thumbnails">
+          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86.jpg" srcset="/img/loading.gif" alt="计算机网络原理-读书笔记">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/05/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
-        <p class="h4 index-header">计算机网络原理-读书笔记</p>
+      <a class="index-header" href="/2020/05/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">计算机网络原理-读书笔记</a>
+
+      <a href="/2020/05/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="index-excerpt">
+        
+        
+          
+        
+        <div>先学习计算机组成原理和操作系统…</div>
       </a>
 
-      <a href="/2020/05/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-05-03
+          </div>
         
         
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">先学习计算机组成原理和操作系统…</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-03&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+            
+              <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/network/">network</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
-          
-            <a href="/categories/network">network</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
-          
-            <a href="/tags/network">network</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+            
+              <a href="/tags/network/">network</a>
+            
+          </div>
         
       </div>
     </div>
@@ -248,58 +257,52 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/05/02/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/openwrt%E7%9A%84%E7%BC%96%E8%AF%91%E5%8F%8A%E5%85%B6%E4%BD%BF%E7%94%A8/" target="_self">
-          <img src="/img/default.jpg" srcset="/img/loading.gif" alt="openwrt的编译及其使用" class="index-img img-fluid rounded index-thumbnails">
+          <img src="/img/default.jpg" srcset="/img/loading.gif" alt="openwrt的编译及其使用">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/05/02/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/openwrt%E7%9A%84%E7%BC%96%E8%AF%91%E5%8F%8A%E5%85%B6%E4%BD%BF%E7%94%A8/">
-        <p class="h4 index-header">openwrt的编译及其使用</p>
-      </a>
+      <a class="index-header" href="/2020/05/02/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/openwrt%E7%9A%84%E7%BC%96%E8%AF%91%E5%8F%8A%E5%85%B6%E4%BD%BF%E7%94%A8/">openwrt的编译及其使用</a>
 
-      <a href="/2020/05/02/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/openwrt%E7%9A%84%E7%BC%96%E8%AF%91%E5%8F%8A%E5%85%B6%E4%BD%BF%E7%94%A8/">
+      <a href="/2020/05/02/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/openwrt%E7%9A%84%E7%BC%96%E8%AF%91%E5%8F%8A%E5%85%B6%E4%BD%BF%E7%94%A8/" class="index-excerpt">
         
         
           
         
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">
+        <div>
 基于coolsnowwolf大神源码编译,源码地址
 
 一、 前言自己编译需要linux知识、装系统的知识和能够全局的访问外网，而折腾openwrt需要部分计算机网络原理的知识。
 如果不能自己编译，可以下载Lean大编译好的固件
 也可以下载eSir大佬基于L大源码编译的固件。
-二、 编译2.1 搭建编译环境首先打开Lean大的GitHub项目地址，仔细阅读说明，其实很简单，直接复制黏贴命令行就行。
-然后虚拟机安装Ubuntu 18 LTS x64 Server版本
-然后ssh登录Ubuntu，后面命令需要全局外网来进行编译了。
-输入如下命令行
-# 命令行输入
-sudo apt-get update
-
-# 然后输入
-sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3.5 python2.7 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex</div>
-        </div>
+二、 编译2.1 搭建编译环境首先打开Lean大的GitHub项目地址，仔细阅读说明，其实很简单，直接复制黏贴命令行就行。</div>
       </a>
 
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-02&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/linux">linux</a>&nbsp;
-          
-            <a href="/categories/openwrt">openwrt</a>&nbsp;
-          &nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-05-02
+          </div>
         
         
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/openwrt">openwrt</a>&nbsp;
-          
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/linux/">linux</a>
+            
+              <a href="/categories/linux/openwrt/">openwrt</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/openwrt/">openwrt</a>
+            
+          </div>
         
       </div>
     </div>
@@ -308,24 +311,21 @@ sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/04/24/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_self">
-          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/docker.jpg" srcset="/img/loading.gif" alt="docker学习笔记" class="index-img img-fluid rounded index-thumbnails">
+          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/docker.jpg" srcset="/img/loading.gif" alt="docker学习笔记">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/04/24/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-        <p class="h4 index-header">docker学习笔记</p>
-      </a>
+      <a class="index-header" href="/2020/04/24/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">docker学习笔记</a>
 
-      <a href="/2020/04/24/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+      <a href="/2020/04/24/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="index-excerpt">
         
         
           
         
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">
+        <div>
 docker官方文档
 
 一、 安装及加速安装适用于ubuntu,其他系统请参考官方文档。基础配置及加速通用。
@@ -336,43 +336,34 @@ sudo apt install docker.io
 docker -v
 
 # 配置docker镜像加速
-# 阿里云镜像获取地址：https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors，登陆后，左侧菜单选中镜像加速器就可以看到你的专属地址了
-# 按照页面的操作文档配置加速
-sudo mkdir -p /etc/docker
-
-sudo tee /etc/docker/daemon.json &lt;&lt;-&#39;EOF&#39;
-{
-  &quot;registry-mirrors&quot;: [&quot;https://改为你的加速器地址.mirror.aliyuncs.com&quot;]
-}
-EOF
-
-sudo systemctl daemon-reload
-
-sudo systemctl restart docker
-
-# 下载 Docker 图</div>
-        </div>
+# 阿里云镜像获取地址：https://cr.console.aliyun.com/cn-hangzhou/instances/mi</div>
       </a>
 
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/linux">linux</a>&nbsp;
-          
-            <a href="/categories/docker">docker</a>&nbsp;
-          &nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-04-24
+          </div>
         
         
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/docker">docker</a>&nbsp;
-          
-            <a href="/tags/linux">linux</a>&nbsp;
-          
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/linux/">linux</a>
+            
+              <a href="/categories/linux/docker/">docker</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/docker/">docker</a>
+            
+              <a href="/tags/linux/">linux</a>
+            
+          </div>
         
       </div>
     </div>
@@ -381,45 +372,46 @@ sudo systemctl restart docker
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/04/21/games/DNF/DNF%E6%90%AD%E5%BB%BA/" target="_self">
-          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/games/DNF/dnf.png" srcset="/img/loading.gif" alt="DNF搭建说明" class="index-img img-fluid rounded index-thumbnails">
+          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/games/DNF/dnf.png" srcset="/img/loading.gif" alt="DNF搭建说明">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/04/21/games/DNF/DNF%E6%90%AD%E5%BB%BA/">
-        <p class="h4 index-header">DNF搭建说明</p>
+      <a class="index-header" href="/2020/04/21/games/DNF/DNF%E6%90%AD%E5%BB%BA/">DNF搭建说明</a>
+
+      <a href="/2020/04/21/games/DNF/DNF%E6%90%AD%E5%BB%BA/" class="index-excerpt">
+        
+        
+          
+        
+        <div>有东西被加密了, 请输入密码查看.</div>
       </a>
 
-      <a href="/2020/04/21/games/DNF/DNF%E6%90%AD%E5%BB%BA/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-04-21
+          </div>
         
         
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">有东西被加密了, 请输入密码查看....</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-21&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/DNF/">DNF</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/DNF">DNF</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/DNF">DNF</a>&nbsp;
-          
-            <a href="/tags/SQL">SQL</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DNF/">DNF</a>
+            
+              <a href="/tags/SQL/">SQL</a>
+            
+          </div>
         
       </div>
     </div>
@@ -428,56 +420,41 @@ sudo systemctl restart docker
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/04/09/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%8C%89%E9%94%AE%E7%B2%BE%E7%81%B5/%E6%8C%89%E9%94%AE%E7%B2%BE%E7%81%B5%E8%AF%AD%E6%B3%95/" target="_self">
-          <img src="/img/default.jpg" srcset="/img/loading.gif" alt="按键精灵语法" class="index-img img-fluid rounded index-thumbnails">
+          <img src="/img/default.jpg" srcset="/img/loading.gif" alt="按键精灵语法">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/04/09/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%8C%89%E9%94%AE%E7%B2%BE%E7%81%B5/%E6%8C%89%E9%94%AE%E7%B2%BE%E7%81%B5%E8%AF%AD%E6%B3%95/">
-        <p class="h4 index-header">按键精灵语法</p>
-      </a>
+      <a class="index-header" href="/2020/04/09/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%8C%89%E9%94%AE%E7%B2%BE%E7%81%B5/%E6%8C%89%E9%94%AE%E7%B2%BE%E7%81%B5%E8%AF%AD%E6%B3%95/">按键精灵语法</a>
 
-      <a href="/2020/04/09/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%8C%89%E9%94%AE%E7%B2%BE%E7%81%B5/%E6%8C%89%E9%94%AE%E7%B2%BE%E7%81%B5%E8%AF%AD%E6%B3%95/">
+      <a href="/2020/04/09/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%8C%89%E9%94%AE%E7%B2%BE%E7%81%B5/%E6%8C%89%E9%94%AE%E7%B2%BE%E7%81%B5%E8%AF%AD%E6%B3%95/" class="index-excerpt">
         
         
           
         
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">windows或者Android(需要root权限)下按键精灵有时候写一些简单的脚本还是挺好用的。没有最好的语言，只有最适合的工具。在此记录下常用的基本语法。
+        <div>windows或者Android(需要root权限)下按键精灵有时候写一些简单的脚本还是挺好用的。没有最好的语言，只有最适合的工具。在此记录下常用的基本语法。
 句柄及后台运行句柄可以获取后台窗口的类名或者标题，以达到获取坐标或后台运行脚本的目的。后台只支持部分窗口，以实际测试为准。
 句柄的类名或者标题，可以用按键精灵自带的抓抓工具抓取。
 //声明窗口句柄变量，窗口大小变量
-Dim Hwnd, sRect
-//声明数组
-Dim Array
-
-//Plugin.Window.Find()--命令功能-查找窗口类名或者标题
-//下面这句是查找窗口类名(&quot;Notepad&quot;)或者标题(0),返回找到的句柄Hwnd
-Hwnd = Plugin.Window.Find(&quot;Notepad&quot;,&quot;0&quot;)
-
-//调试输出句柄-功能-在调试窗口打印文字
-TracePrint Hwnd
-
-//该函数返回窗口大小
-sRect = Plugin.Window.GetWindowRect(Hwnd)
-
-//窗口大小转为数组，可以获得窗口左上角的坐标
-//语法</div>
-        </div>
+Dim Hwnd, sR</div>
       </a>
 
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-09&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-04-09
+          </div>
         
         
         
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%8C%89%E9%94%AE%E7%B2%BE%E7%81%B5">按键精灵</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%8C%89%E9%94%AE%E7%B2%BE%E7%81%B5/">按键精灵</a>
+            
+          </div>
         
       </div>
     </div>
@@ -486,24 +463,21 @@ sRect = Plugin.Window.GetWindowRect(Hwnd)
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/04/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/SQL/SQL%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_self">
-          <img src="/img/mysql.jpg" srcset="/img/loading.gif" alt="SQL语言学习笔记" class="index-img img-fluid rounded index-thumbnails">
+          <img src="/img/mysql.jpg" srcset="/img/loading.gif" alt="SQL语言学习笔记">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/04/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/SQL/SQL%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-        <p class="h4 index-header">SQL语言学习笔记</p>
-      </a>
+      <a class="index-header" href="/2020/04/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/SQL/SQL%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">SQL语言学习笔记</a>
 
-      <a href="/2020/04/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/SQL/SQL%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+      <a href="/2020/04/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/SQL/SQL%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="index-excerpt">
         
         
           
         
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">一、SQL简介1.1 SQL是什么
+        <div>一、SQL简介1.1 SQL是什么
 SQL是结构化查询语言，它是一种用于存储，操作和检索存储在关系数据库中的数据的计算机语言
 
 关系型数据库可以通过E-R图转换而来，E-R图中矩形是实体集，菱形是关系，椭圆是属性。
@@ -523,89 +497,34 @@ CREATE
 
 2
 ALTER
-用于修改现有数据库对象，例如：表
-
-
-3
-DROP
-用于删除整个表，数据库中的表或其他对象的视图
-
-
-2） DML——数据操纵语言
-
-
-序号
-命令
-描述
-
-
-
-1
-SELECT
-从一个或多个表中检索某些记录
-
-
-2
-INSERT
-创建一条记录
-
-
-3
-UPDATE
-用于修改(更新)记录
-
-
-4
-DELETE
-删除记录
-
-
-3） DCL——数据控制语言
-
-
-序号
-命令
-描述
-
-
-
-1
-GRANT
-为用户提供权限
-
-
-2
-REVOKE
-撤销用户授予的权限
-
-
-1.3 数据的完整性每个RDBMS(关系型数据库)都存在以下类别的数据完整性
-
-实体完整性 - 表中没有重复的行。
-
-域完整性 - 通过限制值的类型，格式或范围，为给定</div>
-        </div>
+用于修改现有数据库对象，例如</div>
       </a>
 
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-03&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
-          
-            <a href="/categories/SQL">SQL</a>&nbsp;
-          &nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-04-03
+          </div>
         
         
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>&nbsp;
-          
-            <a href="/tags/SQL">SQL</a>&nbsp;
-          
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+            
+              <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/SQL/">SQL</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/SQL/">SQL</a>
+            
+              <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+            
+          </div>
         
       </div>
     </div>
@@ -614,24 +533,21 @@ REVOKE
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/03/27/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E4%BD%BF%E7%94%A8python%E6%8E%A7%E5%88%B6%E9%BC%A0%E6%A0%87%E5%92%8C%E9%94%AE%E7%9B%98/" target="_self">
-          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python.jpg" srcset="/img/loading.gif" alt="使用python控制鼠标和键盘" class="index-img img-fluid rounded index-thumbnails">
+          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python.jpg" srcset="/img/loading.gif" alt="使用python控制鼠标和键盘">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/03/27/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E4%BD%BF%E7%94%A8python%E6%8E%A7%E5%88%B6%E9%BC%A0%E6%A0%87%E5%92%8C%E9%94%AE%E7%9B%98/">
-        <p class="h4 index-header">使用python控制鼠标和键盘</p>
-      </a>
+      <a class="index-header" href="/2020/03/27/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E4%BD%BF%E7%94%A8python%E6%8E%A7%E5%88%B6%E9%BC%A0%E6%A0%87%E5%92%8C%E9%94%AE%E7%9B%98/">使用python控制鼠标和键盘</a>
 
-      <a href="/2020/03/27/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E4%BD%BF%E7%94%A8python%E6%8E%A7%E5%88%B6%E9%BC%A0%E6%A0%87%E5%92%8C%E9%94%AE%E7%9B%98/">
+      <a href="/2020/03/27/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E4%BD%BF%E7%94%A8python%E6%8E%A7%E5%88%B6%E9%BC%A0%E6%A0%87%E5%92%8C%E9%94%AE%E7%9B%98/" class="index-excerpt">
         
         
           
         
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">使用pyautogui这个库，来达到和按键精灵差不多的效果。可以运行在多平台。
+        <div>使用pyautogui这个库，来达到和按键精灵差不多的效果。可以运行在多平台。
 PyAutoGUI的五个特点:
 
 移动鼠标点击或输入其他应用程序的窗口。
@@ -639,36 +555,32 @@ PyAutoGUI的五个特点:
 截图,给定一个图像(例如,一个按钮或复选框),在屏幕上找到它。
 定位应用程序的窗口,和移动,调整,最大化、最小化、关闭(仅适用于windows,目前)
 显示消息框进行用户交互,而您的GUI自动化脚本运行。
-
-一： 安装pyautogui库pip3 install pyautogui
-ubuntu系统，可能需要sudo apt-get install python3-tk python3-dev，如果安装不上，请参考官方文档如何安装
-二： 使用方法官方文档
-2.1 常规功能&gt;&gt;&gt; import pyautogui
-&gt;&gt;&gt; pyautogui.position()  # 当前鼠标 x， y坐标
-(968, 56)
-&gt;&gt;&gt; pyautogui.size()  # 当前屏幕分辨率宽和高
-(1920, 1080)
-&gt;&gt;&gt; pyauto</div>
-        </div>
+</div>
       </a>
 
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-27&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/python">python</a>&nbsp;
-          &nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-03-27
+          </div>
         
         
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/python">python</a>&nbsp;
-          
-            <a href="/tags/%E6%8C%89%E9%94%AE%E7%B2%BE%E7%81%B5">按键精灵</a>&nbsp;
-          
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">python</a>
+            
+              <a href="/tags/%E6%8C%89%E9%94%AE%E7%B2%BE%E7%81%B5/">按键精灵</a>
+            
+          </div>
         
       </div>
     </div>
@@ -677,24 +589,21 @@ ubuntu系统，可能需要sudo apt-get install python3-tk python3-dev，如果�
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/03/21/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E3%80%90%E8%BD%AC%E3%80%91%C2%96%E5%88%A9%E7%94%A8%E7%88%AC%E8%99%AB%E5%92%8C%E6%A0%91%E8%8E%93%E6%B4%BE3%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E8%AF%AD%E9%9F%B3%E5%A4%A9%E6%B0%94%E9%97%B9%E9%92%9F/" target="_self">
-          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python.jpg" srcset="/img/loading.gif" alt="【转】 利用爬虫和树莓派打造萝莉音天气闹钟" class="index-img img-fluid rounded index-thumbnails">
+          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python.jpg" srcset="/img/loading.gif" alt="【转】 利用爬虫和树莓派打造萝莉音天气闹钟">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/03/21/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E3%80%90%E8%BD%AC%E3%80%91%C2%96%E5%88%A9%E7%94%A8%E7%88%AC%E8%99%AB%E5%92%8C%E6%A0%91%E8%8E%93%E6%B4%BE3%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E8%AF%AD%E9%9F%B3%E5%A4%A9%E6%B0%94%E9%97%B9%E9%92%9F/">
-        <p class="h4 index-header">【转】 利用爬虫和树莓派打造萝莉音天气闹钟</p>
-      </a>
+      <a class="index-header" href="/2020/03/21/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E3%80%90%E8%BD%AC%E3%80%91%C2%96%E5%88%A9%E7%94%A8%E7%88%AC%E8%99%AB%E5%92%8C%E6%A0%91%E8%8E%93%E6%B4%BE3%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E8%AF%AD%E9%9F%B3%E5%A4%A9%E6%B0%94%E9%97%B9%E9%92%9F/">【转】 利用爬虫和树莓派打造萝莉音天气闹钟</a>
 
-      <a href="/2020/03/21/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E3%80%90%E8%BD%AC%E3%80%91%C2%96%E5%88%A9%E7%94%A8%E7%88%AC%E8%99%AB%E5%92%8C%E6%A0%91%E8%8E%93%E6%B4%BE3%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E8%AF%AD%E9%9F%B3%E5%A4%A9%E6%B0%94%E9%97%B9%E9%92%9F/">
+      <a href="/2020/03/21/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E3%80%90%E8%BD%AC%E3%80%91%C2%96%E5%88%A9%E7%94%A8%E7%88%AC%E8%99%AB%E5%92%8C%E6%A0%91%E8%8E%93%E6%B4%BE3%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E8%AF%AD%E9%9F%B3%E5%A4%A9%E6%B0%94%E9%97%B9%E9%92%9F/" class="index-excerpt">
         
         
           
         
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">
+        <div>
 原帖地址
 
 一、 前期准备
@@ -707,38 +616,34 @@ http://tianqi.moji.com/
 进入墨迹天气的页面，墨迹天气会根据你的ip加载相应地区的天气。
 这次我们主要抓取温度、天气、湿度、风力、空气质量和天气提示这几个数据。
 这种小爬虫我们就使用requests和BeautifulSoup这两个超级好用的库可以快速实现。
-二、 环境首先树莓派安装python3，python3-pip和requests、beautifulsoup4两个库及mplayer软件。
-sudo apt install python3 -y
-sudo apt install python3-pip -y
-pip3 install requests
-pip3 install beautifulsoup4
-sudo apt-get install mplayer -y
-至于Requests和Beautiful Soup的用法这里就先不多说了，大家可以去看他们的中文文档。
-
-Requests中文wendnag
-Beautiful Soup中文文档</div>
-        </div>
+二</div>
       </a>
 
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-21&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/python">python</a>&nbsp;
-          
-            <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE">树莓派</a>&nbsp;
-          &nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-03-21
+          </div>
         
         
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE">树莓派</a>&nbsp;
-          
-            <a href="/tags/python">python</a>&nbsp;
-          
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/python/">python</a>
+            
+              <a href="/categories/python/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a>
+            
+              <a href="/tags/python/">python</a>
+            
+          </div>
         
       </div>
     </div>
@@ -747,56 +652,51 @@ Beautiful Soup中文文档</div>
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/03/15/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/Linux-VPS%E4%B8%80%E9%94%AE%E6%9B%B4%E6%8D%A2%E8%BD%AF%E4%BB%B6%E6%BA%90%E8%84%9A%E6%9C%AC/" target="_self">
-          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/linux.jpg" srcset="/img/loading.gif" alt="Linux VPS一键更换软件源脚本" class="index-img img-fluid rounded index-thumbnails">
+          <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/linux.jpg" srcset="/img/loading.gif" alt="Linux VPS一键更换软件源脚本">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/03/15/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/Linux-VPS%E4%B8%80%E9%94%AE%E6%9B%B4%E6%8D%A2%E8%BD%AF%E4%BB%B6%E6%BA%90%E8%84%9A%E6%9C%AC/">
-        <p class="h4 index-header">Linux VPS一键更换软件源脚本</p>
-      </a>
+      <a class="index-header" href="/2020/03/15/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/Linux-VPS%E4%B8%80%E9%94%AE%E6%9B%B4%E6%8D%A2%E8%BD%AF%E4%BB%B6%E6%BA%90%E8%84%9A%E6%9C%AC/">Linux VPS一键更换软件源脚本</a>
 
-      <a href="/2020/03/15/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/Linux-VPS%E4%B8%80%E9%94%AE%E6%9B%B4%E6%8D%A2%E8%BD%AF%E4%BB%B6%E6%BA%90%E8%84%9A%E6%9C%AC/">
+      <a href="/2020/03/15/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/Linux-VPS%E4%B8%80%E9%94%AE%E6%9B%B4%E6%8D%A2%E8%BD%AF%E4%BB%B6%E6%BA%90%E8%84%9A%E6%9C%AC/" class="index-excerpt">
         
         
           
         
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">前言有时候会遇到Linux的源更新速度非常的缓慢，特别是在国内使用默认的源，因为国内的网络环境，经常会出现无法更新，更新缓慢的情况。在这种情况下，更换一个更适合或者说更近，更快的软件源，会为你的Linux安装更新操作更加的流畅和顺利。
+        <div>前言有时候会遇到Linux的源更新速度非常的缓慢，特别是在国内使用默认的源，因为国内的网络环境，经常会出现无法更新，更新缓慢的情况。在这种情况下，更换一个更适合或者说更近，更快的软件源，会为你的Linux安装更新操作更加的流畅和顺利。
 使用系统要求：CentOS 5+、Ubuntu 14.04+、Debian 7+
 使用命令：
 #下载脚本
 wget git.io/superupdate.sh
-#运行脚本
-bash superupdate.sh
-如果第一步你出现错误或执行后无任何输出，请检查是否安装wget和ca-certificates，使用命令：
-#Debian、Ubuntu
-apt-get install -y wget &amp;&amp; apt-get install -y ca-certificates
-#CentOS
-yum install -y wget &amp;&amp; yum install -y ca-certificates
-对于Debian默认换源为Fastly CDN的mirror这个源有Fastly的加持对境外主机都有不错的速度。对于Ubuntu和 C</div>
-        </div>
+#运</div>
       </a>
 
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-15&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Linux">Linux</a>&nbsp;
-          &nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-03-15
+          </div>
         
         
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Linux">Linux</a>&nbsp;
-          
-            <a href="/tags/%E6%8D%A2%E8%BD%AF%E4%BB%B6%E6%BA%90">换软件源</a>&nbsp;
-          
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Linux/">Linux</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">Linux</a>
+            
+              <a href="/tags/%E6%8D%A2%E8%BD%AF%E4%BB%B6%E6%BA%90/">换软件源</a>
+            
+          </div>
         
       </div>
     </div>
@@ -804,14 +704,14 @@ yum install -y wget &amp;&amp; yum install -y ca-certificates
 
 
 
-  <nav aria-label="index posts navigation">
-    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   
   <script>
-    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
       ele.href += '#board';
     }
   </script>
@@ -827,8 +727,8 @@ yum install -y wget &amp;&amp; yum install -y ca-certificates
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -856,119 +756,59 @@ yum install -y wget &amp;&amp; yum install -y ca-certificates
 </div>
   
 
+  
+
+  
+
   <footer class="mt-5">
   <div class="text-center py-3">
-    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
-    <i class="iconfont icon-love"></i>
-    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
-    <br>
-
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
     
-  
-    <!-- 不蒜子统计PV -->
-    
-    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
-          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
-  
-  
-    <!-- 不蒜子统计UV -->
-    
-    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
-            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
-  
-  <br>
-
-
 
     
 
-
-    <!-- cnzz Analytics icon -->
     
-
   </div>
 </footer>
 
 <!-- SCRIPTS -->
-<script src="/lib/jquery/jquery.min.js" ></script>
-<script src="/lib/popper/popper.min.js" ></script>
-<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
-<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
-<script src="/js/main.js" ></script>
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
 
 
-  <script src="/js/lazyload.js" ></script>
+  <script  src="/js/lazyload.js" ></script>
 
 
 
 
 
-  <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
 
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 <!-- Plugins -->
 
 
-  
-    <!-- Baidu Analytics -->
-    <script>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
 
-  
-
-  
-    <!-- Tencent Analytics -->
-    <script>
-      var _mtac = {};
-      (function () {
-        var mta = document.createElement("script");
-        mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
-        mta.setAttribute("name", "MTAH5");
-        mta.setAttribute("sid", "500710993");
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(mta, s);
-      })();
-    </script>
-  
-
-  
-
-  <!-- cnzz Analytics -->
-  
-
-
-
-  <script src="/lib/prettify/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  linenums');
-      prettyPrint();
-    })
-  </script>
-
-
-
-  <script src="/lib/typed/typed.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
   <script>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "此后如竟没有炬火，我便是唯一的光.&nbsp;",
+        "An elegant Material-Design theme for Hexo&nbsp;",
       ],
       cursorChar: "_",
-      typeSpeed: 60,
+      typeSpeed: 70,
       loop: false,
     });
     typed.stop();
@@ -980,11 +820,11 @@ yum install -y wget &amp;&amp; yum install -y ca-certificates
 
 
 
-  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
   <script>
     anchors.options = {
       placement: "right",
-      visible: "always",
+      visible: "hover",
       
     };
     var el = "h1,h2,h3,h4,h5,h6".split(",");
@@ -997,109 +837,27 @@ yum install -y wget &amp;&amp; yum install -y ca-certificates
 
 
 
-  <script src="/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
   <script>
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
 
 
 
-  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
-  <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
-      function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
-        $(this).wrap(element);
-      }
-    );
-  </script>
 
 
 
-  
-
-  
-    <!-- MathJax -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-          tex2jax: {
-              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-              processEscapes: true,
-              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-          }
-      });
-
-      MathJax.Hub.Queue(function() {
-          var all = MathJax.Hub.getAllJax(), i;
-          for(i=0; i < all.length; i += 1) {
-              all[i].SourceElement().parentNode.className += ' has-jax';
-          }
-      });
-
-    </script>
-
-    <script src="https://cdn.staticfile.org/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
-
-  
 
 
 
-  
-  
-    <script type="text/javascript">
-      //定义获取词语下标
-      var a_idx = 0;
-      jQuery(document).ready(function ($) {
-        //点击body时触发事件
-        $("body").click(function (e) {
-          //需要显示的词语
-          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
-          //设置词语给span标签
-          var $i = $("<span/>").text(a[a_idx]);
-          //下标等于原来下标+1  余 词语总数
-          a_idx = (a_idx + 1) % a.length;
-          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
-          //获取x和y的指针坐标
-          var x = e.pageX, y = e.pageY;
-          //在鼠标的指针的位置给$i定义的span标签添加css样式
-          $i.css({
-            "z-index": 999,
-            "top": y - 20,
-            "left": x,
-            "position": "absolute",
-            "font-weight": "bold",
-            "color": rand_color()
-          });
-          // 随机颜色
-          function rand_color() {
-            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
-          }
-          //在body添加这个标签
-          $("body").append($i);
-          //animate() 方法执行 CSS 属性集的自定义动画。
-          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
-          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
-          $i.animate({
-            //将原来的位置向上移动180
-            "top": y - 180,
-            "opacity": 0
-            //1500动画的速度
-          }, 1500, function () {
-            //时间到了自动删除
-            $i.remove();
-          });
-        });
-      })
-      ;
-    </script>
-  
+
+
+
 
 
 
