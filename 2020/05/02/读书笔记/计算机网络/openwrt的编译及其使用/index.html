@@ -208,10 +208,13 @@
               <blockquote>
 <p>基于coolsnowwolf大神源码编译,<a href="https://github.com/coolsnowwolf/lede" target="_blank" rel="noopener">源码地址</a></p>
 </blockquote>
-<h2 id="一、-前言"><a href="#一、-前言" class="headerlink" title="一、 前言"></a>一、 前言</h2><p>自己编译需要linux知识、装系统的知识和能够全局的访问外网，而折腾openwrt需要部分计算机网络原理的知识。</p>
+<h2 id="一、-前言">一、 前言</h2>
+<p>自己编译需要linux知识、装系统的知识和能够全局的访问外网，而折腾openwrt需要部分计算机网络原理的知识。</p>
 <p>如果不能自己编译，可以下载<a href="https://github.com/coolsnowwolf/lede/releases" target="_blank" rel="noopener">Lean大编译好的固件</a></p>
 <p>也可以下载<a href="https://drive.google.com/drive/folders/1dqNUrMf9n7i3y1aSh68U5Yf44WQ3KCuh" target="_blank" rel="noopener">eSir大佬基于L大源码编译的固件。</a></p>
-<h2 id="二、-编译"><a href="#二、-编译" class="headerlink" title="二、 编译"></a>二、 编译</h2><h3 id="2-1-搭建编译环境"><a href="#2-1-搭建编译环境" class="headerlink" title="2.1 搭建编译环境"></a>2.1 搭建编译环境</h3><p>首先打开Lean大的GitHub项目地址，仔细阅读说明，其实很简单，直接复制黏贴命令行就行。</p>
+<h2 id="二、-编译">二、 编译</h2>
+<h3 id="2-1-搭建编译环境">2.1 搭建编译环境</h3>
+<p>首先打开Lean大的GitHub项目地址，仔细阅读说明，其实很简单，直接复制黏贴命令行就行。</p>
 <p>然后虚拟机安装<a href="http://releases.ubuntu.com/18.04/ubuntu-18.04.4-live-server-amd64.iso.torrent?_ga=2.101048392.870121867.1588423003-365844835.1588423003" target="_blank" rel="noopener">Ubuntu 18 LTS x64 Server版本</a></p>
 <p>然后ssh登录Ubuntu，后面命令需要全局外网来进行编译了。</p>
 <p>输入如下命令行</p>
@@ -231,10 +234,23 @@ git <span class="hljs-built_in">clone</span> https://github.com/coolsnowwolf/led
 ./scripts/feeds install -a
 
 make menuconfig</code></pre></div>
-
-<h3 id="2-2-定制配置"><a href="#2-2-定制配置" class="headerlink" title="2.2 定制配置"></a>2.2 定制配置</h3><p><code>make menuconfig</code>后，会有一个编译管理器，在里面可以选择型号、OP功能组件，需要用到方向键、回车键、空格键。方向键是移动光标，回车键是确认，空格键是选择（在选项框按下空格键，*号是编译进固件，M是编译但是不编译进固件）</p>
+<h3 id="2-2-定制配置">2.2 定制配置</h3>
+<p><code>make menuconfig</code>后，会有一个编译管理器，在里面可以选择型号、OP功能组件，需要用到方向键、回车键、空格键。方向键是移动光标，回车键是确认，空格键是选择（在选项框按下空格键，*号是编译进固件，M是编译但是不编译进固件）</p>
 <p>下面的假如没有说明，就是默认选项。</p>
-<p>①. Target System（Atheros AR7xxx…）<br>    选择CPU型号,看你的CPU架构，软路由或虚拟机一般是是X86<br>②. Subtarget(x86_64)<br>    选择多少位系统，默认64即可<br>③. Target Profile<br>    选择路由型号，默认即可<br>④. Target Images<br>    勾选上squashfs（new）即可，然后其他默认<br>⑤. Base system<br>    选择默认的dnsmasq-full即可,另外2个dnsmasq切记不要选。<br>⑥. Administration<br>    根据你的需求选择。<br>⑦. LuCI-&gt;Applications<br>    整个系统精华所在，非常重要，<a id="常用配置">常用配置如下</a></p>
+<p>①. Target System（Atheros AR7xxx…）<br>
+选择CPU型号,看你的CPU架构，软路由或虚拟机一般是是X86<br>
+②. Subtarget(x86_64)<br>
+选择多少位系统，默认64即可<br>
+③. Target Profile<br>
+选择路由型号，默认即可<br>
+④. Target Images<br>
+勾选上squashfs（new）即可，然后其他默认<br>
+⑤. Base system<br>
+选择默认的dnsmasq-full即可,另外2个dnsmasq切记不要选。<br>
+⑥. Administration<br>
+根据你的需求选择。<br>
+⑦. LuCI-&gt;Applications<br>
+整个系统精华所在，非常重要，<a id="常用配置">常用配置如下</a></p>
 <div class="hljs"><pre><code class="hljs SH"><span class="hljs-comment"># 选择LuCI常用配置 添加常用插件应用：</span>
 <span class="hljs-comment">#-----------------------------------------------------------------------------------------</span>
 LuCI ---&gt; Applications ---&gt; luci-app-accesscontrol  <span class="hljs-comment">#访问时间控制</span>
@@ -281,9 +297,19 @@ LuCI ---&gt; Applications ---&gt; luci-app-xlnetacc  <span class="hljs-comment">
 LuCI ---&gt; Applications ---&gt; luci-app-zerotier  <span class="hljs-comment">#ZeroTier内网穿透</span>
 Extra packages  ---&gt;  ipv6helper  <span class="hljs-comment">#支持 ipv6</span>
 Utilities  ---&gt;  open-vm-tools  <span class="hljs-comment">#打开适用于VMware的VM Tools</span></code></pre></div>
-
 <p><a href="#2-4-全部LuCI-gt-Applications配置">查看详细LuCI配置</a></p>
-<p>⑧. Network-&gt;Download Manager<br>    选择ariaNG<br>⑨. Utilities-&gt;Editors<br>    1. 选择默认编辑器-&gt;nano，习惯vim的选择vim<br>    2. 打开适用于VMware的VM Tools<br>        Utilities  —&gt;  open-vm-tools<br>⑩. 如果要支持 iPv6，勾选下面的选项：<br>    Extra packages  —&gt;  ipv6helper  （选定这个后下面几项自动选择了）<br>      Network  —&gt;  odhcp6c<br>      Network  —&gt;  odhcpd-ipv6only<br>      LuCI  —&gt;  Protocols  —&gt;  luci-proto-ipv6<br>      LuCI  —&gt;  Protocols  —&gt;  luci-proto-ppp</p>
+<p>⑧. Network-&gt;Download Manager<br>
+选择ariaNG<br>
+⑨. Utilities-&gt;Editors<br>
+1. 选择默认编辑器-&gt;nano，习惯vim的选择vim<br>
+2. 打开适用于VMware的VM Tools<br>
+Utilities  —&gt;  open-vm-tools<br>
+⑩. 如果要支持 iPv6，勾选下面的选项：<br>
+Extra packages  —&gt;  ipv6helper  （选定这个后下面几项自动选择了）<br>
+Network  —&gt;  odhcp6c<br>
+Network  —&gt;  odhcpd-ipv6only<br>
+LuCI  —&gt;  Protocols  —&gt;  luci-proto-ipv6<br>
+LuCI  —&gt;  Protocols  —&gt;  luci-proto-ppp</p>
 <p>离开选择功能界面，EXIT-&gt;YES</p>
 <div class="hljs"><pre><code class="hljs SH"><span class="hljs-comment">#  下载dl库</span>
 make -j8 download V=s
@@ -291,8 +317,8 @@ make -j8 download V=s
 <span class="hljs-comment"># 进行编译，初次编译看配置，可能会4小时以上，以后会快一点</span>
 <span class="hljs-comment"># （-j1 后面是线程数。第一次编译推荐用单线程）即可开始编译你要的固件了。</span>
 make -j1 V=s</code></pre></div>
-
-<h3 id="2-3-功能不满意？二次编译"><a href="#2-3-功能不满意？二次编译" class="headerlink" title="2.3 功能不满意？二次编译"></a>2.3 功能不满意？二次编译</h3><div class="hljs"><pre><code class="hljs SH"><span class="hljs-comment"># 编译完成后清除之前的编译作业（使用这个命令前，记得把编译好的固件备份出来，不然会被删除掉，切记）</span>
+<h3 id="2-3-功能不满意？二次编译">2.3 功能不满意？二次编译</h3>
+<div class="hljs"><pre><code class="hljs SH"><span class="hljs-comment"># 编译完成后清除之前的编译作业（使用这个命令前，记得把编译好的固件备份出来，不然会被删除掉，切记）</span>
 make clean
 
 <span class="hljs-comment"># 进入LEDE目录</span>
@@ -312,8 +338,8 @@ make menuconfig
 
 <span class="hljs-comment"># 开始编译 n=线程数+1，例如4线程的I5填-j5</span>
 make -jn V=99</code></pre></div>
-
-<h3 id="2-4-全部LuCI-gt-Applications配置"><a href="#2-4-全部LuCI-gt-Applications配置" class="headerlink" title="2.4 全部LuCI-&gt;Applications配置"></a>2.4 全部LuCI-&gt;Applications配置</h3><p><a href="#常用配置">返回常用LuCI配置</a></p>
+<h3 id="2-4-全部LuCI-Applications配置">2.4 全部LuCI-&gt;Applications配置</h3>
+<p><a href="#常用配置">返回常用LuCI配置</a></p>
 <div class="hljs"><pre><code class="hljs SH"><span class="hljs-comment"># 以下是详细配置：               注：应用后面标记 “ * ” 为最近新添加</span>
 <span class="hljs-comment"># -----------------------------------------------------------------------------------------</span>
 LuCI ---&gt; Applications ---&gt; luci-app-accesscontrol  <span class="hljs-comment">#访问时间控制</span>
@@ -478,12 +504,14 @@ LuCI ---&gt; Applications ---&gt; luci-app-wol   <span class="hljs-comment">#WOL
 LuCI ---&gt; Applications ---&gt; luci-app-wrtbwmon  <span class="hljs-comment">#实时流量监测</span>
 LuCI ---&gt; Applications ---&gt; luci-app-xlnetacc  <span class="hljs-comment">#迅雷快鸟</span>
 LuCI ---&gt; Applications ---&gt; luci-app-zerotier  <span class="hljs-comment">#ZeroTier内网穿透</span></code></pre></div>
-
-<h3 id="2-5-自动编译"><a href="#2-5-自动编译" class="headerlink" title="2.5 自动编译"></a>2.5 自动编译</h3><p><a href="https://github.com/esirplayground/AutoBuild-OpenWrt" target="_blank" rel="noopener">项目地址</a></p>
+<h3 id="2-5-自动编译">2.5 自动编译</h3>
+<p><a href="https://github.com/esirplayground/AutoBuild-OpenWrt" target="_blank" rel="noopener">项目地址</a></p>
 <p>自定义编译前需要在编译环境中运行<code>./scripts/diffconfig.sh &gt; diffconfig</code></p>
 <p>然后把<code>/lede/diffconfig</code>里内容替换项目里面相应的.config文件内容。</p>
 <p><a href="https://www.youtube.com/watch?v=9YO7nxNry-4" target="_blank" rel="noopener">自动编译视频教程</a></p>
-<h2 id="三、-使用"><a href="#三、-使用" class="headerlink" title="三、 使用"></a>三、 使用</h2><h3 id="3-1-初始设置"><a href="#3-1-初始设置" class="headerlink" title="3.1 初始设置"></a>3.1 初始设置</h3><p>winscp登录Ubuntu系统，在<code>/home/you_name/lede/bin/targets/x86/64/</code>下面</p>
+<h2 id="三、-使用">三、 使用</h2>
+<h3 id="3-1-初始设置">3.1 初始设置</h3>
+<p>winscp登录Ubuntu系统，在<code>/home/you_name/lede/bin/targets/x86/64/</code>下面</p>
 <p><code>openwrt-x86-x64-combined-squashfs.img</code>就是我们需要的镜像文件了</p>
 <p>把镜像文件下载下来，通过<code>winPE</code>的U盘安装烧录到路由器硬盘里，也可以烧写到U盘里，通过U盘启动</p>
 <p>网线连接到路由器的Lan口，默认登陆IP <code>192.168.1.1</code>, 密码 <code>password</code>，进行配置(也可以通过PUTTY连接，端口22)</p>
@@ -493,22 +521,26 @@ vi /etc/config/network
 
 <span class="hljs-comment"># 重启网络</span>
 /etc/init.d/network restart</code></pre></div>
-
 <p>网页地址栏输入<code>192.168.10.1</code>，进行配置。</p>
 <p>接线配置可参考如下2张图片</p>
 <p><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/network/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E5%9B%BE.png" srcset="/img/loading.gif" alt="家庭网络结构图"></p>
 <p><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/network/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E5%9B%BE.png" srcset="/img/loading.gif" alt="家庭网络配置图"></p>
-<h3 id="3-2-openwrt内部配置"><a href="#3-2-openwrt内部配置" class="headerlink" title="3.2 openwrt内部配置"></a>3.2 openwrt内部配置</h3><ol>
-<li><p>网络 -&gt; 接口 -&gt; LAN口修改 -&gt; IPv4地址 修改为访问路由的地址 -&gt; 网关为路由ip地址 -&gt;<strong>DNS</strong>填写114.114.114.114,119.29.29.29,223.5.5.5和<strong>你的网络运营商提供的DNS</strong>(可以在命令行中用ping ip来查看哪个DNS访问的最快) -&gt; IPv6分配长度停用 -&gt; 旁路由关闭DHCP，主路由开启动态DHCP</p>
+<h3 id="3-2-openwrt内部配置">3.2 openwrt内部配置</h3>
+<ol>
+<li>
+<p>网络 -&gt; 接口 -&gt; LAN口修改 -&gt; IPv4地址 修改为访问路由的地址 -&gt; 网关为路由ip地址 -&gt;<strong>DNS</strong>填写114.114.114.114,119.29.29.29,223.5.5.5和<strong>你的网络运营商提供的DNS</strong>(可以在命令行中用ping ip来查看哪个DNS访问的最快) -&gt; IPv6分配长度停用 -&gt; 旁路由关闭DHCP，主路由开启动态DHCP</p>
 </li>
-<li><p>Turbo ACC 网络加速设置 -&gt; 除了HWNAT硬件加速全选 -&gt; 上游 DNS 服务器(国内) -&gt; 查询填入你所在的网络运营商所提供的DNS<a href="https://ip.cn/dns.html" target="_blank" rel="noopener">查询地址1</a>、<a href="https://cloud.tencent.com/developer/article/1352604" target="_blank" rel="noopener">查询地址2</a></p>
+<li>
+<p>Turbo ACC 网络加速设置 -&gt; 除了HWNAT硬件加速全选 -&gt; 上游 DNS 服务器(国内) -&gt; 查询填入你所在的网络运营商所提供的DNS<a href="https://ip.cn/dns.html" target="_blank" rel="noopener">查询地址1</a>、<a href="https://cloud.tencent.com/developer/article/1352604" target="_blank" rel="noopener">查询地址2</a></p>
 </li>
-<li><p>旁路由不用设置wan口，主路由自行设置wan口，不用ipv6，最好关闭ipv6.</p>
+<li>
+<p>旁路由不用设置wan口，主路由自行设置wan口，不用ipv6，最好关闭ipv6.</p>
 </li>
 </ol>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://github.com/coolsnowwolf/lede" target="_blank" rel="noopener">Lean大源码地址</a></p>
+<h2 id="参考">参考</h2>
+<p><a href="https://github.com/coolsnowwolf/lede" target="_blank" rel="noopener">Lean大源码地址</a></p>
 <p><a href="https://www.right.com.cn/forum/thread-3682029-1-1.html" target="_blank" rel="noopener">OpenWrt 编译 LuCI -&gt; Applications 添加插件应用说明</a></p>
-<p><a href="https://www.youtube.com/watch?v=ZMh-AvQV8n0&t=57s" target="_blank" rel="noopener">How to build your own Openwrt firmware</a></p>
+<p><a href="https://www.youtube.com/watch?v=ZMh-AvQV8n0&amp;t=57s" target="_blank" rel="noopener">How to build your own Openwrt firmware</a></p>
 <p><a href="https://www.youtube.com/watch?v=zy16nR8MlX0" target="_blank" rel="noopener">openwrt基础设置</a></p>
 
             </article>
@@ -674,7 +706,7 @@ vi /etc/config/network
       order: 'random',
       theme: '#b7daff',
       preload: 'none',
-      audio: [{"name":"name","artist":"artist","url":"/songs/test.mp3","cover":"/img/cover.jpg"},{"name":"name","artist":"artist","url":"https://...url.mp3","cover":"https://...cover.jpg"}]
+      audio: [{"name":"灰色空间","artist":"罗志祥","url":"http://m10.music.126.net/20200507194451/1f5ceb4bc7c35eb98e8e8d8dfc2c7965/ymusic/23ea/f09a/9580/62a0487f39b8eed528e329b362d762f6.mp3","cover":"http://p1.music.126.net/bh3MaI0b6tspbAx0h8BY2Q==/63771674428576.jpg"}]
     });
   }
 </script>

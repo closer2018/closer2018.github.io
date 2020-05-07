@@ -153,7 +153,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    998 字
+                    1k 字
                   </span>
                 
 
@@ -205,7 +205,8 @@
               </p>
             
             <article class="markdown-body">
-              <h2 id="hexo配置文件设置"><a href="#hexo配置文件设置" class="headerlink" title="hexo配置文件设置"></a>hexo配置文件设置</h2><p>hexo配置文件<code>_config.yml</code>基本配置</p>
+              <h2 id="hexo配置文件设置">hexo配置文件设置</h2>
+<p>hexo配置文件<code>_config.yml</code>基本配置</p>
 <a id="more"></a>
 <div class="hljs"><pre><code class="hljs yml"><span class="hljs-comment"># Hexo Configuration</span>
 <span class="hljs-comment">## Docs: https://hexo.io/docs/configuration.html</span>
@@ -339,12 +340,15 @@
   <span class="hljs-attr">template:</span> <span class="hljs-string">&lt;div</span> <span class="hljs-string">id="hexo-blog-encrypt"</span> <span class="hljs-string">data-wpm="&#123;&#123;hbeWrongPassMessage&#125;&#125;"</span> <span class="hljs-string">data-whm="&#123;&#123;hbeWrongHashMessage&#125;&#125;"&gt;&lt;div</span> <span class="hljs-string">class="hbe-input-container"&gt;&lt;input</span> <span class="hljs-string">type="password"</span> <span class="hljs-string">id="hbePass"</span> <span class="hljs-string">placeholder="&#123;&#123;hbeMessage&#125;&#125;"</span> <span class="hljs-string">/&gt;&lt;label&gt;&#123;&#123;hbeMessage&#125;&#125;&lt;/label&gt;&lt;div</span> <span class="hljs-string">class="bottom-line"&gt;&lt;/div&gt;&lt;/div&gt;&lt;script</span> <span class="hljs-string">id="hbeData"</span> <span class="hljs-string">type="hbeData"</span> <span class="hljs-string">data-hmacdigest="&#123;&#123;hbeHmacDigest&#125;&#125;"&gt;&#123;&#123;hbeEncryptedData&#125;&#125;&lt;/script&gt;&lt;/div&gt;</span>
   <span class="hljs-attr">wrong_pass_message:</span> <span class="hljs-string">这个密码看着不太对,</span> <span class="hljs-string">请再试试.</span>
   <span class="hljs-attr">wrong_hash_message:</span> <span class="hljs-string">抱歉,</span> <span class="hljs-string">这个文章不能被校验,</span> <span class="hljs-string">不过您还是能看看解密后的内容.</span></code></pre></div>
-
 <p>以上就是配置文件的基础设置。</p>
-<h2 id="更换主题NexT"><a href="#更换主题NexT" class="headerlink" title="更换主题NexT"></a>更换主题NexT</h2><p>Hexo安装主题的方式非常简单，只需要将主题文件放置于站点目录的themes下，然后修改下配置文件即可。这里我以NexT主题为例。<br>在git bash操作下cd至博客根目录，执行如下代码：  </p>
+<h2 id="更换主题NexT">更换主题NexT</h2>
+<p>Hexo安装主题的方式非常简单，只需要将主题文件放置于站点目录的themes下，然后修改下配置文件即可。这里我以NexT主题为例。<br>
+在git bash操作下cd至博客根目录，执行如下代码：</p>
 <p><code>git clone https://github.com/iissnan/hexo-theme-next themes/next</code></p>
-<p>等待下载完成后，修改根目录下_config.yml文件的theme字段为next即可启用NexT主题，十分简单便捷。<br>其它具体设置可参照<a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT官方文档</a>。</p>
-<h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><p>cd至blog根目录。  </p>
+<p>等待下载完成后，修改根目录下_config.yml文件的theme字段为next即可启用NexT主题，十分简单便捷。<br>
+其它具体设置可参照<a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT官方文档</a>。</p>
+<h2 id="安装插件">安装插件</h2>
+<p>cd至blog根目录。</p>
 <div class="hljs"><pre><code class="hljs yml"><span class="hljs-string">npm</span> <span class="hljs-string">install</span> <span class="hljs-string">hexo-generator-searchdb</span> <span class="hljs-string">--save</span>  <span class="hljs-comment">#搜索插件</span>
 <span class="hljs-string">npm</span> <span class="hljs-string">install</span> <span class="hljs-string">--save</span> <span class="hljs-string">hexo-generator-feed</span>   <span class="hljs-comment">#RSS插件</span>
 <span class="hljs-string">npm</span> <span class="hljs-string">install</span> <span class="hljs-string">hexo-wordcount</span> <span class="hljs-string">--save</span>   <span class="hljs-comment">#字符统计及阅读时长估计</span>
@@ -513,7 +517,7 @@
       order: 'random',
       theme: '#b7daff',
       preload: 'none',
-      audio: [{"name":"name","artist":"artist","url":"/songs/test.mp3","cover":"/img/cover.jpg"},{"name":"name","artist":"artist","url":"https://...url.mp3","cover":"https://...cover.jpg"}]
+      audio: [{"name":"灰色空间","artist":"罗志祥","url":"http://m10.music.126.net/20200507194451/1f5ceb4bc7c35eb98e8e8d8dfc2c7965/ymusic/23ea/f09a/9580/62a0487f39b8eed528e329b362d762f6.mp3","cover":"http://p1.music.126.net/bh3MaI0b6tspbAx0h8BY2Q==/63771674428576.jpg"}]
     });
   }
 </script>

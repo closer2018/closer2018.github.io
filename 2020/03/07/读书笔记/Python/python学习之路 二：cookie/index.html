@@ -153,7 +153,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    316 字
+                    317 字
                   </span>
                 
 
@@ -205,20 +205,27 @@
               </p>
             
             <article class="markdown-body">
-              <h2 id="一：-查看cookie"><a href="#一：-查看cookie" class="headerlink" title="一： 查看cookie"></a>一： 查看cookie</h2><ol>
-<li>查看cookie的方法：按下F12打开开发者工具。<br>在<code>network</code>中可以看到请求发送的信息，在返回头中，会带有服务器提供的设置cookie的信息。<br>在<code>application</code>当中，可以看到相应网站的所有cookie，并不是只有登录信息，也不是所有的网站都有cookie。</li>
-<li>http协议是一个无状态的协议，用到cookie和session来保存访问中的一些状态。<br>cookie和session都是由服务器生成的，cookie将保存在浏览器的本地，session记录在服务端。</li>
-<li>cookie的几大属性<ul>
+              <h2 id="一：-查看cookie">一： 查看cookie</h2>
+<ol>
+<li>查看cookie的方法：按下F12打开开发者工具。<br>
+在<code>network</code>中可以看到请求发送的信息，在返回头中，会带有服务器提供的设置cookie的信息。<br>
+在<code>application</code>当中，可以看到相应网站的所有cookie，并不是只有登录信息，也不是所有的网站都有cookie。</li>
+<li>http协议是一个无状态的协议，用到cookie和session来保存访问中的一些状态。<br>
+cookie和session都是由服务器生成的，cookie将保存在浏览器的本地，session记录在服务端。</li>
+<li>cookie的几大属性
+<ul>
 <li>name：名字（键），cookie的必须字段。</li>
 <li>value：值。</li>
 <li>domain：域。cookie的作用域名。</li>
-<li>path：表示路径。/表示当前域名下所有的网页都能使用该cookie。<br>domain和path结合在一起，限定了cookie的适用范围。</li>
+<li>path：表示路径。/表示当前域名下所有的网页都能使用该cookie。<br>
+domain和path结合在一起，限定了cookie的适用范围。</li>
 <li>expires：生命周期。限定cookie的使用时间。如果生命周期为Session的，表示只在当前这次会话中cookie有效，关闭浏览器之后立即失效。</li>
 <li>sessionID：本次访问的会话留下的ID号。</li>
 </ul>
 </li>
 </ol>
-<h2 id="二：-用selenium操作"><a href="#二：-用selenium操作" class="headerlink" title="二： 用selenium操作"></a>二： 用selenium操作</h2><p>通过<code>driver.add_cookie(my_cookie)</code>的方法，加载cookie，在浏览器向服务端发起请求时带上cookie进行访问。</p>
+<h2 id="二：-用selenium操作">二： 用selenium操作</h2>
+<p>通过<code>driver.add_cookie(my_cookie)</code>的方法，加载cookie，在浏览器向服务端发起请求时带上cookie进行访问。</p>
 <p>通过<code>driver.getcookie()</code>的方法，获取cookie。</p>
 
             </article>
@@ -386,7 +393,7 @@
       order: 'random',
       theme: '#b7daff',
       preload: 'none',
-      audio: [{"name":"name","artist":"artist","url":"/songs/test.mp3","cover":"/img/cover.jpg"},{"name":"name","artist":"artist","url":"https://...url.mp3","cover":"https://...cover.jpg"}]
+      audio: [{"name":"灰色空间","artist":"罗志祥","url":"http://m10.music.126.net/20200507194451/1f5ceb4bc7c35eb98e8e8d8dfc2c7965/ymusic/23ea/f09a/9580/62a0487f39b8eed528e329b362d762f6.mp3","cover":"http://p1.music.126.net/bh3MaI0b6tspbAx0h8BY2Q==/63771674428576.jpg"}]
     });
   }
 </script>

@@ -205,30 +205,30 @@
               </p>
             
             <article class="markdown-body">
-              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有时候会遇到Linux的源更新速度非常的缓慢，特别是在国内使用默认的源，因为国内的网络环境，经常会出现无法更新，更新缓慢的情况。在这种情况下，更换一个更适合或者说更近，更快的软件源，会为你的Linux安装更新操作更加的流畅和顺利。</p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p><strong>系统要求</strong>：<code>CentOS 5+</code>、<code>Ubuntu 14.04+</code>、<code>Debian 7+</code></p>
+              <h2 id="前言">前言</h2>
+<p>有时候会遇到Linux的源更新速度非常的缓慢，特别是在国内使用默认的源，因为国内的网络环境，经常会出现无法更新，更新缓慢的情况。在这种情况下，更换一个更适合或者说更近，更快的软件源，会为你的Linux安装更新操作更加的流畅和顺利。</p>
+<h2 id="使用">使用</h2>
+<p><strong>系统要求</strong>：<code>CentOS 5+</code>、<code>Ubuntu 14.04+</code>、<code>Debian 7+</code></p>
 <p>使用命令：</p>
 <div class="hljs"><pre><code class="hljs sh"><span class="hljs-comment">#下载脚本</span>
 wget git.io/superupdate.sh
 <span class="hljs-comment">#运行脚本</span>
 bash superupdate.sh</code></pre></div>
-
 <p>如果第一步你出现错误或执行后无任何输出，请检查是否安装<code>wget</code>和<code>ca-certificates</code>，使用命令：</p>
 <div class="hljs"><pre><code class="hljs sh"><span class="hljs-comment">#Debian、Ubuntu</span>
 apt-get install -y wget &amp;&amp; apt-get install -y ca-certificates
 <span class="hljs-comment">#CentOS</span>
 yum install -y wget &amp;&amp; yum install -y ca-certificates</code></pre></div>
-
 <p>对于Debian默认换源为<code>Fastly CDN</code>的<code>mirror</code>这个源有<code>Fastly</code>的加持对境外主机都有不错的速度。对于<code>Ubuntu</code>和 <code>CentOS</code>系统都默认换为阿里云的<code>mirror</code>，这个源有阿里云全球CDN的加持，全球都有不错的速度。</p>
-<h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><p>对于<code>Debian</code>系统还设置了四套其他的源，<code>阿里云</code>，<code>CloudFront CDN</code>，<code>网易163</code>，<code>中科大的源</code>，请根据需要使用参数一键设置如：</p>
+<h2 id="进阶">进阶</h2>
+<p>对于<code>Debian</code>系统还设置了四套其他的源，<code>阿里云</code>，<code>CloudFront CDN</code>，<code>网易163</code>，<code>中科大的源</code>，请根据需要使用参数一键设置如：</p>
 <div class="hljs"><pre><code class="hljs sh">bash superupdate.sh cn
 bash superupdate.sh 163
 bash superupdate.sh aliyun
 bash superupdate.sh aws</code></pre></div>
-
-<h2 id="还原"><a href="#还原" class="headerlink" title="还原"></a>还原</h2><p>如果配置的文件不满意，一键还原</p>
+<h2 id="还原">还原</h2>
+<p>如果配置的文件不满意，一键还原</p>
 <div class="hljs"><pre><code class="hljs sh">bash superupdate.sh restore</code></pre></div>
-
 <p><strong><a href="https://www.moerats.com/archives/784/" target="_blank" rel="noopener">文章出处</a></strong></p>
 
             </article>
@@ -394,7 +394,7 @@ bash superupdate.sh aws</code></pre></div>
       order: 'random',
       theme: '#b7daff',
       preload: 'none',
-      audio: [{"name":"name","artist":"artist","url":"/songs/test.mp3","cover":"/img/cover.jpg"},{"name":"name","artist":"artist","url":"https://...url.mp3","cover":"https://...cover.jpg"}]
+      audio: [{"name":"灰色空间","artist":"罗志祥","url":"http://m10.music.126.net/20200507194451/1f5ceb4bc7c35eb98e8e8d8dfc2c7965/ymusic/23ea/f09a/9580/62a0487f39b8eed528e329b362d762f6.mp3","cover":"http://p1.music.126.net/bh3MaI0b6tspbAx0h8BY2Q==/63771674428576.jpg"}]
     });
   }
 </script>

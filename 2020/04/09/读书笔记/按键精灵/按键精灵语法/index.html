@@ -206,7 +206,9 @@
             
             <article class="markdown-body">
               <p>windows或者Android(需要root权限)下按键精灵有时候写一些简单的脚本还是挺好用的。没有最好的语言，只有最适合的工具。在此记录下常用的基本语法。</p>
-<h2 id="句柄及后台运行"><a href="#句柄及后台运行" class="headerlink" title="句柄及后台运行"></a>句柄及后台运行</h2><p>句柄可以获取后台窗口的类名或者标题，以达到获取坐标或后台运行脚本的目的。<br><strong>后台只支持部分窗口，以实际测试为准。</strong></p>
+<h2 id="句柄及后台运行">句柄及后台运行</h2>
+<p>句柄可以获取后台窗口的类名或者标题，以达到获取坐标或后台运行脚本的目的。<br>
+<strong>后台只支持部分窗口，以实际测试为准。</strong></p>
 <p>句柄的类名或者标题，可以用按键精灵自带的抓抓工具抓取。</p>
 <div class="hljs"><pre><code class="hljs vb">//声明窗口句柄变量，窗口大小变量
 Dim Hwnd, sRect
@@ -273,8 +275,8 @@ For i=0 To 5
     x = 488
     y = y + 30
 Next</code></pre></div>
-
-<h2 id="带GUI的脚本"><a href="#带GUI的脚本" class="headerlink" title="带GUI的脚本"></a>带GUI的脚本</h2><p>先要在界面画出窗体（form）及各种输入框，下拉框，标签，按钮等。。。</p>
+<h2 id="带GUI的脚本">带GUI的脚本</h2>
+<p>先要在界面画出窗体（form）及各种输入框，下拉框，标签，按钮等。。。</p>
 <p>下面是QQ后台刷屏脚本，先画4个标签，4个输入框，1个下拉框，1个按钮</p>
 <div class="hljs"><pre><code class="hljs VB">//事件：form是窗体，load是加载，定义下拉框属性
 Event Form1.Load
@@ -313,8 +315,8 @@ Event Form1.Button1.Click
         Delay rate
     Wend
 End Event</code></pre></div>
-
-<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><div class="hljs"><pre><code class="hljs VB">DimEnv T1
+<h2 id="多线程">多线程</h2>
+<div class="hljs"><pre><code class="hljs VB">DimEnv T1
 DimEnv T2
 Call start_1
 Sub start_1
@@ -388,8 +390,8 @@ Sub stop
         End If
     Wend
 End Sub</code></pre></div>
-
-<h2 id="一个简单的脚本示例"><a href="#一个简单的脚本示例" class="headerlink" title="一个简单的脚本示例"></a>一个简单的脚本示例</h2><div class="hljs"><pre><code class="hljs VB">//声明窗口句柄变量
+<h2 id="一个简单的脚本示例">一个简单的脚本示例</h2>
+<div class="hljs"><pre><code class="hljs VB">//声明窗口句柄变量
 Dim Hwnd, sRect
 Dim Array
 //下面这句是查找窗口类名("Notepad")或者标题(0),返回找到的句柄Hwnd
@@ -551,8 +553,8 @@ ElseIf Var0 = 4 Then
 ElseIf  Var0 = 5 Then
     Call autoDuanZao()
 End If</code></pre></div>
-
-<h2 id="参考视频"><a href="#参考视频" class="headerlink" title="参考视频"></a>参考视频</h2><p><a href="https://space.bilibili.com/3196036/channel/detail?cid=100704" target="_blank" rel="noopener">https://space.bilibili.com/3196036/channel/detail?cid=100704</a></p>
+<h2 id="参考视频">参考视频</h2>
+<p><a href="https://space.bilibili.com/3196036/channel/detail?cid=100704" target="_blank" rel="noopener">https://space.bilibili.com/3196036/channel/detail?cid=100704</a></p>
 
             </article>
             <hr>
@@ -708,7 +710,7 @@ End If</code></pre></div>
       order: 'random',
       theme: '#b7daff',
       preload: 'none',
-      audio: [{"name":"name","artist":"artist","url":"/songs/test.mp3","cover":"/img/cover.jpg"},{"name":"name","artist":"artist","url":"https://...url.mp3","cover":"https://...cover.jpg"}]
+      audio: [{"name":"灰色空间","artist":"罗志祥","url":"http://m10.music.126.net/20200507194451/1f5ceb4bc7c35eb98e8e8d8dfc2c7965/ymusic/23ea/f09a/9580/62a0487f39b8eed528e329b362d762f6.mp3","cover":"http://p1.music.126.net/bh3MaI0b6tspbAx0h8BY2Q==/63771674428576.jpg"}]
     });
   }
 </script>

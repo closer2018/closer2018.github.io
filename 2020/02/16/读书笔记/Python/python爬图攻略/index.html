@@ -205,16 +205,25 @@
               </p>
             
             <article class="markdown-body">
-              <h2 id="一：-软件工具"><a href="#一：-软件工具" class="headerlink" title="一： 软件工具"></a>一： 软件工具</h2><h3 id="1-1-Python3"><a href="#1-1-Python3" class="headerlink" title="1.1 Python3"></a>1.1 Python3</h3><p>这里选择的是最新版 Python3<br>安装教程这里推荐：<a href="http://www.runoob.com/python3/python3-install.html" target="_blank" rel="noopener">http://www.runoob.com/python3/python3-install.html</a><br>win下载地址：<a href="https://www.python.org/downloads/windows" target="_blank" rel="noopener">https://www.python.org/downloads/windows</a><br>Linux下载地址：<a href="https://www.python.org/downloads/source" target="_blank" rel="noopener">https://www.python.org/downloads/source</a>  <a id="more"></a></p>
-<h3 id="1-2-PyCharm"><a href="#1-2-PyCharm" class="headerlink" title="1.2 PyCharm"></a>1.2 PyCharm</h3><p>可视化开发工具IDE：<a href="https://www.jetbrains.com/pycharm/download/" target="_blank" rel="noopener">https://www.jetbrains.com/pycharm/download/</a></p>
-<h2 id="二：原理"><a href="#二：原理" class="headerlink" title="二：原理"></a>二：原理</h2><h3 id="2-1-实现步骤"><a href="#2-1-实现步骤" class="headerlink" title="2.1 实现步骤"></a>2.1 实现步骤</h3><p>以图片为例，其实很简单，分以下四步：</p>
+              <h2 id="一：-软件工具">一： 软件工具</h2>
+<h3 id="1-1-Python3">1.1 Python3</h3>
+<p>这里选择的是最新版 Python3<br>
+安装教程这里推荐：<a href="http://www.runoob.com/python3/python3-install.html" target="_blank" rel="noopener">http://www.runoob.com/python3/python3-install.html</a><br>
+win下载地址：<a href="https://www.python.org/downloads/windows" target="_blank" rel="noopener">https://www.python.org/downloads/windows</a><br>
+Linux下载地址：<a href="https://www.python.org/downloads/source" target="_blank" rel="noopener">https://www.python.org/downloads/source</a>  <a id="more"></a></p>
+<h3 id="1-2-PyCharm">1.2 PyCharm</h3>
+<p>可视化开发工具IDE：<a href="https://www.jetbrains.com/pycharm/download/" target="_blank" rel="noopener">https://www.jetbrains.com/pycharm/download/</a></p>
+<h2 id="二：原理">二：原理</h2>
+<h3 id="2-1-实现步骤">2.1 实现步骤</h3>
+<p>以图片为例，其实很简单，分以下四步：</p>
 <ul>
 <li>获取首页的页码数，并创建与页码对应的文件夹</li>
 <li>获取页面的栏目地址</li>
 <li>进入栏目，获取栏目页码数(每个栏目下有多张图片，分页显示)</li>
 <li>获取到栏目下对用标签容器中的图片并下载</li>
 </ul>
-<h3 id="2-2-注意事项"><a href="#2-2-注意事项" class="headerlink" title="2.2 注意事项"></a>2.2 注意事项</h3><p>这里以爬取某个网站的套路为例，详细见代码，这里主要说以下几点注意事项：  </p>
+<h3 id="2-2-注意事项">2.2 注意事项</h3>
+<p>这里以爬取某个网站的套路为例，详细见代码，这里主要说以下几点注意事项：</p>
 <p>1）导库，其实就类似于Java中框架或者是工具类，底层都被封装好了</p>
 <p>安装第三方库：</p>
 <div class="hljs"><pre><code class="hljs py"><span class="hljs-comment"># Win下直接装的 python3</span>
@@ -223,7 +232,6 @@ pip install requests -i https://pypi.tuna.tsinghua.edu.cn/simple
 <span class="hljs-comment"># Linux python2 python3 共存</span>
 pip3 install BeautifulSoup4 -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip3 install requests -i https://pypi.tuna.tsinghua.edu.cn/simple</code></pre></div>
-
 <p>导入第三方库：</p>
 <div class="hljs"><pre><code class="hljs py"><span class="hljs-comment"># 导入requests库</span>
 <span class="hljs-keyword">import</span> requests
@@ -237,11 +245,9 @@ pip3 install requests -i https://pypi.tuna.tsinghua.edu.cn/simple</code></pre></
 <span class="hljs-comment"># Python 3.x 解决中文编码问题</span>
 <span class="hljs-keyword">import</span> importlib
 importlib.reload(sys)</code></pre></div>
-
 <p>2）定义方法函数，一个爬虫可能会几百行，所以尽量不要写成一坨</p>
 <div class="hljs"><pre><code class="hljs py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">download</span><span class="hljs-params">(page_no, file_path)</span>:</span>
     <span class="hljs-comment"># 这里写代码逻辑</span></code></pre></div>
-
 <p>3）定义全局变量</p>
 <div class="hljs"><pre><code class="hljs py"><span class="hljs-comment"># 给请求指定一个请求头来模拟chrome浏览器</span>
 <span class="hljs-keyword">global</span> headers <span class="hljs-comment"># 告诉编译器这是全局变量 headers </span>
@@ -250,12 +256,10 @@ headers = &#123;<span class="hljs-string">'User-Agent'</span>: <span class="hljs
 <span class="hljs-comment"># 函数内使用之前需要</span>
 <span class="hljs-comment"># 告诉编译器我在这个方法中使用的a是刚才定义的全局变量 headers ，而不是方法内部的局部变量。</span>
 <span class="hljs-keyword">global</span> headers</code></pre></div>
-
 <p>4）防盗链</p>
 <p>有些网站加入了防盗链，无所不能的 python  解决方案：</p>
 <div class="hljs"><pre><code class="hljs py">headers = &#123;<span class="hljs-string">'Referer'</span>: href&#125;
 img = requests.get(url, headers=headers)</code></pre></div>
-
 <p>5）切换版本</p>
 <p>Linux服务器使用的是阿里云服务器（centos7.4），默认版本 python2，python3 自行安装</p>
 <div class="hljs"><pre><code class="hljs py">[root@AY140216131049Z mzitu]<span class="hljs-comment"># python2 -V</span>
@@ -269,21 +273,21 @@ Python <span class="hljs-number">2.7</span><span class="hljs-number">.5</span>
 [root@AY140216131049Z mzitu]<span class="hljs-comment"># alias python='/usr/local/bin/python3.7'</span>
 [root@AY140216131049Z mzitu]<span class="hljs-comment"># python -V</span>
 Python <span class="hljs-number">3.7</span><span class="hljs-number">.1</span></code></pre></div>
-
 <p>6）异常捕获</p>
 <p>在爬取的过程中可能存在异常页面，这里我们进行捕获，不影响后续操作：</p>
 <div class="hljs"><pre><code class="hljs py"><span class="hljs-keyword">try</span>:
     <span class="hljs-comment"># 业务逻辑</span>
 <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:
    print(e)</code></pre></div>
-
-<h3 id="2-3-执行脚本"><a href="#2-3-执行脚本" class="headerlink" title="2.3 执行脚本"></a>2.3 执行脚本</h3><div class="hljs"><pre><code class="hljs py">python3 mzitu.py
+<h3 id="2-3-执行脚本">2.3 执行脚本</h3>
+<div class="hljs"><pre><code class="hljs py">python3 mzitu.py
 
 <span class="hljs-comment"># 或者后台执行</span>
 
 nohup python3 -u mzitu.py &gt; mzitu.log <span class="hljs-number">2</span>&gt;&amp;<span class="hljs-number">1</span> &amp;</code></pre></div>
-
-<h2 id="三：-源码"><a href="#三：-源码" class="headerlink" title="三： 源码"></a>三： 源码</h2><h3 id="3-1-win下代码"><a href="#3-1-win下代码" class="headerlink" title="3.1 win下代码"></a>3.1 win下代码</h3><div class="hljs"><pre><code class="hljs py"><span class="hljs-comment">#coding=utf-8</span>
+<h2 id="三：-源码">三： 源码</h2>
+<h3 id="3-1-win下代码">3.1 win下代码</h3>
+<div class="hljs"><pre><code class="hljs py"><span class="hljs-comment">#coding=utf-8</span>
 <span class="hljs-comment">#!/usr/bin/python</span>
 <span class="hljs-comment"># 导入requests库</span>
 <span class="hljs-keyword">import</span> requests
@@ -408,8 +412,8 @@ save_path = <span class="hljs-string">'D:\BeautifulPictures'</span>
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
     main()</code></pre></div>
-
-<h3 id="3-2-linux下代码"><a href="#3-2-linux下代码" class="headerlink" title="3.2 linux下代码"></a>3.2 linux下代码</h3><div class="hljs"><pre><code class="hljs py"><span class="hljs-comment">#coding=utf-8</span>
+<h3 id="3-2-linux下代码">3.2 linux下代码</h3>
+<div class="hljs"><pre><code class="hljs py"><span class="hljs-comment">#coding=utf-8</span>
 <span class="hljs-comment">#!/usr/bin/python</span>
 <span class="hljs-comment"># 导入requests库</span>
 <span class="hljs-keyword">import</span> requests
@@ -511,8 +515,8 @@ save_path = ​<span class="hljs-string">'/mnt/data/mzitu'</span>
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
     main()</code></pre></div>
-
-<h2 id="四：-参考文献"><a href="#四：-参考文献" class="headerlink" title="四： 参考文献"></a>四： 参考文献</h2><p><a href="https://gitee.com/52itstyle/Python" target="_blank" rel="noopener">小柒2012 / 从零学Python / Day01</a></p>
+<h2 id="四：-参考文献">四： 参考文献</h2>
+<p><a href="https://gitee.com/52itstyle/Python" target="_blank" rel="noopener">小柒2012 / 从零学Python / Day01</a></p>
 
             </article>
             <hr>
@@ -677,7 +681,7 @@ save_path = ​<span class="hljs-string">'/mnt/data/mzitu'</span>
       order: 'random',
       theme: '#b7daff',
       preload: 'none',
-      audio: [{"name":"name","artist":"artist","url":"/songs/test.mp3","cover":"/img/cover.jpg"},{"name":"name","artist":"artist","url":"https://...url.mp3","cover":"https://...cover.jpg"}]
+      audio: [{"name":"灰色空间","artist":"罗志祥","url":"http://m10.music.126.net/20200507194451/1f5ceb4bc7c35eb98e8e8d8dfc2c7965/ymusic/23ea/f09a/9580/62a0487f39b8eed528e329b362d762f6.mp3","cover":"http://p1.music.126.net/bh3MaI0b6tspbAx0h8BY2Q==/63771674428576.jpg"}]
     });
   }
 </script>

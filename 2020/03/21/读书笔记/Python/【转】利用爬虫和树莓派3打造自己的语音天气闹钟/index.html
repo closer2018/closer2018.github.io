@@ -208,7 +208,8 @@
               <blockquote>
 <p><a href="https://zhuanlan.zhihu.com/p/24983204?refer=woodenrobot" target="_blank" rel="noopener">原帖地址</a></p>
 </blockquote>
-<h2 id="一、-前期准备"><a href="#一、-前期准备" class="headerlink" title="一、 前期准备"></a>一、 前期准备</h2><ol>
+<h2 id="一、-前期准备">一、 前期准备</h2>
+<ol>
 <li>树莓派一个</li>
 <li>小音箱一对</li>
 </ol>
@@ -218,13 +219,13 @@
 <p>进入墨迹天气的页面，墨迹天气会根据你的ip加载相应地区的天气。</p>
 <p>这次我们主要抓取温度、天气、湿度、风力、空气质量和天气提示这几个数据。</p>
 <p>这种小爬虫我们就使用requests和BeautifulSoup这两个超级好用的库可以快速实现。</p>
-<h2 id="二、-环境"><a href="#二、-环境" class="headerlink" title="二、 环境"></a>二、 环境</h2><p>首先树莓派安装python3，python3-pip和requests、beautifulsoup4两个库及mplayer软件。</p>
+<h2 id="二、-环境">二、 环境</h2>
+<p>首先树莓派安装python3，python3-pip和requests、beautifulsoup4两个库及mplayer软件。</p>
 <div class="hljs"><pre><code class="hljs sh">sudo apt install python3 -y
 sudo apt install python3-pip -y
 pip3 install requests
 pip3 install beautifulsoup4
 sudo apt-get install mplayer -y</code></pre></div>
-
 <p>至于Requests和Beautiful Soup的用法这里就先不多说了，大家可以去看他们的中文文档。</p>
 <ol>
 <li><a href="https://zh_cn/en/master/zh_CN/latest/index/" target="_blank" rel="noopener">Requests中文wendnag</a></li>
@@ -235,8 +236,10 @@ sudo apt-get install mplayer -y</code></pre></div>
 <p><code>mplayer \xxx\xxx\xxx.mp3(绝对地址)</code></p>
 <p>如果是在线音乐也可以用mplayer直接通过URL播放：</p>
 <p><code>mplayer &quot;URl&quot;(URL外面一定要用双引号圈起来)</code></p>
-<h2 id="三、-文字转语音"><a href="#三、-文字转语音" class="headerlink" title="三、 文字转语音"></a>三、 文字转语音</h2><p>刚开始想通过python的库实现本地文字转语音，在windows系统下没有问题，但树莓派3上中文无法转换。后来就找到了百度的文字转换语音API，地址：<a href="http://yuyin.baidu.com/#try" target="_blank" rel="noopener">http://yuyin.baidu.com/#try</a></p>
-<p>还可以选各种声音，调节语速。虽然它没有给出直接的api接口，但是我们利用Chrome浏览器的开发者模式可以找到api。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E5%88%A9%E7%94%A8%E7%88%AC%E8%99%AB%E5%92%8C%E6%A0%91%E8%8E%93%E6%B4%BE%E6%89%93%E9%80%A0%E8%90%9D%E8%8E%89%E9%9F%B3%E5%A4%A9%E6%B0%94%E9%97%B9%E9%92%9F.png" srcset="/img/loading.gif" alt="百度语音识别"></p>
+<h2 id="三、-文字转语音">三、 文字转语音</h2>
+<p>刚开始想通过python的库实现本地文字转语音，在windows系统下没有问题，但树莓派3上中文无法转换。后来就找到了百度的文字转换语音API，地址：<a href="http://yuyin.baidu.com/#try" target="_blank" rel="noopener">http://yuyin.baidu.com/#try</a></p>
+<p>还可以选各种声音，调节语速。虽然它没有给出直接的api接口，但是我们利用Chrome浏览器的开发者模式可以找到api。<br>
+<img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E5%88%A9%E7%94%A8%E7%88%AC%E8%99%AB%E5%92%8C%E6%A0%91%E8%8E%93%E6%B4%BE%E6%89%93%E9%80%A0%E8%90%9D%E8%8E%89%E9%9F%B3%E5%A4%A9%E6%B0%94%E9%97%B9%E9%92%9F.png" srcset="/img/loading.gif" alt="百度语音识别"></p>
 <p>打开开发者模式，点击播放的按钮，在network里就可以找到刚刚发出的请求。</p>
 <p><a href="http://tts.baidu.com/text2audio?idx=1&amp;tex=1&amp;cuid=baidu_speech_demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=5&amp;per=4&amp;vol=5&amp;pit=5" target="_blank" rel="noopener">http://tts.baidu.com/text2audio?idx=1&amp;tex=1&amp;cuid=baidu_speech_demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=5&amp;per=4&amp;vol=5&amp;pit=5</a></p>
 <p>就我们要找的百度文字转语音API,其中per是参数是语音的类型，spd是语速，vol是音量，而tex则是需要转换的文字。通过以下代码就可以实现将特定的文字转换为语音。</p>
@@ -245,13 +248,12 @@ sudo apt-get install mplayer -y</code></pre></div>
 url = <span class="hljs-string">u'http://tts.baidu.com/text2audio?idx=1&amp;tex=&#123;0&#125;&amp;cuid=baidu_speech_'</span> \
       <span class="hljs-string">u'demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=4&amp;per=4&amp;vol=5&amp;pit=5'</span>.format(text)
 os.system(<span class="hljs-string">'mplayer "%s"'</span> % url)</code></pre></div>
-
-<h2 id="四、-代码"><a href="#四、-代码" class="headerlink" title="四、 代码"></a>四、 代码</h2><p>numtozh()函数专门转换数字为中文。最后所有的代码整合起来就是这样啦。</p>
+<h2 id="四、-代码">四、 代码</h2>
+<p>numtozh()函数专门转换数字为中文。最后所有的代码整合起来就是这样啦。</p>
 <div class="hljs"><pre><code class="hljs sh"><span class="hljs-comment"># 新建weather_voice.py文件</span>
 touch weather_voice.py
 <span class="hljs-comment"># 黏贴如下代码</span>
 nano weather_voice.py</code></pre></div>
-
 <div class="hljs"><pre><code class="hljs py"><span class="hljs-comment"># -*- coding: utf-8 -*-</span>
 <span class="hljs-comment"># !/usr/bin/python3</span>
 
@@ -357,8 +359,8 @@ headers = &#123;
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
     main()</code></pre></div>
-
-<h2 id="五、-定时任务"><a href="#五、-定时任务" class="headerlink" title="五、 定时任务"></a>五、 定时任务</h2><p>输入如下命令添加定时任务。</p>
+<h2 id="五、-定时任务">五、 定时任务</h2>
+<p>输入如下命令添加定时任务。</p>
 <p><code>crontab -e</code></p>
 <p>每天8点语音天气。假设你的<code>weather_voice.py</code>绝对路径为<code>/home/pi/Documents/weather_voice.py</code>，则文末添加一句：</p>
 <p><code>0 8 * * * /usr/bin/python3 /home/pi/Documents/weather_voice.py</code></p>
@@ -528,7 +530,7 @@ headers = &#123;
       order: 'random',
       theme: '#b7daff',
       preload: 'none',
-      audio: [{"name":"name","artist":"artist","url":"/songs/test.mp3","cover":"/img/cover.jpg"},{"name":"name","artist":"artist","url":"https://...url.mp3","cover":"https://...cover.jpg"}]
+      audio: [{"name":"灰色空间","artist":"罗志祥","url":"http://m10.music.126.net/20200507194451/1f5ceb4bc7c35eb98e8e8d8dfc2c7965/ymusic/23ea/f09a/9580/62a0487f39b8eed528e329b362d762f6.mp3","cover":"http://p1.music.126.net/bh3MaI0b6tspbAx0h8BY2Q==/63771674428576.jpg"}]
     });
   }
 </script>

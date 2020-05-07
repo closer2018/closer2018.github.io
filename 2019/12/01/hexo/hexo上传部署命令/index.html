@@ -205,15 +205,22 @@
               </p>
             
             <article class="markdown-body">
-              <h2 id="hexo上传部署三连杀命令-先cd进入git目录"><a href="#hexo上传部署三连杀命令-先cd进入git目录" class="headerlink" title="hexo上传部署三连杀命令(先cd进入git目录)"></a>hexo上传部署三连杀命令(先<code>cd</code>进入git目录)</h2><div class="hljs"><pre><code class="bash">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></pre></div>
+              <h2 id="hexo上传部署三连杀命令-先cd进入git目录">hexo上传部署三连杀命令(先<code>cd</code>进入git目录)</h2>
+<div class="hljs"><pre><code class="language-bash">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d
+</code></pre></div>
 <a id="more"></a>
+<h2 id="我们运行测试时，经常用到的有三个命令">我们运行测试时，经常用到的有三个命令</h2>
+<div class="hljs"><pre><code class="language-bash">hexo clean #用来清理缓存文件
+hexo g      #生成文件
+hexo  d   #上传到服务器
+</code></pre></div>
+<h2 id="本地检测时运行">本地检测时运行</h2>
+<div class="hljs"><pre><code class="language-bash">hexo s
+</code></pre></div>
+<p>然后打开浏览器，输入localhost:4000，就能看到博客了。<br>
+这样说明本地环境搭建完成。</p>
+<h2 id="特别感谢B站up主CodeSheep的帮助和细心指导">特别感谢<a href="https://space.bilibili.com/384068749/" target="_blank" rel="noopener">B站up主CodeSheep</a>的帮助和细心指导</h2>
 
-<h2 id="我们运行测试时，经常用到的有三个命令"><a href="#我们运行测试时，经常用到的有三个命令" class="headerlink" title="我们运行测试时，经常用到的有三个命令"></a>我们运行测试时，经常用到的有三个命令</h2><div class="hljs"><pre><code class="bash">hexo clean <span class="comment">#用来清理缓存文件</span>
-hexo g      <span class="comment">#生成文件</span>
-hexo  d   <span class="comment">#上传到服务器</span></code></pre></div>
-<h2 id="本地检测时运行"><a href="#本地检测时运行" class="headerlink" title="本地检测时运行"></a>本地检测时运行</h2><div class="hljs"><pre><code class="bash">hexo s</code></pre></div>
-<p>然后打开浏览器，输入localhost:4000，就能看到博客了。<br>这样说明本地环境搭建完成。</p>
-<h2 id="特别感谢B站up主CodeSheep的帮助和细心指导"><a href="#特别感谢B站up主CodeSheep的帮助和细心指导" class="headerlink" title="特别感谢B站up主CodeSheep的帮助和细心指导"></a>特别感谢<a href="https://space.bilibili.com/384068749/" target="_blank" rel="noopener">B站up主CodeSheep</a>的帮助和细心指导</h2>
             </article>
             <hr>
             <div>
@@ -375,7 +382,7 @@ hexo  d   <span class="comment">#上传到服务器</span></code></pre></div>
       order: 'random',
       theme: '#b7daff',
       preload: 'none',
-      audio: [{"name":"name","artist":"artist","url":"/songs/test.mp3","cover":"/img/cover.jpg"},{"name":"name","artist":"artist","url":"https://...url.mp3","cover":"https://...cover.jpg"}]
+      audio: [{"name":"灰色空间","artist":"罗志祥","url":"http://m10.music.126.net/20200507194451/1f5ceb4bc7c35eb98e8e8d8dfc2c7965/ymusic/23ea/f09a/9580/62a0487f39b8eed528e329b362d762f6.mp3","cover":"http://p1.music.126.net/bh3MaI0b6tspbAx0h8BY2Q==/63771674428576.jpg"}]
     });
   }
 </script>
