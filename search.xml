@@ -1,6 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>爬虫实战</title>
+    <url>/2020/05/12/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98/</url>
+    <content><![CDATA[<h2 id="1-豆瓣影讯"><a href="#1-豆瓣影讯" class="headerlink" title="1. 豆瓣影讯"></a>1. 豆瓣影讯</h2><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/python3</span>
+<span class="hljs-comment"># -*- coding: utf-8 -*-</span>
+<span class="hljs-keyword">from</span> lxml <span class="hljs-keyword">import</span> etree
+<span class="hljs-keyword">import</span> requests
+
+<span class="hljs-comment">## 1.获取目标网站源码</span>
+headers = &#123;
+    <span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"</span>,
+    <span class="hljs-string">'Referer'</span>: <span class="hljs-string">"https://cn.bing.com/"</span>
+&#125;
+
+url = <span class="hljs-string">'https://movie.douban.com/cinema/nowplaying/beijing/'</span>
+res = requests.get(url, headers=headers)
+
+<span class="hljs-comment"># 网页源码存为text</span>
+text = res.text
+
+<span class="hljs-comment"># response.text 返回的是Unicode格式的数据</span>
+<span class="hljs-comment"># response.content返回的字节流数据，是bytes类型</span>
+
+
+<span class="hljs-comment">## 2. 按一定规则提取数据</span>
+
+<span class="hljs-comment"># 从字符串常量解析HTML文档。</span>
+html = etree.HTML(text)
+
+<span class="hljs-comment"># 获取正在上映[0],即将上映[1]。通过xpath表达式来定位class='lists'</span>
+ul = html.xpath(<span class="hljs-string">"//ul[@class='lists']"</span>)[<span class="hljs-number">0</span>]
+
+<span class="hljs-comment"># print(etree.tostring(ul, encoding='utf-8').decode('utf-8'))</span>
+
+<span class="hljs-comment"># 通过xpath表达式来定位li标签，存为lis列表</span>
+lis = ul.xpath(<span class="hljs-string">"./li"</span>)
+
+<span class="hljs-comment">#构建movies字典</span>
+movies = []
+
+<span class="hljs-keyword">for</span> li <span class="hljs-keyword">in</span> lis:
+    <span class="hljs-comment"># print(etree.tostring(li, encoding='utf-8').decode('utf-8'))</span>
+    title = li.xpath(<span class="hljs-string">"@data-title"</span>)
+    score = li.xpath(<span class="hljs-string">"@data-score"</span>)
+    duration = li.xpath(<span class="hljs-string">"@data-duration"</span>)
+    region = li.xpath(<span class="hljs-string">"@data-region"</span>)
+    direcotr = li.xpath(<span class="hljs-string">"@data-direcotr"</span>)
+    actors = li.xpath(<span class="hljs-string">"@data-actors"</span>)
+    thumbnail = li.xpath(<span class="hljs-string">".//img/@src"</span>)
+    movie = &#123;
+        <span class="hljs-string">'title'</span>: title,
+        <span class="hljs-string">'score'</span>: score,
+        <span class="hljs-string">'duration'</span>: duration,
+        <span class="hljs-string">'region'</span>: region,
+        <span class="hljs-string">'direcotr'</span>: direcotr,
+        <span class="hljs-string">'actors'</span>: actors,
+        <span class="hljs-string">'thumbnail'</span>: thumbnail
+    &#125;
+    movies.append(movie)
+
+<span class="hljs-keyword">for</span> movie <span class="hljs-keyword">in</span> movies:
+    print(movie)</code></pre></div><h2 id="2-电影天堂"><a href="#2-电影天堂" class="headerlink" title="2. 电影天堂"></a>2. 电影天堂</h2><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/python3</span>
+<span class="hljs-comment"># -*- coding: utf-8 -*-</span>
+<span class="hljs-keyword">from</span> lxml <span class="hljs-keyword">import</span> etree
+<span class="hljs-keyword">import</span> requests
+
+BASE_DOMAIN = <span class="hljs-string">'https://dytt8.net'</span>
+
+HEADERS = &#123;
+    <span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"</span>,
+    <span class="hljs-string">'Referer'</span>: <span class="hljs-string">"http://whois.chinaz.com/dytt8.net"</span>
+&#125;
+
+<span class="hljs-comment"># 获取每一部电影详情页的url</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_detail_urls</span><span class="hljs-params">(url)</span>:</span>
+    res = requests.get(url, headers=HEADERS)
+    <span class="hljs-comment"># requests库，会默认使用自己猜测得编码方式进行解码，有时会猜错，需要手动指定解码</span>
+    text = res.content.decode(<span class="hljs-string">'gbk'</span>, errors=<span class="hljs-string">'ignore'</span>)
+    html = etree.HTML(text)  <span class="hljs-comment"># &lt;Element html at 0x168712c4540&gt;</span>
+    detail_urls = html.xpath(<span class="hljs-string">"//table[@class='tbspan']//a/@href"</span>)
+
+    <span class="hljs-comment"># 注释掉得等同于下面得列表表达式</span>
+    <span class="hljs-comment"># def abc(url):</span>
+    <span class="hljs-comment">#     return BASE_DOMAIN+url</span>
+    <span class="hljs-comment"># index = 0</span>
+    <span class="hljs-comment"># for detail_url in detail_urls:</span>
+    <span class="hljs-comment">#     detail_url = abc(detail_url)</span>
+    <span class="hljs-comment">#     detail_urls[index] = detail_url</span>
+    <span class="hljs-comment">#     index += 1</span>
+
+    <span class="hljs-comment"># 列表表达式</span>
+    <span class="hljs-comment"># map() 会根据提供的函数对指定序列做映射。</span>
+    <span class="hljs-comment"># 处理详情页的url，获取的url加上BASE_DOMAIN才是正确的url</span>
+    detail_urls = map(<span class="hljs-keyword">lambda</span> url: BASE_DOMAIN + url, detail_urls)
+
+    <span class="hljs-keyword">return</span> detail_urls
+
+<span class="hljs-comment"># 解析详情页面</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse_detail_page</span><span class="hljs-params">(url)</span>:</span>
+    movie = &#123;&#125;
+    response = requests.get(url, headers=HEADERS)
+    text = response.content.decode(<span class="hljs-string">'gbk'</span>, errors=<span class="hljs-string">'ignore'</span>)
+    html = etree.HTML(text)
+    <span class="hljs-comment"># 标题，返回一个字典，加上0就正常了</span>
+    <span class="hljs-comment"># title = html.xpath("//div[@class='title_all']//font[@color='#07519a']/text()")[0]</span>
+    title = html.xpath(<span class="hljs-string">"//h1/font/text()"</span>)[<span class="hljs-number">0</span>]
+    movie[<span class="hljs-string">'title'</span>] = title
+    <span class="hljs-comment"># 海报</span>
+    zoomE = html.xpath(<span class="hljs-string">"//div[@id='Zoom']"</span>)[<span class="hljs-number">0</span>]
+    imgs = zoomE.xpath(<span class="hljs-string">".//img/@src"</span>)
+    cover = imgs[<span class="hljs-number">0</span>]
+    movie[<span class="hljs-string">'cover'</span>] = cover
+    <span class="hljs-comment"># 详情</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse_info</span><span class="hljs-params">(info, rule)</span>:</span>
+        <span class="hljs-keyword">return</span> info.replace(rule, <span class="hljs-string">""</span>).strip()
+    infos = zoomE.xpath(<span class="hljs-string">".//text()"</span>)
+    <span class="hljs-keyword">for</span> index, info <span class="hljs-keyword">in</span> enumerate(infos):
+        <span class="hljs-keyword">if</span> info.startswith(<span class="hljs-string">"◎年　　代"</span>):
+            <span class="hljs-comment"># 把'◎年　　代'替换掉，strip()消除year前后空格</span>
+            info = parse_info(info, <span class="hljs-string">"◎年　　代"</span>)
+            movie[<span class="hljs-string">'year'</span>] = info
+        <span class="hljs-keyword">elif</span> info.startswith(<span class="hljs-string">"◎产　　地"</span>):
+            info = parse_info(info, <span class="hljs-string">"◎产　　地"</span>)
+            movie[<span class="hljs-string">'country'</span>] = info
+        <span class="hljs-keyword">elif</span> info.startswith(<span class="hljs-string">"◎类　　别"</span>):
+            info = parse_info(info, <span class="hljs-string">"◎类　　别"</span>)
+            movie[<span class="hljs-string">'category'</span>] = info
+        <span class="hljs-keyword">elif</span> info.startswith(<span class="hljs-string">"◎豆瓣评分"</span>):
+            info = parse_info(info, <span class="hljs-string">"◎豆瓣评分"</span>)
+            movie[<span class="hljs-string">'douban_rating'</span>] = info
+        <span class="hljs-keyword">elif</span> info.startswith(<span class="hljs-string">"◎片　　长"</span>):
+            info = parse_info(info, <span class="hljs-string">"◎片　　长"</span>)
+            movie[<span class="hljs-string">'duration'</span>] = info
+        <span class="hljs-keyword">elif</span> info.startswith(<span class="hljs-string">"◎导　　演"</span>):
+            info = parse_info(info, <span class="hljs-string">"◎导　　演"</span>)
+            movie[<span class="hljs-string">'director'</span>] = info
+        <span class="hljs-keyword">elif</span> info.startswith(<span class="hljs-string">"◎主　　演"</span>):
+            info = parse_info(info, <span class="hljs-string">"◎主　　演"</span>)
+            actors = [info]
+            <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(index + <span class="hljs-number">1</span>, len(infos)):
+                actor = infos[x].strip()
+                <span class="hljs-keyword">if</span> actor.startswith(<span class="hljs-string">"◎"</span>):
+                    <span class="hljs-keyword">break</span>
+                actors.append(actor)
+            movie[<span class="hljs-string">'actors'</span>] = info
+        <span class="hljs-keyword">elif</span> info.startswith(<span class="hljs-string">"◎简　　介"</span>):
+            info = infos[index + <span class="hljs-number">1</span>].strip()
+            movie[<span class="hljs-string">"profile"</span>] = info
+    <span class="hljs-comment"># 下载地址</span>
+    downloadUrl = html.xpath(<span class="hljs-string">"//td[@bgcolor='#fdfddf']/a/text()"</span>)[<span class="hljs-number">0</span>]
+    movie[<span class="hljs-string">"downloadUrl"</span>] = downloadUrl
+    <span class="hljs-keyword">return</span> movie
+
+<span class="hljs-comment"># 爬取</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">spider</span><span class="hljs-params">()</span>:</span>
+    base_url = <span class="hljs-string">'https://dytt8.net/html/gndy/dyzz/list_23_&#123;&#125;.html'</span>
+    <span class="hljs-comment"># 获取1到n页</span>
+    movies = []
+    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>):
+        <span class="hljs-comment"># format 格式化函数 x替代&#123;&#125;</span>
+        url = base_url.format(x)
+        detail_urls = get_detail_urls(url)
+        <span class="hljs-comment"># 遍历详情页内信息</span>
+        <span class="hljs-keyword">for</span> detail_url <span class="hljs-keyword">in</span> detail_urls:
+            movie = parse_detail_page(detail_url)
+            movies.append(movie)
+            print(movie)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:
+    spider()</code></pre></div><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.bilibili.com/video/BV1aJ411C7oM" target="_blank" rel="noopener">Python爬虫教程</a></p>]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>爬图</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>计算机组成原理-读书笔记</title>
     <url>/2020/05/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[]]></content>
