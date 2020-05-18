@@ -3,7 +3,7 @@
   <entry>
     <title>爬虫实战</title>
     <url>/2020/05/12/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98/</url>
-    <content><![CDATA[<h2 id="一：-requests"><a href="#一：-requests" class="headerlink" title="一： requests"></a>一： requests</h2><h3 id="1-1-豆瓣影讯"><a href="#1-1-豆瓣影讯" class="headerlink" title="1.1 豆瓣影讯"></a>1.1 豆瓣影讯</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/python3</span>
+    <content><![CDATA[<h2 id="一：-requests"><a href="#一：-requests" class="headerlink" title="一： requests"></a>一： requests</h2><h3 id="1-1-豆瓣影讯之xpath"><a href="#1-1-豆瓣影讯之xpath" class="headerlink" title="1.1 豆瓣影讯之xpath"></a>1.1 豆瓣影讯之xpath</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/python3</span>
 <span class="hljs-comment"># -*- coding: utf-8 -*-</span>
 <span class="hljs-keyword">from</span> lxml <span class="hljs-keyword">import</span> etree
 <span class="hljs-keyword">import</span> requests
@@ -61,7 +61,7 @@ movies = []
     movies.append(movie)
 
 <span class="hljs-keyword">for</span> movie <span class="hljs-keyword">in</span> movies:
-    print(movie)</code></pre></div><h3 id="1-2-电影天堂"><a href="#1-2-电影天堂" class="headerlink" title="1.2 电影天堂"></a>1.2 电影天堂</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/python3</span>
+    print(movie)</code></pre></div><h3 id="1-2-电影天堂之xpath"><a href="#1-2-电影天堂之xpath" class="headerlink" title="1.2 电影天堂之xpath"></a>1.2 电影天堂之xpath</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/python3</span>
 <span class="hljs-comment"># -*- coding: utf-8 -*-</span>
 <span class="hljs-keyword">from</span> lxml <span class="hljs-keyword">import</span> etree
 <span class="hljs-keyword">import</span> requests
@@ -169,7 +169,7 @@ HEADERS = &#123;
             print(movie)
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:
-    spider()</code></pre></div><h3 id="1-3-古诗文"><a href="#1-3-古诗文" class="headerlink" title="1.3 古诗文"></a>1.3 古诗文</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/python3</span>
+    spider()</code></pre></div><h3 id="1-3-古诗文之正则表达式re"><a href="#1-3-古诗文之正则表达式re" class="headerlink" title="1.3 古诗文之正则表达式re"></a>1.3 古诗文之正则表达式re</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/python3</span>
 <span class="hljs-comment"># -*- coding: utf-8 -*-</span>
 <span class="hljs-keyword">import</span> requests
 <span class="hljs-keyword">import</span> re
@@ -215,7 +215,119 @@ HEADERS = &#123;
         parse_page(url)
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
-    main()</code></pre></div><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.bilibili.com/video/BV1aJ411C7oM" target="_blank" rel="noopener">Python爬虫教程</a></p>]]></content>
+    main()</code></pre></div><h2 id="二：-文件存储之json和csv"><a href="#二：-文件存储之json和csv" class="headerlink" title="二： 文件存储之json和csv"></a>二： 文件存储之json和csv</h2><h3 id="2-1-json"><a href="#2-1-json" class="headerlink" title="2.1 json"></a>2.1 json</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/python3</span>
+<span class="hljs-comment"># -*- coding: utf-8 -*-</span>
+<span class="hljs-keyword">import</span> json
+
+persons = [
+    &#123;
+        <span class="hljs-string">'name'</span>: <span class="hljs-string">'张三'</span>,
+        <span class="hljs-string">'age'</span>: <span class="hljs-number">20</span>,
+        <span class="hljs-string">'city'</span>: <span class="hljs-string">'beijing'</span>
+    &#125;,
+    &#123;
+        <span class="hljs-string">'name'</span>: <span class="hljs-string">'李四'</span>,
+        <span class="hljs-string">'age'</span>: <span class="hljs-number">20</span>,
+        <span class="hljs-string">'city'</span>: <span class="hljs-string">'shanghai'</span>
+    &#125;
+]
+<span class="hljs-comment"># 打印用dumps，存为json文件用dump，有中文则需指定ensure_ascii=False</span>
+print(json.dumps(persons, ensure_ascii=<span class="hljs-literal">False</span>))
+<span class="hljs-keyword">with</span> open(<span class="hljs-string">'persons.json'</span>, <span class="hljs-string">'w'</span>, encoding=<span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> fp:
+    json.dump(persons, fp, ensure_ascii=<span class="hljs-literal">False</span>)
+
+<span class="hljs-comment"># 读取json文件</span>
+<span class="hljs-keyword">with</span> open(<span class="hljs-string">'persons.json'</span>, <span class="hljs-string">'r'</span>, encoding=<span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> fp:
+    persons = json.load(fp)
+    print(persons)</code></pre></div><h3 id="2-2-csv"><a href="#2-2-csv" class="headerlink" title="2.2 csv"></a>2.2 csv</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/python3</span>
+<span class="hljs-comment"># -*- coding: utf-8 -*-</span>
+<span class="hljs-keyword">import</span> csv
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_list</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">with</span> open(<span class="hljs-string">'temp.csv'</span>, <span class="hljs-string">'r'</span>) <span class="hljs-keyword">as</span> fp:
+        <span class="hljs-comment"># reader是一个迭代器</span>
+        reader = csv.reader(fp)
+        <span class="hljs-comment"># 不获取第一行</span>
+        next(reader)
+        <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> reader:
+            time = x[<span class="hljs-number">1</span>]
+            volumn = x[<span class="hljs-number">-2</span>]
+            print(&#123;<span class="hljs-string">'time'</span>: time, <span class="hljs-string">'volumn'</span>: volumn&#125;)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_dict</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">with</span> open(<span class="hljs-string">'temp1.csv'</span>, <span class="hljs-string">'r'</span>) <span class="hljs-keyword">as</span> fp:
+        <span class="hljs-comment"># 不包含标题那行数据</span>
+        reader = csv.DictReader(fp)
+        <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> reader:
+            print(x)
+
+students = [<span class="hljs-string">'name'</span>, <span class="hljs-string">'age'</span>, <span class="hljs-string">'height'</span>]
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">write_list</span><span class="hljs-params">()</span>:</span>
+    values = [
+        &#123;<span class="hljs-string">'张三'</span>, <span class="hljs-number">18</span>, <span class="hljs-number">170</span>&#125;,
+        &#123;<span class="hljs-string">'李四'</span>, <span class="hljs-number">20</span>, <span class="hljs-number">180</span>&#125;
+    ]
+    <span class="hljs-comment"># newline='\n'为默认，连续多行则指定为空字符串</span>
+    <span class="hljs-keyword">with</span> open(<span class="hljs-string">"temp.csv"</span>, <span class="hljs-string">'w'</span>, encoding=<span class="hljs-string">'utf-8'</span>, newline=<span class="hljs-string">''</span>) <span class="hljs-keyword">as</span> fp:
+        writer = csv.writer(fp)
+        writer.writerow(students)
+        <span class="hljs-comment"># 写入多行</span>
+        writer.writerows(values)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">write_dict</span><span class="hljs-params">()</span>:</span>
+    values = [
+        &#123;<span class="hljs-string">'name'</span>:<span class="hljs-string">'张三'</span>, <span class="hljs-string">'age'</span>: <span class="hljs-number">18</span>, <span class="hljs-string">'height'</span>:<span class="hljs-number">170</span>&#125;,
+        &#123;<span class="hljs-string">'name'</span>:<span class="hljs-string">'李四'</span>, <span class="hljs-string">'age'</span>: <span class="hljs-number">19</span>, <span class="hljs-string">'height'</span>:<span class="hljs-number">190</span>&#125;
+    ]
+    <span class="hljs-keyword">with</span> open(<span class="hljs-string">"temp1.csv"</span>, <span class="hljs-string">'w'</span>, encoding=<span class="hljs-string">'utf-8'</span>, newline=<span class="hljs-string">''</span>) <span class="hljs-keyword">as</span> fp:
+        writer = csv.DictWriter(fp, students)
+        <span class="hljs-comment"># 写入表头数据的时候，需要调用writeheader方法</span>
+        writer.writeheader()
+        writer.writerows(values)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    main()</code></pre></div><h2 id="三：-操作MySQL和MongoDB"><a href="#三：-操作MySQL和MongoDB" class="headerlink" title="三： 操作MySQL和MongoDB"></a>三： 操作MySQL和MongoDB</h2><h3 id="3-1-MySQL"><a href="#3-1-MySQL" class="headerlink" title="3.1 MySQL"></a>3.1 MySQL</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/python3</span>
+<span class="hljs-comment"># -*- coding: utf-8 -*-</span>
+<span class="hljs-keyword">import</span> pymysql
+
+db = pymysql.connect(host=<span class="hljs-string">'192.168.2.4'</span>, user=<span class="hljs-string">'root'</span>, passwd=<span class="hljs-string">'root'</span>,
+                     db=<span class="hljs-string">'test'</span>, port=<span class="hljs-number">3306</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">insert_db</span><span class="hljs-params">(cursor)</span>:</span>
+    <span class="hljs-comment"># 如果是变量，必须都用%s</span>
+    sql = <span class="hljs-string">"""
+        insert into students(class_id,name,gender,score) values(%s,%s,%s,%s)
+    """</span>
+    class_id = <span class="hljs-string">'4'</span>;name = <span class="hljs-string">'小龙'</span>;gender = <span class="hljs-string">'M'</span>;score = <span class="hljs-string">'99'</span>
+    <span class="hljs-comment"># 执行sql语句</span>
+    cursor.execute(sql, (class_id, name, gender, score))
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">find_db</span><span class="hljs-params">(cursor)</span>:</span>
+    sql = <span class="hljs-string">"""select * from students"""</span>
+    cursor.execute(sql)
+    <span class="hljs-comment"># print(cursor.fetchall()[-1])</span>
+    result = cursor.fetchall()
+    <span class="hljs-keyword">for</span> temp <span class="hljs-keyword">in</span> result:
+        print(temp)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update_db</span><span class="hljs-params">(cursor)</span>:</span>
+    sql = <span class="hljs-string">"""update students set score='100' where name='小龙'"""</span>
+    cursor.execute(sql)
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">delete_db</span><span class="hljs-params">(cursor)</span>:</span>
+    sql = <span class="hljs-string">"""delete from students where name='小龙'"""</span>
+    cursor.execute(sql)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    cursor = db.cursor()
+    insert_db(cursor)
+    update_db(cursor)
+    delete_db(cursor)
+    find_db(cursor)
+    db.commit()
+    db.close()</code></pre></div><h3 id="3-2-MongoDB"><a href="#3-2-MongoDB" class="headerlink" title="3.2 MongoDB"></a>3.2 MongoDB</h3><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.bilibili.com/video/BV1aJ411C7oM" target="_blank" rel="noopener">Python爬虫教程</a></p>]]></content>
       <categories>
         <category>python</category>
       </categories>
@@ -2834,8 +2946,8 @@ headers = &#123;
         <category>树莓派</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>树莓派</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -2989,8 +3101,8 @@ bash basic-install.sh</code></pre></div><p>安装过程中，将会下载安装�
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>树莓派</tag>
         <tag>Linux</tag>
+        <tag>树莓派</tag>
       </tags>
   </entry>
   <entry>
@@ -4497,8 +4609,8 @@ install_redis 'http://download.redis.io/releases/' $1</code></pre></div><h3 id="
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>读书笔记</tag>
         <tag>Linux</tag>
+        <tag>读书笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -4693,8 +4805,8 @@ sudo apt install gulp</code></pre></div><p>然后<a href="https://github.com/may
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>读书笔记</tag>
         <tag>Linux</tag>
+        <tag>读书笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -5434,8 +5546,8 @@ unittest.main()</code></pre></div><p>使用 setUp() 来创建一个调查对象�
         <category>读书笔记</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>读书笔记</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
