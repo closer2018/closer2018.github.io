@@ -287,7 +287,7 @@ students = [<span class="hljs-string">'name'</span>, <span class="hljs-string">'
         writer.writerows(values)
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
-    main()</code></pre></div><h2 id="三：-操作MySQL和MongoDB"><a href="#三：-操作MySQL和MongoDB" class="headerlink" title="三： 操作MySQL和MongoDB"></a>三： 操作MySQL和MongoDB</h2><h3 id="3-1-MySQL"><a href="#3-1-MySQL" class="headerlink" title="3.1 MySQL"></a>3.1 MySQL</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/python3</span>
+    main()</code></pre></div><h2 id="三：-数据库操作之MySQL"><a href="#三：-数据库操作之MySQL" class="headerlink" title="三： 数据库操作之MySQL"></a>三： 数据库操作之MySQL</h2><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/python3</span>
 <span class="hljs-comment"># -*- coding: utf-8 -*-</span>
 <span class="hljs-keyword">import</span> pymysql
 
@@ -327,7 +327,111 @@ db = pymysql.connect(host=<span class="hljs-string">'192.168.2.4'</span>, user=<
     delete_db(cursor)
     find_db(cursor)
     db.commit()
-    db.close()</code></pre></div><h3 id="3-2-MongoDB"><a href="#3-2-MongoDB" class="headerlink" title="3.2 MongoDB"></a>3.2 MongoDB</h3><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.bilibili.com/video/BV1aJ411C7oM" target="_blank" rel="noopener">Python爬虫教程</a></p>]]></content>
+    db.close()</code></pre></div><h2 id="四：-多线程"><a href="#四：-多线程" class="headerlink" title="四： 多线程"></a>四： 多线程</h2><h3 id="4-1-多线程类操作"><a href="#4-1-多线程类操作" class="headerlink" title="4.1 多线程类操作"></a>4.1 多线程类操作</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/python3</span>
+<span class="hljs-comment"># -*- coding: utf-8 -*-</span>
+<span class="hljs-keyword">import</span> threading, time
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CodingThread</span><span class="hljs-params">(threading.Thread)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):
+            print(<span class="hljs-string">'正在写代码%s'</span> % threading.current_thread())
+            time.sleep(<span class="hljs-number">1</span>)
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DrawingThread</span><span class="hljs-params">(threading.Thread)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):
+            print(<span class="hljs-string">'正在画图%s'</span> % threading.current_thread())
+            time.sleep(<span class="hljs-number">1</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>
+    t1 = CodingThread()
+    t2 = DrawingThread()
+    t1.start()
+    t2.start()
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    main()</code></pre></div><h3 id="4-2-多线程加锁解锁"><a href="#4-2-多线程加锁解锁" class="headerlink" title="4.2 多线程加锁解锁"></a>4.2 多线程加锁解锁</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/python3</span>
+<span class="hljs-comment"># -*- coding: utf-8 -*-</span>
+<span class="hljs-keyword">import</span> threading
+
+VALUE = <span class="hljs-number">0</span>
+gLock = threading.Lock()
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_value</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">global</span> VALUE
+    <span class="hljs-comment"># 加锁</span>
+    gLock.acquire()
+    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">1000000</span>):
+        VALUE += <span class="hljs-number">1</span>
+    <span class="hljs-comment"># 解锁</span>
+    gLock.release()
+    print(<span class="hljs-string">'value: %d'</span> % VALUE)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">2</span>):
+        <span class="hljs-comment"># 注意函数名后面不要加括号，加上括号返回的则是函数的返回值</span>
+        t = threading.Thread(target=add_value)
+        t.start()
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    main()</code></pre></div><h3 id="4-3-Condition锁"><a href="#4-3-Condition锁" class="headerlink" title="4.3 Condition锁"></a>4.3 Condition锁</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> threading
+<span class="hljs-keyword">import</span> random
+<span class="hljs-keyword">import</span> time
+
+gMoney = <span class="hljs-number">1000</span>
+gCondition = threading.Condition()
+gTimes = <span class="hljs-number">0</span>
+gTotalTimes = <span class="hljs-number">5</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Producer</span><span class="hljs-params">(threading.Thread)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">global</span> gMoney
+        <span class="hljs-keyword">global</span> gCondition
+        <span class="hljs-keyword">global</span> gTimes
+        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+            money = random.randint(<span class="hljs-number">100</span>, <span class="hljs-number">1000</span>)
+            gCondition.acquire()
+            <span class="hljs-keyword">if</span> gTimes &gt;= gTotalTimes:
+                gCondition.release()
+                print(<span class="hljs-string">'当前生产者总共生产了%s次'</span> % gTimes)
+                <span class="hljs-keyword">break</span>
+            gMoney += money
+            print(<span class="hljs-string">'%s当前存入%s元钱，剩余%s元钱'</span> % (threading.current_thread(), money, gMoney))
+            gTimes += <span class="hljs-number">1</span>
+            time.sleep(<span class="hljs-number">0.5</span>)
+            gCondition.notify_all()
+            gCondition.release()
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Consumer</span><span class="hljs-params">(threading.Thread)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">global</span> gMoney
+        <span class="hljs-keyword">global</span> gCondition
+        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+            money = random.randint(<span class="hljs-number">100</span>, <span class="hljs-number">500</span>)
+            gCondition.acquire()
+            <span class="hljs-comment"># 这里要给个while循环判断，因为等轮到这个线程的时候</span>
+            <span class="hljs-comment"># 条件有可能又不满足了</span>
+            <span class="hljs-keyword">while</span> gMoney &lt; money:
+                <span class="hljs-keyword">if</span> gTimes &gt;= gTotalTimes:
+                    gCondition.release()
+                    <span class="hljs-keyword">return</span>
+                print(<span class="hljs-string">'%s准备取%s元钱，剩余%s元钱，不足！'</span> % (threading.current_thread(), money, gMoney))
+                gCondition.wait()
+            gMoney -= money
+            print(<span class="hljs-string">'%s当前取出%s元钱，剩余%s元钱'</span> % (threading.current_thread(), money, gMoney))
+            time.sleep(<span class="hljs-number">0.5</span>)
+            gCondition.release()
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):
+        Consumer(name=<span class="hljs-string">'消费者线程%d'</span> % x).start()
+
+    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">2</span>):
+        Producer(name=<span class="hljs-string">'生产者线程%d'</span> % x).start()
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    main()</code></pre></div><h3 id="4-4-斗图啦"><a href="#4-4-斗图啦" class="headerlink" title="4.4 斗图啦"></a>4.4 斗图啦</h3><div class="hljs"><pre><code class="hljs python">
+</code></pre></div><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.bilibili.com/video/BV1aJ411C7oM" target="_blank" rel="noopener">Python爬虫教程</a></p>]]></content>
       <categories>
         <category>python</category>
       </categories>
@@ -2946,8 +3050,8 @@ headers = &#123;
         <category>树莓派</category>
       </categories>
       <tags>
-        <tag>树莓派</tag>
         <tag>python</tag>
+        <tag>树莓派</tag>
       </tags>
   </entry>
   <entry>
@@ -5268,8 +5372,8 @@ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d
         <category>hexo</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
         <tag>一键部署</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
