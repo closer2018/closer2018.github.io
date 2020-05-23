@@ -513,7 +513,7 @@ gTotalTimes = <span class="hljs-number">5</span>
         t.start()
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
-    main()</code></pre></div><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.bilibili.com/video/BV1aJ411C7oM" target="_blank" rel="noopener">Python爬虫教程</a></p>]]></content>
+    main()</code></pre></div><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.bilibili.com/video/BV1aJ411C7oM" target="_blank" rel="noopener">Python爬虫教程</a></p><p><a href="https://selenium-python.readthedocs.io/" target="_blank" rel="noopener">selenium官方docs</a></p><p><a href="https://python-selenium-zh.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">selenium-python中文文档</a></p>]]></content>
       <categories>
         <category>python</category>
       </categories>
@@ -2886,8 +2886,8 @@ DELIMITER ;
         <category>SQL</category>
       </categories>
       <tags>
-        <tag>SQL</tag>
         <tag>读书笔记</tag>
+        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -3132,8 +3132,8 @@ headers = &#123;
         <category>树莓派</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>树莓派</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -3201,9 +3201,68 @@ sudo nano /etc/rc.local
       </tags>
   </entry>
   <entry>
-    <title>selenium操作cookie</title>
+    <title>python学习之路 二：cookie</title>
     <url>/2020/03/07/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%20%E4%BA%8C%EF%BC%9Acookie/</url>
-    <content><![CDATA[<h2 id="一：-查看cookie"><a href="#一：-查看cookie" class="headerlink" title="一： 查看cookie"></a>一： 查看cookie</h2><ol><li>查看cookie的方法：按下F12打开开发者工具。<br>在<code>network</code>中可以看到请求发送的信息，在返回头中，会带有服务器提供的设置cookie的信息。<br>在<code>application</code>当中，可以看到相应网站的所有cookie，并不是只有登录信息，也不是所有的网站都有cookie。</li><li>http协议是一个无状态的协议，用到cookie和session来保存访问中的一些状态。<br>cookie和session都是由服务器生成的，cookie将保存在浏览器的本地，session记录在服务端。</li><li>cookie的几大属性<ul><li>name：名字（键），cookie的必须字段。</li><li>value：值。</li><li>domain：域。cookie的作用域名。</li><li>path：表示路径。/表示当前域名下所有的网页都能使用该cookie。<br>domain和path结合在一起，限定了cookie的适用范围。</li><li>expires：生命周期。限定cookie的使用时间。如果生命周期为Session的，表示只在当前这次会话中cookie有效，关闭浏览器之后立即失效。</li><li>sessionID：本次访问的会话留下的ID号。</li></ul></li></ol><h2 id="二：-用selenium操作"><a href="#二：-用selenium操作" class="headerlink" title="二： 用selenium操作"></a>二： 用selenium操作</h2><p>通过<code>driver.add_cookie(my_cookie)</code>的方法，加载cookie，在浏览器向服务端发起请求时带上cookie进行访问。</p><p>通过<code>driver.getcookie()</code>的方法，获取cookie。</p>]]></content>
+    <content><![CDATA[<h2 id="一：-查看cookie"><a href="#一：-查看cookie" class="headerlink" title="一： 查看cookie"></a>一： 查看cookie</h2><ol><li>查看cookie的方法：按下F12打开开发者工具。<br>在<code>network</code>中可以看到请求发送的信息，在返回头中，会带有服务器提供的设置cookie的信息。<br>在<code>application</code>当中，可以看到相应网站的所有cookie，并不是只有登录信息，也不是所有的网站都有cookie。</li><li>http协议是一个无状态的协议，用到cookie和session来保存访问中的一些状态。<br>cookie和session都是由服务器生成的，cookie将保存在浏览器的本地，session记录在服务端。</li><li>cookie的几大属性<ul><li>name：名字（键），cookie的必须字段。</li><li>value：值。</li><li>domain：域。cookie的作用域名。</li><li>path：表示路径。/表示当前域名下所有的网页都能使用该cookie。<br>domain和path结合在一起，限定了cookie的适用范围。</li><li>expires：生命周期。限定cookie的使用时间。如果生命周期为Session的，表示只在当前这次会话中cookie有效，关闭浏览器之后立即失效。</li><li>sessionID：本次访问的会话留下的ID号。</li></ul></li></ol><h2 id="二：-用request操作"><a href="#二：-用request操作" class="headerlink" title="二： 用request操作"></a>二： 用request操作</h2><h3 id="2-1-直接在headers中使用cookie"><a href="#2-1-直接在headers中使用cookie" class="headerlink" title="2.1 直接在headers中使用cookie"></a>2.1 直接在headers中使用cookie</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> request
+headers = &#123;
+    <span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'</span>,
+    <span class="hljs-string">'Cookie'</span>: <span class="hljs-string">'按F12，在network中查看Cookie信息，复制进来即可'</span>
+&#125;
+url = <span class="hljs-string">'http://www.renren.com/880151247/profile'</span>
+
+req = request.Request(url, headers=headers)
+resp = request.urlopen(req)
+<span class="hljs-keyword">with</span> open(<span class="hljs-string">'renren.html'</span>, <span class="hljs-string">'w'</span>, encoding=<span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> fp:
+    fp.write(resp.read().decode(<span class="hljs-string">'utf-8'</span>))</code></pre></div><h3 id="2-2-cookie的文件存储与读取"><a href="#2-2-cookie的文件存储与读取" class="headerlink" title="2.2 cookie的文件存储与读取"></a>2.2 cookie的文件存储与读取</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 保存cookie到本地：</span>
+<span class="hljs-comment"># 保存cookie到本地，可以使用cookiejar的save方法，并且需要指定一个文件名：</span>
+
+<span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> request
+<span class="hljs-keyword">from</span> http.cookiejar <span class="hljs-keyword">import</span> MozillaCookieJar
+
+cookiejar = MozillaCookieJar(<span class="hljs-string">"cookie.txt"</span>)
+handler = request.HTTPCookieProcessor(cookiejar)
+opener = request.build_opener(handler)
+
+headers = &#123;
+    <span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'</span>
+&#125;
+req = request.Request(<span class="hljs-string">'http://httpbin.org/cookies'</span>,headers=headers)
+
+resp = opener.open(req)
+print(resp.read())
+cookiejar.save(ignore_discard=<span class="hljs-literal">True</span>,ignore_expires=<span class="hljs-literal">True</span>)
+
+
+<span class="hljs-comment"># 从本地加载cookie：</span>
+<span class="hljs-comment"># 从本地加载cookie，需要使用cookiejar的load方法，并且也需要指定方法：</span>
+
+<span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> request
+<span class="hljs-keyword">from</span> http.cookiejar <span class="hljs-keyword">import</span> MozillaCookieJar
+
+cookiejar = MozillaCookieJar(<span class="hljs-string">"cookie.txt"</span>)
+cookiejar.load(ignore_expires=<span class="hljs-literal">True</span>,ignore_discard=<span class="hljs-literal">True</span>)
+handler = request.HTTPCookieProcessor(cookiejar)
+opener = request.build_opener(handler)
+
+headers = &#123;
+    <span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'</span>
+&#125;
+req = request.Request(<span class="hljs-string">'http://httpbin.org/cookies'</span>,headers=headers)
+
+resp = opener.open(req)
+print(resp.read())</code></pre></div><h2 id="三：-用selenium操作"><a href="#三：-用selenium操作" class="headerlink" title="三： 用selenium操作"></a>三： 用selenium操作</h2><p>1 获取所有的cookie：</p><div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">for</span> cookie <span class="hljs-keyword">in</span> driver.get_cookies():
+    print(cookie)</code></pre></div><p>2 获取</p><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># 获取cookie</span>
+driver.getcookie()
+
+<span class="hljs-comment"># 根据cookie的key获取value：</span>
+value = driver.get_cookie(key)</code></pre></div><p>3 删除所有的cookie：</p><div class="hljs"><pre><code class="hljs python">driver.delete_all_cookies()</code></pre></div><p>4 删除某个cookie：</p><div class="hljs"><pre><code class="hljs python">driver.delete_cookie(key)</code></pre></div><p>5 通过<code>driver.add_cookie(my_cookie)</code>的方法，加载cookie，在浏览器向服务端发起请求时带上cookie进行访问。</p><h2 id="四：-设置代理ip"><a href="#四：-设置代理ip" class="headerlink" title="四： 设置代理ip"></a>四： 设置代理ip</h2><div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver
+
+options = webdriver.ChromeOptions()
+options.add_argument(<span class="hljs-string">"--proxy-server=http://110.73.2.248:8123"</span>)
+driver_path = <span class="hljs-string">r"D:\chromedriver.exe"</span>
+driver = webdriver.Chrome(executable_path=driver_path,chrome_options=options)
+
+driver.get(<span class="hljs-string">'http://httpbin.org/ip'</span>)</code></pre></div>]]></content>
       <categories>
         <category>python</category>
         <category>cookie</category>
@@ -5732,8 +5791,8 @@ unittest.main()</code></pre></div><p>使用 setUp() 来创建一个调查对象�
         <category>读书笔记</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>读书笔记</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
