@@ -430,8 +430,90 @@ gTotalTimes = <span class="hljs-number">5</span>
         Producer(name=<span class="hljs-string">'生产者线程%d'</span> % x).start()
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
-    main()</code></pre></div><h3 id="4-4-斗图啦"><a href="#4-4-斗图啦" class="headerlink" title="4.4 斗图啦"></a>4.4 斗图啦</h3><div class="hljs"><pre><code class="hljs python">
-</code></pre></div><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.bilibili.com/video/BV1aJ411C7oM" target="_blank" rel="noopener">Python爬虫教程</a></p>]]></content>
+    main()</code></pre></div><h3 id="4-4-斗图啦"><a href="#4-4-斗图啦" class="headerlink" title="4.4 斗图啦"></a>4.4 斗图啦</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> threading
+<span class="hljs-keyword">import</span> requests
+<span class="hljs-keyword">from</span> lxml <span class="hljs-keyword">import</span> etree
+<span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> request
+<span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> re
+<span class="hljs-keyword">from</span> queue <span class="hljs-keyword">import</span> Queue
+
+<span class="hljs-comment"># 获取每个表情的url</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Producer</span><span class="hljs-params">(threading.Thread)</span>:</span>
+    headers = &#123;
+        <span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'</span>
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, page_queue, img_queue, *args, **kwargs)</span>:</span>
+        super(Producer, self).__init__(*args, **kwargs)
+        self.page_queue = page_queue
+        self.img_queue = img_queue
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+            <span class="hljs-keyword">if</span> self.page_queue.empty():
+                <span class="hljs-keyword">break</span>
+            url = self.page_queue.get()
+            self.parse_page(url)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse_page</span><span class="hljs-params">(self, url)</span>:</span>
+        response = requests.get(url, headers=self.headers)
+        text = response.text
+        html = etree.HTML(text)
+        <span class="hljs-comment"># 获取class不等于gif的图片内容</span>
+        imgs = html.xpath(<span class="hljs-string">"//div[@class='page-content text-center']//img[@class!='gif']"</span>)
+        <span class="hljs-keyword">for</span> img <span class="hljs-keyword">in</span> imgs:
+            img_url = img.get(<span class="hljs-string">'data-original'</span>)
+            <span class="hljs-comment"># img_url = img.xpath(".//@data-original")[0]</span>
+            <span class="hljs-comment"># 提取图片url的后缀名</span>
+            suffix = os.path.splitext(img_url)[<span class="hljs-number">1</span>]
+            <span class="hljs-comment"># suffix = '.' + img_url.split('.')[-1]</span>
+            alt = img.get(<span class="hljs-string">'alt'</span>)
+            <span class="hljs-comment"># alt = img.xpath(".//@alt")[0]</span>
+            <span class="hljs-comment"># 替换掉文件名中的，。？?,/\\·等不支持的文件名字符</span>
+            alt = re.sub(<span class="hljs-string">r'[，。？?,/\\·*！《]'</span>, <span class="hljs-string">''</span>, alt)
+            img_name = alt + suffix
+            <span class="hljs-comment"># 图片的url和name放入队列</span>
+            self.img_queue.put((img_url, img_name))
+
+<span class="hljs-comment"># 下载表情</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Consumer</span><span class="hljs-params">(threading.Thread)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, page_queue, img_queue, *args, **kwargs)</span>:</span>
+        super(Consumer, self).__init__(*args, **kwargs)
+        self.page_queue = page_queue
+        self.img_queue = img_queue
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+            <span class="hljs-keyword">if</span> self.img_queue.empty() <span class="hljs-keyword">and</span> self.page_queue.empty():
+                <span class="hljs-keyword">return</span>
+            url, filename = self.img_queue.get(block=<span class="hljs-literal">True</span>)
+            <span class="hljs-comment"># 下载图片放入images目录下</span>
+            request.urlretrieve(url, <span class="hljs-string">'images/'</span> + filename)
+            print(filename + <span class="hljs-string">'  下载完成！'</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>
+    page_queue = Queue(<span class="hljs-number">100</span>)
+    img_queue = Queue(<span class="hljs-number">500</span>)
+    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, <span class="hljs-number">10</span>):
+        url = <span class="hljs-string">"http://www.doutula.com/photo/list/?page=%d"</span> % x
+        <span class="hljs-comment"># url 添加到队列中</span>
+        page_queue.put(url)
+
+    <span class="hljs-comment"># 判断是否创建images目录用于存放图片</span>
+    <span class="hljs-keyword">if</span> os.path.exists(<span class="hljs-string">'images/'</span>) <span class="hljs-keyword">is</span> <span class="hljs-literal">False</span>:
+        os.makedirs(<span class="hljs-string">'images/'</span>)
+
+    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):
+        t = Producer(page_queue, img_queue)
+        t.start()
+
+    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):
+        t = Consumer(page_queue, img_queue)
+        t.start()
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    main()</code></pre></div><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.bilibili.com/video/BV1aJ411C7oM" target="_blank" rel="noopener">Python爬虫教程</a></p>]]></content>
       <categories>
         <category>python</category>
       </categories>
@@ -5372,8 +5454,8 @@ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d
         <category>hexo</category>
       </categories>
       <tags>
-        <tag>一键部署</tag>
         <tag>hexo</tag>
+        <tag>一键部署</tag>
       </tags>
   </entry>
   <entry>
@@ -5650,8 +5732,8 @@ unittest.main()</code></pre></div><p>使用 setUp() 来创建一个调查对象�
         <category>读书笔记</category>
       </categories>
       <tags>
-        <tag>读书笔记</tag>
         <tag>python</tag>
+        <tag>读书笔记</tag>
       </tags>
   </entry>
   <entry>
