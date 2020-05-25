@@ -1,7 +1,258 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png"><link rel="icon" type="image/png" href="/img/favicon.png"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="theme-color" content="#2f4154"><meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时"><meta name="author" content="closer"><meta name="keywords" content=""><title>ubuntu安装完以后的基础配置 - closer的自留地</title><link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/androidstudio.min.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css"><link rel="stylesheet" href="/css/main.css"><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="closer的自留地" type="application/atom+xml"></head><body><header style="height:70vh"><nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"><div class="container"><a class="navbar-brand" href="/">&nbsp;<strong>Welcome!</strong>&nbsp;</a> <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon"><span></span><span></span><span></span></div></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto text-center"><li class="nav-item"><a class="nav-link" href="/"><i class="iconfont icon-home-fill"></i> 首页</a></li><li class="nav-item"><a class="nav-link" href="/archives/"><i class="iconfont icon-archive-fill"></i> 归档</a></li><li class="nav-item"><a class="nav-link" href="/categories/"><i class="iconfont icon-category-fill"></i> 分类</a></li><li class="nav-item"><a class="nav-link" href="/tags/"><i class="iconfont icon-tags-fill"></i> 标签</a></li><li class="nav-item"><a class="nav-link" href="/about/"><i class="iconfont icon-user-fill"></i> 关于</a></li><li class="nav-item"><a class="nav-link" href="/links/"><i class="iconfont icon-link-fill"></i> 友链</a></li><li class="nav-item" id="search-btn"><a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i class="iconfont icon-search"></i>&nbsp;&nbsp;</a></li></ul></div></div></nav><div class="view intro-2" id="background" parallax="true" style="background:url(/img/default.jpg) no-repeat center center;background-size:cover"><div class="full-bg-img"><div class="mask flex-center" style="background-color:rgba(0,0,0,.3)"><div class="container text-center white-text fadeInUp"><span class="h2" id="subtitle"></span><div class="mt-3 post-meta"><i class="iconfont icon-date-fill" aria-hidden="true"></i> <time datetime="2020-02-17 11:00">2020年2月17日 上午</time></div><div class="mt-1"><span class="post-meta mr-2"><i class="iconfont icon-chart"></i> 1.1k 字 </span><span class="post-meta mr-2"><i class="iconfont icon-clock-fill"></i> 16 分钟 </span><span id="busuanzi_container_page_pv" class="post-meta" style="display:none"><i class="iconfont icon-eye" aria-hidden="true"></i> <span id="busuanzi_value_page_pv"></span> 次</span></div></div></div></div></div></header><main><div class="container-fluid"><div class="row"><div class="d-none d-lg-block col-lg-2"></div><div class="col-lg-8 nopadding-md"><div class="container nopadding-md" id="board-ctn"><div class="py-5" id="board"><div class="post-content mx-auto" id="post"><p class="note note-info">本文最后更新于：2020年3月12日 晚上</p><article class="markdown-body"><h2 id="前言">前言</h2><ol><li>先试用ubuntu，打开软件目录 -&gt; 磁盘，右上角菜单。然后格式化磁盘;擦除 -&gt; 不要覆盖…(快速);分区 -&gt; 硬盘2T以下MBR/DOS、2T以上GPT</li><li>不要连接网络 -&gt; 正常安装 -&gt; 其他选项</li></ol><h2 id="一：-安装类型">一： 安装类型</h2><ol><li>/boot分区（引导）-&gt;512MB-&gt;主分区-&gt;空间起始位置-&gt;Ext4日志文件系统-&gt;/boot。</li><li>/ 根分区（相当于windows的c盘）-&gt;102400MB-&gt;主分区-&gt;空间起始位置-&gt;XFS日志文件系统-&gt;/。</li><li>swap分区（桌面系统不分，服务器必分）-&gt;2048MB-&gt;逻辑分区-&gt;空间起始位置-&gt;交换空间。</li><li>/home分区（存储空间，剩余都给它）-&gt;max MB-&gt;主分区-&gt;空间起始位置-&gt;XFS日志文件系统-&gt;/home。</li><li>现在安装。</li></ol><h2 id="二：-基础配置">二： 基础配置</h2><h3 id="2-1-设置root用户密码">2.1 设置root用户密码</h3><p><code>sudo passwd root</code><br><code>su</code></p><a id="more"></a><h3 id="2-2-修改镜像源">2.2 修改镜像源</h3><ol><li><code>sudo nano /etc/apt/sources.list</code></li><li>将原文件所有内容注释掉；</li><li>复制<a href="https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.2f191b11mRGGjV" target="_blank" rel="noopener">阿里巴巴镜像源</a></li><li>黏贴到终端，<code>ctrl</code>+<code>o</code>保存，回车确定,<code>ctrl</code>+<code>x</code>。</li></ol><h3 id="2-3-更新源和系统">2.3 更新源和系统</h3><p><code>sudo apt update</code><br><code>sudo apt upgrade</code><br><code>sudo apt dist-upgrade</code><br><code>sudo apt autoremove</code> # 清理不需要的旧组件<br><code>reboot</code> # 重启</p><h3 id="2-4-安装输入法">2.4 安装输入法</h3><ol><li>卸载自带ibus<br><code>sudo apt remove ibus</code></li><li>安装fcitx<br><code>sudo apt install fcitx-bin fcitx-table</code></li><li>安装Google拼音<br><code>sudo apt install fcitx-googlepinyin</code></li><li><code>sudo im-config</code>-&gt;确定-&gt;yes-&gt;选择fcitx,确定-&gt;reboot重启。</li></ol><h3 id="2-5-安装Google浏览器">2.5 安装Google浏览器</h3><ol><li>打开 <a href="https://www.google.cn/intl/zh-CN/chrome/" target="_blank" rel="noopener">https://www.google.cn/intl/zh-CN/chrome/</a></li><li>下载-&gt;64位.deb-&gt;接受并安装。</li><li>在下载文件夹内打开终端。</li><li><code>sudo dpkg -i google-chrome-stable_current_amd64.deb</code></li></ol><h3 id="2-6-设置语言">2.6 设置语言</h3><p>设置-&gt;区域和语言-&gt;管理已安装的语言-&gt;安装。</p><h3 id="2-7-安装vlc">2.7 安装vlc</h3><p><code>sudo apt install vlc</code></p><h3 id="2-8-关闭ubuntu内部错误">2.8 关闭ubuntu内部错误</h3><ol><li><code>sudo nano /etc/default/apport</code></li><li>enable=1改为0</li><li><code>ctrl</code>+<code>o</code>保存，回车确定,<code>ctrl</code>+<code>x</code>。</li></ol><h3 id="2-9-安装新立得软件包">2.9 安装新立得软件包</h3><p><code>sudo apt install synaptic</code></p><h3 id="2-10-安装aria2和ariang及配置">2.10 安装aria2和ariang及配置</h3><h4 id="2-10-1-安装aria2及其配置">2.10.1 安装aria2及其配置</h4><p><code>sudo apt install aria2 -y</code></p><div class="hljs"><pre><code class="hljs shell">mkdir /home/ubuntu/.aria2
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时">
+  <meta name="author" content="closer">
+  <meta name="keywords" content="">
+  <title>ubuntu安装完以后的基础配置 - closer的自留地</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/androidstudio.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Welcome!</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">
+              <i class="iconfont icon-link-fill"></i>
+              友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-02-17 11:00">
+                    2020年2月17日 上午
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    1.2k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    16
+                     分钟
+                  </span>
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
+                    <i class="iconfont icon-eye" aria-hidden="true"></i>
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年3月12日 晚上
+                
+              </p>
+            
+            <article class="markdown-body">
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ol>
+<li>先试用ubuntu，打开软件目录 -&gt; 磁盘，右上角菜单。然后格式化磁盘;擦除 -&gt; 不要覆盖…(快速);分区 -&gt; 硬盘2T以下MBR/DOS、2T以上GPT</li>
+<li>不要连接网络 -&gt; 正常安装 -&gt; 其他选项</li>
+</ol>
+<h2 id="一：-安装类型"><a href="#一：-安装类型" class="headerlink" title="一： 安装类型"></a>一： 安装类型</h2><ol>
+<li>/boot分区（引导）-&gt;512MB-&gt;主分区-&gt;空间起始位置-&gt;Ext4日志文件系统-&gt;/boot。</li>
+<li>/ 根分区（相当于windows的c盘）-&gt;102400MB-&gt;主分区-&gt;空间起始位置-&gt;XFS日志文件系统-&gt;/。</li>
+<li>swap分区（桌面系统不分，服务器必分）-&gt;2048MB-&gt;逻辑分区-&gt;空间起始位置-&gt;交换空间。</li>
+<li>/home分区（存储空间，剩余都给它）-&gt;max MB-&gt;主分区-&gt;空间起始位置-&gt;XFS日志文件系统-&gt;/home。</li>
+<li>现在安装。</li>
+</ol>
+<h2 id="二：-基础配置"><a href="#二：-基础配置" class="headerlink" title="二： 基础配置"></a>二： 基础配置</h2><h3 id="2-1-设置root用户密码"><a href="#2-1-设置root用户密码" class="headerlink" title="2.1 设置root用户密码"></a>2.1 设置root用户密码</h3><p><code>sudo passwd root</code><br><code>su</code></p>
+<a id="more"></a>
+
+<h3 id="2-2-修改镜像源"><a href="#2-2-修改镜像源" class="headerlink" title="2.2 修改镜像源"></a>2.2 修改镜像源</h3><ol>
+<li><code>sudo nano /etc/apt/sources.list</code></li>
+<li>将原文件所有内容注释掉；</li>
+<li>复制<a href="https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.2f191b11mRGGjV" target="_blank" rel="noopener">阿里巴巴镜像源</a></li>
+<li>黏贴到终端，<code>ctrl</code>+<code>o</code>保存，回车确定,<code>ctrl</code>+<code>x</code>。</li>
+</ol>
+<h3 id="2-3-更新源和系统"><a href="#2-3-更新源和系统" class="headerlink" title="2.3 更新源和系统"></a>2.3 更新源和系统</h3><p><code>sudo apt update</code><br><code>sudo apt upgrade</code><br><code>sudo apt dist-upgrade</code><br><code>sudo apt autoremove</code>  # 清理不需要的旧组件<br><code>reboot</code>  # 重启</p>
+<h3 id="2-4-安装输入法"><a href="#2-4-安装输入法" class="headerlink" title="2.4 安装输入法"></a>2.4 安装输入法</h3><ol>
+<li>卸载自带ibus<br><code>sudo apt remove ibus</code></li>
+<li>安装fcitx<br><code>sudo apt install fcitx-bin fcitx-table</code></li>
+<li>安装Google拼音<br><code>sudo apt install fcitx-googlepinyin</code></li>
+<li><code>sudo im-config</code>-&gt;确定-&gt;yes-&gt;选择fcitx,确定-&gt;reboot重启。</li>
+</ol>
+<h3 id="2-5-安装Google浏览器"><a href="#2-5-安装Google浏览器" class="headerlink" title="2.5 安装Google浏览器"></a>2.5 安装Google浏览器</h3><ol>
+<li>打开 <a href="https://www.google.cn/intl/zh-CN/chrome/" target="_blank" rel="noopener">https://www.google.cn/intl/zh-CN/chrome/</a></li>
+<li>下载-&gt;64位.deb-&gt;接受并安装。</li>
+<li>在下载文件夹内打开终端。</li>
+<li><code>sudo dpkg -i google-chrome-stable_current_amd64.deb</code></li>
+</ol>
+<h3 id="2-6-设置语言"><a href="#2-6-设置语言" class="headerlink" title="2.6 设置语言"></a>2.6 设置语言</h3><p>设置-&gt;区域和语言-&gt;管理已安装的语言-&gt;安装。</p>
+<h3 id="2-7-安装vlc"><a href="#2-7-安装vlc" class="headerlink" title="2.7 安装vlc"></a>2.7 安装vlc</h3><p><code>sudo apt install vlc</code></p>
+<h3 id="2-8-关闭ubuntu内部错误"><a href="#2-8-关闭ubuntu内部错误" class="headerlink" title="2.8 关闭ubuntu内部错误"></a>2.8 关闭ubuntu内部错误</h3><ol>
+<li><code>sudo nano /etc/default/apport</code></li>
+<li>enable=1改为0</li>
+<li><code>ctrl</code>+<code>o</code>保存，回车确定,<code>ctrl</code>+<code>x</code>。</li>
+</ol>
+<h3 id="2-9-安装新立得软件包"><a href="#2-9-安装新立得软件包" class="headerlink" title="2.9 安装新立得软件包"></a>2.9 安装新立得软件包</h3><p><code>sudo apt install synaptic</code></p>
+<h3 id="2-10-安装aria2和ariang及配置"><a href="#2-10-安装aria2和ariang及配置" class="headerlink" title="2.10 安装aria2和ariang及配置"></a>2.10 安装aria2和ariang及配置</h3><h4 id="2-10-1-安装aria2及其配置"><a href="#2-10-1-安装aria2及其配置" class="headerlink" title="2.10.1 安装aria2及其配置"></a>2.10.1 安装aria2及其配置</h4><p><code>sudo apt install aria2 -y</code></p>
+<div class="hljs"><pre><code class="hljs shell">mkdir /home/ubuntu/.aria2
 cd /home/ubuntu/.aria2
 touch aria2.conf aria2.session #创建配置文件与session文件
-vi /home/ubuntu/.aria2/aria2.conf</code></pre></div><p>aria2.conf配置文件如下</p><div class="hljs"><pre><code class="hljs sh">dir=~/下载/
+vi /home/ubuntu/.aria2/aria2.conf</code></pre></div>
+
+<p>aria2.conf配置文件如下</p>
+<div class="hljs"><pre><code class="hljs sh">dir=~/下载/
 <span class="hljs-built_in">disable</span>-ipv6=<span class="hljs-literal">true</span>
 
 <span class="hljs-comment">#打开rpc的目的是为了给web管理端用</span>
@@ -30,9 +281,353 @@ min-split-size=10M
 <span class="hljs-comment">#单文件最大线程数, 路由建议值: 5</span>
 split=10
 check-certificate=<span class="hljs-literal">false</span>
-<span class="hljs-comment">#http-no-cache=true</span></code></pre></div><p>后台运行aria2</p><p><code>aria2c --conf-path=/home/ubuntu/.aria2/aria2.conf -D</code></p><p>设置aria2开机自动启动</p><p><code>sudo vi /etc/rc.local</code></p><p>在最下面加入：</p><p><code>aria2c --conf-path=/home/ubuntu/.aria2/aria2.conf -D &amp;</code></p><h4 id="2-10-2-安装ariang及配置">2.10.2 安装ariang及配置</h4><p><a href="http://ariang.mayswind.net/zh_Hans/" target="_blank" rel="noopener">参考官方文档</a></p><div class="hljs"><pre><code class="hljs sh">sudo apt install nodejs
+<span class="hljs-comment">#http-no-cache=true</span></code></pre></div>
+
+<p>后台运行aria2</p>
+<p><code>aria2c --conf-path=/home/ubuntu/.aria2/aria2.conf -D</code></p>
+<p>设置aria2开机自动启动</p>
+<p><code>sudo vi /etc/rc.local</code></p>
+<p>在最下面加入：</p>
+<p><code>aria2c --conf-path=/home/ubuntu/.aria2/aria2.conf -D &amp;</code></p>
+<h4 id="2-10-2-安装ariang及配置"><a href="#2-10-2-安装ariang及配置" class="headerlink" title="2.10.2 安装ariang及配置"></a>2.10.2 安装ariang及配置</h4><p><a href="http://ariang.mayswind.net/zh_Hans/" target="_blank" rel="noopener">参考官方文档</a></p>
+<div class="hljs"><pre><code class="hljs sh">sudo apt install nodejs
 sudo apt install npm
-sudo apt install gulp</code></pre></div><p>然后<a href="https://github.com/mayswind/AriaNg/releases" target="_blank" rel="noopener">下载源码解压并cd进入解压的文件夹</a></p><p>然后安装单文件版</p><p><code>npm install</code><br><code>gulp clean build-bundle</code></p><h2 id="三：-常用软件安装">三： 常用软件安装</h2><p>PS：deb文件如何安装？</p><ul><li><code>sudo dpkg -i 软件名</code> # 安装</li><li><code>sudo apt install -f</code> # 修复依赖</li><li><code>sudo dpkg -r 软件名</code> # 进行卸载</li></ul><p>安装git<br><code>sudo apt install git</code></p><p>生成公匙<br><code>ssh-keygen -t rsa -C &quot;你的邮箱地址&quot;</code><br><code>cat ~/.ssh/id_rsa.pub</code><br>添加到github，gitee，coding</p><p>下载安装wps<br><code>sudo dpkg -i wps-office_11.1.0.9080_amd64.deb</code></p><p>下载安装lantern<br><code>sudo dpkg -i lantern-installer-preview-64-bit.deb</code></p><p>下载安装zoom<br><code>sudo dpkg -i zoom_amd64.deb</code></p><p>下载安装python3<br><code>tar zxvf Python-3.8.2.tgz</code><br><code>cd Python-3.8.2\</code><br><code>sudo apt install gcc</code><br><code>sudo apt install make</code><br><code>./configure</code><br><code>make</code><br><code>sudo make install</code><br><code>sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100</code> # 设置python2为默认<br><code>sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150</code> # 设置python3为默认<br><code>sudo update-alternatives --config python</code> # 选择默认的python版本<br><code>sudo apt install python3-pip</code> # 安装pip3<br><code>pip3 install -U pip -i https://pypi.tuna.tsinghua.edu.cn/simple</code> # 升级pip<br>如果这个升级命令出现问题 ，可以使用以下命令：<code>sudo easy_install --upgrade pip</code><br><code>pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</code> # pip3设置清华源</p><p>下载安装vscode<br><code>sudo dpkg -i code_1.42.1-1581432938_amd64.deb</code><br><code>ctrl+shift+p，然后输入lang -&gt; 选择configure Display language，然后安装简体中文，然后重启vscode</code></p><p>下载安装百度网盘<br><code>sudo dpkg -i baidunetdisk_linux_3.0.1.2.deb</code></p><p>下载安装hexo<br><code>sudo apt install nodejs</code><br><code>sudo apt install npm</code><br><code>sudo npm install hexo-cli -g</code><br><code>sudo npm install</code></p><p>下载安装qBittorrent</p><ul><li>qBittorrent Stable # 稳定版<br><code>sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable</code></li><li>qBittorrent Unstable # 不稳定版<br><code>sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-unstable</code></li></ul><p><code>sudo apt-get update &amp;&amp; sudo apt-get install qbittorrent</code></p><h2 id="四：-参考视频">四： 参考视频</h2><p><strong><a href="https://www.bilibili.com/video/av48233413" target="_blank" rel="noopener">https://www.bilibili.com/video/av48233413</a></strong></p></article><hr><div><div class="post-metas mb-3"><div class="post-meta mr-3"><i class="iconfont icon-category"></i> <a class="hover-with-bg" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a> <a class="hover-with-bg" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/">Linux</a></div><div class="post-meta"><i class="iconfont icon-tags"></i> <a class="hover-with-bg" href="/tags/Linux/">Linux</a> <a class="hover-with-bg" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a></div></div><p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p><div class="post-prevnext row"><div class="post-prev col-6"><a href="/2020/02/20/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Github/%E5%A6%82%E4%BD%95%E5%9C%A8GitHub%E4%B8%8A%E6%90%9C%E7%B4%A2%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/"><i class="iconfont icon-arrowleft"></i> <span class="hidden-mobile">搜索技巧And在GitHub搜索开源项目</span> <span class="visible-mobile">上一篇</span></a></div><div class="post-next col-6"><a href="/2020/02/16/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E5%88%A9%E7%94%A8python%E5%AE%9E%E7%8E%B0Gitee-Pages%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E3%80%81%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%88%B0/"><span class="hidden-mobile">利用python实现Gitee Pages定时自动部署/自动签到</span> <span class="visible-mobile">下一篇</span> <i class="iconfont icon-arrowright"></i></a></div></div></div><div class="comments" id="comments"><div id="vcomments"></div><script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js"></script><script type="text/javascript">var oldLoadVa=window.onload;window.onload=function(){oldLoadVa&&oldLoadVa(),new Valine({el:"#vcomments",app_id:"YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",app_key:"HLUt5izfTvTcbEbOrA59W92a",placeholder:"畅所欲言...",path:window.location.pathname,avatar:"robohash",meta:["nick","mail","link"],pageSize:"10",lang:"zh-CN",highlight:!0,recordIP:!1,serverURLs:""})}</script><noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments powered by Valine.</a></noscript></div></div></div></div></div><div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn"><div id="toc"><p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p><div id="tocbot"></div></div></div></div></div><div class="col-lg-7 mx-auto nopadding-md"><div class="container custom post-content mx-auto"><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-3" style="width:355.4px;height:200px"></div></div></main><a id="scroll-top-button" href="#" role="button"><i class="iconfont icon-arrowup" aria-hidden="true"></i></a><div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable modal-lg" role="document"><div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title w-100 font-weight-bold">搜索</h4><button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body mx-3"><div class="md-form mb-5"><input type="text" id="local-search-input" class="form-control validate"> <label data-error="x" data-success="v" for="local-search-input">关键词</label></div><div class="list-group" id="local-search-result"></div></div></div></div></div><div id="aplayer"></div><script defer src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script><link rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css"><script type="text/javascript">var oldLoadAp=window.onload;window.onload=function(){oldLoadAp&&oldLoadAp(),new APlayer({container:document.getElementById("aplayer"),fixed:!0,autoplay:!1,loop:"all",order:"random",theme:"#b7daff",preload:"none",audio:[{name:"灰色空间",artist:"罗志祥",url:"https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/music/%E7%81%B0%E8%89%B2%E7%A9%BA%E9%97%B4%20-%20%E7%BD%97%E5%BF%97%E7%A5%A5.mp3",cover:"https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/music/luozhixiang.png"}]})}</script><footer class="mt-5"><div class="text-center py-3"><div><a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a></div><div><span id="busuanzi_container_site_pv" style="display:none">总访问量 <span id="busuanzi_value_site_pv"></span> 次 </span><span id="busuanzi_container_site_uv" style="display:none">总访客数 <span id="busuanzi_value_site_uv"></span> 人</span></div></div></footer><script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script><script src="/js/main.js"></script><script src="/js/lazyload.js"></script><script src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js"></script><script>$(document).ready(function(){var t=$("#board-ctn").offset().top;tocbot.init({tocSelector:"#tocbot",contentSelector:".post-content",headingSelector:"h1,h2,h3,h4,h5,h6",linkClass:"tocbot-link",activeLinkClass:"tocbot-active-link",listClass:"tocbot-list",isCollapsedClass:"tocbot-is-collapsed",collapsibleClass:"tocbot-is-collapsible",collapseDepth:0,scrollSmooth:!0,headingsOffset:-t}),0<$(".toc-list-item").length&&$("#toc").css("visibility","visible")})</script><script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js"></script><script src="/js/clipboard-use.js"></script><script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script defer>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><script src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js"></script><script>var typed=new Typed("#subtitle",{strings:["  ","ubuntu安装完以后的基础配置&nbsp;"],cursorChar:"_",typeSpeed:70,loop:!1});typed.stop(),$(document).ready(function(){$(".typed-cursor").addClass("h2"),typed.start()})</script><script src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js"></script><script>anchors.options = {
+sudo apt install gulp</code></pre></div>
+
+<p>然后<a href="https://github.com/mayswind/AriaNg/releases" target="_blank" rel="noopener">下载源码解压并cd进入解压的文件夹</a></p>
+<p>然后安装单文件版</p>
+<p><code>npm install</code><br><code>gulp clean build-bundle</code></p>
+<h2 id="三：-常用软件安装"><a href="#三：-常用软件安装" class="headerlink" title="三： 常用软件安装"></a>三： 常用软件安装</h2><p>PS：deb文件如何安装？</p>
+<ul>
+<li><code>sudo dpkg -i 软件名</code> # 安装</li>
+<li><code>sudo apt install -f</code> # 修复依赖</li>
+<li><code>sudo dpkg -r 软件名</code> # 进行卸载</li>
+</ul>
+<p>安装git<br><code>sudo apt install git</code></p>
+<p>生成公匙<br><code>ssh-keygen -t rsa -C &quot;你的邮箱地址&quot;</code><br><code>cat ~/.ssh/id_rsa.pub</code><br>添加到github，gitee，coding</p>
+<p>下载安装wps<br><code>sudo dpkg -i wps-office_11.1.0.9080_amd64.deb</code></p>
+<p>下载安装lantern<br><code>sudo dpkg -i lantern-installer-preview-64-bit.deb</code></p>
+<p>下载安装zoom<br><code>sudo dpkg -i zoom_amd64.deb</code></p>
+<p>下载安装python3<br><code>tar zxvf Python-3.8.2.tgz</code><br><code>cd Python-3.8.2\</code><br><code>sudo apt install gcc</code><br><code>sudo apt install make</code><br><code>./configure</code><br><code>make</code><br><code>sudo make install</code><br><code>sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100</code> # 设置python2为默认<br><code>sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150</code> # 设置python3为默认<br><code>sudo update-alternatives --config python</code> # 选择默认的python版本<br><code>sudo apt install python3-pip</code> # 安装pip3<br><code>pip3 install -U pip -i https://pypi.tuna.tsinghua.edu.cn/simple</code> # 升级pip<br>如果这个升级命令出现问题 ，可以使用以下命令：<code>sudo easy_install --upgrade pip</code><br><code>pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</code> # pip3设置清华源</p>
+<p>下载安装vscode<br><code>sudo dpkg -i code_1.42.1-1581432938_amd64.deb</code><br><code>ctrl+shift+p，然后输入lang -&gt; 选择configure Display language，然后安装简体中文，然后重启vscode</code></p>
+<p>下载安装百度网盘<br><code>sudo dpkg -i baidunetdisk_linux_3.0.1.2.deb</code></p>
+<p>下载安装hexo<br><code>sudo apt install nodejs</code><br><code>sudo apt install npm</code><br><code>sudo npm install hexo-cli -g</code><br><code>sudo npm install</code></p>
+<p>下载安装qBittorrent</p>
+<ul>
+<li>qBittorrent Stable # 稳定版<br> <code>sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable</code></li>
+<li>qBittorrent Unstable # 不稳定版<br> <code>sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-unstable</code></li>
+</ul>
+<p><code>sudo apt-get update &amp;&amp; sudo apt-get install qbittorrent</code></p>
+<h2 id="四：-参考视频"><a href="#四：-参考视频" class="headerlink" title="四： 参考视频"></a>四： 参考视频</h2><p><strong><a href="https://www.bilibili.com/video/av48233413" target="_blank" rel="noopener">https://www.bilibili.com/video/av48233413</a></strong></p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/">Linux</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/02/20/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Github/%E5%A6%82%E4%BD%95%E5%9C%A8GitHub%E4%B8%8A%E6%90%9C%E7%B4%A2%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">搜索技巧And在GitHub搜索开源项目</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/02/16/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E5%88%A9%E7%94%A8python%E5%AE%9E%E7%8E%B0Gitee-Pages%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E3%80%81%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%88%B0/">
+                        <span class="hidden-mobile">利用python实现Gitee Pages定时自动部署/自动签到</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js" ></script>
+
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
+      new Valine({
+        el: "#vcomments",
+        app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
+        app_key: "HLUt5izfTvTcbEbOrA59W92a",
+        placeholder: "畅所欲言...",
+        path: window.location.pathname,
+        avatar: "robohash",
+        meta: ["nick","mail","link"],
+        pageSize: "10",
+        lang: "zh-CN",
+        highlight: true,
+        recordIP: false,
+        serverURLs: "",
+      });
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-md">
+    <div class="container custom post-content mx-auto">
+      <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-3" style="width:355.4px; height:200px;">
+    </div>
+  </div>
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+    <!-- APlayer 音乐播放器 -->
+    <div id="aplayer"></div>
+    <script defer src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js" ></script>
+<link  rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+<script type="text/javascript">
+  var oldLoadAp = window.onload;
+  window.onload = function () {
+    oldLoadAp && oldLoadAp();
+
+    new APlayer({
+      container: document.getElementById('aplayer'),
+      fixed: true,
+      autoplay: 'false' === 'true',
+      loop: 'all',
+      order: 'random',
+      theme: '#b7daff',
+      preload: 'none',
+      audio: [{"name":"灰色空间","artist":"罗志祥","url":"https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/music/%E7%81%B0%E8%89%B2%E7%A9%BA%E9%97%B4%20-%20%E7%BD%97%E5%BF%97%E7%A5%A5.mp3","cover":"https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/music/luozhixiang.png"}]
+    });
+  }
+</script>
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div>
+    
+      <!-- 不蒜子统计PV -->
+      
+      <span id="busuanzi_container_site_pv" style="display: none">
+      总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    </span>
+    
+    
+      <!-- 不蒜子统计UV -->
+      
+      <span id="busuanzi_container_site_uv" style="display: none">
+      总访客数 <span id="busuanzi_value_site_uv"></span> 人
+    </span>
+    
+  </div>
+
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "ubuntu安装完以后的基础配置&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
       placement: "right",
       visible: "always",
       
@@ -42,7 +637,47 @@ sudo apt install gulp</code></pre></div><p>然后<a href="https://github.com/may
     for (item of el) {
       res.push(".markdown-body > " + item)
     }
-    anchors.add(res.join(", "))</script><script src="/js/local-search.js"></script><script>var path="/local-search.xml",inputArea=document.querySelector("#local-search-input");inputArea.onclick=function(){searchFunc(path,"local-search-input","local-search-result"),this.onclick=null}</script><script src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js"></script><link rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css"><script>$("#post img:not(.no-zoom img, img[no-zoom]), img[zoom]").each(function(){var t=document.createElement("a");$(t).attr("data-fancybox","images"),$(t).attr("href",$(this).attr("src")),$(this).wrap(t)})</script><script>MathJax = {
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
         tex: {
           inlineMath: [['$', '$'], ['\\(', '\\)']]
         },
@@ -69,4 +704,95 @@ sudo apt install gulp</code></pre></div><p>然后<a href="https://github.com/may
             }, '', false]
           }
         }
-      };</script><script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js"></script><script type="text/javascript">var a_idx=0;jQuery(document).ready(function(d){d("body").click(function(a){var o=new Array("富强","民主","文明","和谐","自由","平等","公正","法治","爱国","敬业","诚信","友善"),t=d("<span/>").text(o[a_idx]);a_idx=(a_idx+1)%o.length;var n=a.pageX,e=a.pageY;t.css({"z-index":999,top:e-20,left:n,position:"absolute","font-weight":"bold",color:"rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")"}),d("body").append(t),t.animate({top:e-180,opacity:0},1500,function(){t.remove()})})})</script><script>!function(e,t,o,a,c,i,n){e.DaoVoiceObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,i=t.createElement(o),n=t.getElementsByTagName(o)[0],i.async=1,i.src=a,i.charset="utf-8",n.parentNode.insertBefore(i,n)}(window,document,"script",("https:"===document.location.protocol?"https:":"http:")+"//widget.daovoice.io/widget/aa03e448.js","daovoice"),daovoice("init",{app_id:"aa03e448"}),daovoice("update")</script></body></html>
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+  <script>(function (i, s, o, g, r, a, m) {
+      i['DaoVoiceObject'] = r;
+      i[r] = i[r] ||
+        function () {
+          (i[r].q = i[r].q || []).push(arguments);
+        };
+      i[r].l = 1 * new Date();
+      a = s.createElement(o);
+      m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      a.charset = 'utf-8';
+      m.parentNode.insertBefore(a, m);
+    })(window, document, 'script', ('https:' === document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/aa03e448.js", 'daovoice');
+    daovoice('init', {
+      app_id: "aa03e448",
+    });
+    daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

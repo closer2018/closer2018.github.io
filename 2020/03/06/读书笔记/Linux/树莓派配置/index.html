@@ -1,7 +1,231 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png"><link rel="icon" type="image/png" href="/img/favicon.png"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="theme-color" content="#2f4154"><meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时"><meta name="author" content="closer"><meta name="keywords" content=""><title>树莓派配置 - closer的自留地</title><link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/androidstudio.min.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css"><link rel="stylesheet" href="/css/main.css"><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="closer的自留地" type="application/atom+xml"></head><body><header style="height:70vh"><nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"><div class="container"><a class="navbar-brand" href="/">&nbsp;<strong>Welcome!</strong>&nbsp;</a> <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon"><span></span><span></span><span></span></div></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto text-center"><li class="nav-item"><a class="nav-link" href="/"><i class="iconfont icon-home-fill"></i> 首页</a></li><li class="nav-item"><a class="nav-link" href="/archives/"><i class="iconfont icon-archive-fill"></i> 归档</a></li><li class="nav-item"><a class="nav-link" href="/categories/"><i class="iconfont icon-category-fill"></i> 分类</a></li><li class="nav-item"><a class="nav-link" href="/tags/"><i class="iconfont icon-tags-fill"></i> 标签</a></li><li class="nav-item"><a class="nav-link" href="/about/"><i class="iconfont icon-user-fill"></i> 关于</a></li><li class="nav-item"><a class="nav-link" href="/links/"><i class="iconfont icon-link-fill"></i> 友链</a></li><li class="nav-item" id="search-btn"><a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i class="iconfont icon-search"></i>&nbsp;&nbsp;</a></li></ul></div></div></nav><div class="view intro-2" id="background" parallax="true" style="background:url(/img/default.jpg) no-repeat center center;background-size:cover"><div class="full-bg-img"><div class="mask flex-center" style="background-color:rgba(0,0,0,.3)"><div class="container text-center white-text fadeInUp"><span class="h2" id="subtitle"></span><div class="mt-3 post-meta"><i class="iconfont icon-date-fill" aria-hidden="true"></i> <time datetime="2020-03-06 14:29">2020年3月6日 下午</time></div><div class="mt-1"><span class="post-meta mr-2"><i class="iconfont icon-chart"></i> 1.3k 字 </span><span class="post-meta mr-2"><i class="iconfont icon-clock-fill"></i> 17 分钟 </span><span id="busuanzi_container_page_pv" class="post-meta" style="display:none"><i class="iconfont icon-eye" aria-hidden="true"></i> <span id="busuanzi_value_page_pv"></span> 次</span></div></div></div></div></div></header><main><div class="container-fluid"><div class="row"><div class="d-none d-lg-block col-lg-2"></div><div class="col-lg-8 nopadding-md"><div class="container nopadding-md" id="board-ctn"><div class="py-5" id="board"><div class="post-content mx-auto" id="post"><p class="note note-info">本文最后更新于：2020年4月24日 晚上</p><article class="markdown-body"><h2 id="一-修改密码及时间">一: 修改密码及时间</h2><h3 id="1-1-设置su及pi密码">1.1 设置su及pi密码</h3><div class="hljs"><pre><code class="hljs shell">sudo passwd pi                   # 修改 Pi 密码  
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时">
+  <meta name="author" content="closer">
+  <meta name="keywords" content="">
+  <title>树莓派配置 - closer的自留地</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/androidstudio.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Welcome!</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">
+              <i class="iconfont icon-link-fill"></i>
+              友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-03-06 14:29">
+                    2020年3月6日 下午
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    1.3k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    17
+                     分钟
+                  </span>
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
+                    <i class="iconfont icon-eye" aria-hidden="true"></i>
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年4月24日 晚上
+                
+              </p>
+            
+            <article class="markdown-body">
+              <h2 id="一-修改密码及时间"><a href="#一-修改密码及时间" class="headerlink" title="一: 修改密码及时间"></a>一: 修改密码及时间</h2><h3 id="1-1-设置su及pi密码"><a href="#1-1-设置su及pi密码" class="headerlink" title="1.1 设置su及pi密码"></a>1.1 设置su及pi密码</h3><div class="hljs"><pre><code class="hljs shell">sudo passwd pi                   # 修改 Pi 密码  
 sudo passwd root                 # 设置 root 密码
 su root                          # 切换到 root 用户  
-su pi                            # 切换到 pi 用户</code></pre></div><h3 id="1-2-修改时间">1.2 修改时间</h3><p>使用date 语句查看时间，如不正确，则：首先在终端中用下面的命令安装ntpdate工具</p><p><code>sudo apt install ntpdate</code></p><p>启用NTP</p><p><code>sudo timedatectl set-ntp true</code></p><p>继续使用date语句查看时间，如不正确，则：</p><p><code>sudo dpkg-reconfigure tzdata</code></p><p>修改时区为Asia Shanghai，继续使用date语句查看时间并确认正确</p><h2 id="二-中文环境">二: 中文环境</h2><h2 id="2-1-安装中文输入法">2.1 安装中文输入法</h2><p><code>sudo apt install scim-pinyin</code></p><h2 id="2-2-配置中文环境">2.2 配置中文环境</h2><p><code>sudo raspi-config</code></p><p>按4 -&gt; 1<br>在Configuring locales窗口中，找到zh_CN.UTF-8 UTF-8</p><p>空格选中，并在确认后再次选择zh_CN.UTF-8</p><h3 id="2-3-安装中文字库">2.3 安装中文字库</h3><p><code>sudo apt install ttf-wqy-zenhei</code></p><p><code>reboot</code></p><h2 id="三-基本设置及软件">三: 基本设置及软件</h2><h3 id="3-1-开启SSH访问">3.1 开启SSH访问</h3><p><code>sudo raspi-config</code></p><p>5 -&gt; P2 SSH -&gt; enable.</p><h3 id="3-2-设置为固定ip访问">3.2 设置为固定ip访问</h3><p>先进入配置文件<br><code>sudo nano /etc/dhcpcd.conf</code></p><div class="hljs"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 有线设置</span>
+su pi                            # 切换到 pi 用户</code></pre></div>
+
+<h3 id="1-2-修改时间"><a href="#1-2-修改时间" class="headerlink" title="1.2 修改时间"></a>1.2 修改时间</h3><p>使用date 语句查看时间，如不正确，则：首先在终端中用下面的命令安装ntpdate工具</p>
+<p><code>sudo apt install ntpdate</code></p>
+<p>启用NTP </p>
+<p><code>sudo timedatectl set-ntp true</code></p>
+<p>继续使用date语句查看时间，如不正确，则：</p>
+<p><code>sudo dpkg-reconfigure tzdata</code></p>
+<p>修改时区为Asia Shanghai，继续使用date语句查看时间并确认正确</p>
+<h2 id="二-中文环境"><a href="#二-中文环境" class="headerlink" title="二: 中文环境"></a>二: 中文环境</h2><h2 id="2-1-安装中文输入法"><a href="#2-1-安装中文输入法" class="headerlink" title="2.1 安装中文输入法"></a>2.1 安装中文输入法</h2><p><code>sudo apt install scim-pinyin</code></p>
+<h2 id="2-2-配置中文环境"><a href="#2-2-配置中文环境" class="headerlink" title="2.2 配置中文环境"></a>2.2 配置中文环境</h2><p><code>sudo raspi-config</code></p>
+<p>按4 -&gt; 1<br>在Configuring locales窗口中，找到zh_CN.UTF-8 UTF-8</p>
+<p>空格选中，并在确认后再次选择zh_CN.UTF-8</p>
+<h3 id="2-3-安装中文字库"><a href="#2-3-安装中文字库" class="headerlink" title="2.3 安装中文字库"></a>2.3 安装中文字库</h3><p><code>sudo apt install ttf-wqy-zenhei</code></p>
+<p><code>reboot</code></p>
+<h2 id="三-基本设置及软件"><a href="#三-基本设置及软件" class="headerlink" title="三: 基本设置及软件"></a>三: 基本设置及软件</h2><h3 id="3-1-开启SSH访问"><a href="#3-1-开启SSH访问" class="headerlink" title="3.1 开启SSH访问"></a>3.1 开启SSH访问</h3><p><code>sudo raspi-config</code></p>
+<p>5 -&gt; P2 SSH -&gt; enable.</p>
+<h3 id="3-2-设置为固定ip访问"><a href="#3-2-设置为固定ip访问" class="headerlink" title="3.2 设置为固定ip访问"></a>3.2 设置为固定ip访问</h3><p>先进入配置文件<br><code>sudo nano /etc/dhcpcd.conf</code></p>
+<div class="hljs"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 有线设置</span>
 interface eth0
 <span class="hljs-meta">#</span><span class="bash"> 路由器ip</span>
 static routers=192.168.2.1
@@ -13,26 +237,44 @@ static ip_address=192.168.2.4/24
 interface wlan0
 static routers=192.168.2.1
 static domain_name_servers=192.168.2.1 8.8.8.8
-static ip_address=192.168.2.4/24</code></pre></div><h3 id="3-3-添加树莓派开机启动命令，如花生壳">3.3 添加树莓派开机启动命令，如花生壳</h3><div class="hljs"><pre><code class="hljs SH">sudo nano /etc/rc.local
+static ip_address=192.168.2.4/24</code></pre></div>
+
+<h3 id="3-3-添加树莓派开机启动命令，如花生壳"><a href="#3-3-添加树莓派开机启动命令，如花生壳" class="headerlink" title="3.3 添加树莓派开机启动命令，如花生壳"></a>3.3 添加树莓派开机启动命令，如花生壳</h3><div class="hljs"><pre><code class="hljs SH">sudo nano /etc/rc.local
 
 <span class="hljs-comment"># 在exit 0 的上一行输入命令。比如花生壳是用phddns.start启动，再这里加入后花生壳就会自动启动了。</span>
-sudo phddns.start</code></pre></div><h3 id="3-4-安装mysql-server">3.4 安装mysql-server</h3><p>因mysql-server被收购，故安装mariadb-server，MariaDB是MySQL源代码的一个分支，一样用。</p><div class="hljs"><pre><code class="hljs sh">sudo apt install mariadb-server -y
+sudo phddns.start</code></pre></div>
+
+<h3 id="3-4-安装mysql-server"><a href="#3-4-安装mysql-server" class="headerlink" title="3.4 安装mysql-server"></a>3.4 安装mysql-server</h3><p>因mysql-server被收购，故安装mariadb-server，MariaDB是MySQL源代码的一个分支，一样用。</p>
+<div class="hljs"><pre><code class="hljs sh">sudo apt install mariadb-server -y
 <span class="hljs-comment"># 通过命令连接到MariaDB</span>
-sudo mysql</code></pre></div><p>接下来配置mysql密码访问。</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">use</span> mysql;
+sudo mysql</code></pre></div>
+
+<p>接下来配置mysql密码访问。</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">use</span> mysql;
 <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">SET</span> <span class="hljs-keyword">password</span>=<span class="hljs-keyword">password</span>(<span class="hljs-string">'改为你的密码,比如root'</span>) <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">user</span>=<span class="hljs-string">'root'</span>;
 <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">SET</span> <span class="hljs-keyword">plugin</span>=<span class="hljs-string">'mysql_native_password'</span> <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">user</span> = <span class="hljs-string">'root'</span>;
 <span class="hljs-keyword">flush</span> <span class="hljs-keyword">privileges</span>;
-exit</code></pre></div><div class="hljs"><pre><code class="hljs sh"><span class="hljs-comment"># 重启服务</span>
+exit</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs sh"><span class="hljs-comment"># 重启服务</span>
 sudo systemctl restart mariadb
 <span class="hljs-comment"># 密码登录mysql</span>
-mysql -u root -p</code></pre></div><p>下面配置MariaDB可远程连接</p><div class="hljs"><pre><code class="hljs sh"><span class="hljs-comment"># MariaDB默认只监听了127.0.0.1这个IP地址，是无法从外部连接到树莓派上MariaDB。故修改配置</span>
+mysql -u root -p</code></pre></div>
+
+<p>下面配置MariaDB可远程连接</p>
+<div class="hljs"><pre><code class="hljs sh"><span class="hljs-comment"># MariaDB默认只监听了127.0.0.1这个IP地址，是无法从外部连接到树莓派上MariaDB。故修改配置</span>
 nano /etc/mysql/mariadb.conf.d/50-server.cnf
 <span class="hljs-comment"># 注释其中的127.0.0.1所在一行，示例如下：</span>
 <span class="hljs-comment"># bind-address            = 127.0.0.1</span>
-<span class="hljs-comment"># 这样MariaDB就监听了所有的IP。</span></code></pre></div><div class="hljs"><pre><code class="hljs sql"><span class="hljs-comment">--授权用户能够连接MariaDB Server</span>
+<span class="hljs-comment"># 这样MariaDB就监听了所有的IP。</span></code></pre></div>
+
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-comment">--授权用户能够连接MariaDB Server</span>
 <span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">ALL</span> <span class="hljs-keyword">PRIVILEGES</span> <span class="hljs-keyword">ON</span> *.* <span class="hljs-keyword">TO</span> <span class="hljs-string">'root'</span>@<span class="hljs-string">'%'</span> <span class="hljs-keyword">IDENTIFIED</span> <span class="hljs-keyword">BY</span> <span class="hljs-string">'改为你的密码，如root'</span>;
 <span class="hljs-comment">--更新权限</span>
-<span class="hljs-keyword">FLUSH</span> <span class="hljs-keyword">PRIVILEGES</span>;</code></pre></div><h3 id="3-5-安装、配置和加速docker">3.5 安装、配置和加速docker</h3><p><a href="https://shumeipai.nxez.com/2019/05/20/how-to-install-docker-on-your-raspberry-pi.html" target="_blank" rel="noopener">安装教程</a></p><div class="hljs"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 脚本安装</span>
+<span class="hljs-keyword">FLUSH</span> <span class="hljs-keyword">PRIVILEGES</span>;</code></pre></div>
+
+<h3 id="3-5-安装、配置和加速docker"><a href="#3-5-安装、配置和加速docker" class="headerlink" title="3.5 安装、配置和加速docker"></a>3.5 安装、配置和加速docker</h3><p><a href="https://shumeipai.nxez.com/2019/05/20/how-to-install-docker-on-your-raspberry-pi.html" target="_blank" rel="noopener">安装教程</a></p>
+<div class="hljs"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 脚本安装</span>
 curl -fsSL https://get.docker.com -o get-docker.sh | sh
 <span class="hljs-meta">
 #</span><span class="bash"> 查看版本</span>
@@ -62,9 +304,339 @@ sudo docker volume create portainer_data
 #</span><span class="bash"> 运行 portainer</span>
 sudo docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
 <span class="hljs-meta">
-#</span><span class="bash"> 输入树莓派ip:9000登录管理界面</span></code></pre></div><h2 id="四-安装Pi-hole搭建DNS缓存服务器，过滤网页广告">四: 安装Pi-hole搭建DNS缓存服务器，过滤网页广告</h2><p><strong>pi-hole使用后发现并不好用，故不推荐安装。</strong></p><h3 id="4-1-安装Pi-hole">4.1 安装Pi-hole</h3><p>使用脚本自定义安装，在安装过程中可以自定义Pi-hole，命令如下：</p><div class="hljs"><pre><code class="hljs sh">git <span class="hljs-built_in">clone</span> --depth 1 https://github.com/pi-hole/pi-hole.git Pi-hole
+#</span><span class="bash"> 输入树莓派ip:9000登录管理界面</span></code></pre></div>
+
+<h2 id="四-安装Pi-hole搭建DNS缓存服务器，过滤网页广告"><a href="#四-安装Pi-hole搭建DNS缓存服务器，过滤网页广告" class="headerlink" title="四: 安装Pi-hole搭建DNS缓存服务器，过滤网页广告"></a>四: 安装Pi-hole搭建DNS缓存服务器，过滤网页广告</h2><p><strong>pi-hole使用后发现并不好用，故不推荐安装。</strong></p>
+<h3 id="4-1-安装Pi-hole"><a href="#4-1-安装Pi-hole" class="headerlink" title="4.1 安装Pi-hole"></a>4.1 安装Pi-hole</h3><p>使用脚本自定义安装，在安装过程中可以自定义Pi-hole，命令如下：</p>
+<div class="hljs"><pre><code class="hljs sh">git <span class="hljs-built_in">clone</span> --depth 1 https://github.com/pi-hole/pi-hole.git Pi-hole
 <span class="hljs-built_in">cd</span> Pi-hole/automated\ install/
-bash basic-install.sh</code></pre></div><p>安装过程中，将会下载安装软件包，然后弹出一个红蓝界面，可以选择Pi-hole的配置，选择默认方式即可。安装后会生成后台的登陆密码，请记住，如果没看到这个密码也没关系，安装成功后可以自己设置。等待脚本的安装完成，约1-2个小时。</p><h3 id="4-2-使用">4.2 使用</h3><p>Pi-hole安装成功后就会开始运行，如果你要使用它，请将你电脑的DNS改为树莓派的IP地址，同时，也应该将家庭路由器的DNS地址更改为树莓派当前的IP地址，这样才能使用树莓派的DNS服务和广告拦截服务。</p><h3 id="4-3-登陆Pi-hole">4.3 登陆Pi-hole</h3><p>Pi-hole有一个美观的界面，可以直观的看到今日DNS查询屏蔽次数、今日DNS查询次数、屏蔽比例、屏蔽库中的域名数量等信息。Pi-hole界面的查看地址为：</p><p><code>http://&lt;your pi’s IP address&gt;/admin</code></p><p>其中<code>&lt;your pi’s IP address&gt;</code>用树莓派的IP地址替换即可。</p><h3 id="4-4-重置密码">4.4 重置密码</h3><p>如果你忘记了密码，通过以下命令可以重置新的密码。</p><p><code>sudo pihole -a -p newpassword</code></p><h3 id="4-5-实时监控">4.5 实时监控</h3><p>通过SSH实时监控，输入命令：</p><p><code>pihole -c</code></p><h3 id="4-6-升级Pihole">4.6 升级Pihole</h3><p><code>pihole -up</code></p><h3 id="4-7-更改-重置GUI管理员密码">4.7 更改/重置GUI管理员密码</h3><p><code>pihole -a -p</code></p><h3 id="4-8-检查pi-hole状态">4.8 检查pi-hole状态</h3><p><code>pihole status</code></p><h3 id="4-9-重新配置pi-hole系统">4.9 重新配置pi-hole系统</h3><p><code>pihole -r</code></p><h3 id="4-10-从系统中卸载Pi-hole">4.10 从系统中卸载Pi-hole</h3><p><code>pihole uninstall</code></p><p>第一次选Y，第二次选N</p><h3 id="4-11-重启Pi-holes子系统">4.11 重启Pi-holes子系统</h3><p><code>pihole restartdns</code></p><h3 id="4-12-帮助">4.12 帮助</h3><p><code>pihole --help</code></p><p><strong>pi-hole使用后发现并不好用，故不推荐安装，已经卸载。</strong></p></article><hr><div><div class="post-metas mb-3"><div class="post-meta mr-3"><i class="iconfont icon-category"></i> <a class="hover-with-bg" href="/categories/Linux/">Linux</a></div><div class="post-meta"><i class="iconfont icon-tags"></i> <a class="hover-with-bg" href="/tags/Linux/">Linux</a> <a class="hover-with-bg" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></div></div><p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p><div class="post-prevnext row"><div class="post-prev col-6"><a href="/2020/03/07/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%20%E4%BA%8C%EF%BC%9Acookie/"><i class="iconfont icon-arrowleft"></i> <span class="hidden-mobile">python学习之路 二：cookie</span> <span class="visible-mobile">上一篇</span></a></div><div class="post-next col-6"><a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/SQL/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93MySQL/"><span class="hidden-mobile">关系数据库MySQL入门</span> <span class="visible-mobile">下一篇</span> <i class="iconfont icon-arrowright"></i></a></div></div></div><div class="comments" id="comments"><div id="vcomments"></div><script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js"></script><script type="text/javascript">var oldLoadVa=window.onload;window.onload=function(){oldLoadVa&&oldLoadVa(),new Valine({el:"#vcomments",app_id:"YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",app_key:"HLUt5izfTvTcbEbOrA59W92a",placeholder:"畅所欲言...",path:window.location.pathname,avatar:"robohash",meta:["nick","mail","link"],pageSize:"10",lang:"zh-CN",highlight:!0,recordIP:!1,serverURLs:""})}</script><noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments powered by Valine.</a></noscript></div></div></div></div></div><div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn"><div id="toc"><p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p><div id="tocbot"></div></div></div></div></div><div class="col-lg-7 mx-auto nopadding-md"><div class="container custom post-content mx-auto"><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-3" style="width:355.4px;height:200px"></div></div></main><a id="scroll-top-button" href="#" role="button"><i class="iconfont icon-arrowup" aria-hidden="true"></i></a><div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable modal-lg" role="document"><div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title w-100 font-weight-bold">搜索</h4><button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body mx-3"><div class="md-form mb-5"><input type="text" id="local-search-input" class="form-control validate"> <label data-error="x" data-success="v" for="local-search-input">关键词</label></div><div class="list-group" id="local-search-result"></div></div></div></div></div><div id="aplayer"></div><script defer src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script><link rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css"><script type="text/javascript">var oldLoadAp=window.onload;window.onload=function(){oldLoadAp&&oldLoadAp(),new APlayer({container:document.getElementById("aplayer"),fixed:!0,autoplay:!1,loop:"all",order:"random",theme:"#b7daff",preload:"none",audio:[{name:"灰色空间",artist:"罗志祥",url:"https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/music/%E7%81%B0%E8%89%B2%E7%A9%BA%E9%97%B4%20-%20%E7%BD%97%E5%BF%97%E7%A5%A5.mp3",cover:"https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/music/luozhixiang.png"}]})}</script><footer class="mt-5"><div class="text-center py-3"><div><a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a></div><div><span id="busuanzi_container_site_pv" style="display:none">总访问量 <span id="busuanzi_value_site_pv"></span> 次 </span><span id="busuanzi_container_site_uv" style="display:none">总访客数 <span id="busuanzi_value_site_uv"></span> 人</span></div></div></footer><script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script><script src="/js/main.js"></script><script src="/js/lazyload.js"></script><script src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js"></script><script>$(document).ready(function(){var t=$("#board-ctn").offset().top;tocbot.init({tocSelector:"#tocbot",contentSelector:".post-content",headingSelector:"h1,h2,h3,h4,h5,h6",linkClass:"tocbot-link",activeLinkClass:"tocbot-active-link",listClass:"tocbot-list",isCollapsedClass:"tocbot-is-collapsed",collapsibleClass:"tocbot-is-collapsible",collapseDepth:0,scrollSmooth:!0,headingsOffset:-t}),0<$(".toc-list-item").length&&$("#toc").css("visibility","visible")})</script><script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js"></script><script src="/js/clipboard-use.js"></script><script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script defer>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><script src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js"></script><script>var typed=new Typed("#subtitle",{strings:["  ","树莓派配置&nbsp;"],cursorChar:"_",typeSpeed:70,loop:!1});typed.stop(),$(document).ready(function(){$(".typed-cursor").addClass("h2"),typed.start()})</script><script src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js"></script><script>anchors.options = {
+bash basic-install.sh</code></pre></div>
+
+<p>安装过程中，将会下载安装软件包，然后弹出一个红蓝界面，可以选择Pi-hole的配置，选择默认方式即可。安装后会生成后台的登陆密码，请记住，如果没看到这个密码也没关系，安装成功后可以自己设置。等待脚本的安装完成，约1-2个小时。</p>
+<h3 id="4-2-使用"><a href="#4-2-使用" class="headerlink" title="4.2 使用"></a>4.2 使用</h3><p>Pi-hole安装成功后就会开始运行，如果你要使用它，请将你电脑的DNS改为树莓派的IP地址，同时，也应该将家庭路由器的DNS地址更改为树莓派当前的IP地址，这样才能使用树莓派的DNS服务和广告拦截服务。</p>
+<h3 id="4-3-登陆Pi-hole"><a href="#4-3-登陆Pi-hole" class="headerlink" title="4.3 登陆Pi-hole"></a>4.3 登陆Pi-hole</h3><p>Pi-hole有一个美观的界面，可以直观的看到今日DNS查询屏蔽次数、今日DNS查询次数、屏蔽比例、屏蔽库中的域名数量等信息。Pi-hole界面的查看地址为：</p>
+<p><code>http://&lt;your pi’s IP address&gt;/admin</code></p>
+<p>其中<code>&lt;your pi’s IP address&gt;</code>用树莓派的IP地址替换即可。</p>
+<h3 id="4-4-重置密码"><a href="#4-4-重置密码" class="headerlink" title="4.4 重置密码"></a>4.4 重置密码</h3><p>如果你忘记了密码，通过以下命令可以重置新的密码。</p>
+<p><code>sudo pihole -a -p newpassword</code></p>
+<h3 id="4-5-实时监控"><a href="#4-5-实时监控" class="headerlink" title="4.5 实时监控"></a>4.5 实时监控</h3><p>通过SSH实时监控，输入命令：</p>
+<p><code>pihole -c</code></p>
+<h3 id="4-6-升级Pihole"><a href="#4-6-升级Pihole" class="headerlink" title="4.6 升级Pihole"></a>4.6 升级Pihole</h3><p><code>pihole -up</code></p>
+<h3 id="4-7-更改-重置GUI管理员密码"><a href="#4-7-更改-重置GUI管理员密码" class="headerlink" title="4.7 更改/重置GUI管理员密码"></a>4.7 更改/重置GUI管理员密码</h3><p><code>pihole -a -p</code></p>
+<h3 id="4-8-检查pi-hole状态"><a href="#4-8-检查pi-hole状态" class="headerlink" title="4.8 检查pi-hole状态"></a>4.8 检查pi-hole状态</h3><p><code>pihole status</code></p>
+<h3 id="4-9-重新配置pi-hole系统"><a href="#4-9-重新配置pi-hole系统" class="headerlink" title="4.9 重新配置pi-hole系统"></a>4.9 重新配置pi-hole系统</h3><p><code>pihole -r</code></p>
+<h3 id="4-10-从系统中卸载Pi-hole"><a href="#4-10-从系统中卸载Pi-hole" class="headerlink" title="4.10 从系统中卸载Pi-hole"></a>4.10 从系统中卸载Pi-hole</h3><p><code>pihole uninstall</code></p>
+<p>第一次选Y，第二次选N</p>
+<h3 id="4-11-重启Pi-holes子系统"><a href="#4-11-重启Pi-holes子系统" class="headerlink" title="4.11 重启Pi-holes子系统"></a>4.11 重启Pi-holes子系统</h3><p><code>pihole restartdns</code></p>
+<h3 id="4-12-帮助"><a href="#4-12-帮助" class="headerlink" title="4.12 帮助"></a>4.12 帮助</h3><p><code>pihole --help</code></p>
+<p><strong>pi-hole使用后发现并不好用，故不推荐安装，已经卸载。</strong></p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Linux/">Linux</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/03/07/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/python%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%20%E4%BA%8C%EF%BC%9Acookie/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">python学习之路 二：cookie</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/SQL/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93MySQL/">
+                        <span class="hidden-mobile">关系数据库MySQL入门</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js" ></script>
+
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
+      new Valine({
+        el: "#vcomments",
+        app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
+        app_key: "HLUt5izfTvTcbEbOrA59W92a",
+        placeholder: "畅所欲言...",
+        path: window.location.pathname,
+        avatar: "robohash",
+        meta: ["nick","mail","link"],
+        pageSize: "10",
+        lang: "zh-CN",
+        highlight: true,
+        recordIP: false,
+        serverURLs: "",
+      });
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-md">
+    <div class="container custom post-content mx-auto">
+      <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-3" style="width:355.4px; height:200px;">
+    </div>
+  </div>
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+    <!-- APlayer 音乐播放器 -->
+    <div id="aplayer"></div>
+    <script defer src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js" ></script>
+<link  rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+<script type="text/javascript">
+  var oldLoadAp = window.onload;
+  window.onload = function () {
+    oldLoadAp && oldLoadAp();
+
+    new APlayer({
+      container: document.getElementById('aplayer'),
+      fixed: true,
+      autoplay: 'false' === 'true',
+      loop: 'all',
+      order: 'random',
+      theme: '#b7daff',
+      preload: 'none',
+      audio: [{"name":"灰色空间","artist":"罗志祥","url":"https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/music/%E7%81%B0%E8%89%B2%E7%A9%BA%E9%97%B4%20-%20%E7%BD%97%E5%BF%97%E7%A5%A5.mp3","cover":"https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/music/luozhixiang.png"}]
+    });
+  }
+</script>
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div>
+    
+      <!-- 不蒜子统计PV -->
+      
+      <span id="busuanzi_container_site_pv" style="display: none">
+      总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    </span>
+    
+    
+      <!-- 不蒜子统计UV -->
+      
+      <span id="busuanzi_container_site_uv" style="display: none">
+      总访客数 <span id="busuanzi_value_site_uv"></span> 人
+    </span>
+    
+  </div>
+
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "树莓派配置&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
       placement: "right",
       visible: "always",
       
@@ -74,7 +646,47 @@ bash basic-install.sh</code></pre></div><p>安装过程中，将会下载安装�
     for (item of el) {
       res.push(".markdown-body > " + item)
     }
-    anchors.add(res.join(", "))</script><script src="/js/local-search.js"></script><script>var path="/local-search.xml",inputArea=document.querySelector("#local-search-input");inputArea.onclick=function(){searchFunc(path,"local-search-input","local-search-result"),this.onclick=null}</script><script src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js"></script><link rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css"><script>$("#post img:not(.no-zoom img, img[no-zoom]), img[zoom]").each(function(){var t=document.createElement("a");$(t).attr("data-fancybox","images"),$(t).attr("href",$(this).attr("src")),$(this).wrap(t)})</script><script>MathJax = {
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
         tex: {
           inlineMath: [['$', '$'], ['\\(', '\\)']]
         },
@@ -101,4 +713,95 @@ bash basic-install.sh</code></pre></div><p>安装过程中，将会下载安装�
             }, '', false]
           }
         }
-      };</script><script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js"></script><script type="text/javascript">var a_idx=0;jQuery(document).ready(function(d){d("body").click(function(a){var o=new Array("富强","民主","文明","和谐","自由","平等","公正","法治","爱国","敬业","诚信","友善"),t=d("<span/>").text(o[a_idx]);a_idx=(a_idx+1)%o.length;var n=a.pageX,e=a.pageY;t.css({"z-index":999,top:e-20,left:n,position:"absolute","font-weight":"bold",color:"rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")"}),d("body").append(t),t.animate({top:e-180,opacity:0},1500,function(){t.remove()})})})</script><script>!function(e,t,o,a,c,i,n){e.DaoVoiceObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,i=t.createElement(o),n=t.getElementsByTagName(o)[0],i.async=1,i.src=a,i.charset="utf-8",n.parentNode.insertBefore(i,n)}(window,document,"script",("https:"===document.location.protocol?"https:":"http:")+"//widget.daovoice.io/widget/aa03e448.js","daovoice"),daovoice("init",{app_id:"aa03e448"}),daovoice("update")</script></body></html>
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+  <script>(function (i, s, o, g, r, a, m) {
+      i['DaoVoiceObject'] = r;
+      i[r] = i[r] ||
+        function () {
+          (i[r].q = i[r].q || []).push(arguments);
+        };
+      i[r].l = 1 * new Date();
+      a = s.createElement(o);
+      m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      a.charset = 'utf-8';
+      m.parentNode.insertBefore(a, m);
+    })(window, document, 'script', ('https:' === document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/aa03e448.js", 'daovoice');
+    daovoice('init', {
+      app_id: "aa03e448",
+    });
+    daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

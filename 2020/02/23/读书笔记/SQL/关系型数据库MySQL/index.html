@@ -1,8 +1,285 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png"><link rel="icon" type="image/png" href="/img/favicon.png"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="theme-color" content="#2f4154"><meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时"><meta name="author" content="closer"><meta name="keywords" content=""><title>关系数据库MySQL入门 - closer的自留地</title><link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/androidstudio.min.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css"><link rel="stylesheet" href="/css/main.css"><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="closer的自留地" type="application/atom+xml"></head><body><header style="height:70vh"><nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"><div class="container"><a class="navbar-brand" href="/">&nbsp;<strong>Welcome!</strong>&nbsp;</a> <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon"><span></span><span></span><span></span></div></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto text-center"><li class="nav-item"><a class="nav-link" href="/"><i class="iconfont icon-home-fill"></i> 首页</a></li><li class="nav-item"><a class="nav-link" href="/archives/"><i class="iconfont icon-archive-fill"></i> 归档</a></li><li class="nav-item"><a class="nav-link" href="/categories/"><i class="iconfont icon-category-fill"></i> 分类</a></li><li class="nav-item"><a class="nav-link" href="/tags/"><i class="iconfont icon-tags-fill"></i> 标签</a></li><li class="nav-item"><a class="nav-link" href="/about/"><i class="iconfont icon-user-fill"></i> 关于</a></li><li class="nav-item"><a class="nav-link" href="/links/"><i class="iconfont icon-link-fill"></i> 友链</a></li><li class="nav-item" id="search-btn"><a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i class="iconfont icon-search"></i>&nbsp;&nbsp;</a></li></ul></div></div></nav><div class="view intro-2" id="background" parallax="true" style="background:url(/img/default.jpg) no-repeat center center;background-size:cover"><div class="full-bg-img"><div class="mask flex-center" style="background-color:rgba(0,0,0,.3)"><div class="container text-center white-text fadeInUp"><span class="h2" id="subtitle"></span><div class="mt-3 post-meta"><i class="iconfont icon-date-fill" aria-hidden="true"></i> <time datetime="2020-02-23 15:18">2020年2月23日 下午</time></div><div class="mt-1"><span class="post-meta mr-2"><i class="iconfont icon-chart"></i> 12.3k 字 </span><span class="post-meta mr-2"><i class="iconfont icon-clock-fill"></i> 156 分钟 </span><span id="busuanzi_container_page_pv" class="post-meta" style="display:none"><i class="iconfont icon-eye" aria-hidden="true"></i> <span id="busuanzi_value_page_pv"></span> 次</span></div></div></div></div></div></header><main><div class="container-fluid"><div class="row"><div class="d-none d-lg-block col-lg-2"></div><div class="col-lg-8 nopadding-md"><div class="container nopadding-md" id="board-ctn"><div class="py-5" id="board"><div class="post-content mx-auto" id="post"><p class="note note-info">本文最后更新于：2020年2月23日 下午</p><article class="markdown-body"><blockquote><p><strong>本文转载于GitHub项目<a href="https://github.com/jackfrued/Python-100-Days" target="_blank" rel="noopener">Python - 100天从新手到大师</a></strong></p></blockquote><h3 id="一：-关系数据库概述">一： 关系数据库概述</h3><ol><li><p>数据持久化 - 将数据保存到能够长久保存数据的存储介质中，在掉电的情况下数据也不会丢失。</p></li><li><p>数据库发展史 - 网状数据库、层次数据库、关系数据库、NoSQL数据库。</p><blockquote><p>1970年，IBM的研究员E.F.Codd在<em>Communication of the ACM</em>上发表了名为<em>A Relational Model of Data for Large Shared Data Banks</em>的论文，提出了关系模型的概念，奠定了关系模型的理论基础。后来Codd又陆续发表多篇文章，论述了范式理论和衡量关系系统的12条标准，用数学理论奠定了关系数据库的基础。</p></blockquote></li><li><p>关系数据库特点。</p><ul><li><p>理论基础：集合论和关系代数。</p></li><li><p>具体表象：用二维表（有行和列）组织数据。</p></li><li><p>编程语言：结构化查询语言（SQL）。</p></li></ul></li><li><p>ER模型（实体关系模型）和概念模型图。</p><p><strong>ER模型</strong>，全称为<strong>实体关系模型</strong>（Entity-Relationship Model），由美籍华裔计算机科学家陈品山先生提出，是概念数据模型的高层描述方式，如下图所示。</p><p><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/MySQL/er_diagram.png" srcset="/img/loading.gif" alt="er_diagram.png"></p><ul><li>实体 - 矩形框</li><li>属性 - 椭圆框</li><li>关系 - 菱形框</li><li>重数 - 1:1（一对一） / 1:N（一对多） / M:N（多对多）</li></ul><p>实际项目开发中，我们可以利用数据库建模工具（如：PowerDesigner）来绘制概念数据模型（其本质就是ER模型），然后再设置好目标数据库系统，将概念模型转换成物理模型，最终生成创建二维表的SQL（很多工具都可以根据我们设计的物理模型图以及设定的目标数据库来导出SQL或直接生成数据表）。</p><p><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/MySQL/conceptual_model.png" srcset="/img/loading.gif" alt="conceptual_model.png"></p></li><li><p>关系数据库产品。</p><ul><li><a href="https://www.oracle.com/index.html" target="_blank" rel="noopener">Oracle</a> - 目前世界上使用最为广泛的数据库管理系统，作为一个通用的数据库系统，它具有完整的数据管理功能；作为一个关系数据库，它是一个完备关系的产品；作为分布式数据库，它实现了分布式处理的功能。在Oracle最新的12c版本中，还引入了多承租方架构，使用该架构可轻松部署和管理数据库云。</li><li><a href="https://www.ibm.com/analytics/us/en/db2/" target="_blank" rel="noopener">DB2</a> - IBM公司开发的、主要运行于Unix（包括IBM自家的<a href="https://zh.wikipedia.org/wiki/AIX" target="_blank" rel="noopener">AIX</a>）、Linux、以及Windows服务器版等系统的关系数据库产品。DB2历史悠久且被认为是最早使用SQL的数据库产品，它拥有较为强大的商业智能功能。</li><li><a href="https://www.microsoft.com/en-us/sql-server/" target="_blank" rel="noopener">SQL Server</a> - 由Microsoft开发和推广的关系型数据库产品，最初适用于中小企业的数据管理，但是近年来它的应用范围有所扩展，部分大企业甚至是跨国公司也开始基于它来构建自己的数据管理系统。</li><li><a href="https://www.mysql.com/" target="_blank" rel="noopener">MySQL</a> - MySQL是开放源代码的，任何人都可以在GPL（General Public License）的许可下下载并根据个性化的需要对其进行修改。MySQL因为其速度、可靠性和适应性而备受关注。</li><li><a href="">PostgreSQL</a> - 在BSD许可证下发行的开放源代码的关系数据库产品。</li></ul></li></ol><h3 id="二：-MySQL简介">二： MySQL简介</h3><p>MySQL最早是由瑞典的MySQL AB公司开发的一个开放源码的关系数据库管理系统，该公司于2008年被昇阳微系统公司（Sun Microsystems）收购。在2009年，甲骨文公司（Oracle）收购昇阳微系统公司，因此在这之后MySQL成为了Oracle旗下产品。</p><p>MySQL在过去由于性能高、成本低、可靠性好，已经成为最流行的开源数据库，因此被广泛地应用于中小型网站开发。随着MySQL的不断成熟，它也逐渐被应用于更多大规模网站和应用，比如维基百科、谷歌（Google）、脸书（Facebook）、淘宝网等网站都使用了MySQL来提供数据持久化服务。</p><p>甲骨文公司收购后昇阳微系统公司，大幅调涨MySQL商业版的售价，且甲骨文公司不再支持另一个自由软件项目<a href="https://zh.wikipedia.org/wiki/OpenSolaris" target="_blank" rel="noopener">OpenSolaris</a>的发展，因此导致自由软件社区对于Oracle是否还会持续支持MySQL社区版（MySQL的各个发行版本中唯一免费的版本）有所担忧，MySQL的创始人麦克尔·维德纽斯以MySQL为基础，成立分支计划<a href="https://zh.wikipedia.org/wiki/MariaDB" target="_blank" rel="noopener">MariaDB</a>（以他女儿的名字命名的数据库）。有许多原来使用MySQL数据库的公司（例如：维基百科）已经陆续完成了从MySQL数据库到MariaDB数据库的迁移。</p><ol><li><p>安装和配置</p><blockquote><p><strong>说明</strong>：下面的安装和配置都是以CentOS Linux环境为例，如果需要在其他系统下安装MySQL，读者可以自行在网络上查找对应的安装教程）。</p></blockquote><ul><li><p>刚才说过，MySQL有一个分支版本名叫MariaDB，该数据库旨在继续保持MySQL数据库在<a href="https://zh.wikipedia.org/wiki/GNU%E9%80%9A%E7%94%A8%E5%85%AC%E5%85%B1%E8%AE%B8%E5%8F%AF%E8%AF%81" target="_blank" rel="noopener">GNU GPL</a>下开源。如果要使用MariaDB作为MySQL的替代品，可以使用下面的命令进行安装。</p><div class="hljs"><pre><code class="hljs Shell">yum install mariadb mariadb-server</code></pre></div></li><li><p>如果要安装官方版本的MySQL，可以在<a href="https://www.mysql.com/" target="_blank" rel="noopener">MySQL官方网站</a>下载安装文件。首先在下载页面中选择平台和版本，然后找到对应的下载链接。下面以MySQL 5.7.26版本和Red Hat Enterprise Linux为例，直接下载包含所有安装文件的归档文件，解归档之后通过包管理工具进行安装。</p><div class="hljs"><pre><code class="hljs Shell">wget https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.26-1.el7.x86_64.rpm-bundle.tar
-tar -xvf mysql-5.7.26-1.el7.x86_64.rpm-bundle.tar</code></pre></div><p>如果系统上有MariaDB相关的文件，需要先移除MariaDB相关的文件。</p><div class="hljs"><pre><code class="hljs Shell">yum list installed | grep mariadb | awk '&#123;print $1&#125;' | xargs yum erase -y</code></pre></div><p>接下来可以按照如下所示的顺序用RPM（Redhat Package Manager）工具安装MySQL。</p><div class="hljs"><pre><code class="hljs Shell">rpm -ivh mysql-community-common-5.7.26-1.el7.x86_64.rpm
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时">
+  <meta name="author" content="closer">
+  <meta name="keywords" content="">
+  <title>关系数据库MySQL入门 - closer的自留地</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/androidstudio.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Welcome!</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">
+              <i class="iconfont icon-link-fill"></i>
+              友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-02-23 15:18">
+                    2020年2月23日 下午
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    12.3k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    156
+                     分钟
+                  </span>
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
+                    <i class="iconfont icon-eye" aria-hidden="true"></i>
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年2月23日 下午
+                
+              </p>
+            
+            <article class="markdown-body">
+              <blockquote>
+<p><strong>本文转载于GitHub项目<a href="https://github.com/jackfrued/Python-100-Days" target="_blank" rel="noopener">Python - 100天从新手到大师</a></strong></p>
+</blockquote>
+<h3 id="一：-关系数据库概述"><a href="#一：-关系数据库概述" class="headerlink" title="一： 关系数据库概述"></a>一： 关系数据库概述</h3><ol>
+<li><p>数据持久化 - 将数据保存到能够长久保存数据的存储介质中，在掉电的情况下数据也不会丢失。</p>
+</li>
+<li><p>数据库发展史 - 网状数据库、层次数据库、关系数据库、NoSQL数据库。</p>
+<blockquote>
+<p>1970年，IBM的研究员E.F.Codd在<em>Communication of the ACM</em>上发表了名为<em>A Relational Model of Data for Large Shared Data Banks</em>的论文，提出了关系模型的概念，奠定了关系模型的理论基础。后来Codd又陆续发表多篇文章，论述了范式理论和衡量关系系统的12条标准，用数学理论奠定了关系数据库的基础。</p>
+</blockquote>
+</li>
+<li><p>关系数据库特点。</p>
+<ul>
+<li><p>理论基础：集合论和关系代数。</p>
+</li>
+<li><p>具体表象：用二维表（有行和列）组织数据。</p>
+</li>
+<li><p>编程语言：结构化查询语言（SQL）。</p>
+</li>
+</ul>
+</li>
+<li><p>ER模型（实体关系模型）和概念模型图。</p>
+<p><strong>ER模型</strong>，全称为<strong>实体关系模型</strong>（Entity-Relationship Model），由美籍华裔计算机科学家陈品山先生提出，是概念数据模型的高层描述方式，如下图所示。</p>
+<p><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/MySQL/er_diagram.png" srcset="/img/loading.gif" alt="er_diagram.png"></p>
+<ul>
+<li>实体 - 矩形框</li>
+<li>属性 - 椭圆框</li>
+<li>关系 - 菱形框</li>
+<li>重数 - 1:1（一对一） / 1:N（一对多） / M:N（多对多）</li>
+</ul>
+<p>实际项目开发中，我们可以利用数据库建模工具（如：PowerDesigner）来绘制概念数据模型（其本质就是ER模型），然后再设置好目标数据库系统，将概念模型转换成物理模型，最终生成创建二维表的SQL（很多工具都可以根据我们设计的物理模型图以及设定的目标数据库来导出SQL或直接生成数据表）。</p>
+<p><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/MySQL/conceptual_model.png" srcset="/img/loading.gif" alt="conceptual_model.png"></p>
+</li>
+<li><p>关系数据库产品。</p>
+<ul>
+<li><a href="https://www.oracle.com/index.html" target="_blank" rel="noopener">Oracle</a> - 目前世界上使用最为广泛的数据库管理系统，作为一个通用的数据库系统，它具有完整的数据管理功能；作为一个关系数据库，它是一个完备关系的产品；作为分布式数据库，它实现了分布式处理的功能。在Oracle最新的12c版本中，还引入了多承租方架构，使用该架构可轻松部署和管理数据库云。</li>
+<li><a href="https://www.ibm.com/analytics/us/en/db2/" target="_blank" rel="noopener">DB2</a> - IBM公司开发的、主要运行于Unix（包括IBM自家的<a href="https://zh.wikipedia.org/wiki/AIX" target="_blank" rel="noopener">AIX</a>）、Linux、以及Windows服务器版等系统的关系数据库产品。DB2历史悠久且被认为是最早使用SQL的数据库产品，它拥有较为强大的商业智能功能。</li>
+<li><a href="https://www.microsoft.com/en-us/sql-server/" target="_blank" rel="noopener">SQL Server</a> - 由Microsoft开发和推广的关系型数据库产品，最初适用于中小企业的数据管理，但是近年来它的应用范围有所扩展，部分大企业甚至是跨国公司也开始基于它来构建自己的数据管理系统。</li>
+<li><a href="https://www.mysql.com/" target="_blank" rel="noopener">MySQL</a> - MySQL是开放源代码的，任何人都可以在GPL（General Public License）的许可下下载并根据个性化的需要对其进行修改。MySQL因为其速度、可靠性和适应性而备受关注。</li>
+<li><a href="">PostgreSQL</a> - 在BSD许可证下发行的开放源代码的关系数据库产品。</li>
+</ul>
+</li>
+</ol>
+<h3 id="二：-MySQL简介"><a href="#二：-MySQL简介" class="headerlink" title="二： MySQL简介"></a>二： MySQL简介</h3><p>MySQL最早是由瑞典的MySQL AB公司开发的一个开放源码的关系数据库管理系统，该公司于2008年被昇阳微系统公司（Sun Microsystems）收购。在2009年，甲骨文公司（Oracle）收购昇阳微系统公司，因此在这之后MySQL成为了Oracle旗下产品。</p>
+<p>MySQL在过去由于性能高、成本低、可靠性好，已经成为最流行的开源数据库，因此被广泛地应用于中小型网站开发。随着MySQL的不断成熟，它也逐渐被应用于更多大规模网站和应用，比如维基百科、谷歌（Google）、脸书（Facebook）、淘宝网等网站都使用了MySQL来提供数据持久化服务。</p>
+<p>甲骨文公司收购后昇阳微系统公司，大幅调涨MySQL商业版的售价，且甲骨文公司不再支持另一个自由软件项目<a href="https://zh.wikipedia.org/wiki/OpenSolaris" target="_blank" rel="noopener">OpenSolaris</a>的发展，因此导致自由软件社区对于Oracle是否还会持续支持MySQL社区版（MySQL的各个发行版本中唯一免费的版本）有所担忧，MySQL的创始人麦克尔·维德纽斯以MySQL为基础，成立分支计划<a href="https://zh.wikipedia.org/wiki/MariaDB" target="_blank" rel="noopener">MariaDB</a>（以他女儿的名字命名的数据库）。有许多原来使用MySQL数据库的公司（例如：维基百科）已经陆续完成了从MySQL数据库到MariaDB数据库的迁移。</p>
+<ol>
+<li><p>安装和配置</p>
+<blockquote>
+<p><strong>说明</strong>：下面的安装和配置都是以CentOS Linux环境为例，如果需要在其他系统下安装MySQL，读者可以自行在网络上查找对应的安装教程）。</p>
+</blockquote>
+<ul>
+<li><p>刚才说过，MySQL有一个分支版本名叫MariaDB，该数据库旨在继续保持MySQL数据库在<a href="https://zh.wikipedia.org/wiki/GNU%E9%80%9A%E7%94%A8%E5%85%AC%E5%85%B1%E8%AE%B8%E5%8F%AF%E8%AF%81" target="_blank" rel="noopener">GNU GPL</a>下开源。如果要使用MariaDB作为MySQL的替代品，可以使用下面的命令进行安装。</p>
+<div class="hljs"><pre><code class="hljs Shell">yum install mariadb mariadb-server</code></pre></div>
+</li>
+<li><p>如果要安装官方版本的MySQL，可以在<a href="https://www.mysql.com/" target="_blank" rel="noopener">MySQL官方网站</a>下载安装文件。首先在下载页面中选择平台和版本，然后找到对应的下载链接。下面以MySQL 5.7.26版本和Red Hat Enterprise Linux为例，直接下载包含所有安装文件的归档文件，解归档之后通过包管理工具进行安装。</p>
+<div class="hljs"><pre><code class="hljs Shell">wget https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.26-1.el7.x86_64.rpm-bundle.tar
+tar -xvf mysql-5.7.26-1.el7.x86_64.rpm-bundle.tar</code></pre></div>
+
+<p>如果系统上有MariaDB相关的文件，需要先移除MariaDB相关的文件。</p>
+<div class="hljs"><pre><code class="hljs Shell">yum list installed | grep mariadb | awk '&#123;print $1&#125;' | xargs yum erase -y</code></pre></div>
+
+<p>接下来可以按照如下所示的顺序用RPM（Redhat Package Manager）工具安装MySQL。</p>
+<div class="hljs"><pre><code class="hljs Shell">rpm -ivh mysql-community-common-5.7.26-1.el7.x86_64.rpm
 rpm -ivh mysql-community-libs-5.7.26-1.el7.x86_64.rpm
 rpm -ivh mysql-community-client-5.7.26-1.el7.x86_64.rpm
-rpm -ivh mysql-community-server-5.7.26-1.el7.x86_64.rpm</code></pre></div><p>可以使用下面的命令查看已经安装的MySQL相关的包。</p><div class="hljs"><pre><code class="hljs Shell">rpm -qa | grep mysql</code></pre></div></li><li><p>配置MySQL。</p><p>MySQL的配置文件在<code>/etc</code>目录下，名为<code>my.cnf</code>，默认的配置文件内容如下所示。如果对这个文件不理解并没有关系，什么时候用到这个配置文件什么时候再了解它就行了。</p><div class="hljs"><pre><code class="hljs Shell">cat /etc/my.cnf</code></pre></div><div class="hljs"><pre><code class="hljs INI"><span class="hljs-comment"># For advice on how to change settings please see</span>
+rpm -ivh mysql-community-server-5.7.26-1.el7.x86_64.rpm</code></pre></div>
+
+<p>可以使用下面的命令查看已经安装的MySQL相关的包。</p>
+<div class="hljs"><pre><code class="hljs Shell">rpm -qa | grep mysql</code></pre></div>
+</li>
+<li><p>配置MySQL。</p>
+<p>MySQL的配置文件在<code>/etc</code>目录下，名为<code>my.cnf</code>，默认的配置文件内容如下所示。如果对这个文件不理解并没有关系，什么时候用到这个配置文件什么时候再了解它就行了。</p>
+<div class="hljs"><pre><code class="hljs Shell">cat /etc/my.cnf</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs INI"><span class="hljs-comment"># For advice on how to change settings please see</span>
 <span class="hljs-comment"># http://dev.mysql.com/doc/refman/5.7/en/server-configuration-defaults.html</span>
 <span class="hljs-section">
 [mysqld]</span>
@@ -28,15 +305,83 @@ rpm -ivh mysql-community-server-5.7.26-1.el7.x86_64.rpm</code></pre></div><p>可
 <span class="hljs-attr">symbolic-links</span>=<span class="hljs-number">0</span>
 
 <span class="hljs-attr">log-error</span>=/var/log/mysqld.log
-<span class="hljs-attr">pid-file</span>=/var/run/mysqld/mysqld.pid</code></pre></div></li><li><p>启动MySQL服务。</p><p>可以使用下面的命令来启动MySQL。</p><div class="hljs"><pre><code class="hljs Shell">service mysqld start</code></pre></div><p>在CentOS 7中，更推荐使用下面的命令来启动MySQL。</p><div class="hljs"><pre><code class="hljs Shell">systemctl start mysqld</code></pre></div><p>启动MySQL成功后，可以通过下面的命令来检查网络端口使用情况，MySQL默认使用3306端口。</p><div class="hljs"><pre><code class="hljs Shell">netstat -ntlp | grep mysql</code></pre></div><p>也可以使用下面的命令查找是否有名为mysqld的进程。</p><div class="hljs"><pre><code class="hljs Shell">pgrep mysqld</code></pre></div></li><li><p>使用MySQL客户端工具连接服务器。</p><p>命令行工具：</p><div class="hljs"><pre><code class="hljs Shell">mysql -u root -p</code></pre></div><blockquote><p>说明：启动客户端时，<code>-u</code>参数用来指定用户名，MySQL默认的超级管理账号为<code>root</code>；<code>-p</code>表示要输入密码（用户口令）；如果连接的是其他主机而非本机，可以用<code>-h</code>来指定连接主机的主机名或IP地址。</p></blockquote><p>如果是首次安装MySQL，可以使用下面的命令来找到默认的初始密码。</p><div class="hljs"><pre><code class="hljs Shell">cat /var/log/mysqld.log | grep password</code></pre></div><p>上面的命令会查看MySQL的日志带有password的行，在显示的结果中<code>root@localhost:</code>后面的部分就是默认设置的初始密码。</p><p>修改超级管理员（root）的访问口令为<code>123456</code>。</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">set</span> <span class="hljs-keyword">global</span> validate_password_policy=<span class="hljs-number">0</span>;
+<span class="hljs-attr">pid-file</span>=/var/run/mysqld/mysqld.pid</code></pre></div>
+</li>
+<li><p>启动MySQL服务。</p>
+<p>可以使用下面的命令来启动MySQL。</p>
+<div class="hljs"><pre><code class="hljs Shell">service mysqld start</code></pre></div>
+
+<p>在CentOS 7中，更推荐使用下面的命令来启动MySQL。</p>
+<div class="hljs"><pre><code class="hljs Shell">systemctl start mysqld</code></pre></div>
+
+<p>启动MySQL成功后，可以通过下面的命令来检查网络端口使用情况，MySQL默认使用3306端口。</p>
+<div class="hljs"><pre><code class="hljs Shell">netstat -ntlp | grep mysql</code></pre></div>
+
+<p>也可以使用下面的命令查找是否有名为mysqld的进程。</p>
+<div class="hljs"><pre><code class="hljs Shell">pgrep mysqld</code></pre></div>
+</li>
+<li><p>使用MySQL客户端工具连接服务器。</p>
+<p>命令行工具：</p>
+<div class="hljs"><pre><code class="hljs Shell">mysql -u root -p</code></pre></div>
+
+<blockquote>
+<p>说明：启动客户端时，<code>-u</code>参数用来指定用户名，MySQL默认的超级管理账号为<code>root</code>；<code>-p</code>表示要输入密码（用户口令）；如果连接的是其他主机而非本机，可以用<code>-h</code>来指定连接主机的主机名或IP地址。</p>
+</blockquote>
+<p>如果是首次安装MySQL，可以使用下面的命令来找到默认的初始密码。</p>
+<div class="hljs"><pre><code class="hljs Shell">cat /var/log/mysqld.log | grep password</code></pre></div>
+
+<p>上面的命令会查看MySQL的日志带有password的行，在显示的结果中<code>root@localhost:</code>后面的部分就是默认设置的初始密码。</p>
+<p>修改超级管理员（root）的访问口令为<code>123456</code>。</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">set</span> <span class="hljs-keyword">global</span> validate_password_policy=<span class="hljs-number">0</span>;
 <span class="hljs-keyword">set</span> <span class="hljs-keyword">global</span> validate_password_length=<span class="hljs-number">6</span>;
-<span class="hljs-keyword">alter</span> <span class="hljs-keyword">user</span> <span class="hljs-string">'root'</span>@<span class="hljs-string">'localhost'</span> <span class="hljs-keyword">identified</span> <span class="hljs-keyword">by</span> <span class="hljs-string">'123456'</span>;</code></pre></div><blockquote><p><strong>说明</strong>：MySQL较新的版本默认不允许使用弱口令作为用户口令，所以我们通过上面的前两条命令修改了验证用户口令的策略和口令的长度。事实上我们不应该使用弱口令，因为存在用户口令被暴力破解的风险。近年来，攻击数据库窃取数据和劫持数据库勒索比特币的事件屡见不鲜，要避免这些潜在的风险，最为重要的一点是不要让数据库服务器暴露在公网上（最好的做法是将数据库置于内网，至少要做到不向公网开放数据库服务器的访问端口），另外要保管好<code>root</code>账号的口令，应用系统需要访问数据库时，通常不使用<code>root</code>账号进行访问，而是创建其他拥有适当权限的账号来访问。</p></blockquote><p>再次使用客户端工具连接MySQL服务器时，就可以使用新设置的口令了。在实际开发中，为了方便用户操作，可以选择图形化的客户端工具来连接MySQL服务器，包括：</p><ul><li>MySQL Workbench（官方提供的工具）</li><li>Navicat for MySQL（界面简单优雅，功能直观强大）</li><li>SQLyog for MySQL（强大的MySQL数据库管理员工具）</li></ul></li></ul></li><li><p>常用命令。</p><ul><li><p>查看服务器版本。</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">select</span> <span class="hljs-keyword">version</span>();</code></pre></div></li><li><p>查看所有数据库。</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">show</span> <span class="hljs-keyword">databases</span>;</code></pre></div></li><li><p>切换到指定数据库。</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">use</span> mysql;</code></pre></div></li><li><p>查看数据库下所有表。</p><div class="hljs"><pre><code class="hljs Shell">show tables;</code></pre></div></li><li><p>获取帮助。</p><div class="hljs"><pre><code class="hljs SQL">? contents;
+<span class="hljs-keyword">alter</span> <span class="hljs-keyword">user</span> <span class="hljs-string">'root'</span>@<span class="hljs-string">'localhost'</span> <span class="hljs-keyword">identified</span> <span class="hljs-keyword">by</span> <span class="hljs-string">'123456'</span>;</code></pre></div>
+
+<blockquote>
+<p><strong>说明</strong>：MySQL较新的版本默认不允许使用弱口令作为用户口令，所以我们通过上面的前两条命令修改了验证用户口令的策略和口令的长度。事实上我们不应该使用弱口令，因为存在用户口令被暴力破解的风险。近年来，攻击数据库窃取数据和劫持数据库勒索比特币的事件屡见不鲜，要避免这些潜在的风险，最为重要的一点是不要让数据库服务器暴露在公网上（最好的做法是将数据库置于内网，至少要做到不向公网开放数据库服务器的访问端口），另外要保管好<code>root</code>账号的口令，应用系统需要访问数据库时，通常不使用<code>root</code>账号进行访问，而是创建其他拥有适当权限的账号来访问。</p>
+</blockquote>
+<p>再次使用客户端工具连接MySQL服务器时，就可以使用新设置的口令了。在实际开发中，为了方便用户操作，可以选择图形化的客户端工具来连接MySQL服务器，包括：</p>
+<ul>
+<li>MySQL Workbench（官方提供的工具）</li>
+<li>Navicat for MySQL（界面简单优雅，功能直观强大）</li>
+<li>SQLyog for MySQL（强大的MySQL数据库管理员工具）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>常用命令。</p>
+<ul>
+<li><p>查看服务器版本。</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">select</span> <span class="hljs-keyword">version</span>();</code></pre></div>
+</li>
+<li><p>查看所有数据库。</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">show</span> <span class="hljs-keyword">databases</span>;</code></pre></div>
+</li>
+<li><p>切换到指定数据库。</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">use</span> mysql;</code></pre></div>
+</li>
+<li><p>查看数据库下所有表。</p>
+<div class="hljs"><pre><code class="hljs Shell">show tables;</code></pre></div>
+</li>
+<li><p>获取帮助。</p>
+<div class="hljs"><pre><code class="hljs SQL">? contents;
 ? functions;
 ? numeric functions;
 ? round;
 
 ? data types;
-? longblob;</code></pre></div></li></ul></li></ol><h3 id="三：-SQL详解">三： SQL详解</h3><h4 id="3-1-基本操作">3.1 基本操作</h4><p>我们通常可以将SQL分为三类：DDL（数据定义语言）、DML（数据操作语言）和DCL（数据控制语言）。DDL主要用于创建（create）、删除（drop）、修改（alter）数据库中的对象，比如创建、删除和修改二维表；DML主要负责插入数据（insert）、删除数据（delete）、更新数据（update）和查询（select）；DCL通常用于授予权限（grant）和召回权限（revoke）。</p><blockquote><p>说明：SQL是不区分大小写的语言，为了书写方便，下面的SQL都使用了小写字母来书写。</p></blockquote><ol><li><p>DDL（数据定义语言）</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-comment">-- 如果存在名为school的数据库就删除它</span>
+? longblob;</code></pre></div>
+
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="三：-SQL详解"><a href="#三：-SQL详解" class="headerlink" title="三： SQL详解"></a>三： SQL详解</h3><h4 id="3-1-基本操作"><a href="#3-1-基本操作" class="headerlink" title="3.1 基本操作"></a>3.1 基本操作</h4><p>我们通常可以将SQL分为三类：DDL（数据定义语言）、DML（数据操作语言）和DCL（数据控制语言）。DDL主要用于创建（create）、删除（drop）、修改（alter）数据库中的对象，比如创建、删除和修改二维表；DML主要负责插入数据（insert）、删除数据（delete）、更新数据（update）和查询（select）；DCL通常用于授予权限（grant）和召回权限（revoke）。</p>
+<blockquote>
+<p>说明：SQL是不区分大小写的语言，为了书写方便，下面的SQL都使用了小写字母来书写。</p>
+</blockquote>
+<ol>
+<li><p>DDL（数据定义语言）</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-comment">-- 如果存在名为school的数据库就删除它</span>
 <span class="hljs-keyword">drop</span> <span class="hljs-keyword">database</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">exists</span> school;
 
 <span class="hljs-comment">-- 创建名为school的数据库并设置默认的字符集和排序方式</span>
@@ -101,7 +446,14 @@ primary <span class="hljs-keyword">key</span> (recid),
 <span class="hljs-keyword">foreign</span> <span class="hljs-keyword">key</span> (<span class="hljs-keyword">sid</span>) <span class="hljs-keyword">references</span> tb_student (stuid),
 <span class="hljs-keyword">foreign</span> <span class="hljs-keyword">key</span> (cid) <span class="hljs-keyword">references</span> tb_course (couid),
 <span class="hljs-keyword">unique</span> (<span class="hljs-keyword">sid</span>, cid)
-);</code></pre></div><p>上面的DDL有几个地方需要强调一下：</p><ul><li><p>创建数据库时，我们通过<code>default charset utf8</code>指定了数据库默认使用的字符集，我们推荐使用该字符集，因为utf8能够支持国际化编码。如果将来数据库中用到的字符可能包括类似于Emoji这样的图片字符，也可以将默认字符集设定为utf8mb4（最大4字节的utf-8编码）。查看MySQL支持的字符集可以执行下面的语句。</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">show</span> <span class="hljs-built_in">character</span> <span class="hljs-keyword">set</span>;</code></pre></div><div class="hljs"><pre><code class="hljs plain">+----------+---------------------------------+---------------------+--------+
+);</code></pre></div>
+
+<p>上面的DDL有几个地方需要强调一下：</p>
+<ul>
+<li><p>创建数据库时，我们通过<code>default charset utf8</code>指定了数据库默认使用的字符集，我们推荐使用该字符集，因为utf8能够支持国际化编码。如果将来数据库中用到的字符可能包括类似于Emoji这样的图片字符，也可以将默认字符集设定为utf8mb4（最大4字节的utf-8编码）。查看MySQL支持的字符集可以执行下面的语句。</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">show</span> <span class="hljs-built_in">character</span> <span class="hljs-keyword">set</span>;</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs plain">+----------+---------------------------------+---------------------+--------+
 | Charset  | Description                     | Default collation   | Maxlen |
 +----------+---------------------------------+---------------------+--------+
 | big5     | Big5 Traditional Chinese        | big5_chinese_ci     |      2 |
@@ -146,8 +498,16 @@ primary <span class="hljs-keyword">key</span> (recid),
 | eucjpms  | UJIS for Windows Japanese       | eucjpms_japanese_ci |      3 |
 | gb18030  | China National Standard GB18030 | gb18030_chinese_ci  |      4 |
 +----------+---------------------------------+---------------------+--------+
-41 rows in set (0.00 sec)</code></pre></div><p>如果要设置MySQL服务启动时默认使用的字符集，可以修改MySQL的配置并添加以下内容</p><div class="hljs"><pre><code class="hljs INI"><span class="hljs-section">[mysqld]</span>
-<span class="hljs-attr">character-set-server</span>=utf8</code></pre></div></li><li><p>在创建表的时候，我们可以在右圆括号的后面通过<code>engine=XXX</code>来指定表的存储引擎，MySQL支持多种存储引擎，可以通过<code>show engines</code>命令进行查看。MySQL 5.5以后的版本默认使用的存储引擎是InnoDB，它正好也就是我们推荐大家使用的存储引擎（因为InnoDB更适合互联网应用对高并发、性能以及事务支持等方面的需求）。</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">show</span> <span class="hljs-keyword">engines</span>\G</code></pre></div><div class="hljs"><pre><code class="hljs plain">*************************** 1. row ***************************
+41 rows in set (0.00 sec)</code></pre></div>
+
+<p>如果要设置MySQL服务启动时默认使用的字符集，可以修改MySQL的配置并添加以下内容</p>
+<div class="hljs"><pre><code class="hljs INI"><span class="hljs-section">[mysqld]</span>
+<span class="hljs-attr">character-set-server</span>=utf8</code></pre></div>
+</li>
+<li><p>在创建表的时候，我们可以在右圆括号的后面通过<code>engine=XXX</code>来指定表的存储引擎，MySQL支持多种存储引擎，可以通过<code>show engines</code>命令进行查看。MySQL 5.5以后的版本默认使用的存储引擎是InnoDB，它正好也就是我们推荐大家使用的存储引擎（因为InnoDB更适合互联网应用对高并发、性能以及事务支持等方面的需求）。</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">show</span> <span class="hljs-keyword">engines</span>\G</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs plain">*************************** 1. row ***************************
       Engine: InnoDB
      Support: DEFAULT
      Comment: Supports transactions, row-level locking, and foreign keys
@@ -210,7 +570,124 @@ Transactions: NO
 Transactions: NULL
           XA: NULL
   Savepoints: NULL
-9 rows in set (0.00 sec)</code></pre></div><p>下面的表格对MySQL几种常用的数据引擎进行了简单的对比。</p><table><thead><tr><th>特性</th><th>InnoDB</th><th>MRG_MYISAM</th><th>MEMORY</th><th>MyISAM</th></tr></thead><tbody><tr><td>存储限制</td><td>有</td><td>没有</td><td>有</td><td>有</td></tr><tr><td>事务</td><td>支持</td><td></td><td></td><td></td></tr><tr><td>锁机制</td><td>行锁</td><td>表锁</td><td>表锁</td><td>表锁</td></tr><tr><td>B树索引</td><td>支持</td><td>支持</td><td>支持</td><td>支持</td></tr><tr><td>哈希索引</td><td></td><td></td><td>支持</td><td></td></tr><tr><td>全文检索</td><td>支持（5.6+）</td><td></td><td></td><td>支持</td></tr><tr><td>集群索引</td><td>支持</td><td></td><td></td><td></td></tr><tr><td>数据缓存</td><td>支持</td><td></td><td>支持</td><td></td></tr><tr><td>索引缓存</td><td>支持</td><td>支持</td><td>支持</td><td>支持</td></tr><tr><td>数据可压缩</td><td></td><td></td><td></td><td>支持</td></tr><tr><td>内存使用</td><td>高</td><td>低</td><td>中</td><td>低</td></tr><tr><td>存储空间使用</td><td>高</td><td>低</td><td></td><td>低</td></tr><tr><td>批量插入性能</td><td>低</td><td>高</td><td>高</td><td>高</td></tr><tr><td>是否支持外键</td><td>支持</td><td></td><td></td><td></td></tr></tbody></table><p>通过上面的比较我们可以了解到，InnoDB是唯一能够支持外键、事务以及行锁的存储引擎，所以我们之前说它更适合互联网应用，而且它也是较新的MySQL版本中默认使用的存储引擎。</p></li><li><p>在定义表结构为每个字段选择数据类型时，如果不清楚哪个数据类型更合适，可以通过MySQL的帮助系统来了解每种数据类型的特性、数据的长度和精度等相关信息。</p><div class="hljs"><pre><code class="hljs SQL">? data types</code></pre></div><div class="hljs"><pre><code class="hljs plain">You asked for help about help category: &quot;Data Types&quot;
+9 rows in set (0.00 sec)</code></pre></div>
+
+<p>下面的表格对MySQL几种常用的数据引擎进行了简单的对比。</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>InnoDB</th>
+<th>MRG_MYISAM</th>
+<th>MEMORY</th>
+<th>MyISAM</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>存储限制</td>
+<td>有</td>
+<td>没有</td>
+<td>有</td>
+<td>有</td>
+</tr>
+<tr>
+<td>事务</td>
+<td>支持</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>锁机制</td>
+<td>行锁</td>
+<td>表锁</td>
+<td>表锁</td>
+<td>表锁</td>
+</tr>
+<tr>
+<td>B树索引</td>
+<td>支持</td>
+<td>支持</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>哈希索引</td>
+<td></td>
+<td></td>
+<td>支持</td>
+<td></td>
+</tr>
+<tr>
+<td>全文检索</td>
+<td>支持（5.6+）</td>
+<td></td>
+<td></td>
+<td>支持</td>
+</tr>
+<tr>
+<td>集群索引</td>
+<td>支持</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>数据缓存</td>
+<td>支持</td>
+<td></td>
+<td>支持</td>
+<td></td>
+</tr>
+<tr>
+<td>索引缓存</td>
+<td>支持</td>
+<td>支持</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>数据可压缩</td>
+<td></td>
+<td></td>
+<td></td>
+<td>支持</td>
+</tr>
+<tr>
+<td>内存使用</td>
+<td>高</td>
+<td>低</td>
+<td>中</td>
+<td>低</td>
+</tr>
+<tr>
+<td>存储空间使用</td>
+<td>高</td>
+<td>低</td>
+<td></td>
+<td>低</td>
+</tr>
+<tr>
+<td>批量插入性能</td>
+<td>低</td>
+<td>高</td>
+<td>高</td>
+<td>高</td>
+</tr>
+<tr>
+<td>是否支持外键</td>
+<td>支持</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>通过上面的比较我们可以了解到，InnoDB是唯一能够支持外键、事务以及行锁的存储引擎，所以我们之前说它更适合互联网应用，而且它也是较新的MySQL版本中默认使用的存储引擎。</p>
+</li>
+<li><p>在定义表结构为每个字段选择数据类型时，如果不清楚哪个数据类型更合适，可以通过MySQL的帮助系统来了解每种数据类型的特性、数据的长度和精度等相关信息。</p>
+<div class="hljs"><pre><code class="hljs SQL">? data types</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs plain">You asked for help about help category: &quot;Data Types&quot;
 For more information, type &#39;help &lt;item&gt;&#39;, where &lt;item&gt; is one of the following
 topics:
    AUTO_INCREMENT
@@ -247,7 +724,11 @@ topics:
    TINYTEXT
    VARBINARY
    VARCHAR
-   YEAR DATA TYPE</code></pre></div><div class="hljs"><pre><code class="hljs SQL">? varchar</code></pre></div><div class="hljs"><pre><code class="hljs plain">Name: &#39;VARCHAR&#39;
+   YEAR DATA TYPE</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs SQL">? varchar</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs plain">Name: &#39;VARCHAR&#39;
 Description:
 [NATIONAL] VARCHAR(M) [CHARACTER SET charset_name] [COLLATE
 collation_name]
@@ -277,7 +758,14 @@ predefined character set. MySQL uses utf8 as this predefined character
 set. http:&#x2F;&#x2F;dev.mysql.com&#x2F;doc&#x2F;refman&#x2F;5.7&#x2F;en&#x2F;charset-national.html.
 NVARCHAR is shorthand for NATIONAL VARCHAR.
 
-URL: http:&#x2F;&#x2F;dev.mysql.com&#x2F;doc&#x2F;refman&#x2F;5.7&#x2F;en&#x2F;string-type-overview.html</code></pre></div><p>在数据类型的选择上，保存字符串数据通常都使用VARCHAR和CHAR两种类型，前者通常称为变长字符串，而后者通常称为定长字符串；对于InnoDB存储引擎，行存储格式没有区分固定长度和可变长度列，因此VARCHAR类型好CHAR类型没有本质区别，后者不一定比前者性能更好。如果要保存的很大字符串，可以使用TEXT类型；如果要保存很大的字节串，可以使用BLOB（二进制大对象）类型。在MySQL中，TEXT和BLOB又分别包括TEXT、MEDIUMTEXT、LONGTEXT和BLOB、MEDIUMBLOB、LONGBLOB三种不同的类型，它们主要的区别在于存储数据的最大大小不同。保存浮点数可以用FLOAT或DOUBLE类型，而保存定点数应该使用DECIMAL类型。如果要保存时间日期，DATETIME类型优于TIMESTAMP类型，因为前者能表示的时间日期范围更大。</p></li></ul></li><li><p>DML</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-comment">-- 插入学院数据</span>
+URL: http:&#x2F;&#x2F;dev.mysql.com&#x2F;doc&#x2F;refman&#x2F;5.7&#x2F;en&#x2F;string-type-overview.html</code></pre></div>
+
+<p>在数据类型的选择上，保存字符串数据通常都使用VARCHAR和CHAR两种类型，前者通常称为变长字符串，而后者通常称为定长字符串；对于InnoDB存储引擎，行存储格式没有区分固定长度和可变长度列，因此VARCHAR类型好CHAR类型没有本质区别，后者不一定比前者性能更好。如果要保存的很大字符串，可以使用TEXT类型；如果要保存很大的字节串，可以使用BLOB（二进制大对象）类型。在MySQL中，TEXT和BLOB又分别包括TEXT、MEDIUMTEXT、LONGTEXT和BLOB、MEDIUMBLOB、LONGBLOB三种不同的类型，它们主要的区别在于存储数据的最大大小不同。保存浮点数可以用FLOAT或DOUBLE类型，而保存定点数应该使用DECIMAL类型。如果要保存时间日期，DATETIME类型优于TIMESTAMP类型，因为前者能表示的时间日期范围更大。</p>
+</li>
+</ul>
+</li>
+<li><p>DML</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-comment">-- 插入学院数据</span>
 <span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> tb_college (collname, collintro) <span class="hljs-keyword">values</span> 
 (<span class="hljs-string">'计算机学院'</span>, <span class="hljs-string">'创建于1956年是我国首批建立计算机专业。学院现有计算机科学与技术一级学科和网络空间安全一级学科博士学位授予权，其中计算机科学与技术一级学科具有博士后流动站。计算机科学与技术一级学科在2017年全国第四轮学科评估中评为A；2019 U.S.News全球计算机学科排名26名；ESI学科排名0.945‰，进入全球前1‰，位列第43位。'</span>),
 (<span class="hljs-string">'外国语学院'</span>, <span class="hljs-string">'1998年浙江大学、杭州大学、浙江农业大学、浙江医科大学四校合并，成立新的浙江大学。1999年原浙江大学外语系、原杭州大学外国语学院、原杭州大学大外部、原浙江农业大学公外部、原浙江医科大学外语教学部合并，成立浙江大学外国语学院。2003年学院更名为浙江大学外国语言文化与国际交流学院。'</span>),
@@ -342,7 +830,9 @@ URL: http:&#x2F;&#x2F;dev.mysql.com&#x2F;doc&#x2F;refman&#x2F;5.7&#x2F;en&#x2F;s
 (<span class="hljs-number">2035</span>, <span class="hljs-number">9999</span>, <span class="hljs-keyword">default</span>, <span class="hljs-literal">null</span>),
 (<span class="hljs-number">3755</span>, <span class="hljs-number">1111</span>, <span class="hljs-keyword">default</span>, <span class="hljs-literal">null</span>),
 (<span class="hljs-number">3755</span>, <span class="hljs-number">8888</span>, <span class="hljs-keyword">default</span>, <span class="hljs-literal">null</span>),
-(<span class="hljs-number">3755</span>, <span class="hljs-number">9999</span>, <span class="hljs-string">'2017-09-01'</span>, <span class="hljs-number">92</span>);</code></pre></div><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-comment">-- 查询所有学生信息</span>
+(<span class="hljs-number">3755</span>, <span class="hljs-number">9999</span>, <span class="hljs-string">'2017-09-01'</span>, <span class="hljs-number">92</span>);</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-comment">-- 查询所有学生信息</span>
 <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> tb_student;
 
 <span class="hljs-comment">-- 查询所有课程名称及学分(投影和别名)</span>
@@ -432,7 +922,231 @@ URL: http:&#x2F;&#x2F;dev.mysql.com&#x2F;doc&#x2F;refman&#x2F;5.7&#x2F;en&#x2F;s
 <span class="hljs-keyword">select</span> stuname, avgmark <span class="hljs-keyword">from</span> tb_student <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> ( <span class="hljs-keyword">select</span> <span class="hljs-keyword">sid</span>, <span class="hljs-keyword">avg</span>(score) <span class="hljs-keyword">as</span> avgmark <span class="hljs-keyword">from</span> tb_record <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-keyword">sid</span> ) temp <span class="hljs-keyword">on</span> stuid=<span class="hljs-keyword">sid</span>;
 
 <span class="hljs-comment">-- 查询每个学生的姓名和选课数量(左外连接和子查询)</span>
-<span class="hljs-keyword">select</span> stuname, <span class="hljs-keyword">ifnull</span>(total, <span class="hljs-number">0</span>) <span class="hljs-keyword">from</span> tb_student <span class="hljs-keyword">left</span> <span class="hljs-keyword">outer</span> <span class="hljs-keyword">join</span> ( <span class="hljs-keyword">select</span> <span class="hljs-keyword">sid</span>, <span class="hljs-keyword">count</span>(<span class="hljs-keyword">sid</span>) <span class="hljs-keyword">as</span> total <span class="hljs-keyword">from</span> tb_record <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-keyword">sid</span> ) temp <span class="hljs-keyword">on</span> stuid=<span class="hljs-keyword">sid</span>;</code></pre></div><p>上面的DML有几个地方需要加以说明：</p><ol><li><p>MySQL中支持多种类型的运算符，包括：算术运算符（+、-、*、/、%）、比较运算符（=、&lt;&gt;、&lt;=&gt;、&lt;、&lt;=、&gt;、&gt;=、BETWEEN…AND…、IN、IS NULL、IS NOT NULL、LIKE、RLIKE、REGEXP）、逻辑运算符（NOT、AND、OR、XOR）和位运算符（&amp;、|、^、~、&gt;&gt;、&lt;&lt;），我们可以在DML中使用这些运算符处理数据。</p></li><li><p>在查询数据时，可以在SELECT语句及其子句（如WHERE子句、ORDER BY子句、HAVING子句等）中使用函数，这些函数包括字符串函数、数值函数、时间日期函数、流程函数等，如下面的表格所示。</p><p>常用字符串函数。</p><table><thead><tr><th>函数</th><th>功能</th></tr></thead><tbody><tr><td>CONCAT</td><td>将多个字符串连接成一个字符串</td></tr><tr><td>FORMAT</td><td>将数值格式化成字符串并指定保留几位小数</td></tr><tr><td>FROM_BASE64 / TO_BASE64</td><td>BASE64解码/编码</td></tr><tr><td>BIN / OCT / HEX</td><td>将数值转换成二进制/八进制/十六进制字符串</td></tr><tr><td>LOCATE</td><td>在字符串中查找一个子串的位置</td></tr><tr><td>LEFT / RIGHT</td><td>返回一个字符串左边/右边指定长度的字符</td></tr><tr><td>LENGTH / CHAR_LENGTH</td><td>返回字符串的长度以字节/字符为单位</td></tr><tr><td>LOWER / UPPER</td><td>返回字符串的小写/大写形式</td></tr><tr><td>LPAD / RPAD</td><td>如果字符串的长度不足，在字符串左边/右边填充指定的字符</td></tr><tr><td>LTRIM / RTRIM</td><td>去掉字符串前面/后面的空格</td></tr><tr><td>ORD / CHAR</td><td>返回字符对应的编码/返回编码对应的字符</td></tr><tr><td>STRCMP</td><td>比较字符串，返回-1、0、1分别表示小于、等于、大于</td></tr><tr><td>SUBSTRING</td><td>返回字符串指定范围的子串</td></tr></tbody></table><p>常用数值函数。</p><table><thead><tr><th>函数</th><th>功能</th></tr></thead><tbody><tr><td>ABS</td><td>返回一个数的绝度值</td></tr><tr><td>CEILING / FLOOR</td><td>返回一个数上取整/下取整的结果</td></tr><tr><td>CONV</td><td>将一个数从一种进制转换成另一种进制</td></tr><tr><td>CRC32</td><td>计算循环冗余校验码</td></tr><tr><td>EXP / LOG / LOG2 / LOG10</td><td>计算指数/对数</td></tr><tr><td>POW</td><td>求幂</td></tr><tr><td>RAND</td><td>返回[0,1)范围的随机数</td></tr><tr><td>ROUND</td><td>返回一个数四舍五入后的结果</td></tr><tr><td>SQRT</td><td>返回一个数的平方根</td></tr><tr><td>TRUNCATE</td><td>截断一个数到指定的精度</td></tr><tr><td>SIN / COS / TAN / COT / ASIN / ACOS / ATAN</td><td>三角函数</td></tr></tbody></table><p>常用时间日期函数。</p><table><thead><tr><th>函数</th><th>功能</th></tr></thead><tbody><tr><td>CURDATE / CURTIME / NOW</td><td>获取当前日期/时间/日期和时间</td></tr><tr><td>ADDDATE / SUBDATE</td><td>将两个日期表达式相加/相减并返回结果</td></tr><tr><td>DATE / TIME</td><td>从字符串中获取日期/时间</td></tr><tr><td>YEAR / MONTH / DAY</td><td>从日期中获取年/月/日</td></tr><tr><td>HOUR / MINUTE / SECOND</td><td>从时间中获取时/分/秒</td></tr><tr><td>DATEDIFF / TIMEDIFF</td><td>返回两个时间日期表达式相差多少天/小时</td></tr><tr><td>MAKEDATE / MAKETIME</td><td>制造一个日期/时间</td></tr></tbody></table><p>常用流程函数。</p><table><thead><tr><th>函数</th><th>功能</th></tr></thead><tbody><tr><td>IF</td><td>根据条件是否成立返回不同的值</td></tr><tr><td>IFNULL</td><td>如果为NULL则返回指定的值否则就返回本身</td></tr><tr><td>NULLIF</td><td>两个表达式相等就返回NULL否则返回第一个表达式的值</td></tr></tbody></table><p>其他常用函数。</p><table><thead><tr><th>函数</th><th>功能</th></tr></thead><tbody><tr><td>MD5 / SHA1 / SHA2</td><td>返回字符串对应的哈希摘要</td></tr><tr><td>CHARSET / COLLATION</td><td>返回字符集/校对规则</td></tr><tr><td>USER / CURRENT_USER</td><td>返回当前用户</td></tr><tr><td>DATABASE</td><td>返回当前数据库名</td></tr><tr><td>VERSION</td><td>返回当前数据库版本</td></tr><tr><td>FOUND_ROWS / ROW_COUNT</td><td>返回查询到的行数/受影响的行数</td></tr><tr><td>LAST_INSERT_ID</td><td>返回最后一个自增主键的值</td></tr><tr><td>UUID / UUID_SHORT</td><td>返回全局唯一标识符</td></tr></tbody></table></li></ol></li><li><p>DCL</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-comment">-- 创建可以远程登录的root账号并为其指定口令</span>
+<span class="hljs-keyword">select</span> stuname, <span class="hljs-keyword">ifnull</span>(total, <span class="hljs-number">0</span>) <span class="hljs-keyword">from</span> tb_student <span class="hljs-keyword">left</span> <span class="hljs-keyword">outer</span> <span class="hljs-keyword">join</span> ( <span class="hljs-keyword">select</span> <span class="hljs-keyword">sid</span>, <span class="hljs-keyword">count</span>(<span class="hljs-keyword">sid</span>) <span class="hljs-keyword">as</span> total <span class="hljs-keyword">from</span> tb_record <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-keyword">sid</span> ) temp <span class="hljs-keyword">on</span> stuid=<span class="hljs-keyword">sid</span>;</code></pre></div>
+
+<p>上面的DML有几个地方需要加以说明：</p>
+<ol>
+<li><p>MySQL中支持多种类型的运算符，包括：算术运算符（+、-、*、/、%）、比较运算符（=、&lt;&gt;、&lt;=&gt;、&lt;、&lt;=、&gt;、&gt;=、BETWEEN…AND…、IN、IS NULL、IS NOT NULL、LIKE、RLIKE、REGEXP）、逻辑运算符（NOT、AND、OR、XOR）和位运算符（&amp;、|、^、~、&gt;&gt;、&lt;&lt;），我们可以在DML中使用这些运算符处理数据。</p>
+</li>
+<li><p>在查询数据时，可以在SELECT语句及其子句（如WHERE子句、ORDER BY子句、HAVING子句等）中使用函数，这些函数包括字符串函数、数值函数、时间日期函数、流程函数等，如下面的表格所示。</p>
+<p>常用字符串函数。</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CONCAT</td>
+<td>将多个字符串连接成一个字符串</td>
+</tr>
+<tr>
+<td>FORMAT</td>
+<td>将数值格式化成字符串并指定保留几位小数</td>
+</tr>
+<tr>
+<td>FROM_BASE64 / TO_BASE64</td>
+<td>BASE64解码/编码</td>
+</tr>
+<tr>
+<td>BIN / OCT / HEX</td>
+<td>将数值转换成二进制/八进制/十六进制字符串</td>
+</tr>
+<tr>
+<td>LOCATE</td>
+<td>在字符串中查找一个子串的位置</td>
+</tr>
+<tr>
+<td>LEFT / RIGHT</td>
+<td>返回一个字符串左边/右边指定长度的字符</td>
+</tr>
+<tr>
+<td>LENGTH / CHAR_LENGTH</td>
+<td>返回字符串的长度以字节/字符为单位</td>
+</tr>
+<tr>
+<td>LOWER / UPPER</td>
+<td>返回字符串的小写/大写形式</td>
+</tr>
+<tr>
+<td>LPAD / RPAD</td>
+<td>如果字符串的长度不足，在字符串左边/右边填充指定的字符</td>
+</tr>
+<tr>
+<td>LTRIM / RTRIM</td>
+<td>去掉字符串前面/后面的空格</td>
+</tr>
+<tr>
+<td>ORD / CHAR</td>
+<td>返回字符对应的编码/返回编码对应的字符</td>
+</tr>
+<tr>
+<td>STRCMP</td>
+<td>比较字符串，返回-1、0、1分别表示小于、等于、大于</td>
+</tr>
+<tr>
+<td>SUBSTRING</td>
+<td>返回字符串指定范围的子串</td>
+</tr>
+</tbody></table>
+<p>常用数值函数。</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ABS</td>
+<td>返回一个数的绝度值</td>
+</tr>
+<tr>
+<td>CEILING / FLOOR</td>
+<td>返回一个数上取整/下取整的结果</td>
+</tr>
+<tr>
+<td>CONV</td>
+<td>将一个数从一种进制转换成另一种进制</td>
+</tr>
+<tr>
+<td>CRC32</td>
+<td>计算循环冗余校验码</td>
+</tr>
+<tr>
+<td>EXP / LOG / LOG2 / LOG10</td>
+<td>计算指数/对数</td>
+</tr>
+<tr>
+<td>POW</td>
+<td>求幂</td>
+</tr>
+<tr>
+<td>RAND</td>
+<td>返回[0,1)范围的随机数</td>
+</tr>
+<tr>
+<td>ROUND</td>
+<td>返回一个数四舍五入后的结果</td>
+</tr>
+<tr>
+<td>SQRT</td>
+<td>返回一个数的平方根</td>
+</tr>
+<tr>
+<td>TRUNCATE</td>
+<td>截断一个数到指定的精度</td>
+</tr>
+<tr>
+<td>SIN / COS / TAN / COT / ASIN / ACOS / ATAN</td>
+<td>三角函数</td>
+</tr>
+</tbody></table>
+<p>常用时间日期函数。</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CURDATE / CURTIME / NOW</td>
+<td>获取当前日期/时间/日期和时间</td>
+</tr>
+<tr>
+<td>ADDDATE / SUBDATE</td>
+<td>将两个日期表达式相加/相减并返回结果</td>
+</tr>
+<tr>
+<td>DATE / TIME</td>
+<td>从字符串中获取日期/时间</td>
+</tr>
+<tr>
+<td>YEAR / MONTH / DAY</td>
+<td>从日期中获取年/月/日</td>
+</tr>
+<tr>
+<td>HOUR / MINUTE / SECOND</td>
+<td>从时间中获取时/分/秒</td>
+</tr>
+<tr>
+<td>DATEDIFF / TIMEDIFF</td>
+<td>返回两个时间日期表达式相差多少天/小时</td>
+</tr>
+<tr>
+<td>MAKEDATE / MAKETIME</td>
+<td>制造一个日期/时间</td>
+</tr>
+</tbody></table>
+<p>常用流程函数。</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IF</td>
+<td>根据条件是否成立返回不同的值</td>
+</tr>
+<tr>
+<td>IFNULL</td>
+<td>如果为NULL则返回指定的值否则就返回本身</td>
+</tr>
+<tr>
+<td>NULLIF</td>
+<td>两个表达式相等就返回NULL否则返回第一个表达式的值</td>
+</tr>
+</tbody></table>
+<p>其他常用函数。</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MD5 / SHA1 / SHA2</td>
+<td>返回字符串对应的哈希摘要</td>
+</tr>
+<tr>
+<td>CHARSET / COLLATION</td>
+<td>返回字符集/校对规则</td>
+</tr>
+<tr>
+<td>USER / CURRENT_USER</td>
+<td>返回当前用户</td>
+</tr>
+<tr>
+<td>DATABASE</td>
+<td>返回当前数据库名</td>
+</tr>
+<tr>
+<td>VERSION</td>
+<td>返回当前数据库版本</td>
+</tr>
+<tr>
+<td>FOUND_ROWS / ROW_COUNT</td>
+<td>返回查询到的行数/受影响的行数</td>
+</tr>
+<tr>
+<td>LAST_INSERT_ID</td>
+<td>返回最后一个自增主键的值</td>
+</tr>
+<tr>
+<td>UUID / UUID_SHORT</td>
+<td>返回全局唯一标识符</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+</li>
+<li><p>DCL</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-comment">-- 创建可以远程登录的root账号并为其指定口令</span>
 <span class="hljs-keyword">create</span> <span class="hljs-keyword">user</span> <span class="hljs-string">'root'</span>@<span class="hljs-string">'%'</span> <span class="hljs-keyword">identified</span> <span class="hljs-keyword">by</span> <span class="hljs-string">'123456'</span>;
 
 <span class="hljs-comment">-- 为远程登录的root账号授权操作所有数据库所有对象的所有权限并允许其将权限再次赋予其他用户</span>
@@ -445,7 +1159,19 @@ URL: http:&#x2F;&#x2F;dev.mysql.com&#x2F;doc&#x2F;refman&#x2F;5.7&#x2F;en&#x2F;s
 <span class="hljs-keyword">grant</span> <span class="hljs-keyword">all</span> <span class="hljs-keyword">privileges</span> <span class="hljs-keyword">on</span> school.* <span class="hljs-keyword">to</span> <span class="hljs-string">'hellokitty'</span>@<span class="hljs-string">'%'</span>;
 
 <span class="hljs-comment">-- 召回hellokitty对school数据库所有对象的insert/delete/update权限</span>
-<span class="hljs-keyword">revoke</span> <span class="hljs-keyword">insert</span>, <span class="hljs-keyword">delete</span>, <span class="hljs-keyword">update</span> <span class="hljs-keyword">on</span> school.* <span class="hljs-keyword">from</span> <span class="hljs-string">'hellokitty'</span>@<span class="hljs-string">'%'</span>;</code></pre></div><blockquote><p>说明：创建一个可以允许任意主机登录并且具有超级管理员权限的用户在现实中并不是一个明智的决定，因为一旦该账号的口令泄露或者被破解，数据库将会面临灾难级的风险。</p></blockquote></li></ol><h4 id="3-2-索引">3.2 索引</h4><p>索引是关系型数据库中用来提升查询性能最为重要的手段。关系型数据库中的索引就像一本书的目录，我们可以想象一下，如果要从一本书中找出某个知识点，但是这本书没有目录，这将是意见多么可怕的事情（我们估计得一篇一篇的翻下去，才能确定这个知识点到底在什么位置）。创建索引虽然会带来存储空间上的开销，就像一本书的目录会占用一部分的篇幅一样，但是在牺牲空间后换来的查询时间的减少也是非常显著的。</p><p>MySQL中，所有数据类型的列都可以被索引，常用的存储引擎InnoDB和MyISAM能支持每个表创建16个索引。InnoDB和MyISAM使用的索引其底层算法是B-tree（B树），B-tree是一种自平衡的树，类似于平衡二叉排序树，能够保持数据有序。这种数据结构能够让查找数据、顺序访问、插入数据及删除的操作都在对数时间内完成。</p><p>接下来我们通过一个简单的例子来说明索引的意义，比如我们要根据学生的姓名来查找学生，这个场景在实际开发中应该经常遇到，就跟通过商品名称查找商品道理是一样的。我们可以使用MySQL的<code>explain</code>关键字来查看SQL的执行计划。</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">explain</span> <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> tb_student <span class="hljs-keyword">where</span> stuname=<span class="hljs-string">'林震南'</span>\G</code></pre></div><div class="hljs"><pre><code class="hljs plain">*************************** 1. row ***************************
+<span class="hljs-keyword">revoke</span> <span class="hljs-keyword">insert</span>, <span class="hljs-keyword">delete</span>, <span class="hljs-keyword">update</span> <span class="hljs-keyword">on</span> school.* <span class="hljs-keyword">from</span> <span class="hljs-string">'hellokitty'</span>@<span class="hljs-string">'%'</span>;</code></pre></div>
+
+<blockquote>
+<p>说明：创建一个可以允许任意主机登录并且具有超级管理员权限的用户在现实中并不是一个明智的决定，因为一旦该账号的口令泄露或者被破解，数据库将会面临灾难级的风险。</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="3-2-索引"><a href="#3-2-索引" class="headerlink" title="3.2 索引"></a>3.2 索引</h4><p>索引是关系型数据库中用来提升查询性能最为重要的手段。关系型数据库中的索引就像一本书的目录，我们可以想象一下，如果要从一本书中找出某个知识点，但是这本书没有目录，这将是意见多么可怕的事情（我们估计得一篇一篇的翻下去，才能确定这个知识点到底在什么位置）。创建索引虽然会带来存储空间上的开销，就像一本书的目录会占用一部分的篇幅一样，但是在牺牲空间后换来的查询时间的减少也是非常显著的。</p>
+<p>MySQL中，所有数据类型的列都可以被索引，常用的存储引擎InnoDB和MyISAM能支持每个表创建16个索引。InnoDB和MyISAM使用的索引其底层算法是B-tree（B树），B-tree是一种自平衡的树，类似于平衡二叉排序树，能够保持数据有序。这种数据结构能够让查找数据、顺序访问、插入数据及删除的操作都在对数时间内完成。</p>
+<p>接下来我们通过一个简单的例子来说明索引的意义，比如我们要根据学生的姓名来查找学生，这个场景在实际开发中应该经常遇到，就跟通过商品名称查找商品道理是一样的。我们可以使用MySQL的<code>explain</code>关键字来查看SQL的执行计划。</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">explain</span> <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> tb_student <span class="hljs-keyword">where</span> stuname=<span class="hljs-string">'林震南'</span>\G</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs plain">*************************** 1. row ***************************
            id: 1
   select_type: SIMPLE
         table: tb_student
@@ -458,7 +1184,22 @@ possible_keys: NULL
          rows: 11
      filtered: 10.00
         Extra: Using where
-1 row in set, 1 warning (0.00 sec)</code></pre></div><p>在上面的SQL执行计划中，有几项值得我们关注：</p><ol><li>type：MySQL在表中找到满足条件的行的方式，也称为访问类型，包括：ALL（全表扫描）、index（索引全扫描）、range（索引范围扫描）、ref（非唯一索引扫描）、eq_ref（唯一索引扫描）、const/system、NULL。在所有的访问类型中，很显然ALL是性能最差的，它代表了全表扫描是指要扫描表中的每一行才能找到匹配的行。</li><li>possible_keys：MySQL可以选择的索引，但是<strong>有可能不会使用</strong>。</li><li>key：MySQL真正使用的索引。</li><li>rows：执行查询需要扫描的行数，这是一个<strong>预估值</strong>。</li></ol><p>从上面的执行计划可以看出，当我们通过学生名字查询学生时实际上是进行了全表扫描，不言而喻这个查询性能肯定是非常糟糕的，尤其是在表中的行很多的时候。如果我们需要经常通过学生姓名来查询学生，那么就应该在学生姓名对应的列上创建索引，通过索引来加速查询。</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">create</span> <span class="hljs-keyword">index</span> idx_student_name <span class="hljs-keyword">on</span> tb_student(stuname);</code></pre></div><p>再次查看刚才的SQL对应的执行计划。</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">explain</span> <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> tb_student <span class="hljs-keyword">where</span> stuname=<span class="hljs-string">'林震南'</span>\G</code></pre></div><div class="hljs"><pre><code class="hljs plain">*************************** 1. row ***************************
+1 row in set, 1 warning (0.00 sec)</code></pre></div>
+
+<p>在上面的SQL执行计划中，有几项值得我们关注：</p>
+<ol>
+<li>type：MySQL在表中找到满足条件的行的方式，也称为访问类型，包括：ALL（全表扫描）、index（索引全扫描）、range（索引范围扫描）、ref（非唯一索引扫描）、eq_ref（唯一索引扫描）、const/system、NULL。在所有的访问类型中，很显然ALL是性能最差的，它代表了全表扫描是指要扫描表中的每一行才能找到匹配的行。</li>
+<li>possible_keys：MySQL可以选择的索引，但是<strong>有可能不会使用</strong>。</li>
+<li>key：MySQL真正使用的索引。</li>
+<li>rows：执行查询需要扫描的行数，这是一个<strong>预估值</strong>。</li>
+</ol>
+<p>从上面的执行计划可以看出，当我们通过学生名字查询学生时实际上是进行了全表扫描，不言而喻这个查询性能肯定是非常糟糕的，尤其是在表中的行很多的时候。如果我们需要经常通过学生姓名来查询学生，那么就应该在学生姓名对应的列上创建索引，通过索引来加速查询。</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">create</span> <span class="hljs-keyword">index</span> idx_student_name <span class="hljs-keyword">on</span> tb_student(stuname);</code></pre></div>
+
+<p>再次查看刚才的SQL对应的执行计划。</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">explain</span> <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> tb_student <span class="hljs-keyword">where</span> stuname=<span class="hljs-string">'林震南'</span>\G</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs plain">*************************** 1. row ***************************
            id: 1
   select_type: SIMPLE
         table: tb_student
@@ -471,7 +1212,15 @@ possible_keys: idx_student_name
          rows: 1
      filtered: 100.00
         Extra: NULL
-1 row in set, 1 warning (0.00 sec)</code></pre></div><p>可以注意到，在对学生姓名创建索引后，刚才的查询已经不是全表扫描而是基于索引的查询，而且扫描的行只有唯一的一行，这显然大大的提升了查询的性能。MySQL中还允许创建前缀索引，即对索引字段的前N个字符创建索引，这样的话可以减少索引占用的空间（但节省了空间很有可能会浪费时间，<strong>时间和空间是不可调和的矛盾</strong>），如下所示。</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">create</span> <span class="hljs-keyword">index</span> idx_student_name_1 <span class="hljs-keyword">on</span> tb_student(stuname(<span class="hljs-number">1</span>));</code></pre></div><p>上面的索引相当于是根据学生姓名的第一个字来创建的索引，我们再看看SQL执行计划。</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">explain</span> <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> tb_student <span class="hljs-keyword">where</span> stuname=<span class="hljs-string">'林震南'</span>\G</code></pre></div><div class="hljs"><pre><code class="hljs plain">*************************** 1. row ***************************
+1 row in set, 1 warning (0.00 sec)</code></pre></div>
+
+<p>可以注意到，在对学生姓名创建索引后，刚才的查询已经不是全表扫描而是基于索引的查询，而且扫描的行只有唯一的一行，这显然大大的提升了查询的性能。MySQL中还允许创建前缀索引，即对索引字段的前N个字符创建索引，这样的话可以减少索引占用的空间（但节省了空间很有可能会浪费时间，<strong>时间和空间是不可调和的矛盾</strong>），如下所示。</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">create</span> <span class="hljs-keyword">index</span> idx_student_name_1 <span class="hljs-keyword">on</span> tb_student(stuname(<span class="hljs-number">1</span>));</code></pre></div>
+
+<p>上面的索引相当于是根据学生姓名的第一个字来创建的索引，我们再看看SQL执行计划。</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">explain</span> <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> tb_student <span class="hljs-keyword">where</span> stuname=<span class="hljs-string">'林震南'</span>\G</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs plain">*************************** 1. row ***************************
            id: 1
   select_type: SIMPLE
         table: tb_student
@@ -484,7 +1233,34 @@ possible_keys: idx_student_name
          rows: 2
      filtered: 100.00
         Extra: Using where
-1 row in set, 1 warning (0.00 sec)</code></pre></div><p>不知道大家是否注意到，这一次扫描的行变成了2行，因为学生表中有两个姓“林”的学生，我们只用姓名的第一个字作为索引的话，在查询时通过索引就会找到这两行。</p><p>如果要删除索引，可以使用下面的SQL。</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> tb_student <span class="hljs-keyword">drop</span> <span class="hljs-keyword">index</span> idx_student_name;</code></pre></div><p>或者</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">drop</span> <span class="hljs-keyword">index</span> idx_student_name <span class="hljs-keyword">on</span> tb_student;</code></pre></div><p>我们简单的为大家总结一下索引的设计原则：</p><ol><li><strong>最适合</strong>索引的列是出现在<strong>WHERE子句</strong>和连接子句中的列。</li><li>索引列的基数越大（取值多重复值少），索引的效果就越好。</li><li>使用<strong>前缀索引</strong>可以减少索引占用的空间，内存中可以缓存更多的索引。</li><li><strong>索引不是越多越好</strong>，虽然索引加速了读操作（查询），但是写操作（增、删、改）都会变得更慢，因为数据的变化会导致索引的更新，就如同书籍章节的增删需要更新目录一样。</li><li>使用InnoDB存储引擎时，表的普通索引都会保存主键的值，所以<strong>主键要尽可能选择较短的数据类型</strong>，这样可以有效的减少索引占用的空间，利用提升索引的缓存效果。</li></ol><p>最后，还有一点需要说明，InnoDB使用的B-tree索引，数值类型的列除了等值判断时索引会生效之外，使用&gt;、&lt;、&gt;=、&lt;=、BETWEEN…AND… 、&lt;&gt;时，索引仍然生效；对于字符串类型的列，如果使用不以通配符开头的模糊查询，索引也是起作用的，但是其他的情况会导致索引失效，这就意味着很有可能会做全表查询。</p><h4 id="3-3-视图">3.3 视图</h4><p>视图是关系型数据库中将一组查询指令构成的结果集组合成可查询的数据表的对象。简单的说，视图就是虚拟的表，但与数据表不同的是，数据表是一种实体结构，而视图是一种虚拟结构，你也可以将视图理解为保存在数据库中被赋予名字的SQL语句。</p><p>使用视图可以获得以下好处：</p><ol><li>可以将实体数据表隐藏起来，让外部程序无法得知实际的数据结构，让访问者可以使用表的组成部分而不是整个表，降低数据库被攻击的风险。</li><li>在大多数的情况下视图是只读的（更新视图的操作通常都有诸多的限制），外部程序无法直接透过视图修改数据。</li><li>重用SQL语句，将高度复杂的查询包装在视图表中，直接访问该视图即可取出需要的数据；也可以将视图视为数据表进行连接查询。</li><li>视图可以返回与实体数据表不同格式的数据，</li></ol><p>创建视图。</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> vw_score 
+1 row in set, 1 warning (0.00 sec)</code></pre></div>
+
+<p>不知道大家是否注意到，这一次扫描的行变成了2行，因为学生表中有两个姓“林”的学生，我们只用姓名的第一个字作为索引的话，在查询时通过索引就会找到这两行。</p>
+<p>如果要删除索引，可以使用下面的SQL。</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> tb_student <span class="hljs-keyword">drop</span> <span class="hljs-keyword">index</span> idx_student_name;</code></pre></div>
+
+<p>或者</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">drop</span> <span class="hljs-keyword">index</span> idx_student_name <span class="hljs-keyword">on</span> tb_student;</code></pre></div>
+
+<p>我们简单的为大家总结一下索引的设计原则：</p>
+<ol>
+<li><strong>最适合</strong>索引的列是出现在<strong>WHERE子句</strong>和连接子句中的列。</li>
+<li>索引列的基数越大（取值多重复值少），索引的效果就越好。</li>
+<li>使用<strong>前缀索引</strong>可以减少索引占用的空间，内存中可以缓存更多的索引。</li>
+<li><strong>索引不是越多越好</strong>，虽然索引加速了读操作（查询），但是写操作（增、删、改）都会变得更慢，因为数据的变化会导致索引的更新，就如同书籍章节的增删需要更新目录一样。</li>
+<li>使用InnoDB存储引擎时，表的普通索引都会保存主键的值，所以<strong>主键要尽可能选择较短的数据类型</strong>，这样可以有效的减少索引占用的空间，利用提升索引的缓存效果。</li>
+</ol>
+<p>最后，还有一点需要说明，InnoDB使用的B-tree索引，数值类型的列除了等值判断时索引会生效之外，使用&gt;、&lt;、&gt;=、&lt;=、BETWEEN…AND… 、&lt;&gt;时，索引仍然生效；对于字符串类型的列，如果使用不以通配符开头的模糊查询，索引也是起作用的，但是其他的情况会导致索引失效，这就意味着很有可能会做全表查询。</p>
+<h4 id="3-3-视图"><a href="#3-3-视图" class="headerlink" title="3.3 视图"></a>3.3 视图</h4><p>视图是关系型数据库中将一组查询指令构成的结果集组合成可查询的数据表的对象。简单的说，视图就是虚拟的表，但与数据表不同的是，数据表是一种实体结构，而视图是一种虚拟结构，你也可以将视图理解为保存在数据库中被赋予名字的SQL语句。</p>
+<p>使用视图可以获得以下好处：</p>
+<ol>
+<li>可以将实体数据表隐藏起来，让外部程序无法得知实际的数据结构，让访问者可以使用表的组成部分而不是整个表，降低数据库被攻击的风险。</li>
+<li>在大多数的情况下视图是只读的（更新视图的操作通常都有诸多的限制），外部程序无法直接透过视图修改数据。</li>
+<li>重用SQL语句，将高度复杂的查询包装在视图表中，直接访问该视图即可取出需要的数据；也可以将视图视为数据表进行连接查询。</li>
+<li>视图可以返回与实体数据表不同格式的数据，</li>
+</ol>
+<p>创建视图。</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> vw_score 
 <span class="hljs-keyword">as</span> 
 	<span class="hljs-keyword">select</span> <span class="hljs-keyword">sid</span>, <span class="hljs-keyword">round</span>(<span class="hljs-keyword">avg</span>(score), <span class="hljs-number">1</span>) <span class="hljs-keyword">as</span> avgscore <span class="hljs-keyword">from</span> tb_record <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-keyword">sid</span>;
 
@@ -492,7 +1268,15 @@ possible_keys: idx_student_name
 <span class="hljs-keyword">as</span> 
 	<span class="hljs-keyword">select</span> stuname, avgscore 
 		<span class="hljs-keyword">from</span> tb_student, vw_score  
-		<span class="hljs-keyword">where</span> stuid=<span class="hljs-keyword">sid</span>;</code></pre></div><blockquote><p><strong>提示</strong>：因为视图不包含数据，所以每次使用视图时，都必须执行查询以获得数据，如果你使用了连接查询、嵌套查询创建了较为复杂的视图，你可能会发现查询性能下降得很厉害。因此，在使用复杂的视图前，应该进行测试以确保其性能能够满足应用的需求。</p></blockquote><p>使用视图。</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">select</span> stuname, avgscore <span class="hljs-keyword">from</span> vw_student_score <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> avgscore <span class="hljs-keyword">desc</span>;</code></pre></div><div class="hljs"><pre><code class="hljs plain">+--------------+----------+
+		<span class="hljs-keyword">where</span> stuid=<span class="hljs-keyword">sid</span>;</code></pre></div>
+
+<blockquote>
+<p><strong>提示</strong>：因为视图不包含数据，所以每次使用视图时，都必须执行查询以获得数据，如果你使用了连接查询、嵌套查询创建了较为复杂的视图，你可能会发现查询性能下降得很厉害。因此，在使用复杂的视图前，应该进行测试以确保其性能能够满足应用的需求。</p>
+</blockquote>
+<p>使用视图。</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">select</span> stuname, avgscore <span class="hljs-keyword">from</span> vw_student_score <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> avgscore <span class="hljs-keyword">desc</span>;</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs plain">+--------------+----------+
 | stuname      | avgscore |
 +--------------+----------+
 | 杨过         |     95.6 |
@@ -502,7 +1286,37 @@ possible_keys: idx_student_name
 | 岳不群       |     78.0 |
 | 东方不败     |     88.0 |
 | 项少龙       |     92.0 |
-+--------------+----------+</code></pre></div><p>既然视图是一张虚拟的表，那么视图的中的数据可以更新吗？视图的可更新性要视具体情况而定，以下类型的视图是不能更新的：</p><ol><li>使用了聚合函数（SUM、MIN、MAX、AVG、COUNT等）、DISTINCT、GROUP BY、HAVING、UNION或者UNION ALL的视图。</li><li>SELECT中包含了子查询的视图。</li><li>FROM子句中包含了一个不能更新的视图的视图。</li><li>WHERE子句的子查询引用了FROM子句中的表的视图。</li></ol><p>删除视图。</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">drop</span> <span class="hljs-keyword">view</span> vw_student_score;</code></pre></div><blockquote><p><strong>说明</strong>：如果希望更新视图，可以先用上面的命令删除视图，也可以通过<code>create or replace view</code>来更新视图。</p></blockquote><p>视图的规则和限制。</p><ol><li>视图可以嵌套，可以利用从其他视图中检索的数据来构造一个新的视图。视图也可以和表一起使用。</li><li>创建视图时可以使用<code>order by</code>子句，但如果从视图中检索数据时也使用了<code>order by</code>，那么该视图中原先的<code>order by</code>会被覆盖。</li><li>视图无法使用索引，也不会激发触发器（实际开发中因为性能等各方面的考虑，通常不建议使用触发器，所以我们也不对这个概念进行介绍）的执行。</li></ol><h4 id="3-4-存储过程">3.4 存储过程</h4><p>存储过程是事先编译好存储在数据库中的一组SQL的集合，调用存储过程可以简化应用程序开发人员的工作，减少与数据库服务器之间的通信，对于提升数据操作的性能也是有帮助的。其实迄今为止，我们使用的SQL语句都是针对一个或多个表的单条语句，但在实际开发中经常会遇到某个操作需要多条SQL语句才能完成的情况。例如，电商网站在受理用户订单时，需要做以下一系列的处理。</p><ol><li>通过查询来核对库存中是否有对应的物品以及库存是否充足。</li><li>如果库存有物品，需要锁定库存以确保这些物品不再卖给别人， 并且要减少可用的物品数量以反映正确的库存量。</li><li>如果库存不足，可能需要进一步与供应商进行交互或者至少产生一条系统提示消息。</li><li>不管受理订单是否成功，都需要产生流水记录，而且需要给对应的用户产生一条通知信息。</li></ol><p>我们可以通过存储过程将复杂的操作封装起来，这样不仅有助于保证数据的一致性，而且将来如果业务发生了变动，只需要调整和修改存储过程即可。对于调用存储过程的用户来说，存储过程并没有暴露数据表的细节，而且执行存储过程比一条条的执行一组SQL要快得多。</p><p>下面的存储过程实现了查询某门课程的最高分、最低分和平均分。</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">drop</span> <span class="hljs-keyword">procedure</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">exists</span> sp_score_by_cid;
++--------------+----------+</code></pre></div>
+
+<p>既然视图是一张虚拟的表，那么视图的中的数据可以更新吗？视图的可更新性要视具体情况而定，以下类型的视图是不能更新的：</p>
+<ol>
+<li>使用了聚合函数（SUM、MIN、MAX、AVG、COUNT等）、DISTINCT、GROUP BY、HAVING、UNION或者UNION ALL的视图。</li>
+<li>SELECT中包含了子查询的视图。</li>
+<li>FROM子句中包含了一个不能更新的视图的视图。</li>
+<li>WHERE子句的子查询引用了FROM子句中的表的视图。</li>
+</ol>
+<p>删除视图。</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">drop</span> <span class="hljs-keyword">view</span> vw_student_score;</code></pre></div>
+
+<blockquote>
+<p><strong>说明</strong>：如果希望更新视图，可以先用上面的命令删除视图，也可以通过<code>create or replace view</code>来更新视图。</p>
+</blockquote>
+<p>视图的规则和限制。</p>
+<ol>
+<li>视图可以嵌套，可以利用从其他视图中检索的数据来构造一个新的视图。视图也可以和表一起使用。</li>
+<li>创建视图时可以使用<code>order by</code>子句，但如果从视图中检索数据时也使用了<code>order by</code>，那么该视图中原先的<code>order by</code>会被覆盖。</li>
+<li>视图无法使用索引，也不会激发触发器（实际开发中因为性能等各方面的考虑，通常不建议使用触发器，所以我们也不对这个概念进行介绍）的执行。</li>
+</ol>
+<h4 id="3-4-存储过程"><a href="#3-4-存储过程" class="headerlink" title="3.4 存储过程"></a>3.4 存储过程</h4><p>存储过程是事先编译好存储在数据库中的一组SQL的集合，调用存储过程可以简化应用程序开发人员的工作，减少与数据库服务器之间的通信，对于提升数据操作的性能也是有帮助的。其实迄今为止，我们使用的SQL语句都是针对一个或多个表的单条语句，但在实际开发中经常会遇到某个操作需要多条SQL语句才能完成的情况。例如，电商网站在受理用户订单时，需要做以下一系列的处理。 </p>
+<ol>
+<li>通过查询来核对库存中是否有对应的物品以及库存是否充足。</li>
+<li>如果库存有物品，需要锁定库存以确保这些物品不再卖给别人， 并且要减少可用的物品数量以反映正确的库存量。</li>
+<li>如果库存不足，可能需要进一步与供应商进行交互或者至少产生一条系统提示消息。 </li>
+<li>不管受理订单是否成功，都需要产生流水记录，而且需要给对应的用户产生一条通知信息。 </li>
+</ol>
+<p>我们可以通过存储过程将复杂的操作封装起来，这样不仅有助于保证数据的一致性，而且将来如果业务发生了变动，只需要调整和修改存储过程即可。对于调用存储过程的用户来说，存储过程并没有暴露数据表的细节，而且执行存储过程比一条条的执行一组SQL要快得多。</p>
+<p>下面的存储过程实现了查询某门课程的最高分、最低分和平均分。</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">drop</span> <span class="hljs-keyword">procedure</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">exists</span> sp_score_by_cid;
 
 delimiter $$
 
@@ -524,7 +1338,86 @@ delimiter $$
 delimiter ;
 
 <span class="hljs-keyword">call</span> sp_score_by_cid(<span class="hljs-number">1111</span>, @a, @b, @c);
-<span class="hljs-keyword">select</span> @a, @b, @c;</code></pre></div><blockquote><p>说明：在定义存储过程时，因为可能需要书写多条SQL，而分隔这些SQL需要使用分号作为分隔符，如果这个时候，仍然用分号表示整段代码结束，那么定义存储过程的SQL就会出现错误，所以上面我们用<code>delimiter $$</code>将整段代码结束的标记定义为<code>$$</code>，那么代码中的分号将不再表示整段代码的结束，需要马上执行，整段代码在遇到<code>end $$</code>时才输入完成并执行。在定义完存储过程后，通过<code>delimiter ;</code>将结束符重新改回成分号。</p></blockquote><p>上面定义的存储过程有四个参数，其中第一个参数是输入参数，代表课程的编号，后面的参数都是输出参数，因为存储过程不能定义返回值，只能通过输出参数将执行结果带出，定义输出参数的关键字是<code>out</code>，默认情况下参数都是输入参数。</p><p>调用存储过程。</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">call</span> sp_score_by_cid(<span class="hljs-number">1111</span>, @a, @b, @c);</code></pre></div><p>获取输出参数的值。</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">select</span> @a <span class="hljs-keyword">as</span> 最高分, @b <span class="hljs-keyword">as</span> 最低分, @c <span class="hljs-keyword">as</span> 平均分;</code></pre></div><p>删除存储过程。</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">drop</span> <span class="hljs-keyword">procedure</span> sp_score_by_cid;</code></pre></div><p>在存储过程中，我们可以定义变量、条件，可以使用分支和循环语句，可以通过游标操作查询结果，还可以使用事件调度器，这些内容我们暂时不在此处进行介绍。虽然我们说了很多存储过程的好处，但是在实际开发中，如果过度的使用存储过程，将大量复杂的运算放到存储过程中，也会导致占用数据库服务器的CPU资源，造成数据库服务器承受巨大的压力。为此，我们一般会将复杂的运算和处理交给应用服务器，因为很容易部署多台应用服务器来分摊这些压力。</p><h3 id="四：-几个重要的概念">四： 几个重要的概念</h3><h4 id="4-1-范式理论-设计二维表的指导思想">4.1 范式理论 - 设计二维表的指导思想</h4><ol><li>第一范式：数据表的每个列的值域都是由原子值组成的，不能够再分割。</li><li>第二范式：数据表里的所有数据都要和该数据表的键（主键与候选键）有完全依赖关系。</li><li>第三范式：所有非键属性都只和候选键有相关性，也就是说非键属性之间应该是独立无关的。</li></ol><h4 id="4-2-数据完整性">4.2 数据完整性</h4><ol><li><p>实体完整性 - 每个实体都是独一无二的</p><ul><li>主键（primary key） / 唯一约束 / 唯一索引（unique）</li></ul></li><li><p>引用完整性（参照完整性）- 关系中不允许引用不存在的实体</p><ul><li>外键（foreign key）</li></ul></li><li><p>域完整性 - 数据是有效的</p><ul><li><p>数据类型及长度</p></li><li><p>非空约束（not null）</p></li><li><p>默认值约束（default）</p></li><li><p>检查约束（check）</p><blockquote><p>说明：在MySQL数据库中，检查约束并不起作用。</p></blockquote></li></ul></li></ol><h4 id="4-3-数据一致性">4.3 数据一致性</h4><ol><li><p>事务：一系列对数据库进行读/写的操作，这些操作要么全都成功，要么全都失败。</p></li><li><p>事务的ACID特性</p><ul><li>原子性：事务作为一个整体被执行，包含在其中的对数据库的操作要么全部被执行，要么都不执行</li><li>一致性：事务应确保数据库的状态从一个一致状态转变为另一个一致状态</li><li>隔离性：多个事务并发执行时，一个事务的执行不应影响其他事务的执行</li><li>持久性：已被提交的事务对数据库的修改应该永久保存在数据库中</li></ul></li><li><p>MySQL中的事务操作</p><ul><li><p>开启事务环境</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">start</span> <span class="hljs-keyword">transaction</span></code></pre></div><p>或</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">begin</span></code></pre></div></li><li><p>提交事务</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">commit</span></code></pre></div></li><li><p>回滚事务</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">rollback</span></code></pre></div></li></ul></li></ol><h3 id="五：-其他内容">五： 其他内容</h3><p>大家应该能够想到，关于MySQL的知识肯定远远不止上面列出的这些，比如MySQL的性能优化、管理和维护MySQL的相关工具、MySQL数据的备份和恢复、监控MySQL、部署高可用架构等问题我们在这里都没有进行讨论。当然，这些内容也都是跟项目开发密切相关的，我们就留到后续的章节中再续点进行讲解。</p><h3 id="六：-Python数据库编程">六： Python数据库编程</h3><p>我们用如下所示的数据库来演示在Python中如何访问MySQL数据库。</p><div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">drop</span> <span class="hljs-keyword">database</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">exists</span> hrs;
+<span class="hljs-keyword">select</span> @a, @b, @c;</code></pre></div>
+
+<blockquote>
+<p>说明：在定义存储过程时，因为可能需要书写多条SQL，而分隔这些SQL需要使用分号作为分隔符，如果这个时候，仍然用分号表示整段代码结束，那么定义存储过程的SQL就会出现错误，所以上面我们用<code>delimiter $$</code>将整段代码结束的标记定义为<code>$$</code>，那么代码中的分号将不再表示整段代码的结束，需要马上执行，整段代码在遇到<code>end $$</code>时才输入完成并执行。在定义完存储过程后，通过<code>delimiter ;</code>将结束符重新改回成分号。</p>
+</blockquote>
+<p>上面定义的存储过程有四个参数，其中第一个参数是输入参数，代表课程的编号，后面的参数都是输出参数，因为存储过程不能定义返回值，只能通过输出参数将执行结果带出，定义输出参数的关键字是<code>out</code>，默认情况下参数都是输入参数。</p>
+<p>调用存储过程。</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">call</span> sp_score_by_cid(<span class="hljs-number">1111</span>, @a, @b, @c);</code></pre></div>
+
+<p>获取输出参数的值。</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">select</span> @a <span class="hljs-keyword">as</span> 最高分, @b <span class="hljs-keyword">as</span> 最低分, @c <span class="hljs-keyword">as</span> 平均分;</code></pre></div>
+
+<p>删除存储过程。</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">drop</span> <span class="hljs-keyword">procedure</span> sp_score_by_cid;</code></pre></div>
+
+<p>在存储过程中，我们可以定义变量、条件，可以使用分支和循环语句，可以通过游标操作查询结果，还可以使用事件调度器，这些内容我们暂时不在此处进行介绍。虽然我们说了很多存储过程的好处，但是在实际开发中，如果过度的使用存储过程，将大量复杂的运算放到存储过程中，也会导致占用数据库服务器的CPU资源，造成数据库服务器承受巨大的压力。为此，我们一般会将复杂的运算和处理交给应用服务器，因为很容易部署多台应用服务器来分摊这些压力。</p>
+<h3 id="四：-几个重要的概念"><a href="#四：-几个重要的概念" class="headerlink" title="四： 几个重要的概念"></a>四： 几个重要的概念</h3><h4 id="4-1-范式理论-设计二维表的指导思想"><a href="#4-1-范式理论-设计二维表的指导思想" class="headerlink" title="4.1 范式理论 - 设计二维表的指导思想"></a>4.1 范式理论 - 设计二维表的指导思想</h4><ol>
+<li>第一范式：数据表的每个列的值域都是由原子值组成的，不能够再分割。</li>
+<li>第二范式：数据表里的所有数据都要和该数据表的键（主键与候选键）有完全依赖关系。</li>
+<li>第三范式：所有非键属性都只和候选键有相关性，也就是说非键属性之间应该是独立无关的。</li>
+</ol>
+<h4 id="4-2-数据完整性"><a href="#4-2-数据完整性" class="headerlink" title="4.2 数据完整性"></a>4.2 数据完整性</h4><ol>
+<li><p>实体完整性 - 每个实体都是独一无二的</p>
+<ul>
+<li>主键（primary key） / 唯一约束 / 唯一索引（unique）</li>
+</ul>
+</li>
+<li><p>引用完整性（参照完整性）- 关系中不允许引用不存在的实体</p>
+<ul>
+<li>外键（foreign key）</li>
+</ul>
+</li>
+<li><p>域完整性 - 数据是有效的</p>
+<ul>
+<li><p>数据类型及长度</p>
+</li>
+<li><p>非空约束（not null）</p>
+</li>
+<li><p>默认值约束（default）</p>
+</li>
+<li><p>检查约束（check）</p>
+<blockquote>
+<p>说明：在MySQL数据库中，检查约束并不起作用。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="4-3-数据一致性"><a href="#4-3-数据一致性" class="headerlink" title="4.3 数据一致性"></a>4.3 数据一致性</h4><ol>
+<li><p>事务：一系列对数据库进行读/写的操作，这些操作要么全都成功，要么全都失败。</p>
+</li>
+<li><p>事务的ACID特性</p>
+<ul>
+<li>原子性：事务作为一个整体被执行，包含在其中的对数据库的操作要么全部被执行，要么都不执行</li>
+<li>一致性：事务应确保数据库的状态从一个一致状态转变为另一个一致状态</li>
+<li>隔离性：多个事务并发执行时，一个事务的执行不应影响其他事务的执行</li>
+<li>持久性：已被提交的事务对数据库的修改应该永久保存在数据库中</li>
+</ul>
+</li>
+<li><p>MySQL中的事务操作</p>
+<ul>
+<li><p>开启事务环境</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">start</span> <span class="hljs-keyword">transaction</span></code></pre></div>
+
+<p>或</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">begin</span></code></pre></div>
+</li>
+<li><p>提交事务</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">commit</span></code></pre></div>
+</li>
+<li><p>回滚事务</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">rollback</span></code></pre></div>
+
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="五：-其他内容"><a href="#五：-其他内容" class="headerlink" title="五： 其他内容"></a>五： 其他内容</h3><p>大家应该能够想到，关于MySQL的知识肯定远远不止上面列出的这些，比如MySQL的性能优化、管理和维护MySQL的相关工具、MySQL数据的备份和恢复、监控MySQL、部署高可用架构等问题我们在这里都没有进行讨论。当然，这些内容也都是跟项目开发密切相关的，我们就留到后续的章节中再续点进行讲解。</p>
+<h3 id="六：-Python数据库编程"><a href="#六：-Python数据库编程" class="headerlink" title="六： Python数据库编程"></a>六： Python数据库编程</h3><p>我们用如下所示的数据库来演示在Python中如何访问MySQL数据库。</p>
+<div class="hljs"><pre><code class="hljs SQL"><span class="hljs-keyword">drop</span> <span class="hljs-keyword">database</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">exists</span> hrs;
 <span class="hljs-keyword">create</span> <span class="hljs-keyword">database</span> hrs <span class="hljs-keyword">default</span> <span class="hljs-keyword">charset</span> utf8;
 
 <span class="hljs-keyword">use</span> hrs;
@@ -574,7 +1467,15 @@ primary <span class="hljs-keyword">key</span> (eno)
 	(<span class="hljs-number">4466</span>, <span class="hljs-string">'苗人凤'</span>, <span class="hljs-string">'销售员'</span>, <span class="hljs-number">3344</span>, <span class="hljs-number">2500</span>, <span class="hljs-literal">null</span>, <span class="hljs-number">30</span>),
 	(<span class="hljs-number">3244</span>, <span class="hljs-string">'欧阳锋'</span>, <span class="hljs-string">'程序员'</span>, <span class="hljs-number">3088</span>, <span class="hljs-number">3200</span>, <span class="hljs-literal">null</span>, <span class="hljs-number">20</span>),
 	(<span class="hljs-number">3577</span>, <span class="hljs-string">'杨过'</span>, <span class="hljs-string">'会计'</span>, <span class="hljs-number">5566</span>, <span class="hljs-number">2200</span>, <span class="hljs-literal">null</span>, <span class="hljs-number">10</span>),
-	(<span class="hljs-number">3588</span>, <span class="hljs-string">'朱九真'</span>, <span class="hljs-string">'会计'</span>, <span class="hljs-number">5566</span>, <span class="hljs-number">2500</span>, <span class="hljs-literal">null</span>, <span class="hljs-number">10</span>);</code></pre></div><p>在Python 3中，我们通常使用纯Python的三方库PyMySQL来访问MySQL数据库，它应该是目前Python操作MySQL数据库最好的选择。</p><ol><li><p>安装PyMySQL。</p><div class="hljs"><pre><code class="hljs Shell">pip install pymysql</code></pre></div></li><li><p>添加一个部门。</p><div class="hljs"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> pymysql
+	(<span class="hljs-number">3588</span>, <span class="hljs-string">'朱九真'</span>, <span class="hljs-string">'会计'</span>, <span class="hljs-number">5566</span>, <span class="hljs-number">2500</span>, <span class="hljs-literal">null</span>, <span class="hljs-number">10</span>);</code></pre></div>
+
+<p>在Python 3中，我们通常使用纯Python的三方库PyMySQL来访问MySQL数据库，它应该是目前Python操作MySQL数据库最好的选择。</p>
+<ol>
+<li><p>安装PyMySQL。</p>
+<div class="hljs"><pre><code class="hljs Shell">pip install pymysql</code></pre></div>
+</li>
+<li><p>添加一个部门。</p>
+<div class="hljs"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> pymysql
 
 
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>
@@ -603,7 +1504,10 @@ primary <span class="hljs-keyword">key</span> (eno)
 
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
-    main()</code></pre></div></li><li><p>删除一个部门。</p><div class="hljs"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> pymysql
+    main()</code></pre></div>
+</li>
+<li><p>删除一个部门。</p>
+<div class="hljs"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> pymysql
 
 
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>
@@ -625,7 +1529,14 @@ primary <span class="hljs-keyword">key</span> (eno)
 
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
-    main()</code></pre></div><blockquote><p>说明：如果不希望每次SQL操作之后手动提交或回滚事务，可以像上面的代码那样，在创建连接的时候多加一个名为<code>autocommit</code>的参数并将它的值设置为<code>True</code>，表示每次执行SQL之后自动提交。如果程序中不需要使用事务环境也不希望手动的提交或回滚就可以这么做。</p></blockquote></li><li><p>更新一个部门。</p><div class="hljs"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> pymysql
+    main()</code></pre></div>
+
+<blockquote>
+<p>说明：如果不希望每次SQL操作之后手动提交或回滚事务，可以像上面的代码那样，在创建连接的时候多加一个名为<code>autocommit</code>的参数并将它的值设置为<code>True</code>，表示每次执行SQL之后自动提交。如果程序中不需要使用事务环境也不希望手动的提交或回滚就可以这么做。</p>
+</blockquote>
+</li>
+<li><p>更新一个部门。</p>
+<div class="hljs"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> pymysql
 
 
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>
@@ -649,7 +1560,10 @@ primary <span class="hljs-keyword">key</span> (eno)
 
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
-    main()</code></pre></div></li><li><p>查询所有部门。</p><div class="hljs"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> pymysql
+    main()</code></pre></div>
+</li>
+<li><p>查询所有部门。</p>
+<div class="hljs"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> pymysql
 <span class="hljs-keyword">from</span> pymysql.cursors <span class="hljs-keyword">import</span> DictCursor
 
 
@@ -672,7 +1586,10 @@ primary <span class="hljs-keyword">key</span> (eno)
 
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
-    main()</code></pre></div></li><li><p>分页查询员工信息。</p><div class="hljs"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> pymysql
+    main()</code></pre></div>
+</li>
+<li><p>分页查询员工信息。</p>
+<div class="hljs"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> pymysql
 <span class="hljs-keyword">from</span> pymysql.cursors <span class="hljs-keyword">import</span> DictCursor
 
 
@@ -708,7 +1625,318 @@ primary <span class="hljs-keyword">key</span> (eno)
 
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
-    main()</code></pre></div></li></ol></article><hr><div><div class="post-metas mb-3"><div class="post-meta mr-3"><i class="iconfont icon-category"></i> <a class="hover-with-bg" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a> <a class="hover-with-bg" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/MYSQL/">MYSQL</a></div><div class="post-meta"><i class="iconfont icon-tags"></i> <a class="hover-with-bg" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a> <a class="hover-with-bg" href="/tags/MySQL/">MySQL</a></div></div><p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p><div class="post-prevnext row"><div class="post-prev col-6"><a href="/2020/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/"><i class="iconfont icon-arrowleft"></i> <span class="hidden-mobile">树莓派配置</span> <span class="visible-mobile">上一篇</span></a></div><div class="post-next col-6"><a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E7%8E%A9%E8%BD%ACLinux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"><span class="hidden-mobile">玩转Linux操作系统</span> <span class="visible-mobile">下一篇</span> <i class="iconfont icon-arrowright"></i></a></div></div></div><div class="comments" id="comments"><div id="vcomments"></div><script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js"></script><script type="text/javascript">var oldLoadVa=window.onload;window.onload=function(){oldLoadVa&&oldLoadVa(),new Valine({el:"#vcomments",app_id:"YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",app_key:"HLUt5izfTvTcbEbOrA59W92a",placeholder:"畅所欲言...",path:window.location.pathname,avatar:"robohash",meta:["nick","mail","link"],pageSize:"10",lang:"zh-CN",highlight:!0,recordIP:!1,serverURLs:""})}</script><noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments powered by Valine.</a></noscript></div></div></div></div></div><div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn"><div id="toc"><p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p><div id="tocbot"></div></div></div></div></div><div class="col-lg-7 mx-auto nopadding-md"><div class="container custom post-content mx-auto"><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-3" style="width:355.4px;height:200px"></div></div></main><a id="scroll-top-button" href="#" role="button"><i class="iconfont icon-arrowup" aria-hidden="true"></i></a><div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable modal-lg" role="document"><div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title w-100 font-weight-bold">搜索</h4><button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body mx-3"><div class="md-form mb-5"><input type="text" id="local-search-input" class="form-control validate"> <label data-error="x" data-success="v" for="local-search-input">关键词</label></div><div class="list-group" id="local-search-result"></div></div></div></div></div><div id="aplayer"></div><script defer src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script><link rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css"><script type="text/javascript">var oldLoadAp=window.onload;window.onload=function(){oldLoadAp&&oldLoadAp(),new APlayer({container:document.getElementById("aplayer"),fixed:!0,autoplay:!1,loop:"all",order:"random",theme:"#b7daff",preload:"none",audio:[{name:"灰色空间",artist:"罗志祥",url:"https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/music/%E7%81%B0%E8%89%B2%E7%A9%BA%E9%97%B4%20-%20%E7%BD%97%E5%BF%97%E7%A5%A5.mp3",cover:"https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/music/luozhixiang.png"}]})}</script><footer class="mt-5"><div class="text-center py-3"><div><a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a></div><div><span id="busuanzi_container_site_pv" style="display:none">总访问量 <span id="busuanzi_value_site_pv"></span> 次 </span><span id="busuanzi_container_site_uv" style="display:none">总访客数 <span id="busuanzi_value_site_uv"></span> 人</span></div></div></footer><script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script><script src="/js/main.js"></script><script src="/js/lazyload.js"></script><script src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js"></script><script>$(document).ready(function(){var t=$("#board-ctn").offset().top;tocbot.init({tocSelector:"#tocbot",contentSelector:".post-content",headingSelector:"h1,h2,h3,h4,h5,h6",linkClass:"tocbot-link",activeLinkClass:"tocbot-active-link",listClass:"tocbot-list",isCollapsedClass:"tocbot-is-collapsed",collapsibleClass:"tocbot-is-collapsible",collapseDepth:0,scrollSmooth:!0,headingsOffset:-t}),0<$(".toc-list-item").length&&$("#toc").css("visibility","visible")})</script><script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js"></script><script src="/js/clipboard-use.js"></script><script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script defer>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><script src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js"></script><script>var typed=new Typed("#subtitle",{strings:["  ","关系数据库MySQL入门&nbsp;"],cursorChar:"_",typeSpeed:70,loop:!1});typed.stop(),$(document).ready(function(){$(".typed-cursor").addClass("h2"),typed.start()})</script><script src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js"></script><script>anchors.options = {
+    main()</code></pre></div>
+</li>
+</ol>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/MYSQL/">MYSQL</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+                    
+                      <a class="hover-with-bg" href="/tags/MySQL/">MySQL</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">树莓派配置</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/02/23/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E7%8E%A9%E8%BD%ACLinux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                        <span class="hidden-mobile">玩转Linux操作系统</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js" ></script>
+
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
+      new Valine({
+        el: "#vcomments",
+        app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
+        app_key: "HLUt5izfTvTcbEbOrA59W92a",
+        placeholder: "畅所欲言...",
+        path: window.location.pathname,
+        avatar: "robohash",
+        meta: ["nick","mail","link"],
+        pageSize: "10",
+        lang: "zh-CN",
+        highlight: true,
+        recordIP: false,
+        serverURLs: "",
+      });
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-md">
+    <div class="container custom post-content mx-auto">
+      <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-3" style="width:355.4px; height:200px;">
+    </div>
+  </div>
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+    <!-- APlayer 音乐播放器 -->
+    <div id="aplayer"></div>
+    <script defer src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js" ></script>
+<link  rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+<script type="text/javascript">
+  var oldLoadAp = window.onload;
+  window.onload = function () {
+    oldLoadAp && oldLoadAp();
+
+    new APlayer({
+      container: document.getElementById('aplayer'),
+      fixed: true,
+      autoplay: 'false' === 'true',
+      loop: 'all',
+      order: 'random',
+      theme: '#b7daff',
+      preload: 'none',
+      audio: [{"name":"灰色空间","artist":"罗志祥","url":"https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/music/%E7%81%B0%E8%89%B2%E7%A9%BA%E9%97%B4%20-%20%E7%BD%97%E5%BF%97%E7%A5%A5.mp3","cover":"https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/music/luozhixiang.png"}]
+    });
+  }
+</script>
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div>
+    
+      <!-- 不蒜子统计PV -->
+      
+      <span id="busuanzi_container_site_pv" style="display: none">
+      总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    </span>
+    
+    
+      <!-- 不蒜子统计UV -->
+      
+      <span id="busuanzi_container_site_uv" style="display: none">
+      总访客数 <span id="busuanzi_value_site_uv"></span> 人
+    </span>
+    
+  </div>
+
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "关系数据库MySQL入门&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
       placement: "right",
       visible: "always",
       
@@ -718,7 +1946,47 @@ primary <span class="hljs-keyword">key</span> (eno)
     for (item of el) {
       res.push(".markdown-body > " + item)
     }
-    anchors.add(res.join(", "))</script><script src="/js/local-search.js"></script><script>var path="/local-search.xml",inputArea=document.querySelector("#local-search-input");inputArea.onclick=function(){searchFunc(path,"local-search-input","local-search-result"),this.onclick=null}</script><script src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js"></script><link rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css"><script>$("#post img:not(.no-zoom img, img[no-zoom]), img[zoom]").each(function(){var t=document.createElement("a");$(t).attr("data-fancybox","images"),$(t).attr("href",$(this).attr("src")),$(this).wrap(t)})</script><script>MathJax = {
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
         tex: {
           inlineMath: [['$', '$'], ['\\(', '\\)']]
         },
@@ -745,4 +2013,95 @@ primary <span class="hljs-keyword">key</span> (eno)
             }, '', false]
           }
         }
-      };</script><script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js"></script><script type="text/javascript">var a_idx=0;jQuery(document).ready(function(d){d("body").click(function(a){var o=new Array("富强","民主","文明","和谐","自由","平等","公正","法治","爱国","敬业","诚信","友善"),t=d("<span/>").text(o[a_idx]);a_idx=(a_idx+1)%o.length;var n=a.pageX,e=a.pageY;t.css({"z-index":999,top:e-20,left:n,position:"absolute","font-weight":"bold",color:"rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")"}),d("body").append(t),t.animate({top:e-180,opacity:0},1500,function(){t.remove()})})})</script><script>!function(e,t,o,a,c,i,n){e.DaoVoiceObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,i=t.createElement(o),n=t.getElementsByTagName(o)[0],i.async=1,i.src=a,i.charset="utf-8",n.parentNode.insertBefore(i,n)}(window,document,"script",("https:"===document.location.protocol?"https:":"http:")+"//widget.daovoice.io/widget/aa03e448.js","daovoice"),daovoice("init",{app_id:"aa03e448"}),daovoice("update")</script></body></html>
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+  <script>(function (i, s, o, g, r, a, m) {
+      i['DaoVoiceObject'] = r;
+      i[r] = i[r] ||
+        function () {
+          (i[r].q = i[r].q || []).push(arguments);
+        };
+      i[r].l = 1 * new Date();
+      a = s.createElement(o);
+      m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      a.charset = 'utf-8';
+      m.parentNode.insertBefore(a, m);
+    })(window, document, 'script', ('https:' === document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/aa03e448.js", 'daovoice');
+    daovoice('init', {
+      app_id: "aa03e448",
+    });
+    daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
