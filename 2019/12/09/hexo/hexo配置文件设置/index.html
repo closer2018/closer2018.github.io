@@ -1,40 +1,53 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
 <head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时">
+  <meta name="description" content="hexo配置文件设置
+hexo配置文件_config.yml基本配置">
   <meta name="author" content="closer">
   <meta name="keywords" content="">
+  
   <title>hexo配置文件设置 - closer的自留地</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/androidstudio.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/androidstudio.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
-
-
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -42,7 +55,13 @@
 <!-- 自定义样式保持在最底部 -->
 
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.zsaa.top","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"608f2baddd361128381ad2bf9377bf89","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz","app_key":"HLUt5izfTvTcbEbOrA59W92a","server_url":"https://yzlqntmw.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -50,7 +69,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Welcome!</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Hello</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -65,61 +84,85 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              首页</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              归档</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              分类</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              标签</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              关于</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/links/">
-              <i class="iconfont icon-link-fill"></i>
-              友链</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -127,55 +170,61 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/img/default.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="hexo配置文件设置">
               
             </span>
 
             
-              
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2019-12-09 00:15">
-                    2019年12月9日 凌晨
-                  </time>
-                </div>
-              
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-12-09 00:15" pubdate>
+        2019年12月9日 凌晨
+      </time>
+    </span>
+  
+</div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    983 字
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1k 字
+    </span>
+  
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    15
-                     分钟
-                  </span>
-                
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15
+       分钟
+    </span>
+  
 
-                
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
-                    <i class="iconfont icon-eye" aria-hidden="true"></i>
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>
-                
-              </div>
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
             
           </div>
 
@@ -189,168 +238,41 @@
     
       
 
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
     <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">hexo配置文件设置</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年5月25日 晚上
+                  本文最后更新于：2020年5月28日 晚上
                 
               </p>
             
-            <article class="markdown-body">
-              <h2 id="hexo配置文件设置"><a href="#hexo配置文件设置" class="headerlink" title="hexo配置文件设置"></a>hexo配置文件设置</h2><p>hexo配置文件<code>_config.yml</code>基本配置</p>
-<a id="more"></a>
-<div class="hljs"><pre><code class="hljs yml"><span class="hljs-comment"># Hexo Configuration</span>
-<span class="hljs-comment">## Docs: https://hexo.io/docs/configuration.html</span>
-<span class="hljs-comment">## Source: https://github.com/hexojs/hexo/</span>
-
-<span class="hljs-comment"># Site 网站</span>
-<span class="hljs-attr">title:</span> <span class="hljs-string">closer的个人博客</span>
-<span class="hljs-attr">subtitle:</span> <span class="hljs-string">welcome!</span>
-<span class="hljs-attr">description:</span> <span class="hljs-string">up</span> <span class="hljs-string">up</span> <span class="hljs-string">up</span>
-<span class="hljs-attr">keywords:</span>
-<span class="hljs-attr">author:</span> <span class="hljs-string">closer</span>
-<span class="hljs-attr">language:</span> <span class="hljs-string">zh-CN</span> <span class="hljs-comment">#语言</span>
-<span class="hljs-attr">timezone:</span> <span class="hljs-string">''</span>
-
-<span class="hljs-comment"># URL 网址</span>
-<span class="hljs-comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span>
-<span class="hljs-attr">url:</span> <span class="hljs-string">https://closer_laps.gitee.io/</span>
-<span class="hljs-attr">root:</span> <span class="hljs-string">/</span> <span class="hljs-comment">#根目录位置，如果只是github pages的子目录需要更改</span>
-<span class="hljs-attr">permalink:</span> <span class="hljs-string">:year/:month/:day/:title/</span>
-<span class="hljs-attr">permalink_defaults:</span>
-<span class="hljs-attr">pretty_urls:</span>
-  <span class="hljs-attr">trailing_index:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># Set to false to remove trailing 'index.html' from permalinks</span>
-  <span class="hljs-attr">trailing_html:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># Set to false to remove trailing '.html' from permalinks</span>
-
-<span class="hljs-comment"># Directory #文件结构 默认即可</span>
-<span class="hljs-attr">source_dir:</span> <span class="hljs-string">source</span>
-<span class="hljs-attr">public_dir:</span> <span class="hljs-string">public</span>
-<span class="hljs-attr">tag_dir:</span> <span class="hljs-string">tags</span>
-<span class="hljs-attr">archive_dir:</span> <span class="hljs-string">archives</span>
-<span class="hljs-attr">category_dir:</span> <span class="hljs-string">categories</span>
-<span class="hljs-attr">code_dir:</span> <span class="hljs-string">downloads/code</span>
-<span class="hljs-attr">i18n_dir:</span> <span class="hljs-string">lang</span>
-<span class="hljs-attr">skip_render:</span>
-
-<span class="hljs-comment"># Writing #编辑博文的选项</span>
-<span class="hljs-attr">new_post_name:</span> <span class="hljs-string">:title.md</span> <span class="hljs-comment"># File name of new posts</span>
-<span class="hljs-attr">default_layout:</span> <span class="hljs-string">post</span>
-<span class="hljs-attr">auto_spacing:</span> <span class="hljs-literal">false</span>
-<span class="hljs-attr">titlecase:</span> <span class="hljs-literal">false</span> <span class="hljs-comment"># 把标题转换为 title case</span>
-<span class="hljs-attr">external_link:</span>
-  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># Open external links in new tab</span>
-  <span class="hljs-attr">field:</span> <span class="hljs-string">site</span> <span class="hljs-comment"># Apply to the whole site</span>
-  <span class="hljs-attr">exclude:</span> <span class="hljs-string">''</span>
-<span class="hljs-attr">filename_case:</span> <span class="hljs-number">0</span> <span class="hljs-comment">#把文件名称转换为 (1) 小写或 (2) 大写 </span>
-<span class="hljs-attr">render_drafts:</span> <span class="hljs-literal">false</span> <span class="hljs-comment">#显示草稿</span>
-<span class="hljs-attr">post_asset_folder:</span> <span class="hljs-literal">false</span> <span class="hljs-comment">#启动 Asset 文件夹 </span>
-<span class="hljs-attr">relative_link:</span> <span class="hljs-literal">false</span> <span class="hljs-comment">#把链接改为与根目录的相对位址 </span>
-<span class="hljs-attr">future:</span> <span class="hljs-literal">true</span> <span class="hljs-comment">#显示未来的文章 </span>
-<span class="hljs-attr">highlight:</span>  <span class="hljs-comment">#代码块的设置 </span>
- <span class="hljs-attr">enable:</span> <span class="hljs-literal">false</span>  <span class="hljs-comment">#开启代码块高亮 </span>
- <span class="hljs-attr">auto_detect:</span> <span class="hljs-literal">false</span> <span class="hljs-comment">#如果未指定语言，则启用自动检测 </span>
- <span class="hljs-attr">line_number:</span> <span class="hljs-literal">true</span> <span class="hljs-comment">#显示行数 </span>
- <span class="hljs-attr">tab_replace:</span> <span class="hljs-string">''</span> <span class="hljs-comment">#用 n 个空格替换 tabs；如果值为空，则不会替换 tabs </span>
- <span class="hljs-attr">wrap:</span> <span class="hljs-literal">true</span>
- <span class="hljs-attr">hljs:</span> <span class="hljs-literal">false</span>
-
-<span class="hljs-comment"># Home page setting</span>
-<span class="hljs-comment"># path: Root path for your blogs index page. (default = '')</span>
-<span class="hljs-comment"># per_page: Posts displayed per page. (0 = disable pagination)</span>
-<span class="hljs-comment"># order_by: Posts order. (Order by date descending by default)</span>
-<span class="hljs-attr">index_generator:</span>
-  <span class="hljs-attr">path:</span> <span class="hljs-string">''</span>
-  <span class="hljs-attr">per_page:</span> <span class="hljs-number">10</span>
-  <span class="hljs-attr">order_by:</span> <span class="hljs-string">-date</span>
-
-<span class="hljs-comment"># Category &amp; Tag #分类 &amp; 标签</span>
-<span class="hljs-attr">default_category:</span> <span class="hljs-string">uncategorized</span>
-<span class="hljs-attr">category_map:</span>
-<span class="hljs-attr">tag_map:</span>
-
-<span class="hljs-comment"># Metadata elements</span>
-<span class="hljs-comment">## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta</span>
-<span class="hljs-attr">meta_generator:</span> <span class="hljs-literal">true</span>
-
-<span class="hljs-comment"># Date / Time format #日期显示格式</span>
-<span class="hljs-comment">## Hexo uses Moment.js to parse and display date</span>
-<span class="hljs-comment">## You can customize the date format as defined in</span>
-<span class="hljs-comment">## http://momentjs.com/docs/#/displaying/format/</span>
-<span class="hljs-attr">date_format:</span> <span class="hljs-string">YYYY-MM-DD</span> <span class="hljs-comment">#日期格式 </span>
-<span class="hljs-attr">time_format:</span> <span class="hljs-string">HH:mm:ss</span> <span class="hljs-comment">#时间格式</span>
-<span class="hljs-comment">## Use post's date for updated date unless set in front-matter</span>
-<span class="hljs-attr">use_date_for_updated:</span> <span class="hljs-literal">false</span>
-
-<span class="hljs-comment"># Pagination #分页器</span>
-<span class="hljs-comment">## Set per_page to 0 to disable pagination</span>
-<span class="hljs-attr">per_page:</span> <span class="hljs-number">10</span> <span class="hljs-comment">#每页显示的文章量 (0 = 关闭分页功能) 10</span>
-<span class="hljs-attr">pagination_dir:</span> <span class="hljs-string">page</span> <span class="hljs-comment">#分页目录 </span>
-
-<span class="hljs-comment"># Include / Exclude file(s)</span>
-<span class="hljs-comment">## include:/exclude: options only apply to the 'source/' folder</span>
-<span class="hljs-attr">include:</span>
-<span class="hljs-attr">exclude:</span>
-<span class="hljs-attr">ignore:</span>
-
-<span class="hljs-comment"># Extensions #拓展</span>
-<span class="hljs-comment">## Plugins: http://hexo.io/plugins/</span>
-<span class="hljs-comment">## Themes: http://hexo.io/themes/</span>
-<span class="hljs-attr">theme:</span> <span class="hljs-string">hexo-theme-fluid-1.8.0</span> <span class="hljs-comment">#主题更换</span>
-
-<span class="hljs-comment"># Deployment #部署参数</span>
-<span class="hljs-comment">## Docs: http://hexo.io/docs/deployment.html</span>
-<span class="hljs-attr">deploy:</span>
-  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span>
-  <span class="hljs-attr">repo:</span>
-        <span class="hljs-attr">github:</span> <span class="hljs-string">git@github.com:closer2018/closer2018.github.io.git</span>
-        <span class="hljs-attr">gitee:</span> <span class="hljs-string">git@gitee.com:closer_laps/closer_laps.git</span>
-        <span class="hljs-attr">coding:</span> <span class="hljs-string">git@e.coding.net:closer2018/closer2018.coding.me.git</span>
-  <span class="hljs-attr">branch:</span> <span class="hljs-string">master</span>
-
-<span class="hljs-comment"># 搜索设置</span>
-<span class="hljs-attr">search:</span>
-  <span class="hljs-attr">path:</span> <span class="hljs-string">search.xml</span>
-  <span class="hljs-attr">field:</span> <span class="hljs-string">post</span>
-  <span class="hljs-attr">format:</span> <span class="hljs-string">html</span>
-  <span class="hljs-attr">limit:</span> <span class="hljs-number">10000</span>
-
-<span class="hljs-comment"># 发布字数统计</span>
-<span class="hljs-attr">symbols_count_time:</span>
-    <span class="hljs-attr">symbols:</span> <span class="hljs-literal">true</span>
-    <span class="hljs-attr">time:</span> <span class="hljs-literal">true</span>
-    <span class="hljs-attr">total_symbols:</span> <span class="hljs-literal">true</span>
-    <span class="hljs-attr">total_time:</span> <span class="hljs-literal">true</span>
-
-<span class="hljs-comment"># Security</span>
-<span class="hljs-attr">encrypt:</span> <span class="hljs-comment"># hexo-blog-encrypt</span>
-  <span class="hljs-attr">abstract:</span> <span class="hljs-string">有东西被加密了,</span> <span class="hljs-string">请输入密码查看.</span>
-  <span class="hljs-attr">message:</span> <span class="hljs-string">您好,</span> <span class="hljs-string">这里需要密码.</span>
-  <span class="hljs-attr">tags:</span>
-  <span class="hljs-bullet">-</span> <span class="hljs-string">&#123;name:</span> <span class="hljs-string">tagName,</span> <span class="hljs-attr">password:</span> <span class="hljs-string">密码A&#125;</span>
-  <span class="hljs-bullet">-</span> <span class="hljs-string">&#123;name:</span> <span class="hljs-string">tagName,</span> <span class="hljs-attr">password:</span> <span class="hljs-string">密码B&#125;</span>
-  <span class="hljs-attr">template:</span> <span class="hljs-string">&lt;div</span> <span class="hljs-string">id="hexo-blog-encrypt"</span> <span class="hljs-string">data-wpm="&#123;&#123;hbeWrongPassMessage&#125;&#125;"</span> <span class="hljs-string">data-whm="&#123;&#123;hbeWrongHashMessage&#125;&#125;"&gt;&lt;div</span> <span class="hljs-string">class="hbe-input-container"&gt;&lt;input</span> <span class="hljs-string">type="password"</span> <span class="hljs-string">id="hbePass"</span> <span class="hljs-string">placeholder="&#123;&#123;hbeMessage&#125;&#125;"</span> <span class="hljs-string">/&gt;&lt;label&gt;&#123;&#123;hbeMessage&#125;&#125;&lt;/label&gt;&lt;div</span> <span class="hljs-string">class="bottom-line"&gt;&lt;/div&gt;&lt;/div&gt;&lt;script</span> <span class="hljs-string">id="hbeData"</span> <span class="hljs-string">type="hbeData"</span> <span class="hljs-string">data-hmacdigest="&#123;&#123;hbeHmacDigest&#125;&#125;"&gt;&#123;&#123;hbeEncryptedData&#125;&#125;&lt;/script&gt;&lt;/div&gt;</span>
-  <span class="hljs-attr">wrong_pass_message:</span> <span class="hljs-string">这个密码看着不太对,</span> <span class="hljs-string">请再试试.</span>
-  <span class="hljs-attr">wrong_hash_message:</span> <span class="hljs-string">抱歉,</span> <span class="hljs-string">这个文章不能被校验,</span> <span class="hljs-string">不过您还是能看看解密后的内容.</span></code></pre></div>
-
+            <div class="markdown-body">
+              <h2 id="hexo配置文件设置">hexo配置文件设置</h2>
+<p>hexo配置文件<code>_config.yml</code>基本配置</p>
+<span id="more"></span>
+<figure class="highlight yaml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yaml"><span class="hljs-comment"># Hexo Configuration</span><br><span class="hljs-comment">## Docs: https://hexo.io/docs/configuration.html</span><br><span class="hljs-comment">## Source: https://github.com/hexojs/hexo/</span><br><br><span class="hljs-comment"># Site 网站</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">closer的个人博客</span><br><span class="hljs-attr">subtitle:</span> <span class="hljs-string">此后如竟没有炬火，我便是唯一的光.</span><br><span class="hljs-attr">description:</span> <span class="hljs-string">沧海横流，尽显英雄本色；激浊扬清，正是猛士当时</span><br><span class="hljs-attr">keywords:</span><br><span class="hljs-attr">author:</span> <span class="hljs-string">closer</span><br><span class="hljs-attr">language:</span> <span class="hljs-string">zh-CN</span> <span class="hljs-comment">#语言</span><br><span class="hljs-attr">timezone:</span> <span class="hljs-string">&#x27;&#x27;</span><br><br><span class="hljs-comment"># URL 网址</span><br><span class="hljs-comment">## If your site is put in a subdirectory, set url as &#x27;http://yoursite.com/child&#x27; and root as &#x27;/child/&#x27;</span><br><span class="hljs-attr">url:</span> <span class="hljs-string">https://zhaoshuai.top/</span><br><span class="hljs-attr">root:</span> <span class="hljs-string">/</span> <span class="hljs-comment">#根目录位置，如果只是github pages的子目录需要更改</span><br><span class="hljs-attr">permalink:</span> <span class="hljs-string">:year/:month/:day/:title/</span><br><span class="hljs-attr">permalink_defaults:</span><br><span class="hljs-attr">pretty_urls:</span><br>  <span class="hljs-attr">trailing_index:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># Set to false to remove trailing &#x27;index.html&#x27; from permalinks</span><br>  <span class="hljs-attr">trailing_html:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># Set to false to remove trailing &#x27;.html&#x27; from permalinks</span><br><br><span class="hljs-comment"># Directory #文件结构 默认即可</span><br><span class="hljs-attr">source_dir:</span> <span class="hljs-string">source</span><br><span class="hljs-attr">public_dir:</span> <span class="hljs-string">public</span><br><span class="hljs-attr">tag_dir:</span> <span class="hljs-string">tags</span><br><span class="hljs-attr">archive_dir:</span> <span class="hljs-string">archives</span><br><span class="hljs-attr">category_dir:</span> <span class="hljs-string">categories</span><br><span class="hljs-attr">code_dir:</span> <span class="hljs-string">downloads/code</span><br><span class="hljs-attr">i18n_dir:</span> <span class="hljs-string">lang</span><br><span class="hljs-attr">skip_render:</span><br><br><span class="hljs-comment"># Writing #编辑博文的选项</span><br><span class="hljs-attr">new_post_name:</span> <span class="hljs-string">:title.md</span> <span class="hljs-comment"># File name of new posts</span><br><span class="hljs-attr">default_layout:</span> <span class="hljs-string">post</span><br><span class="hljs-attr">auto_spacing:</span> <span class="hljs-literal">false</span><br><span class="hljs-attr">titlecase:</span> <span class="hljs-literal">false</span> <span class="hljs-comment"># 把标题转换为 title case</span><br><span class="hljs-attr">external_link:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># Open external links in new tab</span><br>  <span class="hljs-attr">field:</span> <span class="hljs-string">site</span> <span class="hljs-comment"># Apply to the whole site</span><br>  <span class="hljs-attr">exclude:</span> <span class="hljs-string">&#x27;&#x27;</span><br><span class="hljs-attr">filename_case:</span> <span class="hljs-number">0</span> <span class="hljs-comment">#把文件名称转换为 (1) 小写或 (2) 大写 </span><br><span class="hljs-attr">render_drafts:</span> <span class="hljs-literal">false</span> <span class="hljs-comment">#显示草稿</span><br><span class="hljs-attr">post_asset_folder:</span> <span class="hljs-literal">false</span> <span class="hljs-comment">#启动 Asset 文件夹 </span><br><span class="hljs-attr">relative_link:</span> <span class="hljs-literal">false</span> <span class="hljs-comment">#把链接改为与根目录的相对位址 </span><br><span class="hljs-attr">future:</span> <span class="hljs-literal">true</span> <span class="hljs-comment">#显示未来的文章 </span><br><span class="hljs-attr">highlight:</span>  <span class="hljs-comment">#代码块的设置 </span><br> <span class="hljs-attr">enable:</span> <span class="hljs-literal">false</span>  <span class="hljs-comment">#开启代码块高亮 </span><br> <span class="hljs-attr">auto_detect:</span> <span class="hljs-literal">false</span> <span class="hljs-comment">#如果未指定语言，则启用自动检测 </span><br> <span class="hljs-attr">line_number:</span> <span class="hljs-literal">true</span> <span class="hljs-comment">#显示行数 </span><br> <span class="hljs-attr">tab_replace:</span> <span class="hljs-string">&#x27;&#x27;</span> <span class="hljs-comment">#用 n 个空格替换 tabs；如果值为空，则不会替换 tabs </span><br> <span class="hljs-attr">wrap:</span> <span class="hljs-literal">true</span><br> <span class="hljs-attr">hljs:</span> <span class="hljs-literal">false</span><br><br><span class="hljs-comment"># Home page setting</span><br><span class="hljs-comment"># path: Root path for your blogs index page. (default = &#x27;&#x27;)</span><br><span class="hljs-comment"># per_page: Posts displayed per page. (0 = disable pagination)</span><br><span class="hljs-comment"># order_by: Posts order. (Order by date descending by default)</span><br><span class="hljs-attr">index_generator:</span><br>  <span class="hljs-attr">path:</span> <span class="hljs-string">&#x27;&#x27;</span><br>  <span class="hljs-attr">per_page:</span> <span class="hljs-number">10</span><br>  <span class="hljs-attr">order_by:</span> <span class="hljs-string">-date</span><br><br><span class="hljs-comment"># Category &amp; Tag #分类 &amp; 标签</span><br><span class="hljs-attr">default_category:</span> <span class="hljs-string">uncategorized</span><br><span class="hljs-attr">category_map:</span><br><span class="hljs-attr">tag_map:</span><br><br><span class="hljs-comment"># Metadata elements</span><br><span class="hljs-comment">## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta</span><br><span class="hljs-attr">meta_generator:</span> <span class="hljs-literal">true</span><br><br><span class="hljs-comment"># Date / Time format #日期显示格式</span><br><span class="hljs-comment">## Hexo uses Moment.js to parse and display date</span><br><span class="hljs-comment">## You can customize the date format as defined in</span><br><span class="hljs-comment">## http://momentjs.com/docs/#/displaying/format/</span><br><span class="hljs-attr">date_format:</span> <span class="hljs-string">YYYY-MM-DD</span> <span class="hljs-comment">#日期格式 </span><br><span class="hljs-attr">time_format:</span> <span class="hljs-string">HH:mm:ss</span> <span class="hljs-comment">#时间格式</span><br><span class="hljs-comment">## Use post&#x27;s date for updated date unless set in front-matter</span><br><span class="hljs-attr">use_date_for_updated:</span> <span class="hljs-literal">false</span><br><br><span class="hljs-comment"># Pagination #分页器</span><br><span class="hljs-comment">## Set per_page to 0 to disable pagination</span><br><span class="hljs-attr">per_page:</span> <span class="hljs-number">10</span> <span class="hljs-comment">#每页显示的文章量 (0 = 关闭分页功能) 10</span><br><span class="hljs-attr">pagination_dir:</span> <span class="hljs-string">page</span> <span class="hljs-comment">#分页目录 </span><br><br><span class="hljs-comment"># Include / Exclude file(s)</span><br><span class="hljs-comment">## include:/exclude: options only apply to the &#x27;source/&#x27; folder</span><br><span class="hljs-attr">include:</span><br><span class="hljs-attr">exclude:</span><br><span class="hljs-attr">ignore:</span><br><br><span class="hljs-comment"># Extensions #拓展</span><br><span class="hljs-comment">## Plugins: http://hexo.io/plugins/</span><br><span class="hljs-comment">## Themes: http://hexo.io/themes/</span><br><span class="hljs-attr">theme:</span> <span class="hljs-string">hexo-theme-fluid-1.8.0</span> <span class="hljs-comment">#主题更换</span><br><br><span class="hljs-comment"># Deployment #部署参数</span><br><span class="hljs-comment">## Docs: http://hexo.io/docs/deployment.html</span><br><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repo:</span><br>        <span class="hljs-attr">github:</span> <span class="hljs-string">git@github.com:closer2018/closer2018.github.io.git</span><br>        <span class="hljs-attr">gitee:</span> <span class="hljs-string">git@gitee.com:closer_laps/closer_laps.git</span><br>        <span class="hljs-attr">coding:</span> <span class="hljs-string">git@e.coding.net:closer_laps/closer_laps.git</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">master</span><br><br><span class="hljs-comment"># 搜索设置</span><br><span class="hljs-attr">search:</span><br>  <span class="hljs-attr">path:</span> <span class="hljs-string">search.xml</span><br>  <span class="hljs-attr">field:</span> <span class="hljs-string">post</span><br>  <span class="hljs-attr">format:</span> <span class="hljs-string">html</span><br>  <span class="hljs-attr">limit:</span> <span class="hljs-number">10000</span><br><br><span class="hljs-comment"># 发布字数统计</span><br><span class="hljs-attr">symbols_count_time:</span><br>    <span class="hljs-attr">symbols:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">time:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">total_symbols:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">total_time:</span> <span class="hljs-literal">true</span><br><br><span class="hljs-comment"># Security</span><br><span class="hljs-attr">encrypt:</span> <span class="hljs-comment"># hexo-blog-encrypt</span><br>  <span class="hljs-attr">abstract:</span> <span class="hljs-string">有东西被加密了,</span> <span class="hljs-string">请输入密码查看.</span><br>  <span class="hljs-attr">message:</span> <span class="hljs-string">您好,</span> <span class="hljs-string">这里需要密码.</span><br>  <span class="hljs-attr">tags:</span><br>  <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">name:</span> <span class="hljs-string">tagName</span>, <span class="hljs-attr">password:</span> <span class="hljs-string">密码A</span>&#125;<br>  <span class="hljs-bullet">-</span> &#123;<span class="hljs-attr">name:</span> <span class="hljs-string">tagName</span>, <span class="hljs-attr">password:</span> <span class="hljs-string">密码B</span>&#125;<br>  <span class="hljs-attr">template:</span> <span class="hljs-string">&lt;div</span> <span class="hljs-string">id=&quot;hexo-blog-encrypt&quot;</span> <span class="hljs-string">data-wpm=&quot;&#123;&#123;hbeWrongPassMessage&#125;&#125;&quot;</span> <span class="hljs-string">data-whm=&quot;&#123;&#123;hbeWrongHashMessage&#125;&#125;&quot;&gt;&lt;div</span> <span class="hljs-string">class=&quot;hbe-input-container&quot;&gt;&lt;input</span> <span class="hljs-string">type=&quot;password&quot;</span> <span class="hljs-string">id=&quot;hbePass&quot;</span> <span class="hljs-string">placeholder=&quot;&#123;&#123;hbeMessage&#125;&#125;&quot;</span> <span class="hljs-string">/&gt;&lt;label&gt;&#123;&#123;hbeMessage&#125;&#125;&lt;/label&gt;&lt;div</span> <span class="hljs-string">class=&quot;bottom-line&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;script</span> <span class="hljs-string">id=&quot;hbeData&quot;</span> <span class="hljs-string">type=&quot;hbeData&quot;</span> <span class="hljs-string">data-hmacdigest=&quot;&#123;&#123;hbeHmacDigest&#125;&#125;&quot;&gt;&#123;&#123;hbeEncryptedData&#125;&#125;&lt;/script&gt;&lt;/div&gt;</span><br>  <span class="hljs-attr">wrong_pass_message:</span> <span class="hljs-string">这个密码看着不太对,</span> <span class="hljs-string">请再试试.</span><br>  <span class="hljs-attr">wrong_hash_message:</span> <span class="hljs-string">抱歉,</span> <span class="hljs-string">这个文章不能被校验,</span> <span class="hljs-string">不过您还是能看看解密后的内容.</span><br></code></pre></div></td></tr></table></figure>
 <p>以上就是配置文件的基础设置。</p>
-<h2 id="更换主题NexT"><a href="#更换主题NexT" class="headerlink" title="更换主题NexT"></a>更换主题NexT</h2><p>Hexo安装主题的方式非常简单，只需要将主题文件放置于站点目录的themes下，然后修改下配置文件即可。这里我以NexT主题为例。<br>在git bash操作下cd至博客根目录，执行如下代码：  </p>
+<h2 id="更换主题NexT">更换主题NexT</h2>
+<p>Hexo安装主题的方式非常简单，只需要将主题文件放置于站点目录的themes下，然后修改下配置文件即可。这里我以NexT主题为例。<br>
+在git bash操作下cd至博客根目录，执行如下代码：</p>
 <p><code>git clone https://github.com/iissnan/hexo-theme-next themes/next</code></p>
-<p>等待下载完成后，修改根目录下_config.yml文件的theme字段为next即可启用NexT主题，十分简单便捷。<br>其它具体设置可参照<a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT官方文档</a>。</p>
-<h2 id="更换fluid主题"><a href="#更换fluid主题" class="headerlink" title="更换fluid主题"></a>更换fluid主题</h2><p><a href="https://hexo.fluid-dev.com/docs/" target="_blank" rel="noopener">fluid主题配置</a></p>
-<h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><p>cd至blog根目录。  </p>
-<div class="hljs"><pre><code class="hljs yml"><span class="hljs-string">npm</span> <span class="hljs-string">install</span> <span class="hljs-string">hexo-generator-searchdb</span> <span class="hljs-string">--save</span>  <span class="hljs-comment">#搜索插件</span>
-<span class="hljs-string">npm</span> <span class="hljs-string">install</span> <span class="hljs-string">hexo-wordcount</span> <span class="hljs-string">--save</span>   <span class="hljs-comment">#字符统计及阅读时长估计</span>
-<span class="hljs-string">npm</span> <span class="hljs-string">install</span> <span class="hljs-string">hexo-generator-index-pin-top</span> <span class="hljs-string">--save</span>   <span class="hljs-comment">#置顶插件</span>
-<span class="hljs-string">npm</span> <span class="hljs-string">install</span> <span class="hljs-string">--save</span> <span class="hljs-string">hexo-blog-encrypt</span>   <span class="hljs-comment">#添加密码访问</span></code></pre></div>
+<p>等待下载完成后，修改根目录下_config.yml文件的theme字段为next即可启用NexT主题，十分简单便捷。<br>
+其它具体设置可参照<a target="_blank" rel="noopener" href="http://theme-next.iissnan.com/">NexT官方文档</a>。</p>
+<h2 id="更换fluid主题">更换fluid主题</h2>
+<p><a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/">fluid主题配置</a></p>
+<h2 id="安装插件">安装插件</h2>
+<p>cd至blog根目录。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yaml"><span class="hljs-string">npm</span> <span class="hljs-string">install</span> <span class="hljs-string">--save</span> <span class="hljs-string">hexo-blog-encrypt</span>   <span class="hljs-comment">#添加密码访问</span><br><span class="hljs-string">npm</span> <span class="hljs-string">install</span> <span class="hljs-string">hexo-generator-sitemap</span> <span class="hljs-string">--save</span>   <span class="hljs-comment"># 添加google站点统计</span><br><span class="hljs-string">npm</span> <span class="hljs-string">install</span> <span class="hljs-string">hexo-generator-baidu-sitemap</span> <span class="hljs-string">--save</span>  <span class="hljs-comment"># 添加baidu站点统计</span><br></code></pre></div></td></tr></table></figure>
 
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -372,11 +294,15 @@
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
               
               
-                <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
                     
                     
                       <a href="/2019/12/09/hexo/hexo%20%E5%A4%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8A%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/">
@@ -385,8 +311,8 @@
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/2019/12/01/hexo/hexo%E4%B8%8A%E4%BC%A0%E9%83%A8%E7%BD%B2%E5%91%BD%E4%BB%A4/">
@@ -395,47 +321,45 @@
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
               <!-- Comments -->
-              <div class="comments" id="comments">
+              <article class="comments" id="comments" lazyload>
+                
+                  
                 
                 
-  <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js" ></script>
-
+  <div id="valine"></div>
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
-        app_key: "HLUt5izfTvTcbEbOrA59W92a",
-        placeholder: "畅所欲言...",
-        path: window.location.pathname,
-        avatar: "robohash",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: true,
-        recordIP: false,
-        serverURLs: "",
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
+          app_key: "HLUt5izfTvTcbEbOrA59W92a",
+          placeholder: "畅所欲言...",
+          path: window.location.pathname,
+          avatar: "robohash",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    });
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
-      powered by Valine.</a></noscript>
+  <noscript>Please enable JavaScript to view the comments</noscript>
 
 
-              </div>
+              </article>
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -443,7 +367,7 @@
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -453,24 +377,23 @@
 
 <!-- Custom -->
 
-  <div class="col-lg-7 mx-auto nopadding-md">
-    <div class="container custom post-content mx-auto">
-      <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-3" style="width:355.4px; height:200px;">
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-3" style="width:355.4px; height:200px;">
     </div>
   </div>
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -491,207 +414,152 @@
     </div>
   </div>
 </div>
-  
-
-  
-    <!-- APlayer 音乐播放器 -->
-    <div id="aplayer"></div>
-    <script defer src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js" ></script>
-<link  rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
-<script type="text/javascript">
-  var oldLoadAp = window.onload;
-  window.onload = function () {
-    oldLoadAp && oldLoadAp();
-
-    new APlayer({
-      container: document.getElementById('aplayer'),
-      fixed: true,
-      autoplay: 'false' === 'true',
-      loop: 'all',
-      order: 'random',
-      theme: '#b7daff',
-      preload: 'none',
-      audio: [{"name":"灰色空间","artist":"罗志祥","url":"https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/music/%E7%81%B0%E8%89%B2%E7%A9%BA%E9%97%B4%20-%20%E7%BD%97%E5%BF%97%E7%A5%A5.mp3","cover":"https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/music/luozhixiang.png"}]
-    });
-  }
-</script>
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
     
-  <div>
+
     
-      <!-- 不蒜子统计PV -->
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
       
-      <span id="busuanzi_container_site_pv" style="display: none">
-      总访问量 <span id="busuanzi_value_site_pv"></span> 次
-    </span>
-    
-    
-      <!-- 不蒜子统计UV -->
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
       
-      <span id="busuanzi_container_site_uv" style="display: none">
-      总访客数 <span id="busuanzi_value_site_uv"></span> 人
-    </span>
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
     
   </div>
 
 
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        苏ICP备20032307号
+      </a>
+    </span>
     
-
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32020602001023"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>苏公网安备 32020602001023号</span>
+          </a>
+        </span>
+      
     
   </div>
+
+
+  
 </footer>
 
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
-
-
-
+  <!-- SCRIPTS -->
   
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
 
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '.post-content',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
   </script>
 
 
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
   
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
-  
 
-  
-
-  
-
-  
 
   
 
 
 
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
   <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "hexo配置文件设置&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "always",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
   </script>
 
 
@@ -733,91 +601,46 @@
       };
     </script>
 
-    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
 
   
 
 
 
+
+
+
+
+
   
-  
-    <script type="text/javascript">
-      //定义获取词语下标
-      var a_idx = 0;
-      jQuery(document).ready(function ($) {
-        //点击body时触发事件
-        $("body").click(function (e) {
-          //需要显示的词语
-          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
-          //设置词语给span标签
-          var $i = $("<span/>").text(a[a_idx]);
-          //下标等于原来下标+1  余 词语总数
-          a_idx = (a_idx + 1) % a.length;
-          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
-          //获取x和y的指针坐标
-          var x = e.pageX, y = e.pageY;
-          //在鼠标的指针的位置给$i定义的span标签添加css样式
-          $i.css({
-            "z-index": 999,
-            "top": y - 20,
-            "left": x,
-            "position": "absolute",
-            "font-weight": "bold",
-            "color": rand_color()
-          });
-          // 随机颜色
-          function rand_color() {
-            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
-          }
-          //在body添加这个标签
-          $("body").append($i);
-          //animate() 方法执行 CSS 属性集的自定义动画。
-          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
-          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
-          $i.animate({
-            //将原来的位置向上移动180
-            "top": y - 180,
-            "opacity": 0
-            //1500动画的速度
-          }, 1500, function () {
-            //时间到了自动删除
-            $i.remove();
-          });
-        });
-      })
-      ;
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
     </script>
   
 
+  
 
+  
 
-  <script>(function (i, s, o, g, r, a, m) {
-      i['DaoVoiceObject'] = r;
-      i[r] = i[r] ||
-        function () {
-          (i[r].q = i[r].q || []).push(arguments);
-        };
-      i[r].l = 1 * new Date();
-      a = s.createElement(o);
-      m = s.getElementsByTagName(o)[0];
-      a.async = 1;
-      a.src = g;
-      a.charset = 'utf-8';
-      m.parentNode.insertBefore(a, m);
-    })(window, document, 'script', ('https:' === document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/aa03e448.js", 'daovoice');
-    daovoice('init', {
-      app_id: "aa03e448",
-    });
-    daovoice('update');
-  </script>
+  
+
+  
+
+  
 
 
 
 
 
-
-
-
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>

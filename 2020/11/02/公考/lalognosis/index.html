@@ -1,0 +1,1197 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时">
+  <meta name="author" content="closer">
+  <meta name="keywords" content="">
+  
+  <title>言语理解 - closer的自留地</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/androidstudio.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.zsaa.top","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"608f2baddd361128381ad2bf9377bf89","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz","app_key":"HLUt5izfTvTcbEbOrA59W92a","server_url":"https://yzlqntmw.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Hello</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/mydefault.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="言语理解">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-11-02 09:54" pubdate>
+        2020年11月2日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      25
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">言语理解</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年12月16日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>言语理解与表达：主要测查应试人员运用语言文字进行思考和交流、迅速准确地理解和把握文字材料内涵的能力。常见的题型有：片段阅读、文章阅读、选词填空等。</p>
+</blockquote>
+<hr>
+<p>分为三个题型：中心理解题、细节判断题、语句表达、逻辑填空。</p>
+<hr>
+<h2 id="一：-中心理解题">一： 中心理解题</h2>
+<h3 id="1-1-转折关系-转折之后是重点">1.1 转折关系(转折之后是重点)</h3>
+<ol>
+<li>典型标志词
+<ol>
+<li>虽然……但是；尽管……可是；不过；然而；却；其实/事实上/实际上；……</li>
+</ol>
+</li>
+<li>非典型标志词
+<ol>
+<li>殊不知；截然不同(相反)；全新的研究；一种误读；相对而言；……</li>
+</ol>
+</li>
+<li>逆向思维
+<ol>
+<li>理论依据
+<ol>
+<li>转折前后句子意思相反</li>
+</ol>
+</li>
+<li>文段特征
+<ol>
+<li>很多人都认为/大多数人认为/传统观点认为/不少人认为</li>
+<li>转折表述</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>错误选项特征
+<ol>
+<li>转折前内容</li>
+<li>无中生有</li>
+<li>选项中没有出现主题词，可排除</li>
+<li>相对绝对法：优选相对的表述，绝对的表述不选</li>
+<li>优选明确的表述。不明确的一般不选</li>
+</ol>
+</li>
+</ol>
+<h3 id="1-2-主题词">1.2 主题词</h3>
+<ol>
+<li>特征
+<ol>
+<li>文段围绕其展开</li>
+<li>一般高频出现</li>
+<li>多为名词</li>
+<li>前有引入或后有解释说明</li>
+</ol>
+</li>
+<li>干扰选项
+<ol>
+<li>范围扩大/缩小/偷换的不选</li>
+</ol>
+</li>
+</ol>
+<h3 id="1-3-因果关系-结论是重点">1.3 因果关系(结论是重点)</h3>
+<ol>
+<li>典型格式
+<ol>
+<li>因为……所以；由于……因此；……</li>
+</ol>
+</li>
+<li>因果标志词
+<ol>
+<li>所以、因此、因而、故而、于是、可见、看来、……</li>
+<li>导致、致使、使得、造成、……</li>
+<li>为什么、为何、……</li>
+</ol>
+</li>
+<li>文段特征
+<ol>
+<li>“因此”句在结尾——90%以上为文段中心句</li>
+<li>“因此”句在中间
+<ol>
+<li>后为进一步解释说明——“因此”句为中心句</li>
+<li>后有其他关联关系——需结合多种关联词共同分析</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>提示
+<ol>
+<li>当提问直接问原因时，重点关注“由于”、“因为”之后或“因此”之前的内容</li>
+</ol>
+</li>
+</ol>
+<h3 id="1-4-必要条件关系-必要条件是重点">1.4 必要条件关系(必要条件是重点)</h3>
+<p>充分必要条件，意思是说，如果能从命题A推出命题B，而且也能从命题B推出命题A ，则称A是B的充分必要条件，且B也是A的充分必要条件。</p>
+<p><strong>正推成立是充分，反推成立是必要。若有A推到B，则B为必要条件，即被推导出来的就是必要条件</strong>。不需要把两个一次性全部分辨出来，只要记准那个是必要条件就行了，因为另一个A肯定就是充分条件。</p>
+<ol>
+<li>典型格式
+<ol>
+<li>只有……才……</li>
+</ol>
+</li>
+<li>对策标志词
+<ol>
+<li>应该、应当、必须、需要、亟需、亟待+做法</li>
+<li>通过/采取……手段/途径/措施/方式/方法/渠道，才能……</li>
+<li>呼吁、倡导、体长、提醒、建议+做法</li>
+<li>前提、基础、保障</li>
+</ol>
+</li>
+<li>文段特征
+<ol>
+<li>对策在结尾
+<ol>
+<li>提出问题+分析问题+解决问题</li>
+</ol>
+</li>
+<li>对策在开头
+<ol>
+<li>对策+原因论证、正反论证</li>
+</ol>
+</li>
+<li>对策在中间
+<ol>
+<li>后有对前一做法的加强论证，前面做法更重要</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>反面论证
+<ol>
+<li>典型格式
+<ol>
+<li>如果/倘若/一旦……+不好的结果</li>
+</ol>
+</li>
+<li>具体应用
+<ol>
+<li>把前面的做法反过来，即为正确答案</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>提示
+<ol>
+<li>文段只出现提出问题+分析问题，解决问题可能出现在选项中作为正确答案</li>
+<li>对策和其意义、效果、作用同时出现时，对策更重要</li>
+<li>对策不万能，一定要注意</li>
+<li>假设偷换成现实的选项是错误的</li>
+</ol>
+</li>
+</ol>
+<h3 id="1-5-程度词">1.5 程度词</h3>
+<ol>
+<li>标志词
+<ol>
+<li>典型标志
+<ol>
+<li>更、最、尤其是、根本、正是、真正等</li>
+</ol>
+</li>
+<li>非典型标志
+<ol>
+<li>致命、无疑是、核心、突出等</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>理论要点
+<ol>
+<li>程度词所在的语句通常为重点</li>
+</ol>
+</li>
+</ol>
+<h3 id="1-6-并列关系-概括全面完整">1.6 并列关系(概括全面完整)</h3>
+<ol>
+<li>文段特征
+<ol>
+<li>包含并列关联词及标点，如：此外、另外、同时、以及、“；”等</li>
+<li>层次分明，格式工整</li>
+<li>无明显其他关联词语</li>
+</ol>
+</li>
+<li>选项特征
+<ol>
+<li>两方面情况： 和、及、与、同</li>
+<li>更多种情况： 许多、一些、不同、各种、一系列</li>
+</ol>
+</li>
+<li>提示
+<ol>
+<li>分句表达意思相同： 提取共性</li>
+<li>纠结时可反推文段是否涵盖全部内容</li>
+</ol>
+</li>
+</ol>
+<h3 id="1-7-行文脉络">1.7 行文脉络</h3>
+<ol>
+<li>理论要点
+<ol>
+<li>把握中心句及分述句的特点</li>
+</ol>
+</li>
+<li>中心句特征
+<ol>
+<li>位置特征
+<ol>
+<li>常出现在首尾</li>
+<li>出现在中间时往往有关键词引导</li>
+</ol>
+</li>
+<li>内容特征
+<ol>
+<li>为观点： 如对策、结论、评价</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>分述句特征
+<ol>
+<li>“比如”、“例如”、“……就是例证”等</li>
+<li>多角度分析(不同角度并列、正反论证)</li>
+<li>原因解释</li>
+<li>调查资料、研究、报告</li>
+</ol>
+</li>
+<li>提示
+<ol>
+<li>选项陷阱总结
+<ol>
+<li>尾句内容迷你眼</li>
+<li>并非全部是重点</li>
+<li>非重点处设陷阱</li>
+<li>无中生有需警醒</li>
+</ol>
+</li>
+<li>选项排除技巧(反推)
+<ol>
+<li>如何-措施</li>
+<li>原因-因果</li>
+<li>差异-并列</li>
+<li>应该-对策</li>
+<li>意义-好处</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="二：-细节判断题">二： 细节判断题</h2>
+<ol>
+<li>提问方式
+<ol>
+<li>以下对文段理解正确/不正确的是</li>
+<li>符和/不符合这段话意思的是</li>
+<li>以下说法正确/不正确的是</li>
+</ol>
+</li>
+<li>细节主旨化
+<ol>
+<li>题干特征
+<ol>
+<li>题干常问“符合的”，“正确的”，偶尔以“可以推出的”为变形题干形式</li>
+</ol>
+</li>
+<li>文段特征
+<ol>
+<li>一般不考查极其晦涩难懂的科技说明文，文段中心较为明显</li>
+</ol>
+</li>
+<li>解题思路
+<ol>
+<li>优选契合文段中心的选项，寻找中心的方法同中心理解题</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>典型细节题(错误选项类型)
+<ol>
+<li>无中生有</li>
+<li>偷换概念
+<ol>
+<li>替换</li>
+<li>混搭</li>
+</ol>
+</li>
+<li>偷换时态
+<ol>
+<li>将来时(将要、立刻、趋势、以后)</li>
+<li>完成时(已、已经、了、完成)</li>
+<li>进行时(正在、在……中、着)</li>
+</ol>
+</li>
+<li>程度轻重(相对绝对法)
+<ol>
+<li>绝对标志词
+<ol>
+<li>均、取代、主导、唯一、只要……就……、无论……都……等</li>
+</ol>
+</li>
+<li>相对标志词
+<ol>
+<li>尽量、往往、容易、几乎、……之一等</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="三：-语句表达">三： 语句表达</h2>
+<h3 id="3-1-语句排序题">3.1 语句排序题</h3>
+<ol>
+<li>提问方式
+<ol>
+<li>以下几个句子重新排列组合最连贯的是？</li>
+</ol>
+</li>
+<li>解题要点(先看选项，从选项入手)
+<ol>
+<li>对比选项确定首尾句</li>
+<li>确定捆绑词集团或确定顺序或观察尾句</li>
+<li>根据具体情况进行验证</li>
+</ol>
+</li>
+<li>确定首句
+<ol>
+<li>背景引入
+<ol>
+<li>随着、近年来、在……大背景/环境下</li>
+</ol>
+</li>
+<li>下定义
+<ol>
+<li>……就是/是指</li>
+</ol>
+</li>
+<li>提出观点
+<ol>
+<li>有人说、人们普遍认为</li>
+</ol>
+</li>
+<li>非首句特征
+<ol>
+<li>指代词</li>
+<li>关联词后半部分</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>确定捆绑词集团
+<ol>
+<li>关联词
+<ol>
+<li>配套出现确定捆绑</li>
+<li>单个出现分析句义</li>
+</ol>
+</li>
+<li>共同信息
+<ol>
+<li>找特殊信息捆绑</li>
+</ol>
+</li>
+<li>指代词
+<ol>
+<li>这、那、他、其、该</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>确定顺序
+<ol>
+<li>时间顺序： 如从古到今、A和B，先说A再说B</li>
+<li>逻辑顺序： 如父子</li>
+</ol>
+</li>
+<li>确定尾句
+<ol>
+<li>因此、所以、看来、这……引导的总结性尾句</li>
+<li>对策</li>
+</ol>
+</li>
+<li>验证所选答案</li>
+</ol>
+<h3 id="3-2-语句填空题">3.2 语句填空题</h3>
+<ol>
+<li>提问方式
+<ol>
+<li>填入横线部分最恰当的一项是……</li>
+</ol>
+</li>
+<li>横线在结尾
+<ol>
+<li>总结前文</li>
+<li>提出对策</li>
+<li>尾句中的分句
+<ol>
+<li>优先考虑与前面分句的衔接</li>
+<li>保证前后话题一致</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>横线在开头
+<ol>
+<li>需概括文段的中心内容</li>
+</ol>
+</li>
+<li>横线在中间
+<ol>
+<li>注意与上下文的联系</li>
+<li>把握好主题词，保证文段话题一致</li>
+</ol>
+</li>
+<li>提示
+<ol>
+<li>纠结时可用反向排除法</li>
+</ol>
+</li>
+</ol>
+<h3 id="3-3-接语选择题">3.3 接语选择题</h3>
+<ol>
+<li>提问方式
+<ol>
+<li>作者接下来最可能讲述的是……</li>
+</ol>
+</li>
+<li>理论要点
+<ol>
+<li>重点关注文段最后一句话</li>
+</ol>
+</li>
+<li>干扰项特征
+<ol>
+<li>文段中已经论述过的内容</li>
+</ol>
+</li>
+<li>提示
+<ol>
+<li>理解要紧紧依托文段，不能无中生有</li>
+</ol>
+</li>
+</ol>
+<h2 id="四：-逻辑填空">四： 逻辑填空</h2>
+<h3 id="4-1-词的辨析">4.1 词的辨析</h3>
+<ol>
+<li>词义侧重(的辨析方法)
+<ol>
+<li>第一种： 拆字组词： 用不一样的字单独组词</li>
+<li>第二种： 整词搭配： 用整个词进行组词搭配</li>
+</ol>
+</li>
+<li>固定搭配
+<ol>
+<li>积累热点词
+<ol>
+<li>倒逼增长；精准扶贫</li>
+<li>催生国际力量；抑制房价增长</li>
+<li>厉行节约；资源匮乏</li>
+<li>创新驱动；金融恐慌</li>
+</ol>
+</li>
+<li>根据词性找搭配
+<ol>
+<li>若选项均是动词，在文段中找到动词后或动词前搭配的名词，也可找修饰动词的副词</li>
+<li>若选项均是名词，在文段中找到名词后或名词前搭配的动词，也可找修饰名词的形容词</li>
+<li>例： 又瘦又美的(定语)小美(主语名词)深深地(副词)爱(谓语动词)学生们(宾语名词)</li>
+</ol>
+</li>
+<li>两分法
+<ol>
+<li>主动or被动</li>
+<li>具体or抽象</li>
+<li>上对下or下对上</li>
+<li>人or物</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>程度轻重
+<ol>
+<li>区分词地程度轻重
+<ol>
+<li>程度轻： 大相径庭；相差很大；相差很多</li>
+<li>程度重： 截然不同；完全相反；完全不同</li>
+</ol>
+</li>
+<li>理论要点
+<ol>
+<li>所填词语地程度和文段意思地轻重保持一致</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>感情色彩
+<ol>
+<li>区分词地感情色彩
+<ol>
+<li>褒义： 成果</li>
+<li>贬义： 成果</li>
+<li>中性： 成果</li>
+</ol>
+</li>
+<li>理论要点： 所填词语地感情色彩与文段地感情色彩保持一致</li>
+</ol>
+</li>
+</ol>
+<h3 id="4-2-语境分析">4.2 语境分析</h3>
+<ol>
+<li>关联关系
+<ol>
+<li>转折
+<ol>
+<li>标志词： 但是、然而、却等</li>
+<li>理论要点： 前后语义相反</li>
+</ol>
+</li>
+<li>递进
+<ol>
+<li>标志词： 而且、甚至、更等</li>
+<li>理论要点： 语义程度前轻后重</li>
+</ol>
+</li>
+<li>并列
+<ol>
+<li>理论要点
+<ol>
+<li>同义并列： 顿号(、)，逗号(，)</li>
+<li>反义并列： 不是……而是……、是……不是……、相反、反之等</li>
+</ol>
+</li>
+<li>提示： 相同句式表并列</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>对应关系
+<ol>
+<li>解释类对应
+<ol>
+<li>题干特点： 分句，﹍﹍，分句</li>
+<li>标志词： 是、就是、即、无异于、无疑是、比如、例如等</li>
+<li>标点： 冒号(:)、破折号(——)</li>
+</ol>
+</li>
+<li>重点词句对应
+<ol>
+<li>重点词： 主题词、指代词等</li>
+<li>重点句： 中心句、完整句</li>
+</ol>
+</li>
+<li>提示： 找准对应关系，要基于对整个文段意思的把握</li>
+</ol>
+</li>
+</ol>
+<h2 id="五：-小技巧">五： 小技巧</h2>
+<ol>
+<li>注意文章的结构，是转折，总分，还是并列……</li>
+<li>注意程度词、连接词，关注文段的语义变化是破题的捷径。</li>
+<li>多用逻辑分析，看是近义、反义还是并列……，注重上下文联系。</li>
+<li>转折前不选</li>
+<li>例子不选</li>
+<li>片面、无中生有不选</li>
+<li>提问、分析问题，则解决问题的是答案</li>
+<li>主题词(上述无用，读不懂的时候用)</li>
+<li>不明确时优选明确选项</li>
+<li>反推法</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%85%AC%E8%80%83/">公考</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%85%AC%E8%80%83/%E8%A8%80%E8%AF%AD%E7%90%86%E8%A7%A3/">言语理解</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%85%AC%E8%80%83/">公考</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/11/02/%E5%85%AC%E8%80%83/%C2%96judgment-and-inference/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">判断推理</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/09/15/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/PVE%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8B%E5%AE%89%E8%A3%85ikuai%E5%92%8Copenwrt/">
+                        <span class="hidden-mobile">PVE虚拟机下安装ikuai、openwrt及配置IPv6</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
+          app_key: "HLUt5izfTvTcbEbOrA59W92a",
+          placeholder: "畅所欲言...",
+          path: window.location.pathname,
+          avatar: "robohash",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-3" style="width:355.4px; height:200px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        苏ICP备20032307号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32020602001023"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>苏公网安备 32020602001023号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

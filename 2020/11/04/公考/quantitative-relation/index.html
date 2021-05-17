@@ -1,0 +1,947 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时">
+  <meta name="author" content="closer">
+  <meta name="keywords" content="">
+  
+  <title>数量关系 - closer的自留地</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/androidstudio.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.zsaa.top","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"608f2baddd361128381ad2bf9377bf89","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz","app_key":"HLUt5izfTvTcbEbOrA59W92a","server_url":"https://yzlqntmw.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Hello</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/mydefault.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="数量关系">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-11-04 17:00" pubdate>
+        2020年11月4日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      23
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数量关系</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年12月11日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>数量关系：主要测查应试人员理解、把握事物间量化关系和解决数量关系问题的能力，涉及数据关系的分析、推理、判断、运算等。常见的题型有：数字推理、数学运算等。</p>
+</blockquote>
+<hr>
+<h2 id="一：-几大特性-代入排除、数字特性、方程法等">一： 几大特性(代入排除、数字特性、方程法等)</h2>
+<h3 id="1-1-代入排除">1.1 代入排除</h3>
+<ol>
+<li>使用范围
+<ol>
+<li>典型题： 年龄、余数、不定方程、多位数</li>
+<li>看选项： 选项为一组数或可转化为一组数</li>
+<li>剩两项： 只剩两项时，代入一项即可得答案</li>
+<li>超复杂： 题干长、主体多、关系乱</li>
+</ol>
+</li>
+<li>方法
+<ol>
+<li>先排除： 尾数法、奇偶、倍数</li>
+<li>再代入： 最值、好算</li>
+</ol>
+</li>
+</ol>
+<h3 id="1-2-奇偶特性">1.2 奇偶特性</h3>
+<ol>
+<li>使用范围
+<ol>
+<li>知和求差、知差求和</li>
+<li>不定方程–一般优先考虑奇偶性</li>
+<li>A是B的2倍，将A分成两份。 A为偶数</li>
+<li>质数： 逢质必2</li>
+</ol>
+</li>
+<li>方法
+<ol>
+<li>和差： 同奇同偶则为偶，一奇一偶则为奇</li>
+<li>积： 一偶则偶，全奇为奇。</li>
+</ol>
+</li>
+</ol>
+<h3 id="1-3-倍数特性">1.3 倍数特性</h3>
+<ol>
+<li>使用范围
+<ol>
+<li>分数、百分数、比例、倍数</li>
+<li>物品平均分配</li>
+</ol>
+</li>
+<li>方法
+<ol>
+<li>$\frac{A}{B} = \frac{m}{n} $
+<ol>
+<li>$若\frac{A}{B} = \frac{m}{n} ,则\frac{A}{B} = \frac{m}{n}=\frac{A\pm m }{B\pm n} $</li>
+</ol>
+</li>
+<li>整除判定
+<ol>
+<li>拆分(普遍适用)
+<ol>
+<li>看是否A的倍数，将A拆分为A的整数倍的一个数字a±一个小的数字b，若b也能被A整除，则原数能被A整除。</li>
+</ol>
+</li>
+<li>口诀
+<ol>
+<li>3/9，各位之和能被3或9整除，则是倍数</li>
+<li>4(末2位)/8(末3位)，能被4/8整除，则是倍数</li>
+<li>2(偶数)/5(0,5)</li>
+<li>7： 一个数个位截掉，余下的数减个位数的2倍，若差是7的倍数，能被7整除。</li>
+</ol>
+</li>
+<li>因式分解(复杂倍数用)
+<ol>
+<li>将一个数分解为互质的两个数。</li>
+<li>如： 判断能否被45整除，只要判断它是9和5的倍数即可</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="1-4-方程法">1.4 方程法</h3>
+<ol>
+<li>普通方程
+<ol>
+<li>设未知数
+<ol>
+<li>设小不设大(避免分数)</li>
+<li>最大信息化(方便列式)，即设中间量</li>
+<li>设谁求谁(避免陷阱)</li>
+</ol>
+</li>
+<li>列方程
+<ol>
+<li>共、是、比、相等</li>
+</ol>
+</li>
+<li>解方程
+<ol>
+<li>约分： 如3600=400x+800y</li>
+<li>消元： 求谁留谁</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>不定方程
+<ol>
+<li>奇偶特性： a、b系数一奇一偶</li>
+<li>倍数特性： a、b系数与常数有公因子
+<ol>
+<li>$9x + 7y  = 81$</li>
+<li>$9n/9(m-n)/9m$</li>
+</ol>
+</li>
+<li>尾数特性： a、b系数尾数为5或0</li>
+<li>代入排除： 无法运用上述特性</li>
+</ol>
+</li>
+<li>赋零法
+<ol>
+<li>范围： ①未知数可以非整数②求算式而非单一未知数</li>
+<li>方法： 设某个未知数为零，再求其他未知数</li>
+</ol>
+</li>
+</ol>
+<h3 id="1-5-乘方尾数">1.5 乘方尾数</h3>
+<p><strong>口诀：底数留个位，指数除4留余数，余数为0转为4.</strong></p>
+<p>例：$2008^{2008}+2009^{2009}$的个位数是？</p>
+<p>答： $2008 \bmod 4=0，则可转化为8^{4}+9^{1}，8×8=64，4×8=32，2×8=16，6+9=15，个位数是5$</p>
+<h3 id="1-6-数列-等差、等比">1.6 数列(等差、等比)</h3>
+<h4 id="1-6-1-等差数列">1.6.1 等差数列</h4>
+<p>公差用字母$d$表示，等差数列的通项公式为:<br>
+$a_{n}=a_{1}+(n-1)d$</p>
+<p>求和公式为：<br>
+$S_{n}=na_{1}+\frac{n(n-1)}2d=平均数×项数=中位数×项数$</p>
+<h4 id="1-6-2-等比数列">1.6.2 等比数列</h4>
+<p>通项公式： $a_{n}=a_{1}q^{n-1}=a_{m}q^{n-m}$</p>
+<p>求和公式： $S_{n}=\frac{a_{1}(1-q^{n})}{1-q}$</p>
+<p>等比中项： 如果a，b，c成等比数列，则b叫做a与c的等比中项，有：$b^{2}=ac$。</p>
+<h2 id="二：-几大题型">二： 几大题型</h2>
+<h3 id="2-1-数字推理">2.1 数字推理</h3>
+<ol>
+<li>基础数列
+<ol>
+<li>等差、等比</li>
+<li>质数数列</li>
+<li>平方立方数列</li>
+<li>周期数列</li>
+<li>简单递推数列</li>
+</ol>
+</li>
+<li>多重数列
+<ol>
+<li>特征： 项数≥7项</li>
+<li>方法： 先交叉(22交叉，奇偶交叉，三三分)再分组</li>
+</ol>
+</li>
+<li>分数数列
+<ol>
+<li>约分</li>
+<li>先分开看，再一起看，观察趋势</li>
+</ol>
+</li>
+<li>做商数列</li>
+<li>幂次数列
+<ol>
+<li>$64=8^{2} =2^{6}；81=9^{2}=3^{4}$</li>
+</ol>
+</li>
+<li>多级数列</li>
+<li>递推数列
+<ol>
+<li>两两做和</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-2-容斥原理">2.2 容斥原理</h3>
+<ol>
+<li>公式
+<ol>
+<li>$A+B-A\cap B=总数-都不$</li>
+<li>$A+B+C-A\cap B-A\cap C-B\cap C+A\cap B\cap C=总数-都不$</li>
+<li>$A+B+C-只满足两个-只满足三个×2=总数-都不$</li>
+<li>$A+B+C=只满足一个+只满足两个×2+满足三个×3$</li>
+<li>$只2=A\cap B+B\cap C+A\cap C-3×只3$</li>
+</ol>
+</li>
+<li>画图
+<ol>
+<li>画圈圈，标数据，去重复</li>
+<li>交叉部分重点标注</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-3-工程问题">2.3 工程问题</h3>
+<ol>
+<li>赋值总量型
+<ol>
+<li>识别： 题干只给了多个完工时间</li>
+<li>方法： 赋值总量–算出效率–列式求解</li>
+<li>技巧： 总量一般设公倍(用短除法求最小公倍数和最大公约数)，公倍难算用乘积</li>
+</ol>
+</li>
+<li>赋值效率型
+<ol>
+<li>识别： 题干给出了效率比、效率倍数等</li>
+<li>方法： 赋值效率–求出总量–列式求解</li>
+<li>技巧： 按照比例设效率，设值尽量设整数</li>
+</ol>
+</li>
+<li>给具体值型
+<ol>
+<li>识别： 题干有效率、总量的具体值(设小不设大，设中间量)</li>
+<li>方法： 代公式–列方程求解(方程往往有整除、倍数关系)</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-4-经济利润问题">2.4 经济利润问题</h3>
+<ol>
+<li>基础公式
+<ol>
+<li>$利润=售价-成本$</li>
+<li>$利润率=利润÷成本；售价=成本×(1+利润率)$</li>
+</ol>
+</li>
+<li>分段计算
+<ol>
+<li>水电费、出租车费、税费等</li>
+<li>每段费用分别计算，求和后为总费用</li>
+</ol>
+</li>
+<li>合并付费
+<ol>
+<li>先分开买，再合并买，问省了多少钱？</li>
+<li>答： $便宜的那件商品的原价×折扣差$</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-5-概率">2.5 概率</h3>
+<ol>
+<li>概率=满足所有的情况数÷所有的情况数</li>
+<li>分类用加法，分步用乘法</li>
+<li>正难反易： $1-反面情况概率$</li>
+</ol>
+<h3 id="2-6-排列组合">2.6 排列组合</h3>
+<ol>
+<li>概念
+<ol>
+<li>分类用加法(要么……要么……)</li>
+<li>分步用乘法(先……再……)</li>
+<li>有序用排列$A_{n}^{m} $(不可互换)</li>
+<li>无序用组合$C_{n}^{m} $(可以互换)
+<ol>
+<li>$C_{n}^{m} = C_{n}^{n-m}$</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>题型
+<ol>
+<li>相邻
+<ol>
+<li>捆绑法： 先捆再排</li>
+<li>把相邻的元素捆绑起来，注意內部有无顺序</li>
+</ol>
+</li>
+<li>不相邻
+<ol>
+<li>插空法： 先插再排</li>
+<li>①先安排可以相邻的元素，形成若干空位；②再将不相邻的元素插入空位中</li>
+</ol>
+</li>
+<li>凑数字
+<ol>
+<li>枚举法： 按序枚举</li>
+</ol>
+</li>
+<li>插板法
+<ol>
+<li>将N个相同元素分给M个人，每人至少一个，共有$C_{n-1}^{m-1} $种情况</li>
+</ol>
+</li>
+<li>错位排列(不回原位)
+<ol>
+<li>个数：$1、2、3、4、5、6$</li>
+<li>N种：$0、1、2、9、44、265$</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-7-植树问题">2.7 植树问题</h3>
+<p>所谓植树问题就是要理清间隔数量与端点之间的关系。</p>
+<ol>
+<li>两端栽树，棵树比段数多1，棵树=线路总长÷株距+1；</li>
+<li>一端栽树，棵树与段数相等，棵树=线路总长÷株距；</li>
+<li>两端都不栽树，棵树=段数-1，棵树=线路总长÷株距-1；</li>
+<li>两边植树需要在1条路的基础上乘以2；</li>
+<li>封闭型植树，棵树=线路总长÷株距=总段数；</li>
+<li>类似于“两端不植树”的还有“上楼梯问题”、“锯木头、剪绳子”、“站成一列”问题，上到N楼用M分钟，则上每层楼用M/(N-1)分钟，其余同理。</li>
+</ol>
+<p>PS：剪绳问题公式： $2^{N}×M+1(一根绳子连续对折N次，剪M刀，问绳子被剪成几段？)$</p>
+<h3 id="2-8-鸡兔同笼">2.8 鸡兔同笼</h3>
+<p>核心公式：</p>
+<ol>
+<li>鸡数=(兔脚数×总头数-总脚数)÷(兔脚数-鸡脚数)</li>
+<li>兔数=(总脚数-鸡脚数×总头数)÷(兔脚数-鸡脚数)</li>
+</ol>
+<p>问：已知鸡兔同笼，共35只，脚共94只，求鸡和兔的个数。</p>
+<p>答：方程法略。假设法：假设35只都是鸡，则有脚35×2=70只，每一只鸡换成兔就多2只脚。故共有兔子12只，鸡23只。</p>
+<p><strong>总结： 先假设全部是某一种，然后求出的值与实际值的差值除以他们单个的差值，得出来的是另一种。(假设鸡得出兔，假设兔得出鸡)</strong>。</p>
+<h3 id="2-9-牛吃草问题">2.9 牛吃草问题</h3>
+<h3 id="2-10-过河问题和空瓶换水">2.10 过河问题和空瓶换水</h3>
+<p>一条船只能运送N人，现在M个人过河，问几次过完？ 答：共需$\frac{M-1}{N-1} $次。</p>
+<p>N个空瓶换一瓶水，已有M个空瓶，问可以换几瓶水？ 答： $\frac{M}{N-1}(舍弃小数取整) $个</p>
+<h3 id="2-11-日期、年龄问题">2.11 日期、年龄问题</h3>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%85%AC%E8%80%83/">公考</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%85%AC%E8%80%83/%E6%95%B0%E9%87%8F%E5%85%B3%E7%B3%BB/">数量关系</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%85%AC%E8%80%83/">公考</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/11/27/%E5%85%AC%E8%80%83/CuoTi-ShuLiang/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">错题本_数量</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/02/%E5%85%AC%E8%80%83/%C2%96judgment-and-inference/">
+                        <span class="hidden-mobile">判断推理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
+          app_key: "HLUt5izfTvTcbEbOrA59W92a",
+          placeholder: "畅所欲言...",
+          path: window.location.pathname,
+          avatar: "robohash",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-3" style="width:355.4px; height:200px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        苏ICP备20032307号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32020602001023"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>苏公网安备 32020602001023号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

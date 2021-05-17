@@ -1,0 +1,737 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时">
+  <meta name="author" content="closer">
+  <meta name="keywords" content="">
+  
+  <title>PVE虚拟机下安装ikuai、openwrt及配置IPv6 - closer的自留地</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/androidstudio.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.zsaa.top","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"608f2baddd361128381ad2bf9377bf89","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz","app_key":"HLUt5izfTvTcbEbOrA59W92a","server_url":"https://yzlqntmw.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Hello</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/mydefault.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="PVE虚拟机下安装ikuai、openwrt及配置IPv6">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-09-15 21:02" pubdate>
+        2020年9月15日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      29
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">PVE虚拟机下安装ikuai、openwrt及配置IPv6</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年10月4日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>PVE虚拟机下使用ikuai进行流控，openwrt进行去广告、KMS服务器等高级功能。</p>
+</blockquote>
+<h2 id="一：-安装PVE">一： 安装PVE</h2>
+<h3 id="2-1-固件安装">2.1 固件安装</h3>
+<p>用U盘制作<a target="_blank" rel="noopener" href="https://www.ventoy.net/cn/index.html">ventoy启动盘</a>后，把<a target="_blank" rel="noopener" href="https://www.proxmox.com/en/downloads">PVE官方映像</a>拖到U盘里面。</p>
+<p>bios里面使用u盘启动，选择下载的PVE官方映像进行安装。</p>
+<ol>
+<li>选择安装的磁盘。</li>
+<li>country选择<code>China</code>。</li>
+<li>输入root密码，邮箱随意，可以不输入。</li>
+<li>网卡默认，hostname设置为你的域名或随意域名，下面的ip按需设置，网关设为<code>openwrt</code>的地址，DNS设为114.114.114.114。</li>
+<li>安装。</li>
+</ol>
+<h3 id="2-2-web界面配置">2.2 web界面配置</h3>
+<p>输入<code>https://你的ip:8006/</code>进入web界面。</p>
+<p>点击系统-网络-选择默认网桥(类别为Linux Bridge)，双击-桥接端口，把上面的网络设备名称全部添加进去(空格间隔)。</p>
+<p>双击网络里面的全部接口-设置为自动启动。</p>
+<p>下面更换源和关闭订阅提示。<br>
+将下面的代码保存为<code>pve.sh</code>，拖到<code>PVE</code>的<code>/root</code>根目录，<code>chmod +x pve.sh</code>，<code>./pve.sh</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">! /bin/bash</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">修改apt国内源</span><br>echo &quot;deb http://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free&quot; &gt; /etc/apt/sources.list<br><span class="hljs-meta">#</span><span class="bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;deb-src http://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free&quot;</span> &gt;&gt; /etc/apt/sources.list</span><br><br>echo &quot;deb http://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free&quot; &gt;&gt; /etc/apt/sources.list<br><span class="hljs-meta">#</span><span class="bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;deb-src http://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free&quot;</span> &gt;&gt; /etc/apt/sources.list</span><br><br>echo &quot;deb http://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free&quot; &gt;&gt; /etc/apt/sources.list<br><span class="hljs-meta">#</span><span class="bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;deb-src http://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free&quot;</span> &gt;&gt; /etc/apt/sources.list</span><br><br>echo &quot;deb http://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free&quot; &gt;&gt; /etc/apt/sources.list<br><span class="hljs-meta">#</span><span class="bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;deb-src http://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free&quot;</span> &gt;&gt; /etc/apt/sources.list</span><br>echo -e &quot;\033[32m 已修改apt源为中国科学技术大学源！\033[0m&quot;<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">修改pve-no-subscription源</span><br>rm -f /etc/apt/sources.list.d/pve-enterprise.list<br><span class="hljs-meta">#</span><span class="bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;deb http://download.proxmox.com/debian/pve stretch pve-no-subscription&quot;</span> &gt; /etc/apt/sources.list.d/pve-install-repo.list</span><br>echo &quot;deb http://download.proxmox.com/debian/pve stretch pve-no-subscription&quot; &gt;&gt; /etc/apt/sources.list<br>wget http://download.proxmox.com/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg<br>echo -e &quot;\033[32m 已完成修改pve-no-subscription源！\033[0m&quot;<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">apt update更新</span><br>apt update -y &amp;&amp; apt dist-upgrade -y &amp; apt-get clean<br><span class="hljs-meta">#</span><span class="bash">pveupdate</span><br><span class="hljs-meta">#</span><span class="bash">pveupgrade</span><br>echo -e &quot;\033[32m 已完成apt更新！\033[0m&quot;<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">登陆屏蔽订阅通知</span><br><span class="hljs-meta">#</span><span class="bash"> find / -<span class="hljs-built_in">type</span> f -name <span class="hljs-string">&quot;*.js&quot;</span> | xargs  grep -Hn --color=auto <span class="hljs-string">&quot;You do not have a valid subscription for this server&quot;</span></span><br>sed -i_orig &quot;s/data.status !== &#x27;Active&#x27;/false/g&quot; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js<br>echo -e &quot;\033[32m 已屏蔽登陆订阅通知！\033[0m&quot;<br></code></pre></div></td></tr></table></figure>
+<h3 id="2-3-关闭TSO">2.3 关闭TSO</h3>
+<p><strong>PS</strong>:我用的<code>M73</code>，因为原生网卡不支持，需要关闭<code>TSO</code>，如果你的不需要，则忽略此步骤，先安装<strong>ethtool</strong>，<code>apt install ethtool</code>，<code>ip link show</code>查看网口，用<code>ethtool -k vmbr0</code>查看网口是否开启了TSO，我这边网口是vmbr0。</p>
+<p>关闭TSO命令<code>ethtool -K vmbr0 tso off</code></p>
+<p><code>nano /etc/init.d/tsooff</code>，编辑开机自动关闭TSO脚本如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs SHELL"><span class="hljs-meta">#</span><span class="bash">!/bin/sh</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">## BEGIN INIT INFO</span></span><br><span class="hljs-meta">#</span><span class="bash"> Provides: tsooff</span><br><span class="hljs-meta">#</span><span class="bash"> Required-Start: <span class="hljs-variable">$network</span> <span class="hljs-variable">$remote_fs</span> <span class="hljs-variable">$local_fs</span></span><br><span class="hljs-meta">#</span><span class="bash"> Required-Stop: <span class="hljs-variable">$network</span> <span class="hljs-variable">$remote_fs</span> <span class="hljs-variable">$local_fs</span></span><br><span class="hljs-meta">#</span><span class="bash"> Default-Start: 2 3 4 5</span><br><span class="hljs-meta">#</span><span class="bash"> Default-Stop: 0 1 6</span><br><span class="hljs-meta">#</span><span class="bash"> Short-Description: TSO_off</span><br><span class="hljs-meta">#</span><span class="bash"> Description: tso_off</span><br><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">## END INIT INFO</span></span><br><br>ethtool -K eno1 tso off<br>ethtool -K vmbr0 tso off<br>ethtool -K vmbr1 tso off<br><br>exit 0<br></code></pre></div></td></tr></table></figure>
+<p><code>ctrl+O,ctrl+X</code>保存并关闭编辑</p>
+<p><code>chmod +x /etc/init.d/tsooff</code></p>
+<p>将脚本加入自动执行<br>
+<code>update-rc.d tsooff defaults</code></p>
+<h3 id="2-4-添加温度显示">2.4 添加温度显示</h3>
+<p><a target="_blank" rel="noopener" href="https://github.com/ivanhao/pvetools">使用GitHub-pvetools一键工具添加温度显示</a></p>
+<p>命令行安装，需要用root账号来运行</p>
+<p>在终端中按行分别执行以下内容：</p>
+<blockquote>
+<p>强烈建议先删除企业源：rm /etc/apt/sources.list.d/pve-enterprise.list</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs SHELL">export LC_ALL=en_US.UTF-8<br>apt update &amp;&amp; apt -y install git &amp;&amp; git clone https://github.com/ivanhao/pvetools.git<br>cd pvetools<br>./pvetools.sh<br><span class="hljs-meta">#</span><span class="bash"> 如果提示没有权限，输入chmod +x ./*.sh</span><br></code></pre></div></td></tr></table></figure>
+<p>执行后，按提示操作即可。</p>
+<p><strong>卸载脚本</strong></p>
+<p>删除下载的<code>pvetools</code>目录</p>
+<h3 id="2-5-更改ProxmoxVE的LXC仓库源为国内中科大源">2.5 更改ProxmoxVE的LXC仓库源为国内中科大源</h3>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs SHELL">grep -rn &quot;download.proxmox.com&quot; /usr/share/perl5/PVE/*   #查找设定下载源的文件<br>sed -i.bak &quot;s#http://download.proxmox.com/images#https://mirrors.ustc.edu.cn/proxmox/images#g&quot; /usr/share/perl5/PVE/APLInfo.pm #替换为中科大源<br>wget -O /var/lib/pve-manager/apl-info/mirrors.ustc.edu.cn https://mirrors.ustc.edu.cn/proxmox/images/aplinfo-pve-6.dat # 下载aplinfo-pve-6文件，也可下载aplinfo.dat<br></code></pre></div></td></tr></table></figure>
+<h2 id="二：-安装ikuai">二： 安装ikuai</h2>
+<p>点击local-内容-上传，上传<a target="_blank" rel="noopener" href="https://www.ikuai8.com/component/download">ikuai官网</a>下载的ISO映像。</p>
+<p>创建虚拟机-名称<code>ikuai</code>-操作系统选择<code>上传的映像</code>-系统<strong>显卡一定要选择VMWARE兼容，否则不能正确显示。</strong>-硬盘总线<code>SCSI</code>,磁盘大小<code>2</code>-CPU为1核<code>2线程</code>、高级中<code>启用NUMA</code>(支持热拔插，不需要则不开启)-内存64位<code>4096</code>或者32位<code>2048</code>-网络<code>VirIO(半虚拟化)</code>-确定。</p>
+<p>web界面点击虚拟机100。</p>
+<p>硬件-添加-网络设备-选择<code>桥接接口</code>-模型选<code>VirtIO</code>-添加。</p>
+<p>选项-开机自启动设置为<code>是</code>。</p>
+<p>启动，选择控制台。<code>2</code>绑定网卡，<code>0</code>LAN口地址设置。</p>
+<p>登录ikuai的web界面。</p>
+<p><a target="_blank" rel="noopener" href="https://www.right.com.cn/forum/thread-2640416-1-1.html">网关配置</a></p>
+<h2 id="三：-安装openwrt">三： 安装openwrt</h2>
+<p>先修改映像名字为 <code>openwrt.img</code> ，再用 <code>winscp</code> 把 <code>openwrt</code> 的映像传到 <code>PVE</code> 的 <code>/root</code> 根目录。</p>
+<p>PVE的shell命令行工具中输入如下命令：</p>
+<blockquote>
+<p>映像转换的命令格式为(区分大小写)：<br>
+qemu-img(转换工具) convert -f raw(-f后面指明原文件格式) -O qcow2(输出格式) openwrt.img openwrt.qcow2</p>
+</blockquote>
+<p><code>qemu-img convert -f raw -O qcow2 openwrt.img openwrt.qcow2</code></p>
+<p>首先先创建虚拟机101.</p>
+<p><code>PVE的web</code>界面点击虚拟机<code>101</code>。</p>
+<p>操作系统 -&gt; 不使用任何介质。</p>
+<p>系统 -&gt; 默认。</p>
+<p>硬盘 -&gt; 随意设置 2G， 之后会删除。</p>
+<p>CPU -&gt; <code>1核2线程</code> -&gt; 类别 <code>host</code> 。</p>
+<p>内存 -&gt; <code>1024</code> 。</p>
+<p>网络 -&gt; 默认。</p>
+<p>然后<code>PVE-web</code>界面分离不用的硬盘：选择刚刚创建的“Openwrt虚拟机” -&gt;  硬件 -&gt; 硬盘(scsi0) -&gt; 点击“分离” -&gt; 点击“删除”。</p>
+<p>PVE的shell命令行工具中输入如下命令：</p>
+<blockquote>
+<p>导入磁盘命令格式为(区分大小写)：<br>
+qm importdisk 101(虚拟机编号) openwrt.qcow2(映像名字) local-lvm(pve存储空间名字)</p>
+</blockquote>
+<p><code>qm importdisk 101 openwrt.qcow2 local-lvm</code></p>
+<p>选择刚刚创建的“Openwrt虚拟机” -&gt;  硬件 -&gt; 未使用的硬盘0 -&gt; 点击“编辑” -&gt; 总线/设备“SATA” -&gt; 添加。</p>
+<p>硬件 -&gt; 硬盘SATA0 -&gt; 调整磁盘大小，增加<code>3</code>。</p>
+<p>(这一条如果不用openwrt拨号可以不设置，我这边没添加)添加-网络设备-选择<code>桥接接口</code>-模型选<code>VirtIO</code>-添加。</p>
+<p>切换到虚拟机的“选项”选项卡，双击“引导顺序”，第一引导项选“Disk ‘sata0’”。开机自启动设置为<code>是</code>。</p>
+<p>启动虚拟机101，控制台操作如下命令行。</p>
+<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs SH"><span class="hljs-comment"># 修改LAN口固定IP</span><br>vi /etc/config/network<br><span class="hljs-comment"># option ipaddr可以改为你想要管理路由的IP地址，比如&#x27;192.168.10.1&#x27;</span><br><br><span class="hljs-comment"># 重启网络</span><br>/etc/init.d/network restart<br></code></pre></div></td></tr></table></figure>
+<p>登录openwrt的web界面。</p>
+<p><a target="_blank" rel="noopener" href="https://www.right.com.cn/forum/thread-2640416-1-1.html">网关配置</a></p>
+<h2 id="四：-配置ipv6">四： 配置ipv6</h2>
+<p>首先在ikuai中网络设置-开启IPv6并设置DHCPv6(很简答，选自动获取，傻瓜操作)。</p>
+<p>其次在openwrt中<a target="_blank" rel="noopener" href="https://zhaoshuai.top/2020/08/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E7%9A%84%E4%B8%BB%E6%9C%BA%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE(IPv6%E3%80%81frp%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86)/">IPv6如此设置</a> ， <a href="(https://www.wygdbb.com/2020/09/openwrt-ipv6/)">参考图片，图片里是<code>WAN</code>，但我们是二级路由，所以是<code>LAN</code></a>：</p>
+<ol>
+<li>从网络 –&gt; 接口 –&gt; 删除<code>“IPv6 ULA 前缀”</code> –&gt; 保存&amp;应用</li>
+<li>手动添加一个新接口–&gt; <code>IPV6</code> -&gt; 协议选 <code>DHCPv6客户端</code> -&gt; 自定义接口： <code>@lan</code> -&gt; <code>提交</code></li>
+<li>DHCP/DNS –&gt; 高级设置 –&gt; <code>禁止解析 IPv6 DNS 记录</code> ，取消勾选</li>
+<li>防火墙 –&gt; 基本设置 中 <code>入站数据、出站数据、转发，全部改为“接受”</code> -&gt; IP 动态伪装: <code>勾选</code> -&gt; 区域中 LAN <code>入站数据、出站数据、转发，全部改为“接受”</code> -&gt; 继续点击<code>修改</code>(lan口) -&gt; 覆盖网络 <code>勾选IPv6、LAN</code> -&gt; 端口触发 <code>勾选IPv6、LAN</code></li>
+<li>网络 -&gt; 负载均衡 -&gt; 策略 -&gt; 修改-&gt; 备用成员设为 <code>默认(使用主路由器)</code>。</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="http://test-ipv6.com/">访问IPv6测试网页测试</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhaoshuai.top/2020/08/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E7%9A%84%E4%B8%BB%E6%9C%BA%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE(IPv6%E3%80%81frp%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86)/">使用IPv6进行内网穿透教程</a></p>
+<h2 id="五：-修复ikuai状态监控中MAC地址重复的问题">五： 修复ikuai状态监控中MAC地址重复的问题</h2>
+<p>一、进入openwrt后台，系统 – 软件包-刷新列表</p>
+<p>二、在过滤器里面搜索SNMP(eSir的固件自带SNMP，不需要单独安装)<br>
+在可用安装包里面安装snmpd。</p>
+<p>三、安装好后回到爱快配置。高级应用-第三层应用，添加一条<br>
+里面SNMP服务器ip：就填入你openwrt的后台地址即可，其他就不用填其他的。</p>
+<p>四、现在回到爱快监控里面看，MAC地址已经显示正确了且不重复了。</p>
+<p>五：如果安装<code>SNMP</code>出错，可按下面方法处理(eSir的固件自带SNMP，不需要单独安装)：<br>
+ssh连接你的<code>OPENWRT</code>路由,连接后输入以下代码（下载可能有点慢）</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">echo &quot;nameserver 114.114.114.114&quot;&gt;/tmp/resolv.conf<br>rm -f /var/lock/opkg.lock<br>opkg update<br></code></pre></div></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Linux/">Linux</a>
+                    
+                      <a class="hover-with-bg" href="/categories/Linux/PVE/">PVE</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/11/02/%E5%85%AC%E8%80%83/lalognosis/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">言语理解</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/08/26/%E5%85%AC%E8%80%83/Interview/">
+                        <span class="hidden-mobile">面试</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
+          app_key: "HLUt5izfTvTcbEbOrA59W92a",
+          placeholder: "畅所欲言...",
+          path: window.location.pathname,
+          avatar: "robohash",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-3" style="width:355.4px; height:200px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        苏ICP备20032307号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32020602001023"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>苏公网安备 32020602001023号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

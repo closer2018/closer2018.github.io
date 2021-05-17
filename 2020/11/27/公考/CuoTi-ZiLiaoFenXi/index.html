@@ -1,0 +1,735 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时">
+  <meta name="author" content="closer">
+  <meta name="keywords" content="">
+  
+  <title>错题本_资料分析 - closer的自留地</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/androidstudio.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.zsaa.top","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"608f2baddd361128381ad2bf9377bf89","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz","app_key":"HLUt5izfTvTcbEbOrA59W92a","server_url":"https://yzlqntmw.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Hello</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/mydefault.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="错题本_资料分析">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-11-27 17:02" pubdate>
+        2020年11月27日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      30
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">错题本_资料分析</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年12月19日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="一：-综合分析">一： 综合分析</h2>
+<p>【2016江苏B】135.当对认为控烟“没有效果”“效果很差”的受访市民询问原因时，19.8%的女性受访市民认为“购买香烟过于方便”，比男性市民高出5.0个百分点；17.7%的市民认为“购买香烟过于方便”。 36.7%的市民认为“禁烟执法不严”，23.6%的市民认为公众对吸烟危害认识不足。<br>
+关于本次调查，下列判断不正确的是：<br>
+C.认为控烟“没有效果”“效果很差”的原因是“禁烟执法不严”和“公众对吸烟危害认识不足”的受访市民合计占受访市民的比重为60.3%<br>
+D.在认为控烟“没有效果”“效果很差”的受访市民中，认为“购买香烟过于方便”的男性的比重小于女性<br>
+解析：C项分母不同，错误。应该是占认为控烟“没有效果”“效果很差”的受访市民的比重为60.3%。<br>
+D项女性19.8%，男性19.8%-5%=14.8%，混合17.7%。线段法，女：男=(17.7%-14.8%)：(19.8%-17.7%)=2.9：2.1。所以男比女少。对的。</p>
+<h2 id="二：-增长率">二： 增长率</h2>
+<h3 id="2-1-年平均增长率">2.1 年平均增长率</h3>
+<p>【2017江苏B】2013年国际航线旅客吞吐量为6345，2014年为7089，2015年为8582。<br>
+133.若2016-2017年与2014-2015年保持相同的年平均增速，则2017年中国机场国际航线旅客吞吐量将是：<br>
+A.10075万人次 B.10389万人次<br>
+C.11608万人次 D.13781万人次<br>
+解析：年平均增速相同，设2014-2015年平均增速为r。则$6345×(1+r)^2=8582$。，2016-2017年为$8582×(1+r)^2=8582×\frac{8582}{6345} =86÷64×86=1.33×86=115$。选C。</p>
+<h3 id="2-2-一般增长率">2.2 一般增长率</h3>
+<p>【2019江苏B】<img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/Public_Test/CuoTiBen/PanDuanTuiLi/2019JiangSuB-134.JPG" srcset="/img/loading.gif" lazyload alt="2019江苏B-134"><br>
+134.2017年该市服务业小微样本企业销售总收入比2013年增长<br>
+A.100%-3.1%×18.8%×9.3%×14.0%<br>
+B.103.1%×118.8%×109.3%×114.0%-100%<br>
+C.100%-3.1%×18.8%×9.3%×14.0%×11.4%<br>
+D.103.1%×118.8%×109.3%×114.0%×111.4%-100%<br>
+解析：$基期(1+r)=现期 \Longrightarrow r=\frac{现期}{基期}-1 $<br>
+$r=\frac{2013年销售总收入×1.14×1.093×1.188×1.031}{2013年销售总收入} -1$<br>
+选B。(2017-2013=4，所以只有4项，选B而不是D)</p>
+<p>【2021国地】2019年上半年，我国知识密集型服务进出口额8923.9亿元，同比增长 9.4%，<br>
+2019年全年，我国知识密集型服务进出口额18777.7亿元，同比增长 10.8%，<br>
+127.2019年上半年，我国知识密集型服务进出口额环比约：<br>
+A.上升了1.5% B.上升了10.5%<br>
+C.下降了1.5% D.下降了10.5%<br>
+解析：$\frac{2019年上半年-2018下半年}{2018下半年} =环比$。即求2018下半年。<br>
+$2018全年-2018上半年=2018下半年。$<br>
+$\frac{18777.7}{1+0.108} -\frac{8923.9}{1+0.094} =(18777-1877)-(8924-892)=8868-$<br>
+$环比=(8924-8868)÷8868=100÷8856，选A。$</p>
+<h2 id="三：-增长量">三： 增长量</h2>
+<h2 id="四：-平均数">四： 平均数</h2>
+<p>【2020国地】2018年，B市高新技术示范区规模以上高新技术企业实现技术收入10629.4亿元，比上年增长 13.4%，占高新技术示范区规模以上高新技术企业总收入的比重为 18.1%，比上年提高1.8个百分点。<br>
+129.2018年，B市高新技术示范区规模以上高新技术企业月均收入在以下哪个范围内？<br>
+A.<code>超过5500亿元</code> B.<code>4500~5500亿元之间</code><br>
+C.<code>3500~4500亿元之间</code> D.<code>不到3500亿元</code><br>
+解析：18年，现期。先求高新技术企业总收入=10629÷0.181；月均就是再÷12；<br>
+计算错误。$\frac{10630}{0.181} {\div} 12不等于\frac{10630× 12}{0.181} 而是等于\frac{10630}{0.181× 12}$<br>
+$\frac{10630}{0.181× 12}=\frac{900}{0.181} ≈ 5000$，选B。</p>
+<h2 id="五：-比重">五： 比重</h2>
+<h3 id="5-1-现期比重">5.1 现期比重</h3>
+<p>【2017江苏B】在以2015年11月1日零时为标准时点进行的全国1%人口抽样调查中。江苏最终样本量占全省常住人口总数的0.94%。调查显示：2015年11月1日零时江苏常住人口为7973万人。<br>
+116.以2015年11月1日零时为标准时点进行的1%人口抽样调查中，江苏最终样本量为：<br>
+A.75万人 B.79万人<br>
+C.82万人 D.86万人<br>
+解析：7973×0.94%=79.73×0.94=79.73×(1-0.06)=79.73-8×0.6=79.73-4.8=75。选A。</p>
+<p>【2017江苏B】一星级饭店数量87家，二星级2342家，全国11037家。<br>
+123.2016年第一季度，全国一、二星级饭店总数占星级饭店总数的比重是：<br>
+A. 22.0% B. 25.6%<br>
+C. 28.3% D. 32.6%<br>
+解析：(87+2342)/11037=2429/11037=2429/11=22.0%，选A。</p>
+<p>【2019江苏B】有酬劳动平均用时4小时24分钟。其中，男性5小时15分钟，女性3小时35分钟；城镇居民3小时59分钟，农村居民5小时1分钟；工作日4小时50分钟，休息日3小时19分钟。受访居民有酬劳动的参与率为59.0% ，其中城镇居民53.1% 。受访居民无酬劳动平均用时2小时42分钟。其中，女性3小时48分钟；农村居民2小时39分钟；工作日2小时34分钟。受访居民无酬劳动的参与率为 70.2%，其中男性55.3% 。<br>
+无酬劳动包括家务劳动、陪伴照料孩子生活、护送辅导孩子学习、陪伴照料成年家人、购买商品或服务、看病就医和公益活动。受访居民家务劳动平均用时1小时26分钟，参与率为 58.5%。其中，女性2小时6分钟，参与率 75.6%。受访居民陪伴照料孩子生活平均用时36分钟，参与率为 18.9%；护送辅导孩子学习平均用时9分钟，参与率为 10.2%；陪伴照料成年家人平均用时8分钟，参与率为 5.0%；看病就医平均用时4分钟，参与率为 2.2%；公益活动平均用时3分钟，参与率为 4.1%。<br>
+116.受访农村居民每日无酬劳动平均用时占其劳动平均用时的比重为<br>
+A 29.8% B 34.6%<br>
+C 38.0% D 45.3%<br>
+解析：农村居民有酬+无酬劳动时间等于劳动时间，为5小时1分钟+2小时39分钟=7小时40分钟。2小时39分钟÷7小时40分钟≈2.7/7.7≈34.6%，选B。</p>
+<p>118.参与有酬劳动的受访城镇居民，每日有酬劳动的平均用时为<br>
+A.5小时50分钟 B.6小时40分钟<br>
+C.7小时30分钟 D.8小时20分钟<br>
+解析：3小时59分钟/53.1%≈4/0.53≈7.5，选C。</p>
+<p>120.从上述资料中能够推出的是<br>
+A.受访居民休息日无酬劳动平均用时多于3小时<br>
+B.受访女性居民无酬劳动的参与率介于55.3% 和70.2% 之间<br>
+C.受访居民中，有酬劳动和无酬劳动都参与的占比至少为59.0%<br>
+D.受访居民不同类型无酬劳动的平均用时和参与率呈正相关<br>
+解析：C项:至少为70.2%+59.0%-100%=29.2%，错误。<br>
+D项:看病就医和公益活动时间和参与率不是正相关，错误。<br>
+B项:男性55.3%，混合70.2%，女性肯定比70.2%高，错误。<br>
+A项:((2小时42分×7)-(2小时34分×5))÷2=3小时2分，正确。选A。</p>
+<h2 id="六：-基期">六： 基期</h2>
+<p>【2018江苏B】2017年西部地区近五年汽车保有量增加1963万辆，年均增速 19.3%，<br>
+118.2012年末西部地区汽车保有量为<br>
+A.$\frac{1963}{1+0.193^{5} }万辆$ B.$\frac{1963}{1.193^{5} +1}万辆$<br>
+C.$\frac{1963}{1.193^{5} -1}万辆$ D.$\frac{1963}{1-0.193^{5} }万辆$<br>
+解析：$基期(1+0.193)^{5} =基期+增长量\Rightarrow 1.193^{5}=1+\frac{增长量}{基期} \Rightarrow 基期=\frac{1963}{1.193^{5} -1} $，选C。</p>
+<h2 id="七：-简单计算-容斥原理">七： 简单计算(容斥原理)</h2>
+<p>【2020江苏B】抽取2000名居民进行调研。<br>
+<img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/Public_Test/CuoTiBen/PanDuanTuiLi/2020JiangSuB-128%E3%80%81129.JPG" srcset="/img/loading.gif" lazyload alt="2020江苏B-128、129"><br>
+128.2019年春节期间消费支出在2000元以下的受访居民中，“发红包、给压岁钱”的至少占<br>
+A.79.4% B.61.0%<br>
+C.54.8% D.52.9%<br>
+解析：2000元以下36.7%；“发红包、给压岁钱”的82.7%；<br>
+所以在2000元以下“发红包、给压岁钱”的至少占受访居民的(36.7%+82.7%-100%)=19.4%；<br>
+在2000元以下“发红包、给压岁钱”的至少占支出在2000元以下的受访居民的(19.4%÷36.7%)=52.9%；<br>
+选D。<br>
+129.2019年春节期间消费支出在5000元以上的受访居民人数有可能是：<br>
+A.320人 B.388人<br>
+C.420人 D.456人<br>
+解析：11.5%+4.5%+2.9%=18.9%，2000×18.9%=378人；<br>
+1.6%是说不清的，即1.6%×2000=32人；<br>
+所以人数在378到410(32+378)之间，选B。</p>
+<p>【2021国地】2019年末残疾人康复机构9775家，其中视力残疾康复服务机构1430家，听力言语残疾康复服务机构1669家。<br>
+123.如提供视力残疾康复服务的残疾人康复机构中，同时提供听力言语残疾康复服务的机构比不提供该服务的机构多20% ，则2019年末全国有多少家残疾人康复机构不提供以上两种康复服务中的任意一种？<br>
+A.不到7300家 B.7300～7600家之间<br>
+C.7600～7900家之间 D.超过7900家<br>
+解析：设提供视力残疾康复服务的残疾人康复机构中不提供听力言语残疾康复服务的机构数量为a。<br>
+则a+1.2a=1430，a=650。<br>
+故只提供视力为650个，提供听力或听力+视力为1669。<br>
+因此不提供上述任意一种的机构数为9775-(650+1669)=7456个，选B。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%85%AC%E8%80%83/">公考</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%85%AC%E8%80%83/%E9%94%99%E9%A2%98%E6%9C%AC/">错题本</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%85%AC%E8%80%83/">公考</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/01/06/games/%E4%BC%A0%E5%A5%87SF%E6%90%AD%E5%BB%BA/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">传奇SF搭建</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/27/%E5%85%AC%E8%80%83/CuoTi-PanDuanTuiLi/">
+                        <span class="hidden-mobile">错题本_判断推理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
+          app_key: "HLUt5izfTvTcbEbOrA59W92a",
+          placeholder: "畅所欲言...",
+          path: window.location.pathname,
+          avatar: "robohash",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-3" style="width:355.4px; height:200px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        苏ICP备20032307号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32020602001023"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>苏公网安备 32020602001023号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

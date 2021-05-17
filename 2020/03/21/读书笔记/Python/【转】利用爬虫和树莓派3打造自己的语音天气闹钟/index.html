@@ -1,14 +1,14 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
 <head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,24 +17,36 @@
   <meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时">
   <meta name="author" content="closer">
   <meta name="keywords" content="">
+  
   <title>【转】 利用爬虫和树莓派打造萝莉音天气闹钟 - closer的自留地</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/androidstudio.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/androidstudio.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
-
-
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -42,7 +54,13 @@
 <!-- 自定义样式保持在最底部 -->
 
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.zsaa.top","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"608f2baddd361128381ad2bf9377bf89","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz","app_key":"HLUt5izfTvTcbEbOrA59W92a","server_url":"https://yzlqntmw.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -50,7 +68,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Welcome!</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Hello</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -65,61 +83,85 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              首页</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              归档</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              分类</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              标签</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              关于</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/links/">
-              <i class="iconfont icon-link-fill"></i>
-              友链</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -127,55 +169,61 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/img/default.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="【转】 利用爬虫和树莓派打造萝莉音天气闹钟">
               
             </span>
 
             
-              
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-03-21 19:35">
-                    2020年3月21日 晚上
-                  </time>
-                </div>
-              
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-03-21 19:35" pubdate>
+        2020年3月21日 晚上
+      </time>
+    </span>
+  
+</div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    1.3k 字
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    19
-                     分钟
-                  </span>
-                
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      22
+       分钟
+    </span>
+  
 
-                
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
-                    <i class="iconfont icon-eye" aria-hidden="true"></i>
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>
-                
-              </div>
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
             
           </div>
 
@@ -189,13 +237,15 @@
     
       
 
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
     <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">【转】 利用爬虫和树莓派打造萝莉音天气闹钟</h1>
             
               <p class="note note-info">
                 
@@ -203,166 +253,53 @@
                 
               </p>
             
-            <article class="markdown-body">
+            <div class="markdown-body">
               <blockquote>
-<p><a href="https://zhuanlan.zhihu.com/p/24983204?refer=woodenrobot" target="_blank" rel="noopener">原帖地址</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/24983204?refer=woodenrobot">原帖地址</a></p>
 </blockquote>
-<h2 id="一、-前期准备"><a href="#一、-前期准备" class="headerlink" title="一、 前期准备"></a>一、 前期准备</h2><ol>
+<h2 id="一、-前期准备">一、 前期准备</h2>
+<ol>
 <li>树莓派一个</li>
 <li>小音箱一对</li>
 </ol>
 <p><strong>获取所在位置天气</strong></p>
 <p>这里选择墨迹天气获取实时天气信息，地址：</p>
-<p><a href="http://tianqi.moji.com/" target="_blank" rel="noopener">http://tianqi.moji.com/</a></p>
+<p><a target="_blank" rel="noopener" href="http://tianqi.moji.com/">http://tianqi.moji.com/</a></p>
 <p>进入墨迹天气的页面，墨迹天气会根据你的ip加载相应地区的天气。</p>
 <p>这次我们主要抓取温度、天气、湿度、风力、空气质量和天气提示这几个数据。</p>
 <p>这种小爬虫我们就使用requests和BeautifulSoup这两个超级好用的库可以快速实现。</p>
-<h2 id="二、-环境"><a href="#二、-环境" class="headerlink" title="二、 环境"></a>二、 环境</h2><p>首先树莓派安装python3，python3-pip和requests、beautifulsoup4两个库及mplayer软件。</p>
-<div class="hljs"><pre><code class="hljs sh">sudo apt install python3 -y
-sudo apt install python3-pip -y
-pip3 install requests
-pip3 install beautifulsoup4
-sudo apt-get install mplayer -y</code></pre></div>
-
+<h2 id="二、-环境">二、 环境</h2>
+<p>首先树莓派安装python3，python3-pip和requests、beautifulsoup4两个库及mplayer软件。</p>
+<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">sudo apt install python3 -y<br>sudo apt install python3-pip -y<br>pip3 install requests<br>pip3 install beautifulsoup4<br>sudo apt-get install mplayer -y<br></code></pre></div></td></tr></table></figure>
 <p>至于Requests和Beautiful Soup的用法这里就先不多说了，大家可以去看他们的中文文档。</p>
 <ol>
-<li><a href="https://zh_cn/en/master/zh_CN/latest/index/" target="_blank" rel="noopener">Requests中文wendnag</a></li>
-<li><a href="https://beautifulsoup.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">Beautiful Soup中文文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://zh_cn/en/master/zh_CN/latest/index/">Requests中文wendnag</a></li>
+<li><a target="_blank" rel="noopener" href="https://beautifulsoup.readthedocs.io/zh_CN/latest/">Beautiful Soup中文文档</a></li>
 </ol>
 <p><strong>使用mplayer实现语音播放,通过以下命令安装mplayer:</strong></p>
 <p>用法很简单输入以下命令即可播放本地音乐：</p>
 <p><code>mplayer \xxx\xxx\xxx.mp3(绝对地址)</code></p>
 <p>如果是在线音乐也可以用mplayer直接通过URL播放：</p>
 <p><code>mplayer &quot;URl&quot;(URL外面一定要用双引号圈起来)</code></p>
-<h2 id="三、-文字转语音"><a href="#三、-文字转语音" class="headerlink" title="三、 文字转语音"></a>三、 文字转语音</h2><p>刚开始想通过python的库实现本地文字转语音，在windows系统下没有问题，但树莓派3上中文无法转换。后来就找到了百度的文字转换语音API，地址：<a href="http://yuyin.baidu.com/#try" target="_blank" rel="noopener">http://yuyin.baidu.com/#try</a></p>
-<p>还可以选各种声音，调节语速。虽然它没有给出直接的api接口，但是我们利用Chrome浏览器的开发者模式可以找到api。<br><img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E5%88%A9%E7%94%A8%E7%88%AC%E8%99%AB%E5%92%8C%E6%A0%91%E8%8E%93%E6%B4%BE%E6%89%93%E9%80%A0%E8%90%9D%E8%8E%89%E9%9F%B3%E5%A4%A9%E6%B0%94%E9%97%B9%E9%92%9F.png" srcset="/img/loading.gif" alt="百度语音识别"></p>
+<h2 id="三、-文字转语音">三、 文字转语音</h2>
+<p>刚开始想通过python的库实现本地文字转语音，在windows系统下没有问题，但树莓派3上中文无法转换。后来就找到了百度的文字转换语音API，地址：<a target="_blank" rel="noopener" href="http://yuyin.baidu.com/#try">http://yuyin.baidu.com/#try</a></p>
+<p>还可以选各种声音，调节语速。虽然它没有给出直接的api接口，但是我们利用Chrome浏览器的开发者模式可以找到api。<br>
+<img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E5%88%A9%E7%94%A8%E7%88%AC%E8%99%AB%E5%92%8C%E6%A0%91%E8%8E%93%E6%B4%BE%E6%89%93%E9%80%A0%E8%90%9D%E8%8E%89%E9%9F%B3%E5%A4%A9%E6%B0%94%E9%97%B9%E9%92%9F.png" srcset="/img/loading.gif" lazyload alt="百度语音识别"></p>
 <p>打开开发者模式，点击播放的按钮，在network里就可以找到刚刚发出的请求。</p>
-<p><a href="http://tts.baidu.com/text2audio?idx=1&amp;tex=1&amp;cuid=baidu_speech_demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=5&amp;per=4&amp;vol=5&amp;pit=5" target="_blank" rel="noopener">http://tts.baidu.com/text2audio?idx=1&amp;tex=1&amp;cuid=baidu_speech_demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=5&amp;per=4&amp;vol=5&amp;pit=5</a></p>
+<p><a target="_blank" rel="noopener" href="http://tts.baidu.com/text2audio?idx=1&amp;tex=1&amp;cuid=baidu_speech_demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=5&amp;per=4&amp;vol=5&amp;pit=5">http://tts.baidu.com/text2audio?idx=1&amp;tex=1&amp;cuid=baidu_speech_demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=5&amp;per=4&amp;vol=5&amp;pit=5</a></p>
 <p>就我们要找的百度文字转语音API,其中per是参数是语音的类型，spd是语速，vol是音量，而tex则是需要转换的文字。通过以下代码就可以实现将特定的文字转换为语音。</p>
-<div class="hljs"><pre><code class="hljs PY"><span class="hljs-keyword">import</span> os
-  
-url = <span class="hljs-string">u'http://tts.baidu.com/text2audio?idx=1&amp;tex=&#123;0&#125;&amp;cuid=baidu_speech_'</span> \
-      <span class="hljs-string">u'demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=4&amp;per=4&amp;vol=5&amp;pit=5'</span>.format(text)
-os.system(<span class="hljs-string">'mplayer "%s"'</span> % url)</code></pre></div>
-
-<h2 id="四、-代码"><a href="#四、-代码" class="headerlink" title="四、 代码"></a>四、 代码</h2><p>numtozh()函数专门转换数字为中文。最后所有的代码整合起来就是这样啦。</p>
-<div class="hljs"><pre><code class="hljs sh"><span class="hljs-comment"># 新建weather_voice.py文件</span>
-touch weather_voice.py
-<span class="hljs-comment"># 黏贴如下代码</span>
-nano weather_voice.py</code></pre></div>
-
-<div class="hljs"><pre><code class="hljs py"><span class="hljs-comment"># -*- coding: utf-8 -*-</span>
-<span class="hljs-comment"># !/usr/bin/python3</span>
-
-<span class="hljs-keyword">import</span> os
-<span class="hljs-keyword">import</span> re
-<span class="hljs-keyword">import</span> time
-<span class="hljs-keyword">import</span> requests
-<span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> datetime, timedelta
-<span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup
-
-headers = &#123;
-    <span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit'</span>
-                  <span class="hljs-string">'/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safar'</span>
-                  <span class="hljs-string">'i/537.36'</span>,
-&#125;
-
-
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">numtozh</span><span class="hljs-params">(num)</span>:</span>
-    num_dict = &#123;<span class="hljs-number">1</span>: <span class="hljs-string">'一'</span>, <span class="hljs-number">2</span>: <span class="hljs-string">'二'</span>, <span class="hljs-number">3</span>: <span class="hljs-string">'三'</span>, <span class="hljs-number">4</span>: <span class="hljs-string">'四'</span>, <span class="hljs-number">5</span>: <span class="hljs-string">'五'</span>, <span class="hljs-number">6</span>: <span class="hljs-string">'六'</span>, <span class="hljs-number">7</span>: <span class="hljs-string">'七'</span>,
-                <span class="hljs-number">8</span>: <span class="hljs-string">'八'</span>, <span class="hljs-number">9</span>: <span class="hljs-string">'九'</span>, <span class="hljs-number">0</span>: <span class="hljs-string">'零'</span>&#125;
-    num = int(num)
-    <span class="hljs-keyword">if</span> <span class="hljs-number">100</span> &lt;= num &lt; <span class="hljs-number">1000</span>:
-        b_num = num // <span class="hljs-number">100</span>
-        s_num = (num - b_num * <span class="hljs-number">100</span>) // <span class="hljs-number">10</span>
-        g_num = (num - b_num * <span class="hljs-number">100</span>) % <span class="hljs-number">10</span>
-        <span class="hljs-keyword">if</span> g_num == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> s_num == <span class="hljs-number">0</span>:
-            num = <span class="hljs-string">'%s百'</span> % (num_dict[b_num])
-        <span class="hljs-keyword">elif</span> s_num == <span class="hljs-number">0</span>:
-            num = <span class="hljs-string">'%s百%s%s'</span> % (num_dict[b_num], num_dict.get(s_num, <span class="hljs-string">''</span>), num_dict.get(g_num, <span class="hljs-string">''</span>))
-        <span class="hljs-keyword">elif</span> g_num == <span class="hljs-number">0</span>:
-            num = <span class="hljs-string">'%s百%s十'</span> % (num_dict[b_num], num_dict.get(s_num, <span class="hljs-string">''</span>))
-        <span class="hljs-keyword">else</span>:
-            num = <span class="hljs-string">'%s百%s十%s'</span> % (num_dict[b_num], num_dict.get(s_num, <span class="hljs-string">''</span>), num_dict.get(g_num, <span class="hljs-string">''</span>))
-    <span class="hljs-keyword">elif</span> <span class="hljs-number">10</span> &lt;= num &lt; <span class="hljs-number">100</span>:
-        s_num = num // <span class="hljs-number">10</span>
-        g_num = (num - s_num * <span class="hljs-number">10</span>) % <span class="hljs-number">10</span>
-        <span class="hljs-keyword">if</span> g_num == <span class="hljs-number">0</span>:
-            g_num = <span class="hljs-string">''</span>
-        num = <span class="hljs-string">'%s十%s'</span> % (num_dict[s_num], num_dict.get(g_num, <span class="hljs-string">''</span>))
-    <span class="hljs-keyword">elif</span> <span class="hljs-number">0</span> &lt;= num &lt; <span class="hljs-number">10</span>:
-        g_num = num
-        num = <span class="hljs-string">'%s'</span> % (num_dict[g_num])
-    <span class="hljs-keyword">elif</span> <span class="hljs-number">-10</span> &lt; num &lt; <span class="hljs-number">0</span>:
-        g_num = -num
-        num = <span class="hljs-string">'零下%s'</span> % (num_dict[g_num])
-    <span class="hljs-keyword">elif</span> <span class="hljs-number">-100</span> &lt; num &lt;= <span class="hljs-number">-10</span>:
-        num = -num
-        s_num = num // <span class="hljs-number">10</span>
-        g_num = (num - s_num * <span class="hljs-number">10</span>) % <span class="hljs-number">10</span>
-        <span class="hljs-keyword">if</span> g_num == <span class="hljs-number">0</span>:
-            g_num = <span class="hljs-string">''</span>
-        num = <span class="hljs-string">'零下%s十%s'</span> % (num_dict[s_num], num_dict.get(g_num, <span class="hljs-string">''</span>))
-    <span class="hljs-keyword">return</span> num
-
-
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_weather</span><span class="hljs-params">()</span>:</span>
-    <span class="hljs-comment"># 下载墨迹天气主页源码</span>
-    res = requests.get(<span class="hljs-string">'http://tianqi.moji.com/'</span>, headers=headers)
-    <span class="hljs-comment"># 用BeautifulSoup获取所需信息</span>
-    soup = BeautifulSoup(res.text, <span class="hljs-string">"html.parser"</span>)
-    temp = soup.find(<span class="hljs-string">'div'</span>, attrs=&#123;<span class="hljs-string">'class'</span>: <span class="hljs-string">'wea_weather clearfix'</span>&#125;).em.getText()
-    temp = numtozh(int(temp))
-    weather = soup.find(<span class="hljs-string">'div'</span>, attrs=&#123;<span class="hljs-string">'class'</span>: <span class="hljs-string">'wea_weather clearfix'</span>&#125;).b.getText()
-    sd = soup.find(<span class="hljs-string">'div'</span>, attrs=&#123;<span class="hljs-string">'class'</span>: <span class="hljs-string">'wea_about clearfix'</span>&#125;).span.getText()
-    sd_num = re.search(<span class="hljs-string">r'\d+'</span>, sd).group()
-    sd_num_zh = numtozh(int(sd_num))
-    sd = sd.replace(sd_num, sd_num_zh)
-    wind = soup.find(<span class="hljs-string">'div'</span>, attrs=&#123;<span class="hljs-string">'class'</span>: <span class="hljs-string">'wea_about clearfix'</span>&#125;).em.getText()
-    aqi = soup.find(<span class="hljs-string">'div'</span>, attrs=&#123;<span class="hljs-string">'class'</span>: <span class="hljs-string">'wea_alert clearfix'</span>&#125;).em.getText()
-    aqi_num = re.search(<span class="hljs-string">r'\d+'</span>, aqi).group()
-    aqi_num_zh = numtozh(int(aqi_num))
-    aqi = aqi.replace(aqi_num, aqi_num_zh).replace(<span class="hljs-string">' '</span>, <span class="hljs-string">',空气质量'</span>)
-    info = soup.find(<span class="hljs-string">'div'</span>, attrs=&#123;<span class="hljs-string">'class'</span>: <span class="hljs-string">'wea_tips clearfix'</span>&#125;).em.getText()
-    sd = sd.replace(<span class="hljs-string">' '</span>, <span class="hljs-string">'百分之'</span>).replace(<span class="hljs-string">'%'</span>, <span class="hljs-string">''</span>)
-    aqi = <span class="hljs-string">'aqi'</span> + aqi
-    info = info.replace(<span class="hljs-string">'，'</span>, <span class="hljs-string">','</span>)
-    <span class="hljs-comment"># 获取今天的日期</span>
-    today = datetime.now().date().strftime(<span class="hljs-string">'%Y年%m月%d日'</span>)
-    <span class="hljs-comment"># 将获取的信息拼接成一句话</span>
-    text = <span class="hljs-string">'早上好！今天是%s,天气%s,温度%s摄氏度,%s,%s,%s,%s'</span> % \
-           (today, weather, temp, sd, wind, aqi, info)
-    <span class="hljs-keyword">return</span> text
-
-
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">text2voice</span><span class="hljs-params">(text)</span>:</span>
-    url = <span class="hljs-string">'http://tts.baidu.com/text2audio?idx=1&amp;tex=&#123;0&#125;&amp;cuid=baidu_speech_'</span> \
-          <span class="hljs-string">'demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=4&amp;per=4&amp;vol=5&amp;pit=5'</span>.format(text)
-    <span class="hljs-comment"># 直接播放语音</span>
-    os.system(<span class="hljs-string">'mplayer "%s"'</span> % url)
-
-
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>
-    <span class="hljs-comment"># 获取需要转换语音的文字</span>
-    text = get_weather()
-    print(text)
-    <span class="hljs-comment"># 获取音乐文件绝对地址</span>
-    mp3path2 = os.path.join(os.path.dirname(__file__), <span class="hljs-string">'2.mp3'</span>)
-    <span class="hljs-comment"># 先播放渔舟唱晚cut版做为闹钟</span>
-    os.system(<span class="hljs-string">'mplayer %s'</span> % <span class="hljs-string">"http://m7.music.126.net/20200321204545/92ef85b98df3233ebcf66b41529b1e0c/ymusic/714d/2975/d488/bcfd91fa30f23266c7151fbf43052634.mp3"</span>)
-    <span class="hljs-comment"># 播报语音天气</span>
-    text2voice(text)
-
-
-<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
-    main()</code></pre></div>
-
-<h2 id="五、-定时任务"><a href="#五、-定时任务" class="headerlink" title="五、 定时任务"></a>五、 定时任务</h2><p>输入如下命令添加定时任务。</p>
+<figure class="highlight py"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs PY"><span class="hljs-keyword">import</span> os<br>  <br>url = <span class="hljs-string">u&#x27;http://tts.baidu.com/text2audio?idx=1&amp;tex=&#123;0&#125;&amp;cuid=baidu_speech_&#x27;</span> \<br>      <span class="hljs-string">u&#x27;demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=4&amp;per=4&amp;vol=5&amp;pit=5&#x27;</span>.<span class="hljs-built_in">format</span>(text)<br>os.system(<span class="hljs-string">&#x27;mplayer &quot;%s&quot;&#x27;</span> % url)<br></code></pre></div></td></tr></table></figure>
+<h2 id="四、-代码">四、 代码</h2>
+<p>numtozh()函数专门转换数字为中文。最后所有的代码整合起来就是这样啦。</p>
+<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><span class="hljs-comment"># 新建weather_voice.py文件</span><br>touch weather_voice.py<br><span class="hljs-comment"># 黏贴如下代码</span><br>nano weather_voice.py<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs py"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># !/usr/bin/python3</span><br><br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> datetime, timedelta<br><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br><br>headers = &#123;<br>    <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit&#x27;</span><br>                  <span class="hljs-string">&#x27;/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safar&#x27;</span><br>                  <span class="hljs-string">&#x27;i/537.36&#x27;</span>,<br>&#125;<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">numtozh</span>(<span class="hljs-params">num</span>):</span><br>    num_dict = &#123;<span class="hljs-number">1</span>: <span class="hljs-string">&#x27;一&#x27;</span>, <span class="hljs-number">2</span>: <span class="hljs-string">&#x27;二&#x27;</span>, <span class="hljs-number">3</span>: <span class="hljs-string">&#x27;三&#x27;</span>, <span class="hljs-number">4</span>: <span class="hljs-string">&#x27;四&#x27;</span>, <span class="hljs-number">5</span>: <span class="hljs-string">&#x27;五&#x27;</span>, <span class="hljs-number">6</span>: <span class="hljs-string">&#x27;六&#x27;</span>, <span class="hljs-number">7</span>: <span class="hljs-string">&#x27;七&#x27;</span>,<br>                <span class="hljs-number">8</span>: <span class="hljs-string">&#x27;八&#x27;</span>, <span class="hljs-number">9</span>: <span class="hljs-string">&#x27;九&#x27;</span>, <span class="hljs-number">0</span>: <span class="hljs-string">&#x27;零&#x27;</span>&#125;<br>    num = <span class="hljs-built_in">int</span>(num)<br>    <span class="hljs-keyword">if</span> <span class="hljs-number">100</span> &lt;= num &lt; <span class="hljs-number">1000</span>:<br>        b_num = num // <span class="hljs-number">100</span><br>        s_num = (num - b_num * <span class="hljs-number">100</span>) // <span class="hljs-number">10</span><br>        g_num = (num - b_num * <span class="hljs-number">100</span>) % <span class="hljs-number">10</span><br>        <span class="hljs-keyword">if</span> g_num == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> s_num == <span class="hljs-number">0</span>:<br>            num = <span class="hljs-string">&#x27;%s百&#x27;</span> % (num_dict[b_num])<br>        <span class="hljs-keyword">elif</span> s_num == <span class="hljs-number">0</span>:<br>            num = <span class="hljs-string">&#x27;%s百%s%s&#x27;</span> % (num_dict[b_num], num_dict.get(s_num, <span class="hljs-string">&#x27;&#x27;</span>), num_dict.get(g_num, <span class="hljs-string">&#x27;&#x27;</span>))<br>        <span class="hljs-keyword">elif</span> g_num == <span class="hljs-number">0</span>:<br>            num = <span class="hljs-string">&#x27;%s百%s十&#x27;</span> % (num_dict[b_num], num_dict.get(s_num, <span class="hljs-string">&#x27;&#x27;</span>))<br>        <span class="hljs-keyword">else</span>:<br>            num = <span class="hljs-string">&#x27;%s百%s十%s&#x27;</span> % (num_dict[b_num], num_dict.get(s_num, <span class="hljs-string">&#x27;&#x27;</span>), num_dict.get(g_num, <span class="hljs-string">&#x27;&#x27;</span>))<br>    <span class="hljs-keyword">elif</span> <span class="hljs-number">10</span> &lt;= num &lt; <span class="hljs-number">100</span>:<br>        s_num = num // <span class="hljs-number">10</span><br>        g_num = (num - s_num * <span class="hljs-number">10</span>) % <span class="hljs-number">10</span><br>        <span class="hljs-keyword">if</span> g_num == <span class="hljs-number">0</span>:<br>            g_num = <span class="hljs-string">&#x27;&#x27;</span><br>        num = <span class="hljs-string">&#x27;%s十%s&#x27;</span> % (num_dict[s_num], num_dict.get(g_num, <span class="hljs-string">&#x27;&#x27;</span>))<br>    <span class="hljs-keyword">elif</span> <span class="hljs-number">0</span> &lt;= num &lt; <span class="hljs-number">10</span>:<br>        g_num = num<br>        num = <span class="hljs-string">&#x27;%s&#x27;</span> % (num_dict[g_num])<br>    <span class="hljs-keyword">elif</span> -<span class="hljs-number">10</span> &lt; num &lt; <span class="hljs-number">0</span>:<br>        g_num = -num<br>        num = <span class="hljs-string">&#x27;零下%s&#x27;</span> % (num_dict[g_num])<br>    <span class="hljs-keyword">elif</span> -<span class="hljs-number">100</span> &lt; num &lt;= -<span class="hljs-number">10</span>:<br>        num = -num<br>        s_num = num // <span class="hljs-number">10</span><br>        g_num = (num - s_num * <span class="hljs-number">10</span>) % <span class="hljs-number">10</span><br>        <span class="hljs-keyword">if</span> g_num == <span class="hljs-number">0</span>:<br>            g_num = <span class="hljs-string">&#x27;&#x27;</span><br>        num = <span class="hljs-string">&#x27;零下%s十%s&#x27;</span> % (num_dict[s_num], num_dict.get(g_num, <span class="hljs-string">&#x27;&#x27;</span>))<br>    <span class="hljs-keyword">return</span> num<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_weather</span>():</span><br>    <span class="hljs-comment"># 下载墨迹天气主页源码</span><br>    res = requests.get(<span class="hljs-string">&#x27;http://tianqi.moji.com/&#x27;</span>, headers=headers)<br>    <span class="hljs-comment"># 用BeautifulSoup获取所需信息</span><br>    soup = BeautifulSoup(res.text, <span class="hljs-string">&quot;html.parser&quot;</span>)<br>    temp = soup.find(<span class="hljs-string">&#x27;div&#x27;</span>, attrs=&#123;<span class="hljs-string">&#x27;class&#x27;</span>: <span class="hljs-string">&#x27;wea_weather clearfix&#x27;</span>&#125;).em.getText()<br>    temp = numtozh(<span class="hljs-built_in">int</span>(temp))<br>    weather = soup.find(<span class="hljs-string">&#x27;div&#x27;</span>, attrs=&#123;<span class="hljs-string">&#x27;class&#x27;</span>: <span class="hljs-string">&#x27;wea_weather clearfix&#x27;</span>&#125;).b.getText()<br>    sd = soup.find(<span class="hljs-string">&#x27;div&#x27;</span>, attrs=&#123;<span class="hljs-string">&#x27;class&#x27;</span>: <span class="hljs-string">&#x27;wea_about clearfix&#x27;</span>&#125;).span.getText()<br>    sd_num = re.search(<span class="hljs-string">r&#x27;\d+&#x27;</span>, sd).group()<br>    sd_num_zh = numtozh(<span class="hljs-built_in">int</span>(sd_num))<br>    sd = sd.replace(sd_num, sd_num_zh)<br>    wind = soup.find(<span class="hljs-string">&#x27;div&#x27;</span>, attrs=&#123;<span class="hljs-string">&#x27;class&#x27;</span>: <span class="hljs-string">&#x27;wea_about clearfix&#x27;</span>&#125;).em.getText()<br>    aqi = soup.find(<span class="hljs-string">&#x27;div&#x27;</span>, attrs=&#123;<span class="hljs-string">&#x27;class&#x27;</span>: <span class="hljs-string">&#x27;wea_alert clearfix&#x27;</span>&#125;).em.getText()<br>    aqi_num = re.search(<span class="hljs-string">r&#x27;\d+&#x27;</span>, aqi).group()<br>    aqi_num_zh = numtozh(<span class="hljs-built_in">int</span>(aqi_num))<br>    aqi = aqi.replace(aqi_num, aqi_num_zh).replace(<span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-string">&#x27;,空气质量&#x27;</span>)<br>    info = soup.find(<span class="hljs-string">&#x27;div&#x27;</span>, attrs=&#123;<span class="hljs-string">&#x27;class&#x27;</span>: <span class="hljs-string">&#x27;wea_tips clearfix&#x27;</span>&#125;).em.getText()<br>    sd = sd.replace(<span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-string">&#x27;百分之&#x27;</span>).replace(<span class="hljs-string">&#x27;%&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>)<br>    aqi = <span class="hljs-string">&#x27;aqi&#x27;</span> + aqi<br>    info = info.replace(<span class="hljs-string">&#x27;，&#x27;</span>, <span class="hljs-string">&#x27;,&#x27;</span>)<br>    <span class="hljs-comment"># 获取今天的日期</span><br>    today = datetime.now().date().strftime(<span class="hljs-string">&#x27;%Y年%m月%d日&#x27;</span>)<br>    <span class="hljs-comment"># 将获取的信息拼接成一句话</span><br>    text = <span class="hljs-string">&#x27;早上好！今天是%s,天气%s,温度%s摄氏度,%s,%s,%s,%s&#x27;</span> % \<br>           (today, weather, temp, sd, wind, aqi, info)<br>    <span class="hljs-keyword">return</span> text<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">text2voice</span>(<span class="hljs-params">text</span>):</span><br>    url = <span class="hljs-string">&#x27;http://tts.baidu.com/text2audio?idx=1&amp;tex=&#123;0&#125;&amp;cuid=baidu_speech_&#x27;</span> \<br>          <span class="hljs-string">&#x27;demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=4&amp;per=4&amp;vol=5&amp;pit=5&#x27;</span>.<span class="hljs-built_in">format</span>(text)<br>    <span class="hljs-comment"># 直接播放语音</span><br>    os.system(<span class="hljs-string">&#x27;mplayer &quot;%s&quot;&#x27;</span> % url)<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span>():</span><br>    <span class="hljs-comment"># 获取需要转换语音的文字</span><br>    text = get_weather()<br>    <span class="hljs-built_in">print</span>(text)<br>    <span class="hljs-comment"># 获取音乐文件绝对地址</span><br>    mp3path2 = os.path.join(os.path.dirname(__file__), <span class="hljs-string">&#x27;2.mp3&#x27;</span>)<br>    <span class="hljs-comment"># 先播放渔舟唱晚cut版做为闹钟</span><br>    os.system(<span class="hljs-string">&#x27;mplayer %s&#x27;</span> % <span class="hljs-string">&quot;http://m7.music.126.net/20200321204545/92ef85b98df3233ebcf66b41529b1e0c/ymusic/714d/2975/d488/bcfd91fa30f23266c7151fbf43052634.mp3&quot;</span>)<br>    <span class="hljs-comment"># 播报语音天气</span><br>    text2voice(text)<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    main()<br></code></pre></div></td></tr></table></figure>
+<h2 id="五、-定时任务">五、 定时任务</h2>
+<p>输入如下命令添加定时任务。</p>
 <p><code>crontab -e</code></p>
 <p>每天8点语音天气。假设你的<code>weather_voice.py</code>绝对路径为<code>/home/pi/Documents/weather_voice.py</code>，则文末添加一句：</p>
 <p><code>0 8 * * * /usr/bin/python3 /home/pi/Documents/weather_voice.py</code></p>
 
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -380,19 +317,23 @@ headers = &#123;
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a>
-                    
                       <a class="hover-with-bg" href="/tags/python/">python</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a>
                     
                   </div>
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
               
               
-                <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
                     
                     
                       <a href="/2020/03/27/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E4%BD%BF%E7%94%A8python%E6%8E%A7%E5%88%B6%E9%BC%A0%E6%A0%87%E5%92%8C%E9%94%AE%E7%9B%98/">
@@ -401,8 +342,8 @@ headers = &#123;
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/2020/03/15/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/Linux-VPS%E4%B8%80%E9%94%AE%E6%9B%B4%E6%8D%A2%E8%BD%AF%E4%BB%B6%E6%BA%90%E8%84%9A%E6%9C%AC/">
@@ -411,47 +352,45 @@ headers = &#123;
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
               <!-- Comments -->
-              <div class="comments" id="comments">
+              <article class="comments" id="comments" lazyload>
+                
+                  
                 
                 
-  <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js" ></script>
-
+  <div id="valine"></div>
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
-        app_key: "HLUt5izfTvTcbEbOrA59W92a",
-        placeholder: "畅所欲言...",
-        path: window.location.pathname,
-        avatar: "robohash",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: true,
-        recordIP: false,
-        serverURLs: "",
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
+          app_key: "HLUt5izfTvTcbEbOrA59W92a",
+          placeholder: "畅所欲言...",
+          path: window.location.pathname,
+          avatar: "robohash",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    });
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
-      powered by Valine.</a></noscript>
+  <noscript>Please enable JavaScript to view the comments</noscript>
 
 
-              </div>
+              </article>
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -459,7 +398,7 @@ headers = &#123;
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -469,24 +408,23 @@ headers = &#123;
 
 <!-- Custom -->
 
-  <div class="col-lg-7 mx-auto nopadding-md">
-    <div class="container custom post-content mx-auto">
-      <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-3" style="width:355.4px; height:200px;">
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-3" style="width:355.4px; height:200px;">
     </div>
   </div>
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -507,207 +445,152 @@ headers = &#123;
     </div>
   </div>
 </div>
-  
-
-  
-    <!-- APlayer 音乐播放器 -->
-    <div id="aplayer"></div>
-    <script defer src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js" ></script>
-<link  rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
-<script type="text/javascript">
-  var oldLoadAp = window.onload;
-  window.onload = function () {
-    oldLoadAp && oldLoadAp();
-
-    new APlayer({
-      container: document.getElementById('aplayer'),
-      fixed: true,
-      autoplay: 'false' === 'true',
-      loop: 'all',
-      order: 'random',
-      theme: '#b7daff',
-      preload: 'none',
-      audio: [{"name":"灰色空间","artist":"罗志祥","url":"https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/music/%E7%81%B0%E8%89%B2%E7%A9%BA%E9%97%B4%20-%20%E7%BD%97%E5%BF%97%E7%A5%A5.mp3","cover":"https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/music/luozhixiang.png"}]
-    });
-  }
-</script>
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
     
-  <div>
+
     
-      <!-- 不蒜子统计PV -->
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
       
-      <span id="busuanzi_container_site_pv" style="display: none">
-      总访问量 <span id="busuanzi_value_site_pv"></span> 次
-    </span>
-    
-    
-      <!-- 不蒜子统计UV -->
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
       
-      <span id="busuanzi_container_site_uv" style="display: none">
-      总访客数 <span id="busuanzi_value_site_uv"></span> 人
-    </span>
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
     
   </div>
 
 
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        苏ICP备20032307号
+      </a>
+    </span>
     
-
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32020602001023"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>苏公网安备 32020602001023号</span>
+          </a>
+        </span>
+      
     
   </div>
+
+
+  
 </footer>
 
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="/js/main.js" ></script>
 
-
-  <script  src="/js/lazyload.js" ></script>
-
-
-
+  <!-- SCRIPTS -->
   
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
 
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '.post-content',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
   </script>
 
 
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
   
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
-  
 
-  
-
-  
-
-  
 
   
 
 
 
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
   <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "【转】 利用爬虫和树莓派打造萝莉音天气闹钟&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "always",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
   </script>
 
 
@@ -749,91 +632,46 @@ headers = &#123;
       };
     </script>
 
-    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
 
   
 
 
 
+
+
+
+
+
   
-  
-    <script type="text/javascript">
-      //定义获取词语下标
-      var a_idx = 0;
-      jQuery(document).ready(function ($) {
-        //点击body时触发事件
-        $("body").click(function (e) {
-          //需要显示的词语
-          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
-          //设置词语给span标签
-          var $i = $("<span/>").text(a[a_idx]);
-          //下标等于原来下标+1  余 词语总数
-          a_idx = (a_idx + 1) % a.length;
-          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
-          //获取x和y的指针坐标
-          var x = e.pageX, y = e.pageY;
-          //在鼠标的指针的位置给$i定义的span标签添加css样式
-          $i.css({
-            "z-index": 999,
-            "top": y - 20,
-            "left": x,
-            "position": "absolute",
-            "font-weight": "bold",
-            "color": rand_color()
-          });
-          // 随机颜色
-          function rand_color() {
-            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
-          }
-          //在body添加这个标签
-          $("body").append($i);
-          //animate() 方法执行 CSS 属性集的自定义动画。
-          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
-          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
-          $i.animate({
-            //将原来的位置向上移动180
-            "top": y - 180,
-            "opacity": 0
-            //1500动画的速度
-          }, 1500, function () {
-            //时间到了自动删除
-            $i.remove();
-          });
-        });
-      })
-      ;
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
     </script>
   
 
+  
 
+  
 
-  <script>(function (i, s, o, g, r, a, m) {
-      i['DaoVoiceObject'] = r;
-      i[r] = i[r] ||
-        function () {
-          (i[r].q = i[r].q || []).push(arguments);
-        };
-      i[r].l = 1 * new Date();
-      a = s.createElement(o);
-      m = s.getElementsByTagName(o)[0];
-      a.async = 1;
-      a.src = g;
-      a.charset = 'utf-8';
-      m.parentNode.insertBefore(a, m);
-    })(window, document, 'script', ('https:' === document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/aa03e448.js", 'daovoice');
-    daovoice('init', {
-      app_id: "aa03e448",
-    });
-    daovoice('update');
-  </script>
+  
+
+  
+
+  
 
 
 
 
 
-
-
-
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>

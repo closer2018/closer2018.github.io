@@ -1,0 +1,1365 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时">
+  <meta name="author" content="closer">
+  <meta name="keywords" content="">
+  
+  <title>判断推理 - closer的自留地</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/androidstudio.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.zsaa.top","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"608f2baddd361128381ad2bf9377bf89","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz","app_key":"HLUt5izfTvTcbEbOrA59W92a","server_url":"https://yzlqntmw.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Hello</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/mydefault.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="判断推理">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-11-02 21:25" pubdate>
+        2020年11月2日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      41
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">判断推理</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年12月8日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>判断推理：主要测查应试人员对各种事物关系的分析推理能力，涉及对图形、语词概念、事物关系和文字材料的理解、比较、组合、演绎和归纳等。常见的题型有：图形推理、定义判断、类比推理、逻辑判断等。S</p>
+</blockquote>
+<hr>
+<h2 id="一：-图形推理">一： 图形推理</h2>
+<h3 id="1-1-位置规律">1.1 位置规律</h3>
+<p>识别： 元素组成相同</p>
+<ol>
+<li>平移
+<ol>
+<li>方向： 上下、左右、顺逆时针、外圈、行列</li>
+<li>步数： 恒定、递增(等差)</li>
+</ol>
+</li>
+<li>旋转
+<ol>
+<li>方向： 顺逆时针</li>
+<li>角度： 45°、90°、180°</li>
+</ol>
+</li>
+<li>翻转
+<ol>
+<li>方向： 上下(横轴对称)、左右(竖轴对称)</li>
+</ol>
+</li>
+<li>技巧
+<ol>
+<li>比较思维： 既可以比较题干，也可比较选项</li>
+<li>九宫格，中间图形特殊优先“米”字型观察</li>
+</ol>
+</li>
+</ol>
+<h3 id="1-2-样式规律">1.2 样式规律</h3>
+<p>识别： 元素组成相似(相同 <code>图形或线条</code> 重复出现)</p>
+<ol>
+<li>遍历(缺啥补啥)
+<ol>
+<li>元素遍历
+<ol>
+<li>每个元素出现次数相同</li>
+<li>特定元素的遍历</li>
+</ol>
+</li>
+<li>位置遍历
+<ol>
+<li>外框的遍历</li>
+<li>内部线条/阴影/空白/图形的遍历</li>
+<li>涉及多个相同小元素时，考虑数量遍历</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>加减同异
+<ol>
+<li>相加、相减</li>
+<li>求异</li>
+<li>求同</li>
+<li>PS: 位置和样式的复合考法</li>
+</ol>
+</li>
+<li>黑白运算
+<ol>
+<li>特征： 图形轮廓和分隔区域相同，内部颜色不同</li>
+<li>方法： 相同位置运算</li>
+<li>小技巧： 优先考虑黑白运算后，从问号处着手解题更快，边找边验证</li>
+<li>特别注意： “白+黑”和“黑+白”是不同等式</li>
+</ol>
+</li>
+</ol>
+<h3 id="1-3-属性规律">1.3 属性规律</h3>
+<p>识别： 元素组成不同</p>
+<ol>
+<li>对称性(优先)
+<ol>
+<li>轴对称：对称轴方向、数量</li>
+<li>中心对称</li>
+</ol>
+</li>
+<li>开闭性： 优先全开放、全封闭</li>
+<li>曲直性： 优先全曲或全直，其次曲+直</li>
+<li>凹凸性
+<ol>
+<li>任意两点相连，在图外，是凹，如×</li>
+<li>任意两点相连，在图内，是凸，如O</li>
+</ol>
+</li>
+</ol>
+<h3 id="1-4-数量规律">1.4 数量规律</h3>
+<p>识别： 元素组成不同且无属性规律，数量规律明显</p>
+<ol>
+<li>点
+<ol>
+<li>特征
+<ol>
+<li>线条交叉明显</li>
+<li>乱糟糟一团线交叉</li>
+<li>相切较多</li>
+</ol>
+</li>
+<li>细化考法
+<ol>
+<li>交点(切点)</li>
+<li>端点</li>
+<li>直曲相交</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>线
+<ol>
+<li>直线数特征图
+<ol>
+<li>多边形、单一直线</li>
+</ol>
+</li>
+<li>曲线数特征图
+<ol>
+<li>曲线图形(全曲线图、圆、弧)</li>
+</ol>
+</li>
+<li>笔画数
+<ol>
+<li>一笔画图形
+<ol>
+<li>连通图</li>
+<li>奇点数=0或2</li>
+</ol>
+</li>
+<li>多笔画图形
+<ol>
+<li>笔画数=奇点数/2</li>
+<li>如果存在多部分，每个部分的笔画单独算，再相加</li>
+</ol>
+</li>
+<li>常见特征图
+<ol>
+<li>五角星、圆和圆相切、田和日的变形</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>角
+<ol>
+<li>个数</li>
+<li>角度(钝角，锐角)</li>
+<li>数＜180°的角，角不重复数</li>
+<li>特征图： 扇形、折线图、改造图</li>
+</ol>
+</li>
+<li>面
+<ol>
+<li>个数</li>
+<li>面积</li>
+<li>特征
+<ol>
+<li>图形被分割，封闭面明显</li>
+<li>生活化图形，粗线条图形中留空白区域</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>素
+<ol>
+<li>元素种类</li>
+<li>元素个数
+<ol>
+<li>满眼相同图形，重复数</li>
+<li>三角、四边形</li>
+<li>曲直</li>
+</ol>
+</li>
+<li>部份数
+<ol>
+<li>线条连在一起叫一部分</li>
+<li>常考查粗线条图形</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="1-5-空间重构">1.5 空间重构</h3>
+<h4 id="1-5-1-四面体">1.5.1 四面体</h4>
+<ol>
+<li>基础知识
+<ol>
+<li>展开图中构成一条直线的两条边，折合之后是同一条边</li>
+<li>平行四边形展开图中两条短边，折合之后也是同一条边</li>
+</ol>
+</li>
+<li>解题方法-箭头法
+<ol>
+<li>对题干和选项中同一个面，画箭头</li>
+<li>箭头方向是否一致</li>
+</ol>
+</li>
+</ol>
+<h4 id="1-5-2-六面体">1.5.2 六面体</h4>
+<ol>
+<li>相对面
+<ol>
+<li>两个面在同一行或同一列，且中间隔了一个面</li>
+<li>两个面在“Z”字形两端，且紧靠着“Z”字形中间那条线</li>
+<li>相对面只能出现一个，且必须出现一个。</li>
+</ol>
+</li>
+<li>相邻面
+<ol>
+<li>在展开图中，呈直角的两条边，折合后为同一条边</li>
+<li>看图形相对位置</li>
+<li>画边法：选特殊面的唯一点或唯一边，顺时针(或逆时针)画边，与题干不匹配的排除。</li>
+</ol>
+</li>
+</ol>
+<h4 id="1-5-3-八面体">1.5.3 八面体</h4>
+<ol>
+<li>基础知识
+<ol>
+<li>展开图中，构成“V”字形的两条边，折合之后是同一条边</li>
+<li>每个顶点发出4个面</li>
+<li>每个面只有3个相邻面</li>
+</ol>
+</li>
+<li>解题方法
+<ol>
+<li>箭头法</li>
+<li>公共点法</li>
+</ol>
+</li>
+</ol>
+<h4 id="1-5-4-图形平面拼合">1.5.4 图形平面拼合</h4>
+<ol>
+<li>平行等长消除法(找到相对面积较大的图形作为基准图形，找到平行且等长的边进行拼合，拼合之后等长线条抵消)</li>
+<li>特殊边秒杀法
+<ol>
+<li>找出四个图形中不可能消除的线条(特殊边)，如没有平行的线条，最长的线条，唯一的横直线</li>
+<li>到选项中去找这条线，没有的直接排除，剩下的用平行等长消除法拼合</li>
+</ol>
+</li>
+<li>注意比例坑，江苏题经常在此出坑。</li>
+</ol>
+<h4 id="1-5-5-截面图">1.5.5 截面图</h4>
+<ol>
+<li>解题原则： 一刀切</li>
+<li>截面有弧线
+<ol>
+<li>立体图形本身存在曲面(如圆柱、圆锥等)、拦腰切、斜切</li>
+</ol>
+</li>
+<li>截面有矩形
+<ol>
+<li>六面体-- 拦腰切，上下切，斜切</li>
+<li>圆柱-- 上下切</li>
+</ol>
+</li>
+<li>截面有三角形
+<ol>
+<li>六面体-- 从棱上某一个点开始切</li>
+<li>圆锥-- 经过顶点向底面切</li>
+</ol>
+</li>
+<li>小技巧
+<ol>
+<li>六面体切不出直角三角形</li>
+<li>立体图形有曲线，才能切出带曲线的截面</li>
+<li>圆柱切不出梯形</li>
+</ol>
+</li>
+</ol>
+<h2 id="二：-定义判断">二： 定义判断</h2>
+<ol>
+<li>识别五要素(问属于)
+<ol>
+<li>主体</li>
+<li>客体</li>
+<li>出发点(造成的结果)</li>
+<li>过程</li>
+<li>落脚点(场地)</li>
+</ol>
+</li>
+<li>问不属于
+<ol>
+<li>直接看选项，找出不同的一项，同构选项排除法</li>
+</ol>
+</li>
+</ol>
+<h2 id="三：-类比推理">三： 类比推理</h2>
+<h3 id="3-1-逻辑关系">3.1 逻辑关系</h3>
+<ol>
+<li>全同关系
+<ol>
+<li>中外翻译  eg罗曼蒂克:浪漫</li>
+<li>古称和今称 eg北平:北京</li>
+<li>谦称和敬称 eg犬子:令郎</li>
+<li>俗称和雅称 eg三月:桃月</li>
+<li>全称和缩写 eg辽宁:辽</li>
+</ol>
+</li>
+<li>包含关系
+<ol>
+<li>一重包含、二重包含
+<ol>
+<li>一重包含 eg苹果:水果</li>
+<li>二重包含 eg红富士:水果</li>
+</ol>
+</li>
+<li>种属包含、部分包含
+<ol>
+<li>种属 eg苹果:水果；杂志:期刊</li>
+<li>整体和部分 eg阳光:紫外线；树木:森林</li>
+<li>不可分割 eg鱼:鱼鳔</li>
+<li>功能互补 eg键盘:电脑；羽毛球:羽毛球拍</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>并列关系
+<ol>
+<li>方法： 构成并列关系的概念必须是同一层次上的，如国画:油画都是画、香蕉:苹果都是水果</li>
+<li>矛盾： 非此即彼 eg生死:物质意识 黑夜白天：男人女人</li>
+<li>反对： 除了A和B以外，还有其他情况 eg红色:黄色</li>
+</ol>
+</li>
+<li>交叉关系
+<ol>
+<li>方法： 用有的……是……造句来判断</li>
+<li>eg 男人:老师；唐诗:七律；瓷器:茶杯</li>
+</ol>
+</li>
+<li>全异关系
+<ol>
+<li>含义： 词语所表示的概念属于同一大类的事物，或具有某种共同性。所有A不是B，且A和B之间不是并列关系</li>
+<li>eg实数:木耳；蝙蝠:鸟类；天鹅:塑料</li>
+</ol>
+</li>
+<li>无对应关系
+<ol>
+<li>两个词语之间没有一点联系。看起来特别匪夷所思的两组词，有可能适用这个考点。</li>
+<li>eg布告:棉布</li>
+</ol>
+</li>
+</ol>
+<h3 id="3-2-语义关系">3.2 语义关系</h3>
+<ol>
+<li>近义关系
+<ol>
+<li>同义词或近义词 eg安居乐业:丰衣足食、谨慎:慎重</li>
+<li>属性相近 eg寒冷:冰冷；吼叫:咆哮</li>
+</ol>
+</li>
+<li>反义关系
+<ol>
+<li>eg节约:浪费；早餐:傍晚</li>
+</ol>
+</li>
+<li>褒贬关系
+<ol>
+<li>eg后果:结果；妄想:遐想:理想，贬:中:褒</li>
+</ol>
+</li>
+<li>象征关系
+<ol>
+<li>eg水:温柔；土:敦厚</li>
+</ol>
+</li>
+</ol>
+<h3 id="3-3-描述关系">3.3 描述关系</h3>
+<ol>
+<li>与事物相关
+<ol>
+<li>事物与其性质 eg花:香</li>
+<li>事物与其象征意义 eg凤凰:吉祥</li>
+<li>事物与其活动空间、制作场所、原材料、所在地、作用对象等等 eg飞机:天空、大夏:城市、桌子:木材</li>
+<li>同样功能的古代、现代物品 eg蒲扇:冷空调、火柴:打火机</li>
+</ol>
+</li>
+<li>与人相关
+<ol>
+<li>职业与工作地点
+<ol>
+<li>eg编辑:杂志社、农民:土地</li>
+</ol>
+</li>
+<li>职业与其特征、用具等其他相关内容
+<ol>
+<li>eg士兵:军装、学生:桃李</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="3-4-条件关系">3.4 条件关系</h3>
+<ol>
+<li>因果关系
+<ol>
+<li>根本原因(本质原因) eg疾病:抑郁，因为疾病所有抑郁</li>
+<li>直接原因(导火索) eg努力:成功，因为努力而成功。</li>
+<li>间接原因 eg招摇撞骗:锒铛入狱，因为招摇撞骗所有锒铛入狱。</li>
+</ol>
+</li>
+<li>时间顺成关系
+<ol>
+<li>几个动作或事件相继发生，有一定的时间先后顺序。B在A之后发生。</li>
+<li>eg起跑:冲线、起床:刷牙、校对:印刷:出版</li>
+</ol>
+</li>
+<li>目的关系
+<ol>
+<li>某个事件的发生是以另一个事件为目的</li>
+<li>A是B的目的，B是A的手段。eg广告:宣传、节食:减肥</li>
+</ol>
+</li>
+<li>必要充分条件
+<ol>
+<li>充分条件</li>
+<li>必要条件
+<ol>
+<li>eg消毒:手术；启动:驾驶</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="3-5-语法关系">3.5 语法关系</h3>
+<ol>
+<li>词性： 名词、动词、形容词</li>
+<li>主谓关系(谓语指干了什么，一般是动词+形容词) eg轮船:启航；宝石:发光</li>
+<li>动宾结构 eg讨论:问题；合同:定制；风卷:残云</li>
+<li>偏正结构
+<ol>
+<li>一个词对另一个词起修饰或限制作用。</li>
+<li>eg清秀:面容；热烈:欢迎；义务:劳动；窗户:玻璃，玻璃做的窗户；戒指:宝石，宝石做的戒指。</li>
+</ol>
+</li>
+<li>并列结构
+<ol>
+<li>两个词性相同的实词并列组成</li>
+<li>eg七上:八下；天南:地北</li>
+<li>成语题目 eg围湖造田:饮鸠止渴=忍辱偷生:削足适履</li>
+</ol>
+</li>
+<li>后补结构 eg安于现状:轻于鸿毛:对答如流</li>
+<li>排列类比(江苏特色) eg:dda:22v
+<ol>
+<li>方法：先找出唯一不同的元素，排除选项后再用相同的找。</li>
+</ol>
+</li>
+</ol>
+<h3 id="3-6-常识知识">3.6 常识知识</h3>
+<ol>
+<li>生活常识
+<ol>
+<li>功能对应 eg药物:治疗；滑板:运动</li>
+<li>组成对应 eg骨骼:人体、梁柱:房屋</li>
+<li>加工对应
+<ol>
+<li>物理变化 eg木材:家具、花岗岩:雕塑</li>
+<li>化学变化 eg葡萄:酒；大豆:酱油</li>
+</ol>
+</li>
+<li>职业对应</li>
+<li>空间对应 eg小鸟:天空:飞翔；蟋蟀:草丛:欢叫</li>
+<li>属性对应
+<ol>
+<li>必然属性 eg糖:甜</li>
+<li>或然属性 eg官员:廉洁；子女:孝顺</li>
+</ol>
+</li>
+<li>民俗对应
+<ol>
+<li>eg七夕:织女；端午:屈原</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>书本常识
+<ol>
+<li>地理 eg布达拉宫:拉萨；云冈石窟:大同</li>
+<li>文学历史</li>
+<li>科普
+<ol>
+<li>eg时间:速度；体积:密度</li>
+<li>eg三角形:三棱柱；四边形:正方体</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="3-7-二级辨析">3.7 二级辨析</h3>
+<p>解题技巧:</p>
+<ol>
+<li>遣词造句法</li>
+<li>对比词性</li>
+<li>横纵对比法</li>
+<li>感情色彩是否一致</li>
+<li>范围程度是否有差异</li>
+<li>性质、功能是否相同</li>
+<li>词的构成方式是否相同</li>
+<li>必然与或然</li>
+<li>全面与片面</li>
+<li>绝对反义和相对反义</li>
+</ol>
+<h2 id="四：-逻辑推理">四： 逻辑推理</h2>
+<p><strong>逻辑推理题目错误选项常见类型：</strong></p>
+<ol>
+<li>主体不一致</li>
+<li>话题不一致</li>
+<li>明文规定、道听途说的选项不选</li>
+<li>不明确选项。如“目前不知道”</li>
+<li>强弱有别</li>
+<li>时间重合≠因果关系，一定错，不选。</li>
+</ol>
+<h3 id="4-1-翻译推理">4.1 翻译推理</h3>
+<p>识别： 题干中出现可推出/不可推出</p>
+<ol>
+<li>前推后
+<ol>
+<li>关键词： 如果……，那么……；若……，则……；只要……，就……；所以……，都……；为了……一定……；……是……的充分条件；等</li>
+<li>翻译规则： 前推后：<code>A → B</code></li>
+</ol>
+</li>
+<li>后推前
+<ol>
+<li>关键词： 只有……才……；不……不……；除非……否则不……；……是……的基础/假设/前提/关键/必要条件</li>
+<li>翻译规则： 后推前： <code>B → A</code></li>
+<li>谁必要谁放箭头后面</li>
+<li>PS： <code>除非(只要/其他……)A否则B</code> 等价于 <code>-B → A</code>;</li>
+</ol>
+</li>
+<li>逆否等价: <code>A → B</code> 等价于 <code>-B → -A</code></li>
+<li>且和或
+<ol>
+<li>含义
+<ol>
+<li>A或B： 二者至少一个成立为真</li>
+<li>A且B： 二者同时成立为真</li>
+</ol>
+</li>
+<li>推理规则： 或命题为真时， <code>否1 → 1</code></li>
+</ol>
+</li>
+<li>德摩根定律
+<ol>
+<li><code>-(A且B) = -A 或 -B</code></li>
+<li><code>-(A或B) = -A 且 -B</code></li>
+<li>小技巧： 逐项添符号，且或互变</li>
+</ol>
+</li>
+<li>推理方法： 推理结构保持完全相同</li>
+</ol>
+<h3 id="4-2-组合排列">4.2 组合排列</h3>
+<p>识别： 题干给出两组及两组以上对象，问给出几组对象之间的关系</p>
+<ol>
+<li>排除法、代入法
+<ol>
+<li>题干信息确定优先使用排除法</li>
+<li>题干信息不确定优先使用代入法</li>
+</ol>
+</li>
+<li>辅助技巧
+<ol>
+<li>最大信息： 以题干中出现次数最多的信息为推理起点</li>
+<li>符号(＞、＜)</li>
+<li>表格(一维表、二维表)</li>
+</ol>
+</li>
+</ol>
+<h3 id="4-3-削弱题型">4.3 削弱题型</h3>
+<ol>
+<li>识别方法
+<ol>
+<li>设问中包含“反驳、削弱、质疑”的论证题目</li>
+<li>问不能削弱/质疑分2种情况
+<ol>
+<li>无关选项</li>
+<li>加强选项</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>削弱方式
+<ol>
+<li>削弱论点(最常考，力度最强)
+<ol>
+<li>通过矛盾命题或例子的形式直接削弱题干观点</li>
+</ol>
+</li>
+<li>削弱论证(力度第二)
+<ol>
+<li>拆桥： 能够证明论据无法直接得出论点</li>
+</ol>
+</li>
+<li>削弱论据(力度最弱)： 证明论据时错的</li>
+</ol>
+</li>
+</ol>
+<h3 id="4-4-加强题型">4.4 加强题型</h3>
+<ol>
+<li>识别： 设问中包含“支持、加强、前提/假设”条件</li>
+<li>加强方式
+<ol>
+<li>搭桥(最强)
+<ol>
+<li>题干特征
+<ol>
+<li>论点和论据出现不同概念</li>
+<li>论点和论据为整体和部分关系</li>
+</ol>
+</li>
+<li>选项特征： 同时包含论点和论据中的关键词，并肯定论点和论据之间的关系</li>
+</ol>
+</li>
+<li>必要条件(第二)
+<ol>
+<li>题干特征
+<ol>
+<li>提问为前提、假设、必要条件、加强论证、无搭桥项时考虑必要条件</li>
+<li>如：题干是对比试验，但起点是否一致未知</li>
+<li>如：论点是比例，论据只涉及其中一项，需要补充分母</li>
+</ol>
+</li>
+<li>选项判别： 否定代入。先假设选项是错误的，代入题干论点不成立，则可以证明该选项是必要条件。</li>
+</ol>
+</li>
+<li>补充论据
+<ol>
+<li>解释原因(第三)： 说明论点成立的原因</li>
+<li>举例论证(第四)： 说明论点成立的例子</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>加强力度： 搭桥＞必要条件＞解释原因＞举例论证</li>
+</ol>
+<h3 id="4-5-日常结论">4.5 日常结论</h3>
+<p><strong>日常结论不找对的，用排除法，找错的三个排除。</strong></p>
+<p>识别： 题干为类言语的表述，无逻辑关联词，提问方式为“可以推出”，“不能退出”……</p>
+<ol>
+<li>三不选
+<ol>
+<li>逻辑错误不选</li>
+<li>无中生有不选</li>
+<li>偷换概念不选</li>
+</ol>
+</li>
+<li>四慎选
+<ol>
+<li>绝对化的词： 一定、肯定、必须、所有、如果……就……、只有……才……</li>
+<li>比较性的词： 更、比、越来越……</li>
+<li>程度性的词： 最、主要、次要、首要</li>
+<li>范围扩大缩小。</li>
+</ol>
+</li>
+<li>一优选
+<ol>
+<li>在选项都存在瑕疵时，带有表述“可能”意思字眼的选项优选。</li>
+</ol>
+</li>
+</ol>
+<h3 id="4-6-真假推理">4.6 真假推理</h3>
+<p>题干特征： 题干中出现几个命题，但其真假未知，要求通过判断命题的真假情况推出某些结论</p>
+<ol>
+<li>优先找关系
+<ol>
+<li>矛盾关系
+<ol>
+<li>特性： 必然一真一假</li>
+<li>使用方法
+<ol>
+<li>首先找矛盾，绕过矛盾看其余</li>
+<li>条件一假，假话在矛盾中，其余全真</li>
+<li>条件一真，真话在矛盾中，其余全假</li>
+</ol>
+</li>
+<li>常见矛盾关系
+<ol>
+<li>A与-A</li>
+<li>“所有A都是B”与“有的A不是B”</li>
+<li>“所有A都不是B”与“有的A是B”</li>
+<li><strong>“A→B”与“A且-B”</strong></li>
+<li>“A或B”与“-A且-B”</li>
+<li>“A且B”与“-A或-B”</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>反对关系
+<ol>
+<li>使用方法
+<ol>
+<li>没有矛盾找反对，绕过反对看其余</li>
+<li>条件一真，找到“有的”和“有的不”，其余全假</li>
+<li>条件一假，找到“所有都”和“所有都不”，其余全真</li>
+</ol>
+</li>
+<li>常见反对关系
+<ol>
+<li>“有的A是B”与“有的A不是B”： 必有一真</li>
+<li>“所有A都是B”与“所有A都不是B”： 必有一假</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>推出关系
+<ol>
+<li>如果命题P为真，那么命题Q也一定为真，即P(真)→Q(真)，P和Q就是推出关系</li>
+<li>使用方法
+<ol>
+<li>找不到矛盾或反对，找推出关系</li>
+<li>一真前假，一假后真</li>
+</ol>
+</li>
+<li>常见推出关系
+<ol>
+<li>A(真) → A或B(真)</li>
+<li>所有A都是B(真) → 某个A是B(真) → 有的A是B(真)</li>
+<li>所有A都不是B(真) → 某个A不是B(真) → 有的A不是B(真)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>找不到关系： 考虑代入排除法</li>
+</ol>
+<h2 id="五：-小技巧">五： 小技巧</h2>
+<ol>
+<li>图形推理一般每道题会考一个知识点，做题的时候把相应的知识点标记在题目旁边，其他题目的考点大概率不会重复，所以做其他题目的时候可以不考虑那个知识点，提高做题速度。</li>
+<li>图推题目没有思路，一般考虑下一笔画，还是没有思路超过30秒放弃，不纠结。</li>
+<li>类比推理善用造句。</li>
+<li>定义判断就是找茬，找主体、客体、定语(定语是用来修饰、限定、说明名词或代词的品质与特征的。)、状语(一种状态)的不同。</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%85%AC%E8%80%83/">公考</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%85%AC%E8%80%83/%E5%88%A4%E6%96%AD%E6%8E%A8%E7%90%86/">判断推理</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%85%AC%E8%80%83/">公考</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/11/04/%E5%85%AC%E8%80%83/quantitative-relation/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数量关系</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/02/%E5%85%AC%E8%80%83/lalognosis/">
+                        <span class="hidden-mobile">言语理解</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
+          app_key: "HLUt5izfTvTcbEbOrA59W92a",
+          placeholder: "畅所欲言...",
+          path: window.location.pathname,
+          avatar: "robohash",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-3" style="width:355.4px; height:200px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        苏ICP备20032307号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32020602001023"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>苏公网安备 32020602001023号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
