@@ -197,7 +197,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.2k 字
+      2.5k 字
     </span>
   
 
@@ -207,7 +207,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      29
+      32
        分钟
     </span>
   
@@ -249,7 +249,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年10月4日 上午
+                  本文最后更新于：2021年9月14日 晚上
                 
               </p>
             
@@ -257,7 +257,7 @@
               <blockquote>
 <p>PVE虚拟机下使用ikuai进行流控，openwrt进行去广告、KMS服务器等高级功能。</p>
 </blockquote>
-<h2 id="一：-安装PVE"><a href="#一：-安装PVE" class="headerlink" title="一： 安装PVE"></a>一： 安装PVE</h2><h3 id="2-1-固件安装"><a href="#2-1-固件安装" class="headerlink" title="2.1 固件安装"></a>2.1 固件安装</h3><p>用U盘制作<a target="_blank" rel="noopener" href="https://www.ventoy.net/cn/index.html">ventoy启动盘</a>后，把<a target="_blank" rel="noopener" href="https://www.proxmox.com/en/downloads">PVE官方映像</a>拖到U盘里面。</p>
+<h2 id="一、-安装PVE"><a href="#一、-安装PVE" class="headerlink" title="一、 安装PVE"></a>一、 安装PVE</h2><h3 id="2-1-固件安装"><a href="#2-1-固件安装" class="headerlink" title="2.1 固件安装"></a>2.1 固件安装</h3><p>用U盘制作<a target="_blank" rel="noopener" href="https://www.ventoy.net/cn/index.html">ventoy启动盘</a>后，把<a target="_blank" rel="noopener" href="https://www.proxmox.com/en/downloads">PVE官方映像</a>拖到U盘里面。</p>
 <p>bios里面使用u盘启动，选择下载的PVE官方映像进行安装。</p>
 <ol>
 <li>选择安装的磁盘。</li>
@@ -293,7 +293,7 @@
 <p>删除下载的<code>pvetools</code>目录</p>
 <h3 id="2-5-更改ProxmoxVE的LXC仓库源为国内中科大源"><a href="#2-5-更改ProxmoxVE的LXC仓库源为国内中科大源" class="headerlink" title="2.5 更改ProxmoxVE的LXC仓库源为国内中科大源"></a>2.5 更改ProxmoxVE的LXC仓库源为国内中科大源</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs SHELL">grep -rn &quot;download.proxmox.com&quot; /usr/share/perl5/PVE/*   #查找设定下载源的文件<br>sed -i.bak &quot;s#http://download.proxmox.com/images#https://mirrors.ustc.edu.cn/proxmox/images#g&quot; /usr/share/perl5/PVE/APLInfo.pm #替换为中科大源<br>wget -O /var/lib/pve-manager/apl-info/mirrors.ustc.edu.cn https://mirrors.ustc.edu.cn/proxmox/images/aplinfo-pve-6.dat # 下载aplinfo-pve-6文件，也可下载aplinfo.dat<br></code></pre></div></td></tr></table></figure>
 
-<h2 id="二：-安装ikuai"><a href="#二：-安装ikuai" class="headerlink" title="二： 安装ikuai"></a>二： 安装ikuai</h2><p>点击local-内容-上传，上传<a target="_blank" rel="noopener" href="https://www.ikuai8.com/component/download">ikuai官网</a>下载的ISO映像。</p>
+<h2 id="二、-安装ikuai"><a href="#二、-安装ikuai" class="headerlink" title="二、 安装ikuai"></a>二、 安装ikuai</h2><p>点击local-内容-上传，上传<a target="_blank" rel="noopener" href="https://www.ikuai8.com/component/download">ikuai官网</a>下载的ISO映像。</p>
 <p>创建虚拟机-名称<code>ikuai</code>-操作系统选择<code>上传的映像</code>-系统<strong>显卡一定要选择VMWARE兼容，否则不能正确显示。</strong>-硬盘总线<code>SCSI</code>,磁盘大小<code>2</code>-CPU为1核<code>2线程</code>、高级中<code>启用NUMA</code>(支持热拔插，不需要则不开启)-内存64位<code>4096</code>或者32位<code>2048</code>-网络<code>VirIO(半虚拟化)</code>-确定。</p>
 <p>web界面点击虚拟机100。</p>
 <p>硬件-添加-网络设备-选择<code>桥接接口</code>-模型选<code>VirtIO</code>-添加。</p>
@@ -301,7 +301,7 @@
 <p>启动，选择控制台。<code>2</code>绑定网卡，<code>0</code>LAN口地址设置。</p>
 <p>登录ikuai的web界面。</p>
 <p><a target="_blank" rel="noopener" href="https://www.right.com.cn/forum/thread-2640416-1-1.html">网关配置</a></p>
-<h2 id="三：-安装openwrt"><a href="#三：-安装openwrt" class="headerlink" title="三： 安装openwrt"></a>三： 安装openwrt</h2><p>先修改映像名字为 <code>openwrt.img</code> ，再用 <code>winscp</code> 把 <code>openwrt</code> 的映像传到 <code>PVE</code> 的 <code>/root</code> 根目录。</p>
+<h2 id="三、-安装openwrt"><a href="#三、-安装openwrt" class="headerlink" title="三、 安装openwrt"></a>三、 安装openwrt</h2><p>先修改映像名字为 <code>openwrt.img</code> ，再用 <code>winscp</code> 把 <code>openwrt</code> 的映像传到 <code>PVE</code> 的 <code>/root</code> 根目录。</p>
 <p>PVE的shell命令行工具中输入如下命令：</p>
 <blockquote>
 <p>映像转换的命令格式为(区分大小写)：<br>qemu-img(转换工具) convert -f raw(-f后面指明原文件格式) -O qcow2(输出格式) openwrt.img openwrt.qcow2</p>
@@ -330,7 +330,7 @@
 
 <p>登录openwrt的web界面。</p>
 <p><a target="_blank" rel="noopener" href="https://www.right.com.cn/forum/thread-2640416-1-1.html">网关配置</a></p>
-<h2 id="四：-配置ipv6"><a href="#四：-配置ipv6" class="headerlink" title="四： 配置ipv6"></a>四： 配置ipv6</h2><p>首先在ikuai中网络设置-开启IPv6并设置DHCPv6(很简答，选自动获取，傻瓜操作)。</p>
+<h2 id="四、-配置ipv6"><a href="#四、-配置ipv6" class="headerlink" title="四、 配置ipv6"></a>四、 配置ipv6</h2><p>首先在ikuai中网络设置-开启IPv6并设置DHCPv6(很简答，选自动获取，傻瓜操作)。</p>
 <p>其次在openwrt中<a target="_blank" rel="noopener" href="https://zhaoshuai.top/2020/08/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E7%9A%84%E4%B8%BB%E6%9C%BA%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE(IPv6%E3%80%81frp%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86)/">IPv6如此设置</a> ， <a href="(https://www.wygdbb.com/2020/09/openwrt-ipv6/)">参考图片，图片里是<code>WAN</code>，但我们是二级路由，所以是<code>LAN</code></a>：</p>
 <ol>
 <li>从网络 –&gt; 接口 –&gt; 删除<code>“IPv6 ULA 前缀”</code> –&gt; 保存&amp;应用</li>
@@ -341,12 +341,22 @@
 </ol>
 <p><a target="_blank" rel="noopener" href="http://test-ipv6.com/">访问IPv6测试网页测试</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhaoshuai.top/2020/08/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E7%9A%84%E4%B8%BB%E6%9C%BA%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE(IPv6%E3%80%81frp%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86)/">使用IPv6进行内网穿透教程</a></p>
-<h2 id="五：-修复ikuai状态监控中MAC地址重复的问题"><a href="#五：-修复ikuai状态监控中MAC地址重复的问题" class="headerlink" title="五： 修复ikuai状态监控中MAC地址重复的问题"></a>五： 修复ikuai状态监控中MAC地址重复的问题</h2><p>一、进入openwrt后台，系统 – 软件包-刷新列表</p>
+<h2 id="五、-修复ikuai状态监控中MAC地址重复的问题"><a href="#五、-修复ikuai状态监控中MAC地址重复的问题" class="headerlink" title="五、 修复ikuai状态监控中MAC地址重复的问题"></a>五、 修复ikuai状态监控中MAC地址重复的问题</h2><p>一、进入openwrt后台，系统 – 软件包-刷新列表</p>
 <p>二、在过滤器里面搜索SNMP(eSir的固件自带SNMP，不需要单独安装)<br>在可用安装包里面安装snmpd。</p>
 <p>三、安装好后回到爱快配置。高级应用-第三层应用，添加一条<br>里面SNMP服务器ip：就填入你openwrt的后台地址即可，其他就不用填其他的。</p>
 <p>四、现在回到爱快监控里面看，MAC地址已经显示正确了且不重复了。</p>
 <p>五：如果安装<code>SNMP</code>出错，可按下面方法处理(eSir的固件自带SNMP，不需要单独安装)：<br>ssh连接你的<code>OPENWRT</code>路由,连接后输入以下代码（下载可能有点慢）</p>
 <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">echo &quot;nameserver 114.114.114.114&quot;&gt;/tmp/resolv.conf<br>rm -f /var/lock/opkg.lock<br>opkg update<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="六、-双路由如何设置端口转发"><a href="#六、-双路由如何设置端口转发" class="headerlink" title="六、 双路由如何设置端口转发"></a>六、 双路由如何设置端口转发</h2><blockquote>
+<p>情景设置：<br>爱快：10.10.10.3，它负责PPPoE拨号，负责DHCP，在DHCP上设置了网关为10.10.10.1<br>openwrt：10.10.10.1，它负责广告屏蔽和其他网络应用，它在内网上设置了静态IP，网关设置为10.10.10.3</p>
+</blockquote>
+<p>方法如下：</p>
+<ol>
+<li>在爱快路由上设置：内网地址全部设为10.10.10.1（即openwrt的ip）。内网端口就是局域网访问端口，不能重复（比如ikuai内网访问端口为80，我需要外网访问端口为800；openwrt端口改为81，外网访问端口801）;外网端口设置为外部访问的端口号（这边iKuai为800，openwrt为801）。</li>
+<li>在openwrt上设置：外部端口设为局域网访问端口（按上面的例子ikuai就是80，openwrt就是81），内部ip地址为需要访问设备的ip，内部端口设为局域网访问端口（ikuai就是80，openwrt就是81）。（PS：外部区域即源区域，和内部区域都是LAN）</li>
+</ol>
+<p><strong>等于是做了两层转发，先从wan口经过ikuai转发到openwrt，然后从openwrt转发到内网需要访问的ip和端口。</strong></p>
 
             </div>
             <hr>
