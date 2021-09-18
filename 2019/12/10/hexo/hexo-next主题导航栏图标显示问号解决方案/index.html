@@ -14,10 +14,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="问题描述
-导航栏图标显示问号，当修改hexo\themes\next\_config.yml主题配置文件后，图标显示正常，但是点击链接不能打开相应主页、标签页、归档页…
-经研究，应该把menu下面的不同页面的/后面的空格删掉，即可。
-具体配置如下：">
+  <meta name="description" content="问题描述导航栏图标显示问号，当修改hexo\themes\next\_config.yml主题配置文件后，图标显示正常，但是点击链接不能打开相应主页、标签页、归档页…经研究，应该把menu下面的不同页面的/后面的空格删掉，即可。具体配置如下：  ">
   <meta name="author" content="closer">
   <meta name="keywords" content="">
   
@@ -257,10 +254,7 @@
               </p>
             
             <div class="markdown-body">
-              <h2 id="问题描述">问题描述</h2>
-<p>导航栏图标显示问号，当修改<code>hexo\themes\next\_config.yml</code>主题配置文件后，图标显示正常，但是点击链接不能打开相应主页、标签页、归档页…<br>
-经研究，应该把menu下面的不同页面的/后面的空格删掉，即可。<br>
-具体配置如下：</p>
+              <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>导航栏图标显示问号，当修改<code>hexo\themes\next\_config.yml</code>主题配置文件后，图标显示正常，但是点击链接不能打开相应主页、标签页、归档页…<br>经研究，应该把menu下面的不同页面的/后面的空格删掉，即可。<br>具体配置如下：  </p>
 <span id="more"></span>
 <figure class="highlight yml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yml"><span class="hljs-attr">menu:</span><br>  <span class="hljs-attr">home:</span> <span class="hljs-string">/||</span> <span class="hljs-string">home</span>                  <span class="hljs-comment">#主页</span><br>  <span class="hljs-attr">archives:</span> <span class="hljs-string">/archives/||</span> <span class="hljs-string">archive</span>  <span class="hljs-comment">#归档</span><br>  <span class="hljs-attr">categories:</span> <span class="hljs-string">/categories/||</span> <span class="hljs-string">th</span>   <span class="hljs-comment">#分类</span><br>  <span class="hljs-attr">tags:</span> <span class="hljs-string">/tags/||</span> <span class="hljs-string">tags</span>             <span class="hljs-comment">#标签</span><br>  <span class="hljs-attr">about:</span> <span class="hljs-string">/about/||</span> <span class="hljs-string">user</span>           <span class="hljs-comment">#关于我</span><br>  <span class="hljs-comment">#search: /search</span><br>  <span class="hljs-comment">#schedule: /schedule/ || calendar</span><br>  <span class="hljs-comment">#sitemap: /sitemap.xml || sitemap</span><br>  <span class="hljs-comment">#commonweal: /404.html</span><br><br><span class="hljs-comment"># Enable/Disable menu icons.</span><br><span class="hljs-attr">menu_icons:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-comment"># Icon Mapping.</span><br>  <span class="hljs-attr">home:</span> <span class="hljs-string">home</span><br>  <span class="hljs-attr">archives:</span> <span class="hljs-string">archive</span><br>  <span class="hljs-attr">categories:</span> <span class="hljs-string">th</span><br>  <span class="hljs-attr">tags:</span> <span class="hljs-string">tags</span><br>  <span class="hljs-attr">about:</span> <span class="hljs-string">user</span><br>  <span class="hljs-comment">#commonweal: heartbeat</span><br>  <span class="hljs-comment">#search: search</span><br><br></code></pre></div></td></tr></table></figure>
 
