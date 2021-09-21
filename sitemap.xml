@@ -473,14 +473,14 @@
   </url>
   
   <url>
-    <loc>https://blog.zsaa.top/tags/%E5%A4%9A%E5%B9%B3%E5%8F%B0%E9%83%A8%E7%BD%B2/</loc>
+    <loc>https://blog.zsaa.top/tags/hexo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</loc>
     <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.zsaa.top/tags/hexo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</loc>
+    <loc>https://blog.zsaa.top/tags/%E5%A4%9A%E5%B9%B3%E5%8F%B0%E9%83%A8%E7%BD%B2/</loc>
     <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -508,6 +508,13 @@
   </url>
   
   <url>
+    <loc>https://blog.zsaa.top/tags/github/</loc>
+    <lastmod>2021-09-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.zsaa.top/tags/DNF/</loc>
     <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
@@ -516,13 +523,6 @@
   
   <url>
     <loc>https://blog.zsaa.top/tags/SQL/</loc>
-    <lastmod>2021-09-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.zsaa.top/tags/github/</loc>
     <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -727,14 +727,14 @@
   </url>
   
   <url>
-    <loc>https://blog.zsaa.top/categories/games/DNF/</loc>
+    <loc>https://blog.zsaa.top/categories/%E5%85%AC%E8%80%83/%E9%94%99%E9%A2%98%E6%9C%AC/</loc>
     <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.zsaa.top/categories/%E5%85%AC%E8%80%83/%E9%94%99%E9%A2%98%E6%9C%AC/</loc>
+    <loc>https://blog.zsaa.top/categories/games/DNF/</loc>
     <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -755,14 +755,14 @@
   </url>
   
   <url>
-    <loc>https://blog.zsaa.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://blog.zsaa.top/categories/%E5%85%AC%E8%80%83/%E8%B5%84%E6%96%99%E5%88%86%E6%9E%90/</loc>
     <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.zsaa.top/categories/%E5%85%AC%E8%80%83/%E8%B5%84%E6%96%99%E5%88%86%E6%9E%90/</loc>
+    <loc>https://blog.zsaa.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
