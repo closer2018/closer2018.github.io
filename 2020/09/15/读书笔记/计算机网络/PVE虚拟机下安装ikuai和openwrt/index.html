@@ -197,7 +197,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.5k 字
+      2.8k 字
     </span>
   
 
@@ -207,7 +207,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      32
+      37
        分钟
     </span>
   
@@ -249,13 +249,13 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年9月18日 晚上
+                  本文最后更新于：2021年9月21日 下午
                 
               </p>
             
             <div class="markdown-body">
               <blockquote>
-<p>PVE虚拟机下使用ikuai进行流控，openwrt进行去广告、KMS服务器等高级功能。</p>
+<p>PVE虚拟机下使用ikuai进行流控，openwrt进行去广告、KMS服务器等高级功能。<br>2021.9后可参考视频<a target="_blank" rel="noopener" href="https://3g.163.com/v/video/VBIPHHU10.html">PVE全新奶妈保姆级+爱快+openwrt+黑群晖7.0.1+直通+IPV6+MAC地址</a></p>
 </blockquote>
 <h2 id="一、-安装PVE"><a href="#一、-安装PVE" class="headerlink" title="一、 安装PVE"></a>一、 安装PVE</h2><h3 id="2-1-固件安装"><a href="#2-1-固件安装" class="headerlink" title="2.1 固件安装"></a>2.1 固件安装</h3><p>用U盘制作<a target="_blank" rel="noopener" href="https://www.ventoy.net/cn/index.html">ventoy启动盘</a>后，把<a target="_blank" rel="noopener" href="https://www.proxmox.com/en/downloads">PVE官方映像</a>拖到U盘里面。</p>
 <p>bios里面使用u盘启动，选择下载的PVE官方映像进行安装。</p>
@@ -301,7 +301,7 @@
 <p>启动，选择控制台。<code>2</code>绑定网卡，<code>0</code>LAN口地址设置。</p>
 <p>登录ikuai的web界面。</p>
 <p><a target="_blank" rel="noopener" href="https://www.right.com.cn/forum/thread-2640416-1-1.html">网关配置</a></p>
-<h2 id="三、-安装openwrt"><a href="#三、-安装openwrt" class="headerlink" title="三、 安装openwrt"></a>三、 安装openwrt</h2><p>先修改映像名字为 <code>openwrt.img</code> ，再用 <code>winscp</code> 把 <code>openwrt</code> 的映像传到 <code>PVE</code> 的 <code>/root</code> 根目录。</p>
+<h2 id="三、-安装openwrt"><a href="#三、-安装openwrt" class="headerlink" title="三、 安装openwrt"></a>三、 安装openwrt</h2><h3 id="3-1-PVE配置"><a href="#3-1-PVE配置" class="headerlink" title="3.1 PVE配置"></a>3.1 PVE配置</h3><p>先修改映像名字为 <code>openwrt.img</code> ，再用 <code>winscp</code> 把 <code>openwrt</code> 的映像传到 <code>PVE</code> 的 <code>/root</code> 根目录。</p>
 <p>PVE的shell命令行工具中输入如下命令：</p>
 <blockquote>
 <p>映像转换的命令格式为(区分大小写)：<br>qemu-img(转换工具) convert -f raw(-f后面指明原文件格式) -O qcow2(输出格式) openwrt.img openwrt.qcow2</p>
@@ -328,8 +328,17 @@
 <p>启动虚拟机101，控制台操作如下命令行。</p>
 <figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs SH"><span class="hljs-comment"># 修改LAN口固定IP</span><br>vi /etc/config/network<br><span class="hljs-comment"># option ipaddr可以改为你想要管理路由的IP地址，比如&#x27;192.168.10.1&#x27;</span><br><br><span class="hljs-comment"># 重启网络</span><br>/etc/init.d/network restart<br></code></pre></div></td></tr></table></figure>
 
-<p>登录openwrt的web界面。</p>
+<h3 id="3-2-更改web端口和SSH端口"><a href="#3-2-更改web端口和SSH端口" class="headerlink" title="3.2 更改web端口和SSH端口"></a>3.2 更改web端口和SSH端口</h3><ol>
+<li>修改uhttpd端口</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs SH"><span class="hljs-comment"># 修改uhttpd</span><br>vi /etc/config/uhttpd<br><span class="hljs-comment"># 将以下改为新的端口</span><br>list listen_http 0.0.0.0:80 --&gt; list listen_http 0.0.0.0:8081<br><span class="hljs-comment"># 保存,重启uhttpd</span><br><span class="hljs-comment">#/etc/init.d/uhttpd restart</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="3-3-网关配置"><a href="#3-3-网关配置" class="headerlink" title="3.3 网关配置"></a>3.3 网关配置</h3><p>登录openwrt的web界面。</p>
 <p><a target="_blank" rel="noopener" href="https://www.right.com.cn/forum/thread-2640416-1-1.html">网关配置</a></p>
+<h3 id="3-4-在openwrt配置HP1020设置为网络打印机"><a href="#3-4-在openwrt配置HP1020设置为网络打印机" class="headerlink" title="3.4 在openwrt配置HP1020设置为网络打印机"></a>3.4 在openwrt配置HP1020设置为网络打印机</h3><blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://post.smzdm.com/p/apz08xz2/">openwrt共享打印机【上】【完美解决】HP10系打印异常问题</a></p>
+</blockquote>
+<p>openwrt安装打印服务器<br>1、<del>安装USB支持软件包（eSir固件可省略）</del><br><del>opkg update</del><br><del>opkg install luci-i18n-base-zh-cn  (openwrt安装中文语言包)</del><br><del>opkg install kmod-usb-storage</del><br><del>opkg install kmod-usb-printer #USB口打印机支持</del><br><del>opkg install p910nd</del><br><del>opkg install luci-app-p910nd</del><br><del>opkg install luci luci-base luci-compat (更新一下luci-compat即可)</del><br>2、WEB界面设备选择HP1020，<strong>接口未指定</strong>，端口默认，<strong>双向模式关闭</strong><br>3、上传固件<code>sihp1020.dl</code>到路由器<code>/etc/</code><br>4、<code>/etc/hotplug.d/usb/10-usb-printer</code>（替换原有的10-usb_printer文件）（自动加载固件到打印机）<br>5、网络-防火墙-通信规则，开放9100端口<br>6、写入语句到路由器启动项中  <code>cat /etc/sihp1020.dl &gt;&gt;/dev/usb/lp0</code>（路由器在重启后自动加载固件到打印机）<br>7、PC上添加本地网络打印机,路由器和打印机双向打印都关闭。</p>
 <h2 id="四、-配置ipv6"><a href="#四、-配置ipv6" class="headerlink" title="四、 配置ipv6"></a>四、 配置ipv6</h2><p>首先在ikuai中网络设置-开启IPv6并设置DHCPv6(很简答，选自动获取，傻瓜操作)。</p>
 <p>其次在openwrt中<a target="_blank" rel="noopener" href="https://zhaoshuai.top/2020/08/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E7%9A%84%E4%B8%BB%E6%9C%BA%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE(IPv6%E3%80%81frp%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86)/">IPv6如此设置</a> ， <a href="(https://www.wygdbb.com/2020/09/openwrt-ipv6/)">参考图片，图片里是<code>WAN</code>，但我们是二级路由，所以是<code>LAN</code></a>：</p>
 <ol>
