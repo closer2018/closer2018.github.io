@@ -1,0 +1,730 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="2 操作系统运行环境2.1 处理器2.1.1 处理器的构成与基本工作方式处理器一般由运算器、控制器、一系列的寄存器以及高速缓存构成。">
+  <meta name="author" content="closer">
+  <meta name="keywords" content="">
+  
+  <title>操作系统 - closer的自留地</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/androidstudio.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.zsaa.top","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"608f2baddd361128381ad2bf9377bf89","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz","app_key":"HLUt5izfTvTcbEbOrA59W92a","server_url":"https://yzlqntmw.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Hello</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/mydefault.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="操作系统">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-14 21:25" pubdate>
+        2021年10月14日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      62
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">操作系统</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年10月17日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="2-操作系统运行环境"><a href="#2-操作系统运行环境" class="headerlink" title="2 操作系统运行环境"></a>2 操作系统运行环境</h2><h3 id="2-1-处理器"><a href="#2-1-处理器" class="headerlink" title="2.1 处理器"></a>2.1 处理器</h3><h4 id="2-1-1-处理器的构成与基本工作方式"><a href="#2-1-1-处理器的构成与基本工作方式" class="headerlink" title="2.1.1 处理器的构成与基本工作方式"></a>2.1.1 处理器的构成与基本工作方式</h4><p>处理器一般由运算器、控制器、一系列的寄存器以及高速缓存构成。</p>
+<span id="more"></span>
+
+<h5 id="2-1-1-1-寄存器"><a href="#2-1-1-1-寄存器" class="headerlink" title="2.1.1.1 寄存器"></a>2.1.1.1 寄存器</h5><p>处理器中通常有两类寄存器：用户可见寄存器、控制和状态寄存器。</p>
+<p>其中用户可见寄存器一般包括：数据寄存器、地址寄存器、条件码寄存器。</p>
+<p>常见的控制和状态寄存器有：程序计数器(Program Counter，PC)、指令寄存器（Instruction Register，IR）、程序状态字（Program Status Word，PSW）。</p>
+<h4 id="2-1-2-特权指令和非特权指令"><a href="#2-1-2-特权指令和非特权指令" class="headerlink" title="2.1.2 特权指令和非特权指令"></a>2.1.2 特权指令和非特权指令</h4><p>特权指令是指那些只能由操作系统使用的指令。用户只能使用非特权指令。</p>
+<p>如果一个用户程序需要使用特权指令，一般将引起一次处理器状态的切换，通过移交处理权给操作系统中一段特殊代码，这个过程称为陷入（Trap）。</p>
+<h4 id="2-1-3-处理器工作状态"><a href="#2-1-3-处理器工作状态" class="headerlink" title="2.1.3 处理器工作状态"></a>2.1.3 处理器工作状态</h4><h5 id="2-1-3-1-分为管态和目态"><a href="#2-1-3-1-分为管态和目态" class="headerlink" title="2.1.3.1 分为管态和目态"></a>2.1.3.1 分为管态和目态</h5><p>处理器处于管态时可以使用全部指令（包括特权和非特权）。目态又称用户态，只有非特权指令能执行。</p>
+<h5 id="2-1-3-2-处理器工作状态的转换"><a href="#2-1-3-2-处理器工作状态的转换" class="headerlink" title="2.1.3.2 处理器工作状态的转换"></a>2.1.3.2 处理器工作状态的转换</h5><ol>
+<li>唯一的途径是通过中断</li>
+<li>通过设置PSW指令（修改程序状态字），实现从操作系统向用户程序的转换。</li>
+</ol>
+<h4 id="2-1-4-程序状态字（PSW）"><a href="#2-1-4-程序状态字（PSW）" class="headerlink" title="2.1.4 程序状态字（PSW）"></a>2.1.4 程序状态字（PSW）</h4><p>用一个专门的寄存器来指示处理器状态，成为程序状态字（PSW）；用程序计数器（PC）这个专门的寄存器来指示下一条要执行的指令。</p>
+<h3 id="2-2-计算机系统硬件部件"><a href="#2-2-计算机系统硬件部件" class="headerlink" title="2.2 计算机系统硬件部件"></a>2.2 计算机系统硬件部件</h3><p>中央处理器（CPU）能直接访问的唯一的存储空间是内存储器，操作系统本身也存储在内存中并运行。</p>
+<h4 id="2-2-1-存储系统"><a href="#2-2-1-存储系统" class="headerlink" title="2.2.1  存储系统"></a>2.2.1  存储系统</h4><h5 id="2-2-1-1-存储器的类型"><a href="#2-2-1-1-存储器的类型" class="headerlink" title="2.2.1.1 存储器的类型"></a>2.2.1.1 存储器的类型</h5><p>可分为两类：一种是读写型的存储器，另一种是只读型的存储器。</p>
+<p>读写型的存储器常被称为随机访问存储器（Random Access Memory，RAM）。RAM主要用作存储随机存取的程序的数据。</p>
+<p>只读存储器（Read-Only Memory，ROM）使用特殊的方法写入数据。有些也可以用特殊的方法擦去，重新写入。</p>
+<p>存储的最小单位成为“二进位”。存储器的最小编址单位是字节，一个字节包含8个二进位，而2个字节一般称为一个字，4个字节称为双字。</p>
+<h5 id="2-2-1-2-存储器的层次结构"><a href="#2-2-1-2-存储器的层次结构" class="headerlink" title="2.2.1.2 存储器的层次结构"></a>2.2.1.2 存储器的层次结构</h5><p>计算机存储系统的设计主要考虑三个问题：容量、速度和成本。</p>
+<p>从整个系统来看，在计算机系统中的层次化的存储体系是由寄存器、高速缓存、内存储器、硬盘存储器、磁带机和光盘存储器等装置构成的，他们的速度如下：寄存器&gt;高速缓存&gt;内存储器&gt;硬盘存储器&gt;磁带机和光盘存储器。</p>
+<h5 id="2-2-1-3-存储器保护"><a href="#2-2-1-3-存储器保护" class="headerlink" title="2.2.1.3 存储器保护"></a>2.2.1.3 存储器保护</h5><p>界地址寄存器是被广泛使用的一种存储保护技术。</p>
+<p>其方法是在处理器种设置一对界限寄存器来存储用户作业在内存中的上限和下限地址，分别为下限寄存器和上限寄存器。每当处理器访问内存时，硬件自动进行比较，判断是否越界。如果未越界，则按此地址访问内存，否则产生程序中断-越界中断或称为存储保护中断。</p>
+<h4 id="2-2-2-I-O部件"><a href="#2-2-2-I-O部件" class="headerlink" title="2.2.2 I/O部件"></a>2.2.2 I/O部件</h4><h5 id="2-1-2-1-I-O结构"><a href="#2-1-2-1-I-O结构" class="headerlink" title="2.1.2.1 I/O结构"></a>2.1.2.1 I/O结构</h5><p>早期的I/O设备控制器连接CPU，CPU定期轮询各个I/O设备控制器，效率太低，已经淘汰了。</p>
+<h5 id="2-2-2-2-通道"><a href="#2-2-2-2-通道" class="headerlink" title="2.2.2.2 通道"></a>2.2.2.2 通道</h5><p>通道对外部设备实行统一的管理，它代替处理器对I/O操作进行控制，从而使处理器和外部设备可以并行工作。所以通道又称为I/O处理器。</p>
+<p>采用通道这种I/O结构的最大优点是，可以实现中央处理器和各种外部设备并行工作。</p>
+<h5 id="2-2-2-3-DMA技术"><a href="#2-2-2-3-DMA技术" class="headerlink" title="2.2.2.3 DMA技术"></a>2.2.2.3 DMA技术</h5><p>直接存储器访问（Direct Memory Access，DMA）技术通过系统总线中的一个独立控制单元-DMA控制器，自动地控制成块数据在内存和I/O单元之间的传送。</p>
+<p>DMA技术大大提高了处理I/O的效能。</p>
+<h5 id="2-2-2-4-缓冲技术"><a href="#2-2-2-4-缓冲技术" class="headerlink" title="2.2.2.4 缓冲技术"></a>2.2.2.4 缓冲技术</h5><p>缓冲技术是用在外部设备与其他硬件部件之间的一种数据暂存技术，通过设置数据的一个存储区域，称为缓冲区。</p>
+<p>采用缓冲技术最根本的原因是，处理器处理数据速度与设备传输数据速度不相匹配，需要缓冲区缓解其间的速度矛盾。为了提高设备利用率，通常使用单个缓冲区是不够的，可以设置双缓冲区，甚至多缓冲区。</p>
+<h4 id="2-2-3-时钟部件"><a href="#2-2-3-时钟部件" class="headerlink" title="2.2.3 时钟部件"></a>2.2.3 时钟部件</h4><p>时钟一般分成硬件时钟和软件时钟。</p>
+<p>硬件提供的时钟比较少，不能满足要求，所以软件时钟是经常需要的。软件时钟与硬件时钟的同步工作由操作系统负责维护。</p>
+<p>时钟的用途可分为绝对时钟和相对时钟。</p>
+<h3 id="2-3-中断机制"><a href="#2-3-中断机制" class="headerlink" title="2.3 中断机制"></a>2.3 中断机制</h3><p>中断机制是操作系统中极为重要的一个部分。</p>
+<p>由于中断机制的实现必须依靠相关的硬件支持，所有硬件中断装置是操作系统运行环境中一个极为重要的组成部分。</p>
+<p>中断的实现是硬件中断装置和相应的中断处理软件共同完成的。</p>
+<h4 id="2-3-1-中断与异常的概念"><a href="#2-3-1-中断与异常的概念" class="headerlink" title="2.3.1 中断与异常的概念"></a>2.3.1 中断与异常的概念</h4><p>中断是所有要打断处理器的正常工作次序，并要求其去处理某一事件的常用手段。</p>
+<p>中断是由外部事件引发的，而异常则是由正在执行的指令引发的。</p>
+<p>典型的中断包括：时钟中断、输入输出（I/O）中断、控制台中断、硬件故障中断。</p>
+<p>典型的异常包括：程序性中断、访管指令异常（要求操作系统提供系统服务）。</p>
+<h4 id="2-3-2-中断系统"><a href="#2-3-2-中断系统" class="headerlink" title="2.3.2 中断系统"></a>2.3.2 中断系统</h4><p>中断系统分为两大组成部分：中断系统中的硬件中断装置和软件中断处理程序。</p>
+<p>在中断逻辑线路中有若干个专门接受中断信号的触发器，每个触发器称为一个中断位，这些触发器的全体称为中断寄存器，所以中断寄存器是由若干个中断位组成的。</p>
+<p>中断请求的响应机制如下。处理器的控制部件中设有中断信号扫描结构，它在每条指令执行周期的最后时刻扫描中断寄存器，有中断则接受硬件中断装置发来的中断向量代号。</p>
+<p>保存中断点的程序执行上下文环境又称保护现场。</p>
+<p>处理器根据中断向量代号查询中断向量表，获得与该中断源相联系的中断处理程序的入口地址，并将PC置成该地址。随后控制权转移到中断处理程序。</p>
+<p>中断信号的处理可以简单地归纳为：接受和响应中断，保护中断断点现场，分析中断向量，调用中断处理程序，中断处理结束恢复现场，原有程序继续执行。</p>
+<h4 id="2-3-3-中断优先级、中断屏蔽与中断嵌套"><a href="#2-3-3-中断优先级、中断屏蔽与中断嵌套" class="headerlink" title="2.3.3 中断优先级、中断屏蔽与中断嵌套"></a>2.3.3 中断优先级、中断屏蔽与中断嵌套</h4><p>现代的微处理器都提供有多级中断系统，中断信号的级别代表了该中断信号是否具有被优先处理的特权，以及特权的大小。</p>
+<p>属于机器故障中断这一类中断信号是不可屏蔽的。</p>
+<p>中断嵌套即中断按照优先度分级，允许优先级较高的中断打断优先级较低的中断处理过程，于是引起中断处理的嵌套。在中断嵌套中，保护现场的次序，与恢复现场的次序正好相反，应采用堆栈作为现场保护区域。</p>
+<h3 id="2-4-系统调用"><a href="#2-4-系统调用" class="headerlink" title="2.4 系统调用"></a>2.4 系统调用</h3><p>为了从操作系统中获得服务，用户程序必须使用系统调用（System Call）。</p>
+<h4 id="2-4-1-系统调用简介"><a href="#2-4-1-系统调用简介" class="headerlink" title="2.4.1 系统调用简介"></a>2.4.1 系统调用简介</h4><p>所谓系统调用，就是用户在程序中调用操作系统所提供的一些子能力。</p>
+<p>系统调用和函数调用的区别：①不同的系统状态，在系统调用中调用程序运行在目态，而被调用程序运行在管态。②状态转换：通过软中断机制由目态转换为管态。③返回问题。优先级高的进程优先执行。④嵌套调用，系统对嵌套深度有一定限制。</p>
+<p>系统调用的分类：①进程控制类系统调用；②文件操作类系统调用；③进程通信类系统调用；④设备管理类系统调用；⑤信息维护类系统调用。</p>
+<p>系统调用命令又称“广义指令”，它扩大了机器的指令系统，增强了处理器功能，为了区别于真实的物理处理器，我们称它为“虚处理器”。</p>
+<p>应用程序接口（Application Programming Interface，API），又称应用编程接口，它是提供给应用程序调用使用的代码。</p>
+<h4 id="2-4-2-系统调用的处理过程"><a href="#2-4-2-系统调用的处理过程" class="headerlink" title="2.4.2 系统调用的处理过程"></a>2.4.2 系统调用的处理过程</h4><p>子啊系统中为控制系统调用服务的机构称为陷入（Trap）或异常处理机构。</p>
+<p>如何实现用户程序和系统程序之间的参数传递？①陷入指令自带参数，指令长度有限，只能带几个参数。②通过通用寄存器传递参数，UNIX类操作系统常用这个办法。③内存中开辟专用堆栈区传递参数。</p>
+<h3 id="2-5-本章小结"><a href="#2-5-本章小结" class="headerlink" title="2.5 本章小结"></a>2.5 本章小结</h3><p>​        操作系统需要硬件运行环境的支持。可以把计算机系统看成一个层次式的结构，硬件系统位于计算机系统中的底层，软件系统分为系统软件、支撑软件和应用软件三个层次，其中操作系统在软件系统的最下层。</p>
+<p>​        处理器由运算器、控制器以及一系列的寄存器构成。最常见的控制寄存器有程序状态字(PSW)。在多用户或多任务的多道程序设计环境中，指令必须区分成特权指令和非特权指令，特权指令是指只能由操作系统使用的指令，用户只能使用非特权指令。操作系统管理程序运行的状态称为管态，一般用户程序运行时的状态称为目态。</p>
+<p>​        半导体存储器可划分为读写型和只读型的存储器。为了简化管理，以块为最小单位分配存储空间。存储系统主要考虑三个问题，容量、速度和成本。提高存储系统效能的关键在于程序的存储访问局部性原理。操作系统必须对内存中的信息加以严格的保护，存储保护机构是操作系统运行环境中的重要部分。在界地址寄存器方法中，设置了一对界地址寄存器存储作业在内存中的下限和上限地址，访问内存时，硬件将被访问的地址与界限寄存器的内容比较以防止越界。</p>
+<p>​        计算机系统中常使用通道以及直接存储器存取(DMA)等1/O技术。通道独立于中央处理器，它代替处理器对外部设备实行统一的管理，从而使处理器和外部设备并行工作，提高多道程序处理的效率。DMA技术由DMA控制器自动控制成块数据在内存和I/O单元之间的传送，提高了处理I/O的效能。缓冲技术是用以缓解处理器处理数据速度与设备传输数据速度不相匹配矛盾的一种数据暂存技术。</p>
+<p>​        计算机系统中的时钟可分为硬件时钟和软件时钟，以及绝对时钟和相对时钟。时钟可防止系统陷入死循环，实现作业按时间片轮转运行，给出正确的时间信号，定时唤醒事先按确定时间执行的事件，记录事项，等等。</p>
+<p>​        中断是指处理器对系统中或系统外发生的异步事件的响应。中断能充分发挥处理器的使用效率，提高系统的实时能力。中断可划分为强迫性中断和自愿性中断。中断系统包括硬件中断装置和中断处理程序。硬件中断装置接收中断信号，并把中断信号寄存在中断寄存器中；处理器的中断扫描机构在每条指令执行周期的最后时刻扫描中断寄存器。在多级中断中，中断的级别的高低标识了中断的紧急或者重要的程度，处理器接收中断优先级为最高的中断；如果有优先级相当的多个中断信号同时到达，可采用固定的优先数或表格轮转法依次处理。可通过对程序状态字PSW中设置中断屏蔽位的方法，以禁止或者允许对某些类别中断的响应。中断事件的处理需要硬件和软件两方面的配合，共同完成分辨和接收中断信号、保护现场、分析中断原因、调用中断处理程序进行处理、处理完毕恢复现场和原有程序继续执行的整个中断处理过程。如果在中断的处理过程中又发生了中断，将引起中断处理的嵌套。</p>
+<p>​        为了从操作系统中获得服务，用户程序必须使用系统调用，系统调用陷入内核并调用操作系统。系统调用和普通函数调用非常相似，二者区别在于，系统调用由操作系统内核实现，运行于管态；而函数调用由函数库或用户自己提供，运行于目态。系统调用是操作系统提供给编程人员的唯一接口。当用户使用操作系统调用时，通过使用访管指令产生中断，把目态切换成管态，并启用操作系统。访管指令包含对应系统调用的功能号。系统设计人员还必须为实现各种系统调用功能的子程序编造入口地址表，每个入口地址都与相应的系统程序名对应起来。然后，陷入处理程序把陷入指令中所包含的功能号与该入口地址表中的有关项对应起来，从而由系统调用功能号驱动有关子程序执行。当有关工作完成之后，在系统调用后面的指令把控制权返回给用户程序，系统调用的执行结果也要以参数形式返回给用户程序，可通过指令自带、寄存器、内存中专门的堆栈来传递。</p>
+<h2 id="3-进程与线程"><a href="#3-进程与线程" class="headerlink" title="3 进程与线程"></a>3 进程与线程</h2><p>为了能够从技术上较为准确地描述正在运行、将要运行或者刚刚退出运行的各个程序的执行代码、数据以及所需的资源信息等，人们引进了进程(Process)这个概念。</p>
+<h3 id="3-1-多道程序设计"><a href="#3-1-多道程序设计" class="headerlink" title="3.1 多道程序设计"></a>3.1 多道程序设计</h3><h4 id="3-1-1-程序的顺序执行"><a href="#3-1-1-程序的顺序执行" class="headerlink" title="3.1.1 程序的顺序执行"></a>3.1.1 程序的顺序执行</h4><p>把一个具有独立功能的程序独占处理器直到得到最终结果的过程称为程序的顺序执行。</p>
+<p>程序的顺序执行具有如下特点。1.顺序性；2.封闭性；3.程序执行结果的确定性；4.程序执行结果的可再现性。</p>
+<p>程序的顺序性和封闭性是一切顺序程序所应具有的特性。</p>
+<h4 id="3-1-2-程序的并发执行"><a href="#3-1-2-程序的并发执行" class="headerlink" title="3.1.2 程序的并发执行"></a>3.1.2 程序的并发执行</h4><p>程序并发执行，是指两个或两个以上程序在计算机系统中，同时处于已开始执行且尚未结束的状态。能够参与并发执行的程序称为并发程序。</p>
+<p>程序的并发执行有如下特征。1.在执行期间并发程序相互制约； 2.程序与计算不再一一对应；3.并发程序的执行结果不可再现；4.程序的并行执行与程序的并发执行，这两者存在着差别。前者是指不论从宏观的时间周期上看，还是从微观上看，若干程序确实在同时运行；而程序的并发执行，如果在单处理器系统中，它们在宏观上是同时进行的，但在微观上，这些程序仍然是顺序执行的。</p>
+<h4 id="3-1-3-多道程序设计"><a href="#3-1-3-多道程序设计" class="headerlink" title="3.1.3 多道程序设计"></a>3.1.3 多道程序设计</h4><p>为了提高计算机系统中各种资源的利用效率，缩短进程的周转时间，在现代计算机中广泛采用多道程序技术，使多种硬件资源能并行工作。</p>
+<p>通常采用并行操作技术，使系统的各种硬件资源尽量做到并行工作。</p>
+<p>多道程序设计，就是允许多个程序同时进入内存并运行。多道程序设计是操作系统所采用的最基本、最重要的技术，其根本目的是提高整个系统的效率。</p>
+<p>衡量系统效率的尺度是系统吞吐量。所谓吞吐量是指单位时间内系统所处理进程(程序)的道数(数量)。</p>
+<p>多道程序设计改善了各种资源的使用情况，从而增加了吞吐量，提高了系统效率，但也带来了资源竞争。因此，在实现多道程序设计时，必须协调好资源使用者与被使用资源之间的关系。</p>
+<p>多道程序设计环境具有以下特点。(1)独立性。(2)随机性。 (3)资源共享性。 </p>
+<p>多道程序设计的缺陷：(1)可能延长程序的执行时间。(2)系统效率的提高有一定限度。</p>
+<h3 id="3-2-进程"><a href="#3-2-进程" class="headerlink" title="3.2 进程"></a>3.2 进程</h3><h4 id="3-2-1-进程的定义"><a href="#3-2-1-进程的定义" class="headerlink" title="3.2.1 进程的定义"></a>3.2.1 进程的定义</h4><p>进程是具有一定独立功能的程序在某个数据集合上的一次运行活动，是系统进行资源分配和调度的一个独立单位。</p>
+<p>从操作系统角度来看，可将进程分为系统进程和用户进程两类。</p>
+<p>进程和程序的联系：程序是构成进程的组成部分之一，一个进程的运行目标是执行它所对应的程序。从静态的角度看，进程是由程序、数据和进程控制块(PCB)三部分组成的。</p>
+<p>进程和程序的区别：程序是静态的，而进程是动态的。 进程是程序的一个执行过程。程序的存在是永久的(这里不讨论人为删除程序等行为)。而进程是为了程序的一次执行而暂时存在的。进程有生命周期，有诞生，亦有消亡。 一个进程可以包括若干程序的执行，而一个程序亦可以产生多个进程。</p>
+<p>一个能够被多个用户同时调用的程序称作是“可再入”的程序。现代的操作系统及编译程序都是属于可再入程序，它们能同时被不同用户调用而形成不同的进程。</p>
+<p>进程具有两个基本属性。1.进程是一个可拥有资源的独立单位；2.进程同时又是一个可以独立调度和分派的基本单位。</p>
+<p>进程具有以下特性。(1)并发性；(2)动态性；(3)独立性；(4)交往性；(5)异步性；(6)结构性。</p>
+<p>一个进程由程序、数据和进程控制块三部分组成。</p>
+<h4 id="3-2-2-进程的状态与转换"><a href="#3-2-2-进程的状态与转换" class="headerlink" title="3.2.2 进程的状态与转换"></a>3.2.2 进程的状态与转换</h4><ol>
+<li>三状态进程模型。运行中的进程可以处于以下三种状态之一：运行、就绪、等待。</li>
+<li>五状态进程模型。1、运行状态（Running）；2、就绪状态（Ready）；3、阻塞状态（Blocked）；4、创建状态（New）；5、结束状态（Exit）。</li>
+<li>七状态进程模型。七状态进程模型把原来的就绪状态和阻塞状态进行细分，增加了就绪挂起和阻塞挂起两个状态。是为了进一步区分进程的地址空间位于内存还是外存。</li>
+</ol>
+<h4 id="3-2-3-进程控制块"><a href="#3-2-3-进程控制块" class="headerlink" title="3.2.3 进程控制块"></a>3.2.3 进程控制块</h4><p>为了便于系统控制和描述进程的活动过程，在操作系统核心中定义了一个专门的数据结构，称为进程控制块(Process Control Block，PCB)。</p>
+<p>操作系统利用PCB来描述进程的基本情况以及进程的运行变化过程。PCB是进程存在的唯一标志。 </p>
+<p>1.进程控制块（PCB）的内容，可以分成调度信息和现场信息两大部分。调度信息供进程调度时使用，描述了进程当前所处的状况，它包括进程名、进程号、地址空间信息、优先级、当前状态、资源清单、“家族”关系、消息队列指针、进程队列指针和当前打开文件等。 现场信息刻画了进程的运行情况，PCB中的现场信息只记录那些可能会被其他进程改变的寄存器。</p>
+<p>2.进程的组成。进程由程序、数据和进程控制块三部分组成。PCB是进程的“灵魂”，由于进程控制块中保存有进程的地址信息，通过PCB可以得到进程程序的存储位置，也可以找到整个进程。程序和数据是进程的“躯体”，程序部分描述了进程要实现的功能，而数据则是程序操作的对象。</p>
+<p>3.进程控制块（PCB）组织方式。 (1)线性方式；(2)索引方式； (3)链接方式。</p>
+<p>4.进程的队列分成三类。(1)就绪队列 ； (2)等待队列； (3)运行队列。</p>
+<p>5.进程队列的组成。进程队列可以用进程控制块的链接来形成。常用链接的方式有两种：单向链接和双向链接。</p>
+<h4 id="3-2-4-进程控制"><a href="#3-2-4-进程控制" class="headerlink" title="3.2.4 进程控制"></a>3.2.4 进程控制</h4><p>进程控制是指对进程在整个生命周期中各种状态之间的转换进行有效的控制。</p>
+<p>进程控制是通过进程控制原语来实现的。所谓原语，是由若干条指令所组成的一个指令序列，用来实现某个特定的操作功能。</p>
+<p>原语是操作系统核心(由一组程序模块所组成的、完成操作系统中基本功能)的一个组成部分。原语必须在管态下执行，并且常驻内存。</p>
+<p>原语和系统调用都可以被进程所调用，两者差别在于原语有不可中断性，它是通过在其执行过程中关闭中断实现的，原语往往是被系统进程所调用。</p>
+<p>用于进程控制的原语一般有：创建进程、撤销进程、挂起进程、激活进程、阻塞进程、唤醒进程以及改变进程优先级等。</p>
+<h3 id="3-3-线程"><a href="#3-3-线程" class="headerlink" title="3.3 线程"></a>3.3 线程</h3>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/06/20/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/Linux%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E5%A4%87%E5%BF%98%E6%89%8B%E5%86%8C/">
+                        <span class="hidden-mobile">Linux命令速查备忘手册</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
+          app_key: "HLUt5izfTvTcbEbOrA59W92a",
+          placeholder: "畅所欲言...",
+          path: window.location.pathname,
+          avatar: "robohash",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-3" style="width:355.4px; height:200px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        苏ICP备20032307号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32020602001023"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>苏公网安备 32020602001023号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
