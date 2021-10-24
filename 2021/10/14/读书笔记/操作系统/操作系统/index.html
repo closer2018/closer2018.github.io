@@ -14,7 +14,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="2 操作系统运行环境2.1 处理器2.1.1 处理器的构成与基本工作方式处理器一般由运算器、控制器、一系列的寄存器以及高速缓存构成。">
+  <meta name="description" content="二、 操作系统运行环境2.1 处理器2.1.1 处理器的构成与基本工作方式处理器一般由运算器、控制器、一系列的寄存器以及高速缓存构成。">
   <meta name="author" content="closer">
   <meta name="keywords" content="">
   
@@ -197,7 +197,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      8.8k 字
+      11.5k 字
     </span>
   
 
@@ -207,7 +207,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      91
+      120
        分钟
     </span>
   
@@ -249,12 +249,12 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年10月20日 晚上
+                  本文最后更新于：2021年10月24日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="2-操作系统运行环境"><a href="#2-操作系统运行环境" class="headerlink" title="2 操作系统运行环境"></a>2 操作系统运行环境</h2><h3 id="2-1-处理器"><a href="#2-1-处理器" class="headerlink" title="2.1 处理器"></a>2.1 处理器</h3><h4 id="2-1-1-处理器的构成与基本工作方式"><a href="#2-1-1-处理器的构成与基本工作方式" class="headerlink" title="2.1.1 处理器的构成与基本工作方式"></a>2.1.1 处理器的构成与基本工作方式</h4><p>处理器一般由运算器、控制器、一系列的寄存器以及高速缓存构成。</p>
+              <h2 id="二、-操作系统运行环境"><a href="#二、-操作系统运行环境" class="headerlink" title="二、 操作系统运行环境"></a>二、 操作系统运行环境</h2><h3 id="2-1-处理器"><a href="#2-1-处理器" class="headerlink" title="2.1 处理器"></a>2.1 处理器</h3><h4 id="2-1-1-处理器的构成与基本工作方式"><a href="#2-1-1-处理器的构成与基本工作方式" class="headerlink" title="2.1.1 处理器的构成与基本工作方式"></a>2.1.1 处理器的构成与基本工作方式</h4><p>处理器一般由运算器、控制器、一系列的寄存器以及高速缓存构成。</p>
 <span id="more"></span>
 
 <h5 id="2-1-1-1-寄存器"><a href="#2-1-1-1-寄存器" class="headerlink" title="2.1.1.1 寄存器"></a>2.1.1.1 寄存器</h5><p>处理器中通常有两类寄存器：用户可见寄存器、控制和状态寄存器。</p>
@@ -319,7 +319,7 @@
 <p>​        计算机系统中的时钟可分为硬件时钟和软件时钟，以及绝对时钟和相对时钟。时钟可防止系统陷入死循环，实现作业按时间片轮转运行，给出正确的时间信号，定时唤醒事先按确定时间执行的事件，记录事项，等等。</p>
 <p>​        中断是指处理器对系统中或系统外发生的异步事件的响应。中断能充分发挥处理器的使用效率，提高系统的实时能力。中断可划分为强迫性中断和自愿性中断。中断系统包括硬件中断装置和中断处理程序。硬件中断装置接收中断信号，并把中断信号寄存在中断寄存器中；处理器的中断扫描机构在每条指令执行周期的最后时刻扫描中断寄存器。在多级中断中，中断的级别的高低标识了中断的紧急或者重要的程度，处理器接收中断优先级为最高的中断；如果有优先级相当的多个中断信号同时到达，可采用固定的优先数或表格轮转法依次处理。可通过对程序状态字PSW中设置中断屏蔽位的方法，以禁止或者允许对某些类别中断的响应。中断事件的处理需要硬件和软件两方面的配合，共同完成分辨和接收中断信号、保护现场、分析中断原因、调用中断处理程序进行处理、处理完毕恢复现场和原有程序继续执行的整个中断处理过程。如果在中断的处理过程中又发生了中断，将引起中断处理的嵌套。</p>
 <p>​        为了从操作系统中获得服务，用户程序必须使用系统调用，系统调用陷入内核并调用操作系统。系统调用和普通函数调用非常相似，二者区别在于，系统调用由操作系统内核实现，运行于管态；而函数调用由函数库或用户自己提供，运行于目态。系统调用是操作系统提供给编程人员的唯一接口。当用户使用操作系统调用时，通过使用访管指令产生中断，把目态切换成管态，并启用操作系统。访管指令包含对应系统调用的功能号。系统设计人员还必须为实现各种系统调用功能的子程序编造入口地址表，每个入口地址都与相应的系统程序名对应起来。然后，陷入处理程序把陷入指令中所包含的功能号与该入口地址表中的有关项对应起来，从而由系统调用功能号驱动有关子程序执行。当有关工作完成之后，在系统调用后面的指令把控制权返回给用户程序，系统调用的执行结果也要以参数形式返回给用户程序，可通过指令自带、寄存器、内存中专门的堆栈来传递。</p>
-<h2 id="3-进程与线程"><a href="#3-进程与线程" class="headerlink" title="3 进程与线程"></a>3 进程与线程</h2><p>为了能够从技术上较为准确地描述正在运行、将要运行或者刚刚退出运行的各个程序的执行代码、数据以及所需的资源信息等，人们引进了进程(Process)这个概念。</p>
+<h2 id="三、-进程与线程"><a href="#三、-进程与线程" class="headerlink" title="三、 进程与线程"></a>三、 进程与线程</h2><p>为了能够从技术上较为准确地描述正在运行、将要运行或者刚刚退出运行的各个程序的执行代码、数据以及所需的资源信息等，人们引进了进程(Process)这个概念。</p>
 <h3 id="3-1-多道程序设计"><a href="#3-1-多道程序设计" class="headerlink" title="3.1 多道程序设计"></a>3.1 多道程序设计</h3><h4 id="3-1-1-程序的顺序执行"><a href="#3-1-1-程序的顺序执行" class="headerlink" title="3.1.1 程序的顺序执行"></a>3.1.1 程序的顺序执行</h4><p>把一个具有独立功能的程序独占处理器直到得到最终结果的过程称为程序的顺序执行。</p>
 <p>程序的顺序执行具有如下特点。1.顺序性；2.封闭性；3.程序执行结果的确定性；4.程序执行结果的可再现性。</p>
 <p>程序的顺序性和封闭性是一切顺序程序所应具有的特性。</p>
@@ -436,7 +436,55 @@
 <p>​    线程是进程中的一个实体，是处理器调度和分派的基本单位。线程只拥有少量在运行中必不可少的资源，但共享所属进程所拥有的全部资源。线程可以提高系统内程序并发执行的级别，进一步提高系统效率。 </p>
 <p>​    进程调度的任务是是记录系统中所有进程的执行状况，根据一定的调度算法，从就绪队列中选出一个进程，把处理器分配给它。处理器方式有不可抢占式和抢占式。进程调度算法的任务是对各个就绪的进程进行处理器分配，以达到预定的进程调度目标，算法应该合理、有效，尽可能提高资源利用率，并减少处理器空闲。常用的算法有先来先服务算法、时间片轮转算法、最短进程优先算法、最高响应比优先算法、最高优先级算法和多级队列反馈法等。选择进程调度算法时应该考虑处理器利用率、吞吐量、等待时间和响应时间等因素，并确定优先考虑的指标，在此基础上对各种算法进行评估，选出合适的算法。</p>
 <p>​    为了提高系统运行效率、保护系统的关键部分，把支持系统运行的各种基本操作和基础功能的一组程序模块集中安排，形成系统内核。一般而言，内核提供中断处理、进程同步与互斥、进程调度、控制与通信、存储管理的基本操作以及时钟管理等。内核只占整个操作系统代码中的一小部分，是最接近裸机的部分，内核是进程赖以活动的基础，内核的功能通过执行原语操作来实现。</p>
+<h2 id="四、-进程同步与互斥"><a href="#四、-进程同步与互斥" class="headerlink" title="四、 进程同步与互斥"></a>四、 进程同步与互斥</h2><h3 id="4-1-进程间相互作用"><a href="#4-1-进程间相互作用" class="headerlink" title="4.1 进程间相互作用"></a>4.1 进程间相互作用</h3><p>在逻辑上具有某种联系的进程称为相关进程，在逻辑上没有任何联系的进程称为无关进程。</p>
+<p>在并发程序中共享了公共变量，使得程序的计算结果与并发程序执行的速度有关，这种错误往往与时间有关，称为“与时间有关的错误”。</p>
+<h3 id="4-2-进程的同步与互斥"><a href="#4-2-进程的同步与互斥" class="headerlink" title="4.2 进程的同步与互斥"></a>4.2 进程的同步与互斥</h3><p>进程的同步是指进程之间一种直接的协同工作关系，一些进程相互合作，共同完成一项任务。进程之间的同步也是进程间的一种直接制约关系。能实现进程同步的机制称为“同步机制”。</p>
+<p>我们把一个时间段内只允许一个进程使用的资源称为临界资源。许多物理设备（比如摄像头、打印机）都属于临界资源。此外还有许多变量、数据、内存缓冲区等都属于临界资源。</p>
+<p>对临界资源的访问，必须互斥地进行。互斥，亦称间接制约关系。临界资源一次只为一个进程服务，各进程间只能互斥的使用临界资源，这种关系就是进程的互斥。</p>
+<p>为了实现对临界资源的互斥访问，同时保证系统整体性能，需要遵循以下原则：</p>
+<ol>
+<li>有空让进。临界区空闲时，可以允许一个请求进入临界区的进程立即进入临界区；</li>
+<li>无空等待。当已有进程进入临界区时，其他试图进入临界区的进程必须等待；</li>
+<li>多中择一。当多个进程要求进入临界区，只能让其中一个进入临界区，其他进程必须等待；</li>
+<li>有限等待。对请求访问的进程，应保证能在有限时间内进入临界区（保证不会饥饿）；</li>
+<li>让权等待。当进程不能进入临界区时，应立即释放处理机，防止进程忙等待。</li>
+</ol>
+<h3 id="4-3-信号量及P、V操作"><a href="#4-3-信号量及P、V操作" class="headerlink" title="4.3 信号量及P、V操作"></a>4.3 信号量及P、V操作</h3><p>整型信号量：①用一个整数型变量作为信号量，数值表示某种资源数；②整型信号量与普通整型变量的区别：对信号量只能执行初始化、P、V三种操作；③整型信号量存在的问题：不满足让权等待原则</p>
+<p>记录型信号量（一个整型变量附加一个队列）：①S.value表示某种资源数，S.L指向等待该资源的队列；②P操作中，一定是先S.value–，之后可能需要执行block原语；③V操作中，一定是先S.value++，之后可能需要执行 wakeup 原语；④注意：要能够自己推断在什么条件下需要执行blockA或 wakeup；⑤可以用记录型信号量实现系统资源的“申请“和“释放”；⑥可以用记录型信号量实现进程互斥、进程同步</p>
+<blockquote>
+<p>PV操作由P操作原语和V操作原语组成（原语是不可中断的过程），对信号量进行操作，具体定义如下：</p>
+<p>P（S）：①将信号量S的值减1，即S=S-1；</p>
+<p>②如果S&gt;=0，则该进程继续执行；否则该进程置为等待状态，排入等待队列。</p>
+<p>V（S）：①将信号量S的值加1，即S=S+1；</p>
+<p>②如果S&gt;0，则该进程继续执行；否则释放队列中第一个等待信号量的进程。</p>
+<p>PV操作的意义：我们用信号量及PV操作来实现进程的同步和互斥。PV操作属于进程的低级通信。</p>
+</blockquote>
+<h3 id="4-4-经典的进程同步问题"><a href="#4-4-经典的进程同步问题" class="headerlink" title="4.4 经典的进程同步问题"></a>4.4 经典的进程同步问题</h3><h4 id="4-4-1-多个生产者-消费者问题"><a href="#4-4-1-多个生产者-消费者问题" class="headerlink" title="4.4.1 多个生产者-消费者问题"></a>4.4.1 多个生产者-消费者问题</h4><p>生产者和消费者之间存在同步和互斥关系。</p>
+<p>算法如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-comment">//同步问题：1.生产者不能往“满”的缓冲区中放产品，设信号量为empty，初值为k，用于指示缓冲池中空缓冲区数目；2.消费者不能从“空”的缓冲区中取产品。，设置信号量为full，初值为0，用于指示缓冲池中满缓冲区数目。</span><br><span class="hljs-comment">//互斥问题：设信号量为mutex，初值为1，用于实现临界区的互斥。</span><br><br><span class="hljs-comment">//生产者进程P1,P2,....,Pn：</span><br>i=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;<br>    生产产品;<br>    P(empty);<br>    p(mutex);<br>    	往Buffer[i]中放产品;<br>    	i=(i+<span class="hljs-number">1</span>)%k;<br>    V(mutex);<br>    V(full);<br>&#125;;<br><span class="hljs-comment">//消费者进程Q1,Q2,....,Qm：</span><br>j=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;<br>    P(full);<br>    p(mutex);<br>    	往Buffer[j]中取产品;<br>    	j=(j+<span class="hljs-number">1</span>)%k;<br>    V(mutex);<br>    V(full);<br>    消费产品;<br>&#125;; <br>    <br></code></pre></div></td></tr></table></figure>
 
+<p>互斥的P操作一定要在实现同步的P操作之后。也就是一定要先同步P操作，再互斥P操作，否则可能造成“死锁”。</p>
+<p>P、V问题先画图，遵循以下原则：①互斥：在临界区前后分别P、V；②同步：前V后P。</p>
+<h4 id="4-4-2-读者-写者问题"><a href="#4-4-2-读者-写者问题" class="headerlink" title="4.4.2 读者-写者问题"></a>4.4.2 读者-写者问题</h4><p>一个数据对象可以供多个进程共享。需要遵循以下规定：</p>
+<ol>
+<li>多个进程可以同时读文件。</li>
+<li>任一个进程在对文件进行写时，不允许其他进程对文件进行读或写。</li>
+<li>当有进程正在读文件时不允许任何进程去写文件。</li>
+</ol>
+<p>显然，写者与写者互斥；读者与写者互斥，但第一个读者读了文件后，其他读者也可以跟着读，所以，写者与读者间的互斥变成写者与第一个读者之间的互斥。</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-comment">//设read_count=0记录当前正在读的读者进程个数；多个读者访问read_count，需要互斥使用互，设信号量为mutex=1；写者互斥信号量write=1；</span><br><span class="hljs-comment">//为了防止读进程源源不断，产生写进程饥饿，设互斥信号量W=1；</span><br><br><span class="hljs-comment">//写者进程：</span><br><span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;<br>    P(W);<br>    P(write);<br>    	写文件;<br>    V(write);<br>    V(W);<br>&#125;<br><br><span class="hljs-comment">//读者进程：</span><br><span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;<br>    P(W);<br>    P(mutex);<br>    	read_count=read_count+<span class="hljs-number">1</span>;<br>    	<span class="hljs-keyword">if</span>(read_count=<span class="hljs-number">1</span>)<br>            P(write);<br>    V(mutex);<br>    V(W);<br>    	读文件;<br>    P(mutex);<br>    	read_count=read_count<span class="hljs-number">-1</span>;<br>    	<span class="hljs-keyword">if</span>(read_count=<span class="hljs-number">0</span>)<br>            V(write);<br>    V(mutex);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="4-4-3-吸烟者问题"><a href="#4-4-3-吸烟者问题" class="headerlink" title="4.4.3 吸烟者问题"></a>4.4.3 吸烟者问题</h4><p><img src="%5C4.4.3.png" srcset="/img/loading.gif" lazyload alt="4.4.3"></p>
+<h3 id="4-5-管程"><a href="#4-5-管程" class="headerlink" title="4.5 管程"></a>4.5 管程</h3><p>为什么要引入管程?解决信号量机制易读性差、程序不利于维护和修改、易出错的问题。</p>
+<p>管程的组成：1.共享数据结构；2.对数据结构初始化的语句；3.一组用来访问数据结构的过程（函数）。</p>
+<p>管程的重要特征：1.各外部进程/线程只能通过管程提供的特定“入口”才能访问共享数据；2.每次仅允许一个进程在管程内执行某个内部过程。</p>
+<h3 id="4-6-进程通信"><a href="#4-6-进程通信" class="headerlink" title="4.6 进程通信"></a>4.6 进程通信</h3><p>进程之间的大量通信有三类解决方案：1、共享内存；2.消息机制；3.通过共享文件即管道通信。</p>
+<h3 id="4-7-本章小结"><a href="#4-7-本章小结" class="headerlink" title="4.7 本章小结"></a>4.7 本章小结</h3><p>并发进程相互之间可能是无关的，也可能是相关的。如果一个进程的执行依赖其他进程的进展，或者一个进程的执行可能影响其他进程的执行结果，则这些并发进程是相关的。由于在并发程序中存在共享公共变量，使得程序的计算结果与并发程序执行的时间有关，这种“与时间有关的错误”需要依靠进程的同步处理解决。</p>
+<p>进程同步是指进程之间一种直接的协同工作关系，是一些进程相互合作，共同完成一项任务。在系统中，许多进程需要共享资源，而这些资源往往要求排他性的使用，进程间的这种关系就是进程的互斥。若系统中某些资源一次只允许一个进程使用，则这类资源称为临界资源，而在进程中访问临界资源的程序称为临界区。系统对临界区的使用规则为有空让进、无空等待、多中择一、有限等待和让权等待。</p>
+<p>设信号量为S可取不同的整数值，利用S的取值表示共享资源的使用情况。信号量S的物理含义是某类可用的临界资源。当S&gt;0时，S值的大小表示该类资源可以分配的数量；当S&lt;0时，表示没有可分配的资源数量，其S的绝对值表示排在S信号量的等待队列中进程的数目。对信号量S实施P、V操作的物理含义是，每执行一次P操作，意味着对请求的进程分配到一个资源；每执行一次V操作，意味着进程释放了一个资源。用P、V操作可实现进程之间的互斥和同步。P、V操作在使用时必须成对出现，有一个P操作就一定有一个V操作。P、V操作当为互斥操作时，它们位于同一进程；当为同步操作时，则不在同一进程中出现。生产者——消费者问题和读者——写者问题是进程同步互斥的两个经典例子。</p>
+<p>信号量及P、V操作一种有效处理进程同步互斥问题的机制，但是在使用不正确时会导致一些错误且难以检测出来。为此提出了管程机制。管程定义了一个共享变量的数据结构以及在该数据结构上所执行的一组操作，只有使用这些操作才能修改共享变量。典型的管程设计方案是Hoare管程。</p>
+<p>P、V操作不能承担进程间大量信息的交换任务，解决进程间的大量信息通信的问题有共享内存、消息缓冲通信、信箱通信以及管道通信方式。共享内存方式在相互通信的进程之 间设有一个公共内存区，一组进程向公共内存中写，另一组从公共内存中读，从而实现两组进程间的信息交换。消息缓冲通信方式根据“生产者——消费者”原理，利用内存中公用消息缓冲区实现进程之间的信息交换，为实现消息缓冲通信，要利用发送原语send和接收原语receive。信箱通信方式设立信箱，通过发送信件以及接收回答信件实现进程间通信。管道通信通过连接两个进程之间的一打开的共享文件，进行进程间通信，管道通信的基础是文件系统。</p>
+<h2 id="五、-死锁"><a href="#五、-死锁" class="headerlink" title="五、 死锁"></a>五、 死锁</h2>
             </div>
             <hr>
             <div>
