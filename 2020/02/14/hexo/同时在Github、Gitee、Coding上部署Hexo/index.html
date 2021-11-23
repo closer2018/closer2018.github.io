@@ -15,20 +15,11 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="一、创建托管仓库
+GitHub https://github.com与用户名相同，格式为YouID.github.io
 
+Gitee https://gitee.com与用户名相同，格式为YouID
 
-GitHub https://github.com
-与用户名相同，格式为YouID.github.io
-
-
-Gitee https://gitee.com
-与用户名相同，格式为YouID
-
-
-Coding https://coding.net
-与用户名相同，格式为YouID.coding.me
-
-">
+Coding https://coding.net与用户名相同，格式为YouID.coding.me">
   <meta name="author" content="closer">
   <meta name="keywords" content="">
   
@@ -211,7 +202,7 @@ Coding https://coding.net
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      502 字
+      499 字
     </span>
   
 
@@ -268,57 +259,39 @@ Coding https://coding.net
               </p>
             
             <div class="markdown-body">
-              <h2 id="一、创建托管仓库">一、创建托管仓库</h2>
-<ul>
-<li>
-<p>GitHub <a target="_blank" rel="noopener" href="https://github.com">https://github.com</a><br>
-与用户名相同，<a target="_blank" rel="noopener" href="http://xn--YouID-dq1hm91h5lp.github.io">格式为YouID.github.io</a></p>
+              <h2 id="一、创建托管仓库"><a href="#一、创建托管仓库" class="headerlink" title="一、创建托管仓库"></a>一、创建托管仓库</h2><ul>
+<li><p>GitHub <a target="_blank" rel="noopener" href="https://github.com/">https://github.com</a><br>与用户名相同，格式为YouID.github.io</p>
 </li>
-<li>
-<p>Gitee <a target="_blank" rel="noopener" href="https://gitee.com">https://gitee.com</a><br>
-与用户名相同，格式为YouID</p>
+<li><p>Gitee <a target="_blank" rel="noopener" href="https://gitee.com/">https://gitee.com</a><br>与用户名相同，格式为YouID</p>
 </li>
-<li>
-<p>Coding <a target="_blank" rel="noopener" href="https://coding.net">https://coding.net</a><br>
-与用户名相同，<a target="_blank" rel="noopener" href="http://xn--YouID-dq1hm91h5lp.coding.me">格式为YouID.coding.me</a></p>
-</li>
+<li><p>Coding <a target="_blank" rel="noopener" href="https://coding.net/">https://coding.net</a><br>与用户名相同，格式为YouID.coding.me</p>
+<span id="more"></span></li>
 </ul>
-<span id="more"></span>
-<h2 id="二、在Github、Gitee、Coding上添加SSH，并push">二、在Github、Gitee、Coding上添加SSH，并push</h2>
-<ol>
+<h2 id="二、在Github、Gitee、Coding上添加SSH，并push"><a href="#二、在Github、Gitee、Coding上添加SSH，并push" class="headerlink" title="二、在Github、Gitee、Coding上添加SSH，并push"></a>二、在Github、Gitee、Coding上添加SSH，并push</h2><ol>
 <li>获取id_rsa.pub文件内的公匙;具体如何获取请百度<code>id_rsa.pub</code></li>
 <li>在 Github、Gitee、Coding平台 - 设置 - 添加SSH Keys。</li>
 <li>将博客分支master和分支hexo里的内容push到仓库，并设定hexo为主分支（hexo分支的好处请参考<a target="_blank" rel="noopener" href="https://closer_laps.gitee.io/2019/12/09/hexo/hexo%20%E5%A4%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8A%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2/"> hexo 多客户端上更新博客</a>）。</li>
 </ol>
-<h2 id="三、开启Pages服务并绑定域名">三、开启Pages服务并绑定域名</h2>
-<ul>
+<h2 id="三、开启Pages服务并绑定域名"><a href="#三、开启Pages服务并绑定域名" class="headerlink" title="三、开启Pages服务并绑定域名"></a>三、开启Pages服务并绑定域名</h2><ul>
 <li>GitHub 进入托管的仓库 -&gt; Settings -&gt; Options 往下拉-&gt;GitHub Pages</li>
 <li>Gitee 进入托管的仓库 -&gt; 服务-&gt; Gitee Pages (绑定域名需要升级Gitee Pro，普通版每次部署更新需要手动点更新！！！)</li>
 <li>Coding 进入托管的仓库 -&gt; Pages服务 -&gt; 设置</li>
 </ul>
-<h2 id="四、Hexo推送设置">四、Hexo推送设置</h2>
-<p>在博客根目录下，打开<code>_config.yml</code>,deploy设置如下所示</p>
+<h2 id="四、Hexo推送设置"><a href="#四、Hexo推送设置" class="headerlink" title="四、Hexo推送设置"></a>四、Hexo推送设置</h2><p>在博客根目录下，打开<code>_config.yml</code>,deploy设置如下所示</p>
 <figure class="highlight yml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yml"><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repo:</span><br>        <span class="hljs-attr">github:</span> <span class="hljs-string">git@github.com:YouID/YouID.github.io.git</span><br>        <span class="hljs-attr">gitee:</span> <span class="hljs-string">git@gitee.com:YouID/YouID.git</span><br>        <span class="hljs-attr">coding:</span> <span class="hljs-string">git@e.coding.net:YouID/YouID.coding.me.git</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">master</span><br></code></pre></div></td></tr></table></figure>
-<h2 id="五：将本地仓库和远程仓库连接">五：将本地仓库和远程仓库连接</h2>
-<ul>
-<li>
-<p>GitHub<br>
-<code>git remote add githuborigin git@github.com:YouID/YouID.github.io.git</code></p>
+
+<h2 id="五：将本地仓库和远程仓库连接"><a href="#五：将本地仓库和远程仓库连接" class="headerlink" title="五：将本地仓库和远程仓库连接"></a>五：将本地仓库和远程仓库连接</h2><ul>
+<li><p>GitHub<br><code>git remote add githuborigin git@github.com:YouID/YouID.github.io.git</code></p>
 </li>
-<li>
-<p>Gitee<br>
-<code>git remote add giteeorigin git@gitee.com:YouID/YouID.git</code></p>
+<li><p>Gitee<br><code>git remote add giteeorigin git@gitee.com:YouID/YouID.git</code>  </p>
 </li>
-<li>
-<p>Coding<br>
-<code>git remote add codingorigin git@e.coding.net:YouID/YouID.coding.me.git</code></p>
+<li><p>Coding<br><code>git remote add codingorigin git@e.coding.net:YouID/YouID.coding.me.git</code></p>
 </li>
 </ul>
 <p>输入<code>git remote -v</code>，成功的话会显示3个你关联的远程库：<code>codingorigin</code>、<code>githuborigin</code>、<code>giteeorigin</code>。如下：</p>
 <figure class="highlight stylus"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stylus">codingorigin    git@e<span class="hljs-selector-class">.coding</span><span class="hljs-selector-class">.net</span>:YouID/YouID<span class="hljs-selector-class">.coding</span><span class="hljs-selector-class">.me</span><span class="hljs-selector-class">.git</span> (fetch)<br>codingorigin    git@e<span class="hljs-selector-class">.coding</span><span class="hljs-selector-class">.net</span>:YouID/YouID<span class="hljs-selector-class">.coding</span><span class="hljs-selector-class">.me</span><span class="hljs-selector-class">.git</span> (push)<br>giteeorigin     git@gitee<span class="hljs-selector-class">.com</span>:YouID/YouID<span class="hljs-selector-class">.git</span> (fetch)<br>giteeorigin     git@gitee<span class="hljs-selector-class">.com</span>:YouID/YouID<span class="hljs-selector-class">.git</span> (push)<br>githuborigin  git@github<span class="hljs-selector-class">.com</span>:YouID/YouID<span class="hljs-selector-class">.github</span><span class="hljs-selector-class">.io</span><span class="hljs-selector-class">.git</span> (fetch)<br>githuborigin  git@github<span class="hljs-selector-class">.com</span>:YouID/YouID<span class="hljs-selector-class">.github</span><span class="hljs-selector-class">.io</span><span class="hljs-selector-class">.git</span> (push)<br></code></pre></div></td></tr></table></figure>
-<h2 id="六、一键部署必杀命令">六、一键部署必杀命令</h2>
-<p><code>git add source/ &amp;&amp; git commit -m &quot;blog update&quot; &amp;&amp; git push githuborigin hexo &amp;&amp; git push giteeorigin hexo &amp;&amp; git push codingorigin hexo &amp;&amp; hexo clean &amp;&amp; hexo g &amp;&amp; hexo d &amp;&amp; exit</code><br>
-把所有命令用<code>&amp;&amp;</code>串起来，有一个失败就会停止；成功，最后一条命令就会退出终端。</p>
+
+<h2 id="六、一键部署必杀命令"><a href="#六、一键部署必杀命令" class="headerlink" title="六、一键部署必杀命令"></a>六、一键部署必杀命令</h2><p><code>git add source/ &amp;&amp; git commit -m &quot;blog update&quot; &amp;&amp; git push githuborigin hexo &amp;&amp; git push giteeorigin hexo &amp;&amp; git push codingorigin hexo &amp;&amp; hexo clean &amp;&amp; hexo g &amp;&amp; hexo d &amp;&amp; exit</code><br>把所有命令用<code>&amp;&amp;</code>串起来，有一个失败就会停止；成功，最后一条命令就会退出终端。</p>
 
             </div>
             <hr>

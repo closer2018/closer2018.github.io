@@ -255,21 +255,17 @@
             
             <div class="markdown-body">
               <p>本文记录如何在树莓派上如何实现反向代理，穿透内网进行远程登录和操作内网主机。本方法也适用于其他 <code>Linux</code> 系统和 <code>mac osx</code> 系统，但目录上有所区别。</p>
-<h2 id="一：-必备条件">一： 必备条件</h2>
-<ol>
+<h2 id="一：-必备条件"><a href="#一：-必备条件" class="headerlink" title="一： 必备条件"></a>一： 必备条件</h2><ol>
 <li>相关linux知识、计算机网络知识。</li>
 <li>相关设备（如树莓派、nas、openwrt），支持IPv6的路由器。</li>
 <li><code>frp</code> 需要 <code>云主机或vps</code>。</li>
 <li>自己的域名，方便访问。</li>
 </ol>
-<h2 id="二：-IPv6-主推荐">二： IPv6(主推荐)</h2>
-<p><strong>需要一个域名和能够支持IPv6的路由器</strong>。这种方法的话只能用支持IPv6的设备进行访问内网设备，现在的手机基本上移动数据都支持IPv6，可以用这个方法，但是如果是WiFi的话，需要路由器开启IPv6，否则无法使用。</p>
-<h3 id="2-1-通过你的域名提供商获取账号密码">2.1 通过你的域名提供商获取账号密码</h3>
-<p>我用的是阿里云域名服务(也可以用<a target="_blank" rel="noopener" href="https://www.pubyun.com/">免费的域名提供商</a>)，阿里云是通过 <code>AccessKey</code> 来控制DDNS服务的，域名请自行购买及配置。</p>
+<h2 id="二：-IPv6-主推荐"><a href="#二：-IPv6-主推荐" class="headerlink" title="二： IPv6(主推荐)"></a>二： IPv6(主推荐)</h2><p><strong>需要一个域名和能够支持IPv6的路由器</strong>。这种方法的话只能用支持IPv6的设备进行访问内网设备，现在的手机基本上移动数据都支持IPv6，可以用这个方法，但是如果是WiFi的话，需要路由器开启IPv6，否则无法使用。</p>
+<h3 id="2-1-通过你的域名提供商获取账号密码"><a href="#2-1-通过你的域名提供商获取账号密码" class="headerlink" title="2.1 通过你的域名提供商获取账号密码"></a>2.1 通过你的域名提供商获取账号密码</h3><p>我用的是阿里云域名服务(也可以用<a target="_blank" rel="noopener" href="https://www.pubyun.com/">免费的域名提供商</a>)，阿里云是通过 <code>AccessKey</code> 来控制DDNS服务的，域名请自行购买及配置。</p>
 <p><a target="_blank" rel="noopener" href="https://ram.console.aliyun.com/manage/ak">登录阿里云控制台获取AccessKey</a></p>
 <p><strong>注意</strong>：提示信息中的云账号AccessKey是您访问阿里云API的密钥，具有该账户完全的权限，请务必妥善保管。请勿通过任何方式（如Github等）将AccessKey公开至外部渠道，以免被恶意利用而造成安全威胁。</p>
-<h3 id="2-2-openwrt上设置动态dns-现改为在ikuai上设置动态域名">2.2 openwrt上设置动态dns(现改为在ikuai上设置动态域名)</h3>
-<ol>
+<h3 id="2-2-openwrt上设置动态dns-现改为在ikuai上设置动态域名"><a href="#2-2-openwrt上设置动态dns-现改为在ikuai上设置动态域名" class="headerlink" title="2.2 openwrt上设置动态dns(现改为在ikuai上设置动态域名)"></a>2.2 openwrt上设置动态dns(现改为在ikuai上设置动态域名)</h3><ol>
 <li>打开openwrt的web端，点击<code>服务</code> -&gt; <code>动态DNS</code> -&gt; 输入 <code>openwrt_ipv6</code> -&gt; <code>添加</code></li>
 <li>点击刚刚添加的<code>openwrt_ipv6</code>后面的<code>修改</code> -&gt; <code>启用</code> -&gt; 查询主机名：<code>你所需要解析的子域名</code> -&gt; ip地址版本：<code>IPv6</code> -&gt; DDNS服务提供商：<code>选择你的域名提供商</code> -&gt; 域名:<code>你所需要解析的子域名</code> -&gt; 用户名：<code>阿里云是AccessKey ID</code> -&gt; 密码：<code>阿里云是AccessKey Secret </code> -&gt; 保存应用。</li>
 <li>如果是用虚拟机安装的openwrt则设置(其他的忽略)：<code>高级设置里</code> -&gt; IP 地址来源 [IPv6]设定为 : 可用的策略。</li>
@@ -278,23 +274,19 @@
 <li>网络 -&gt; 负载均衡 -&gt; 策略 -&gt; 修改-&gt; 备用成员设为 <code>默认(使用主路由器)</code>。</li>
 </ol>
 <p>登录<a target="_blank" rel="noopener" href="https://dns.console.aliyun.com/#/dns/domainList">阿里云的dns解析服务</a>，看看是否解析成功。同时用 <code>你的子域名</code> 使用 <code>ssh登录openwrt</code> 的后台，测试是否生效，不出意外的话，应该成功了。</p>
-<h3 id="2-3-利用socat进行端口转发">2.3 利用socat进行端口转发</h3>
-<h4 id="2-3-1-原理">2.3.1 原理</h4>
-<p>因为IPv6的网络是直连的，不需要路由端口转发。所以需要用socat来进行IPv6到IPv4的端口转发。</p>
+<h3 id="2-3-利用socat进行端口转发"><a href="#2-3-利用socat进行端口转发" class="headerlink" title="2.3 利用socat进行端口转发"></a>2.3 利用socat进行端口转发</h3><h4 id="2-3-1-原理"><a href="#2-3-1-原理" class="headerlink" title="2.3.1 原理"></a>2.3.1 原理</h4><p>因为IPv6的网络是直连的，不需要路由端口转发。所以需要用socat来进行IPv6到IPv4的端口转发。</p>
 <p>解释下IPV6地址的基础知识，用冒号隔开的一共是<strong>8段，每段都有4个字符。前面4段是路由器获取的外面地址。后面4段是路由器分给内部设备的静态地址</strong>。</p>
 <p>例如我的群晖， <code>IPV6</code> 是 <code>2409:abcd:ma23:34c1::1ec6/64</code></p>
 <p>写全就是：<code>2409:abcd:ma23:34c1:0:0:0:1ec6</code></p>
 <p>也就是说我的群晖的后4段就是：<code>0:0:0:1ec6</code>。</p>
 <p>所以，在配置防火墙的时候，该填入:<code>0:0:0:0:0:0:0:1ec6/0:0:0:0:FFFF:FFFF:FFFF:FFFF</code></p>
 <p>上面的意思是，前4段用掩码，后面4段是使用实际的地址。</p>
-<p><img src="https://qnam.smzdm.com/202001/20/5e252d61e87f07323.png_e680.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
-<h4 id="2-3-2-转发操作">2.3.2 转发操作</h4>
-<p>如何访问家庭局域网中存在只能使用IPv4的设备呢？（比如主路由器下有一个设备（192.168.1.10），该设备不支持IPv6，但现在又希望远程访问其管理页面进行配置）可以通过以下步骤进行操作。</p>
+<p><img src="https://qnam.smzdm.com/202001/20/5e252d61e87f07323.png_e680.jpg" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-3-2-转发操作"><a href="#2-3-2-转发操作" class="headerlink" title="2.3.2 转发操作"></a>2.3.2 转发操作</h4><p>如何访问家庭局域网中存在只能使用IPv4的设备呢？（比如主路由器下有一个设备（192.168.1.10），该设备不支持IPv6，但现在又希望远程访问其管理页面进行配置）可以通过以下步骤进行操作。</p>
 <ol>
 <li>系统 -&gt; 软件包 -&gt; 可用软件包 -&gt; 过滤器搜索： <code>socat</code> 和 <code>coreutils-nohup</code> -&gt; <code>安装</code>。</li>
 <li>选择“系统”-“启动项”菜单，切换至“本地启动脚本”选项卡。</li>
-<li>在“exit 0”之前插入如下三条命令，并单击“保存”按钮。
-<ol>
+<li>在“exit 0”之前插入如下三条命令，并单击“保存”按钮。<ol>
 <li><code>Sleep 120</code></li>
 <li><code>nohup socat TCP6-LISTEN:8110,reuseaddr,fork TCP4:192.168.1.10:80&amp;</code></li>
 <li><code>nohup socat UDP6-LISTEN:8110,reuseaddr,fork UDP4:192.168.1.10:80&amp;</code></li>
@@ -303,17 +295,14 @@
 <li><code>nohup</code>的作用是让指令在后台运行，如果不加<code>nohup</code>，则在命令支持后台运行的情况下其会正确执行，如果不支持后台运行，则该命令不会运行。</li>
 <li><code>Sleep 120 </code>指令是防止<code>socat</code>命令运行太早，系统还未启动完成，不具备运行条件。</li>
 <li>重启路由器后即可通过“<code>动态域名:8110</code>”访问IP地址为<code>192.168.1.10</code>的设备。</li>
-<li>如果不想立即重启路由器，可以通过<code>SSH</code>连接路由器，在命令行中输入以下指令完成操作。（该操作成功后，如果路由器重启，设置将不起作用）
-<ol>
+<li>如果不想立即重启路由器，可以通过<code>SSH</code>连接路由器，在命令行中输入以下指令完成操作。（该操作成功后，如果路由器重启，设置将不起作用）<ol>
 <li><code>socat TCP6-LISTEN:8110,reuseaddr,fork TCP4:192.168.1.10:80&amp;</code></li>
 <li><code>socat UDP6-LISTEN:8110,reuseaddr,fork UDP4:192.168.1.10:80&amp;</code></li>
 </ol>
 </li>
 </ol>
-<h3 id="2-4-安全设置">2.4 安全设置</h3>
-<p>为了安全，需要设置ipv6只能访问指定端口。</p>
-<h4 id="2-4-1-更改路由访问端口">2.4.1 更改路由访问端口</h4>
-<p>（1）更改SSH端口</p>
+<h3 id="2-4-安全设置"><a href="#2-4-安全设置" class="headerlink" title="2.4 安全设置"></a>2.4 安全设置</h3><p>为了安全，需要设置ipv6只能访问指定端口。</p>
+<h4 id="2-4-1-更改路由访问端口"><a href="#2-4-1-更改路由访问端口" class="headerlink" title="2.4.1 更改路由访问端口"></a>2.4.1 更改路由访问端口</h4><p>（1）更改SSH端口</p>
 <p>选择“<code>系统</code>”-“<code>管理权</code>”菜单，切换至“<code>SSH访问</code>”选项卡，在“<code>端口</code>”编辑框中输入自己所需的端口即可。（默认：22）</p>
 <p>（2）更改Web端口</p>
 <ol>
@@ -324,35 +313,35 @@
 <li>此时通过“<code>动态域名:指定端口</code>”即可访问web管理页面。</li>
 </ol>
 <p>未完待续。。。</p>
-<h2 id="三：-frp的方法-次推荐">三： frp的方法(次推荐)</h2>
-<p><strong>需要一台有公网IP的云主机或者VPS</strong>，自己的域名，受限于服务器的带宽。</p>
-<h3 id="3-1-云主机上安装一键脚本">3.1 云主机上安装一键脚本</h3>
-<p>直接使用 <code>GitHub</code> 上的一键脚本 <a target="_blank" rel="noopener" href="https://github.com/MvsCode/frps-onekey">MvsCode / frps-onekey</a></p>
-<h4 id="3-1-1-Install（安装）">3.1.1 Install（安装）</h4>
-<p>Aliyun</p>
+<h2 id="三：-frp的方法-次推荐"><a href="#三：-frp的方法-次推荐" class="headerlink" title="三： frp的方法(次推荐)"></a>三： frp的方法(次推荐)</h2><p><strong>需要一台有公网IP的云主机或者VPS</strong>，自己的域名，受限于服务器的带宽。</p>
+<h3 id="3-1-云主机上安装一键脚本"><a href="#3-1-云主机上安装一键脚本" class="headerlink" title="3.1 云主机上安装一键脚本"></a>3.1 云主机上安装一键脚本</h3><p>直接使用 <code>GitHub</code> 上的一键脚本 <a target="_blank" rel="noopener" href="https://github.com/MvsCode/frps-onekey">MvsCode / frps-onekey</a></p>
+<h4 id="3-1-1-Install（安装）"><a href="#3-1-1-Install（安装）" class="headerlink" title="3.1.1 Install（安装）"></a>3.1.1 Install（安装）</h4><p>Aliyun</p>
 <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">wget https://code.aliyun.com/MvsCode/frps-onekey/raw/master/install-frps.sh -O ./install-frps.sh<br>chmod 700 ./install-frps.sh<br>./install-frps.sh install<br></code></pre></div></td></tr></table></figure>
+
 <p>Uninstall（卸载）</p>
 <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">./install-frps.sh uninstall<br></code></pre></div></td></tr></table></figure>
+
 <p>Update（更新）</p>
 <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">./install-frps.sh update<br>Server management（服务管理器）<br>Usage: /etc/init.d/frps &#123;start|stop|restart|status|config|version&#125;<br></code></pre></div></td></tr></table></figure>
-<h4 id="3-1-2-配置">3.1.2 配置</h4>
-<p>执行<code>frps start</code>。</p>
+
+<h4 id="3-1-2-配置"><a href="#3-1-2-配置" class="headerlink" title="3.1.2 配置"></a>3.1.2 配置</h4><p>执行<code>frps start</code>。</p>
 <blockquote>
 <p>2021-2-5运行失败，winscp打开<code>/usr/bin/frps</code>，将里面的<code>$PID</code>全部替换为<code>&quot;$PID&quot;</code>，如果运行成功，则无视。</p>
 </blockquote>
 <figure class="highlight ini"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ini"><span class="hljs-comment"># [common] is integral section</span><br><span class="hljs-section">[common]</span><br><span class="hljs-comment"># 默认即可</span><br><span class="hljs-attr">bind_addr</span> = <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span><br><span class="hljs-attr">bind_port</span> = <span class="hljs-number">5443</span><br><span class="hljs-comment"># frps的默认端口，默认，也可改为你自己的端口</span><br><span class="hljs-attr">kcp_bind_port</span> = <span class="hljs-number">5443</span><br><span class="hljs-comment"># frps网页控制端口</span><br><span class="hljs-attr">dashboard_port</span> = <span class="hljs-number">6443</span><br><span class="hljs-comment"># 网页端口账号和密码</span><br><span class="hljs-attr">dashboard_user</span> = 网页端账号<br><span class="hljs-attr">dashboard_pwd</span> = 网页端密码<br><span class="hljs-comment"># 设置http和https的访问端口，PS如被占用改为其他</span><br><span class="hljs-attr">vhost_http_port</span> = <span class="hljs-number">80</span><br><span class="hljs-attr">vhost_https_port</span> = <span class="hljs-number">443</span><br><span class="hljs-comment"># 默认即可</span><br><span class="hljs-attr">log_file</span> = ./frps.log<br><span class="hljs-comment"># 默认即可</span><br><span class="hljs-attr">log_level</span> = info<br><span class="hljs-attr">log_max_days</span> = <span class="hljs-number">3</span><br><span class="hljs-comment"># 认证密匙，改为自己的token</span><br><span class="hljs-attr">token</span> = 改为自己的token<br><span class="hljs-comment"># 改为你的域名，需要在域名ddns解析里面解析到自己的云主机ip上</span><br><span class="hljs-comment"># 如果要使用二级域名1）在域名控制台，“主机记录”处填写fr，解析到你的服务器ip;2）“主机记录”处填写*.fr，将记录解析到你的服务器ip。</span><br><span class="hljs-attr">subdomain_host</span> = fr.域名.com<br><span class="hljs-comment"># 默认即可</span><br><span class="hljs-comment">#allow_ports = 1-65535</span><br><span class="hljs-comment"># 默认即可</span><br><span class="hljs-attr">max_pool_count</span> = <span class="hljs-number">50</span><br><span class="hljs-comment"># 默认即可</span><br><span class="hljs-attr">tcp_mux</span> = <span class="hljs-literal">true</span><br></code></pre></div></td></tr></table></figure>
+
 <p>配置完成后，可以通过 <code>http://你的云主机ip:6443</code> 或 <code>http://fr.你的域名:6443/</code> 访问你的 <code>frps</code> 控制界面。</p>
 <p>在云主机上通过如下方式控制 <code>frps</code>。</p>
 <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">frps status manage : frps &#123;start|stop|restart|status|config|version&#125;<br>Example:<br>  start: frps start<br>   stop: frps stop<br>restart: frps restart<br></code></pre></div></td></tr></table></figure>
-<h3 id="3-2-本地客户端操作">3.2 本地客户端操作</h3>
-<h4 id="3-2-1-通用方法">3.2.1 通用方法</h4>
-<p>可以下载 <a target="_blank" rel="noopener" href="https://github.com/fatedier/frp">fatedier/frp</a>，使用里面的frpc； 或者 使用 <a target="_blank" rel="noopener" href="https://github.com/dylanbai8/frpspro/raw/master/FrpsPro.zip">windows的便携脚本</a>,配置文件参考→<a target="_blank" rel="noopener" href="https://github.com/fatedier/frp/blob/master/README_zh.md">官方文档</a>。</p>
+
+<h3 id="3-2-本地客户端操作"><a href="#3-2-本地客户端操作" class="headerlink" title="3.2 本地客户端操作"></a>3.2 本地客户端操作</h3><h4 id="3-2-1-通用方法"><a href="#3-2-1-通用方法" class="headerlink" title="3.2.1 通用方法"></a>3.2.1 通用方法</h4><p>可以下载 <a target="_blank" rel="noopener" href="https://github.com/fatedier/frp">fatedier/frp</a>，使用里面的frpc； 或者 使用 <a target="_blank" rel="noopener" href="https://github.com/dylanbai8/frpspro/raw/master/FrpsPro.zip">windows的便携脚本</a>,配置文件参考→<a target="_blank" rel="noopener" href="https://github.com/fatedier/frp/blob/master/README_zh.md">官方文档</a>。</p>
 <p>配置<code>FrpsPro</code>文件夹里面的<code>frpc.ini</code>，配置如下：</p>
 <figure class="highlight ini"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ini"><span class="hljs-comment"># 绑定你的 frps 服务器：</span><br><span class="hljs-comment"># 1.服务器IP地址或域名 2.密钥 3.端口</span><br><span class="hljs-comment"># 如网络卡慢，可删除最后一行注释标签“#”开启kcp传输</span><br><br><span class="hljs-section">[common]</span><br><span class="hljs-attr">server_addr</span> = XXX.XXX.XXX.XXX<br><span class="hljs-attr">token</span> = 你的token<br><span class="hljs-attr">server_port</span> = <span class="hljs-number">5443</span><br><span class="hljs-comment"># protocol = kcp</span><br><br><br><span class="hljs-comment"># http 端口转发设置</span><br><span class="hljs-comment"># custom_domains 可以是域名或者服务器 IP</span><br><span class="hljs-comment"># 如需开启密码访问，删除最后两行注释标签“#”即可</span><br><br><span class="hljs-section">[http_001]</span><br><span class="hljs-attr">type</span> = http<br><span class="hljs-attr">local_port</span> = http访问端口，需要开启<br><span class="hljs-attr">custom_domains</span> = 你的域名<br><span class="hljs-comment"># http_user = admin</span><br><span class="hljs-comment"># http_pwd = admin</span><br><br><br><span class="hljs-comment"># https 端口转发，需要使用时删除掉每行注释标签“#”即可</span><br><br><span class="hljs-comment"># [https_001]</span><br><span class="hljs-comment"># type = https</span><br><span class="hljs-comment"># local_port = 443</span><br><span class="hljs-comment"># custom_domains = super-brain.ml</span><br><br><span class="hljs-comment"># 开启本机文件共享</span><br><br><span class="hljs-section">[share_file]</span><br><span class="hljs-attr">type</span> = tcp<br><span class="hljs-attr">remote_port</span> = <span class="hljs-number">8080</span><br><span class="hljs-attr">plugin</span> = static_file<br><span class="hljs-comment"># 要对外暴露的文件目录</span><br><span class="hljs-attr">plugin_local_path</span> = D:\<br><span class="hljs-attr">plugin_strip_prefix</span> = static<br><span class="hljs-attr">plugin_http_user</span> = 账号<br><span class="hljs-attr">plugin_http_passwd</span> = 密码<br><span class="hljs-comment"># 修改链接内为自己的服务器IP，通过浏览器访问 http://170.130.142.170:8080/static/</span><br><span class="hljs-comment"># 来查看位于 C:\ 目录下的文件，会要求输入已设置好的用户名和密码（如不需要可以注释掉）</span><br><span class="hljs-comment"># 提示：此功能可以用于搭建静态博客</span><br><br><span class="hljs-comment"># 远程桌面，无需修改。如不需要此项可在每行前加“#”号注释掉</span><br><span class="hljs-comment"># 默认远程桌面连接端口为：9090</span><br><br><span class="hljs-section">[remote_desktop]</span><br><span class="hljs-attr">type</span> = tcp<br><span class="hljs-comment"># windows的默认远程桌面端口为3389，可修改</span><br><span class="hljs-attr">local_port</span> = <span class="hljs-number">3389</span><br><span class="hljs-comment"># 默认域名:9090访问frpc，可设置</span><br><span class="hljs-attr">remote_port</span> = <span class="hljs-number">9090</span><br></code></pre></div></td></tr></table></figure>
+
 <p><img src="https://www.moerats.com/usr/picture/Frps_shell(2).png" srcset="/img/loading.gif" lazyload alt="windows的便携脚本"></p>
-<h4 id="3-2-2-openwrt-上插件">3.2.2 openwrt 上插件</h4>
-<p>因为我使用的 <code>openwrt</code> 路由器固件自带 <code>frp 内网穿透</code> 插件，直接在上面设置即可，<code>openwrt</code>上参考配置如下。</p>
+<h4 id="3-2-2-openwrt-上插件"><a href="#3-2-2-openwrt-上插件" class="headerlink" title="3.2.2 openwrt 上插件"></a>3.2.2 openwrt 上插件</h4><p>因为我使用的 <code>openwrt</code> 路由器固件自带 <code>frp 内网穿透</code> 插件，直接在上面设置即可，<code>openwrt</code>上参考配置如下。</p>
 <figure class="highlight yml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yml"><span class="hljs-string">基本设置</span> <span class="hljs-string">→</span> <span class="hljs-string">启用</span><br>   <span class="hljs-string">服务器</span> <span class="hljs-string">→</span> <span class="hljs-string">你的域名或云主机ip</span><br>   <span class="hljs-string">端口</span> <span class="hljs-string">→</span> <span class="hljs-string">上面的bind_port端口，默认5443</span><br>   <span class="hljs-string">令牌</span> <span class="hljs-string">→</span> <span class="hljs-string">上面的token</span><br>   <span class="hljs-string">HTTP服务端口</span> <span class="hljs-string">→</span> <span class="hljs-string">默认80，跟上面一致</span><br>   <span class="hljs-string">HTTPS服务端口</span> <span class="hljs-string">→</span> <span class="hljs-string">默认443，跟上面一致</span><br><br><span class="hljs-string">服务列表</span> <span class="hljs-string">→</span> <span class="hljs-string">添加</span><br>   <span class="hljs-string">开启状态</span> <span class="hljs-string">→</span> <span class="hljs-string">启用</span><br>   <span class="hljs-string">Frp</span> <span class="hljs-string">协议类型</span> <span class="hljs-string">→</span> <span class="hljs-string">HTTP或TCP，网页访问就是http，远程ssh连接就是TCP</span><br>   <span class="hljs-attr">HTTP:</span><br>      <span class="hljs-string">域名类型</span> <span class="hljs-string">→</span> <span class="hljs-string">子域名</span><br>      <span class="hljs-string">子域名</span> <span class="hljs-string">→</span> <span class="hljs-string">如nas,pi,openwrt</span><br>   <span class="hljs-attr">TCP:</span><br>      <span class="hljs-string">远程主机端口</span> <span class="hljs-string">→</span> <span class="hljs-string">随意，需要在云主机安全组开放此端口</span><br>   <span class="hljs-string">内网主机地址</span> <span class="hljs-string">→</span> <span class="hljs-string">你内网提供服务的内网ip</span><br>   <span class="hljs-string">内网主机端口</span> <span class="hljs-string">→</span> <span class="hljs-string">如网页服务一般是80，nas是5000，ssh连接的一般是22</span><br>   <span class="hljs-string">数据加密</span> <span class="hljs-string">→</span> <span class="hljs-string">开启</span><br>   <span class="hljs-string">使用压缩</span> <span class="hljs-string">→</span> <span class="hljs-string">开启</span><br>   <span class="hljs-string">服务备注名</span> <span class="hljs-string">→</span> <span class="hljs-string">唯一即可</span><br></code></pre></div></td></tr></table></figure>
+
 <p>【示例】 远程控制win 10主机(需要打开win 10的远程控制，还要先使用网络唤醒，然后才能远程控制)</p>
 <table>
 <thead>
@@ -365,8 +354,7 @@
 <th>内网主机端口</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>my_pc</td>
 <td>tcp</td>
 <td>域名</td>
@@ -374,23 +362,13 @@
 <td>windows主机内网ip地址</td>
 <td>3389</td>
 </tr>
-</tbody>
-</table>
-<h2 id="四：-反向代理">四： 反向代理</h2>
-<h3 id="4-1-准备工作（局域网主机上操作）">4.1 准备工作（局域网主机上操作）</h3>
-<ol>
-<li>局域网主机生成密匙(如果已经生成，请跳过)<br>
-打开终端，输入。<br>
-<code>ssh-keygen</code> # 然后连续按三次Enter</li>
-<li>输入如下命令：<br>
-<code>ssh-copy-id -i ~/.ssh/id_rsa.pub 中文改为你的云主机用户名@中文改为你的云主机外网IP</code></li>
-<li>使pi默认可以root登录<br>
-<code>sudo passwd root</code> # 修改pi的root密码<br>
-<code>sudo nano /etc/ssh/sshd_config</code><br>
-找到PermitRootLogin这一行，将前面的‘#’去掉，这一行改为<code>PermitRootLogin yes</code>。</li>
+</tbody></table>
+<h2 id="四：-反向代理"><a href="#四：-反向代理" class="headerlink" title="四： 反向代理"></a>四： 反向代理</h2><h3 id="4-1-准备工作（局域网主机上操作）"><a href="#4-1-准备工作（局域网主机上操作）" class="headerlink" title="4.1 准备工作（局域网主机上操作）"></a>4.1 准备工作（局域网主机上操作）</h3><ol>
+<li>局域网主机生成密匙(如果已经生成，请跳过)<br>打开终端，输入。<br><code>ssh-keygen</code> # 然后连续按三次Enter</li>
+<li>输入如下命令：<br><code>ssh-copy-id -i ~/.ssh/id_rsa.pub 中文改为你的云主机用户名@中文改为你的云主机外网IP</code></li>
+<li>使pi默认可以root登录<br><code>sudo passwd root</code> # 修改pi的root密码<br><code>sudo nano /etc/ssh/sshd_config</code><br>找到PermitRootLogin这一行，将前面的‘#’去掉，这一行改为<code>PermitRootLogin yes</code>。</li>
 </ol>
-<h3 id="4-2-反向代理的操作">4.2 反向代理的操作</h3>
-<p>原理图：</p>
+<h3 id="4-2-反向代理的操作"><a href="#4-2-反向代理的操作" class="headerlink" title="4.2 反向代理的操作"></a>4.2 反向代理的操作</h3><p>原理图：</p>
 <table>
 <thead>
 <tr>
@@ -400,8 +378,7 @@
 <th>说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>A</td>
 <td>192.168.1.A</td>
 <td>U_a</td>
@@ -419,47 +396,32 @@
 <td>U_c</td>
 <td>外部的计算机，比如公司的电脑，可以访问B，无法直接访问 A</td>
 </tr>
-</tbody>
-</table>
-<h4 id="4-2-1-设计方案">4.2.1 设计方案</h4>
-<p>在 A 机器上做到 B 机器的反向代理；在 B 机器上做正向代理本地端口转发</p>
-<h4 id="4-2-2环境需求">4.2.2环境需求</h4>
-<ul>
+</tbody></table>
+<h4 id="4-2-1-设计方案"><a href="#4-2-1-设计方案" class="headerlink" title="4.2.1 设计方案"></a>4.2.1 设计方案</h4><p>在 A 机器上做到 B 机器的反向代理；在 B 机器上做正向代理本地端口转发</p>
+<h4 id="4-2-2环境需求"><a href="#4-2-2环境需求" class="headerlink" title="4.2.2环境需求"></a>4.2.2环境需求</h4><ul>
 <li>每台机器上都需要 SSH 客户端</li>
 <li>A、B 两台机器上需要 SSH 服务器端。通常是 openssh-server。</li>
 </ul>
-<p>ubuntu和debian上安装ssh代码如下：<br>
-<code>sudo apt install openssl-server</code></p>
-<h4 id="4-2-3-SSH-参数解释">4.2.3 SSH 参数解释</h4>
-<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">-f 后台运行<br>-C 允许压缩数据<br>-N 不执行任何命令<br>-R 将端口绑定到远程服务器，反向代理<br>-L 将端口绑定到本地客户端，正向代理<br><br>*******************区分大小写啊各位亲******************<br></code></pre></div></td></tr></table></figure>
-<h3 id="4-3-具体步骤">4.3 具体步骤</h3>
-<h4 id="4-3-1-登录云主机上开启自动端口转发【云主机上操作】">4.3.1 登录云主机上开启自动端口转发【云主机上操作】</h4>
-<p><code>sudo vi /etc/ssh/sshd_config</code></p>
+<p>ubuntu和debian上安装ssh代码如下：<br><code>sudo apt install openssl-server</code></p>
+<h4 id="4-2-3-SSH-参数解释"><a href="#4-2-3-SSH-参数解释" class="headerlink" title="4.2.3 SSH 参数解释"></a>4.2.3 SSH 参数解释</h4><figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">-f 后台运行<br>-C 允许压缩数据<br>-N 不执行任何命令<br>-R 将端口绑定到远程服务器，反向代理<br>-L 将端口绑定到本地客户端，正向代理<br><br>*******************区分大小写啊各位亲******************<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="4-3-具体步骤"><a href="#4-3-具体步骤" class="headerlink" title="4.3 具体步骤"></a>4.3 具体步骤</h3><h4 id="4-3-1-登录云主机上开启自动端口转发【云主机上操作】"><a href="#4-3-1-登录云主机上开启自动端口转发【云主机上操作】" class="headerlink" title="4.3.1 登录云主机上开启自动端口转发【云主机上操作】"></a>4.3.1 登录云主机上开启自动端口转发【云主机上操作】</h4><p><code>sudo vi /etc/ssh/sshd_config</code></p>
 <p>找到GatewayPorts把前面的#去掉,后面改成yes，开启自动端口转发</p>
-<h4 id="4-3-2-为-B-机器上端口，用来与-A-机器上的22端口绑定-【云主机上操作】">4.3.2 为 B 机器上端口，用来与 A 机器上的22端口绑定 【云主机上操作】</h4>
-<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><br>`ssh -fCNL <span class="hljs-string">&#x27;*:&lt;port_b2&gt;:localhost:&lt;port_b1&gt;&#x27;</span> localhost`<br><span class="hljs-comment"># 其中&lt;port_b1&gt;跟上面的端口相同</span><br><span class="hljs-comment"># &lt;port_b2&gt;改为和&lt;port_b1&gt;不同的大于1000端口号，如12345</span><br><span class="hljs-comment"># 代码示例：</span><br>ssh -fCNL <span class="hljs-string">&#x27;*:12345:localhost:7280&#x27;</span> localhost<br><br><br><span class="hljs-comment"># 查看ssh进程</span><br>ps aux | grep ssh<br><br><br><span class="hljs-comment"># 将云主机设为开机就正向代理</span><br><span class="hljs-built_in">which</span> rc.local<br><span class="hljs-comment"># cd进入上面的路径,我这边的路径是/etc/</span><br>sudo vi /etc/rc.local<br><br><span class="hljs-comment">#按i编辑，最后一行添加如下代码，:qw保存退出</span><br>sshpass -p <span class="hljs-string">&#x27;云主机密码&#x27;</span> ssh -fCNL <span class="hljs-string">&#x27;*:12345:localhost:7280&#x27;</span> localhost<br></code></pre></div></td></tr></table></figure>
-<h3 id="4-4-autossh-反向代理">4.4 autossh 反向代理</h3>
-<h4 id="4-4-1-局域网主机（树莓派）开启autossh反向代理">4.4.1 局域网主机（树莓派）开启autossh反向代理</h4>
-<p><strong>在上文中，我们已经能够在C 计算机通过 B 计算机访问 A 计算机，但这个代理是暂时的，会出现代理随时断开或者下次重启树莓派又要重新开启，步骤麻烦。因此，我们把方案优化，升级 ssh 的代理工具，使用 autossh 这个工具。</strong></p>
-<p>我们先要安装 autossh,在局域网主机（树莓派）上。<br>
-<code>sudo apt install autossh -y</code><br>
-<code>sudo apt install sshpass -y</code></p>
-<p>然后输入命令绑定<br>
-<code>autossh -M 5678 -NR &lt;port_b1&gt;:localhost:22 云主机用户名@云主机外网IP</code><br>
-代码示例：<br>
-<code>sudo sshpass -p '云主机密码' autossh -M 5678 -CNR 7280:localhost:22 root@123.123.123.123</code></p>
+<h4 id="4-3-2-为-B-机器上端口，用来与-A-机器上的22端口绑定-【云主机上操作】"><a href="#4-3-2-为-B-机器上端口，用来与-A-机器上的22端口绑定-【云主机上操作】" class="headerlink" title="4.3.2 为 B 机器上端口，用来与 A 机器上的22端口绑定 【云主机上操作】"></a>4.3.2 为 B 机器上端口，用来与 A 机器上的22端口绑定 【云主机上操作】</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><br>`ssh -fCNL <span class="hljs-string">&#x27;*:&lt;port_b2&gt;:localhost:&lt;port_b1&gt;&#x27;</span> localhost`<br><span class="hljs-comment"># 其中&lt;port_b1&gt;跟上面的端口相同</span><br><span class="hljs-comment"># &lt;port_b2&gt;改为和&lt;port_b1&gt;不同的大于1000端口号，如12345</span><br><span class="hljs-comment"># 代码示例：</span><br>ssh -fCNL <span class="hljs-string">&#x27;*:12345:localhost:7280&#x27;</span> localhost<br><br><br><span class="hljs-comment"># 查看ssh进程</span><br>ps aux | grep ssh<br><br><br><span class="hljs-comment"># 将云主机设为开机就正向代理</span><br><span class="hljs-built_in">which</span> rc.local<br><span class="hljs-comment"># cd进入上面的路径,我这边的路径是/etc/</span><br>sudo vi /etc/rc.local<br><br><span class="hljs-comment">#按i编辑，最后一行添加如下代码，:qw保存退出</span><br>sshpass -p <span class="hljs-string">&#x27;云主机密码&#x27;</span> ssh -fCNL <span class="hljs-string">&#x27;*:12345:localhost:7280&#x27;</span> localhost<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="4-4-autossh-反向代理"><a href="#4-4-autossh-反向代理" class="headerlink" title="4.4 autossh 反向代理"></a>4.4 autossh 反向代理</h3><h4 id="4-4-1-局域网主机（树莓派）开启autossh反向代理"><a href="#4-4-1-局域网主机（树莓派）开启autossh反向代理" class="headerlink" title="4.4.1 局域网主机（树莓派）开启autossh反向代理"></a>4.4.1 局域网主机（树莓派）开启autossh反向代理</h4><p><strong>在上文中，我们已经能够在C 计算机通过 B 计算机访问 A 计算机，但这个代理是暂时的，会出现代理随时断开或者下次重启树莓派又要重新开启，步骤麻烦。因此，我们把方案优化，升级 ssh 的代理工具，使用 autossh 这个工具。</strong></p>
+<p>我们先要安装 autossh,在局域网主机（树莓派）上。<br><code>sudo apt install autossh -y</code><br><code>sudo apt install sshpass -y</code></p>
+<p>然后输入命令绑定<br><code>autossh -M 5678 -NR &lt;port_b1&gt;:localhost:22 云主机用户名@云主机外网IP</code><br>代码示例：<br><code>sudo sshpass -p &#39;云主机密码&#39; autossh -M 5678 -CNR 7280:localhost:22 root@123.123.123.123</code></p>
 <figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs SH"><span class="hljs-comment">#ssh密码登录</span><br>sudo nano /etc/rc.local<br>sudo sshpass -p <span class="hljs-string">&#x27;云主机密码&#x27;</span> autossh -M 5678 -CNR 7280:localhost:22 root@123.123.123.123<br></code></pre></div></td></tr></table></figure>
+
 <p>就这样开启了反向代理，作用跟前面的一致。但，这里当代理连接断开后，会自动重连，不需要担心，突然连不上自己的 树莓派 了。</p>
 <p>但我们的 pi 重启后，也是要输入上述 autossh 的命令，为了更加自动化，把autossh 加入开机启动里(需要ssh免密码登录)</p>
 <figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs SH"><span class="hljs-comment"># ssh免密码登录</span><br>sudo nano /etc/rc.local<br><br><span class="hljs-comment"># 光标移动到exit 0 的上一行，输入命令。比如花生壳是用phddns.start启动，再这里加入后花生壳就会自动启动了。</span><br>/bin/su -c /usr/bin/autossh -M 5678 -CNR 7280:localhost:22 root@123.123.123.123<br></code></pre></div></td></tr></table></figure>
+
 <p>-M 5678参数，负责通过5678端口监视连接状态，连接有问题时就会自动重连.</p>
-<h4 id="4-4-2-通过其他电脑手机访问局域网主机（树莓派）">4.4.2 通过其他电脑手机访问局域网主机（树莓派）</h4>
-<p><code>ssh -p &lt;port_b2&gt; 你的云主机用户名@你的云主机外网IP</code><br>
-<code>&lt;port_b2&gt;</code>改成上面的端口号，如1234</p>
-<p>代码示例：<br>
-<code>ssh -p12345 root@123.123.123.123</code></p>
-<h2 id="五：-参考文档">五： 参考文档</h2>
-<p><a target="_blank" rel="noopener" href="https://qimajiang.com/2017/02/25/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BA%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%EF%BC%8C%E5%AE%9E%E7%8E%B0%E8%BF%9C%E7%A8%8B%E7%AE%A1%E7%90%86/?tdsourcetag=s_pctim_aiomsg">参考文档</a></p>
+<h4 id="4-4-2-通过其他电脑手机访问局域网主机（树莓派）"><a href="#4-4-2-通过其他电脑手机访问局域网主机（树莓派）" class="headerlink" title="4.4.2 通过其他电脑手机访问局域网主机（树莓派）"></a>4.4.2 通过其他电脑手机访问局域网主机（树莓派）</h4><p><code>ssh -p &lt;port_b2&gt; 你的云主机用户名@你的云主机外网IP</code><br><code>&lt;port_b2&gt;</code>改成上面的端口号，如1234</p>
+<p>代码示例：<br><code>ssh -p12345 root@123.123.123.123</code></p>
+<h2 id="五：-参考文档"><a href="#五：-参考文档" class="headerlink" title="五： 参考文档"></a>五： 参考文档</h2><p><a target="_blank" rel="noopener" href="https://qimajiang.com/2017/02/25/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BA%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%EF%BC%8C%E5%AE%9E%E7%8E%B0%E8%BF%9C%E7%A8%8B%E7%AE%A1%E7%90%86/?tdsourcetag=s_pctim_aiomsg">参考文档</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/36156129">参考文档2</a></p>
 <p><a target="_blank" rel="noopener" href="https://post.smzdm.com/p/a25gmdoq/">参考文档3</a></p>
 <p><a target="_blank" rel="noopener" href="https://post.smzdm.com/p/a78zwo4g/">参考文档4</a></p>
