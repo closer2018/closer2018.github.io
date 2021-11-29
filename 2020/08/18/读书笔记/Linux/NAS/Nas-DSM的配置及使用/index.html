@@ -197,7 +197,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      608 字
+      609 字
     </span>
   
 
@@ -257,7 +257,8 @@
               <blockquote>
 <p>本文记录群晖安装完后的一些基本设置。</p>
 </blockquote>
-<h2 id="一：-获取root权限"><a href="#一：-获取root权限" class="headerlink" title="一： 获取root权限"></a>一： 获取root权限</h2><ol>
+<h2 id="一：-获取root权限">一： 获取root权限</h2>
+<ol>
 <li>NAS_DSM控制面板 -&gt; ‘终端机和SNMP’ ，开启Telnet和SSH功能。</li>
 <li>用ssh软件登录NAS</li>
 <li>输入<code>sudo -i</code>获取权限和设置root密码</li>
@@ -265,7 +266,8 @@
 <li><code>vi /etc/ssh/sshd_config</code>，将<code>#PermitRootLogin prohibit-password</code>改为<code>PermitRootLogin yes</code></li>
 <li><code>service sshd restart</code>或者<code>/etc/initd.d/sshd restart</code>，重启sshd服务。</li>
 </ol>
-<h2 id="二：-安装transmission"><a href="#二：-安装transmission" class="headerlink" title="二： 安装transmission"></a>二： 安装transmission</h2><ol>
+<h2 id="二：-安装transmission">二： 安装transmission</h2>
+<ol>
 <li>套件中心 -&gt; 设置 -&gt; 套件来源 -&gt; 新增 -&gt; <code>http://packages.synocommunity.com</code> -&gt; 确定</li>
 <li>套件中心 -&gt; 社群 -&gt; 安装transmission -&gt; 设置默认下载位置<code>/volume1/download</code>(按需设置) -&gt; 设置账号密码</li>
 <li><a target="_blank" rel="noopener" href="https://github.com/ronggang/transmission-web-control/wiki/Linux-Installation-CN">安装好看的皮肤</a>。用ssh软件登录NAS。</li>
@@ -276,7 +278,8 @@
 <li>transmission里面设置远程端口或frp添加服务列表</li>
 <li>开启NAS防火墙相关端口</li>
 </ol>
-<h2 id="三：-安装kodi组建家庭影院"><a href="#三：-安装kodi组建家庭影院" class="headerlink" title="三： 安装kodi组建家庭影院"></a>三： 安装kodi组建家庭影院</h2><p>首先安装kodi：</p>
+<h2 id="三：-安装kodi组建家庭影院">三： 安装kodi组建家庭影院</h2>
+<p>首先安装kodi：</p>
 <ol>
 <li><a target="_blank" rel="noopener" href="http://mirrors.kodi.tv/releases/android/arm64-v8a/">kodi官网</a>下载安装包，建议下载17.6版本，然后升级高版本。</li>
 <li>电视上安装apk文件</li>
@@ -295,7 +298,7 @@
 <li>共享文件夹 -&gt; 选中编辑 -&gt; NFS权限 -&gt; 新增 -&gt; ip为* -&gt; 权限只读 -&gt; Squash设置为映射root为admin -&gt; 允许来自非特权端口的连接 -&gt; 允许用户访问已装载的子文件夹 -&gt; 确定应用</li>
 </ol>
 <p>登录kodi，在资料库添加NFS，选择NAS的ip，添加视频源。</p>
-<p>字幕插件推荐shooter、opensubtitles.org、subscenne.com三个</p>
+<p>字幕插件推荐shooter、<a target="_blank" rel="noopener" href="http://opensubtitles.org">opensubtitles.org</a>、subscenne.com三个</p>
 
             </div>
             <hr>
