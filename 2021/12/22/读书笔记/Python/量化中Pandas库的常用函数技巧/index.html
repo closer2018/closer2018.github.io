@@ -1,0 +1,757 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="沧海横流，尽显英雄本色；激浊扬清，正是猛士当时">
+  <meta name="author" content="closer">
+  <meta name="keywords" content="">
+  
+  <title>量化中Pandas库的常用函数技巧 - closer的自留地</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/androidstudio.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.zsaa.top","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"608f2baddd361128381ad2bf9377bf89","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz","app_key":"HLUt5izfTvTcbEbOrA59W92a","server_url":"https://yzlqntmw.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Hello</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="量化中Pandas库的常用函数技巧">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-12-22 19:51" pubdate>
+        2021年12月22日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      47
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">量化中Pandas库的常用函数技巧</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年12月22日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>本文借鉴了<a target="_blank" rel="noopener" href="https://www.jianshu.com/u/847f95b81107">刺猬偷腥</a>的部分内容，在此表示感谢分享。</p>
+</blockquote>
+<h1 id="量化中Pandas库的常用函数技巧"><a href="#量化中Pandas库的常用函数技巧" class="headerlink" title="量化中Pandas库的常用函数技巧"></a>量化中Pandas库的常用函数技巧</h1><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="一、-量化中的常用函数"><a href="#一、-量化中的常用函数" class="headerlink" title="一、 量化中的常用函数"></a>一、 量化中的常用函数</h2><p>1、读取csv文件，用<code>pd.read_csv()</code>即可，参数值有：</p>
+<ul>
+<li><code>filepath_or_buffer</code>=‘文件的路径’</li>
+<li><code>sep</code>=’,’,文件中列与列之间的分隔符，一般是逗号或者’\t’</li>
+<li><code>skiprows=1</code>，跳过第一行描述性语句</li>
+<li><code>nrows=5</code>，只读取前5行数据，若不指定，则读取全部数据。调试程序的时候常用，先读一部分，把代码写完再说。</li>
+<li><code>parse_dates=[&#39;交易日期&#39;]</code>，将交易日期这一列的内容转化为日期格式。如果不写这个参数，则导入的该列将是string的格式。</li>
+<li><code>index_col=[&#39;交易日期&#39;]</code>，将交易日期这一列指定为index</li>
+<li><code>usecols=[&#39;交易日期&#39;,&#39;标的名称&#39;]</code>，只读取某些列的数据</li>
+<li><code>error_bad_lines=False</code>, 当遇到低质量的数据，程序会报错，加上这个参数后，程序就会跳过报错的数据行，然后继续读取后面的数据，使程序能够正常运行下去。</li>
+<li><code>na_values = null</code>，将数据中的null全部识别为空值。</li>
+</ul>
+<p>2、看df的形状，用<code>df.shape</code>，返回有多少行多少列。查看有多少行，用<code>df.shape[0]</code>，查看有多少列，用<code>df.shape[1]</code>。</p>
+<p>3、显示每一行或每一列的名字，用<code>df.index</code>或<code>df.columns</code>。在for循环中常用。</p>
+<p>4、查询每一列数据的类型，用<code>df.dtypes</code>。</p>
+<p>5、随机抽几行数据来看看，用<code>df.sample(n=10)</code>。如果想随机抽10%的数据来看看，则可用<code>df.sample(frac=0.1)</code> 。</p>
+<p>6、取消自动换行，取消数据修正，可用<code>pd.set_option(‘extend_frame_repr&#39;, False)</code></p>
+<p>7、设定列宽，可用 <code>pd.set_option(&#39;max_colwidth&#39;, 10)</code>。若要撤销指定列宽，可用<code>pd.reset_option(&#39;max_colwidth&#39;)</code></p>
+<p>8、用<code>label</code>读取行列数据的时候，一般用<code>loc</code>或者<code>iloc</code>，但读取单个元素的时候，建议用<code>at</code>，因为效率更高。</p>
+<p>9、如果不用<code>label</code>来读取，也可以用<code>iloc()</code>函数，根据索引来读取。同样，对单一元素，可以用<code>iat()</code>来指定。</p>
+<p>10、常用的统计函数包括：<code>max()</code>、<code>min()</code>、标准偏差<code>std()</code>、<code>count()</code>、中位数<code>median()</code>、分位数<code>quantile(0.25)</code>等。</p>
+<p>11、位移可用<code>shift()</code>函数。<code>df.shift(1)</code>表示读取上一行的数据，<code>df.shift(-1)</code>表示读取下一行的数据。</p>
+<p>12、删除列，用<code>del df.列</code>，也可用<code>df.drop(列，axis=1,inplace=true)</code>。</p>
+<p>13、求一阶差分可用<code>diff()</code>, <code>diff(-1)</code>表示该行数据与上一行数据相减。</p>
+<p>14、求涨跌幅可用<code>df.pct_change(-1)</code>,表示该行与上一行的变动比例。</p>
+<p>15、计算累加值，可用<code>cum</code>类函数，包括：<code>cumsum()</code>累加值、<code>cumprod()</code>累乘值。前者可用于成交量累加，后者可用于计算资金曲线的复利结果。</p>
+<p>16、对列排序，输出排名，可用<code>df.列.rank(ascending=true, pct=False)</code>, 该函数输出的是排名值，若<code>pct=true</code>则输出排名的百分比。</p>
+<p>17、计算每个元素出现的次数，可用<code>value_counts()</code>。</p>
+<p>18、筛选的方式有多种，例如:</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">df[df[ticker]==<span class="hljs-string">&#x27;002466&#x27;</span>]<br>df[df[ticker].isin([<span class="hljs-string">&#x27;002466&#x27;</span>,<span class="hljs-string">&#x27;002460&#x27;</span>])]<br>df[df[price]&gt;<span class="hljs-number">10.0</span>]  <span class="hljs-comment">#输出价格大于10的行</span><br>df[df.index&lt;=<span class="hljs-string">&#x27;01/01/2018&#x27;</span> &amp; df.index&gt;=<span class="hljs-string">&#x27;01/01/2017&#x27;</span>] <span class="hljs-comment"># &amp;表示并且，|表示或者</span><br></code></pre></div></td></tr></table></figure>
+
+<p>19、缺失值的处理：</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 判断空值：</span><br><br>df.notnull() <br>df.isnull()<br>df[df.列.notnull()]  <span class="hljs-comment">#输出某列非空值的行</span><br><br><span class="hljs-comment">#删除空值：</span><br>df.dropna(how=<span class="hljs-string">&#x27;any&#x27;</span>) <span class="hljs-comment">#只要有空值的行都删除</span><br>df.dropna(how=<span class="hljs-string">&#x27;all&#x27;</span>) <span class="hljs-comment">#全是空值的行才删除 </span><br>df.dropna(subset=[<span class="hljs-string">&#x27;price&#x27;</span>,<span class="hljs-string">&#x27;ticker&#x27;</span>],how=<span class="hljs-string">&#x27;all&#x27;</span>)  <span class="hljs-comment"># subset表示只看某几列，这两列都为空才将行删掉 </span><br><br><span class="hljs-comment">#填充空值：</span><br>df.fillna(value=<span class="hljs-string">&#x27;填充内容&#x27;</span>)<br>df.fillna(method=<span class="hljs-string">&#x27;ffill&#x27;</span>) <span class="hljs-comment"># 向上寻找最近一个非空值进行填充</span><br>df.fillna(method=<span class="hljs-string">&#x27;bfill&#x27;</span>) <span class="hljs-comment"># 向下寻找最近一个非空值进行填充</span><br></code></pre></div></td></tr></table></figure>
+
+<p>20、在使用<code>append()</code>合并两个<code>df</code>时，若两个数据的<code>index</code>有重复，则可使用参数<code>ignore_index=true</code>，这时程序就会忽略两个<code>df</code>的<code>index</code>，并重新建立[0,1,2,3……]的<code>index</code>。</p>
+<p>21、去重可用<code>df.drop_duplicates()</code>, 其参数包含：</p>
+<ul>
+<li>加上<code>subset=[&#39;列1&#39;,&#39;列2&#39;]</code>，即判断某一行的两列数据相同才算重复。如果不加，则需要所有列数据都相同，才认为是重复的行。</li>
+<li><code>keep=&#39;last&#39; or &#39;first’</code>，前者保留最下面一行数据，后者保留最上面一行数据。</li>
+<li><code>keep=false</code>，只要有重复的，全部删掉</li>
+<li><code>inplace=true</code>，是指是否直接在原数据上进行修改，默认为<code>False</code></li>
+</ul>
+<p>22、改列名可用<code>df.rename(columns=&#123;&#125;)</code>, 在大括号中，需要用字面进行改名，<code>key</code>表示原来的名称，<code>value</code>表示改成什么内容。</p>
+<p>23、处理列中的字符串：</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 取每列元素的前2个字符</span><br>df.ticker.<span class="hljs-built_in">str</span>[:<span class="hljs-number">2</span>]<br><span class="hljs-comment"># str的功能还有</span><br>df.ticker.<span class="hljs-built_in">str</span>.upper() <span class="hljs-comment"># 小写字母转大写字母</span><br>df.ticker.<span class="hljs-built_in">str</span>.lower()<br>df.ticker.<span class="hljs-built_in">str</span>.<span class="hljs-built_in">len</span>()<br>df.ticker.<span class="hljs-built_in">str</span>.strip() <span class="hljs-comment"># 移除字符串头尾指定的字符序列，可用lstrip()和rstrip()</span><br>df.ticker.<span class="hljs-built_in">str</span>.contains(<span class="hljs-string">&#x27;sh&#x27;</span>)  <span class="hljs-comment"># 是否包含sh</span><br>df.ticker.<span class="hljs-built_in">str</span>.replace(<span class="hljs-string">&#x27;sh&#x27;</span>,<span class="hljs-string">&#x27;sz&#x27;</span>)  <span class="hljs-comment"># 将sh改为sz、</span><br><br><span class="hljs-comment">#对字符串进行分割</span><br>df.概念.<span class="hljs-built_in">str</span>.split(<span class="hljs-string">&#x27;；&#x27;</span>)[:<span class="hljs-number">3</span>] <span class="hljs-comment">#对概念字符串以；进行分割，变成一个列表，然后显示前三项内容</span><br>df.概念.<span class="hljs-built_in">str</span>.split(<span class="hljs-string">&#x27;；&#x27;</span>，expand=true) <span class="hljs-comment"># 分割后将每个元素变为单独的列</span><br></code></pre></div></td></tr></table></figure>
+
+<p>24、处理时间变量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment">#将字符串变成时间变量</span><br>df.交易日期 = pd.to_datetime(df.交易日期)<br><br><span class="hljs-comment">#处理时间数据</span><br>用dt库，例如df.交易日期.dt.month  <span class="hljs-comment"># 显示对应的月份，day是天数，还可以用hour</span><br>dt.week显示一年当中的第几周<br>dt.dayofyear，显示一年当中的第几天<br>dt.dayofweek，显示一周当中的第几天，0代表星期一，6代表星期天，也可以从dt.weekday表示<br>dt.weekday，直接显示星期几<br>dt.days_in_month，显示该月当中有几天<br>dt.is_month_start，判断是否为月初第一天<br>dt.is_month_end，判断是否为月末最后一天<br><br><span class="hljs-comment">#时间差函数</span><br>len(datetime_series)  <span class="hljs-comment"># 计算交易日天数，比如2021-01-01到2021-01-02是2天。【注意】非日期差</span><br>df.交易日期+pd.Timedelta(days=1)  <span class="hljs-comment"># 加1天，也可能 hours=1，加一个小时</span><br></code></pre></div></td></tr></table></figure>
+
+<p>25、滚动切片可用<code>rolling</code>，例如计算最近5天的价格的平均数。</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">df.移动平均线5 = df.价格.rolling(5).mean()  <span class="hljs-comment"># 过去5天的平均值</span><br>df.价格.rolling(5).max()   <span class="hljs-comment"># 求过去5天的最大值</span><br>df.价格.rolling(5).std()   <span class="hljs-comment"># 求过去5天的标准差</span><br>df.价格.rolling(5).apply() <span class="hljs-comment"># 使用自定义函数</span><br><br><span class="hljs-comment"># 如果要计算从一开始到现在的数据，则用expanding()，expanding是扩大的意思</span><br>df.迄今为止的均值 = df.价格.expanding().mean()<br>df.迄今为止的最大值 = df.价格.expanding().max()<br></code></pre></div></td></tr></table></figure>
+
+<p>26、处理完数据，可用<code>to.csv(&#39;文件名&#39;，index=false, encoding=&#39;gbk&#39;)</code>另存为导出数据。输出时默认会加上从0开始的<code>index</code>，可以取消这个功能。</p>
+<h2 id="二、-重要函数的实际应用"><a href="#二、-重要函数的实际应用" class="headerlink" title="二、 重要函数的实际应用"></a>二、 重要函数的实际应用</h2><h3 id="1、-查看文件路径"><a href="#1、-查看文件路径" class="headerlink" title="1、 查看文件路径"></a>1、 查看文件路径</h3><p>当我们需要导入文件时，如果直接输入当前的绝对路径，那么在更换运行环境时，就需要手动设置新的路径。利用<code>os</code>模块的自带函数，我们可以轻松解决这一问题。</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 当我们需要获取文件的当前地址，可以用 __file__</span><br>current_file = __file__<br><span class="hljs-comment"># 输出结果为： c:\python\code\program.py</span><br><br><span class="hljs-comment"># 要获取根目录的地址，可以输入</span><br>root_path = os.path.abspath(os.path.join(current_file, os.pardir, os.pardir))<br><span class="hljs-comment"># 其中 os.path.abspath(path) 可返回绝对路径</span><br><br>os.path.abspath(os.path.join(current_file, os.pardir, os.pardir))  <br><span class="hljs-comment"># current_file是c:\python\code\program.py，那么os.path.abspath(os.path.join(current_file, os.pardir, os.pardir))是c:\</span><br><span class="hljs-comment"># 获得根目录的变量</span><br>root_path = os.path.abspath(os.path.join(current_file, os.pardir, os.pardir))<br><br><span class="hljs-comment"># 然后可以按需指定目录的地址，例如</span><br>input_data_path = os.path.abspath(os.path.join(root_path, <span class="hljs-string">&#x27;data&#x27;</span>, <span class="hljs-string">&#x27;input_data&#x27;</span>))<br><span class="hljs-comment"># input_data_path 的路径是根目录下的\data\input_data</span><br><span class="hljs-comment"># 绝对地址就是c:\python\\data\input_data</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="2、-调用简单函数的方法"><a href="#2、-调用简单函数的方法" class="headerlink" title="2、 调用简单函数的方法"></a>2、 调用简单函数的方法</h3><p>假设我们写了一个自定义函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">addone</span>(<span class="hljs-params">x</span>):</span><br>      <span class="hljs-keyword">return</span> x+<span class="hljs-number">1</span><br></code></pre></div></td></tr></table></figure>
+
+<p>要调用这个函数时，可使用apply函数，也可以使用lambda函数进行调用。</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#apply的方式</span><br><span class="hljs-built_in">print</span> df[[<span class="hljs-string">&#x27;涨跌幅&#x27;</span>]].apply(addone)<br><br><span class="hljs-comment">#lambda的方式</span><br><span class="hljs-built_in">print</span> df[[<span class="hljs-string">&#x27;涨跌幅&#x27;</span>]].apply(<span class="hljs-keyword">lambda</span> x: x+<span class="hljs-number">1</span>)<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="3、-补全数据"><a href="#3、-补全数据" class="headerlink" title="3、 补全数据"></a>3、 补全数据</h3><p>有时候获得的行情数据，会出现非交易日缺失的情况，这时就需要基于指数交易日的数据，用<code>merge</code>函数对其进行补全。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/8031739-34de276aff6a7ab7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/724/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>还有个参数是<code>indecator</code>，等于<code>True</code>时增加<code>merge</code>列，表明该行数据的出处，源自哪一张表，有<code>left、right、both</code>的区分。</p>
+<p>如果是堆砌，可用<code>concat</code>函数，相关参数如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/8031739-e92d857a88579589.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/722/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br>s1 = pd.Series([<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>],index = [<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>])<br>s2 = pd.Series([<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>],index = [<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-string">&#x27;f&#x27;</span>,<span class="hljs-string">&#x27;e&#x27;</span>])<br>s3 = pd.Series([<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>],index = [<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-string">&#x27;f&#x27;</span>,<span class="hljs-string">&#x27;g&#x27;</span>])<br>series = pd.concat([s1,s2,s3]) <span class="hljs-comment"># 默认并集、纵向连接</span><br>series<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/8031739-8c4ceab07cb11e0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/124/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php">series = pd.concat([s1,s2,s3],ignore_index = <span class="hljs-literal">True</span>)  <span class="hljs-comment"># 生成纵轴上的并集，索引会自动生成新的一列</span><br>series<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/8031739-ccfd25d8e03b7940.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/119/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<figure class="highlight csharp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs csharp">series = pd.concat([s1,s2,s3],axis = <span class="hljs-number">1</span>,<span class="hljs-keyword">join</span> = <span class="hljs-string">&#x27;inner&#x27;</span>)<br>series<br><span class="hljs-meta"># 纵向取交集,注意该方法对对象表中有重复索引时失效</span><br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/8031739-4e9ec87a01dd1f98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/84/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">series = pd.concat([s1,s2,s3],axis = <span class="hljs-number">1</span>,join = <span class="hljs-string">&#x27;outer&#x27;</span>)<br>series<br><span class="hljs-comment"># 横向索引取并集，纵向索引取交集,注意该方法对对象表中有重复索引时失效</span><br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/8031739-d1591bc4b42ad391.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/136/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="4、-resample函数"><a href="#4、-resample函数" class="headerlink" title="4、 resample函数"></a>4、 resample函数</h3><p>通常我们获得的数据是日线数据，需要转化成周数据或月数据时，可用<code>resample</code>函数获得。</p>
+<p>当索引为时间格式时，可用<code>resample</code>函数将时间序列数据自动分割为周、月、季、年等块，然后再进行相应的处理。这里需要用到参数<code>rule</code>，参数rule=’w’代表转化为周，’m’代表月，’q’代表季度，’y’代表年份。’5min’代表5分钟，’1min’代表1分钟。</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">week_df = df.resample(rule=<span class="hljs-string">&#x27;w&#x27;</span>).last() <span class="hljs-comment"># 意思是展现每周最后一个交易日的数据</span><br>week_df[<span class="hljs-string">&#x27;开盘价&#x27;</span>] = df[<span class="hljs-string">&#x27;开盘价&#x27;</span>].resample(rule=<span class="hljs-string">&#x27;w&#x27;</span>).first() <span class="hljs-comment"># 获得开盘价数据</span><br>week_df[<span class="hljs-string">&#x27;成交量&#x27;</span>] = df[<span class="hljs-string">&#x27;成交量&#x27;</span>].resample(rule=<span class="hljs-string">&#x27;w&#x27;</span>).<span class="hljs-built_in">sum</span>()   <span class="hljs-comment"># 获得成交总量数据</span><br>week_df[<span class="hljs-string">&#x27;最高价&#x27;</span>] = df[<span class="hljs-string">&#x27;最高价&#x27;</span>].resample(rule=<span class="hljs-string">&#x27;w&#x27;</span>).<span class="hljs-built_in">max</span>()  <span class="hljs-comment"># 获得最高价数据</span><br>week_df[<span class="hljs-string">&#x27;最低价&#x27;</span>] = df[<span class="hljs-string">&#x27;最低价&#x27;</span>].resample(rule=<span class="hljs-string">&#x27;w&#x27;</span>).<span class="hljs-built_in">min</span>()  <span class="hljs-comment"># 获得最低价数据</span><br><br><span class="hljs-comment">#若要获得周涨幅，一般可用公式【（最后一天的收盘价 - 第一天的开盘价） / 第一天的开盘价 】进行计算，也可以用lambda函数直接获得</span><br>week_df[<span class="hljs-string">&#x27;涨跌幅&#x27;</span>] = df[<span class="hljs-string">&#x27;涨跌幅&#x27;</span>].resample(rule=<span class="hljs-string">&#x27;w&#x27;</span>).apply(<span class="hljs-keyword">lambda</span> x: (x+<span class="hljs-number">1.0</span>).prod() - <span class="hljs-number">1.0</span> )<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="5、-用os-walk导入数据"><a href="#5、-用os-walk导入数据" class="headerlink" title="5、 用os.walk导入数据"></a>5、 用os.walk导入数据</h3><p>当输入<code>os.walk(data_path)</code>时，会返回<code>root、dirs</code>和<code>files</code>的数据，<code>root</code>是文件的路径，<code>dir</code>是路径下有什么文件夹（返回列表），<code>files</code>是路径下有什么文件（返回列表）。</p>
+<p>然后程序会到第一个文件夹里面，继续返回相应的root、dirs和files……直至全部遍历。</p>
+<p>有了这个系统自带函数，后面就好办了。</p>
+<p>首先，我们要获得想要导入的标的的代码的列表。</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-keyword">list</span> = []<br>data_path = config.data_path + <span class="hljs-string">&#x27;/data&#x27;</span><br><span class="hljs-keyword">for</span> root, dirs, files in os.walk(data_path):<br>       <span class="hljs-keyword">if</span> files:   <span class="hljs-comment"># 当files不为空</span><br>           <span class="hljs-keyword">for</span> i in files: <span class="hljs-comment">#对files的每一个文件</span><br>                <span class="hljs-keyword">if</span> i.endswith(<span class="hljs-string">&#x27;.csv&#x27;</span>):   <span class="hljs-comment"># 选取以csv为后缀的文件</span><br>                      <span class="hljs-keyword">list</span>.append(i[:<span class="hljs-number">8</span>])   <span class="hljs-comment">#将该文件的前8个字符加入到列表中</span><br><br><span class="hljs-keyword">print</span> <span class="hljs-keyword">list</span><br></code></pre></div></td></tr></table></figure>
+
+<p>第二步，开始根据列表来导入数据</p>
+<figure class="highlight go"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs go">alldata = pd.DataFrame()<br><span class="hljs-keyword">for</span> stock in list:<br>     <span class="hljs-built_in">print</span> stock<br>     df = importcode.<span class="hljs-keyword">import</span>(stock)<br>      alldata = alldata.<span class="hljs-built_in">append</span>(df, ignore_index = True)<br><span class="hljs-built_in">print</span> alldata<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="6、-CSV的替代——HDF"><a href="#6、-CSV的替代——HDF" class="headerlink" title="6、 CSV的替代——HDF"></a>6、 CSV的替代——HDF</h3><p>一般储存数据是用csv格式，但pandas提供了一种更高效率的方式，那就是hdf格式。</p>
+<p>想象一张Excel表，sheetname这里称作KEY，参数mode可以是w新建，也可以是a，append。更多参数如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/8031739-6ffe63f86f5ddb0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/692/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>保存的命令为：</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#alldata.to_hdf(path, key=&#x27;&#x27;,mode=&#x27;&#x27;)</span><br>alldata.to_hdf(config.output_data_path + <span class="hljs-string">&#x27;/alldata.h5&#x27;</span>, key=<span class="hljs-string">&#x27;all_stock_data&#x27;</span>,  mode=<span class="hljs-string">&#x27;w&#x27;</span>))<br><br><span class="hljs-comment"># 在前面的例子中，读取的标的数据df，可以这样保存</span><br><span class="hljs-comment"># h5[stock] = df</span><br><span class="hljs-comment"># 或者</span><br><span class="hljs-comment"># df.to_hdf(path, key = code, mode=&#x27;a&#x27;)</span><br><br><span class="hljs-comment">#保存完数据之后，记得关闭h5文件，否则容易报错</span><br>h5.close()<br></code></pre></div></td></tr></table></figure>
+
+<p>要读取的时候，可以用 <code>pd.read_hdf(path, key=&#39;&#39;)</code></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/8031739-748ad9bb0845fe78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/682/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"> <span class="hljs-comment">#读取某个stock的数据有两种方式</span><br><span class="hljs-built_in">print</span> h5.get(<span class="hljs-string">&#x27;sz000006&#x27;</span>) <br><span class="hljs-built_in">print</span> h5[<span class="hljs-string">&#x27;sz000007&#x27;</span>]<br><br><span class="hljs-comment">#查询有多少张表，可以用keys()</span><br><span class="hljs-built_in">print</span> h5.keys()<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="7、-分组统计的groupby函数"><a href="#7、-分组统计的groupby函数" class="headerlink" title="7、 分组统计的groupby函数"></a>7、 分组统计的groupby函数</h3><p>一张超大的数据表中，我们想要看某只标的的平均价格，可用<code>groupby</code>函数来实现。</p>
+<p>1、基本的<code>groupby</code>用法</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">print</span> stock_data.groupby(<span class="hljs-string">&#x27;交易日期&#x27;</span>)  <span class="hljs-comment">#按交易日期来分组</span><br><span class="hljs-built_in">print</span> stock_data.groupby(<span class="hljs-string">&#x27;交易日期&#x27;</span>) .size() <span class="hljs-comment">#显示每天交易标的的数量</span><br><span class="hljs-built_in">print</span> stock_data.groupby(<span class="hljs-string">&#x27;标的代码&#x27;</span>) .size() <span class="hljs-comment">#显示每只标的累计交易的天数</span><br><br><span class="hljs-comment">#分组后想看某只标的的数据，可用get_group()</span><br><span class="hljs-built_in">print</span> stock_data.groupby(<span class="hljs-string">&#x27;标的代码&#x27;</span>).get_group(<span class="hljs-string">&#x27;002466&#x27;</span>)<br><span class="hljs-comment">#只会输出天齐锂业的数据</span><br></code></pre></div></td></tr></table></figure>
+
+<p>除此之外，还可以</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-built_in">print</span> stock_data.groupby(<span class="hljs-string">&#x27;标的代码&#x27;</span>).describe()<br><span class="hljs-built_in">print</span> stock_data.groupby(<span class="hljs-string">&#x27;标的代码&#x27;</span>).first()<br><span class="hljs-built_in">print</span> stock_data.groupby(<span class="hljs-string">&#x27;标的代码&#x27;</span>).last()<br><span class="hljs-built_in">print</span> stock_data.groupby(<span class="hljs-string">&#x27;标的代码&#x27;</span>).head()<br><span class="hljs-built_in">print</span> stock_data.groupby(<span class="hljs-string">&#x27;标的代码&#x27;</span>).tail()<br><span class="hljs-built_in">print</span> stock_data.groupby(<span class="hljs-string">&#x27;标的代码&#x27;</span>).nth(n) 表示该组的第n行数据<br></code></pre></div></td></tr></table></figure>
+
+
+<p> 输出的时候，默认<code>group</code>的变量，即标的代码为<code>index</code>，不想这样的话，可以用<code>as_index=False</code>, 例如：<br> <code>print stock_data.groupby(&#39;标的代码&#39;，as_index=False)</code></p>
+<p>还可以</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-built_in">print</span> stock_data.groupby(<span class="hljs-string">&#x27;标的代码&#x27;</span>)[<span class="hljs-string">&#x27;收盘价&#x27;</span>, <span class="hljs-string">&#x27;涨跌幅&#x27;</span>].mean()     <span class="hljs-comment">#取某列数据算均值</span><br>.<span class="hljs-built_in">max</span>()<br>.<span class="hljs-built_in">sum</span>()  <span class="hljs-comment"># 都是可以的。</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<p>还可以输出排名，用<code>rank()</code></p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"> <span class="hljs-built_in">print</span> stock_data.groupby(<span class="hljs-string">&#x27;标的代码&#x27;</span>)[<span class="hljs-string">&#x27;成交量&#x27;</span>].rank()  输出组内的算数排名<br> <span class="hljs-built_in">print</span> stock_data.groupby(<span class="hljs-string">&#x27;标的代码&#x27;</span>)[<span class="hljs-string">&#x27;成交量&#x27;</span>].rank(pct=<span class="hljs-literal">True</span>)  输出百分比<br><br><span class="hljs-comment"># 还可以</span><br><span class="hljs-built_in">print</span> stock_data.groupby(stock_data[<span class="hljs-string">&#x27;交易日期&#x27;</span>].dt.year).size()   <span class="hljs-comment"># 计算该年共有多少个交易数据</span><br><span class="hljs-comment"># 还可以先groupby一个，然后再在其中groupby另一个参数，例如：</span><br>stock_data.groupby([<span class="hljs-string">&#x27;标的代码&#x27;</span>, stock_data[<span class="hljs-string">&#x27;交易日期&#x27;</span>].dt.year]).size()  <span class="hljs-comment"># 按照标的代码分组，然后求该证券每年有多少个交易日</span><br></code></pre></div></td></tr></table></figure>
+
+<p>2、进阶的<code>groupby</code>用法</p>
+<p>前面介绍的<code>resample、apply、fillna</code>等函数，都可以嵌入到<code>groupby</code>函数里面。</p>
+<p>当然，也可以用笨办法，用<code>for key, group in df.groupby(&#39;列名称&#39;):</code> 将所需功能遍历一遍，以达到相同的效果。<code>key</code>是列名，列的每一个内容，<code>group</code>是该列的内容。</p>
+<p>遍历的时候，对<code>group</code>进行单独操作即可，例如<code>group.apply()或group.fillna()</code>。</p>
+<p>然后只要将每个<code>group append</code>起来即可。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/python/">python</a>
+                    
+                      <a class="hover-with-bg" href="/categories/python/Pandas/">Pandas</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/python/">python</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Pandas/">Pandas</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/12/22/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Python/%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E9%AB%98%E8%B4%A8%E9%87%8F%E6%95%B0%E6%8D%AE%E5%88%A4%E6%96%AD/">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "YzLqNtMw1YEwwACli1FUsIUM-gzGzoHsz",
+          app_key: "HLUt5izfTvTcbEbOrA59W92a",
+          placeholder: "畅所欲言...",
+          path: window.location.pathname,
+          avatar: "robohash",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://closer_laps.coding.net/p/picture/d/picture/git/raw/master/pay/pay.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-3" style="width:355.4px; height:200px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        苏ICP备20032307号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32020602001023"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>苏公网安备 32020602001023号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?608f2baddd361128381ad2bf9377bf89";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
