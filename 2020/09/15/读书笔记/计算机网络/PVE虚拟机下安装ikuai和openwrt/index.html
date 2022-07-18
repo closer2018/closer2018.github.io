@@ -255,12 +255,9 @@
             
             <div class="markdown-body">
               <blockquote>
-<p>PVE虚拟机下使用ikuai进行流控，openwrt进行去广告、KMS服务器等高级功能。<br>
-2021.9后可参考视频<a target="_blank" rel="noopener" href="https://3g.163.com/v/video/VBIPHHU10.html">PVE全新奶妈保姆级+爱快+openwrt+黑群晖7.0.1+直通+IPV6+MAC地址</a></p>
+<p>PVE虚拟机下使用ikuai进行流控，openwrt进行去广告、KMS服务器等高级功能。<br>2021.9后可参考视频<a target="_blank" rel="noopener" href="https://3g.163.com/v/video/VBIPHHU10.html">PVE全新奶妈保姆级+爱快+openwrt+黑群晖7.0.1+直通+IPV6+MAC地址</a></p>
 </blockquote>
-<h2 id="一、-安装PVE">一、 安装PVE</h2>
-<h3 id="2-1-固件安装">2.1 固件安装</h3>
-<p>用U盘制作<a target="_blank" rel="noopener" href="https://www.ventoy.net/cn/index.html">ventoy启动盘</a>后，把<a target="_blank" rel="noopener" href="https://www.proxmox.com/en/downloads">PVE官方映像</a>拖到U盘里面。</p>
+<h2 id="一、-安装PVE"><a href="#一、-安装PVE" class="headerlink" title="一、 安装PVE"></a>一、 安装PVE</h2><h3 id="2-1-固件安装"><a href="#2-1-固件安装" class="headerlink" title="2.1 固件安装"></a>2.1 固件安装</h3><p>用U盘制作<a target="_blank" rel="noopener" href="https://www.ventoy.net/cn/index.html">ventoy启动盘</a>后，把<a target="_blank" rel="noopener" href="https://www.proxmox.com/en/downloads">PVE官方映像</a>拖到U盘里面。</p>
 <p>bios里面使用u盘启动，选择下载的PVE官方映像进行安装。</p>
 <ol>
 <li>选择安装的磁盘。</li>
@@ -269,37 +266,34 @@
 <li>网卡默认，hostname设置为你的域名或随意域名，下面的ip按需设置，网关设为<code>openwrt</code>的地址，DNS设为114.114.114.114。</li>
 <li>安装。</li>
 </ol>
-<h3 id="2-2-web界面配置">2.2 web界面配置</h3>
-<p>输入<code>https://你的ip:8006/</code>进入web界面。</p>
+<h3 id="2-2-web界面配置"><a href="#2-2-web界面配置" class="headerlink" title="2.2 web界面配置"></a>2.2 web界面配置</h3><p>输入<code>https://你的ip:8006/</code>进入web界面。</p>
 <p>点击系统-网络-选择默认网桥(类别为Linux Bridge)，双击-桥接端口，把上面的网络设备名称全部添加进去(空格间隔)。</p>
 <p>双击网络里面的全部接口-设置为自动启动。</p>
-<p>下面更换源和关闭订阅提示。<br>
-将下面的代码保存为<code>pve.sh</code>，拖到<code>PVE</code>的<code>/root</code>根目录，<code>chmod +x pve.sh</code>，<code>./pve.sh</code>。</p>
+<p>下面更换源和关闭订阅提示。<br>将下面的代码保存为<code>pve.sh</code>，拖到<code>PVE</code>的<code>/root</code>根目录，<code>chmod +x pve.sh</code>，<code>./pve.sh</code>。</p>
 <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">! /bin/bash</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">修改apt国内源</span><br>echo &quot;deb http://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free&quot; &gt; /etc/apt/sources.list<br><span class="hljs-meta">#</span><span class="bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;deb-src http://mirrors.ustc.edu.cn/debian/ stretch main contrib non-free&quot;</span> &gt;&gt; /etc/apt/sources.list</span><br><br>echo &quot;deb http://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free&quot; &gt;&gt; /etc/apt/sources.list<br><span class="hljs-meta">#</span><span class="bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;deb-src http://mirrors.ustc.edu.cn/debian/ stretch-updates main contrib non-free&quot;</span> &gt;&gt; /etc/apt/sources.list</span><br><br>echo &quot;deb http://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free&quot; &gt;&gt; /etc/apt/sources.list<br><span class="hljs-meta">#</span><span class="bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;deb-src http://mirrors.ustc.edu.cn/debian/ stretch-backports main contrib non-free&quot;</span> &gt;&gt; /etc/apt/sources.list</span><br><br>echo &quot;deb http://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free&quot; &gt;&gt; /etc/apt/sources.list<br><span class="hljs-meta">#</span><span class="bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;deb-src http://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free&quot;</span> &gt;&gt; /etc/apt/sources.list</span><br>echo -e &quot;\033[32m 已修改apt源为中国科学技术大学源！\033[0m&quot;<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">修改pve-no-subscription源</span><br>rm -f /etc/apt/sources.list.d/pve-enterprise.list<br><span class="hljs-meta">#</span><span class="bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;deb http://download.proxmox.com/debian/pve stretch pve-no-subscription&quot;</span> &gt; /etc/apt/sources.list.d/pve-install-repo.list</span><br>echo &quot;deb http://download.proxmox.com/debian/pve stretch pve-no-subscription&quot; &gt;&gt; /etc/apt/sources.list<br>wget http://download.proxmox.com/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg<br>echo -e &quot;\033[32m 已完成修改pve-no-subscription源！\033[0m&quot;<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">apt update更新</span><br>apt update -y &amp;&amp; apt dist-upgrade -y &amp; apt-get clean<br><span class="hljs-meta">#</span><span class="bash">pveupdate</span><br><span class="hljs-meta">#</span><span class="bash">pveupgrade</span><br>echo -e &quot;\033[32m 已完成apt更新！\033[0m&quot;<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">登陆屏蔽订阅通知</span><br><span class="hljs-meta">#</span><span class="bash"> find / -<span class="hljs-built_in">type</span> f -name <span class="hljs-string">&quot;*.js&quot;</span> | xargs  grep -Hn --color=auto <span class="hljs-string">&quot;You do not have a valid subscription for this server&quot;</span></span><br>sed -i_orig &quot;s/data.status !== &#x27;Active&#x27;/false/g&quot; /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js<br>echo -e &quot;\033[32m 已屏蔽登陆订阅通知！\033[0m&quot;<br></code></pre></div></td></tr></table></figure>
-<h3 id="2-3-关闭TSO">2.3 关闭TSO</h3>
-<p><strong>PS</strong>:我用的<code>M73</code>，因为原生网卡不支持，需要关闭<code>TSO</code>，如果你的不需要，则忽略此步骤，先安装<strong>ethtool</strong>，<code>apt install ethtool</code>，<code>ip link show</code>查看网口，用<code>ethtool -k vmbr0</code>查看网口是否开启了TSO，我这边网口是vmbr0。</p>
+
+<h3 id="2-3-关闭TSO"><a href="#2-3-关闭TSO" class="headerlink" title="2.3 关闭TSO"></a>2.3 关闭TSO</h3><p><strong>PS</strong>:我用的<code>M73</code>，因为原生网卡不支持，需要关闭<code>TSO</code>，如果你的不需要，则忽略此步骤，先安装<strong>ethtool</strong>，<code>apt install ethtool</code>，<code>ip link show</code>查看网口，用<code>ethtool -k vmbr0</code>查看网口是否开启了TSO，我这边网口是vmbr0。</p>
 <p>关闭TSO命令<code>ethtool -K vmbr0 tso off</code></p>
 <p><code>nano /etc/init.d/tsooff</code>，编辑开机自动关闭TSO脚本如下</p>
 <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs SHELL"><span class="hljs-meta">#</span><span class="bash">!/bin/sh</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">## BEGIN INIT INFO</span></span><br><span class="hljs-meta">#</span><span class="bash"> Provides: tsooff</span><br><span class="hljs-meta">#</span><span class="bash"> Required-Start: <span class="hljs-variable">$network</span> <span class="hljs-variable">$remote_fs</span> <span class="hljs-variable">$local_fs</span></span><br><span class="hljs-meta">#</span><span class="bash"> Required-Stop: <span class="hljs-variable">$network</span> <span class="hljs-variable">$remote_fs</span> <span class="hljs-variable">$local_fs</span></span><br><span class="hljs-meta">#</span><span class="bash"> Default-Start: 2 3 4 5</span><br><span class="hljs-meta">#</span><span class="bash"> Default-Stop: 0 1 6</span><br><span class="hljs-meta">#</span><span class="bash"> Short-Description: TSO_off</span><br><span class="hljs-meta">#</span><span class="bash"> Description: tso_off</span><br><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">## END INIT INFO</span></span><br><br>ethtool -K eno1 tso off<br>ethtool -K vmbr0 tso off<br>ethtool -K vmbr1 tso off<br><br>exit 0<br></code></pre></div></td></tr></table></figure>
+
 <p><code>ctrl+O,ctrl+X</code>保存并关闭编辑</p>
 <p><code>chmod +x /etc/init.d/tsooff</code></p>
-<p>将脚本加入自动执行<br>
-<code>update-rc.d tsooff defaults</code></p>
-<h3 id="2-4-添加温度显示">2.4 添加温度显示</h3>
-<p><a target="_blank" rel="noopener" href="https://github.com/ivanhao/pvetools">使用GitHub-pvetools一键工具添加温度显示</a></p>
+<p>将脚本加入自动执行<br><code>update-rc.d tsooff defaults</code></p>
+<h3 id="2-4-添加温度显示"><a href="#2-4-添加温度显示" class="headerlink" title="2.4 添加温度显示"></a>2.4 添加温度显示</h3><p><a target="_blank" rel="noopener" href="https://github.com/ivanhao/pvetools">使用GitHub-pvetools一键工具添加温度显示</a></p>
 <p>命令行安装，需要用root账号来运行</p>
 <p>在终端中按行分别执行以下内容：</p>
 <blockquote>
 <p>强烈建议先删除企业源：rm /etc/apt/sources.list.d/pve-enterprise.list</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs SHELL">export LC_ALL=en_US.UTF-8<br>apt update &amp;&amp; apt -y install git &amp;&amp; git clone https://github.com/ivanhao/pvetools.git<br>cd pvetools<br>./pvetools.sh<br><span class="hljs-meta">#</span><span class="bash"> 如果提示没有权限，输入chmod +x ./*.sh</span><br></code></pre></div></td></tr></table></figure>
+
 <p>执行后，按提示操作即可。</p>
 <p><strong>卸载脚本</strong></p>
 <p>删除下载的<code>pvetools</code>目录</p>
-<h3 id="2-5-更改ProxmoxVE的LXC仓库源为国内中科大源">2.5 更改ProxmoxVE的LXC仓库源为国内中科大源</h3>
-<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs SHELL">grep -rn &quot;download.proxmox.com&quot; /usr/share/perl5/PVE/*   #查找设定下载源的文件<br>sed -i.bak &quot;s#http://download.proxmox.com/images#https://mirrors.ustc.edu.cn/proxmox/images#g&quot; /usr/share/perl5/PVE/APLInfo.pm #替换为中科大源<br>wget -O /var/lib/pve-manager/apl-info/mirrors.ustc.edu.cn https://mirrors.ustc.edu.cn/proxmox/images/aplinfo-pve-6.dat # 下载aplinfo-pve-6文件，也可下载aplinfo.dat<br></code></pre></div></td></tr></table></figure>
-<h2 id="二、-安装ikuai">二、 安装ikuai</h2>
-<p>点击local-内容-上传，上传<a target="_blank" rel="noopener" href="https://www.ikuai8.com/component/download">ikuai官网</a>下载的ISO映像。</p>
+<h3 id="2-5-更改ProxmoxVE的LXC仓库源为国内中科大源"><a href="#2-5-更改ProxmoxVE的LXC仓库源为国内中科大源" class="headerlink" title="2.5 更改ProxmoxVE的LXC仓库源为国内中科大源"></a>2.5 更改ProxmoxVE的LXC仓库源为国内中科大源</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs SHELL">grep -rn &quot;download.proxmox.com&quot; /usr/share/perl5/PVE/*   #查找设定下载源的文件<br>sed -i.bak &quot;s#http://download.proxmox.com/images#https://mirrors.ustc.edu.cn/proxmox/images#g&quot; /usr/share/perl5/PVE/APLInfo.pm #替换为中科大源<br>wget -O /var/lib/pve-manager/apl-info/mirrors.ustc.edu.cn https://mirrors.ustc.edu.cn/proxmox/images/aplinfo-pve-6.dat # 下载aplinfo-pve-6文件，也可下载aplinfo.dat<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="二、-安装ikuai"><a href="#二、-安装ikuai" class="headerlink" title="二、 安装ikuai"></a>二、 安装ikuai</h2><p>点击local-内容-上传，上传<a target="_blank" rel="noopener" href="https://www.ikuai8.com/component/download">ikuai官网</a>下载的ISO映像。</p>
 <p>创建虚拟机-名称<code>ikuai</code>-操作系统选择<code>上传的映像</code>-系统<strong>显卡一定要选择VMWARE兼容，否则不能正确显示。</strong>-硬盘总线<code>SCSI</code>,磁盘大小<code>2</code>-CPU为1核<code>2线程</code>、高级中<code>启用NUMA</code>(支持热拔插，不需要则不开启)-内存64位<code>4096</code>或者32位<code>2048</code>-网络<code>VirIO(半虚拟化)</code>-确定。</p>
 <p>web界面点击虚拟机100。</p>
 <p>硬件-添加-网络设备-选择<code>桥接接口</code>-模型选<code>VirtIO</code>-添加。</p>
@@ -307,13 +301,10 @@
 <p>启动，选择控制台。<code>2</code>绑定网卡，<code>0</code>LAN口地址设置。</p>
 <p>登录ikuai的web界面。</p>
 <p><a target="_blank" rel="noopener" href="https://www.right.com.cn/forum/thread-2640416-1-1.html">网关配置</a></p>
-<h2 id="三、-安装openwrt">三、 安装openwrt</h2>
-<h3 id="3-1-PVE配置">3.1 PVE配置</h3>
-<p>先修改映像名字为 <code>openwrt.img</code> ，再用 <code>winscp</code> 把 <code>openwrt</code> 的映像传到 <code>PVE</code> 的 <code>/root</code> 根目录。</p>
+<h2 id="三、-安装openwrt"><a href="#三、-安装openwrt" class="headerlink" title="三、 安装openwrt"></a>三、 安装openwrt</h2><h3 id="3-1-PVE配置"><a href="#3-1-PVE配置" class="headerlink" title="3.1 PVE配置"></a>3.1 PVE配置</h3><p>先修改映像名字为 <code>openwrt.img</code> ，再用 <code>winscp</code> 把 <code>openwrt</code> 的映像传到 <code>PVE</code> 的 <code>/root</code> 根目录。</p>
 <p>PVE的shell命令行工具中输入如下命令：</p>
 <blockquote>
-<p>映像转换的命令格式为(区分大小写)：<br>
-qemu-img(转换工具) convert -f raw(-f后面指明原文件格式) -O qcow2(输出格式) openwrt.img openwrt.qcow2</p>
+<p>映像转换的命令格式为(区分大小写)：<br>qemu-img(转换工具) convert -f raw(-f后面指明原文件格式) -O qcow2(输出格式) openwrt.img openwrt.qcow2</p>
 </blockquote>
 <p><code>qemu-img convert -f raw -O qcow2 openwrt.img openwrt.qcow2</code></p>
 <p>首先先创建虚拟机101.</p>
@@ -327,8 +318,7 @@ qemu-img(转换工具) convert -f raw(-f后面指明原文件格式) -O qcow2(�
 <p>然后<code>PVE-web</code>界面分离不用的硬盘：选择刚刚创建的“Openwrt虚拟机” -&gt;  硬件 -&gt; 硬盘(scsi0) -&gt; 点击“分离” -&gt; 点击“删除”。</p>
 <p>PVE的shell命令行工具中输入如下命令：</p>
 <blockquote>
-<p>导入磁盘命令格式为(区分大小写)：<br>
-qm importdisk 101(虚拟机编号) openwrt.qcow2(映像名字) local-lvm(pve存储空间名字)</p>
+<p>导入磁盘命令格式为(区分大小写)：<br>qm importdisk 101(虚拟机编号) openwrt.qcow2(映像名字) local-lvm(pve存储空间名字)</p>
 </blockquote>
 <p><code>qm importdisk 101 openwrt.qcow2 local-lvm</code></p>
 <p>选择刚刚创建的“Openwrt虚拟机” -&gt;  硬件 -&gt; 未使用的硬盘0 -&gt; 点击“编辑” -&gt; 总线/设备“SATA” -&gt; 添加。</p>
@@ -337,35 +327,19 @@ qm importdisk 101(虚拟机编号) openwrt.qcow2(映像名字) local-lvm(pve存�
 <p>切换到虚拟机的“选项”选项卡，双击“引导顺序”，第一引导项选“Disk ‘sata0’”。开机自启动设置为<code>是</code>。</p>
 <p>启动虚拟机101，控制台操作如下命令行。</p>
 <figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs SH"><span class="hljs-comment"># 修改LAN口固定IP</span><br>vi /etc/config/network<br><span class="hljs-comment"># option ipaddr可以改为你想要管理路由的IP地址，比如&#x27;192.168.10.1&#x27;</span><br><br><span class="hljs-comment"># 重启网络</span><br>/etc/init.d/network restart<br></code></pre></div></td></tr></table></figure>
-<h3 id="3-2-更改web端口和SSH端口">3.2 更改web端口和SSH端口</h3>
-<ol>
+
+<h3 id="3-2-更改web端口和SSH端口"><a href="#3-2-更改web端口和SSH端口" class="headerlink" title="3.2 更改web端口和SSH端口"></a>3.2 更改web端口和SSH端口</h3><ol>
 <li>修改uhttpd端口</li>
 </ol>
 <figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs SH"><span class="hljs-comment"># 修改uhttpd</span><br>vi /etc/config/uhttpd<br><span class="hljs-comment"># 将以下改为新的端口</span><br>list listen_http 0.0.0.0:80 --&gt; list listen_http 0.0.0.0:8081<br><span class="hljs-comment"># 保存,重启uhttpd</span><br><span class="hljs-comment">#/etc/init.d/uhttpd restart</span><br></code></pre></div></td></tr></table></figure>
-<h3 id="3-3-网关配置">3.3 网关配置</h3>
-<p>登录openwrt的web界面。</p>
+
+<h3 id="3-3-网关配置"><a href="#3-3-网关配置" class="headerlink" title="3.3 网关配置"></a>3.3 网关配置</h3><p>登录openwrt的web界面。</p>
 <p><a target="_blank" rel="noopener" href="https://www.right.com.cn/forum/thread-2640416-1-1.html">网关配置</a></p>
-<h3 id="3-4-在openwrt配置HP1020设置为网络打印机">3.4 在openwrt配置HP1020设置为网络打印机</h3>
-<blockquote>
+<h3 id="3-4-在openwrt配置HP1020设置为网络打印机"><a href="#3-4-在openwrt配置HP1020设置为网络打印机" class="headerlink" title="3.4 在openwrt配置HP1020设置为网络打印机"></a>3.4 在openwrt配置HP1020设置为网络打印机</h3><blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://post.smzdm.com/p/apz08xz2/">openwrt共享打印机【上】【完美解决】HP10系打印异常问题</a></p>
 </blockquote>
-<p>openwrt安装打印服务器<br>
-1、<s>安装USB支持软件包（eSir固件可省略）</s><br>
-<s>opkg update</s><br>
-<s>opkg install luci-i18n-base-zh-cn  (openwrt安装中文语言包)</s><br>
-<s>opkg install kmod-usb-storage</s><br>
-<s>opkg install kmod-usb-printer #USB口打印机支持</s><br>
-<s>opkg install p910nd</s><br>
-<s>opkg install luci-app-p910nd</s><br>
-<s>opkg install luci luci-base luci-compat (更新一下luci-compat即可)</s><br>
-2、WEB界面设备选择HP1020，<strong>接口未指定</strong>，端口默认，<strong>双向模式关闭</strong><br>
-3、上传固件<code>sihp1020.dl</code>到路由器<code>/etc/</code><br>
-4、<code>/etc/hotplug.d/usb/10-usb-printer</code>（替换原有的10-usb_printer文件）（自动加载固件到打印机）<br>
-5、网络-防火墙-通信规则，开放9100端口<br>
-6、写入语句到路由器启动项中  <code>cat /etc/sihp1020.dl &gt;&gt;/dev/usb/lp0</code>（路由器在重启后自动加载固件到打印机）<br>
-7、PC上添加本地网络打印机,路由器和打印机双向打印都关闭。</p>
-<h2 id="四、-配置ipv6">四、 配置ipv6</h2>
-<p>首先在ikuai中网络设置-开启IPv6并设置DHCPv6(很简答，选自动获取，傻瓜操作)。</p>
+<p>openwrt安装打印服务器<br>1、<del>安装USB支持软件包（eSir固件可省略）</del><br><del>opkg update</del><br><del>opkg install luci-i18n-base-zh-cn  (openwrt安装中文语言包)</del><br><del>opkg install kmod-usb-storage</del><br><del>opkg install kmod-usb-printer #USB口打印机支持</del><br><del>opkg install p910nd</del><br><del>opkg install luci-app-p910nd</del><br><del>opkg install luci luci-base luci-compat (更新一下luci-compat即可)</del><br>2、WEB界面设备选择HP1020，<strong>接口未指定</strong>，端口默认，<strong>双向模式关闭</strong><br>3、上传固件<code>sihp1020.dl</code>到路由器<code>/etc/</code><br>4、<code>/etc/hotplug.d/usb/10-usb-printer</code>（替换原有的10-usb_printer文件）（自动加载固件到打印机）<br>5、网络-防火墙-通信规则，开放9100端口<br>6、写入语句到路由器启动项中  <code>cat /etc/sihp1020.dl &gt;&gt;/dev/usb/lp0</code>（路由器在重启后自动加载固件到打印机）<br>7、PC上添加本地网络打印机,路由器和打印机双向打印都关闭。</p>
+<h2 id="四、-配置ipv6"><a href="#四、-配置ipv6" class="headerlink" title="四、 配置ipv6"></a>四、 配置ipv6</h2><p>首先在ikuai中网络设置-开启IPv6并设置DHCPv6(很简答，选自动获取，傻瓜操作)。</p>
 <p>其次在openwrt中<a target="_blank" rel="noopener" href="https://zhaoshuai.top/2020/08/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E7%9A%84%E4%B8%BB%E6%9C%BA%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE(IPv6%E3%80%81frp%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86)/">IPv6如此设置</a> ， <a href="(https://www.wygdbb.com/2020/09/openwrt-ipv6/)">参考图片，图片里是<code>WAN</code>，但我们是二级路由，所以是<code>LAN</code></a>：</p>
 <ol>
 <li>从网络 –&gt; 接口 –&gt; 删除<code>“IPv6 ULA 前缀”</code> –&gt; 保存&amp;应用</li>
@@ -376,21 +350,15 @@ qm importdisk 101(虚拟机编号) openwrt.qcow2(映像名字) local-lvm(pve存�
 </ol>
 <p><a target="_blank" rel="noopener" href="http://test-ipv6.com/">访问IPv6测试网页测试</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhaoshuai.top/2020/08/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Linux/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E7%9A%84%E4%B8%BB%E6%9C%BA%E5%AE%9E%E7%8E%B0%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE(IPv6%E3%80%81frp%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86)/">使用IPv6进行内网穿透教程</a></p>
-<h2 id="五、-修复ikuai状态监控中MAC地址重复的问题">五、 修复ikuai状态监控中MAC地址重复的问题</h2>
-<p>一、进入openwrt后台，系统 – 软件包-刷新列表</p>
-<p>二、在过滤器里面搜索SNMP(eSir的固件自带SNMP，不需要单独安装)<br>
-在可用安装包里面安装snmpd。</p>
-<p>三、安装好后回到爱快配置。高级应用-第三层应用，添加一条<br>
-里面SNMP服务器ip：就填入你openwrt的后台地址即可，其他就不用填其他的。</p>
+<h2 id="五、-修复ikuai状态监控中MAC地址重复的问题"><a href="#五、-修复ikuai状态监控中MAC地址重复的问题" class="headerlink" title="五、 修复ikuai状态监控中MAC地址重复的问题"></a>五、 修复ikuai状态监控中MAC地址重复的问题</h2><p>一、进入openwrt后台，系统 – 软件包-刷新列表</p>
+<p>二、在过滤器里面搜索SNMP(eSir的固件自带SNMP，不需要单独安装)<br>在可用安装包里面安装snmpd。</p>
+<p>三、安装好后回到爱快配置。高级应用-第三层应用，添加一条<br>里面SNMP服务器ip：就填入你openwrt的后台地址即可，其他就不用填其他的。</p>
 <p>四、现在回到爱快监控里面看，MAC地址已经显示正确了且不重复了。</p>
-<p>五：如果安装<code>SNMP</code>出错，可按下面方法处理(eSir的固件自带SNMP，不需要单独安装)：<br>
-ssh连接你的<code>OPENWRT</code>路由,连接后输入以下代码（下载可能有点慢）</p>
+<p>五：如果安装<code>SNMP</code>出错，可按下面方法处理(eSir的固件自带SNMP，不需要单独安装)：<br>ssh连接你的<code>OPENWRT</code>路由,连接后输入以下代码（下载可能有点慢）</p>
 <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">echo &quot;nameserver 114.114.114.114&quot;&gt;/tmp/resolv.conf<br>rm -f /var/lock/opkg.lock<br>opkg update<br></code></pre></div></td></tr></table></figure>
-<h2 id="六、-双路由如何设置端口转发">六、 双路由如何设置端口转发</h2>
-<blockquote>
-<p>情景设置：<br>
-爱快：10.10.10.3，它负责PPPoE拨号，负责DHCP，在DHCP上设置了网关为10.10.10.1<br>
-openwrt：10.10.10.1，它负责广告屏蔽和其他网络应用，它在内网上设置了静态IP，网关设置为10.10.10.3</p>
+
+<h2 id="六、-双路由如何设置端口转发"><a href="#六、-双路由如何设置端口转发" class="headerlink" title="六、 双路由如何设置端口转发"></a>六、 双路由如何设置端口转发</h2><blockquote>
+<p>情景设置：<br>爱快：10.10.10.3，它负责PPPoE拨号，负责DHCP，在DHCP上设置了网关为10.10.10.1<br>openwrt：10.10.10.1，它负责广告屏蔽和其他网络应用，它在内网上设置了静态IP，网关设置为10.10.10.3</p>
 </blockquote>
 <p>方法如下：</p>
 <ol>
