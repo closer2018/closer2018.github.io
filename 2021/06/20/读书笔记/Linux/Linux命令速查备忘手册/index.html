@@ -257,16 +257,14 @@
               <blockquote>
 <p><strong>本文转载于UP主CodeSheep的<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14A411378a">Linux速查备忘手册</a>,记录下来备用，然后特别感谢他的辛苦整理和无私分享！！！</strong></p>
 </blockquote>
-<h2 id="1、关机-重启-注销">1、关机/重启/注销</h2>
-<table>
+<h2 id="1、关机-重启-注销"><a href="#1、关机-重启-注销" class="headerlink" title="1、关机/重启/注销"></a>1、关机/重启/注销</h2><table>
 <thead>
 <tr>
 <th>常用命令</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>shutdown -h now</td>
 <td>即刻关机</td>
 </tr>
@@ -330,18 +328,15 @@
 <td>logout</td>
 <td>退出登录Shell</td>
 </tr>
-</tbody>
-</table>
-<h2 id="2、系统信息和性能查看">2、系统信息和性能查看</h2>
-<table>
+</tbody></table>
+<h2 id="2、系统信息和性能查看"><a href="#2、系统信息和性能查看" class="headerlink" title="2、系统信息和性能查看"></a>2、系统信息和性能查看</h2><table>
 <thead>
 <tr>
 <th>常用命令</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>uname -a</td>
 <td>查看内核/OS/CPU信息</td>
 </tr>
@@ -449,18 +444,15 @@
 <td>sar -d 1 10</td>
 <td>查询磁盘性能</td>
 </tr>
-</tbody>
-</table>
-<h2 id="3、磁盘和分区">3、磁盘和分区</h2>
-<table>
+</tbody></table>
+<h2 id="3、磁盘和分区"><a href="#3、磁盘和分区" class="headerlink" title="3、磁盘和分区"></a>3、磁盘和分区</h2><table>
 <thead>
 <tr>
 <th>常用命令</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>fdisk -l</td>
 <td>查看所有磁盘分区</td>
 </tr>
@@ -508,18 +500,15 @@
 <td>fuser -km /mnt/hda1</td>
 <td>强制卸载(慎⽤)</td>
 </tr>
-</tbody>
-</table>
-<h2 id="4、⽤户和⽤户组">4、⽤户和⽤户组</h2>
-<table>
+</tbody></table>
+<h2 id="4、⽤户和⽤户组"><a href="#4、⽤户和⽤户组" class="headerlink" title="4、⽤户和⽤户组"></a>4、⽤户和⽤户组</h2><table>
 <thead>
 <tr>
 <th>常用命令</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>useradd username</td>
 <td>创建⽤户</td>
 </tr>
@@ -591,18 +580,15 @@
 <td>cut -d: -f1 /etc/group</td>
 <td>查看系统所有组</td>
 </tr>
-</tbody>
-</table>
-<h2 id="5、⽹络和进程管理">5、⽹络和进程管理</h2>
-<table>
+</tbody></table>
+<h2 id="5、⽹络和进程管理"><a href="#5、⽹络和进程管理" class="headerlink" title="5、⽹络和进程管理"></a>5、⽹络和进程管理</h2><table>
 <thead>
 <tr>
 <th>常用命令</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>ifconfig</td>
 <td>查看⽹络接⼝属性</td>
 </tr>
@@ -663,11 +649,11 @@
 <td>查看主机名</td>
 </tr>
 <tr>
-<td>host <a target="_blank" rel="noopener" href="http://www.baidu.com">www.baidu.com</a></td>
+<td>host <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a></td>
 <td>解析主机名</td>
 </tr>
 <tr>
-<td>nslookup <a target="_blank" rel="noopener" href="http://www.baidu.com">www.baidu.com</a></td>
+<td>nslookup <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a></td>
 <td>查询DNS记录，查看域名解析是否正常</td>
 </tr>
 <tr>
@@ -706,19 +692,16 @@
 <td>sar -d 1 10</td>
 <td>查询磁盘性能</td>
 </tr>
-</tbody>
-</table>
-<h2 id="6、常⻅系统服务命令">6、常⻅系统服务命令</h2>
-<table>
+</tbody></table>
+<h2 id="6、常⻅系统服务命令"><a href="#6、常⻅系统服务命令" class="headerlink" title="6、常⻅系统服务命令"></a>6、常⻅系统服务命令</h2><table>
 <thead>
 <tr>
 <th>常用命令</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td>chkconfig --list</td>
+<tbody><tr>
+<td>chkconfig –list</td>
 <td>列出系统服务</td>
 </tr>
 <tr>
@@ -761,27 +744,24 @@
 <td>systemctl disable &lt;服务名&gt;</td>
 <td>关闭⾃启动</td>
 </tr>
-</tbody>
-</table>
-<h2 id="7、⽂件和⽬录操作">7、⽂件和⽬录操作</h2>
-<table>
+</tbody></table>
+<h2 id="7、⽂件和⽬录操作"><a href="#7、⽂件和⽬录操作" class="headerlink" title="7、⽂件和⽬录操作"></a>7、⽂件和⽬录操作</h2><table>
 <thead>
 <tr>
 <th>常用命令</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>cd &lt;⽬录名&gt;</td>
 <td>进⼊某个⽬录</td>
 </tr>
 <tr>
-<td>cd …</td>
+<td>cd ..</td>
 <td>回上级⽬录</td>
 </tr>
 <tr>
-<td>cd …/…</td>
+<td>cd ../..</td>
 <td>回上两级⽬录</td>
 </tr>
 <tr>
@@ -932,18 +912,15 @@
 <td>chown user1:group1 file1</td>
 <td>改变⽂件的所有⼈和群组</td>
 </tr>
-</tbody>
-</table>
-<h2 id="8、⽂件查看和处理">8、⽂件查看和处理</h2>
-<table>
+</tbody></table>
+<h2 id="8、⽂件查看和处理"><a href="#8、⽂件查看和处理" class="headerlink" title="8、⽂件查看和处理"></a>8、⽂件查看和处理</h2><table>
 <thead>
 <tr>
 <th>常用命令</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>cat file1</td>
 <td>查看⽂件内容</td>
 </tr>
@@ -1005,10 +982,10 @@
 </tr>
 <tr>
 <td>sed -n ‘/s1/p’ hello.txt</td>
-<td>查看只包含关键词&quot;s1&quot;的⾏</td>
+<td>查看只包含关键词”s1”的⾏</td>
 </tr>
 <tr>
-<td>sed -e ‘s/ *$//’ hello.txt</td>
+<td>sed -e ‘s/ *$//‘ hello.txt</td>
 <td>删除每⼀⾏最后的空⽩字符</td>
 </tr>
 <tr>
@@ -1029,7 +1006,7 @@
 </tr>
 <tr>
 <td>paste -d ‘+’ file1 file2</td>
-<td>合并两个⽂件或两栏的内容，中间⽤&quot;+&quot;区分</td>
+<td>合并两个⽂件或两栏的内容，中间⽤”+”区分</td>
 </tr>
 <tr>
 <td>sort file1 file2</td>
@@ -1047,18 +1024,15 @@
 <td>comm -3 file1 file2</td>
 <td>⽐较两个⽂件的内容(去除两⽂件共有部分)</td>
 </tr>
-</tbody>
-</table>
-<h2 id="9、打包和解压">9、打包和解压</h2>
-<table>
+</tbody></table>
+<h2 id="9、打包和解压"><a href="#9、打包和解压" class="headerlink" title="9、打包和解压"></a>9、打包和解压</h2><table>
 <thead>
 <tr>
 <th>常用命令</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>zip xxx.zip file</td>
 <td>压缩⾄zip包</td>
 </tr>
@@ -1126,18 +1100,15 @@
 <td>gzip -9 filename</td>
 <td>最⼤程度压缩</td>
 </tr>
-</tbody>
-</table>
-<h2 id="10、RPM包管理命令">10、RPM包管理命令</h2>
-<table>
+</tbody></table>
+<h2 id="10、RPM包管理命令"><a href="#10、RPM包管理命令" class="headerlink" title="10、RPM包管理命令"></a>10、RPM包管理命令</h2><table>
 <thead>
 <tr>
 <th>常用命令</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>rpm -qa</td>
 <td>查看已安装的rpm包</td>
 </tr>
@@ -1146,15 +1117,15 @@
 <td>查询某个rpm包</td>
 </tr>
 <tr>
-<td>rpm -q --whatprovides xxx</td>
+<td>rpm -q –whatprovides xxx</td>
 <td>显示xxx功能是由哪个包提供的</td>
 </tr>
 <tr>
-<td>rpm -q --whatrequires xxx</td>
+<td>rpm -q –whatrequires xxx</td>
 <td>显示xxx功能被哪个程序包依赖的</td>
 </tr>
 <tr>
-<td>rpm -q --changelog xxx</td>
+<td>rpm -q –changelog xxx</td>
 <td>显示xxx包的更改记录</td>
 </tr>
 <tr>
@@ -1186,11 +1157,11 @@
 <td>安装rpm包</td>
 </tr>
 <tr>
-<td>rpm -ivh --test xxx.rpm</td>
+<td>rpm -ivh –test xxx.rpm</td>
 <td>测试安装rpm包</td>
 </tr>
 <tr>
-<td>rpm -ivh --nodeps xxx.rpm</td>
+<td>rpm -ivh –nodeps xxx.rpm</td>
 <td>安装rpm包时忽略依赖关系</td>
 </tr>
 <tr>
@@ -1209,18 +1180,15 @@
 <td>rpm -V pkg_name</td>
 <td>RPM包详细信息校验</td>
 </tr>
-</tbody>
-</table>
-<h2 id="11、YUM包管理命令">11、YUM包管理命令</h2>
-<table>
+</tbody></table>
+<h2 id="11、YUM包管理命令"><a href="#11、YUM包管理命令" class="headerlink" title="11、YUM包管理命令"></a>11、YUM包管理命令</h2><table>
 <thead>
 <tr>
 <th>常用命令</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>yum repolist enabled</td>
 <td>显示可⽤的源仓库</td>
 </tr>
@@ -1233,7 +1201,7 @@
 <td>下载并安装软件包</td>
 </tr>
 <tr>
-<td>yum install --downloadonly pkg_name</td>
+<td>yum install –downloadonly pkg_name</td>
 <td>只 下 载 不 安 装</td>
 </tr>
 <tr>
@@ -1280,18 +1248,15 @@
 <td>yum clean headers</td>
 <td>清除缓存的header</td>
 </tr>
-</tbody>
-</table>
-<h2 id="12、DPKG包管理命令">12、DPKG包管理命令</h2>
-<table>
+</tbody></table>
+<h2 id="12、DPKG包管理命令"><a href="#12、DPKG包管理命令" class="headerlink" title="12、DPKG包管理命令"></a>12、DPKG包管理命令</h2><table>
 <thead>
 <tr>
 <th>常用命令</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>dpkg -c xxx.deb</td>
 <td>列出deb包的内容</td>
 </tr>
@@ -1327,18 +1292,15 @@
 <td>dpkg –unpack xxx.deb</td>
 <td>解开deb包的内容</td>
 </tr>
-</tbody>
-</table>
-<h2 id="13、APT软件⼯具">13、APT软件⼯具</h2>
-<table>
+</tbody></table>
+<h2 id="13、APT软件⼯具"><a href="#13、APT软件⼯具" class="headerlink" title="13、APT软件⼯具"></a>13、APT软件⼯具</h2><table>
 <thead>
 <tr>
 <th>常用命令</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>apt-cache search pkg_name</td>
 <td>搜索程序包</td>
 </tr>
@@ -1370,8 +1332,7 @@
 <td>apt-get clean</td>
 <td>清理缓存</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 
             </div>
             <hr>
