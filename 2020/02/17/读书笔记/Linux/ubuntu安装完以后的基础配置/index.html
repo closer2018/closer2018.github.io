@@ -15,14 +15,12 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="前言
-
 先试用ubuntu，打开软件目录 -&amp;gt; 磁盘，右上角菜单。然后格式化磁盘;擦除 -&amp;gt; 不要覆盖…(快速);分区 -&amp;gt; 硬盘2T以下MBR/DOS、2T以上GPT
 不要连接网络 -&amp;gt; 正常安装 -&amp;gt; 其他选项
 
 一： 安装类型
-
 /boot分区（引导）-&amp;gt;512MB-&amp;gt;主分区-&amp;gt;空间起始位置-&amp;gt;Ext4日志文件系统-&amp;gt;/boot。
-">
+/ ">
   <meta name="author" content="closer">
   <meta name="keywords" content="">
   
@@ -205,7 +203,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.2k 字
+      1.1k 字
     </span>
   
 
@@ -215,7 +213,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      17
+      16
        分钟
     </span>
   
@@ -262,139 +260,87 @@
               </p>
             
             <div class="markdown-body">
-              <h2 id="前言">前言</h2>
-<ol>
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ol>
 <li>先试用ubuntu，打开软件目录 -&gt; 磁盘，右上角菜单。然后格式化磁盘;擦除 -&gt; 不要覆盖…(快速);分区 -&gt; 硬盘2T以下MBR/DOS、2T以上GPT</li>
 <li>不要连接网络 -&gt; 正常安装 -&gt; 其他选项</li>
 </ol>
-<h2 id="一：-安装类型">一： 安装类型</h2>
-<ol>
+<h2 id="一：-安装类型"><a href="#一：-安装类型" class="headerlink" title="一： 安装类型"></a>一： 安装类型</h2><ol>
 <li>/boot分区（引导）-&gt;512MB-&gt;主分区-&gt;空间起始位置-&gt;Ext4日志文件系统-&gt;/boot。</li>
 <li>/ 根分区（相当于windows的c盘）-&gt;102400MB-&gt;主分区-&gt;空间起始位置-&gt;XFS日志文件系统-&gt;/。</li>
 <li>swap分区（桌面系统不分，服务器必分）-&gt;2048MB-&gt;逻辑分区-&gt;空间起始位置-&gt;交换空间。</li>
 <li>/home分区（存储空间，剩余都给它）-&gt;max MB-&gt;主分区-&gt;空间起始位置-&gt;XFS日志文件系统-&gt;/home。</li>
 <li>现在安装。</li>
 </ol>
-<h2 id="二：-基础配置">二： 基础配置</h2>
-<h3 id="2-1-设置root用户密码">2.1 设置root用户密码</h3>
-<p><code>sudo passwd root</code><br>
-<code>su</code></p>
+<h2 id="二：-基础配置"><a href="#二：-基础配置" class="headerlink" title="二： 基础配置"></a>二： 基础配置</h2><h3 id="2-1-设置root用户密码"><a href="#2-1-设置root用户密码" class="headerlink" title="2.1 设置root用户密码"></a>2.1 设置root用户密码</h3><p><code>sudo passwd root</code><br><code>su</code></p>
 <span id="more"></span>
-<h3 id="2-2-修改镜像源">2.2 修改镜像源</h3>
-<ol>
+
+<h3 id="2-2-修改镜像源"><a href="#2-2-修改镜像源" class="headerlink" title="2.2 修改镜像源"></a>2.2 修改镜像源</h3><ol>
 <li><code>sudo nano /etc/apt/sources.list</code></li>
 <li>将原文件所有内容注释掉；</li>
 <li>复制<a target="_blank" rel="noopener" href="https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.2f191b11mRGGjV">阿里巴巴镜像源</a></li>
 <li>黏贴到终端，<code>ctrl</code>+<code>o</code>保存，回车确定,<code>ctrl</code>+<code>x</code>。</li>
 </ol>
-<h3 id="2-3-更新源和系统">2.3 更新源和系统</h3>
-<p><code>sudo apt update</code><br>
-<code>sudo apt upgrade</code><br>
-<code>sudo apt dist-upgrade</code><br>
-<code>sudo apt autoremove</code>  # 清理不需要的旧组件<br>
-<code>reboot</code>  # 重启</p>
-<h3 id="2-4-安装输入法">2.4 安装输入法</h3>
-<ol>
-<li>卸载自带ibus<br>
-<code>sudo apt remove ibus</code></li>
-<li>安装fcitx<br>
-<code>sudo apt install fcitx-bin fcitx-table</code></li>
-<li>安装Google拼音<br>
-<code>sudo apt install fcitx-googlepinyin</code></li>
+<h3 id="2-3-更新源和系统"><a href="#2-3-更新源和系统" class="headerlink" title="2.3 更新源和系统"></a>2.3 更新源和系统</h3><p><code>sudo apt update</code><br><code>sudo apt upgrade</code><br><code>sudo apt dist-upgrade</code><br><code>sudo apt autoremove</code>  # 清理不需要的旧组件<br><code>reboot</code>  # 重启</p>
+<h3 id="2-4-安装输入法"><a href="#2-4-安装输入法" class="headerlink" title="2.4 安装输入法"></a>2.4 安装输入法</h3><ol>
+<li>卸载自带ibus<br><code>sudo apt remove ibus</code></li>
+<li>安装fcitx<br><code>sudo apt install fcitx-bin fcitx-table</code></li>
+<li>安装Google拼音<br><code>sudo apt install fcitx-googlepinyin</code></li>
 <li><code>sudo im-config</code>-&gt;确定-&gt;yes-&gt;选择fcitx,确定-&gt;reboot重启。</li>
 </ol>
-<h3 id="2-5-安装Google浏览器">2.5 安装Google浏览器</h3>
-<ol>
+<h3 id="2-5-安装Google浏览器"><a href="#2-5-安装Google浏览器" class="headerlink" title="2.5 安装Google浏览器"></a>2.5 安装Google浏览器</h3><ol>
 <li>打开 <a target="_blank" rel="noopener" href="https://www.google.cn/intl/zh-CN/chrome/">https://www.google.cn/intl/zh-CN/chrome/</a></li>
 <li>下载-&gt;64位.deb-&gt;接受并安装。</li>
 <li>在下载文件夹内打开终端。</li>
 <li><code>sudo dpkg -i google-chrome-stable_current_amd64.deb</code></li>
 </ol>
-<h3 id="2-6-设置语言">2.6 设置语言</h3>
-<p>设置-&gt;区域和语言-&gt;管理已安装的语言-&gt;安装。</p>
-<h3 id="2-7-安装vlc">2.7 安装vlc</h3>
-<p><code>sudo apt install vlc</code></p>
-<h3 id="2-8-关闭ubuntu内部错误">2.8 关闭ubuntu内部错误</h3>
-<ol>
+<h3 id="2-6-设置语言"><a href="#2-6-设置语言" class="headerlink" title="2.6 设置语言"></a>2.6 设置语言</h3><p>设置-&gt;区域和语言-&gt;管理已安装的语言-&gt;安装。</p>
+<h3 id="2-7-安装vlc"><a href="#2-7-安装vlc" class="headerlink" title="2.7 安装vlc"></a>2.7 安装vlc</h3><p><code>sudo apt install vlc</code></p>
+<h3 id="2-8-关闭ubuntu内部错误"><a href="#2-8-关闭ubuntu内部错误" class="headerlink" title="2.8 关闭ubuntu内部错误"></a>2.8 关闭ubuntu内部错误</h3><ol>
 <li><code>sudo nano /etc/default/apport</code></li>
 <li>enable=1改为0</li>
 <li><code>ctrl</code>+<code>o</code>保存，回车确定,<code>ctrl</code>+<code>x</code>。</li>
 </ol>
-<h3 id="2-9-安装新立得软件包">2.9 安装新立得软件包</h3>
-<p><code>sudo apt install synaptic</code></p>
-<h3 id="2-10-安装aria2和ariang及配置">2.10 安装aria2和ariang及配置</h3>
-<h4 id="2-10-1-安装aria2及其配置">2.10.1 安装aria2及其配置</h4>
-<p><code>sudo apt install aria2 -y</code></p>
+<h3 id="2-9-安装新立得软件包"><a href="#2-9-安装新立得软件包" class="headerlink" title="2.9 安装新立得软件包"></a>2.9 安装新立得软件包</h3><p><code>sudo apt install synaptic</code></p>
+<h3 id="2-10-安装aria2和ariang及配置"><a href="#2-10-安装aria2和ariang及配置" class="headerlink" title="2.10 安装aria2和ariang及配置"></a>2.10 安装aria2和ariang及配置</h3><h4 id="2-10-1-安装aria2及其配置"><a href="#2-10-1-安装aria2及其配置" class="headerlink" title="2.10.1 安装aria2及其配置"></a>2.10.1 安装aria2及其配置</h4><p><code>sudo apt install aria2 -y</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">mkdir /home/ubuntu/.aria2<br>cd /home/ubuntu/.aria2<br>touch aria2.conf aria2.session #创建配置文件与session文件<br>vi /home/ubuntu/.aria2/aria2.conf<br></code></pre></div></td></tr></table></figure>
+
 <p>aria2.conf配置文件如下</p>
 <figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">dir=~/下载/<br>disable-ipv6=<span class="hljs-literal">true</span><br><br><span class="hljs-comment">#打开rpc的目的是为了给web管理端用</span><br>enable-rpc=<span class="hljs-literal">true</span><br>rpc-allow-origin-all=<span class="hljs-literal">true</span><br>rpc-listen-all=<span class="hljs-literal">true</span><br><span class="hljs-comment">#rpc-listen-port=6800</span><br><span class="hljs-comment">#断点续传</span><br><span class="hljs-built_in">continue</span>=<span class="hljs-literal">true</span><br>input-file=/home/ubuntu/.aria2/aria2.session<br>save-session=/home/ubuntu/.aria2/aria2.session<br><br><span class="hljs-comment">#最大同时下载任务数</span><br>max-concurrent-downloads=20<br>save-session-interval=120<br><br><span class="hljs-comment"># Http/FTP 相关</span><br>connect-timeout=120<br><span class="hljs-comment">#lowest-speed-limit=10K</span><br><span class="hljs-comment">#同服务器连接数</span><br>max-connection-per-server=10<br><span class="hljs-comment">#max-file-not-found=2</span><br><span class="hljs-comment">#最小文件分片大小, 下载线程数上限取决于能分出多少片, 对于小文件重要</span><br>min-split-size=10M<br><br><span class="hljs-comment">#单文件最大线程数, 路由建议值: 5</span><br>split=10<br>check-certificate=<span class="hljs-literal">false</span><br><span class="hljs-comment">#http-no-cache=true</span><br></code></pre></div></td></tr></table></figure>
+
 <p>后台运行aria2</p>
 <p><code>aria2c --conf-path=/home/ubuntu/.aria2/aria2.conf -D</code></p>
 <p>设置aria2开机自动启动</p>
 <p><code>sudo vi /etc/rc.local</code></p>
 <p>在最下面加入：</p>
 <p><code>aria2c --conf-path=/home/ubuntu/.aria2/aria2.conf -D &amp;</code></p>
-<h4 id="2-10-2-安装ariang及配置">2.10.2 安装ariang及配置</h4>
-<p><a target="_blank" rel="noopener" href="http://ariang.mayswind.net/zh_Hans/">参考官方文档</a></p>
+<h4 id="2-10-2-安装ariang及配置"><a href="#2-10-2-安装ariang及配置" class="headerlink" title="2.10.2 安装ariang及配置"></a>2.10.2 安装ariang及配置</h4><p><a target="_blank" rel="noopener" href="http://ariang.mayswind.net/zh_Hans/">参考官方文档</a></p>
 <figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">sudo apt install nodejs<br>sudo apt install npm<br>sudo apt install gulp<br></code></pre></div></td></tr></table></figure>
+
 <p>然后<a target="_blank" rel="noopener" href="https://github.com/mayswind/AriaNg/releases">下载源码解压并cd进入解压的文件夹</a></p>
 <p>然后安装单文件版</p>
-<p><code>npm install</code><br>
-<code>gulp clean build-bundle</code></p>
-<h2 id="三：-常用软件安装">三： 常用软件安装</h2>
-<p>PS：deb文件如何安装？</p>
+<p><code>npm install</code><br><code>gulp clean build-bundle</code></p>
+<h2 id="三：-常用软件安装"><a href="#三：-常用软件安装" class="headerlink" title="三： 常用软件安装"></a>三： 常用软件安装</h2><p>PS：deb文件如何安装？</p>
 <ul>
 <li><code>sudo dpkg -i 软件名</code> # 安装</li>
 <li><code>sudo apt install -f</code> # 修复依赖</li>
 <li><code>sudo dpkg -r 软件名</code> # 进行卸载</li>
 </ul>
-<p>安装git<br>
-<code>sudo apt install git</code></p>
-<p>生成公匙<br>
-<code>ssh-keygen -t rsa -C &quot;你的邮箱地址&quot;</code><br>
-<code>cat ~/.ssh/id_rsa.pub</code><br>
-添加到github，gitee，coding</p>
-<p>下载安装wps<br>
-<code>sudo dpkg -i wps-office_11.1.0.9080_amd64.deb</code></p>
-<p>下载安装lantern<br>
-<code>sudo dpkg -i lantern-installer-preview-64-bit.deb</code></p>
-<p>下载安装zoom<br>
-<code>sudo dpkg -i zoom_amd64.deb</code></p>
-<p>下载安装python3<br>
-<code>tar zxvf Python-3.8.2.tgz</code><br>
-<code>cd Python-3.8.2\</code><br>
-<code>sudo apt install gcc</code><br>
-<code>sudo apt install make</code><br>
-<code>./configure</code><br>
-<code>make</code><br>
-<code>sudo make install</code><br>
-<code>sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100</code> # 设置python2为默认<br>
-<code>sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150</code> # 设置python3为默认<br>
-<code>sudo update-alternatives --config python</code> # 选择默认的python版本<br>
-<code>sudo apt install python3-pip</code> # 安装pip3<br>
-<code>pip3 install -U pip -i https://pypi.tuna.tsinghua.edu.cn/simple</code> # 升级pip<br>
-如果这个升级命令出现问题 ，可以使用以下命令：<code>sudo easy_install --upgrade pip</code><br>
-<code>pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</code> # pip3设置清华源</p>
-<p>下载安装vscode<br>
-<code>sudo dpkg -i code_1.42.1-1581432938_amd64.deb</code><br>
-<code>ctrl+shift+p，然后输入lang -&gt; 选择configure Display language，然后安装简体中文，然后重启vscode</code></p>
-<p>下载安装百度网盘<br>
-<code>sudo dpkg -i baidunetdisk_linux_3.0.1.2.deb</code></p>
-<p>下载安装hexo<br>
-<code>sudo apt install nodejs</code><br>
-<code>sudo apt install npm</code><br>
-<code>sudo npm install hexo-cli -g</code><br>
-<code>sudo npm install</code></p>
+<p>安装git<br><code>sudo apt install git</code></p>
+<p>生成公匙<br><code>ssh-keygen -t rsa -C &quot;你的邮箱地址&quot;</code><br><code>cat ~/.ssh/id_rsa.pub</code><br>添加到github，gitee，coding</p>
+<p>下载安装wps<br><code>sudo dpkg -i wps-office_11.1.0.9080_amd64.deb</code></p>
+<p>下载安装lantern<br><code>sudo dpkg -i lantern-installer-preview-64-bit.deb</code></p>
+<p>下载安装zoom<br><code>sudo dpkg -i zoom_amd64.deb</code></p>
+<p>下载安装python3<br><code>tar zxvf Python-3.8.2.tgz</code><br><code>cd Python-3.8.2\</code><br><code>sudo apt install gcc</code><br><code>sudo apt install make</code><br><code>./configure</code><br><code>make</code><br><code>sudo make install</code><br><code>sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100</code> # 设置python2为默认<br><code>sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150</code> # 设置python3为默认<br><code>sudo update-alternatives --config python</code> # 选择默认的python版本<br><code>sudo apt install python3-pip</code> # 安装pip3<br><code>pip3 install -U pip -i https://pypi.tuna.tsinghua.edu.cn/simple</code> # 升级pip<br>如果这个升级命令出现问题 ，可以使用以下命令：<code>sudo easy_install --upgrade pip</code><br><code>pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</code> # pip3设置清华源</p>
+<p>下载安装vscode<br><code>sudo dpkg -i code_1.42.1-1581432938_amd64.deb</code><br><code>ctrl+shift+p，然后输入lang -&gt; 选择configure Display language，然后安装简体中文，然后重启vscode</code></p>
+<p>下载安装百度网盘<br><code>sudo dpkg -i baidunetdisk_linux_3.0.1.2.deb</code></p>
+<p>下载安装hexo<br><code>sudo apt install nodejs</code><br><code>sudo apt install npm</code><br><code>sudo npm install hexo-cli -g</code><br><code>sudo npm install</code></p>
 <p>下载安装qBittorrent</p>
 <ul>
-<li>qBittorrent Stable # 稳定版<br>
-<code>sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable</code></li>
-<li>qBittorrent Unstable # 不稳定版<br>
-<code>sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-unstable</code></li>
+<li>qBittorrent Stable # 稳定版<br> <code>sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable</code></li>
+<li>qBittorrent Unstable # 不稳定版<br> <code>sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-unstable</code></li>
 </ul>
 <p><code>sudo apt-get update &amp;&amp; sudo apt-get install qbittorrent</code></p>
-<h2 id="四：-参考视频">四： 参考视频</h2>
-<p><strong><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av48233413">https://www.bilibili.com/video/av48233413</a></strong></p>
+<h2 id="四：-参考视频"><a href="#四：-参考视频" class="headerlink" title="四： 参考视频"></a>四： 参考视频</h2><p><strong><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av48233413">https://www.bilibili.com/video/av48233413</a></strong></p>
 
             </div>
             <hr>
